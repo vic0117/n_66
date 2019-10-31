@@ -21,7 +21,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <div className="noUse"></div>
+        {/* <div className="noUse"></div> */}
         <Row>
           <div className="mountainBox">
             <Parallax
@@ -40,10 +40,10 @@ class Footer extends Component {
 				  <ParallaxLayer offset={0} speed={-0.3} style={{'z-index':'4',top:'55%',left:'44%'}}>
 					<p>極地旅行專家</p>
               </ParallaxLayer>
-              <ParallaxLayer offset={0} speed={1.8}  style={{'z-index':'5',top:'50%'}}>
+              <ParallaxLayer offset={0} speed={2}  style={{'z-index':'5',top:'55%'}}>
                 <img src={cloud1} alt="cloud1" className="cloud1"></img>
               </ParallaxLayer>
-              <ParallaxLayer offset={0} speed={0.5} style={{'z-index':'5',top:'50%'}}>
+              <ParallaxLayer offset={0} speed={0.7} style={{'z-index':'5',top:'35%'}}>
                 <img src={cloud2} alt="cloud2" className="cloud2"></img>
               </ParallaxLayer>
               <ParallaxLayer offset={0} speed={0.3} style={{'z-index':'5',top:'50%'}}>
