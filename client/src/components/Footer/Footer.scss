@@ -1,0 +1,125 @@
+.noUse{
+	height: 100vh;
+	background: #000;
+}
+.footerBox {
+  width: 100%;
+  border-top: 1px solid #707070;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 5%;
+  .inBox {
+    margin-top: 3.75rem;
+    margin-bottom: 2rem;
+  }
+  img {
+    width: 20px;
+  }
+  h5 {
+    margin-bottom: 0;
+    margin-left: 1.25rem;
+  }
+  li {
+    font-size: 1rem;
+    color: #242a3a;
+    list-style: none;
+    margin-top: 0.625rem;
+  }
+  li:hover{
+	color: #96daf0;
+	cursor: pointer;
+  }
+}
+.footerBox2 {
+  width: 100%;
+  height: 15rem;
+  // border:1px solid #242A3A;
+  p {
+    font-size: 1rem;
+    color: #96daf0;
+  }
+  h1 {
+    color: #242a3a;
+  }
+}
+.subscribeEmail {
+  width: 40%;
+  height: 80px;
+  border: 15px solid #f2f2f2;
+  .emailIcon {
+    height: 50px;
+    width: 50px;
+  }
+  img {
+    color: #74767d;
+    width: 20px;
+  }
+
+  input {
+    width: 100%;
+    font-size: 0.5rem;
+	 border: 1px solid #f2f2f2;
+  }
+  input:focus{
+	  outline: none;
+  }
+  input:hover{
+	  cursor: pointer;
+  }
+}
+button {
+  width: 10rem;
+  height: 5rem;
+  background: #242a3a;
+  color: #fff;
+}
+button:hover {
+  background: #96daf0;
+  color: #242a3a;
+}
+
+.footerBox3 {
+  width: 100%;
+  height: 6.25rem;
+  background: #242a3a;
+  p {
+    color: #fff;
+    margin: 0px 10px;
+  }
+  p:hover {
+	 color: #96daf0;
+	 cursor: pointer;
+  }
+}
+.mountainBox{
+	height:100vh;
+	h1{
+		position: absolute;
+		font-size:12rem;
+		font-weight: 800;
+		color:#242a3a;
+		transform: translate(-50%,-50%);
+	}
+	p{
+		font-size: 2rem;
+		letter-spacing: 1rem;
+		color:#242a3a;
+	}
+	.mountain{
+		transform: translate(-50%,-50%);
+	}
+	.mountainBg{
+		width: 100%;
+	}
+	.cloud1{
+		width: 100%;
+	}
+	.cloud2{
+		width: 100%;
+	}
+	.cloud3{
+		width: 100%;
+	}
+	.cloud4{
+		width: 100%;
+	}
+}
