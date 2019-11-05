@@ -1,6 +1,6 @@
-.noUse{
-	height: 100vh;
-	background: #000;
+.noUse {
+  height: 100vh;
+  background: #000;
 }
 .footerBox {
   width: 100%;
@@ -24,20 +24,22 @@
     list-style: none;
     margin-top: 0.625rem;
   }
-  li:hover{
-	color: #96daf0;
-	cursor: pointer;
+  li:hover {
+    color: #96daf0;
+    cursor: pointer;
   }
 }
 .footerBox2 {
   width: 100%;
   height: 15rem;
-  // border:1px solid #242A3A;
-  p {
+  margin: 0 !important;
+  .subscribeTitle p {
     font-size: 1rem;
     color: #96daf0;
+    margin-bottom: 0px;
   }
-  h1 {
+
+  .subscribeTitle h1 {
     color: #242a3a;
   }
 }
@@ -45,9 +47,12 @@
   width: 40%;
   height: 80px;
   border: 15px solid #f2f2f2;
+  padding-right: 0 !important;
+
   .emailIcon {
     height: 50px;
     width: 50px;
+    border-right: 1px solid #f4f4f4;
   }
   img {
     color: #74767d;
@@ -57,18 +62,17 @@
   input {
     width: 100%;
     font-size: 0.5rem;
-	 border: 1px solid #f2f2f2;
+    border: none;
   }
-  input:focus{
-	  outline: none;
+  input:focus {
+    outline: none;
   }
-  input:hover{
-	  cursor: pointer;
+  input:hover {
+    cursor: pointer;
   }
 }
 button {
-  width: 10rem;
-  height: 5rem;
+  width: 20%;
   background: #242a3a;
   color: #fff;
 }
@@ -81,45 +85,58 @@ button:hover {
   width: 100%;
   height: 6.25rem;
   background: #242a3a;
+  flex-wrap: wrap;
   p {
     color: #fff;
     margin: 0px 10px;
   }
   p:hover {
-	 color: #96daf0;
-	 cursor: pointer;
+    color: #96daf0;
+    cursor: pointer;
   }
 }
-.mountainBox{
-	height:100vh;
-	h1{
-		position: absolute;
-		font-size:12rem;
-		font-weight: 800;
-		color:#242a3a;
-		transform: translate(-50%,-50%);
-	}
-	p{
-		font-size: 2rem;
-		letter-spacing: 1rem;
-		color:#242a3a;
-	}
-	.mountain{
-		transform: translate(-50%,-50%);
-	}
-	.mountainBg{
-		width: 100%;
-	}
-	.cloud1{
-		width: 100%;
-	}
-	.cloud2{
-		width: 100%;
-	}
-	.cloud3{
-		width: 100%;
-	}
-	.cloud4{
-		width: 100%;
-	}
+.mountainBox {
+  height: 100vh;
+  h1 {
+    position: absolute;
+    font-size: 12rem;
+    font-weight: 800;
+    color: #242a3a;
+    transform: translate(-50%, -50%);
+  }
+  p {
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    color: #242a3a;
+  }
+  .mountain {
+    transform: translate(-50%, -50%);
+  }
+  .mountainBg {
+    width: 100%;
+  }
+  .cloud1 {
+    width: 100%;
+  }
+  .cloud2 {
+    width: 100%;
+  }
+  .cloud3 {
+    width: 100%;
+  }
+  .cloud4 {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .subscribeEmail {
+    margin-top: -25px !important;
+  }
+  .subscribeTitle {
+    text-align: center;
+  }
+  .footerBox3 div {
+    justify-content: center !important;
+  }
 }

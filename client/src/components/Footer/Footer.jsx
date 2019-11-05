@@ -24,32 +24,61 @@ class Footer extends Component {
         {/* <div className="noUse"></div> */}
         <Row>
           <div className="mountainBox">
-            <Parallax
-              pages={1.2}
-              ref={ref => (this.parallax = ref)}
-            >
-				  <ParallaxLayer offset={0} speed={0} style={{top:'35%'}}>
-              <img src={mountainBg} alt="mountainBg" className="mountainBg"></img>
+            <Parallax pages={1.2} ref={ref => (this.parallax = ref)}>
+              <ParallaxLayer offset={0} speed={0} style={{ top: "35%" }}>
+                <img
+                  src={mountainBg}
+                  alt="mountainBg"
+                  className="mountainBg"
+                ></img>
               </ParallaxLayer>
-				  <ParallaxLayer offset={0} speed={-0.3} style={{'z-index':'2',top:'45%',left:'50%'}}>
-               <h1>66 ﾟN</h1>
+              <ParallaxLayer
+                offset={0}
+                speed={-0.3}
+                style={{ "zIndex": "2", top: "45%", left: "50%" }}
+              >
+                <h1>66 ﾟN</h1>
               </ParallaxLayer>
-				  <ParallaxLayer offset={0} speed={0} style={{'z-index':'3',top:'70%',left:'50%'}}>
-               <img src={mountain} alt="mountain" className="mountain"></img> 
+              <ParallaxLayer
+                offset={0}
+                speed={0}
+                style={{ "zIndex": "3", top: "70%", left: "50%" }}
+              >
+                <img src={mountain} alt="mountain" className="mountain"></img>
               </ParallaxLayer>
-				  <ParallaxLayer offset={0} speed={-0.3} style={{'z-index':'4',top:'55%',left:'44%'}}>
-					<p>極地旅行專家</p>
+              <ParallaxLayer
+                offset={0}
+                speed={-0.3}
+                style={{ "zIndex": "4", top: "55%", left: "44%" }}
+              >
+                <p>極地旅行專家</p>
               </ParallaxLayer>
-              <ParallaxLayer offset={0} speed={2}  style={{'z-index':'5',top:'55%'}}>
+              <ParallaxLayer
+                offset={0}
+                speed={2}
+                style={{ "zIndex": "5", top: "55%" }}
+              >
                 <img src={cloud1} alt="cloud1" className="cloud1"></img>
               </ParallaxLayer>
-              <ParallaxLayer offset={0} speed={0.7} style={{'z-index':'5',top:'35%'}}>
+              <ParallaxLayer
+                offset={0}
+                speed={0.7}
+                style={{ "zIndex": "5", top: "35%" }}
+              >
                 <img src={cloud2} alt="cloud2" className="cloud2"></img>
               </ParallaxLayer>
-              <ParallaxLayer offset={0} speed={0.3} style={{'z-index':'5',top:'50%'}}>
+              <ParallaxLayer
+                offset={0}
+                speed={0.3}
+                style={{ "zIndex": "5", top: "50%" }}
+              >
                 <img src={cloud3} alt="cloud3" className="cloud3"></img>
               </ParallaxLayer>
-              <ParallaxLayer offset={0} speed={0.2} style={{'z-index':'5',top:'50%'}}>
+              <ParallaxLayer
+                offset={0}
+                speed={0.2}
+                style={{ "zIndex": "5", top: "50%" }}
+              >
                 <img src={cloud4} alt="cloud4" className="cloud4"></img>
               </ParallaxLayer>
             </Parallax>
@@ -107,30 +136,32 @@ class Footer extends Component {
               </Col>
             </div>
           </Row>
-          <Row>
-            <div className="footerBox2 d-flex align-items-center">
-              <div className="subscribeTitle">
-                <p>訂閱</p>
-                <h1>最新消息</h1>
-              </div>
-              <div className="subscribeEmail d-flex ml-auto">
-                <div className="emailIcon d-flex justify-content-center align-items-center">
-                  <img src={email} alt="email"></img>
-                </div>
-                <input type="text" placeholder="輸入電子信箱" />
-              </div>
-              <button>訂閱</button>
+          <Row className=" footerBox2 align-items-center">
+            <div className="subscribeTitle col-lg-5">
+              <p>訂閱</p>
+              <h1>最新消息</h1>
             </div>
+            <form className="col-lg-7 subscribeEmail d-flex ml-auto">
+              <div className="emailIcon d-flex align-items-center">
+                <img src={email} alt="email"></img>
+              </div>
+              <input className="ml-2" type="text" placeholder="輸入電子信箱" />
+              <button>訂閱</button>
+            </form>
           </Row>
         </Container>
         <Row>
           <div className="footerBox3 d-flex justify-content-center align-items-center">
-            <p>保險</p>
-            <p>銷售條款</p>
-            <p>法律聲明</p>
-            <p>我們的合作夥伴</p>
-            <p>隱私政策</p>
-            <p>極地圖書館</p>
+            <div className="col-sm-12 col-md-6 d-flex ml-auto justify-content-end p-0">
+              <p>保險</p>
+              <p>銷售條款</p>
+              <p>法律聲明</p>
+            </div>
+            <div className="col-sm-12 col-md-6 d-flex p-0">
+              <p>我們的合作夥伴</p>
+              <p>隱私政策</p>
+              <p>極地圖書館</p>
+            </div>
           </div>
         </Row>
       </div>
