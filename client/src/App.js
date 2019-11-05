@@ -1,8 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
-
+import Footer from '../src/components/Footer/Footer'
+import Adviser from './components/Adviser/adviser';
 
 const App = ()=>(
-	<div>App</div>
+	<div>
+		<Adviser/>
+		<Footer/>
+	</div>
 )
 export default App;
