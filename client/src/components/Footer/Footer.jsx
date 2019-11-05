@@ -35,49 +35,49 @@ class Footer extends Component {
               <ParallaxLayer
                 offset={0}
                 speed={-0.3}
-                style={{ "z-index": "2", top: "45%", left: "50%" }}
+                style={{ "zIndex": "2", top: "45%", left: "50%" }}
               >
                 <h1>66 ﾟN</h1>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0}
-                style={{ "z-index": "3", top: "70%", left: "50%" }}
+                style={{ "zIndex": "3", top: "70%", left: "50%" }}
               >
                 <img src={mountain} alt="mountain" className="mountain"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={-0.3}
-                style={{ "z-index": "4", top: "55%", left: "44%" }}
+                style={{ "zIndex": "4", top: "55%", left: "44%" }}
               >
                 <p>極地旅行專家</p>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={2}
-                style={{ "z-index": "5", top: "55%" }}
+                style={{ "zIndex": "5", top: "55%" }}
               >
                 <img src={cloud1} alt="cloud1" className="cloud1"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0.7}
-                style={{ "z-index": "5", top: "35%" }}
+                style={{ "zIndex": "5", top: "35%" }}
               >
                 <img src={cloud2} alt="cloud2" className="cloud2"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0.3}
-                style={{ "z-index": "5", top: "50%" }}
+                style={{ "zIndex": "5", top: "50%" }}
               >
                 <img src={cloud3} alt="cloud3" className="cloud3"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0.2}
-                style={{ "z-index": "5", top: "50%" }}
+                style={{ "zIndex": "5", top: "50%" }}
               >
                 <img src={cloud4} alt="cloud4" className="cloud4"></img>
               </ParallaxLayer>
