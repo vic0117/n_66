@@ -21,7 +21,6 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        {/* <div className="noUse"></div> */}
         <Row>
           <div className="mountainBox">
             <Parallax pages={1.2} ref={ref => (this.parallax = ref)}>
@@ -83,6 +82,17 @@ class Footer extends Component {
               </ParallaxLayer>
             </Parallax>
           </div>
+			 <div className='mountainBox2'>
+				<img
+					src={mountainBg}
+					alt="mountainBg"
+					className="mountainBg"
+				></img>
+				<h1>66 ﾟN</h1>
+				<p>極地旅行專家</p>
+				<img src={mountain} alt="mountain" className="mountain"></img>
+				<img src={cloud1} alt="cloud1" className="cloud1"></img>
+			 </div>
         </Row>
 
         <Container>
