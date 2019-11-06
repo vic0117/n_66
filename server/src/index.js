@@ -8,14 +8,14 @@ const mysql = require("mysql");
 const moment = require("moment-timezone");
 const session = require("express-session");
 const cors = require("cors");
-// const db = mysql.createConnection({
-//   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
-//   host: "localhost",
-//   user: "root",
-//   password: "root",
-//   database: "practice"
-// });
-// db.connect();
+const db = mysql.createConnection({
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "n_66"
+});
+db.connect();
 const app = express();
 
 const whitelist = ["http://localhost:3000", undefined, "http://localhost:3001"];
@@ -38,6 +38,11 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+// member
+const members = require("./members/members");
+app.use(members);
+
 
 // 404
 app.use((req, res) => {
