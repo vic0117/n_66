@@ -84,7 +84,7 @@ class NavBarHome extends React.Component {
                 className=" d-flex align-items-center nav-top-item"
               >
                 <img className="user" src={user} alt="user" />
-                客戶專區
+                會員專區
               </Link>
               <a href="#6" className=" d-flex align-items-center nav-top-item">
                 <img className="phone" src={phone} alt="phone" />
