@@ -1,11 +1,7 @@
 import React from "react";
 
 //Routers
-import { Link, Switch, Route } from "react-router-dom";
-
-//Components
-import DashBoard from "../../pages/DashBoard/DashBoard";
-import Home from "../../pages/Home/Home";
+import { Link } from "react-router-dom";
 
 //CSS
 import "./NavBarHome.css";
@@ -123,6 +119,7 @@ class NavBarHome extends React.Component {
           <a
             className="n66toggler ml-auto d-flex justify-content-center align-items-center"
             role="button"
+            href="#1"
           >
             <div className="toggle-inner d-flex flex-column justify-content-between align-items-center">
               <div className="white-line up-line"></div>

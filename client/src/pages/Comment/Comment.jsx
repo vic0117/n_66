@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import MemberLeftMenu from "../../components/MemberLeftMenu/MemberLeftMenu";
 import CommentFilterBox from '../../components/CommentFilterBox/CommentFilterBox';
 import MemberCommentList from '../../components/MemberCommentList/MemberCommentList';
-import NavBar from "../../components/NavBar/NavBar";
-import { Row, Col, DropdownButton, Dropdown } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { ReactComponent as Star } from "./images/star.svg";
 import { ReactComponent as StarSolid } from "./images/star-solid.svg";
 
@@ -40,7 +38,7 @@ class Comment extends Component {
                   您的意見（無論是正面還是負面）都直接發佈在我 們的網站上。
                 </li>
               </ol>
-              <a href="">了解更多信息</a>
+              <a href="#1">了解更多信息</a>
             </div>
             <div className="rank-info mt-4">
               <div className="d-flex align-items-center mb-1">

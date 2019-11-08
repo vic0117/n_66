@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Form, Accordion, Card, Button, Row } from "react-bootstrap";
+import { Form, Accordion, Card, Button } from "react-bootstrap";
 import "./MemberInfoList.css";
 class MemberInfoList extends Component {
   state = {};
   render() {
-    const { data, handleUpdate } = this.props;
+    const { data } = this.props;
     console.log(data);
 
     return (

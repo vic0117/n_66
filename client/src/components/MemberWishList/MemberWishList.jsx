@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Accordion, Card, Form, Button, Row, Col } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Like } from "./images/like.svg";

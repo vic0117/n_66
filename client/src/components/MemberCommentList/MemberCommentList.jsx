@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./MemberCommentList.css";
 import { ReactComponent as Star } from "./images/star.svg";
-import { Dropdown, DropdownButton, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 class MemberCommentList extends Component {
   render() {
     return (
-
-
       <div className="comment-container d-flex flex-column ">
         <Row className="mx-0">
           <Col className="comment-title">
@@ -26,12 +24,12 @@ class MemberCommentList extends Component {
             <p className="mt-2 mb-4">
               這是一個非常美好的時光，並得到了出色的指導。
               非常感謝Alvaro，他非常關心我們，並與我們分享了他的豐富知識。
-        </p>
+            </p>
           </div>
 
           <div className="comment-btn-outer-container">
             <div className="mt-auto comment-btn-container">
-              <a href="#" className="comment-btn">
+              <a href="#1" className="comment-btn">
                 <span>我們的瑞典之旅</span>
               </a>
             </div>
@@ -50,12 +48,12 @@ class MemberCommentList extends Component {
             <p className="mt-2 mb-4">
               這是一個非常美好的時光，並得到了出色的指導。
               非常感謝Alvaro，他非常關心我們，並與我們分享了他的豐富知識。
-        </p>
+            </p>
           </div>
 
           <div className="comment-btn-outer-container">
             <div className="mt-auto comment-btn-container">
-              <a href="#" className="comment-btn">
+              <a href="#2" className="comment-btn">
                 <span>我們的瑞典之旅</span>
               </a>
             </div>

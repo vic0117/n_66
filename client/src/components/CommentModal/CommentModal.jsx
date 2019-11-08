@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { ReactComponent as Star } from "./images/star.svg";
-import { ReactComponent as StarSolid } from "./images/star-solid.svg";
+// import { ReactComponent as StarSolid } from "./images/star-solid.svg";
 import "./CommentModal.css";
 class CommentModal extends Component {
   state = {};

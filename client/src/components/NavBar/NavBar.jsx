@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Nav, Breadcrumb } from "react-bootstrap";
 // Components
 import { ReactComponent as Logo } from "./images/logo.svg";
@@ -11,7 +11,7 @@ class NavBar extends React.Component {
   state = {};
 
   componentDidMount() {
-    let navbar = document.querySelector(".navbar-container");
+    // let navbar = document.querySelector(".navbar-container");
     let toggler = document.querySelector(".navBtn");
     let rightMenu = document.querySelector(".right-menu");
     let rightMenuIsShow = false;
@@ -72,6 +72,7 @@ class NavBar extends React.Component {
           <a
             className="navBtn ml-auto d-flex justify-content-center align-items-center"
             role="button"
+            href="#2e"
           >
             <div className="toggle-inner d-flex flex-column justify-content-between align-items-center">
               <div className="darkblue-line up-line"></div>
