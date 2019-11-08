@@ -1,0 +1,12 @@
+@media only screen and (max-width: 1200px) {
+  .wish-list-item {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .wish-list-item {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=wishlist.css.map */

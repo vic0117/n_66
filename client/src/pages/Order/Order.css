@@ -1,0 +1,21 @@
+@media only screen and (max-width: 992px) {
+  .order-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .order-container img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .order-container .order-info-container {
+    margin: 10px 0;
+  }
+  .order-container .to-comment-container {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+}
+/*# sourceMappingURL=order.css.map */

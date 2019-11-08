@@ -1,0 +1,117 @@
+.text-align-left {
+  text-align: left;
+}
+
+.width-100 {
+  width: 100px;
+}
+
+.width-200 {
+  width: 200px;
+}
+
+.width-350 {
+  width: 350px;
+}
+
+.member-info-list-container {
+  max-width: 960px;
+  margin: auto;
+  border: 1px solid #eaeaea !important;
+}
+
+.member-info-list-container .card {
+  border: none !important;
+}
+
+.member-info-list-container p {
+  color: #888888;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.member-info-list-title {
+  border-bottom: 1px solid #eaeaea !important;
+}
+
+.member-info-list-title button {
+  text-align: left;
+  text-decoration: none !important;
+  padding: 0 1.5rem !important;
+}
+
+.member-info-list-title span {
+  font-size: 1.25rem;
+  color: #2a2a3a;
+  font-weight: 300;
+}
+
+.member-info-list-title span:before {
+  content: "";
+  position: absolute;
+  height: 1.3rem;
+  width: 0.2rem;
+  top: 1.8rem;
+  left: 2rem;
+  background-color: #96daf0;
+}
+
+.member-info-list-title button:hover {
+  text-decoration: none !important;
+}
+
+.member-info-content-container label {
+  margin: 0;
+  width: 100%;
+  display: inline-block;
+}
+
+.member-info-content-container input {
+  margin: 0;
+}
+
+.member-info-content-container .card-body {
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+}
+
+.member-info-content-container .form-control {
+  border-radius: 0;
+}
+
+.member-info-content-container button {
+  border-radius: 0;
+  background-color: #fff;
+  border: 1px solid #242a3a;
+  color: #242a3a;
+  height: 36px;
+  width: 90px;
+}
+
+.member-info-content-container button:hover {
+  background-color: #eaeaea;
+  color: #242a3a;
+  border: 1px solid #888888;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+select:not([multiple]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"><path d="M4 8L0 4h8z"/></svg>');
+  padding: 0.5em;
+  padding-right: 1.5em;
+}
+
+.dropdowns {
+  border-radius: 0;
+  padding: 0.375rem 0.75rem;
+}
+
+.birthday {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1rem;
+}
+/*# sourceMappingURL=member_info_list.css.map */

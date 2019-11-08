@@ -1,0 +1,133 @@
+.coupon-outer-container {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding-bottom: 1.5rem;
+}
+
+.coupon-outer-container .coupon-title {
+  padding: 1.75rem 2.75rem;
+  position: relative;
+}
+
+.coupon-outer-container .coupon-title span {
+  font-size: 1.25rem;
+  color: #2a2a3a;
+  font-weight: 300;
+}
+
+.coupon-outer-container .coupon-title span:before {
+  content: "";
+  position: absolute;
+  height: 1.3rem;
+  width: 0.2rem;
+  top: 2.2rem;
+  left: 2rem;
+  background-color: #96daf0;
+}
+
+.coupon-container {
+  width: 30%;
+  position: relative;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 0 0.5rem 1.5rem 0.5rem;
+  color: #242a3a;
+}
+
+.coupon-container .banner {
+  border-bottom: 2px dashed #eaeaea;
+  height: 12rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.coupon-container .banner h5 {
+  border-bottom: 2px solid #96daf0;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 0 1rem;
+}
+
+.coupon-container .banner span {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.coupon-container .banner p {
+  font-size: 12px;
+  text-align: center;
+}
+
+.coupon-container .footer {
+  height: 5rem;
+  width: 100%;
+}
+
+.coupon-container .footer .btn {
+  color: #242a3a;
+  border: 1px solid #242a3a;
+  border-radius: 0;
+  width: 100px;
+  height: 35px;
+  margin: auto !important;
+}
+
+.coupon-container .left-circle {
+  position: absolute;
+  width: 25px;
+  top: 165px;
+  left: -1.2px;
+  background-color: #f8f8f8;
+  border-radius: 0px 50px 50px 0px;
+  height: 50px;
+}
+
+.coupon-container .right-circle {
+  position: absolute;
+  width: 25px;
+  top: 165px;
+  right: -1.2px;
+  background-color: #f8f8f8;
+  border-radius: 50px 0px 0px 50px;
+  height: 50px;
+}
+
+.coupon-container .btn:hover {
+  background: #d5d5d5;
+  border: 1px solid #d5d5d5;
+  border: none;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1200px) {
+  .coupon-container .banner {
+    padding: 1rem;
+  }
+  .coupon-container .banner h5 {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .coupon-container {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .coupon-container {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=member_coupon.css.map */

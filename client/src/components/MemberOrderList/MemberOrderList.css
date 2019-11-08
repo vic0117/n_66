@@ -1,0 +1,88 @@
+.order-list-container {
+  border: 1px solid #eaeaea;
+  max-width: 960px;
+  margin: auto;
+}
+
+.order-list-container .row {
+  margin: 0;
+}
+
+.order-card-container {
+  padding: 0 2rem 1.5rem 2rem;
+}
+
+.order-card-container .card {
+  border: none;
+}
+
+.order-card-container .row {
+  margin: 0;
+}
+
+.order-card-container .card-body {
+  padding: 0;
+}
+
+.order-card-container .col {
+  padding: 0;
+}
+
+.order-card-container .order-num {
+  font-size: 1rem;
+}
+
+.order-card-container .status p {
+  margin: 0;
+}
+
+.order-container {
+  padding-bottom: 1.5rem !important;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+.order-list-title {
+  padding: 1.75rem 2.75rem;
+  position: relative;
+}
+
+.order-list-title span {
+  font-size: 1.25rem;
+  color: #2a2a3a;
+  font-weight: 300;
+}
+
+.order-list-title span:before {
+  content: "";
+  position: absolute;
+  height: 1.3rem;
+  width: 0.2rem;
+  top: 2.2rem;
+  left: 2rem;
+  background-color: #96daf0;
+}
+
+.order-info-container {
+  margin-left: 2.5rem;
+}
+
+.order-info-container .product-duration {
+  margin: 0;
+  padding: 0;
+}
+
+.to-comment {
+  display: inline-block;
+  width: 7rem;
+  height: 2.5rem;
+  background-color: #fff;
+  border-radius: 0;
+  color: #2a2a3a;
+  border: 1px solid #2a2a3a;
+}
+
+.to-comment:hover {
+  background: #d5d5d5;
+  border: 1px solid #d5d5d5;
+}
+/*# sourceMappingURL=member_list_order.css.map */

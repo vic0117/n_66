@@ -1,0 +1,56 @@
+.comment-header {
+  padding: 1rem 1rem 2rem 1rem;
+  border-bottom: 1px solid #707070;
+}
+
+.comment-regulation {
+  background-color: #f8f8f8;
+  margin-top: 50px;
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+
+.comment-regulation .comment-term {
+  padding-left: 1.1rem;
+}
+
+.comment-regulation .comment-term li {
+  margin: 1rem 0;
+  color: #74767d;
+  font-size: 12px;
+}
+
+.comment-regulation a {
+  color: #242a3a;
+}
+
+.rank-info {
+  border: 1px solid #eaeaea;
+  padding: 2rem;
+}
+
+.rank-info .rank-des {
+  color: #74767d;
+}
+
+.star {
+  height: 1rem;
+  width: 1rem;
+  margin-left: 0.25rem;
+}
+
+.member-comment {
+  margin-top: 50px !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .rank-info {
+    display: none;
+  }
+  .member-comment-filter-container button {
+    width: 100%;
+  }
+  .member-comment-filter-container .dropdown-menu {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=comment.css.map */

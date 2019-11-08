@@ -1,0 +1,40 @@
+.member-comment-filter-container button {
+  color: #242a3a;
+  background-color: #fff;
+  border-color: #eaeaea;
+  border-radius: 0;
+}
+
+.member-comment-filter-container .dropdown-menu {
+  width: 11.25rem;
+  height: 9rem;
+  border-radius: 0;
+  -webkit-transform: translate3d(0px, 50px, 0px) !important;
+          transform: translate3d(0px, 50px, 0px) !important;
+  overflow: scroll;
+}
+
+.member-comment-filter-container .dropdown-menu a {
+  border-bottom: 1px solid #eaeaea;
+  padding: 1rem;
+  color: #242a3a;
+}
+
+.member-comment-filter-container .btn-primary.dropdown-toggle {
+  background-color: #fff !important;
+  border: 1px solid #eaeaea;
+  color: #242a3a;
+}
+
+.member-comment-filter-container button:hover {
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  color: #242a3a;
+}
+
+.member-comment-filter-container button:hover {
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  color: #242a3a;
+}
+/*# sourceMappingURL=comment_filter_box.css.map */
