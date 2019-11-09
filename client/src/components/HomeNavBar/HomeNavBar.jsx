@@ -33,7 +33,7 @@ class NavBarHome extends React.Component {
         rightMenu.style.left = "100%";
         toggler.style.backgroundColor = "transparent";
         navbar.style.backgroundColor = "transparent";
-        toggler.style.borderLeftColor = "#fff";
+        toggler.style.borderLeftColor = "rgba(255,255,255,0.4)";
         upLine.style.transform = "rotate(0)";
         downLine.style.transform = "rotate(0)";
         middleLine.style.opacity = "1";
@@ -55,7 +55,7 @@ class NavBarHome extends React.Component {
       } else {
         rightMenu.style.left = "100%";
         toggler.style.backgroundColor = "transparent";
-        toggler.style.borderLeftColor = "#fff";
+        toggler.style.borderLeftColor = "rgba(255,255,255,0.4)";
         navbar.style.backgroundColor = "transparent";
         body.style.overflowY = "scroll";
         upLine.style.transform = "rotate(0)";
