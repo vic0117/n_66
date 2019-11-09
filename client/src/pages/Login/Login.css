@@ -43,8 +43,8 @@
 }
 
 .cont .signIn .sign-in {
-  -webkit-transition: .7s .2s ease-out, opacity .7s .2s ease-out;
-  transition: .7s .2s ease-out, opacity .7s .2s ease-out;
+  -webkit-transition: 0.7s 0.2s ease-out, opacity 0.7s 0.2s ease-out;
+  transition: 0.7s 0.2s ease-out, opacity 0.7s 0.2s ease-out;
 }
 
 .cont .signIn .sign-up {
@@ -52,10 +52,14 @@
   top: 200%;
   width: 100%;
   height: 100%;
-  -webkit-transition: top 1.2s ease-in-out, opacity .3s ease-in-out, -webkit-transform 1.2s ease-in-out;
-  transition: top 1.2s ease-in-out, opacity .3s ease-in-out, -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity .3s ease-in-out;
-  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity .3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  -webkit-transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out,
+    -webkit-transform 1.2s ease-in-out;
+  transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out,
+    -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out,
+    opacity 0.3s ease-in-out;
+  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out,
+    opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
 
 .cont .mountainBg {
@@ -64,12 +68,14 @@
   top: 0;
   width: 960px;
   height: 100%;
-  background-image: url("./img/photo-1501696088263-5696c92364bf.png");
+  background-image: url("./images/photo-1501696088263-5696c92364bf.png");
   background-size: cover;
-  -webkit-transition: opacity 0.8s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  -webkit-transition: opacity 0.8s ease-in-out,
+    -webkit-transform 1.2s ease-in-out;
   transition: opacity 0.8s ease-in-out, -webkit-transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, opacity 0.8s ease-in-out;
-  transition: transform 1.2s ease-in-out, opacity 0.8s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, opacity 0.8s ease-in-out,
+    -webkit-transform 1.2s ease-in-out;
   z-index: -1;
 }
 
@@ -144,8 +150,8 @@
   color: #fff;
   font-size: 15px;
   cursor: pointer;
-  -webkit-transition: opacity .5s ease-in-out;
-  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .cont .registered .__btn:after {
@@ -169,11 +175,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -185,7 +191,7 @@
 
 .cont .registered .__btn .m--in {
   -webkit-transform: translateY(-100px);
-          transform: translateY(-100px);
+  transform: translateY(-100px);
 }
 
 .cont button {
@@ -222,7 +228,7 @@
   bottom: 0%;
   left: 50%;
   -webkit-transform: translate(-50%, 10px);
-          transform: translate(-50%, 10px);
+  transform: translate(-50%, 10px);
   width: 100px;
   height: 2px;
   background-color: #96daf0;
@@ -281,8 +287,8 @@
   text-align: center;
   font-size: 12px;
   color: #cfcfcf;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .cont .forgot-pass:hover {
@@ -303,7 +309,7 @@
 
 @media screen and (max-width: 981px) {
   .loginRow {
-    background-image: url("./img/photo-1501696088263-5696c92364bf.png");
+    background-image: url("./images/photo-1501696088263-5696c92364bf.png");
     background-size: cover;
   }
   .signIn {

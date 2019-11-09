@@ -8,6 +8,7 @@ import { Route, Switch } from "react-router-dom";
 import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 
 const App = () => (
   <Switch>
