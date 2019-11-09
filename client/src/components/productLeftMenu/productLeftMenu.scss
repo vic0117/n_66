@@ -1,0 +1,139 @@
+
+.bannerArea{
+	height: 70vh;
+	margin: 30px 0 100px 0;
+
+	img{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+
+.leftMenu{
+    position: relative;
+	width: 100%;
+	height: 867px;
+	background: #F8F8F8;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding:50px 15px 15px 15px;
+	margin: 0;
+}
+.searchBox{
+	width: 100%;
+	height: 45px;
+	display:flex;
+	justify-content: center;
+	input{
+		width: 230px;
+		border:1px solid #EAEAEA;
+		text-align: center;
+	}
+	input:focus{
+		outline:none;
+		border:1px solid #96DAF0;
+	}
+	.searchImg{
+		background: #fff;
+		width: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border:1px solid #EAEAEA;
+		cursor: pointer;
+	}
+
+}
+
+.dropDowns{
+	width: 100%;
+}
+.buttonTitle{
+    width: 100%;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: auto;
+	img{
+		width: 20px;
+		color:#242A3A;
+		margin:10px;
+	}
+	p{
+		margin-top:20px;
+		color:#242A3A;
+	}
+}
+
+
+
+.dropdown{
+
+	width: 100%;
+
+	.btn{
+		width: 100%;
+		background: #fff !important;
+		color:#74767d;
+		border:1px solid #EAEAEA;
+		height: 50px !important;
+		
+		// text-align: start;
+	}
+	.btn:hover{
+		color:#242A3A;
+		border:1px solid #96DAF0;	
+	}
+	
+}
+.dropdown-menu{
+	height: 200px !important;
+	width: 100%;
+	overflow: scroll;
+}
+.dropdown-item{
+	height:50px !important;
+	line-height: 50px;
+	border-bottom: 1px solid #EAEAEA !important;
+}
+
+
+//價錢滑動條
+.makeStyles-root-1{
+	width: 80% !important;
+	margin: 50px auto 20px;
+}
+
+.MuiSlider-root{
+	width: 100%;
+	color:#96DAF0 !important;
+}
+.PrivateValueLabel-label-56{
+	color:#242A3A !important;
+}
+
+
+.card-container{
+	.product-card{
+		padding: 15px;
+		border: none;
+		.photoFrame{
+			height: 200px;
+
+			img{
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+		
+		.card-body{
+			padding: 15px;
+			text-align: center;
+		}
+	}
+}

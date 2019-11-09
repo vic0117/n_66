@@ -1,0 +1,17 @@
+.member-left-section {
+  margin-top: 150px;
+}
+
+.member-right-section {
+  margin-top: 150px;
+}
+
+//RWD
+@media only screen and(max-width: 768px) {
+  .member-right-section {
+    margin-top: 0;
+  }
+  .member-section {
+    flex-direction: column !important;
+  }
+}

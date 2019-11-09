@@ -1,0 +1,19 @@
+//RWD
+@media only screen and(max-width: 992px) {
+  .order-container {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .order-info-container {
+      margin: 10px 0;
+    }
+    .to-comment-container {
+      margin-right: auto !important;
+      margin-left: 0 !important;
+    }
+  }
+}

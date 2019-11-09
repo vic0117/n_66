@@ -1,0 +1,21 @@
+.TripSortBox{
+	width: 750px;
+	height: 45px;
+	display: flex;
+	justify-content: space-between;
+	.TripSortBtn{
+		border:1px solid #eaeaea;
+		width: 170px;
+		display: flex;
+		align-items: center;
+		color:#74767D;
+	}
+	.TripSortBtn:hover{
+		border:1px solid #96DAF0;
+		cursor: pointer;
+	}
+	
+	img{
+		margin:0px 20px;
+	}
+}

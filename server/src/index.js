@@ -1,4 +1,4 @@
-// setting
+// settings
 const express = require("express");
 const bodyParser = require("body-parser");
 const multer = require("multer");
@@ -54,6 +54,8 @@ app.get("/trips", (req, res) => {
 	  res.send(JSON.stringify(results))
 	});
  });
+const register = require("./members/register");
+app.use(register);
 
 // 404
 app.use((req, res) => {

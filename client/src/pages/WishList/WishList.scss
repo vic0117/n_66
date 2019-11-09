@@ -1,0 +1,13 @@
+@media only screen and(max-width: 1200px) {
+  .wish-list-item {
+    // flex: 2;
+    width: 45%;
+    // width: 12rem;
+  }
+}
+
+@media only screen and(max-width: 992px){
+    .wish-list-item {
+        width:100%
+    }
+}

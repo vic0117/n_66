@@ -1,0 +1,103 @@
+.TripMenuBox {
+  width: 750px;
+  height: 300px;
+  border: 1px solid #EAEAEA;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.TripMenuImg {
+  margin: 0px !important;
+  width: 287px;
+  height: 300px;
+  background-image: url(./images/sotckholm.jpg);
+  background-size: cover;
+}
+
+.TripMenuImg:hover .TripMenuImgCover {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.TripMenuImgCover {
+  margin: auto;
+  width: 90%;
+  height: 90%;
+  background-image: url(./images/carte-voyage-suede-1197.jpg);
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.TripMenuDes {
+  width: 100%;
+  margin: 20px 30px;
+}
+
+.TripMenuDes p {
+  color: #96DAF0;
+}
+
+.TripMenuDes h4 {
+  color: #242a3a;
+}
+
+.TripMenuDes span {
+  color: #242a3a;
+}
+
+.TripMenuDes h3 {
+  color: #242a3a;
+}
+
+.TripMenuDes img {
+  width: 16px;
+}
+
+.smallDes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+.smallDes p {
+  margin: 0px 5px;
+}
+
+.smallDes span {
+  margin-right: 5px;
+}
+
+.TripMenuDes2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.TripMenuDes2 span {
+  margin-right: 5px;
+}
+
+.TripMenuDes2 .TripMenuDays {
+  margin-right: 5px;
+  font-weight: 800;
+}
+
+.TripMenuDes2 .TripMenuStartEnd {
+  margin-right: 5px;
+}
+
+.TripMenuDes2 .TripMenuPrice h3 {
+  color: #96DAF0;
+}
+/*# sourceMappingURL=Tripmenu.css.map */
