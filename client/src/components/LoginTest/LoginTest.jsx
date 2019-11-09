@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
 
-class Login extends Component {
+class LoginTest extends Component {
   state = {
     email: "",
     password: "",
@@ -16,13 +15,8 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    
-    // const { data: item } = await axios.post(
-    //   "http://localhost:3001/register",
-    //   data
-    // );
-    // console.log(item);
-    fetch("http://localhost:3001/register", {
+
+    fetch("http://localhost:3001/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
@@ -35,10 +29,10 @@ class Login extends Component {
       })
       .then(data => {
         console.log(data);
-        console.log(this.state);
+        // console.log(this.state);
         if (data.success) {
           const state = { ...this.state };
-          state.msg = "註冊成功!";
+          state.msg = "登入成功!";
           this.setState(state);
           console.log(this.state);
         }
@@ -88,4 +82,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default LoginTest;

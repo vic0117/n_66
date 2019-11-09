@@ -39,12 +39,29 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// login
+app.use(
+  session({
+    saveUninitialized: false,
+    resave: false,
+    secret: "i123oidoajd",
+    cookie: {
+      maxAge: 1200000
+    }
+  })
+);
+
+const login = require("./login/login");
+app.use(login);
+
 // member
 const members = require("./members/members");
 app.use(members);
 
-const register = require("./members/register");
+const register = require("./login/register");
 app.use(register);
+
+
 
 // 404
 app.use((req, res) => {

@@ -9,7 +9,8 @@ import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 
-import Login from "./components/LoginTEST/Login";
+import RegisterTest from "./components/RegisterTest/RegisterTest";
+import LoginTest from "./components/LoginTest/LoginTest";
 
 const App = () => (
   // <Switch>
@@ -17,6 +18,7 @@ const App = () => (
   //   <Route path="/members" component={DashBoard} />
   //   <Route path="/" exact component={Home} />
   // </Switch>
-  <Login />
+  // <RegisterTest />
+  <LoginTest />
 );
 export default App;
