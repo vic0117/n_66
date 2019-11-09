@@ -4,7 +4,6 @@ import { Container, Row } from "react-bootstrap";
 //IMAGE SVG
 import { ReactComponent as Logo } from "./images/logo.svg";
 //CSS
-// import "../Login/login.css";
 import "./Login.css";
 
 class LoginNew extends React.Component {

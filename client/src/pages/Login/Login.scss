@@ -1,6 +1,5 @@
 $primaryColor: #242a3a;
-$secColor:#96daf0;
-
+$secColor: #96daf0;
 
 $contW: 960px;
 $imgW: 350px;
@@ -10,222 +9,205 @@ $inputW: 300px;
 $btnW: 180px;
 $btnH: 50px;
 
-
-.cont{
+.cont {
   background-color: #fff;
   // overflow: hidden;
   position: relative;
   max-width: $contW;
   min-height: 550px;
   margin: 2rem auto;
-  
-    input,
-    button {
-      border: none;
-      outline: none;
-      background: none;
-    }
 
+  input,
+  button {
+    border: none;
+    outline: none;
+    background: none;
+  }
 
+  .logo {
+    svg {
+      height: 80px;
+      width: 80px;
 
-    .logo {
-        svg{
-            height: 80px;
-            width: 80px;
-
-            g{
-                fill: $primaryColor;
-            }
-        }
-    }
-
-    .signIn{
-      overflow: hidden;
-      position: relative;
-      top: 0%;
-      left: 0%;
-      background-color: #fff;
-      width: $formW;
-      height: 550px;
-      transition: transform 1.2s ease-in-out;
-      padding: 0 15px 0 15px;
-      z-index: 2;
-
-      h2{
-        color: $primaryColor;
-      }
-
-      .sign-in{
-        transition:  .7s .2s ease-out, opacity .7s .2s ease-out;
-      }
-
-      .sign-up{
-        position: absolute !important;
-        top: 200%;
-        width: 100%;
-        height: 100%;
-        // margin-bottom: 500px;
-        // background-color: rgba(255, 255, 255, 0.801);
-        transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity .3s ease-in-out;
+      g {
+        fill: $primaryColor;
       }
     }
-    
+  }
 
-    .mountainBg{
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: $contW;
+  .signIn {
+    overflow: hidden;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    background-color: #fff;
+    width: $formW;
+    height: 550px;
+    transition: transform 1.2s ease-in-out;
+    padding: 0 15px 0 15px;
+    z-index: 2;
+
+    h2 {
+      color: $primaryColor;
+    }
+
+    .sign-in {
+      transition: 0.7s 0.2s ease-out, opacity 0.7s 0.2s ease-out;
+    }
+
+    .sign-up {
+      position: absolute !important;
+      top: 200%;
+      width: 100%;
       height: 100%;
-      background-image: url("./img/photo-1501696088263-5696c92364bf.png");
-      background-size: cover;
-      transition: transform $switchAT ease-in-out, opacity .8s ease-in-out;
+      // margin-bottom: 500px;
+      // background-color: rgba(255, 255, 255, 0.801);
+      transition: transform 1.2s ease-in-out, top 1.2s ease-in-out,
+        opacity 0.3s ease-in-out;
+    }
+  }
+
+  .mountainBg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $contW;
+    height: 100%;
+    background-image: url("./images/photo-1501696088263-5696c92364bf.png");
+    background-size: cover;
+    transition: transform $switchAT ease-in-out, opacity 0.8s ease-in-out;
+    z-index: -1;
+  }
+
+  .img {
+    height: 550px;
+    padding-top: 80px;
+    position: relative;
+    z-index: 99;
+
+    .inner {
+      width: 350px;
+      height: 80px;
+      overflow: hidden;
+      margin: 0 auto 210px auto;
+    }
+  }
+
+  .registered {
+    overflow: hidden;
+    z-index: 2;
+    position: absolute;
+    left: 610px;
+    top: 0;
+    width: $imgW;
+    height: 100%;
+    transition: transform $switchAT ease-in-out;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      pointer-events: none;
       z-index: -1;
     }
 
+    // .sub-cont{
+    //   // pointer-events: none;
+    // }
 
-    .img{
-      height: 550px;
-      padding-top: 80px;
-      position: relative;
-      z-index: 99;
+    .__text {
+      // z-index: 2;
+      // // position: absolute;
+      // // left: 65px;
+      // // bottom: 180px;
+      // width: $btnW;
+      // padding: 0 20px;
+      // text-align: center;
+      // color: #fff;
+      transition: all $switchAT ease-in-out;
+      // margin: 0 auto;
 
+      h2 {
+        margin-bottom: 20px;
+        font-weight: normal;
+        text-align: center;
+        z-index: 2;
+      }
 
-      .inner{
-        width: 350px;
-        height: 80px;
-        overflow: hidden;
-        margin: 0 auto 210px auto;
+      p {
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: center;
+        z-index: 2;
+        margin-bottom: 30px;
       }
     }
 
-    
-    .registered{
+    // .m--in{
+    //   // position: absolute;
+    //   // right: 610px;
+    // }
+
+    // .m--up{
+    //   // position: absolute;
+
+    // }
+
+    .__btn {
       overflow: hidden;
-      z-index: 2;
-      position: absolute;
-      left: 610px;
-      top: 0;
-      width: $imgW;
-      height: 100%;
-      transition: transform $switchAT ease-in-out;
+      // z-index: 99;
+      position: relative;
+      width: $btnW;
+      height: $btnH;
+      margin: 50px auto 0px auto;
+      background: transparent;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      transition: opacity 0.5s ease-in-out;
 
-
-
-
-        &:after{
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          pointer-events: none;
-          z-index: -1;
-        }
-
-        // .sub-cont{
-        //   // pointer-events: none;
-        // }
-
-        .__text {
-          // z-index: 2;
-          // // position: absolute;
-          // // left: 65px;
-          // // bottom: 180px;
-          // width: $btnW;
-          // padding: 0 20px;
-          // text-align: center;
-          // color: #fff;
-          transition: all $switchAT ease-in-out;
-          // margin: 0 auto;
-
-          
-  
-          h2 {
-            margin-bottom: 20px;
-            font-weight: normal;
-            text-align: center;
-            z-index: 2;
-          }
-      
-          p {
-            color: #fff;
-            font-size: 1rem;
-            line-height: 1.5;
-            text-align: center;
-            z-index: 2;
-            margin-bottom: 30px;
-          }     
-        }
-
-        // .m--in{
-        //   // position: absolute;
-        //   // right: 610px;
-        // }
-
-        // .m--up{
-        //   // position: absolute;
-          
-        // }
-
-
-        .__btn {
-          overflow: hidden;
-          // z-index: 99;
-          position: relative;
-          width: $btnW;
-          height: $btnH;
-          margin: 50px auto 0px auto;
-          background: transparent;
-          color: #fff;
-          font-size: 15px;
-          cursor: pointer;
-          transition: opacity .5s ease-in-out;
-
-      
-          &:after {
-            content: "";
-            z-index: 2;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #fff;
-            border-radius: 0;
-          }
-      
-          a {
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            color: #fff;
-            transition: transform $switchAT;
-          }
-
-
-          .m--in {
-            transform: translateY($btnH * -2);
-              // transform: translateY(0);
-          }
-    
-          // .m--up {
-          //     // transform: translateY($btnH * 2);
-              
-          // }
+      &:after {
+        content: "";
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #fff;
+        border-radius: 0;
       }
-  } 
 
+      a {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        transition: transform $switchAT;
+      }
 
+      .m--in {
+        transform: translateY($btnH * -2);
+        // transform: translateY(0);
+      }
 
+      // .m--up {
+      //     // transform: translateY($btnH * 2);
+
+      // }
+    }
+  }
 
   button {
     display: block;
@@ -237,15 +219,12 @@ $btnH: 50px;
     cursor: pointer;
   }
 
-  
-
   .submit:hover {
     background-color: #96daf0;
     border: 2px solid #96daf0;
     color: #fff;
     transition: 0.5s;
   }
-
 
   h2 {
     color: #fff;
@@ -262,7 +241,7 @@ $btnH: 50px;
     position: absolute;
     bottom: 0%;
     left: 50%;
-    transform: translate(-50%,10px);
+    transform: translate(-50%, 10px);
     width: 100px;
     height: 2px;
     background-color: #96daf0;
@@ -299,18 +278,18 @@ $btnH: 50px;
     transition: 0.8s;
   }
 
-.forgot-pass {
-  display: block;
-  margin-top: 27px;
-  text-align: center;
-  font-size: 12px;
-  color: #cfcfcf;
-  transition: .3s ;
+  .forgot-pass {
+    display: block;
+    margin-top: 27px;
+    text-align: center;
+    font-size: 12px;
+    color: #cfcfcf;
+    transition: 0.3s;
 
-  &:hover{
-    color: $secColor;
+    &:hover {
+      color: $secColor;
+    }
   }
-}
 
   .submit {
     margin: 65px auto 40px auto;
@@ -320,53 +299,44 @@ $btnH: 50px;
     font-weight: 200;
   }
 
-
   .register {
     margin-top: 50px !important;
   }
-
 }
 
-
-@media screen and (max-width: 981px){
-
-
-  .loginRow{
-    background-image: url("./img/photo-1501696088263-5696c92364bf.png");
+@media screen and (max-width: 981px) {
+  .loginRow {
+    background-image: url("./images/photo-1501696088263-5696c92364bf.png");
     background-size: cover;
   }
 
-  .signIn{
+  .signIn {
     width: 100% !important;
-    z-index: 999 !important
+    z-index: 999 !important;
   }
 
-  .registered{
+  .registered {
     top: 100% !important;
     left: 0 !important;
     width: 100% !important;
     z-index: -4;
 
-    .mountainBg{
+    .mountainBg {
       z-index: -3;
     }
 
-    .sub-cont{
+    .sub-cont {
       z-index: -2;
     }
 
-    .img{
+    .img {
       z-index: 0;
     }
   }
-
-
 }
 
-@media screen and (max-width: 768px){
-
-    .signIn{
-      width: 100% !important;
-    }
-    
+@media screen and (max-width: 768px) {
+  .signIn {
+    width: 100% !important;
+  }
 }
