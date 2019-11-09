@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-import { axios } from 'axios';
+import axios from "axios";
 
 class Login extends Component {
   state = {
@@ -11,26 +11,36 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    // req.body
     let data = {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(data);
+    
+    // const { data: item } = await axios.post(
+    //   "http://localhost:3001/register",
+    //   data
+    // );
+    // console.log(item);
     fetch("http://localhost:3001/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     })
-      .then(function(response) {
+      .then(response => {
         if (response.status >= 400) {
           throw new Error("Bad response from server");
         }
         return response.json();
       })
-      .then(function(data) {
+      .then(data => {
         console.log(data);
-        if (data == "success") {
-          this.setState({ msg: "Thanks for registering" });
+        console.log(this.state);
+        if (data.success) {
+          const state = { ...this.state };
+          state.msg = "註冊成功!";
+          this.setState(state);
+          console.log(this.state);
         }
       })
       .catch(function(err) {
