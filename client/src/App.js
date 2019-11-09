@@ -11,11 +11,11 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 
 const App = () => (
-  // <Switch>
-  //   <Route path="/comments" component={Comment} />
-  //   <Route path="/members" component={DashBoard} />
-  //   <Route path="/" exact component={Home} />
-  // </Switch>
-  <Login />
+  <Switch>
+    <Route path="/comments" component={Comment} />
+    <Route path="/members" component={DashBoard} />
+    <Route path="/" exact component={Home} />
+  </Switch>
+  // <Login />
 );
 export default App;

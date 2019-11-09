@@ -30,9 +30,11 @@ class HomeMainCarousel extends React.Component {
       nav2: this.slider2
     });
 
+    
     let slickPrev = document.querySelector(".slick-prev");
     let slickNext = document.querySelector(".slick-next");
     let blackMask = document.querySelector(".black-mask");
+
 
     //左箭頭
     let prevArrow = document.createElement("div");
@@ -170,7 +172,7 @@ class HomeMainCarousel extends React.Component {
                 <p className="title-main">挪威</p>
               </div>
 
-              <a href="#123">
+              <a className="more-btn" href="#123">
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
               </a>
