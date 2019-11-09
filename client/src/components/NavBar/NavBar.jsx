@@ -6,7 +6,7 @@ import { ReactComponent as User } from "./images/user.svg";
 import { ReactComponent as Cart } from "./images/cart.svg";
 // Routes
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./NavBar.css";
 class NavBar extends React.Component {
   state = {};
 

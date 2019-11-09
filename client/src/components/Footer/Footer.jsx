@@ -21,7 +21,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <Row>
+        <Row className="mountainBox-container">
           <div className="mountainBox">
             <Parallax pages={1.2} ref={ref => (this.parallax = ref)}>
               <ParallaxLayer offset={0} speed={0} style={{ top: "35%" }}>
@@ -34,65 +34,61 @@ class Footer extends Component {
               <ParallaxLayer
                 offset={0}
                 speed={-0.3}
-                style={{ "zIndex": "2", top: "45%", left: "50%" }}
+                style={{ zIndex: "2", top: "45%", left: "50%" }}
               >
                 <h1>66 ﾟN</h1>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0}
-                style={{ "zIndex": "3", top: "70%", left: "50%" }}
+                style={{ zIndex: "3", top: "70%", left: "50%" }}
               >
                 <img src={mountain} alt="mountain" className="mountain"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={-0.3}
-                style={{ "zIndex": "4", top: "55%", left: "44%" }}
+                style={{ zIndex: "4", top: "55%", left: "44%" }}
               >
                 <p>極地旅行專家</p>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={2}
-                style={{ "zIndex": "5", top: "55%" }}
+                style={{ zIndex: "5", top: "55%" }}
               >
                 <img src={cloud1} alt="cloud1" className="cloud1"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0.7}
-                style={{ "zIndex": "5", top: "35%" }}
+                style={{ zIndex: "5", top: "35%" }}
               >
                 <img src={cloud2} alt="cloud2" className="cloud2"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0.3}
-                style={{ "zIndex": "5", top: "50%" }}
+                style={{ zIndex: "5", top: "50%" }}
               >
                 <img src={cloud3} alt="cloud3" className="cloud3"></img>
               </ParallaxLayer>
               <ParallaxLayer
                 offset={0}
                 speed={0.2}
-                style={{ "zIndex": "5", top: "50%" }}
+                style={{ zIndex: "5", top: "50%" }}
               >
                 <img src={cloud4} alt="cloud4" className="cloud4"></img>
               </ParallaxLayer>
             </Parallax>
           </div>
-			 <div className='mountainBox2'>
-				<img
-					src={mountainBg}
-					alt="mountainBg"
-					className="mountainBg"
-				></img>
-				<h1>66 ﾟN</h1>
-				<p>極地旅行專家</p>
-				<img src={mountain} alt="mountain" className="mountain"></img>
-				<img src={cloud1} alt="cloud1" className="cloud1"></img>
-			 </div>
+          <div className="mountainBox2">
+            <img src={mountainBg} alt="mountainBg" className="mountainBg"></img>
+            <h1>66 ﾟN</h1>
+            <p>極地旅行專家</p>
+            <img src={mountain} alt="mountain" className="mountain"></img>
+            <img src={cloud1} alt="cloud1" className="cloud1"></img>
+          </div>
         </Row>
 
         <Container>
@@ -146,12 +142,12 @@ class Footer extends Component {
               </Col>
             </div>
           </Row>
-          <Row className=" footerBox2 align-items-center">
-            <div className="subscribeTitle col-lg-5">
+          <Row className=" footerBox2 align-items-center ">
+            <div className="subscribeTitle col-md-5">
               <p>訂閱</p>
               <h1>最新消息</h1>
             </div>
-            <form className="col-lg-7 subscribeEmail d-flex ml-auto">
+            <form className=" subscribeEmail d-flex ml-auto col-md-7">
               <div className="emailIcon d-flex align-items-center">
                 <img src={email} alt="email"></img>
               </div>

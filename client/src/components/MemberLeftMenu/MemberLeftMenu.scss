@@ -7,14 +7,6 @@
   vertical-align: middle;
 }
 
-//
-.member-left-menu-fixed {
-  position: fixed;
-  width: 250px;
-  // top: 300px;
-  // margin-top: 300px;
-}
-
 .member-left-menu-container {
   // height: 500px !important;
   // width: 250px;
@@ -23,6 +15,11 @@
   padding: 10px;
   border: none;
   border-radius: 0;
+}
+
+.member-left-menu-sticky {
+  position: sticky;
+  top: 130px;
 }
 
 .member-left-menu-1 {
@@ -88,16 +85,14 @@
 }
 
 //RWD
-@media screen and (max-width: 992px) {
-  .member-left-menu-fixed {
-    width: 200px;
-  }
-}
 
 @media screen and (max-width: 768px) {
-  .member-left-menu-fixed {
+  .member-left-menu-sticky {
+    position: relative;
+    top: 0;
+  }
+  .member-left-menu-container {
     position: static;
     width: 100%;
-    // display:flex;
   }
 }
