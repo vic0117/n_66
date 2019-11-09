@@ -3,7 +3,7 @@
   max-height: 90vh;
 }
 
-.slick-prev {
+.header-wrapper .slick-prev {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
@@ -16,10 +16,12 @@
   left: 0%;
   z-index: 10;
   width: 10%;
-  height: 100%;
+  height: 50%;
+  position: absolute;
+  top: 60%;
 }
 
-.left-arrow {
+.header-wrapper .left-arrow {
   position: relative;
   width: 0px;
   height: 0px;
@@ -29,7 +31,7 @@
   transition: .3s;
 }
 
-.left-arrow-ring {
+.header-wrapper .left-arrow-ring {
   position: absolute;
   width: 0px;
   height: 0px;
@@ -42,7 +44,7 @@
   z-index: -1;
 }
 
-.left-stick {
+.header-wrapper .left-stick {
   position: relative;
   width: 30px;
   height: 1px;
@@ -52,11 +54,11 @@
   left: 20px;
 }
 
-.slick-prev::before {
+.header-wrapper .slick-prev::before {
   content: '';
 }
 
-.slick-next {
+.header-wrapper .slick-next {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
@@ -69,10 +71,12 @@
   right: 0%;
   z-index: 10;
   width: 10%;
-  height: 100%;
+  height: 50%;
+  position: absolute;
+  top: 60%;
 }
 
-.right-arrow {
+.header-wrapper .right-arrow {
   position: relative;
   width: 0px;
   height: 0px;
@@ -82,7 +86,7 @@
   transition: .3s;
 }
 
-.right-arrow-ring {
+.header-wrapper .right-arrow-ring {
   position: absolute;
   width: 0px;
   height: 0px;
@@ -95,7 +99,7 @@
   z-index: -1;
 }
 
-.right-stick {
+.header-wrapper .right-stick {
   position: relative;
   width: 30px;
   height: 1px;
@@ -105,15 +109,15 @@
   right: 20px;
 }
 
-.slick-next::before {
+.header-wrapper .slick-next::before {
   content: '';
 }
 
-.imgSlider {
+.header-wrapper .imgSlider {
   max-height: 90vh;
 }
 
-.black-mask {
+.header-wrapper .black-mask {
   position: absolute;
   top: 0;
   left: 0;
@@ -127,7 +131,7 @@
   pointer-events: none;
 }
 
-.titleSlider {
+.header-wrapper .titleSlider {
   width: 100%;
   height: 90vh;
   position: absolute;
@@ -137,31 +141,35 @@
   text-align: center;
 }
 
-.titleSlider .slick-list {
+.header-wrapper .titleSlider .slick-list {
   height: 90vh;
 }
 
-.titleSlider .slick-slide {
+.header-wrapper .titleSlider .slick-slide {
   height: 90vh;
 }
 
-.slick-list {
+.header-wrapper .slick-list {
   max-height: calc(90vh - 4px);
 }
 
-.slider-inner {
-  height: 90vh;
+.header-wrapper .slider-inner {
+  margin-top: 20%;
 }
 
-.slider-inner .title-main {
+.header-wrapper .slider-inner .slider-title {
+  top: 10%;
+}
+
+.header-wrapper .slider-inner .title-main {
   margin: 0;
   font-size: 70px;
   line-height: 70px;
 }
 
-.slider-inner a {
+.header-wrapper .slider-inner a {
   position: relative;
-  margin-top: 48px;
+  margin-top: 5%;
   width: 108px;
   display: block;
   text-decoration: none;
@@ -174,7 +182,7 @@
   transition: .5s;
 }
 
-.slider-inner a .button-font {
+.header-wrapper .slider-inner a .button-font {
   position: relative;
   color: #fff;
   z-index: 3;
@@ -182,7 +190,7 @@
   transition: .5s;
 }
 
-.slider-inner a .white-mask {
+.header-wrapper .slider-inner a .white-mask {
   width: 100%;
   height: 0%;
   background-color: #fff;
@@ -195,30 +203,78 @@
   pointer-events: none;
 }
 
-.slider-inner a:hover .button-font {
+.header-wrapper .slider-inner a:hover .button-font {
   color: #242a3a;
 }
 
-.slider-inner a:hover .white-mask {
+.header-wrapper .slider-inner a:hover .white-mask {
   height: 100%;
 }
 
-.photo-frame {
+.header-wrapper .photo-frame {
   height: 100%;
 }
 
-.photo-frame img {
+.header-wrapper .photo-frame img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.slider-title-sub {
+.header-wrapper .slider-title-sub {
   color: #96daf0;
 }
 
-.title-main {
+.header-wrapper .title-main {
   color: #fff;
+}
+
+@media screen and (max-width: 976px) {
+  .slick-prev {
+    top: 50% !important;
+  }
+  .slick-next {
+    top: 50% !important;
+  }
+  .slider-inner .title-main {
+    font-size: 60px !important;
+  }
+  .slider-inner a {
+    padding: 5px 25px !important;
+  }
+}
+
+@media screen and (max-width: 851px) {
+  .slick-prev {
+    top: 40% !important;
+  }
+  .slick-next {
+    top: 40% !important;
+  }
+  .slider-inner .title-main {
+    font-size: 40px !important;
+  }
+  .slider-inner a {
+    padding: 1px 25px !important;
+  }
+}
+
+@media screen and (max-width: 622px) {
+  .slick-prev {
+    top: 33% !important;
+  }
+  .slick-next {
+    top: 33% !important;
+  }
+}
+
+@media screen and (max-width: 526px) {
+  .slick-prev {
+    top: 30% !important;
+  }
+  .slick-next {
+    top: 30% !important;
+  }
 }
 /*# sourceMappingURL=HomeMainCarousel.css.map */
