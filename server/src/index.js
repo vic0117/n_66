@@ -43,6 +43,8 @@ app.get("/", (req, res) => {
 const members = require("./members/members");
 app.use(members);
 
+const register = require("./members/register");
+app.use(register);
 
 // 404
 app.use((req, res) => {
