@@ -13,7 +13,7 @@ import sliderImg4 from "./images/voyage-croisieres-polaires-405.jpg";
 import sliderImg5 from "./images/canoe-sur-la-riviere-batiscan-au-quebec-2233.jpg";
 // import sliderImg6 from "../../images/images/ours-polaires-au-spitzberg-234.jpg";
 import sliderImg7 from "./images/voyage-dans-les-iles-lofoten-en-norvege-du-nord-72.jpg";
-// import sliderImg8 from "../../images/images/voyage-ski-pulka-au-spitzberg-2143.jpg";
+import sliderImg8 from "./images/voyage-ski-pulka-au-spitzberg-2143.jpg";
 
 class HomeMainCarousel extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class HomeMainCarousel extends React.Component {
       nav2: this.slider2
     });
 
-    
+
     let slickPrev = document.querySelector(".slick-prev");
     let slickNext = document.querySelector(".slick-next");
     let blackMask = document.querySelector(".black-mask");
@@ -134,6 +134,9 @@ class HomeMainCarousel extends React.Component {
           speed={900}
         >
           <div className="photo-frame">
+            <img src={sliderImg8} alt="sliderImg" />
+          </div>
+          <div className="photo-frame">
             <img src={sliderImg7} alt="sliderImg" />
           </div>
           <div className="photo-frame">
@@ -163,6 +166,49 @@ class HomeMainCarousel extends React.Component {
           focusOnSelect={true}
           speed={900}
         >
+          <div>
+            <div className="slider-inner d-flex flex-column justify-content-center align-items-center">
+              <div className="slider-title">
+                <div className="slider-title-sub">
+                  <span>最專業的</span>
+                </div>
+                <p className="title-main">探險之旅</p>
+              </div>
+
+              <div className="information d-flex justify-content-center align-items-center">
+                <div className="people ">
+                  3798 個人的選擇
+                </div>
+                <div className="stars d-flex justify-content-center align-items-center">
+                  <div className="star">
+                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                  </div>
+                  <div className="star">
+                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                  </div>
+                  <div className="star">
+                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                  </div>
+                  <div className="star">
+                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                  </div>
+                  <div className="star">
+                    <img src="http://localhost:3000/images/svg/half_star.svg" alt="half_star" />
+                  </div>
+                </div>
+
+                <div className="score">
+                  4.6 / 5
+                </div>
+              </div>
+
+              <a className="more-btn" href="#123">
+                <div className="button-font">查看所有評論</div>
+                <div className="white-mask"></div>
+              </a>
+            </div>
+          </div>
+
           <div>
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">
               <div className="slider-title">

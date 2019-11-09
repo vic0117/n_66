@@ -52,10 +52,10 @@
   top: 200%;
   width: 100%;
   height: 100%;
-  -webkit-transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
-  transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out;
-  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  -webkit-transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
 
 .cont .mountainBg {

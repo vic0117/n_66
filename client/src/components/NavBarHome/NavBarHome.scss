@@ -16,6 +16,24 @@ body{
     left: 0;
     z-index: 90;
 
+    .n66-login-btn{
+        width: 80px;
+        height: 80px;
+        display: none !important;
+        border-left: 1px solid rgba($color: #fff, $alpha: 0.4);
+        
+        .login-btn-inner{
+            height: 18px;
+            width: 21px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+
 
     .n66toggler{
         height: 80px;
@@ -32,7 +50,7 @@ body{
             .white-line{
                 width: 100%;
                 height: 4px;
-                background-color: rgba($color: #fff, $alpha: 0.4);
+                background-color: #fff;
                 transform-origin: left;
                 transition: transform .5s , opacity .3s;
             }
@@ -219,8 +237,12 @@ body{
 
         padding: 0 0 0 40px;
         align-items: center;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid rgba($color: #fff, $alpha: 0.4);
         background-color: transparent;
+
+        .n66-login-btn{
+            display: flex !important;
+        }
 
         .n66toggler{
             display: flex !important;
@@ -241,10 +263,6 @@ body{
     .n66Collapse{
         display: none;
     }
-
-
-
-    
 }
 
 @media screen and (min-width: 851px){
@@ -261,6 +279,11 @@ body{
 
     .right-menu{
         top: 60px !important;
+    }
+
+    .n66-login-btn{
+        height: 60px !important;
+        width: 60px !important;
     }
 
     .n66toggler{
