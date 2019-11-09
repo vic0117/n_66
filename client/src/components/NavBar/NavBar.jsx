@@ -10,6 +10,7 @@ import "./NavBar.css";
 class NavBar extends React.Component {
   state = {};
 
+  
   componentDidMount() {
     // let navbar = document.querySelector(".navbar-container");
     let toggler = document.querySelector(".navBtn");
