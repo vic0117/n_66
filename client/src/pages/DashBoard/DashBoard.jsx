@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
 // Componensts
-import NavBar from "../../components/NavBar/NavBar1";
+import NavBar from "../../components/NavBar/NavBar";
 import MemberLeftMenu from "../../components/MemberLeftMenu/MemberLeftMenu";
 import MemberInfoList from "../../components/MemberInfoList/MemberInfoList";
 import MemberPassword from "../../components/MemberPassword/MemberPassword";
