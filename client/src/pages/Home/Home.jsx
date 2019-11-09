@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // Components
-import NavBarHome from "../../components/NavBarHome/NavBarHome";
+import NavBarHome from "../../components/HomeNavBar/HomeNavBar";
 // import DashBoard from "../DashBoard/DashBoard";
 import HomeMainCarousel from "../../components/HomeMainCarousel/HomeMainCarousel";
 

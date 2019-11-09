@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 //CSS
-import "./NavBarHome.css";
+import "./HomeNavBar.css";
 
 //SIGNAL
 import Logo from "./images/logo.svg";
