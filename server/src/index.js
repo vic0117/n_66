@@ -61,8 +61,6 @@ app.use(members);
 const register = require("./login/register");
 app.use(register);
 
-
-
 // 404
 app.use((req, res) => {
   res.type("text/plain");

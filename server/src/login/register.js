@@ -34,7 +34,7 @@ router.post("/register", (req, res) => {
       }
       const sql_i =
         "INSERT INTO `members_list` (`email`, `password`) VALUES (?,?)";
-      return db.queryAsync(sql_r, [req.body.email, req.body.password]);
+      return db.queryAsync(sql_i, [req.body.email, req.body.password]);
     })
     .then(results => {
       if (results.affectedRows === 1) {

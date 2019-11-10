@@ -83,7 +83,7 @@ class NavBarHome extends React.Component {
                 通訊
               </a>
               <Link
-                to="/members"
+                to="/account"
                 className=" d-flex align-items-center nav_top_item"
               >
                 <img className="user" src={user} alt="user" />

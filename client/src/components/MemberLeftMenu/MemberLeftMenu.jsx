@@ -22,12 +22,12 @@ class MemberLeftMenu extends Component {
                 <span>用戶名</span>
               </Card.Title>
               <Card.Text className="text-align-center">
-                <Link to="/members">編輯個人資訊</Link>
+                <Link to="/account">編輯個人資訊</Link>
               </Card.Text>
             </div>
             <div className="text-align-center card-body-2">
               <Card.Title>
-                <Link to="/members/coupons">0</Link>
+                <Link to="/account/coupons">0</Link>
               </Card.Title>
               <Card.Text className="text-align-center">
                 <span>可用優惠碼</span>
@@ -37,7 +37,7 @@ class MemberLeftMenu extends Component {
               <ListGroup>
                 <ListGroup.Item className="member-ul-container">
                   <Link
-                    to="/members"
+                    to="/account"
                     className="vertical-align-middle"
                     style={{ height: "100%" }}
                   >
@@ -47,7 +47,7 @@ class MemberLeftMenu extends Component {
                 </ListGroup.Item>
                 <ListGroup.Item className="member-ul-container">
                   <Link
-                    to="/members/orders"
+                    to="/account/orders"
                     className="vertical-align-middle"
                     style={{ height: "100%" }}
                   >
@@ -57,7 +57,7 @@ class MemberLeftMenu extends Component {
                 </ListGroup.Item>
                 <ListGroup.Item className="member-ul-container">
                   <Link
-                    to="/members/comments"
+                    to="/account/comments"
                     className="vertical-align-middle"
                     style={{ height: "100%" }}
                   >
@@ -67,7 +67,7 @@ class MemberLeftMenu extends Component {
                 </ListGroup.Item>
                 <ListGroup.Item className="member-ul-container">
                   <Link
-                    to="/members/wishlists"
+                    to="/account/wishlists"
                     className="vertical-align-middle"
                     style={{ height: "100%" }}
                   >

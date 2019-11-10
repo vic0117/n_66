@@ -29,13 +29,39 @@ class LoginTest extends Component {
       })
       .then(data => {
         console.log(data);
-        // console.log(this.state);
-        if (data.success) {
+        if (!data.loggedIn) {
+          console.log(data.msg);
+        } else {
+          const { token: jwt } = data;
+          localStorage.setItem("token", jwt);
           const state = { ...this.state };
           state.msg = "登入成功!";
           this.setState(state);
-          console.log(this.state);
+        //   this.props.history.push("/account");
         }
+
+        // const { token: jwt } = data;
+        // localStorage.setItem("token", jwt);
+
+        // if (this.props.userInfo.user.loggedIn) {
+        //   const state = { ...this.state };
+        //   state.msg = "登入成功!";
+        //   this.setState(state);
+        //   console.log(this.state);
+        //   this.props.history.push("/account");
+        // } else {
+        //   console.log(this.props.userInfo);
+        //   if (this.props.userInfo.user.msg === "不正確的帳號或密碼!") {
+        //     const state = { ...this.state };
+        //     state.msg = "不正確的帳號或密碼!";
+        //     this.setState(state);
+        //     console.log(this.state);
+        //   } else {
+        //     const state = { ...this.state };
+        //     state.msg = "請輸入電子信箱及密碼!";
+        //     this.setState(state);
+        //   }
+        //     }
       })
       .catch(function(err) {
         console.log(err);

@@ -44,21 +44,21 @@ class DashBoard extends Component {
             </Col>
             <Col className="col-xl-9 col-md-8 member-right-section">
               <Switch>
-                <Route path="/members/coupons" component={MemberCoupon} />
-                <Route path="/members/comments" component={MemberCommentList} />
-                <Route path="/members/orders" component={MemberOrderList} />
+                <Route path="/account/coupons" component={MemberCoupon} />
+                <Route path="/account/comments" component={MemberCommentList} />
+                <Route path="/account/orders" component={MemberOrderList} />
                 <Route
-                  path="/members/wishlists"
+                  path="/account/wishlists"
                   exact
                   component={MemberWishList}
                 />
-                <div>
+                <>
                   <Route
-                    path="/members"
+                    path="/account"
                     render={() => <MemberInfoList data={data} />}
                   />
-                  <Route path="/members" component={MemberPassword} />
-                </div>
+                  <Route path="/account" component={MemberPassword} />
+                </>
               </Switch>
             </Col>
           </Row>
