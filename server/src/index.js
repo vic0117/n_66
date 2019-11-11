@@ -41,19 +41,10 @@ app.get("/", (req, res) => {
 
 // member
 const members = require("./members/members");
-// const trip = require('./trip/trip')
+const trips = require('./trips/trips')
 app.use(members);
-// app.use(trip);
+app.use(trips);
 
-//測試
-app.get("/trips", (req, res) => {
-	const sql = "SELECT * FROM `trip_list`";
-	db.query(sql, (error, results, fields) => {
-	  if (error) throw error;
-	  
-	  res.send(JSON.stringify(results))
-	});
- });
 const register = require("./members/register");
 app.use(register);
 
