@@ -72,10 +72,11 @@ class HomeNavBar extends React.Component {
     return (
       <>
         <div className="n66navbar d-flex">
-          <div className="Brand" href="#home">
-            <img src={Logo} alt="N66" />
-          </div>
-
+          <Link to="/">
+            <div className="Brand" href="#home">
+              <img src={Logo} alt="N66" />
+            </div>
+          </Link>
           <div className="n66Collapse " id="responsive-navbar-nav ">
             <div className="ml-auto d-flex  justify-content-end align-items-center navTop">
               <a href="#4" className=" d-flex align-items-center nav_top_item">

@@ -175,6 +175,19 @@ $white: #fff;
                 
                 .slick-slide{
                     height: 100%;
+
+                    &>div{
+                        height: 100%;
+
+                        &>div{
+                            height: 100%;
+
+                            .slider-inner{
+                                height: 100%;
+                                margin: -30px 0 0 0;
+                            } 
+                        }
+                    }
                 }
         
             }
@@ -214,9 +227,7 @@ $white: #fff;
     }
 
     .slider-inner{
-            margin-top: 200px;
-
-
+            
         .slider-title{
             
             top: 50%;

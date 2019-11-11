@@ -173,6 +173,19 @@
   height: 100%;
 }
 
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide > div {
+  height: 100%;
+}
+
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide > div > div {
+  height: 100%;
+}
+
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide > div > div .slider-inner {
+  height: 100%;
+  margin: -30px 0 0 0;
+}
+
 .header-wrapper .titleSlider .information {
   color: #fff;
   margin-top: 20px;
@@ -205,10 +218,6 @@
 
 .header-wrapper .slick-list {
   max-height: 90vh;
-}
-
-.header-wrapper .slider-inner {
-  margin-top: 200px;
 }
 
 .header-wrapper .slider-inner .slider-title {

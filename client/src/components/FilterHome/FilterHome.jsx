@@ -305,7 +305,7 @@ class FilterHome extends Component {
             </a>
           </div>
           <div className="list">
-            <Accordion defaultActiveKey="0">
+            <Accordion >
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
                   <div className="svgFrame">
