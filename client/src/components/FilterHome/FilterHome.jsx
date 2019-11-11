@@ -259,7 +259,7 @@ class FilterHome extends Component {
   render() {
     const { searchbox } = this.state;
     return (
-      <>
+      <div className="filter-home-container">
         <Form className="main-filter-container">
           <Row className="row-no-margin searchbox-row">
 
@@ -296,7 +296,6 @@ class FilterHome extends Component {
         </Row>
 
         <div className="filter-menu">
-          
           <div className="fakeNav">
             <a className="filterToggler ml-auto d-flex justify-content-center align-items-center" role="button">
               <div className="toggle-inner ">
@@ -417,7 +416,7 @@ class FilterHome extends Component {
             </Accordion>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

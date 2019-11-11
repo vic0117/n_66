@@ -65,7 +65,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
-        <div className="navbar-container d-flex align-items-center fixed-top">
+        <div className="navbar-container d-flex align-items-center ">
           <Link to="/" role="button" className="navbar-logo mr-auto">
             <Logo height="60" width="60" />
           </Link>

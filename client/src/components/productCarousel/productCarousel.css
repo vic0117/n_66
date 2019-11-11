@@ -1,3 +1,11 @@
+.ProductCarousel {
+  padding: 80px 0 0 0;
+}
+
+.ProductCarousel .carouselsRow {
+  padding-bottom: 150px;
+}
+
 .ProductCarousel .thumbCarousel {
   width: 100px;
 }
@@ -248,4 +256,4 @@
     margin: 0 !important;
   }
 }
-/*# sourceMappingURL=productCarousel.css.map */
+/*# sourceMappingURL=ProductCarousel.css.map */
