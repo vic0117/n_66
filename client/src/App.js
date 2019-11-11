@@ -6,16 +6,12 @@ import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
 import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
-import TripDesNav from './components/TripDesNav/TripDesNav';
-import CommentHeader from './components/CommentHeader/CommentHeader';
-
-
+import TripDesNav from "./components/TripDesNav/TripDesNav";
+import CommentHeader from "./components/CommentHeader/CommentHeader";
 
 // test
 import RegisterTest from "./components/RegisterTest/RegisterTest";
 import LoginTest from "./components/LoginTest/LoginTest";
-
-
 
 class App extends Component {
   state = {};
@@ -23,10 +19,10 @@ class App extends Component {
   componentDidMount() {
     try {
       const jwt = localStorage.getItem("token");
-      const userInfo = jwtDecode(jwt);
-      console.log(userInfo);
-      this.setState({ userInfo });
-    } catch (error) { }
+      const currentUser = jwtDecode(jwt);
+      console.log(currentUser);
+      this.setState({ currentUser });
+    } catch (error) {}
   }
 
   render() {
@@ -36,17 +32,17 @@ class App extends Component {
         <Route
           path="/login"
           render={props => (
-            <LoginTest {...props} userInfo={this.state.userInfo} />
+            <LoginTest {...props} currentUser={this.state.currentUser} />
           )}
         />
         <Route
           path="/account"
-          userInfo={this.state.userInfo}
-          component={DashBoard}
+          render={props => (
+            <DashBoard {...props} currentUser={this.state.currentUser} />
+          )}
         />
         <Route path="/" exact component={Home} />
       </Switch>
-
     );
   }
 }

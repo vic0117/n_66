@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 
 router.post("/login", (req, res) => {
   const user = { loggedIn: false };
-
+  console.log(req.body);
   let sql = "SELECT * FROM members_list WHERE email=? AND password=?";
   if (req.body.email && req.body.password) {
     db.query(

@@ -11,13 +11,14 @@ const db = mysql.createConnection({
   database: "n_66"
 });
 
-router.get("/members", (req, res) => {
-  console.log(req.session);
-  const sql = "SELECT * FROM `members_list`";
-  db.query(sql, (error, results, fields) => {
+router.get("/members/:id?", (req, res) => {
+  console.log("test", req.params);
+  const sql = "SELECT * FROM `members_list` WHERE u_id = ?";
+  db.query(sql, [req.params.id], (error, results, fields) => {
     if (error) throw error;
     let output = {};
     output.rows = results;
+    // console.log(results);
     res.json(output);
   });
 });

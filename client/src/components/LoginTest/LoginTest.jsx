@@ -11,6 +11,7 @@ class LoginTest extends Component {
   handleSubmit = e => {
     e.preventDefault();
     // req.body
+    console.log(this.props);
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -37,7 +38,8 @@ class LoginTest extends Component {
           const state = { ...this.state };
           state.msg = "登入成功!";
           this.setState(state);
-        //   this.props.history.push("/account");
+          // this.props.history.push("/account");
+          window.location = "/account";
         }
 
         // const { token: jwt } = data;
