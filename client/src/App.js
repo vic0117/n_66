@@ -7,7 +7,7 @@ import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import TripDesNav from './components/TripDesNav/TripDesNav';
-import N66navbar from './components/TripDesNav/N66navbar';
+
 
 
 // test
