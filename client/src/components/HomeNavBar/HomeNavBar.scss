@@ -3,6 +3,7 @@ $secColor:#96daf0;
 
 body{
     overflow-x: hidden;
+    
 }
 .n66navbar{
     width: 100%;
@@ -14,35 +15,59 @@ body{
     top: 0;
     left: 0;
     z-index: 90;
-}
 
-.n66toggler{
+    .n66-login-btn{
+        width: 80px;
+        height: 80px;
+        display: none !important;
+        border-left: 1px solid rgba($color: #fff, $alpha: 0.4);
+        
+        .login-btn-inner{
+            height: 18px;
+            width: 21px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+
+
+    .n66toggler{
+        height: 80px;
+        width: 80px;
+        border-left: 1px solid rgba($color: #fff, $alpha: 0.4);
+        cursor: pointer;
+        display: none !important;
+        transition: .5s;
+
+        .toggle-inner{
+            width: 32px;
+            height: 26px;
+
+            .white-line{
+                width: 100%;
+                height: 4px;
+                background-color: #fff;
+                transform-origin: left;
+                transition: transform .5s , opacity .3s;
+            }
+        }
+        
+    }
     
+}
+
+
+
+
+
+.Brand{
+    padding-top: 30px;
+    width: 80px !important;
     height: 80px;
-    width: 80px;
-    border-left: 1px solid rgba($color: #fff, $alpha: 0.4);
-    cursor: pointer;
-    display: none !important;
-    transition: .5s;
-}
-
-.toggle-inner{
-    width: 32px;
-    height: 26px;
-}
-
-.white-line{
-    width: 100%;
-    height: 4px;
-    background-color: rgba($color: #fff, $alpha: 0.4);
-    transform-origin: left;
-    transition: transform .5s , opacity .3s;
-}
-
-.brand{
-    padding-top: 64px;
-    width: 120px;
-    height: 85px;
     box-sizing: content-box;
     display: flex;
     align-items: center;
@@ -54,70 +79,70 @@ body{
     }
 }
 
-.n66collapse{
+
+
+.n66Collapse{
     
     max-width: 936px;
-    margin-left: auto;
-    margin-top: auto;
+    margin: 20px 0 0 auto;
     
-    
-    .nav-top{
-        margin-right: 25px;
+
+    .navTop{
+        margin-right: 0px;
     }
 
-    .nav-top-item{
-        opacity: 0.5;
+
+    .nav_top_item{
+        opacity: .5 ;
         position: relative;
-        box-sizing: content-box;
-        padding:  18px !important;
+        padding: 0 10px;
+        margin: 0 18px;
         color: #fff !important;
         text-decoration: none;
         transition: .5s;
+        // border-right: 1px solid #fff;
+        
+        &::after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 1px;
+            height: 1rem;
+            background-color: #fff;
+            right: 0;
+            top: 6px;
+        }
 
         .email{
             padding-right: 8px;
             height: 8px;
         }
-
-
+    
         .user{
             padding-right: 8px;
             height: 12px;
         }
-
+    
         .phone{
             padding-right: 8px;
             height: 12px;
         }
     }
-
-    .nav-top-item:hover{
+    
+    .nav_top_item:hover{
         opacity: 1;
     }
 
-    .nav-top-item::after{
-        content: '';
-        display: block;
-        width: 1px;
-        height: 14px;
-        position: absolute;
-        top: 30%;
-        right: 0;
-        z-index: 2;
-        background-color: #fff;
-    }
 
     .nav-bottom{
         border-bottom: 1px solid rgba($color: #fff, $alpha: 0.4);
     }
 
-    .nav-item{
+    .navItem{
         position: relative;
-        box-sizing: content-box;
-        padding: 28px 25px !important;
+        box-sizing: border-box;
+        padding: 20px 26px 10px 26px;
         transition: 0.5s;
-        font-size: 1.2rem;
-        
         opacity: .5;
         text-align: right;
         color: #fff !important;
@@ -135,15 +160,17 @@ body{
             transform: translate(-50%, 0);
             transition: .3s ease-out;
         }
+
+        &:hover{
+            opacity: 1;
+        }
+    
+        &:hover .blue-line{
+            width: 100%;
+        }
     }
 
-    .nav-item:hover{
-        opacity: 1;
-    }
 
-    .nav-item:hover .blue-line{
-        width: 100%;
-    }
 }
 
 .right-menu{
@@ -210,11 +237,19 @@ body{
 
         padding: 0 0 0 40px;
         align-items: center;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid rgba($color: #fff, $alpha: 0.4);
         background-color: transparent;
+
+        .n66-login-btn{
+            display: flex !important;
+        }
+
+        .n66toggler{
+            display: flex !important;
+        }
     }
 
-    .brand{
+    .Brand{
         padding: 0;
         width: 80px !important;
         // height: 69px ;
@@ -225,15 +260,9 @@ body{
        
     }
 
-    .n66collapse{
+    .n66Collapse{
         display: none;
     }
-
-    .n66toggler{
-        display: flex !important;
-    }
-
-    
 }
 
 @media screen and (min-width: 851px){
@@ -248,14 +277,23 @@ body{
         align-items: center;
     }
 
+    .right-menu{
+        top: 60px !important;
+    }
+
+    .n66-login-btn{
+        height: 60px !important;
+        width: 60px !important;
+    }
+
     .n66toggler{
         height: 60px !important;
         width: 60px !important;
     }
 
-    .brand{
+    .Brand{
         img{
-            height: 55px;
+            height: 45px;
         }
        
     }
