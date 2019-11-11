@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // Components
+import CommentHeader from './../../components/CommentHeader/CommentHeader';
 import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox";
 import MemberCommentList from "../../components/MemberCommentList/MemberCommentList";
 import Footer from "../../components/Footer/Footer";
@@ -14,7 +15,8 @@ class Comment extends Component {
   render() {
     return (
       <>
-        <div className="container ">
+        <CommentHeader />
+        <div className="container mt-5">
           <Row>
             <Col>
               <div className="text-center comment-header">
