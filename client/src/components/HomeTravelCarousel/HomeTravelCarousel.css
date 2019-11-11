@@ -1,0 +1,240 @@
+.travelCarouselContainer {
+  padding: 0;
+  height: 570px;
+}
+
+.travelCarouselContainer .sub-title {
+  color: #96daf0;
+}
+
+.travelCarouselContainer .main-title {
+  color: #242a3a;
+  margin-bottom: 120px;
+  font-size: 3rem;
+}
+
+.travelCarouselContainer .rectNavyBlue::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 570px;
+  width: 400px;
+  background-color: #242a3a;
+}
+
+.travelCarouselContainer .rectNavyBlue {
+  height: 570px;
+  width: 100%;
+  color: #242a3a;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.travelCarouselContainer .rectNavyBlue .slider-container {
+  position: absolute;
+  width: 95%;
+  margin-top: 5%;
+  margin-right: 0;
+  margin-left: 20%;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .slick-arrow {
+  display: none !important;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .slick-track {
+  height: 405px;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card {
+  border: none;
+  margin-left: 20px;
+  margin-right: 20px;
+  -webkit-box-shadow: 3px 3px 8px dimgray;
+          box-shadow: 3px 3px 8px dimgray;
+  -webkit-transition: .3s;
+  transition: .3s;
+  text-decoration: none !important;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-img-top {
+  position: relative;
+  overflow: hidden;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-img-top img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: auto;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card h3 {
+  color: #242a3a;
+  margin: 10px 0 5px 0;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-text {
+  color: #96daf0;
+  font-size: 1rem;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .days {
+  color: #242a3a;
+  margin-top: 10px;
+  width: 30%;
+  text-decoration: none;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .days img {
+  margin: 0 10px 0 0;
+  height: 12px;
+  width: 12px;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-price {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-price span {
+  color: #242a3a;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-price p {
+  color: #96daf0;
+  font-size: 36px;
+  font-weight: 900;
+  margin: 0;
+  text-decoration: none;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .fallow {
+  display: block;
+  margin-left: auto;
+  background-color: #242a3a;
+  color: #ffffff;
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card:hover .card-img-top img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.travelCarouselContainer .rectNavyBlue .main-slide .out a {
+  text-decoration: none;
+}
+
+.travelCarouselContainer .sub-slide {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  position: absolute;
+  bottom: 20px;
+  left: -15%;
+  width: 90px;
+}
+
+.travelCarouselContainer .sub-slide h1 {
+  text-align: center;
+  font-size: 3.75rem;
+  font-weight: 600;
+  color: #fff;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.travelCarouselContainer .sub-slide .slick-dots {
+  margin-bottom: 110px;
+  margin-left: 10px;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.travelCarouselContainer .sub-slide .slick-dots button {
+  color: #fff !important;
+}
+
+.travelCarouselContainer .sub-slide .slick-dots button::before {
+  color: #fff;
+}
+
+.travelCarouselContainer .sub-slide .slick-dots .slick-active button::before {
+  color: #fff !important;
+}
+
+.travelCarouselContainer .sub-slide .slick-prev {
+  position: absolute;
+  top: 150px;
+  left: 15px;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #eaeaea;
+  border-radius: 50%;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.travelCarouselContainer .sub-slide .slick-next:hover {
+  border-color: #96DAF0;
+}
+
+.travelCarouselContainer .sub-slide .slick-prev:hover {
+  border-color: #96DAF0;
+}
+
+.travelCarouselContainer .sub-slide .slick-next {
+  position: absolute;
+  top: 225px;
+  left: 15px;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #eaeaea;
+  border-radius: 50%;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.travelCarouselContainer .sub-slide .slick-prev:before {
+  content: url("./images/svg/arrow-left-solid.svg");
+}
+
+.travelCarouselContainer .sub-slide .slick-next:before {
+  content: url("./images/svg/arrow-right-solid.svg");
+}
+
+@media screen and (max-width: 876px) {
+  .travelCarouselContainer .slider-container {
+    width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 678px) {
+  .travelCarouselContainer .slider-container {
+    width: 60% !important;
+    margin: auto;
+  }
+  .travelCarouselContainer .sub-slide {
+    display: none;
+  }
+  .travelCarouselContainer .rectNavyBlue::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 400px;
+    width: 100%;
+    background-color: #242a3a;
+  }
+}
+/*# sourceMappingURL=HomeTravelCarousel.css.map */
