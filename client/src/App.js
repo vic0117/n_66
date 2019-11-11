@@ -31,22 +31,22 @@ class App extends Component {
 
   render() {
     return (
-      //   <Switch>
-      //     <Route path="/comments" component={Comment} />
-      //     <Route
-      //       path="/login"
-      //       render={props => (
-      //         <LoginTest {...props} userInfo={this.state.userInfo} />
-      //       )}
-      //     />
-      //     <Route
-      //       path="/account"
-      //       userInfo={this.state.userInfo}
-      //       component={DashBoard}
-      //     />
-      //     <Route path="/" exact component={Home} />
-      //   </Switch>
-      <Comment />
+      <Switch>
+        <Route path="/comments" component={Comment} />
+        <Route
+          path="/login"
+          render={props => (
+            <LoginTest {...props} userInfo={this.state.userInfo} />
+          )}
+        />
+        <Route
+          path="/account"
+          userInfo={this.state.userInfo}
+          component={DashBoard}
+        />
+        <Route path="/" exact component={Home} />
+      </Switch>
+
     );
   }
 }

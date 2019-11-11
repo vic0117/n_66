@@ -126,7 +126,7 @@ class HomeNavBar extends React.Component {
             role="button"
           >
             <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
-              <img src={user} alt="user"/>
+              <img src={user} alt="user" />
             </div>
           </a>
 
