@@ -6,6 +6,10 @@ import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
 import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
+import TripDesNav from './components/TripDesNav/TripDesNav';
+import N66navbar from './components/TripDesNav/N66navbar';
+
+
 // test
 import RegisterTest from "./components/RegisterTest/RegisterTest";
 import LoginTest from "./components/LoginTest/LoginTest";
@@ -21,7 +25,7 @@ class App extends Component {
       const userInfo = jwtDecode(jwt);
       console.log(userInfo);
       this.setState({ userInfo });
-    } catch (error) {}
+    } catch (error) { }
   }
 
   render() {

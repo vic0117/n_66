@@ -30,59 +30,61 @@ class Comment extends Component {
           </Row>
           <Row>
             <Col className="col-lg-4 col-md-12 col-12 comment-regulation-container">
-              <div className="comment-regulation ">
-                <h5>如何評論?</h5>
-                <ol className="comment-term">
-                  <li>參加66°N的旅行</li>
-                  <li>
-                    旅行結束後，我們將向您發送電子郵件，讓我們知 道您的感想。
+              <div style={{ position: 'sticky', top: '1.5rem' }}>
+                <div className="comment-regulation ">
+                  <h5>如何評論?</h5>
+                  <ol className="comment-term">
+                    <li>參加66°N的旅行</li>
+                    <li>
+                      旅行結束後，我們將向您發送電子郵件，讓我們知 道您的感想。
                   </li>
-                  <li>
-                    您的意見（無論是正面還是負面）都直接發佈在我 們的網站上。
+                    <li>
+                      您的意見（無論是正面還是負面）都直接發佈在我 們的網站上。
                   </li>
-                </ol>
-                <a href="#1">了解更多信息</a>
-              </div>
-              <div className="rank-info mt-4">
-                <div className="d-flex align-items-center mb-1">
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <div className="ml-auto rank-des">很滿意</div>
+                  </ol>
+                  <a href="#1">了解更多信息</a>
                 </div>
-                <div className="d-flex align-items-center mb-1">
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <Star className="star" />
-                  <div className="ml-auto rank-des">滿意</div>
-                </div>
-                <div className="d-flex align-items-center mb-1">
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <Star className="star" />
-                  <Star className="star" />
-                  <div className="ml-auto rank-des">普通</div>
-                </div>
-                <div className="d-flex align-items-center mb-1">
-                  <StarSolid className="star" />
-                  <StarSolid className="star" />
-                  <Star className="star" />
-                  <Star className="star" />
-                  <Star className="star" />
-                  <div className="ml-auto rank-des">不滿意</div>
-                </div>
-                <div className="d-flex align-items-center">
-                  <StarSolid className="star" />
-                  <Star className="star" />
-                  <Star className="star" />
-                  <Star className="star" />
-                  <Star className="star" />
-                  <div className="ml-auto rank-des">非常不滿意</div>
+                <div className="rank-info mt-4">
+                  <div className="d-flex align-items-center mb-1">
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <div className="ml-auto rank-des">很滿意</div>
+                  </div>
+                  <div className="d-flex align-items-center mb-1">
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <Star className="star" />
+                    <div className="ml-auto rank-des">滿意</div>
+                  </div>
+                  <div className="d-flex align-items-center mb-1">
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <Star className="star" />
+                    <Star className="star" />
+                    <div className="ml-auto rank-des">普通</div>
+                  </div>
+                  <div className="d-flex align-items-center mb-1">
+                    <StarSolid className="star" />
+                    <StarSolid className="star" />
+                    <Star className="star" />
+                    <Star className="star" />
+                    <Star className="star" />
+                    <div className="ml-auto rank-des">不滿意</div>
+                  </div>
+                  <div className="d-flex align-items-center">
+                    <StarSolid className="star" />
+                    <Star className="star" />
+                    <Star className="star" />
+                    <Star className="star" />
+                    <Star className="star" />
+                    <div className="ml-auto rank-des">非常不滿意</div>
+                  </div>
                 </div>
               </div>
             </Col>
