@@ -107,13 +107,38 @@ $white: #fff;
     .imgSlider{
         height: 90vh !important;
 
+
+
         .photo-frame{
             height: 90vh;
+            position: relative;
 
             img{
-                width: 100%;
-                height: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 130%;
+                height: 130%;
                 object-fit: cover;
+                transition: 5s;
+            }
+        }
+
+        
+        .slick-slide{
+            
+
+            &.slick-active.slick-current{
+                
+                
+
+                .photo-frame{
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
             }
         }
     }
@@ -142,12 +167,32 @@ $white: #fff;
         text-align: center;
 
         .slick-list{
-            height: 90vh
+            height: 100%;
+
+            .slick-track{
+                height: 100%;
+
+                
+                .slick-slide{
+                    height: 100%;
+
+                    &>div{
+                        height: 100%;
+
+                        &>div{
+                            height: 100%;
+
+                            .slider-inner{
+                                height: 100%;
+                                margin: -30px 0 0 0;
+                            } 
+                        }
+                    }
+                }
+        
+            }
         }
 
-        .slick-slide{
-            height: 90vh
-        }
 
         .information{
             color: #fff;
@@ -155,7 +200,6 @@ $white: #fff;
 
             .people{
                 padding: 0 10px;
-                
             }
             .stars{
                 padding: 0 15px 0 10px;
@@ -183,9 +227,7 @@ $white: #fff;
     }
 
     .slider-inner{
-            margin-top: 200px;
-
-
+            
         .slider-title{
             
             top: 50%;

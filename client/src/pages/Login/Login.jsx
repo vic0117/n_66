@@ -9,6 +9,7 @@ import "./Login.css";
 class LoginNew extends React.Component {
   componentDidMount() {
     let wantSignUp = false;
+
     let windowWidth = window.innerWidth;
 
     let signIn = document.querySelector(".signIn");
@@ -25,7 +26,47 @@ class LoginNew extends React.Component {
 
     window.addEventListener("resize", () => {
       windowWidth = window.innerWidth;
-      console.log(windowWidth);
+
+      if(windowWidth > 981 && wantSignUp == true){
+        
+        signIn.style.transition = ' transform 0s';
+        registered.style.transition = ' transform 0s';
+        mountainBg.style.transition = 'opacity 0s';
+
+        registered.style.transform = "translate(-610px, 0)";
+        mountainBg.style.transform = "translate(610px, 0)";
+        mountainBg.style.opacity = '1';
+        signIn.style.transform = "translate(350px, 0)";
+        signInForm.style.opacity = "0";
+        signUpForm.style.top = "0";
+        signUpForm.style.opacity = "1";
+        titleUp.style.transform = "translate(0, -100px)";
+        titleIn.style.transform = "translate(0, -100px)";
+        mUp.style.transform = "translate(0, 50px)";
+        mIn.style.transform = "translate(0, 0px)";
+
+
+      }
+
+      if(windowWidth < 981 && wantSignUp == true){
+
+        signIn.style.transition = ' transform 0s';
+        registered.style.transition = ' transform 0s';
+        mountainBg.style.transition = 'opacity 0s';
+
+        registered.style.transform = "translate(0, -550px)";
+        mountainBg.style.transform = "translate(0, 0)";
+        mountainBg.style.opacity = "0";
+        signIn.style.transform = "translate(0, 550px)";
+        signInForm.style.opacity = "0";
+        signUpForm.style.top = "0";
+        signUpForm.style.opacity = "1";
+        titleUp.style.transform = "translate(0, -100px)";
+        titleIn.style.transform = "translate(0, -100px)";
+        mUp.style.transform = "translate(0, 50px)";
+        mIn.style.transform = "translate(0, 0px)";
+      }
+
     });
 
     function horizonMove() {
@@ -85,6 +126,11 @@ class LoginNew extends React.Component {
     }
 
     signUpBtn.addEventListener("click", () => {
+
+      signIn.style.transition = 'transform 1.2s ease-in-out';
+      registered.style.transition = 'transform 1.2s ease-in-out'; 
+      mountainBg.style.transition = 'transform 1.2s ease-in-out, opacity 0.8s ease-in-out';     
+
       if (windowWidth > 981) {
         horizonMove();
       } else {

@@ -132,6 +132,8 @@ class HomeMainCarousel extends React.Component {
           arrows={false}
           fade={true}
           speed={900}
+          // autoplay={true}
+          // autoplaySpeed={5000}
         >
           <div className="photo-frame">
             <img src={sliderImg8} alt="sliderImg" />
@@ -165,6 +167,8 @@ class HomeMainCarousel extends React.Component {
           swipeToSlide={true}
           focusOnSelect={true}
           speed={900}
+          // autoplay={true}
+          // autoplaySpeed={5000}
         >
           <div>
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">

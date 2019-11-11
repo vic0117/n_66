@@ -115,13 +115,26 @@
 
 .header-wrapper .imgSlider .photo-frame {
   height: 90vh;
+  position: relative;
 }
 
 .header-wrapper .imgSlider .photo-frame img {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 130%;
+  height: 130%;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transition: 5s;
+  transition: 5s;
+}
+
+.header-wrapper .imgSlider .slick-slide.slick-active.slick-current .photo-frame img {
+  width: 100%;
+  height: 100%;
 }
 
 .header-wrapper .black-mask {
@@ -149,11 +162,28 @@
 }
 
 .header-wrapper .titleSlider .slick-list {
-  height: 90vh;
+  height: 100%;
 }
 
-.header-wrapper .titleSlider .slick-slide {
-  height: 90vh;
+.header-wrapper .titleSlider .slick-list .slick-track {
+  height: 100%;
+}
+
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide {
+  height: 100%;
+}
+
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide > div {
+  height: 100%;
+}
+
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide > div > div {
+  height: 100%;
+}
+
+.header-wrapper .titleSlider .slick-list .slick-track .slick-slide > div > div .slider-inner {
+  height: 100%;
+  margin: -30px 0 0 0;
 }
 
 .header-wrapper .titleSlider .information {
@@ -188,10 +218,6 @@
 
 .header-wrapper .slick-list {
   max-height: 90vh;
-}
-
-.header-wrapper .slider-inner {
-  margin-top: 200px;
 }
 
 .header-wrapper .slider-inner .slider-title {

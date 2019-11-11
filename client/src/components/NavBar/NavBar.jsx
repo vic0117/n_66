@@ -65,7 +65,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
-        <div className="navbar-container d-flex align-items-center fixed-top">
+        <div className="navbar-container d-flex align-items-center ">
           <Link to="/" role="button" className="navbar-logo mr-auto">
             <Logo height="60" width="60" />
           </Link>
@@ -104,7 +104,7 @@ class NavBar extends React.Component {
                 <span>我們的理念</span>
                 <div className="blue-line"></div>
               </Nav.Link>
-              <Nav.Link className="icon-container" href="/members">
+              <Nav.Link className="icon-container" href="/account">
                 <User height="20" width="20" className="user-icon" />
               </Nav.Link>
               <Nav.Link className="icon-container" href="#link">

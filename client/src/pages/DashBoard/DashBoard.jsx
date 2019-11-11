@@ -17,23 +17,47 @@ import "./DashBoard.css";
 
 class DashBoard extends Component {
   state = {
-    data: []
+    userInfo: []
   };
 
   async componentDidMount() {
-    // window.addEventListener("scroll", function(e) {
-    //   const scrolled = document.querySelector(".mountainBox-container").offsetTop;
-    //   this.console.log(scrolled);
-
-    // });
-
     // server
-    const { data } = await axios.get("http://localhost:3001/members");
-    this.setState({ data: data.rows[0] });
+    await this.setState({ currentUser: "" });
+    if (localStorage.getItem("token")) {
+      await this.setState({ currentUser: this.props.currentUser.user });
+    } else {
+      this.props.history.push("/"); // 暫時先跳轉首頁
+    }
+    const { currentUser } = this.state;
+    console.log(currentUser.u_id);
+
+    const { data: userInfo } = await axios.get(
+      "http://localhost:3001/members/" + currentUser.u_id
+    );
+    console.log(userInfo);
+    this.setState({ userInfo: userInfo.rows[0] });
+
+    // fetch("http://localhost:3001/members", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(currentUser)
+    // })
+    //   .then(response => {
+    //     if (response.status >= 400) {
+    //       throw new Error("Bad response from server");
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     console.log(data);
+    //   })
+    //   .catch(function(err) {
+    //     console.log(err);
+    //   });
   }
 
   render() {
-    const { data } = this.state;
+    const { userInfo } = this.state;
     return (
       <>
         <NavBar />
@@ -44,21 +68,21 @@ class DashBoard extends Component {
             </Col>
             <Col className="col-xl-9 col-md-8 member-right-section">
               <Switch>
-                <Route path="/members/coupons" component={MemberCoupon} />
-                <Route path="/members/comments" component={MemberCommentList} />
-                <Route path="/members/orders" component={MemberOrderList} />
+                <Route path="/account/coupons" component={MemberCoupon} />
+                <Route path="/account/comments" component={MemberCommentList} />
+                <Route path="/account/orders" component={MemberOrderList} />
                 <Route
-                  path="/members/wishlists"
+                  path="/account/wishlists"
                   exact
                   component={MemberWishList}
                 />
-                <div>
+                <>
                   <Route
-                    path="/members"
-                    render={() => <MemberInfoList data={data} />}
+                    path="/account"
+                    render={() => <MemberInfoList userInfo={userInfo} />}
                   />
-                  <Route path="/members" component={MemberPassword} />
-                </div>
+                  <Route path="/account" component={MemberPassword} />
+                </>
               </Switch>
             </Col>
           </Row>

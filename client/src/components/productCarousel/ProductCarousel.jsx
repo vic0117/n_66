@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card } from 'react-bootstrap';
-import './productCarousel.css';
+import './ProductCarousel.css';
 
 class ProductCarousel extends React.Component {
 
@@ -46,9 +46,7 @@ class ProductCarousel extends React.Component {
         return (
             <>
                 <Container className="ProductCarousel">
-                    {/* <Row className="d-flex justify-content-center">
-                        <h1 >商品名稱</h1>
-                    </Row> */}
+
                     <Row className="mt-5 carouselsRow">
                         <Col md={8} className="d-flex justify-content-center">
                             <div className="mr-5 sideCarousel">
@@ -160,8 +158,8 @@ class ProductCarousel extends React.Component {
 
                         </Col>
                     </Row>
-                    <h1 className="mx-auto text-center">還可搭配</h1>
-                    <Row className="recommend mt-5 pt-5 d-flex ">
+                    <h1 className=" mx-auto text-center">還可搭配</h1>
+                    <Row className="recommend  pt-5 d-flex ">
                         
                         
 

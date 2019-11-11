@@ -1,10 +1,13 @@
 import React from "react";
 
 //Routers
-import { Link } from "react-router-dom";
+import { Link, Switch, Route } from "react-router-dom";
 
+//Components
+// import DashBoard from "../../page/DashBoard/DashBoard";
+// import Home from "../../page/Home/Home";
 //CSS
-import "./HomeNavBar.css";
+import './HomeNavBar.css';
 
 //SIGNAL
 import Logo from "./images/logo.svg";
@@ -12,7 +15,7 @@ import email from "./images/email.svg";
 import user from "./images/user.svg";
 import phone from "./images/phone.svg";
 
-class NavBarHome extends React.Component {
+class HomeNavBar extends React.Component {
   constructor() {
     super();
     this.state = {};
@@ -69,57 +72,69 @@ class NavBarHome extends React.Component {
     return (
       <>
         <div className="n66navbar d-flex">
-          <Link className="brand" to="/">
-            <img src={Logo} alt="N66" />
+          <Link to="/">
+            <div className="Brand" href="#home">
+              <img src={Logo} alt="N66" />
+            </div>
           </Link>
-
-          <div className="n66collapse " id="responsive-navbar-nav ">
-            <div className="ml-auto d-flex nav-top justify-content-end">
-              <a href="#4" className=" d-flex align-items-center nav-top-item">
+          <div className="n66Collapse " id="responsive-navbar-nav ">
+            <div className="ml-auto d-flex  justify-content-end align-items-center navTop">
+              <a href="#4" className=" d-flex align-items-center nav_top_item">
                 <img className="email" src={email} alt="email" />
                 通訊
               </a>
               <Link
-                to="/members"
-                className=" d-flex align-items-center nav-top-item"
+                to="/account"
+                className=" d-flex align-items-center nav_top_item"
               >
                 <img className="user" src={user} alt="user" />
-                會員專區
+                客戶專區
               </Link>
-              <a href="#6" className=" d-flex align-items-center nav-top-item">
+              <a href="#6" className=" d-flex align-items-center nav_top_item">
                 <img className="phone" src={phone} alt="phone" />
                 聯繫我們
               </a>
             </div>
 
             <div className="ml-auto d-flex nav-bottom">
-              <a href="#features" className="nav-item">
-                <h5>旅程目的地</h5>
+              <a href="#features" className="navItem">
+                <h6>旅程目的地</h6>
                 <h6>探險的開始</h6>
                 <div className="blue-line"></div>
               </a>
-              <a href="#deets" className="nav-item">
-                <h5>裝備與器具</h5>
+              <a href="#deets" className="navItem">
+                <h6>裝備與器具</h6>
                 <h6>戶外用品</h6>
                 <div className="blue-line"></div>
               </a>
-              <Link to="/comments" className="nav-item">
-                <h5>意見與反饋</h5>
+              <Link to="/comments" className="navItem">
+                <h6>意見與反饋</h6>
                 <h6>客戶評論</h6>
                 <div className="blue-line"></div>
               </Link>
 
-              <a href="#deets" className="nav-item">
-                <h5>關於66°N</h5>
+              <a href="#deets" className="navItem">
+                <h6>關於66°N</h6>
                 <h6>我們的理念</h6>
                 <div className="blue-line"></div>
               </a>
             </div>
           </div>
+
+
           <a
-            className="n66toggler ml-auto d-flex justify-content-center align-items-center"
+            className="n66-login-btn ml-auto d-flex justify-content-center align-items-center"
             role="button"
-            href="#1"
+          >
+            <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
+              <img src={user} alt="user" />
+            </div>
+          </a>
+
+
+          <a
+            className="n66toggler  d-flex justify-content-center align-items-center"
+            role="button"
           >
             <div className="toggle-inner d-flex flex-column justify-content-between align-items-center">
               <div className="white-line up-line"></div>
@@ -132,7 +147,7 @@ class NavBarHome extends React.Component {
         <ul className="right-menu">
           <li>
             <a href="#8">
-              <h5>旅程目的地</h5>
+              <h6>旅程目的地</h6>
               <h6>探險的開始</h6>
             </a>
           </li>
@@ -160,4 +175,4 @@ class NavBarHome extends React.Component {
   }
 }
 
-export default NavBarHome;
+export default HomeNavBar;

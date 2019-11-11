@@ -4,8 +4,8 @@ import "./MemberInfoList.css";
 class MemberInfoList extends Component {
   state = {};
   render() {
-    const { data } = this.props;
-    console.log(data);
+    const { userInfo } = this.props;
+    console.log(userInfo);
 
     return (
       <Accordion defaultActiveKey="0" className="member-info-list-container">

@@ -3,6 +3,13 @@ $primaryColor: #242A3A;
 $secColor: #96DAF0;
 
 .ProductCarousel{
+    padding: 80px 0 0 0;
+
+    .carouselsRow{
+        padding-bottom: 150px;
+    }
+
+
     .thumbCarousel{
         width: 100px;
         
@@ -174,6 +181,7 @@ $secColor: #96DAF0;
     }
 
     .recommend{
+        
         .cardFrame{
             // width: 25%;
             // padding: 20px;

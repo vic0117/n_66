@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./TripDesNav.css";
-import N66navbarButton from "./N66navbar";
+
 import snowCity from "./images/snowcity.jpg";
 import { ReactComponent as Suede } from "./images/suede.svg";
 
@@ -12,7 +12,7 @@ class TripDesNav extends Component {
   render() {
     return (
       <>
-        <N66navbarButton className="N66navbarButton" />
+        
         <div>
           <div className="backGroundImg">
             <img src={snowCity} alt="snowCity" />
