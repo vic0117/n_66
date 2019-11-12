@@ -32,6 +32,7 @@ class DashBoard extends Component {
       passport: "",
       zip_code: "",
       address: "",
+      tel: "",
       avatar: ""
     }
   };
@@ -51,12 +52,16 @@ class DashBoard extends Component {
     const { data: userInfo } = await axios.get(
       "http://localhost:3001/members/" + currentUser.u_id
     );
+    console.log(userInfo);
+    // const userInfo_1 = {...this.state};
+
     this.setState({ userInfo: userInfo.rows[0] });
     console.log(this.state);
   }
 
   handleInfoChange = e => {
     const userInfo = { ...this.state.userInfo };
+    console.log(userInfo);
     userInfo[e.target.name] = e.target.value;
     this.setState({ userInfo });
   };
@@ -65,12 +70,19 @@ class DashBoard extends Component {
     e.preventDefault();
     const { currentUser } = this.state;
     let info = {
-      first_name_zh: this.state.userInfo.first_name_zh
+      first_name_zh: this.state.userInfo.first_name_zh,
+      last_name_zh: this.state.userInfo.last_name_zh,
+      first_name_en: this.state.userInfo.first_name_zh,
+      last_name_en: this.state.userInfo.last_name_en,
+      gender: this.state.userInfo.gender,
+      bday_year: this.state.userInfo.bday_year,
+      bday_month: this.state.userInfo.bday_month,
+      bday_date: this.state.userInfo.bday_date,
+      passport: this.state.userInfo.passport,
+      zip_code: this.state.userInfo.zip_code,
+      address: this.state.userInfo.address,
+      tel: this.state.userInfo.tel
     };
-    // const { data } = await axios.post(
-    //   "http://localhost:3001/members_edit/" + currentUser.u_id,
-    //   info
-    // );
     fetch(`http://localhost:3001/members_edit/${currentUser.u_id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
