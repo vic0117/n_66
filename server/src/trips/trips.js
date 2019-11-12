@@ -32,7 +32,7 @@ router.get('/trips/:id',(req,res,next)=>{
 });
 //搜尋
 router.post('/trips/search',(req,res,next)=>{
-	let data2 = req.body.JSON.parse(data2)  
+	let data2 = JSON.parse(req.body.data2)  
 	
 	const sql=`SELECT * FROM trip_list WHERE trip_name LIKE %${data2}%`
 	db.query(sql,(err,results,fields)=>{
@@ -41,5 +41,16 @@ router.post('/trips/search',(req,res,next)=>{
 		 res.send(JSON.stringify(results))
 	}) 
 });
-
+  
+//依照價格排列
+router.post('/trips/tripsort',(req,res,next)=>{
+	
+	const sql=`SELECT * FROM trip_list ORDER BY trip_price DESC`
+	db.query(sql,(err,results,fields)=>{
+		 if(err) throw err; 
+		//  console.log(results) 
+		 res.send(JSON.stringify(results))
+	}) 
+});
+      
 module.exports = router;
