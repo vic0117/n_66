@@ -10,7 +10,7 @@ body {
   position: relative;
   position: fixed;
   top: 0;
-  z-index: 900;
+  z-index: 999;
 }
 
 .navbar-container .nabar-items-container {

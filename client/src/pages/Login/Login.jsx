@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import NavBar from "../../components/NavBar/NavBar";
 
 //IMAGE SVG
 import { ReactComponent as Logo } from "./images/logo.svg";
@@ -36,7 +37,10 @@ class LoginNew extends React.Component {
       .then(data => {
         console.log(data);
         if (!data.loggedIn) {
+          const state = { ...this.state };
+          state.msg = data.msg;
           console.log(data.msg);
+          this.setState(state);
         } else {
           const { token: jwt } = data;
           localStorage.setItem("token", jwt);
@@ -220,50 +224,21 @@ class LoginNew extends React.Component {
 
   render() {
     return (
-      <Container className="cont">
-        <Row className="loginRow">
-          <div className="signIn">
-            <div className="logo">
-              <Logo height="20" width="20" />
-            </div>
-            <div className="position-relative">
-              <form
-                className="form sign-in"
-                onSubmit={this.handleLoginSubmit}
-                method="POST"
-              >
-                <h2>會員登入</h2>
-                <label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="電子信箱"
-                    onChange={this.logChange}
-                  />
-                </label>
-                <label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="密碼"
-                    onChange={this.logChange}
-                  />
-                </label>
-                <a href="#6" className="forgot-pass">
-                  忘記密碼?
-                </a>
-                <button type="submit" className="submit">
-                  登入
-                </button>
-              </form>
-
-              <form
-                className="form sign-up"
-                onSubmit={this.handleSignUpSubmit}
-                method="POST"
-              >
-                <div className=" ">
-                  <h2>會員註冊</h2>
+      <>
+        <NavBar />
+        <Container className="cont">
+          <Row className="loginRow">
+            <div className="signIn">
+              <div className="logo">
+                <Logo height="20" width="20" />
+              </div>
+              <div className="position-relative">
+                <form
+                  className="form sign-in"
+                  onSubmit={this.handleLoginSubmit}
+                  method="POST"
+                >
+                  <h2>會員登入</h2>
                   <label>
                     <input
                       type="email"
@@ -280,52 +255,85 @@ class LoginNew extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-                  <label>
-                    <input type="password" placeholder="確認密碼" />
-                  </label>
-                  <button type="submit" className="submit register">
-                    註冊
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="registered">
-            <div className="mountainBg"></div>
-            <div className="sub-cont">
-              <div className="img">
-                <div className="inner">
-                  <div
-                    id="titleUp"
-                    className="__text m--up"
-                    style={{ transition: "1.2s ease-in-out" }}
-                  >
-                    <h2>加入</h2>
-                    <p>探索更多旅程</p>
-                  </div>
-                  <div
-                    id="titleIn"
-                    className="__text m--in"
-                    style={{ transition: "1.2s ease-in-out" }}
-                  >
-                    <h2>發現</h2>
-                    <p>獨一無二的冒險</p>
-                  </div>
-                </div>
-
-                <div className="__btn">
-                  <a id="mUp" href="#2" role="button" className="m--up">
-                    註冊
+                  <a href="#6" className="forgot-pass">
+                    忘記密碼?
                   </a>
-                  <a id="mIn" href="#3" role="button" className="m--in">
+                  <div className="feedback">{this.state.msg}</div>
+                  <button type="submit" className="submit">
                     登入
-                  </a>
+                  </button>
+                </form>
+
+                <form
+                  className="form sign-up"
+                  onSubmit={this.handleSignUpSubmit}
+                  method="POST"
+                >
+                  <div className=" ">
+                    <h2>會員註冊</h2>
+                    <label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="電子信箱"
+                        onChange={this.logChange}
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="密碼"
+                        onChange={this.logChange}
+                      />
+                    </label>
+                    <label>
+                      <input type="password" placeholder="確認密碼" />
+                    </label>
+                    <button type="submit" className="submit register">
+                      註冊
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="registered">
+              <div className="mountainBg"></div>
+              <div className="sub-cont">
+                <div className="img">
+                  <div className="inner">
+                    <div
+                      id="titleUp"
+                      className="__text m--up"
+                      style={{ transition: "1.2s ease-in-out" }}
+                    >
+                      <h2>加入</h2>
+                      <p>探索更多旅程</p>
+                    </div>
+                    <div
+                      id="titleIn"
+                      className="__text m--in"
+                      style={{ transition: "1.2s ease-in-out" }}
+                    >
+                      <h2>發現</h2>
+                      <p>獨一無二的冒險</p>
+                    </div>
+                  </div>
+
+                  <div className="__btn">
+                    <a id="mUp" href="#2" role="button" className="m--up">
+                      註冊
+                    </a>
+                    <a id="mIn" href="#3" role="button" className="m--in">
+                      登入
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Row>
-      </Container>
+          </Row>
+        </Container>
+      </>
     );
   }
 }

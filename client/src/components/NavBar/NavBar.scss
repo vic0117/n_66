@@ -13,8 +13,7 @@ body {
   position: relative;
   position: fixed;
   top: 0;
-  z-index: 900;
-
+  z-index: 999;
 
   .nabar-items-container {
     height: 100%;
@@ -194,9 +193,6 @@ body {
     }
   }
 
-
-
-
   @media screen and (max-width: 858px) {
     .navBtn {
       display: flex !important;
@@ -212,5 +208,4 @@ body {
       left: 100%;
     }
   }
-
 }
