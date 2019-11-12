@@ -23,38 +23,30 @@ class DashBoard extends Component {
   async componentDidMount() {
     // server
     await this.setState({ currentUser: "" });
+    // 如果有登入
     if (localStorage.getItem("token")) {
       await this.setState({ currentUser: this.props.currentUser.user });
     } else {
-      this.props.history.push("/"); // 暫時先跳轉首頁
+      // 如果沒登入 (localStorage中找不到東西)
+      this.props.history.push("/login"); // 暫時先跳轉首頁
     }
     const { currentUser } = this.state;
-    console.log(currentUser.u_id);
 
     const { data: userInfo } = await axios.get(
       "http://localhost:3001/members/" + currentUser.u_id
     );
-    console.log(userInfo);
     this.setState({ userInfo: userInfo.rows[0] });
-
-    // fetch("http://localhost:3001/members", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(currentUser)
-    // })
-    //   .then(response => {
-    //     if (response.status >= 400) {
-    //       throw new Error("Bad response from server");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(data => {
-    //     console.log(data);
-    //   })
-    //   .catch(function(err) {
-    //     console.log(err);
-    //   });
+    console.log(this.state);
   }
+
+  handleChange = e => {
+    const userInfo = { ...this.state.userInfo };
+    console.log(e.target);
+    // userInfo.first_name_zh = e.target.value;
+    userInfo[e.target.name] = e.target.value;
+    this.setState({ userInfo });
+    console.log(this.state);
+  };
 
   render() {
     const { userInfo } = this.state;
@@ -79,7 +71,12 @@ class DashBoard extends Component {
                 <>
                   <Route
                     path="/account"
-                    render={() => <MemberInfoList userInfo={userInfo} />}
+                    render={() => (
+                      <MemberInfoList
+                        userInfo={userInfo}
+                        onChange={this.handleChange}
+                      />
+                    )}
                   />
                   <Route path="/account" component={MemberPassword} />
                 </>
