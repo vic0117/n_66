@@ -44,7 +44,7 @@ class LoginNew extends React.Component {
           state.msg = "登入成功!";
           this.setState(state);
           // this.props.history.push("/account");
-          window.location = "/account";
+          // window.location = "/account";
         }
       })
       .catch(function(err) {

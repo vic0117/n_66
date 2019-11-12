@@ -8,10 +8,10 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import TripDesNav from "./components/TripDesNav/TripDesNav";
 import CommentHeader from "./components/CommentHeader/CommentHeader";
-import LoginNew from "./pages/Login/Login";
+import Login from "./pages/Login/Login";
 
 // test
-import RegisterTest from "./components/RegisterTest/RegisterTest";
+// import RegisterTest from "./components/RegisterTest/RegisterTest";
 import LoginTest from "./components/LoginTest/LoginTest";
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
         <Route
           path="/login"
           render={props => (
-            <LoginNew {...props} currentUser={this.state.currentUser} />
+            <LoginTest {...props} currentUser={this.state.currentUser} />
           )}
         />
         <Route
@@ -44,7 +44,6 @@ class App extends Component {
         />
         <Route path="/" exact component={Home} />
       </Switch>
-      // <LoginNew />
     );
   }
 }
