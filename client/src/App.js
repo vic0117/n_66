@@ -28,23 +28,23 @@ class App extends Component {
 
   render() {
     return (
-      // <Switch>
-      //   <Route path="/comments" component={Comment} />
-      //   <Route
-      //     path="/login"
-      //     render={props => (
-      //       <LoginTest {...props} currentUser={this.state.currentUser} />
-      //     )}
-      //   />
-      //   <Route
-      //     path="/account"
-      //     render={props => (
-      //       <DashBoard {...props} currentUser={this.state.currentUser} />
-      //     )}
-      //   />
-      //   <Route path="/" exact component={Home} />
-      // </Switch>
-      <LoginNew />
+      <Switch>
+        <Route path="/comments" component={Comment} />
+        <Route
+          path="/login"
+          render={props => (
+            <LoginTest {...props} currentUser={this.state.currentUser} />
+          )}
+        />
+        <Route
+          path="/account"
+          render={props => (
+            <DashBoard {...props} currentUser={this.state.currentUser} />
+          )}
+        />
+        <Route path="/" exact component={Home} />
+      </Switch>
+      // <LoginNew />
     );
   }
 }

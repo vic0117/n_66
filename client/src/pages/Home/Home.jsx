@@ -3,8 +3,8 @@ import React, { Component } from "react";
 
 import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
 import HomeMainCarousel from "../../components/HomeMainCarousel/HomeMainCarousel";
-import FilterHome from '../../components/FilterHome/FilterHome';
-// import ReviewCarousel from '../../components/ReviewCarousel/ReviewCarousel'
+import HomeFilter from '../../components/HomeFilter/HomeFilter';
+import HomeReviewCarousel from '../../components/HomeReviewCarousel/HomeReviewCarousel'
 import HomeTravelCarousel from '../../components/HomeTravelCarousel/HomeTravelCarousel';
 
 class Home extends Component {
@@ -15,9 +15,9 @@ class Home extends Component {
         
         <HomeNavBar/>
         <HomeMainCarousel />
-        <FilterHome/>
+        <HomeFilter/>
         <HomeTravelCarousel/>
-        {/* <ReviewCarousel/> */}
+        {/* <HomeReviewCarousel/> */}
       </>
     );
   }
