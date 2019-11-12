@@ -7,7 +7,91 @@ import { ReactComponent as Logo } from "./images/logo.svg";
 import "./Login.css";
 
 class LoginNew extends React.Component {
+  state = {
+    email: "",
+    password: "",
+    msg: ""
+  };
+
+  handleLoginSubmit = e => {
+    e.preventDefault();
+    // req.body
+    console.log(this.props);
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (!data.loggedIn) {
+          console.log(data.msg);
+        } else {
+          const { token: jwt } = data;
+          localStorage.setItem("token", jwt);
+          const state = { ...this.state };
+          state.msg = "登入成功!";
+          this.setState(state);
+          // this.props.history.push("/account");
+          // window.location = "/account";
+        }
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  };
+
+  handleSignUpSubmit = e => {
+    e.preventDefault();
+    // req.body
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    fetch("http://localhost:3001/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        console.log(this.state);
+        if (data.success) {
+          const state = { ...this.state };
+          state.msg = "註冊成功!";
+          this.setState(state);
+          console.log(this.state);
+        }
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  };
+
+  logChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   componentDidMount() {
+    // JS DOM control
     let wantSignUp = false;
 
     let windowWidth = window.innerWidth;
@@ -27,15 +111,14 @@ class LoginNew extends React.Component {
     window.addEventListener("resize", () => {
       windowWidth = window.innerWidth;
 
-      if(windowWidth > 981 && wantSignUp == true){
-        
-        signIn.style.transition = ' transform 0s';
-        registered.style.transition = ' transform 0s';
-        mountainBg.style.transition = 'opacity 0s';
+      if (windowWidth > 981 && wantSignUp == true) {
+        signIn.style.transition = " transform 0s";
+        registered.style.transition = " transform 0s";
+        mountainBg.style.transition = "opacity 0s";
 
         registered.style.transform = "translate(-610px, 0)";
         mountainBg.style.transform = "translate(610px, 0)";
-        mountainBg.style.opacity = '1';
+        mountainBg.style.opacity = "1";
         signIn.style.transform = "translate(350px, 0)";
         signInForm.style.opacity = "0";
         signUpForm.style.top = "0";
@@ -44,15 +127,12 @@ class LoginNew extends React.Component {
         titleIn.style.transform = "translate(0, -100px)";
         mUp.style.transform = "translate(0, 50px)";
         mIn.style.transform = "translate(0, 0px)";
-
-
       }
 
-      if(windowWidth < 981 && wantSignUp == true){
-
-        signIn.style.transition = ' transform 0s';
-        registered.style.transition = ' transform 0s';
-        mountainBg.style.transition = 'opacity 0s';
+      if (windowWidth < 981 && wantSignUp == true) {
+        signIn.style.transition = " transform 0s";
+        registered.style.transition = " transform 0s";
+        mountainBg.style.transition = "opacity 0s";
 
         registered.style.transform = "translate(0, -550px)";
         mountainBg.style.transform = "translate(0, 0)";
@@ -66,7 +146,6 @@ class LoginNew extends React.Component {
         mUp.style.transform = "translate(0, 50px)";
         mIn.style.transform = "translate(0, 0px)";
       }
-
     });
 
     function horizonMove() {
@@ -126,10 +205,10 @@ class LoginNew extends React.Component {
     }
 
     signUpBtn.addEventListener("click", () => {
-
-      signIn.style.transition = 'transform 1.2s ease-in-out';
-      registered.style.transition = 'transform 1.2s ease-in-out'; 
-      mountainBg.style.transition = 'transform 1.2s ease-in-out, opacity 0.8s ease-in-out';     
+      signIn.style.transition = "transform 1.2s ease-in-out";
+      registered.style.transition = "transform 1.2s ease-in-out";
+      mountainBg.style.transition =
+        "transform 1.2s ease-in-out, opacity 0.8s ease-in-out";
 
       if (windowWidth > 981) {
         horizonMove();
@@ -145,16 +224,30 @@ class LoginNew extends React.Component {
         <Row className="loginRow">
           <div className="signIn">
             <div className="logo">
-              <Logo />
+              <Logo height="20" width="20" />
             </div>
             <div className="position-relative">
-              <form className="form sign-in" method="">
+              <form
+                className="form sign-in"
+                onSubmit={this.handleLoginSubmit}
+                method="POST"
+              >
                 <h2>會員登入</h2>
                 <label>
-                  <input type="email" placeholder="電子信箱" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="電子信箱"
+                    onChange={this.logChange}
+                  />
                 </label>
                 <label>
-                  <input type="password" placeholder="密碼" />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="密碼"
+                    onChange={this.logChange}
+                  />
                 </label>
                 <a href="#6" className="forgot-pass">
                   忘記密碼?
@@ -164,14 +257,28 @@ class LoginNew extends React.Component {
                 </button>
               </form>
 
-              <form className="form sign-up" method="">
+              <form
+                className="form sign-up"
+                onSubmit={this.handleSignUpSubmit}
+                method="POST"
+              >
                 <div className=" ">
                   <h2>會員註冊</h2>
                   <label>
-                    <input type="email" placeholder="電子信箱" />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="電子信箱"
+                      onChange={this.logChange}
+                    />
                   </label>
                   <label>
-                    <input type="password" placeholder="密碼" />
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="密碼"
+                      onChange={this.logChange}
+                    />
                   </label>
                   <label>
                     <input type="password" placeholder="確認密碼" />

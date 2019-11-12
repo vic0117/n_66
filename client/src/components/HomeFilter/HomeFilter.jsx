@@ -11,17 +11,17 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from '../TripLeftmenu/SliderDays';
+import SliderDays from "../TripLeftmenu/SliderDays";
 
 //SVG
-import { ReactComponent as Location } from "./img/location.svg";
-import { ReactComponent as Trac } from "./img/trac.svg";
-import { ReactComponent as Binoculars } from "./img/binoculars.svg";
-import { ReactComponent as Search } from "./img/search.svg";
-import { ReactComponent as Filter } from "./img/filter.svg";
-import "./FilterHome.css";
+import { ReactComponent as Location } from "./images/location.svg";
+import { ReactComponent as Trac } from "./images/trac.svg";
+import { ReactComponent as Binoculars } from "./images/binoculars.svg";
+import { ReactComponent as Search } from "./images/search.svg";
+import { ReactComponent as Filter } from "./images/filter.svg";
+import "./HomeFilter.css";
 
-class FilterHome extends Component {
+class HomeFilter extends Component {
   state = {
     searchbox: {
       isActive: false,
@@ -211,49 +211,41 @@ class FilterHome extends Component {
     }
   };
 
-
-  searchByStay = ()=>{
-    console.log('aaaa');
-  }
+  searchByStay = () => {
+    console.log("aaaa");
+  };
 
   componentDidMount() {
-
-    let filterIcon = document.querySelector('.icon');
-    let filterMenu = document.querySelector('.filter-menu')
-    let filterToggler = document.querySelector('.filterToggler')
+    let filterIcon = document.querySelector(".icon");
+    let filterMenu = document.querySelector(".filter-menu");
+    let filterToggler = document.querySelector(".filterToggler");
     let body = document.querySelector("body");
     let anotherSearch = document.querySelector(".anotherSearch");
-    let searchDaysBtn =  document.querySelector(".searchDaysBtn");
-    let windowWidth= 0;
+    let searchDaysBtn = document.querySelector(".searchDaysBtn");
+    let windowWidth = 0;
 
+    filterIcon.addEventListener("click", () => {
+      filterMenu.style.left = "0%";
+      body.style.overflowY = "hidden";
+    });
 
+    filterToggler.addEventListener("click", () => {
+      filterMenu.style.left = "100%";
+      body.style.overflowY = "auto";
+    });
 
-    filterIcon.addEventListener('click', ()=>{
-      filterMenu.style.left = '0%';
-      body.style.overflowY = 'hidden';
-    })
-
-    filterToggler.addEventListener('click', ()=>{
-      filterMenu.style.left = '100%';
-      body.style.overflowY = 'auto';
-    })
-
-    window.addEventListener('resize', ()=>{
+    window.addEventListener("resize", () => {
       windowWidth = window.innerWidth;
 
-      if(windowWidth >= 768 ){
-        anotherSearch.style.pointerEvent = 'none';
-        
+      if (windowWidth >= 768) {
+        anotherSearch.style.pointerEvent = "none";
       }
-    })
+    });
 
-    anotherSearch.addEventListener('click', ()=>{
-      filterMenu.style.left = '0%';
-      body.style.overflowY = 'hidden';
-    })
-
-
-
+    anotherSearch.addEventListener("click", () => {
+      filterMenu.style.left = "0%";
+      body.style.overflowY = "hidden";
+    });
   }
 
   render() {
@@ -262,7 +254,6 @@ class FilterHome extends Component {
       <div className="filter-home-container">
         <Form className="main-filter-container">
           <Row className="row-no-margin searchbox-row">
-
             {searchbox.dom}
             <div
               className="d-flex d-flex-1 search-btn"
@@ -297,7 +288,10 @@ class FilterHome extends Component {
 
         <div className="filter-menu">
           <div className="fakeNav">
-            <a className="filterToggler ml-auto d-flex justify-content-center align-items-center" role="button">
+            <a
+              className="filterToggler ml-auto d-flex justify-content-center align-items-center"
+              role="button"
+            >
               <div className="toggle-inner ">
                 <div className="white-line up-line"></div>
                 <div className="white-line down-line"></div>
@@ -305,11 +299,14 @@ class FilterHome extends Component {
             </a>
           </div>
           <div className="list">
-            <Accordion >
+            <Accordion>
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
                   <div className="svgFrame">
-                    <img src="http://localhost:3000/images/svg/location.svg" alt="location"/>
+                    <img
+                      src="http://localhost:3000/images/svg/location.svg"
+                      alt="location"
+                    />
                   </div>
                   <p>目的地</p>
                 </Accordion.Toggle>
@@ -335,7 +332,10 @@ class FilterHome extends Component {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="1">
                   <div className="svgFrame">
-                    <img src="http://localhost:3000/images/svg/trac.svg" alt="location"/>
+                    <img
+                      src="http://localhost:3000/images/svg/trac.svg"
+                      alt="location"
+                    />
                   </div>
                   <p>活動與主題</p>
                 </Accordion.Toggle>
@@ -355,7 +355,10 @@ class FilterHome extends Component {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="2">
                   <div id="calender" className="svgFrame">
-                    <img  src="http://localhost:3000/images/svg/calender.svg" alt="location"/>
+                    <img
+                      src="http://localhost:3000/images/svg/calender.svg"
+                      alt="location"
+                    />
                   </div>
                   <p>出發月份</p>
                 </Accordion.Toggle>
@@ -382,7 +385,10 @@ class FilterHome extends Component {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="3">
                   <div id="ring" className="svgFrame">
-                    <img  src="http://localhost:3000/images/svg/ring3.svg" alt="location"/>
+                    <img
+                      src="http://localhost:3000/images/svg/ring3.svg"
+                      alt="location"
+                    />
                   </div>
                   <p>困難度</p>
                 </Accordion.Toggle>
@@ -400,14 +406,22 @@ class FilterHome extends Component {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="4">
                   <div id="duration" className="svgFrame">
-                    <img  src="http://localhost:3000/images/svg/duration.svg" alt="duration"/>
+                    <img
+                      src="http://localhost:3000/images/svg/duration.svg"
+                      alt="duration"
+                    />
                   </div>
                   <p>停留時間</p>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="4">
                   <Card.Body id="days-of-stay">
-                    <SliderDays/>
-                    <a className="searchDaysBtn" onClick={this.searchByStay} href="#searchDays" role="button">
+                    <SliderDays />
+                    <a
+                      className="searchDaysBtn"
+                      onClick={this.searchByStay}
+                      href="#searchDays"
+                      role="button"
+                    >
                       確定
                     </a>
                   </Card.Body>
@@ -421,4 +435,4 @@ class FilterHome extends Component {
   }
 }
 
-export default FilterHome;
+export default HomeFilter;

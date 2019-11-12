@@ -4,9 +4,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import carouselImg1 from './images/marche-sur-la-glace-de-stockholm-1220.jpg'
 import carouselImg2 from './images/sotckholm-lhiver-1221.jpg'
 import carouselImg3 from './images/stockholm-sous-les-aurores-boreales-1219.jpg'
-import './ReviewCarousel.css';
+import './HomeReviewCarousel.css';
 
-class ReviewCarousel extends React.Component {
+class HomeReviewCarousel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -223,4 +223,4 @@ class ReviewCarousel extends React.Component {
     }
 }
 
-export default ReviewCarousel;
+export default HomeReviewCarousel;

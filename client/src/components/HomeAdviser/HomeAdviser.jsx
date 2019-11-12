@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Col, Row } from "react-bootstrap";
-import "./adviser.scss";
+import "./HomeAdviser.scss";
 import snowHouse from "./images/bg-snow.jpg";
 import Slider from "react-slick";
 import aurelie from './images/aurelie.jpg'

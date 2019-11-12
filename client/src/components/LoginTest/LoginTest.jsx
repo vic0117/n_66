@@ -39,7 +39,7 @@ class LoginTest extends Component {
           state.msg = "登入成功!";
           this.setState(state);
           // this.props.history.push("/account");
-          window.location = "/account";
+          // window.location = "/account";
         }
 
         // const { token: jwt } = data;

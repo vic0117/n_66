@@ -8,9 +8,10 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import TripDesNav from "./components/TripDesNav/TripDesNav";
 import CommentHeader from "./components/CommentHeader/CommentHeader";
+import Login from "./pages/Login/Login";
 
 // test
-import RegisterTest from "./components/RegisterTest/RegisterTest";
+// import RegisterTest from "./components/RegisterTest/RegisterTest";
 import LoginTest from "./components/LoginTest/LoginTest";
 
 class App extends Component {

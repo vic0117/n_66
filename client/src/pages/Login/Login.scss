@@ -15,7 +15,7 @@ $btnH: 50px;
   position: relative;
   max-width: $contW;
   min-height: 550px;
-  margin: 2rem auto;
+  margin: 6rem auto;
 
   input,
   button {
@@ -26,6 +26,7 @@ $btnH: 50px;
 
   .logo {
     svg {
+      padding: 15px 10px;
       height: 80px;
       width: 80px;
 
@@ -36,6 +37,7 @@ $btnH: 50px;
   }
 
   .signIn {
+    border: 1px solid #cfcfcf;
     overflow: hidden;
     position: relative;
     top: 0%;
@@ -86,10 +88,13 @@ $btnH: 50px;
     z-index: 99;
 
     .inner {
-      width: 350px;
+      width: 180px;
       height: 80px;
       overflow: hidden;
-      margin: 0 auto 210px auto;
+      margin: 175px auto 0px auto;
+      .m--in {
+        margin-top: 30px;
+      }
     }
   }
 
@@ -120,6 +125,7 @@ $btnH: 50px;
     // }
 
     .__text {
+      transition: all $switchAT ease-in-out;
       // z-index: 2;
       // // position: absolute;
       // // left: 65px;
@@ -128,23 +134,22 @@ $btnH: 50px;
       // padding: 0 20px;
       // text-align: center;
       // color: #fff;
-      transition: all $switchAT ease-in-out;
       // margin: 0 auto;
 
       h2 {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-weight: normal;
-        text-align: center;
         z-index: 2;
+        text-align: left;
+        font-size: 2rem;
       }
 
       p {
+        text-align: left;
         color: #fff;
         font-size: 1rem;
         line-height: 1.5;
-        text-align: center;
         z-index: 2;
-        margin-bottom: 30px;
       }
     }
 
@@ -164,7 +169,7 @@ $btnH: 50px;
       position: relative;
       width: $btnW;
       height: $btnH;
-      margin: 50px auto 0px auto;
+      margin: 30px auto 0px auto;
       background: transparent;
       color: #fff;
       font-size: 15px;
@@ -300,7 +305,7 @@ $btnH: 50px;
   }
 
   .register {
-    margin-top: 50px !important;
+    margin-top: 45px !important;
   }
 }
 
