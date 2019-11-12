@@ -33,7 +33,7 @@ class HomeAdviser extends Component {
           <h6 className="smTitle">定制旅程</h6>
         </Row>
         <Row>
-          <p className="bigTitle">聯繫我們的專家</p>
+          <h1 className="bigTitle">聯繫我們的專家</h1>
         </Row>
         <div className="row AdviserBox">
           <Col md={8} className="leftCol">

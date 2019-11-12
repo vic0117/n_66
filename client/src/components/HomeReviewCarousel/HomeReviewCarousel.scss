@@ -6,7 +6,7 @@ $borderColor: #74767d;
   position: relative;
   padding: 0;
   height: 100vh;
-  margin-top: 9rem;
+  margin-top: 5rem;
 
   .subtitle {
     color: $secColor;
@@ -19,6 +19,7 @@ $borderColor: #74767d;
     text-align: center;
     font-weight: 700;
     letter-spacing: 3px;
+    margin-bottom: 4rem;
   }
 
   .ReviewCarouselBox {

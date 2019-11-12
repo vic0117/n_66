@@ -6,12 +6,12 @@
 
 .travelCarouselContainer .sub-title {
   color: #96daf0;
+  margin-bottom: 1rem;
 }
 
 .travelCarouselContainer .main-title {
   color: #242a3a;
-  margin-bottom: 100px;
-  font-size: 3rem;
+  margin-bottom: 8rem;
 }
 
 .travelCarouselContainer .rectNavyBlue::before {
