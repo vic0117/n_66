@@ -1,7 +1,7 @@
 import React from "react";
 
 //Routers
-import { Link, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //Components
 // import DashBoard from "../../page/DashBoard/DashBoard";
@@ -124,6 +124,7 @@ class HomeNavBar extends React.Component {
 
           <a
             className="n66-login-btn ml-auto d-flex justify-content-center align-items-center"
+            href="#56" 
             role="button"
           >
             <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
@@ -134,6 +135,7 @@ class HomeNavBar extends React.Component {
 
           <a
             className="n66toggler  d-flex justify-content-center align-items-center"
+            href="#57"
             role="button"
           >
             <div className="toggle-inner d-flex flex-column justify-content-between align-items-center">
@@ -146,13 +148,13 @@ class HomeNavBar extends React.Component {
 
         <ul className="right-menu">
           <li>
-            <a href="#8">
+            <a href="#88" role="button">
               <h6>旅程目的地</h6>
               <h6>探險的開始</h6>
             </a>
           </li>
           <li>
-            <a href="#19">
+            <a href="#19" role="button">
               <h5>活動與主題</h5>
               <h6>我們的旅程</h6>
             </a>
