@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 const bluebird = require("bluebird");
+const jwt = require("jsonwebtoken");
 
 const db = mysql.createConnection({
   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
@@ -14,13 +15,12 @@ const db = mysql.createConnection({
 bluebird.promisifyAll(db);
 
 router.post("/register", (req, res) => {
-  let data = { success: false, message: { text: "" } };
-
-  data.body = req.body;
+  let user = { loggedIn: false, msg: "" };
+  
   // 沒輸入email或password時
   if (!req.body.email || !req.body.password) {
-    data.message.text = "資料不足";
-    res.json(data);
+    user.msg = "資料不足";
+    res.json(user);
   }
 
   const sql_r = "SELECT COUNT(*) AS cnt FROM`members_list` WHERE email = ?";
@@ -29,69 +29,45 @@ router.post("/register", (req, res) => {
       if (results[0].cnt > 0) {
         // email already exist
         console.log("results", results);
-        data.message.text = "此電子信箱已被使用";
-        res.json(data);
+        user.msg = "此電子信箱已被使用";
+        res.json(user);
       }
       const sql_i =
         "INSERT INTO `members_list` (`email`, `password`) VALUES (?,?)";
       return db.queryAsync(sql_i, [req.body.email, req.body.password]);
     })
     .then(results => {
+      // 註冊成功
       if (results.affectedRows === 1) {
-        data.success = true;
-        data.message.text = "新增成功";
+        user.loggedIn = true;
+        user.msg = "註冊成功";
+        // res.json(user);
+        const sql_r_1 = "SELECT * FROM`members_list` WHERE email = ?";
+        return db.queryAsync(sql_r_1, [req.body.email]);
       } else {
-        data.message.text = "資料沒有新增";
+        user.msg = "註冊失敗";
+        res.json(user);
       }
-      res.json(data);
+    })
+    .then(results => {
+      console.log('fuck',results);
+      // 註冊成功, 轉成jwt
+      if (results.length > 0) {
+        user.loggedIn = true;
+        user.msg = "登入成功";
+        user.u_id = results[0].u_id;
+        user.email = results[0].email;
+        jwt.sign({ user }, "secreteKey", (err, token) => {
+          res.json({
+            token: token,
+            loggedIn: true
+          });
+        });
+      }
     })
     .catch(error => {
       console.log("sql error", error);
     });
 });
-
-// router.post("/register", function(req, res) {
-//   let data = { success: false, message: { text: "" } };
-//   data.body = req.body;
-//   // 沒輸入email或password時
-//   if (!req.body.email || !req.body.password) {
-//     data.message.text = "資料不足";
-//     res.json(data);
-//   }
-
-//   const sql_r = "SELECT COUNT(*) AS cnt FROM`members_list` WHERE email = ?";
-//   db.query(sql_r, req.body.email, (error, results, fields) => {
-//     if (error) {
-//       throw error;
-//     } else {
-//       if (results[0].cnt > 0) {
-//         // Already exist
-//         console.log("results", results);
-//         data.message.text = "此電子信箱已被使用";
-//         // res.json(data);
-//         console.log("user exist!");
-//       } else {
-//         const sql_i =
-//           "INSERT INTO `members_list` (`email`, `password`) VALUES (?,?)";
-//         db.query(
-//           sql_i,
-//           [req.body.email, req.body.password],
-//           (error, results, fields) => {
-//             if (error) throw error;
-//             console.log("results: ", results);
-//             console.log("data.body: ", data.body);
-//             if (results.affectedRows === 1) {
-//               data.success = true;
-//               data.message.text = "新增成功";
-//             } else {
-//               data.message.text = "資料沒有新增";
-//             }
-//             res.json(data);
-//           }
-//         );
-//       }
-//     }
-//   });
-// });
 
 module.exports = router;

@@ -42,6 +42,9 @@ class MemberInfoList extends Component {
                       className="my-2"
                       type="text"
                       placeholder="姓氏"
+                      value={userInfo.first_name_zh}
+                      onChange={this.props.onChange}
+                      name="first_name_zh"
                     />
                   </div>
                   <div className="width-200">

@@ -7,11 +7,11 @@ import NavBar from "../../components/NavBar/NavBar";
 //CSS
 import "./Login.css";
 
-class LoginNew extends React.Component {
+class Login extends React.Component {
   state = {
     email: "",
     password: "",
-    msg: ""
+    msg: {}
   };
 
   handleLoginSubmit = e => {
@@ -38,17 +38,17 @@ class LoginNew extends React.Component {
         console.log(data);
         if (!data.loggedIn) {
           const state = { ...this.state };
-          state.msg = data.msg;
+          state.msg.loginMsg = data.msg;
           console.log(data.msg);
           this.setState(state);
         } else {
           const { token: jwt } = data;
           localStorage.setItem("token", jwt);
           const state = { ...this.state };
-          state.msg = "登入成功!";
+          state.msg.loginMsg = "登入成功!";
           this.setState(state);
           // this.props.history.push("/account");
-          // window.location = "/account";
+          window.location = "/account";
         }
       })
       .catch(function(err) {
@@ -77,10 +77,17 @@ class LoginNew extends React.Component {
       })
       .then(data => {
         console.log(data);
-        console.log(this.state);
-        if (data.success) {
+        if (data.loggedIn) {
+          // 註冊成功, jwt存進localstorage
+          const { token: jwt } = data;
+          localStorage.setItem("token", jwt);
           const state = { ...this.state };
-          state.msg = "註冊成功!";
+          state.msg.signUpMsg = "註冊成功!";
+          this.setState(state);
+          window.location = "/account";
+        } else {
+          const state = { ...this.state };
+          state.msg.signUpMsg = data.msg;
           this.setState(state);
           console.log(this.state);
         }
@@ -256,7 +263,7 @@ class LoginNew extends React.Component {
                   <a href="#6" className="forgot-pass">
                     忘記密碼?
                   </a>
-                  <div className="feedback">{this.state.msg}</div>
+                  <div className="feedback">{this.state.msg.loginMsg}</div>
                   <button type="submit" className="submit">
                     登入
                   </button>
@@ -267,7 +274,7 @@ class LoginNew extends React.Component {
                   onSubmit={this.handleSignUpSubmit}
                   method="POST"
                 >
-                  <div className=" ">
+                  <div>
                     <h2>會員註冊</h2>
                     <label>
                       <input
@@ -288,6 +295,7 @@ class LoginNew extends React.Component {
                     <label>
                       <input type="password" placeholder="確認密碼" />
                     </label>
+                    <div className="feedback">{this.state.msg.signUpMsg}</div>
                     <button type="submit" className="submit register">
                       註冊
                     </button>
@@ -336,4 +344,4 @@ class LoginNew extends React.Component {
   }
 }
 
-export default LoginNew;
+export default Login;

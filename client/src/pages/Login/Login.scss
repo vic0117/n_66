@@ -56,6 +56,8 @@ $btnH: 50px;
         margin: 10px auto 0 auto;
         color: #242a3a;
         font-weight: 200;
+        font-size: 12px;
+        padding-top: 10px;  
       }
     }
 
@@ -68,6 +70,16 @@ $btnH: 50px;
       // background-color: rgba(255, 255, 255, 0.801);
       transition: transform 1.2s ease-in-out, top 1.2s ease-in-out,
         opacity 0.3s ease-in-out;
+      .feedback {
+        text-align: center;
+        width: 100%;
+        height: 30px;
+        margin: 10px auto 0 auto;
+        padding-top: 5px;
+        color: #242a3a;
+        font-weight: 200;
+        font-size: 12px;
+      }
     }
   }
 
@@ -307,7 +319,7 @@ $btnH: 50px;
   }
 
   .register {
-    margin-top: 45px !important;
+    margin-top: 6px !important;
   }
 }
 
