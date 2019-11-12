@@ -20,7 +20,7 @@ class MemberInfoList extends Component {
             className="member-info-content-container"
           >
             <Card.Body>
-              <Form>
+              <Form onSubmit={this.props.onSubmit} method="POST">
                 <p>
                   以下資訊僅用於幫助你在付款時自動填寫你的個人資料，你的資料將會安全地被客路保存且不會公開
                 </p>
@@ -42,9 +42,9 @@ class MemberInfoList extends Component {
                       className="my-2"
                       type="text"
                       placeholder="姓氏"
-                      value={userInfo.first_name_zh}
+                      name="last_name_zh"
+                      value={userInfo.last_name_zh}
                       onChange={this.props.onChange}
-                      name="first_name_zh"
                     />
                   </div>
                   <div className="width-200">
@@ -53,6 +53,9 @@ class MemberInfoList extends Component {
                       className="my-2"
                       type="text"
                       placeholder="名字"
+                      name="first_name_zh"
+                      value={userInfo.first_name_zh}
+                      onChange={this.props.onChange}
                     />
                   </div>
                 </Form.Group>
@@ -67,6 +70,9 @@ class MemberInfoList extends Component {
                       className="my-2"
                       type="text"
                       placeholder="姓氏"
+                      name="last_name_en"
+                      value={userInfo.last_name_en}
+                      onChange={this.props.onChange}
                     />
                   </div>
                   <div className="width-200">
@@ -75,6 +81,9 @@ class MemberInfoList extends Component {
                       className="my-2"
                       type="text"
                       placeholder="名字"
+                      name="first_name_en"
+                      value={userInfo.first_name_en}
+                      onChange={this.props.onChange}
                     />
                   </div>
                 </Form.Group>

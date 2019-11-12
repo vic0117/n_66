@@ -40,28 +40,33 @@ app.get("/", (req, res) => {
 });
 
 // login
-app.use(
-  session({
-    saveUninitialized: false,
-    resave: false,
-    secret: "i123oidoajd",
-    cookie: {
-      maxAge: 1200000
-    }
-  })
-);
+// app.use(
+//   session({
+//     saveUninitialized: false,
+//     resave: false,
+//     secret: "i123oidoajd",
+//     cookie: {
+//       maxAge: 1200000
+//     }
+//   })
+// );
 
 const login = require("./login/login");
 app.use(login);
 
 // member
 const members = require("./members/members");
-const trips = require('./trips/trips')
 app.use(members);
-app.use(trips);
+
+const member_edit = require("./members/members_edit");
+app.use(member_edit);
 
 const register = require("./login/register");
 app.use(register);
+
+// trips
+const trips = require("./trips/trips");
+app.use(trips);
 
 // 404
 app.use((req, res) => {

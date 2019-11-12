@@ -17,7 +17,23 @@ import "./DashBoard.css";
 
 class DashBoard extends Component {
   state = {
-    userInfo: []
+    userInfo: {
+      u_id: "",
+      email: "",
+      password: "",
+      first_name_zh: "",
+      last_name_zh: "",
+      first_name_en: "",
+      last_name_en: "",
+      gender: "",
+      bday_year: "",
+      bday_month: "",
+      bday_date: "",
+      passport: "",
+      zip_code: "",
+      address: "",
+      avatar: ""
+    }
   };
 
   async componentDidMount() {
@@ -39,13 +55,39 @@ class DashBoard extends Component {
     console.log(this.state);
   }
 
-  handleChange = e => {
+  handleInfoChange = e => {
     const userInfo = { ...this.state.userInfo };
-    console.log(e.target);
-    // userInfo.first_name_zh = e.target.value;
     userInfo[e.target.name] = e.target.value;
     this.setState({ userInfo });
-    console.log(this.state);
+  };
+
+  handleInfoSubmit = async e => {
+    e.preventDefault();
+    const { currentUser } = this.state;
+    let info = {
+      first_name_zh: this.state.userInfo.first_name_zh
+    };
+    // const { data } = await axios.post(
+    //   "http://localhost:3001/members_edit/" + currentUser.u_id,
+    //   info
+    // );
+    fetch(`http://localhost:3001/members_edit/${currentUser.u_id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(info)
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
 
   render() {
@@ -74,7 +116,8 @@ class DashBoard extends Component {
                     render={() => (
                       <MemberInfoList
                         userInfo={userInfo}
-                        onChange={this.handleChange}
+                        onChange={this.handleInfoChange}
+                        onSubmit={this.handleInfoSubmit}
                       />
                     )}
                   />
