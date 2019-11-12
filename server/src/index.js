@@ -56,7 +56,9 @@ app.use(login);
 
 // member
 const members = require("./members/members");
+const trips = require('./trips/trips')
 app.use(members);
+app.use(trips);
 
 const register = require("./login/register");
 app.use(register);

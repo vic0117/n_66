@@ -6,7 +6,7 @@ import HomeMainCarousel from "../../components/HomeMainCarousel/HomeMainCarousel
 import HomeFilter from "../../components/HomeFilter/HomeFilter";
 import HomeReviewCarousel from "../../components/HomeReviewCarousel/HomeReviewCarousel";
 import HomeTravelCarousel from "../../components/HomeTravelCarousel/HomeTravelCarousel";
-// import Adviser from "../../components/HomeAdviser/HomeAdviser";
+import Adviser from "../../components/HomeAdviser/HomeAdviser";
 
 class Home extends Component {
   state = {};
@@ -18,7 +18,7 @@ class Home extends Component {
         <HomeFilter />
         <HomeTravelCarousel />
         <HomeReviewCarousel/>
-        {/* <Adviser /> */}
+        <Adviser />
       </>
     );
   }
