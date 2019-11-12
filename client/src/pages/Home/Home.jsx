@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // Components
-
 import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
 import HomeMainCarousel from "../../components/HomeMainCarousel/HomeMainCarousel";
 import HomeFilter from "../../components/HomeFilter/HomeFilter";

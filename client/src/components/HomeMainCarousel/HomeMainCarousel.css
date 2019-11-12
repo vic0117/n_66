@@ -25,8 +25,8 @@
   height: 0px;
   border-radius: 50%;
   background-color: #fff;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .header-wrapper .left-arrow-ring {
@@ -47,13 +47,13 @@
   width: 30px;
   height: 1px;
   background-color: #fff;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   left: 20px;
 }
 
 .header-wrapper .slick-prev::before {
-  content: '';
+  content: "";
 }
 
 .header-wrapper .slick-next {
@@ -78,8 +78,8 @@
   height: 0px;
   border-radius: 50%;
   background-color: #fff;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .header-wrapper .right-arrow-ring {
@@ -100,13 +100,13 @@
   width: 30px;
   height: 1px;
   background-color: #fff;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   right: 20px;
 }
 
 .header-wrapper .slick-next::before {
-  content: '';
+  content: "";
 }
 
 .header-wrapper .imgSlider {
@@ -144,10 +144,10 @@
   width: 100%;
   height: 100%;
   background-color: #000;
-  opacity: .4;
+  opacity: 0.4;
   z-index: 2;
-  -webkit-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   pointer-events: none;
 }
 
@@ -241,16 +241,16 @@
   font-size: 1rem;
   border: 1px solid #fff;
   padding: 12px 25px;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .header-wrapper .slider-inner a .button-font {
   position: relative;
   color: #fff;
   z-index: 3;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .header-wrapper .slider-inner a .white-mask {
@@ -261,8 +261,8 @@
   bottom: 0;
   left: 0;
   z-index: 2;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   pointer-events: none;
 }
 
@@ -295,13 +295,14 @@
   .slider-inner .title-main {
     font-size: 50px !important;
   }
-  .slider-inner a {
-    padding: 1px 25px !important;
+  .slider-inner .more-btn {
+    padding: 12px 25px !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .header-wrapper .slick-prev, .header-wrapper .slick-next {
+  .header-wrapper .slick-prev,
+  .header-wrapper .slick-next {
     display: none !important;
   }
 }
