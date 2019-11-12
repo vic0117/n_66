@@ -3,7 +3,7 @@
   position: relative;
   max-width: 960px;
   min-height: 550px;
-  margin: 9.5rem auto;
+  margin: 9.5rem auto 5rem auto;
 }
 
 .cont input,
@@ -13,14 +13,10 @@
   background: none;
 }
 
-.cont .logo svg {
+.cont .logo {
   padding: 15px 10px;
   height: 80px;
   width: 80px;
-}
-
-.cont .logo svg g {
-  fill: #242a3a;
 }
 
 .cont .signIn {
@@ -317,6 +313,9 @@
 }
 
 @media screen and (max-width: 981px) {
+  .cont {
+    margin-top: 6.5rem;
+  }
   .loginRow {
     background-image: url("./images/photo-1501696088263-5696c92364bf.png");
     background-size: cover;

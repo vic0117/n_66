@@ -15,7 +15,7 @@ $btnH: 50px;
   position: relative;
   max-width: $contW;
   min-height: 550px;
-  margin: 9.5rem auto;
+  margin: 9.5rem auto 5rem auto;
 
   input,
   button {
@@ -25,15 +25,9 @@ $btnH: 50px;
   }
 
   .logo {
-    svg {
-      padding: 15px 10px;
-      height: 80px;
-      width: 80px;
-
-      g {
-        fill: $primaryColor;
-      }
-    }
+    padding: 15px 10px;
+    height: 80px;
+    width: 80px;
   }
 
   .signIn {
@@ -318,6 +312,9 @@ $btnH: 50px;
 }
 
 @media screen and (max-width: 981px) {
+  .cont {
+    margin-top: 6.5rem;
+  }
   .loginRow {
     background-image: url("./images/photo-1501696088263-5696c92364bf.png");
     background-size: cover;

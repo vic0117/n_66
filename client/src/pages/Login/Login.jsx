@@ -229,9 +229,7 @@ class LoginNew extends React.Component {
         <Container className="cont">
           <Row className="loginRow">
             <div className="signIn">
-              <div className="logo">
-                <Logo height="20" width="20" />
-              </div>
+              <div className="logo" />
               <div className="position-relative">
                 <form
                   className="form sign-in"

@@ -3,12 +3,11 @@ import { Container, Col, Row } from "react-bootstrap";
 import "./HomeAdviser.scss";
 import snowHouse from "./images/bg-snow.jpg";
 import Slider from "react-slick";
-import aurelie from './images/aurelie.jpg'
-import cendrine from './images/cendrine.jpg'
-import emmanuelle from './images/emmanuelle.jpg'
+import aurelie from "./images/aurelie.jpg";
+import cendrine from "./images/cendrine.jpg";
+import emmanuelle from "./images/emmanuelle.jpg";
 
-
-class Adviser extends Component {
+class HomeAdviser extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -21,12 +20,15 @@ class Adviser extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-		autoplaySpeed: 3000,
-		autoplay: true
+      autoplaySpeed: 3000,
+      autoplay: true
     };
 
     return (
-      <Container className="d-flex justify-content-center align-items-center flex-column">
+      <Container
+        className="d-flex justify-content-center align-items-center flex-column"
+        style={{ marginTop: "180px" }}
+      >
         <Row>
           <h6 className="smTitle">定制旅程</h6>
         </Row>
@@ -51,23 +53,30 @@ class Adviser extends Component {
           <Col md={4} className="rightCol">
             <div className="rightAdviser">
               <Slider {...settings}>
-                <div className='qwe'>
-					 <img src={emmanuelle} alt='emmanuelle'/>
+                <div className="qwe">
+                  <img src={emmanuelle} alt="emmanuelle" />
                   <h3>Emmanuelle Revol</h3>
-						<p className='sliderDes1'>挪威 冰島</p>
-						<p className='sliderDes2'>專業的冰島旅遊專家<br></br>帶領過將近100次的冰島團</p>
+                  <p className="sliderDes1">挪威 冰島</p>
+                  <p className="sliderDes2">
+                    專業的冰島旅遊專家<br></br>帶領過將近100次的冰島團
+                  </p>
                 </div>
                 <div>
-					 <img src={cendrine} alt='cendrine'/>
+                  <img src={cendrine} alt="cendrine" />
                   <h3>Cendrine</h3>
-						<p className='sliderDes1'>加拿大 冰島 芬蘭</p>
-						<p className='sliderDes2'>Cendrine在小的時候<br></br>對於戶外活動特別熱衷...</p>
+                  <p className="sliderDes1">加拿大 冰島 芬蘭</p>
+                  <p className="sliderDes2">
+                    Cendrine在小的時候<br></br>對於戶外活動特別熱衷...
+                  </p>
                 </div>
                 <div>
-					 <img src={aurelie} alt='aurelie'/>
+                  <img src={aurelie} alt="aurelie" />
                   <h3>Aurelie</h3>
-						<p className='sliderDes1'>格陵蘭 冰島 阿爾卑斯山</p>
-						<p className='sliderDes2'>Aurelie的童年時光是在博若萊地區的<br></br>葡萄園,櫻桃和石頭之間度過的。</p>
+                  <p className="sliderDes1">格陵蘭 冰島 阿爾卑斯山</p>
+                  <p className="sliderDes2">
+                    Aurelie的童年時光是在博若萊地區的<br></br>
+                    葡萄園,櫻桃和石頭之間度過的。
+                  </p>
                 </div>
               </Slider>
             </div>
@@ -78,4 +87,4 @@ class Adviser extends Component {
   }
 }
 
-export default Adviser;
+export default HomeAdviser;
