@@ -8,17 +8,34 @@ $secColor: #96daf0;
     background-size: cover;
     margin: 9rem 0 9rem 0;
 
-    .sub-title{
+    .sub-title-small{
         color: $secColor;
         text-align: center;
         letter-spacing: 0.4375rem;
+        display: block;
     }
 
-    .main-title{
+    .main-title-small{
         color: $primaryColor;
         text-align: center;
         font-size: 2.5rem;
         margin:  0 0 4.5rem 0;
+        display: block;
+    }
+
+    .sub-title-big{
+        color: $secColor;
+        text-align: center;
+        letter-spacing: 0.4375rem;
+        display: none;
+    }
+
+    .main-title-big{
+        color: $primaryColor;
+        text-align: center;
+        font-size: 2.5rem;
+        margin:  0 0 4.5rem 0;
+        display: none;
     }
 
     .custom-dropdown{
@@ -109,12 +126,16 @@ $secColor: #96daf0;
         height: 640px;
         box-sizing: border-box;
         padding-left: 0px;
-        margin-top: 100px;
+        margin-top: 30px;
     }
 
+
     .right-item{
+        // display: none;
         max-width: 480px;
-        height: 100%;
+        width: 400px;
+        // height: 100%;
+        // margin: auto;
         position: absolute;
         top: 0;
         right: 0;
@@ -130,6 +151,8 @@ $secColor: #96daf0;
     .right-area{
         min-width: 100%;
     }
+
+
 
     .country{
         display: block;
@@ -243,7 +266,6 @@ $secColor: #96daf0;
     .country-name{
         text-decoration: none !important;
         color: black;
-        
     }
 
     .country-name:hover{
@@ -386,6 +408,11 @@ $secColor: #96daf0;
     }
 
     @media screen and (min-width: 1120px){
+
+        .sub-title-big, .main-title-big{
+            display: block ;
+        }
+
         .right-area{
             min-width: 41.666667%;
         }
@@ -397,14 +424,29 @@ $secColor: #96daf0;
 
         .right-item{
             max-width: calc(100% - 80px);
+
+            .item-image{
+                height: 200px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
         }
     }
 
-    @media screen and (max-width: 768px){
 
+    @media screen and (max-width: 1119px){
+        
         .custom-dropdown{
             display: block;
         }
+
+    }
+ 
+    @media screen and (max-width: 768px){
 
         .world-left{
             width: 400px;
@@ -412,6 +454,12 @@ $secColor: #96daf0;
 
         .right-item{
             padding: 20px;
+            right: 50%;
+            transform: translate(50%, 0);
+
+            .stars{
+                margin: 15px 0 0 0;
+            }
         }
 
         .country{

@@ -6,7 +6,7 @@ $borderColor: #74767d;
   position: relative;
   padding: 0;
   height: 100vh;
-  margin: 5rem 0 10rem 0;
+  margin: 5rem 0 5rem 0;
 
   .subtitle {
     color: $secColor;
@@ -193,7 +193,7 @@ $borderColor: #74767d;
   @media screen and(max-width: 992px) {
     
       height: 150vh !important;
-      margin-bottom: 30rem 0 !important;
+      margin-bottom: 0 !important;
     
 
     .BlueBlock {
