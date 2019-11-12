@@ -33,7 +33,7 @@ class App extends Component {
         <Route
           path="/login"
           render={props => (
-            <LoginTest {...props} currentUser={this.state.currentUser} />
+            <LoginNew {...props} currentUser={this.state.currentUser} />
           )}
         />
         <Route
