@@ -9,11 +9,13 @@ $secColor: #96daf0;
   .sub-title {
     color: $secColor;
     margin-bottom: 1rem;
+    letter-spacing: 0.4375rem;
   }
 
   .main-title {
     color: $primaryColor;
-    margin-bottom: 8rem;
+    margin-bottom: 4.5rem;
+    font-size: 2.5rem;
   }
 
   .rectNavyBlue::before {
@@ -43,6 +45,11 @@ $secColor: #96daf0;
     }
 
     .main-slide {
+
+      .slick-dots{
+        display: none;
+      }
+
       .slick-arrow {
         display: none !important;
       }

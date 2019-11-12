@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
 
 //IMAGE SVG
-import { ReactComponent as Logo } from "./images/logo.svg";
+// import { ReactComponent as Logo } from "./images/logo.svg";
 //CSS
 import "./Login.css";
 
@@ -115,7 +115,7 @@ class LoginNew extends React.Component {
     window.addEventListener("resize", () => {
       windowWidth = window.innerWidth;
 
-      if (windowWidth > 981 && wantSignUp == true) {
+      if (windowWidth > 981 && wantSignUp === true) {
         signIn.style.transition = " transform 0s";
         registered.style.transition = " transform 0s";
         mountainBg.style.transition = "opacity 0s";
@@ -133,7 +133,7 @@ class LoginNew extends React.Component {
         mIn.style.transform = "translate(0, 0px)";
       }
 
-      if (windowWidth < 981 && wantSignUp == true) {
+      if (windowWidth < 981 && wantSignUp === true) {
         signIn.style.transition = " transform 0s";
         registered.style.transition = " transform 0s";
         mountainBg.style.transition = "opacity 0s";

@@ -2,21 +2,21 @@
   position: relative;
   padding: 0;
   height: 100vh;
-  margin-top: 5rem;
+  margin: 5rem 0 10rem 0;
 }
 
 .SectionReviewCarousel .subtitle {
   color: #96daf0;
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 0.4375rem;
 }
 
 .SectionReviewCarousel .title {
   color: #242a3a;
   text-align: center;
-  font-weight: 700;
-  letter-spacing: 3px;
-  margin-bottom: 4rem;
+  font-weight: 500;
+  margin-bottom: 4.5rem;
+  font-size: 2.5rem;
 }
 
 .SectionReviewCarousel .ReviewCarouselBox {
@@ -39,6 +39,10 @@
   margin: 0 auto 0 auto;
   max-width: 70%;
   height: 400px;
+}
+
+.SectionReviewCarousel .ReviewCarouselBox .BigSlide .slick-dots {
+  display: none;
 }
 
 .SectionReviewCarousel .ReviewCarouselBox .BigSlide .slick-arrow {
@@ -156,24 +160,7 @@
 }
 
 .SectionReviewCarousel .ReviewCarouselBox .SmallSlide .slick-dots {
-  margin-bottom: 110px;
-  margin-left: 10px;
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
-}
-
-.SectionReviewCarousel .ReviewCarouselBox .SmallSlide .slick-dots button {
-  color: #fff !important;
-}
-
-.SectionReviewCarousel .ReviewCarouselBox .SmallSlide .slick-dots button::before {
-  color: #fff;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.SectionReviewCarousel .ReviewCarouselBox .SmallSlide .slick-dots .slick-active button::before {
-  color: #242a3a !important;
+  display: none;
 }
 
 .SectionReviewCarousel .ReviewCarouselBox .SmallSlide .slick-arrow {
@@ -214,8 +201,9 @@
 }
 
 @media screen and (max-width: 992px) {
-  .SectionReviewCarousel .SectionReviewCarousel {
+  .SectionReviewCarousel {
     height: 150vh !important;
+    margin-bottom: 30rem 0 !important;
   }
   .SectionReviewCarousel .BlueBlock {
     width: 100% !important;

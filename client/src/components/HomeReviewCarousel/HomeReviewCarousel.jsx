@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col } from "react-bootstrap";
-import carouselImg1 from './images/marche-sur-la-glace-de-stockholm-1220.jpg'
-import carouselImg2 from './images/sotckholm-lhiver-1221.jpg'
-import carouselImg3 from './images/stockholm-sous-les-aurores-boreales-1219.jpg'
+
 import './HomeReviewCarousel.css';
 
 class HomeReviewCarousel extends React.Component {
@@ -23,7 +21,7 @@ class HomeReviewCarousel extends React.Component {
 
     render() {
         const bigSettings = {
-            dots: false,
+            
             infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -31,18 +29,11 @@ class HomeReviewCarousel extends React.Component {
             autoplaySpeed: 3000,
             dots: false,
             speed: 800,
-
-            beforeChange: function (currentSlide, nextSlide) {
-                console.log("before change", currentSlide, nextSlide);
-            },
-            afterChange: function (currentSlide) {
-                console.log("after change", currentSlide);
-            }
         };
 
 
         const smallSettings = {
-            dots: false,
+            
             infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -52,12 +43,6 @@ class HomeReviewCarousel extends React.Component {
             autoplaySpeed: 3000,
             dots: false,
             speed: 800,
-            beforeChange: function (currentSlide, nextSlide) {
-                console.log("before change", currentSlide, nextSlide);
-            },
-            afterChange: function (currentSlide) {
-                console.log("after change", currentSlide);
-            }
         };
 
         return (
