@@ -37,49 +37,27 @@ class HomeEarth extends React.Component {
     let cardSelections = document.querySelectorAll('.card-selection');
     let collapse = document.querySelector('.selection-body').parentElement;
 
-    //customDropdown
-    cardSelections.forEach(cardSelection => {
-      cardSelection.addEventListener('click', () => {
-        collapse.classList.toggle('show');
-
-        console.log(cardSelection.dataset.country);
-        
-        rightItems.forEach(rightItem => {
-
-          rightItem.style.opacity = 0;
-
-          if ( cardSelection.dataset.country === rightItem.dataset.country ) {
-            rightItem.style.opacity = 1;
-          }
-        });
-
-        countries.forEach(country=>{
-
-          country.style.opacity = 0;
-
-          if ( cardSelection.dataset.country === country.dataset.country ) {
-            country.style.opacity = 1;
-          }
-        })
-
-
-      })
-    })
-
 
     countries.forEach(country => {
+      country.style.opacity = 0;
       country.addEventListener("mouseover", function () {
 
+        countries.forEach(country=>{
+          country.style.opacity = 0;
+        })
+        
         this.style.opacity = 1;
         mask.style.opacity = .5;
 
         countryLabels.forEach(label => {
+          label.lastElementChild.style.width = "0%";
           if (label.dataset.country === this.dataset.country) {
             label.lastElementChild.style.width = "100%";
           }
         });
 
         rightItems.forEach(rightItem => {
+          rightItem.style.opacity = 0;
           if (rightItem.dataset.country === this.dataset.country) {
             rightItem.style.opacity = 1;
           }
@@ -87,6 +65,7 @@ class HomeEarth extends React.Component {
       });
 
       country.addEventListener("mouseout", function () {
+
         mask.style.opacity = 0;
         this.style.opacity = 0;
 
@@ -105,6 +84,57 @@ class HomeEarth extends React.Component {
         });
       });
     });
+
+    countries.forEach(country => {
+      if(country.dataset.country === "norway"){
+        country.style.opacity = 1;
+      }
+    });
+
+    rightItems.forEach(rightItem => {
+      if (rightItem.dataset.country === "norway") {
+        rightItem.style.opacity = 1;
+      }
+    });
+
+    countryLabels.forEach(label => {
+      if (label.dataset.country === "norway") {
+        label.lastElementChild.style.width = "100%";
+      }
+    });
+
+
+    //customDropdown
+    cardSelections.forEach(cardSelection => {
+      cardSelection.addEventListener('click', () => {
+        collapse.classList.toggle('show');
+
+        // console.log(cardSelection.dataset.country);
+
+        rightItems.forEach(rightItem => {
+
+          rightItem.style.opacity = 0;
+
+          if (cardSelection.dataset.country === rightItem.dataset.country) {
+            rightItem.style.opacity = 1;
+          }
+        });
+
+        countries.forEach(country => {
+
+          country.style.opacity = 0;
+
+          if (cardSelection.dataset.country === country.dataset.country) {
+            country.style.opacity = 1;
+          }
+        })
+
+
+      })
+    })
+
+
+
 
     countryLabels.forEach(countryLabel => {
       countryLabel.addEventListener("mouseover", function () {
@@ -127,8 +157,8 @@ class HomeEarth extends React.Component {
     return (
       <>
         <section className="planet-section">
-          <h6 className="sub-title">我們的</h6>
-          <h1 className="main-title">大本營</h1>
+          <h6 className="sub-title-small">我們的</h6>
+          <h1 className="main-title-small">大本營</h1>
 
           <Container fluid className="my-container">
             <Row className="pb-5">
@@ -160,6 +190,8 @@ class HomeEarth extends React.Component {
 
               <div className="col-sm-4 col-lg-5 right-area">
                 <div className="world-right mx-sm-auto">
+                  
+
                   {/* 俄羅斯 */}
                   <div className="right-item" id="russiaCard" data-country="russia">
                     <div className="item-image px-4">
