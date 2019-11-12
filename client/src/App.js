@@ -8,6 +8,7 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import TripDesNav from "./components/TripDesNav/TripDesNav";
 import CommentHeader from "./components/CommentHeader/CommentHeader";
+import LoginNew from "./pages/Login/Login";
 
 // test
 import RegisterTest from "./components/RegisterTest/RegisterTest";
@@ -27,22 +28,23 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route path="/comments" component={Comment} />
-        <Route
-          path="/login"
-          render={props => (
-            <LoginTest {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route
-          path="/account"
-          render={props => (
-            <DashBoard {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route path="/" exact component={Home} />
-      </Switch>
+      // <Switch>
+      //   <Route path="/comments" component={Comment} />
+      //   <Route
+      //     path="/login"
+      //     render={props => (
+      //       <LoginTest {...props} currentUser={this.state.currentUser} />
+      //     )}
+      //   />
+      //   <Route
+      //     path="/account"
+      //     render={props => (
+      //       <DashBoard {...props} currentUser={this.state.currentUser} />
+      //     )}
+      //   />
+      //   <Route path="/" exact component={Home} />
+      // </Switch>
+      <LoginNew />
     );
   }
 }
