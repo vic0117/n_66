@@ -14,9 +14,10 @@ const db = mysql.createConnection({
 
 bluebird.promisifyAll(db);
 
-router.post("/register", (req, res) => {
-  let user = { loggedIn: false, msg: "" };
 
+router.post("/register", (req, res) => {
+
+  let user = { loggedIn: false, msg: "" };
   // 沒輸入email或password時
   if (!req.body.email || !req.body.password) {
     user.msg = "資料不足";
@@ -50,14 +51,13 @@ router.post("/register", (req, res) => {
       }
     })
     .then(results => {
-      console.log("fuck", results);
       // 註冊成功, 轉成jwt
       if (results.length > 0) {
         user.loggedIn = true;
         user.msg = "登入成功";
         user.u_id = results[0].u_id;
         user.email = results[0].email;
-        jwt.sign({ user }, "secreteKey", (err, token) => {
+        jwt.sign({ user }, "secretKey", (err, token) => {
           res.json({
             token: token,
             loggedIn: true

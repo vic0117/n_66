@@ -90,7 +90,9 @@ class DashBoard extends Component {
     };
     fetch(`http://localhost:3001/members_edit/${currentUser.u_id}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(info)
     })
       .then(response => {
@@ -123,7 +125,10 @@ class DashBoard extends Component {
     console.log(passwordInfo);
     fetch(`http://localhost:3001/members_change_password/${currentUser.u_id}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token")
+      },
       body: JSON.stringify(passwordInfo)
     })
       .then(response => {

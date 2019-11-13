@@ -10,10 +10,6 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 
-// test
-// import RegisterTest from "./components/RegisterTest/RegisterTest";
-// import LoginTest from "./components/LoginTest/LoginTest";
-
 class App extends Component {
   state = {};
 

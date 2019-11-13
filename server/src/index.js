@@ -78,6 +78,26 @@ app.use((req, res) => {
   res.send("404 - Can not found page");
 });
 
+// Verify Token
+// function verifyToken(req, res, next) {
+//   // Get auth header value
+//   const bearerHeader = req.headers["authorization"];
+//   // Check if bearer is undefined
+//   if (typeof bearerHeader !== "undefined") {
+//     // Split at the space
+//     const bearer = bearerHeader.split(" ");
+//     // Get Token from array
+//     const bearerToken = bearer[1];
+//     // Set the token
+//     req.token = bearerToken;
+//     // Next middleware
+//     next();
+//   } else {
+//     //Forbidden
+//     res.json("forbidden");
+//   }
+// }
+
 app.listen(3001, function() {
   console.log("server 3001 started");
 });

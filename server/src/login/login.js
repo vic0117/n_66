@@ -27,7 +27,7 @@ router.post("/login", (req, res) => {
           user.msg = "登入成功";
           user.u_id = results[0].u_id;
           user.email = results[0].email;
-          jwt.sign({ user }, "secreteKey", (err, token) => {
+          jwt.sign({ user }, "secretKey", (err, token) => {
             res.json({
               token: token,
               loggedIn: true
