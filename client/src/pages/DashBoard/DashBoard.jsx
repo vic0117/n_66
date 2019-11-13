@@ -109,12 +109,16 @@ class DashBoard extends Component {
       });
   };
 
+  handlePasswordSubmit = async e => {
+    e.preventDefault();
+    console.log("submitted");
+  };
+
   render() {
     const { userInfo } = this.state;
     return (
       <>
-        <NavBar feedback={this.state.feedback} />
-
+        <NavBar />
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">
@@ -141,7 +145,15 @@ class DashBoard extends Component {
                       />
                     )}
                   />
-                  <Route path="/account" component={MemberPassword} />
+                  <Route
+                    path="/account"
+                    render={() => (
+                      <MemberPassword
+                        onChange={this.handleInfoChange}
+                        onSubmit={this.handlePasswordSubmit}
+                      />
+                    )}
+                  />
                 </>
               </Switch>
             </Col>
