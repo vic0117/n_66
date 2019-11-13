@@ -14,9 +14,7 @@ const db = mysql.createConnection({
 
 bluebird.promisifyAll(db);
 
-
 router.post("/register", (req, res) => {
-
   let user = { loggedIn: false, msg: "" };
   // 沒輸入email或password時
   if (!req.body.email || !req.body.password) {

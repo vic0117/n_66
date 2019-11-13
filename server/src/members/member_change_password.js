@@ -34,6 +34,7 @@ function verifyToken(req, res, next) {
 }
 
 router.post("/members_change_password/:id?", verifyToken, (req, res) => {
+  // jwt authentication
   jwt.verify(req.token, "secretKey", (err, authData) => {
     if (err) {
       res.json("token is not match");
