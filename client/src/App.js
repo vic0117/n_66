@@ -8,6 +8,7 @@ import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import Logout from "./components/Logout/Logout";
 
 // test
 // import RegisterTest from "./components/RegisterTest/RegisterTest";
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <Switch>
         <Route path="/comments" component={Comment} />
+        <Route path="/logout" component={Logout} />
         <Route
           path="/login"
           render={props => (
@@ -41,7 +43,13 @@ class App extends Component {
             <DashBoard {...props} currentUser={this.state.currentUser} />
           )}
         />
-        <Route path="/" exact component={Home} />
+        <Route
+          path="/"
+          exact
+          render={props => (
+            <Home {...props} currentUser={this.state.currentUser} />
+          )}
+        />
       </Switch>
     );
   }

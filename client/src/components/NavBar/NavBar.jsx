@@ -4,6 +4,8 @@ import { Nav, Breadcrumb } from "react-bootstrap";
 import { ReactComponent as Logo } from "./images/logo.svg";
 import { ReactComponent as User } from "./images/user.svg";
 import { ReactComponent as Cart } from "./images/cart.svg";
+import { ReactComponent as Logout } from "./images/logout.svg";
+
 // Routes
 import { Link } from "react-router-dom";
 import "./NavBar.css";
@@ -62,6 +64,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <>
         <div className="navbar-container d-flex align-items-center ">
@@ -103,6 +106,15 @@ class NavBar extends React.Component {
                 <span>我們的理念</span>
                 <div className="blue-line"></div>
               </Nav.Link>
+
+              {currentUser && (
+                <>
+                  <Nav.Link className="icon-container" href="/logout">
+                    <Logout height="20" width="20" className="logout-icon" />
+                  </Nav.Link>
+                </>
+              )}
+
               <Nav.Link className="icon-container" href="/account">
                 <User height="20" width="20" className="user-icon" />
               </Nav.Link>

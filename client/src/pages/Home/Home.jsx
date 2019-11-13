@@ -13,7 +13,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <HomeNavBar />
+        <HomeNavBar currentUser={this.props.currentUser}/>
         <HomeMainCarousel />
         <HomeFilter />
         <HomeTravelCarousel />

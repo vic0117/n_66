@@ -82,6 +82,14 @@ body {
   fill: #fff;
 }
 
+.navbar-container .icon-container:hover .cart-icon {
+  fill: #fff;
+}
+
+.navbar-container .icon-container:hover .logout-icon {
+  fill: #fff;
+}
+
 .navbar-container .user-icon {
   margin: auto;
   -webkit-transition: 0.3s;
@@ -89,6 +97,12 @@ body {
 }
 
 .navbar-container .cart-icon {
+  margin: auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.navbar-container .logout-icon {
   margin: auto;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -211,7 +225,7 @@ body {
   color: #242a3a;
 }
 
-@media screen and (max-width: 858px) {
+@media screen and (max-width: 900px) {
   .navbar-container .navBtn {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
@@ -222,7 +236,7 @@ body {
   }
 }
 
-@media screen and (min-width: 859px) {
+@media screen and (min-width: 900px) {
   .navbar-container .right-menu {
     left: 100%;
   }

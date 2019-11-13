@@ -7,13 +7,14 @@ import { Link } from "react-router-dom";
 // import DashBoard from "../../page/DashBoard/DashBoard";
 // import Home from "../../page/Home/Home";
 //CSS
-import './HomeNavBar.css';
+import "./HomeNavBar.css";
 
 //SIGNAL
 import Logo from "./images/logo.svg";
 import email from "./images/email.svg";
 import user from "./images/user.svg";
 import phone from "./images/phone.svg";
+import signIn from "./images/sign-in-alt-solid.svg";
 
 class HomeNavBar extends React.Component {
   constructor() {
@@ -69,6 +70,7 @@ class HomeNavBar extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <>
         <div className="n66navbar d-flex">
@@ -88,12 +90,34 @@ class HomeNavBar extends React.Component {
                 className=" d-flex align-items-center nav_top_item"
               >
                 <img className="user" src={user} alt="user" />
-                客戶專區
+                會員專區
               </Link>
               <a href="#6" className=" d-flex align-items-center nav_top_item">
                 <img className="phone" src={phone} alt="phone" />
                 聯繫我們
               </a>
+              {!currentUser && (
+                <>
+                  <Link
+                    to="/login"
+                    className=" d-flex align-items-center nav_top_item"
+                  >
+                    <img className="phone" src={signIn} alt="phone" />
+                    會員登入
+                  </Link>
+                </>
+              )}
+              {currentUser && (
+                <>
+                  <Link
+                    to="/logout"
+                    className=" d-flex align-items-center nav_top_item"
+                  >
+                    <img className="phone" src={signIn} alt="phone" />
+                    會員登出
+                  </Link>
+                </>
+              )}
             </div>
 
             <div className="ml-auto d-flex nav-bottom">
@@ -121,17 +145,15 @@ class HomeNavBar extends React.Component {
             </div>
           </div>
 
-
           <a
             className="n66-login-btn ml-auto d-flex justify-content-center align-items-center"
-            href="#56" 
+            href="#56"
             role="button"
           >
             <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
               <img src={user} alt="user" />
             </div>
           </a>
-
 
           <a
             className="n66toggler  d-flex justify-content-center align-items-center"

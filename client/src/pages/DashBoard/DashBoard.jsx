@@ -150,7 +150,7 @@ class DashBoard extends Component {
     const { userInfo } = this.state;
     return (
       <>
-        <NavBar />
+        <NavBar currentUser={this.props.currentUser} />
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">
