@@ -34,13 +34,14 @@ function verifyToken(req, res, next) {
 }
 
 router.post("/members_change_password/:id?", verifyToken, (req, res) => {
+  let data = { success: false, msg: { type: "danger", text: "" } };
   // jwt authentication
   jwt.verify(req.token, "secretKey", (err, authData) => {
     if (err) {
-      res.json("token is not match");
+      data.msg.text = "權限不足";
+      res.json(data);
     } else {
       console.log("req.body", req.body.password);
-      let data = { success: false, msg: { type: "danger", text: "" } };
 
       //   沒輸入新舊password時;
       if (!req.body.password || !req.body.new_password) {
@@ -55,7 +56,6 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
             console.log("results", results);
             const sql_c = `UPDATE members_list SET password=? WHERE u_id= ${req.params.id}`;
             return db.queryAsync(sql_c, [req.body.new_password]);
-            // res.json("成功找到密碼");
           }
           data.success = false;
           data.msg.text = "密碼錯誤";
