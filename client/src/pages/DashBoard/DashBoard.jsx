@@ -48,15 +48,10 @@ class DashBoard extends Component {
       this.props.history.push("/login"); // 暫時先跳轉首頁
     }
     const { currentUser } = this.state;
-
     const { data: userInfo } = await axios.get(
       "http://localhost:3001/members/" + currentUser.u_id
     );
-    console.log(userInfo);
-    // const userInfo_1 = {...this.state};
-
     this.setState({ userInfo: userInfo.rows[0] });
-    console.log(this.state);
   }
 
   handleInfoChange = e => {
