@@ -61,6 +61,9 @@ app.use(members);
 const member_edit = require("./members/members_edit");
 app.use(member_edit);
 
+const member_change_password = require("./members/member_change_password");
+app.use(member_change_password);
+
 const register = require("./login/register");
 app.use(register);
 

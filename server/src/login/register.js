@@ -16,7 +16,7 @@ bluebird.promisifyAll(db);
 
 router.post("/register", (req, res) => {
   let user = { loggedIn: false, msg: "" };
-  
+
   // 沒輸入email或password時
   if (!req.body.email || !req.body.password) {
     user.msg = "資料不足";
@@ -50,7 +50,7 @@ router.post("/register", (req, res) => {
       }
     })
     .then(results => {
-      console.log('fuck',results);
+      console.log("fuck", results);
       // 註冊成功, 轉成jwt
       if (results.length > 0) {
         user.loggedIn = true;

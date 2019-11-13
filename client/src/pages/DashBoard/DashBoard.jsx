@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Toast } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Route, Switch } from "react-router-dom";
@@ -23,6 +23,7 @@ class DashBoard extends Component {
       u_id: "",
       email: "",
       password: "",
+      new_password: "",
       first_name_zh: "",
       last_name_zh: "",
       first_name_en: "",
@@ -57,7 +58,10 @@ class DashBoard extends Component {
     const { data: userInfo } = await axios.get(
       "http://localhost:3001/members/" + currentUser.u_id
     );
-    this.setState({ userInfo: userInfo.rows[0] });
+    const info = { ...userInfo.rows[0] };
+    info.new_password = "";
+    this.setState({ userInfo: info });
+    console.log(this.state);
   }
 
   handleInfoChange = e => {
@@ -111,7 +115,35 @@ class DashBoard extends Component {
 
   handlePasswordSubmit = async e => {
     e.preventDefault();
-    console.log("submitted");
+    const { currentUser } = this.state;
+    let passwordInfo = {
+      password: this.state.userInfo.password,
+      new_password: this.state.userInfo.new_password
+    };
+    console.log(passwordInfo);
+    fetch(`http://localhost:3001/members_change_password/${currentUser.u_id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(passwordInfo)
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        // this.setState({ feedback: data });
+        // if (this.state.feedback.success) {
+        //   toast.success(this.state.feedback.msg.text);
+        // } else {
+        //   toast.error(this.state.feedback.msg.text);
+        // }
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
 
   render() {

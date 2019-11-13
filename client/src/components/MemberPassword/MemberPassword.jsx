@@ -24,14 +24,21 @@ class MemberPassword extends Component {
                 <p>須包含至少8個字符，並使用字母與數字組合</p>
                 <Form.Group className="width-300">
                   <Form.Label className="text-align-left">現有密碼</Form.Label>
-                  <Form.Control className="my-2" type="password" />
+                  <Form.Control
+                    className="my-2"
+                    type="password"
+                    name="password"
+                    onChange={this.props.onChange}
+                  />
                 </Form.Group>
                 <Form.Group className="width-300 mb-5">
-                  <Form.Label className="text-align-left">新密碼 </Form.Label>
+                  <Form.Label className="text-align-left">新密碼</Form.Label>
                   <Form.Control
                     className="my-2 mb-3"
                     style={{ marginBottom: "1rem" }}
                     type="password"
+                    name="new_password"
+                    onChange={this.props.onChange}
                     placeholder="更改密碼"
                   />
                   <Form.Control
