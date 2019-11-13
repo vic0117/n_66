@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import jwtDecode from "jwt-decode";
 import { Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
+
 //Components
 import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
-// import TripDesNav from "./components/TripDesNav/TripDesNav";
-// import CommentHeader from "./components/CommentHeader/CommentHeader";
 import Login from "./pages/Login/Login";
 
 // test

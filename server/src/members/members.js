@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 });
 
 router.get("/members/:id?", (req, res) => {
-  console.log("test", req.params);
+  // console.log("req.params", req.params);
   const sql = "SELECT * FROM `members_list` WHERE u_id = ?";
   db.query(sql, [req.params.id], (error, results, fields) => {
     if (error) throw error;

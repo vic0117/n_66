@@ -10,7 +10,6 @@ import "./NavBar.css";
 class NavBar extends React.Component {
   state = {};
 
-  
   componentDidMount() {
     // let navbar = document.querySelector(".navbar-container");
     let toggler = document.querySelector(".navBtn");
@@ -112,7 +111,6 @@ class NavBar extends React.Component {
               </Nav.Link>
             </Nav>
           </div>
-
           <Breadcrumb className="mb-5">
             <Breadcrumb.Item href="#">66N</Breadcrumb.Item>
             <Breadcrumb.Item

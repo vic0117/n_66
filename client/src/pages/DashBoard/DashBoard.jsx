@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Toast } from "react-bootstrap";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { Route, Switch } from "react-router-dom";
 // Componensts
 import NavBar from "../../components/NavBar/NavBar";
 import MemberLeftMenu from "../../components/MemberLeftMenu/MemberLeftMenu";
@@ -12,7 +14,7 @@ import MemberCoupon from "../../components/MemberCoupon/MemberCoupon";
 import MemberCommentList from "../../components/MemberCommentList/MemberCommentList";
 import Footer from "../../components/Footer/Footer";
 
-import { Route, Switch } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import "./DashBoard.css";
 
 class DashBoard extends Component {
@@ -34,6 +36,10 @@ class DashBoard extends Component {
       address: "",
       tel: "",
       avatar: ""
+    },
+    feedback: {
+      success: "",
+      msg: { type: "", text: "" }
     }
   };
 
@@ -91,6 +97,12 @@ class DashBoard extends Component {
       })
       .then(data => {
         console.log(data);
+        this.setState({ feedback: data });
+        if (this.state.feedback.success) {
+          toast.success(this.state.feedback.msg.text);
+        } else {
+          toast.error(this.state.feedback.msg.text);
+        }
       })
       .catch(function(err) {
         console.log(err);
@@ -101,7 +113,8 @@ class DashBoard extends Component {
     const { userInfo } = this.state;
     return (
       <>
-        <NavBar />
+        <NavBar feedback={this.state.feedback} />
+
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">
@@ -132,6 +145,7 @@ class DashBoard extends Component {
                 </>
               </Switch>
             </Col>
+            <ToastContainer />
           </Row>
         </div>
         <Footer />
