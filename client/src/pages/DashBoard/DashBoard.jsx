@@ -134,12 +134,12 @@ class DashBoard extends Component {
       })
       .then(data => {
         console.log(data);
-        // this.setState({ feedback: data });
-        // if (this.state.feedback.success) {
-        //   toast.success(this.state.feedback.msg.text);
-        // } else {
-        //   toast.error(this.state.feedback.msg.text);
-        // }
+        this.setState({ feedback: data });
+        if (this.state.feedback.success) {
+          toast.success(this.state.feedback.msg.text);
+        } else {
+          toast.error(this.state.feedback.msg.text);
+        }
       })
       .catch(function(err) {
         console.log(err);
