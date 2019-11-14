@@ -21,9 +21,9 @@
   display: block;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 35px;
   height: 570px;
-  width: 400px;
+  width: 35%;
   background-color: #242a3a;
 }
 
@@ -31,16 +31,15 @@
   height: 570px;
   width: 100%;
   color: #242a3a;
-  overflow-x: hidden;
   position: relative;
 }
 
 .travelCarouselContainer .rectNavyBlue .slider-container {
   position: absolute;
-  width: 95%;
-  margin-top: 5%;
+  width: 80%;
+  margin-top: 100px;
   margin-right: 0;
-  margin-left: 20%;
+  margin-left: 30%;
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .slick-dots {
@@ -52,23 +51,27 @@
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .slick-track {
-  height: 405px;
+  height: 570px;
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .tavel-card {
   border: none;
+  border-radius: 0;
   margin-left: 20px;
   margin-right: 20px;
-  -webkit-box-shadow: 3px 3px 8px dimgray;
-          box-shadow: 3px 3px 8px dimgray;
+  -webkit-box-shadow: 3px 3px 8px rgba(105, 105, 105, 0.616);
+          box-shadow: 3px 3px 8px rgba(105, 105, 105, 0.616);
   -webkit-transition: 0.3s;
   transition: 0.3s;
   text-decoration: none !important;
+  height: 405px;
+  width: 319px;
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-img-top {
   position: relative;
   overflow: hidden;
+  border-radius: 0;
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-img-top img {
@@ -142,7 +145,7 @@
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
   position: absolute;
-  bottom: 20px;
+  bottom: 30%;
   left: -15%;
   width: 90px;
 }
@@ -219,16 +222,47 @@
   content: url("./images/svg/arrow-right-solid.svg");
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: 1728px) {
   .travelCarouselContainer .slider-container {
     width: 90% !important;
+    margin-left: 30% !important;
+  }
+}
+
+@media screen and (max-width: 1530px) {
+  .travelCarouselContainer .slider-container {
+    width: 80% !important;
+    margin-left: 25% !important;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  .travelCarouselContainer .slider-container {
+    width: 100% !important;
+    margin-left: 20% !important;
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .travelCarouselContainer .slider-container {
+    width: 80% !important;
+    margin-left: 20% !important;
   }
 }
 
 @media screen and (max-width: 678px) {
+  .travelCarouselContainer .main-title {
+    margin-bottom: 0;
+  }
   .travelCarouselContainer .slider-container {
-    width: 60% !important;
-    margin: auto;
+    width: 100% !important;
+    left: 50%;
+    -webkit-transform: translate(-38%, 0);
+            transform: translate(-38%, 0);
+    margin-left: 0% !important;
+  }
+  .travelCarouselContainer .slider-container .tavel-card {
+    margin: 0 20px 0 20px !important;
   }
   .travelCarouselContainer .sub-slide {
     display: none;
@@ -238,7 +272,7 @@
     display: block;
     position: absolute;
     left: 0;
-    top: 20%;
+    top: 30%;
     height: 400px;
     width: 100%;
     background-color: #242a3a;

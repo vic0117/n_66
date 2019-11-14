@@ -444,6 +444,14 @@ $secColor: #96daf0;
             display: block;
         }
 
+        .world-right{
+            // border: 1px solid #222222;
+
+            .right-item{
+                right: 50%;
+                transform: translate(50%,0);
+            }
+        }
     }
  
     @media screen and (max-width: 768px){

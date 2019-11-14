@@ -15,7 +15,7 @@ import SliderPrice from '../../components/TripLeftmenu/SliderPrice';
 import filterImg from './img/filter.svg';
 
 //CSS
-import "./ProductLeftMenu.scss";
+import "./ProductLeftMenu.css";
 
 import banner from './img/header22.jpg';
 
