@@ -22,18 +22,12 @@ class NavBar extends React.Component {
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
 
-    //   window.onresize = ()=>{
-    //     if(window.innerWidth >= 850){
-    //         rightMenu.style.left = '100%';
-    //         toggler.style.backgroundColor = 'transparent';
-    //         navbar.style.backgroundColor = 'transparent';
-    //         toggler.style.borderLeftColor = '#fff';
-    //         upLine.style.transform = 'rotate(0)';
-    //         downLine.style.transform = 'rotate(0)';
-    //         middleLine.style.opacity = '1';
-    //     }
+      window.onresize = ()=>{
+        if(window.innerWidth >= 850){
+            rightMenu.style.left = '100%';
+        }
 
-    // }
+    }
 
     toggler.onclick = () => {
       rightMenuIsShow = !rightMenuIsShow;
