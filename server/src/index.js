@@ -3,11 +3,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const fs = require("fs");
-const upload = multer({ dest: "tmp_upload" });
+const upload = multer({ dest: "tmp_uploads" });
 const mysql = require("mysql");
 const moment = require("moment-timezone");
 const session = require("express-session");
 const cors = require("cors");
+
 const db = mysql.createConnection({
   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
@@ -30,6 +31,7 @@ const corsOptions = {
   }
 };
 
+app.use('/static', express.static('public'));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -55,17 +57,21 @@ const login = require("./login/login");
 app.use(login);
 
 // member
+const register = require("./login/register");
+app.use(register);
+
 const members = require("./members/members");
 app.use(members);
 
-const member_edit = require("./members/members_edit");
-app.use(member_edit);
+const members_upload_file = require("./members/members_upload_file");
+app.use(members_upload_file);
 
-const member_change_password = require("./members/member_change_password");
-app.use(member_change_password);
 
-const register = require("./login/register");
-app.use(register);
+const members_edit = require("./members/members_edit");
+app.use(members_edit);
+
+const members_change_password = require("./members/members_change_password");
+app.use(members_change_password);
 
 // trips
 const trips = require("./trips/trips");

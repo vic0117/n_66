@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import avatar from "./images/avatar.png";
+import axios from "axios";
 import { ReactComponent as Users } from "./images/users.svg";
 import { ReactComponent as Order } from "./images/order.svg";
 import { ReactComponent as Like } from "./images/like.svg";
@@ -10,12 +10,58 @@ import "./MemberLeftMenu.css";
 //
 
 class MemberLeftMenu extends Component {
-  state = {};
+  state = { my_file: "" };
+
+  selUploadHandler = () => {
+    document.querySelector("#my_file").click();
+  };
+
+  fileSelectedHandler = async e => {
+    e.preventDefault();
+    const { currentUser } = this.props;
+    await this.setState({ my_file: e.target.files[0] });
+    const fd = new FormData();
+    fd.append("my_file", this.state.my_file);
+    // fetch(
+
+    let config = {
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    };
+    axios
+      .post(
+        `http://localhost:3001/members_upload_file/${currentUser.user.u_id}`,
+        fd,
+        config
+      )
+      .then(res => {
+        console.log(res);
+      });
+  };
+
   render() {
+    const { userInfo } = this.props;
     return (
       <div className="member-left-menu-sticky">
         <Card className="member-left-menu-container mb-4 ">
-          <Card.Img variant="top" src={avatar} className="avatar" />
+          <form className="d-flex" encType="multipart/form-data" method="POST">
+            <input
+              type="file"
+              id="my_file"
+              name="my_file"
+              style={{ display: "none" }}
+              onChange={this.fileSelectedHandler}
+            />
+            <Card.Img
+              variant="top"
+              src={`http://localhost:3001/static/images/${userInfo.avatar}`}
+              className="avatar"
+              onClick={this.selUploadHandler}
+            />
+          </form>
+
           <Card.Body>
             <div className="text-align-center card-body-1">
               <Card.Title>

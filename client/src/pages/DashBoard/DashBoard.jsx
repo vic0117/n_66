@@ -91,7 +91,8 @@ class DashBoard extends Component {
     fetch(`http://localhost:3001/members_edit/${currentUser.u_id}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token")
       },
       body: JSON.stringify(info)
     })
@@ -159,7 +160,10 @@ class DashBoard extends Component {
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">
-              <MemberLeftMenu />
+              <MemberLeftMenu
+                userInfo={this.state.userInfo}
+                currentUser={this.props.currentUser}
+              />
             </Col>
             <Col className="col-xl-9 col-md-8 member-right-section">
               <Switch>

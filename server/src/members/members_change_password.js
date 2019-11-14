@@ -49,8 +49,9 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
         res.json(data);
       }
 
-      const sql_r = `SELECT COUNT(*) AS cnt FROM members_list WHERE password=${req.body.password} AND u_id= ${req.params.id}`;
-      db.queryAsync(sql_r)
+      const sql_r =
+        "SELECT COUNT(*) AS cnt FROM members_list WHERE password=? AND u_id=?";
+      db.queryAsync(sql_r, [req.body.password, req.params.id])
         .then(results => {
           if (results[0].cnt > 0) {
             console.log("results", results);
