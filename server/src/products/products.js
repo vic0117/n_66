@@ -7,20 +7,18 @@ const bluebird = require('bluebird');
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 
-router.get("/product_list", (req, res) => {
+router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `products`";
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
-    console.log('aaa');
-    // res.send('aaa');
-    res.json( results);
+    res.json(results);
   });
-  
+  // res.send('aaaa')
 })
 
 router.get("/products/:id", (req, res) => {

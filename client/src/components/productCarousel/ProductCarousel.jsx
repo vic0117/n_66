@@ -41,7 +41,6 @@ sliders2() {
           <div key={item} className="pic2">
               <img alt="image" src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} />
           </div>
-      
   ));
 }
 
