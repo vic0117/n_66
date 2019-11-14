@@ -32,17 +32,7 @@ router.get("/products/:id", (req, res) => {
   
 });
    
-//細節
-// router.get('/products/:id',(req,res,next)=>{
-// 	let id=req.params.id;
-	 
-// 	const sql=`SELECT * FROM trip_list WHERE product_id=${id}`
-// 	db.query(sql,(err,results,fields)=>{
-// 		 if(err) throw err; 
-// 		//  console.log(results) 
-// 		 res.send(JSON.stringify(results))
-// 	}) 
-// });
+
 
 //搜尋
 // router.post('/products/search',(req,res,next)=>{

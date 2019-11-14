@@ -1,10 +1,10 @@
 $primaryColor: #242A3A;
 $secColor: #96DAF0;
 
-.checkOutSection{
-    margin-top: 120px;
-    position: relative;
 
+.cartSection{
+    padding-top: 104px;
+    
     .cartItem{
         display: flex !important;
         align-items: center;
@@ -120,12 +120,38 @@ $secColor: #96DAF0;
         }
     }
 
-
-    .orderRight{
+    .userCard{
         position: sticky;
-        height: 250px;
-        top: 120px;
-        right: 0%;
+        top: 104px;
 
+        p{
+            text-align: center;
+            margin: 20px auto 0;
+            
+        }
+
+        .toList{
+            margin: 20px auto 0;
+            display: block;
+            width: 80%;
+            color: #fff;
+            background-color: $secColor;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+
+        .checkOut{
+            margin: 30px auto 0;
+            display: block;
+            width: 80%;
+            color: #fff;
+            background-color: $primaryColor;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 1rem;
+        }
     }
 }

@@ -43,7 +43,7 @@
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .slick-dots {
-  display: none;
+  display: none !important;
 }
 
 .travelCarouselContainer .rectNavyBlue .main-slide .slick-arrow {
