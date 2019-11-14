@@ -142,7 +142,11 @@ class DashBoard extends Component {
         console.log(data);
         this.setState({ feedback: data });
         if (this.state.feedback.success) {
+          function pageReload() {
+            window.location = "/account";
+          }
           toast.success(this.state.feedback.msg.text);
+          window.setTimeout(pageReload, 3000);
         } else {
           toast.error(this.state.feedback.msg.text);
         }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { ReactComponent as Users } from "./images/users.svg";
 import { ReactComponent as Order } from "./images/order.svg";
 import { ReactComponent as Like } from "./images/like.svg";
@@ -37,6 +38,15 @@ class MemberLeftMenu extends Component {
         config
       )
       .then(res => {
+        if (res.data.success) {
+          function pageReload() {
+            window.location = "/account";
+          }
+          toast.success(res.data.msg.text);
+          window.setTimeout(pageReload, 3000);
+        } else {
+          toast.error(res.data.msg.text);
+        }
         console.log(res);
       });
   };

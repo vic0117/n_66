@@ -37,7 +37,8 @@ router.post(
         data.msg.type = "primary";
         data.msg.text = "修改成功";
       } else {
-        data.msg.text = "資料沒有修改";
+        data.success = false;
+        data.msg.text = "圖片沒有修改";
       }
       res.json(data);
     });
