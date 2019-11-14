@@ -126,11 +126,11 @@ class HomeNavBar extends React.Component {
                 <h6>探險的開始</h6>
                 <div className="blue-line"></div>
               </a>
-              <a href="#deets" className="navItem">
+              <Link to="/products" className="navItem">
                 <h6>裝備與器具</h6>
                 <h6>戶外用品</h6>
                 <div className="blue-line"></div>
-              </a>
+              </Link>
               <Link to="/comments" className="navItem">
                 <h6>意見與反饋</h6>
                 <h6>客戶評論</h6>

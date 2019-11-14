@@ -10,7 +10,7 @@ const session = require("express-session");
 const cors = require("cors");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
   user: "root",
   password: "root",
@@ -76,6 +76,10 @@ app.use(members_change_password);
 // trips
 const trips = require("./trips/trips");
 app.use(trips);
+
+//products
+const products = require('./products/products');
+app.use(products);
 
 // 404
 app.use((req, res) => {
