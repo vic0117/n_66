@@ -19,7 +19,7 @@ router.post(
   upload.single("my_file"),
   (req, res) => {
     let data = { success: false, msg: { type: "danger", text: "" } };
-    console.log("req.file", req.file);
+    // console.log("req.file", req.file)
     if (req.file && req.file.originalname) {
       if (/\.(jpg|jpeg|png)$/i.test(req.file.originalname)) {
         fs.createReadStream(req.file.path).pipe(
