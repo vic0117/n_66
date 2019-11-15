@@ -23,6 +23,8 @@ class ProductList extends React.Component {
                 // return console.log(response);
             })
             .then(json => {
+
+                // console.log(json);
                 this.setState({
                     ProductsData: json,
                 });

@@ -24,21 +24,20 @@ class ProductCarousel extends React.Component {
   }
 
 
-  sliders() {
+sliders() {
     return this.props.pics.map(item => (
-        
             <div key={item} className="pic">
-                <img alt="image" src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} />
+                <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} 
+                alt={this.props.data[0].product_file_name} />
             </div>
-        
     ));
 }
 
 sliders2() {
   return this.props.pics.map(item => (
-      
           <div key={item} className="pic2">
-              <img alt="image" src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} />
+              <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} 
+              alt={this.props.data[0].product_file_name}  />
           </div>
   ));
 }
@@ -76,8 +75,6 @@ sliders2() {
           <Row className="mt-5 carouselsRow">
             <Col md={8} className="d-flex justify-content-center">
               <div className="mr-5 sideCarousel">
-
-                
                   <Slider
                     {...thumbSettings}
                     className="thumbCarousel"
@@ -125,21 +122,22 @@ sliders2() {
                   <div>
                     <h4>規格說明</h4>
                     <Tabs
+                      className="text-left"
                       defaultActiveKey="profile"
                       id="uncontrolled-tab-example"
                     >
                       <Tab eventKey="home" title="材質">
-                        <p>
+                        <p className="text-left">
                           {item.product_material}
                         </p>
                       </Tab>
                       <Tab eventKey="profile" title="內容">
-                        <p>
+                        <p className="text-left">
                           {JSON.parse(item.product_intro)[0]}
                         </p>
                       </Tab>
                       <Tab eventKey="contact" title="重量">
-                        <p>{item.product_weight}</p>
+                        <p className="text-left">{item.product_weight}</p>
                       </Tab>
                     </Tabs>
                   </div>
@@ -206,7 +204,6 @@ sliders2() {
             </Col>
           </Row>
         </Container>
-        
       </>
     );
   }

@@ -4,25 +4,26 @@ const mysql = require("mysql");
 const moment = require("moment-timezone");
 const bluebird = require('bluebird');
 
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "n_66"
-// });
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "n_66"
+});
 
 router.get("/products", (req, res) => {
-  const sql = "SELECT * FROM `products`";
+  const sql = "SELECT * FROM `product_list`";
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
+    console.log(results);
     res.json(results);
   });
   // res.send('aaaa')
 })
 
 router.get("/products/:id", (req, res) => {
-  const sql = "SELECT * FROM `products`";
+  const sql = "SELECT * FROM `product_list`";
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
