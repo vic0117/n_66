@@ -34,6 +34,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 // route
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -56,8 +57,9 @@ app.use(login);
 
 // member
 const members = require("./members/members");
-const trips = require('./trips/trips')
 app.use(members);
+
+const trips = require('./trips/trips')
 app.use(trips);
 
 const register = require("./login/register");

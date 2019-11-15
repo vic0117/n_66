@@ -12,7 +12,7 @@ import Login from "./pages/Login/Login";
 
 // test
 // import RegisterTest from "./components/RegisterTest/RegisterTest";
-import LoginTest from "./components/LoginTest/LoginTest";
+import LoginTest from "./components/LoginTEST/LoginTest";
 
 class App extends Component {
   state = {};
