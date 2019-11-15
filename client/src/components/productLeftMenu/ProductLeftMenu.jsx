@@ -1,24 +1,18 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card, Pagination, Dropdown, Accordion, } from 'react-bootstrap';
-
-
+import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-
 import search from "../../components/TripLeftmenu/images//search.svg";
 // import location from "../TripLeftmenu/images/location.svg";
 import trac from "../../components/TripLeftmenu/images/trac.svg";
-
-import SliderPrice from '../../components/TripLeftmenu/SliderPrice';
-
+import SliderPrice from '../TripLeftmenu/SliderPrice';
 
 //IMAGES
 import filterImg from './img/filter.svg';
 
 //CSS
 import "./ProductLeftMenu.scss";
-
 import banner from './img/header22.jpg';
-
 
 class ProductLeftMenu extends Component {
     constructor(props) {
@@ -27,7 +21,6 @@ class ProductLeftMenu extends Component {
             buttonTitleName1: "選擇主題"
         };
     }
-
 
     componentDidMount() {
         let filterBtn = document.querySelector('.product-filter-btn');
@@ -48,20 +41,25 @@ class ProductLeftMenu extends Component {
         })
     }
 
+
     render() {
+
+        const {data} = this.props;
+        // console.log(data);
+
         return (
             <div className="ProductLeftMenuContainer">
 
                 <div className="product-filter-menu">
 
-                    <div class="product-filter-btn d-flex justify-content-center align-items-center">
+                    <div className="product-filter-btn d-flex justify-content-center align-items-center">
                         <div>
                             <img src={filterImg} alt="filterImg" />
                         </div>
                     </div>
 
                     <div className="product-fake-nav">
-                            <a className="filterToggler ml-auto d-flex justify-content-center align-items-center" role="button">
+                            <a href="#666" className="filterToggler ml-auto d-flex justify-content-center align-items-center" role="button">
                                 <div className="toggle-inner ">
                                     <div className="white-line up-line"></div>
                                     <div className="white-line down-line"></div>
@@ -200,8 +198,7 @@ class ProductLeftMenu extends Component {
                                     </div>
 
                                     <DropdownButton
-
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -218,7 +215,7 @@ class ProductLeftMenu extends Component {
                                     </div>
                                     <DropdownButton
                                         className=""
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -236,7 +233,7 @@ class ProductLeftMenu extends Component {
                                     </div>
                                     <DropdownButton
                                         className=""
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -255,7 +252,7 @@ class ProductLeftMenu extends Component {
                                     </div>
                                     <DropdownButton
                                         className=""
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -269,9 +266,6 @@ class ProductLeftMenu extends Component {
                                         <Dropdown.Item eventKey="家庭" value="3" href="#/action-3">家庭</Dropdown.Item>
                                     </DropdownButton>
 
-
-
-
                                     <div className="buttonTitle" style={{ margin: '30px 0 10px 0' }}>
                                         <img src="http://localhost:3000/images/svg/dollar.svg" alt="dollar" />
                                         <p>價錢</p>
@@ -283,136 +277,22 @@ class ProductLeftMenu extends Component {
                         <Col sm={12} md={9} className="p-0">
                             <Container className="p-0 card-container">
                                 <Row>
-                                    <Col sm={6} lg={4} >
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col sm={6} lg={4}>
-                                        <Card className="product-card">
-                                            <div className="photoFrame">
-                                                <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                            </div>
-                                            <Card.Body>
-                                                <Card.Title>Aqua Marina Betta HM-K0 2 人充氣皮艇</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
+                                    {
+                                    data.map(item=>(
+                                        <Link to={`/products/${item.product_id}` }>
+                                        <Col sm={6} lg={4} >
+                                            <Card key={item.product_id} className="product-card">
+                                                <div className="photoFrame">
+                                                    <Card.Img variant="top" src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_pictures)[0]} />
+                                                </div>
+                                                <Card.Body>
+                                                    <Card.Title>{item.product_name}</Card.Title>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                   </Link> 
+                                   ))}
+                                   
                                 </Row>
                             </Container>
                             <Container>

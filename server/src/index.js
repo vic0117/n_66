@@ -3,11 +3,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const fs = require("fs");
-const upload = multer({ dest: "tmp_upload" });
+const upload = multer({ dest: "tmp_uploads" });
 const mysql = require("mysql");
 const moment = require("moment-timezone");
 const session = require("express-session");
 const cors = require("cors");
+
 const db = mysql.createConnection({
   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
@@ -30,6 +31,7 @@ const corsOptions = {
   }
 };
 
+app.use("/static", express.static("public"));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -41,29 +43,47 @@ app.get("/", (req, res) => {
 });
 
 // login
-app.use(
-  session({
-    saveUninitialized: false,
-    resave: false,
-    secret: "i123oidoajd",
-    cookie: {
-      maxAge: 1200000
-    }
-  })
-);
+// app.use(
+//   session({
+//     saveUninitialized: false,
+//     resave: false,
+//     secret: "i123oidoajd",
+//     cookie: {
+//       maxAge: 1200000
+//     }
+//   })
+// );
 
 const login = require("./login/login");
 app.use(login);
 
 // member
+const register = require("./login/register");
+app.use(register);
+
 const members = require("./members/members");
 app.use(members);
 
 const trips = require('./trips/trips')
+const members_upload_file = require("./members/members_upload_file");
+app.use(members_upload_file);
+
+const members_edit = require("./members/members_edit");
+app.use(members_edit);
+
+const members_change_password = require("./members/members_change_password");
+app.use(members_change_password);
+
+const members_order = require("./members/members_order");
+app.use(members_order);
+
+// trips
+const trips = require("./trips/trips");
 app.use(trips);
 
-const register = require("./login/register");
-app.use(register);
+//products
+const products = require("./products/products");
+app.use(products);
 
 // 404
 app.use((req, res) => {
@@ -71,6 +91,26 @@ app.use((req, res) => {
   res.status(404);
   res.send("404 - Can not found page");
 });
+
+// Verify Token
+// function verifyToken(req, res, next) {
+//   // Get auth header value
+//   const bearerHeader = req.headers["authorization"];
+//   // Check if bearer is undefined
+//   if (typeof bearerHeader !== "undefined") {
+//     // Split at the space
+//     const bearer = bearerHeader.split(" ");
+//     // Get Token from array
+//     const bearerToken = bearer[1];
+//     // Set the token
+//     req.token = bearerToken;
+//     // Next middleware
+//     next();
+//   } else {
+//     //Forbidden
+//     res.json("forbidden");
+//   }
+// }
 
 app.listen(3001, function() {
   console.log("server 3001 started");

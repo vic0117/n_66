@@ -1,8 +1,82 @@
+$primaryColor: #242a3a;
+$secColor: #96daf0;
+
 
 .planet-section{
+    position: relative;
     background-image: url('./images/bg-map.jpg');
     background-size: cover;
-    margin: 300px 0 0 0;
+    margin: 9rem 0 9rem 0;
+
+    .sub-title-small{
+        color: $secColor;
+        text-align: center;
+        letter-spacing: 0.4375rem;
+        display: block;
+    }
+
+    .main-title-small{
+        color: $primaryColor;
+        text-align: center;
+        font-size: 2.5rem;
+        margin:  0 0 4.5rem 0;
+        display: block;
+    }
+
+    .sub-title-big{
+        color: $secColor;
+        text-align: center;
+        letter-spacing: 0.4375rem;
+        display: none;
+    }
+
+    .main-title-big{
+        color: $primaryColor;
+        text-align: center;
+        font-size: 2.5rem;
+        margin:  0 0 4.5rem 0;
+        display: none;
+    }
+
+    .custom-dropdown{
+        margin: auto;
+        width: 280px;
+        height: 63px;
+        position: relative;
+        z-index: 999;
+        display: none;
+
+        .card{
+            .card-header{
+                margin: 0 ;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .collapse{
+                transition: .3s;
+            }
+
+            .collapse.show{
+                border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+            }
+
+            .card-selection{
+                text-align: center;
+                padding: 15px 20px;
+                transition: .3s;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: $primaryColor;
+                    color: #fff;
+                }
+            }
+        }
+
+
+    }
 
     .my-container{
         max-width: 1120px;
@@ -22,15 +96,16 @@
         content: '';
         display: block;
         position: absolute;
-        left: 0;
+        left: 50%;
         top: 0;
-        width: 100%;
-        height: 640px;
-        background-color: rgb(255, 255, 255);
+        width: 200%;
+        height: 100%;
+        background-color: #fff;
         opacity: 0;
         z-index: 2;
         pointer-events: none;
         transition: .5s;
+        transform: translate(-50%, 0);
     }
 
     .wrapper-1120{
@@ -51,12 +126,16 @@
         height: 640px;
         box-sizing: border-box;
         padding-left: 0px;
-        margin-top: 100px;
+        margin-top: 30px;
     }
 
+
     .right-item{
+        // display: none;
         max-width: 480px;
-        height: 100%;
+        width: 400px;
+        // height: 100%;
+        // margin: auto;
         position: absolute;
         top: 0;
         right: 0;
@@ -73,11 +152,13 @@
         min-width: 100%;
     }
 
+
+
     .country{
         display: block;
         position: absolute;
         z-index: 10;
-        transition: .7s ease-in-out;
+        transition: opacity .7s ease-in-out;
         opacity: 0;
     }
 
@@ -85,6 +166,7 @@
         opacity: 1; 
     }
 
+    //地球上的國家圖案
     .russia{
         display: block;
         top: 5.5%;
@@ -171,6 +253,7 @@
         z-index: 11;
     }
 
+    
     .country-label{
         position: absolute;
         opacity: 1;
@@ -183,7 +266,6 @@
     .country-name{
         text-decoration: none !important;
         color: black;
-        
     }
 
     .country-name:hover{
@@ -226,46 +308,55 @@
     .russia-label{
         top: 50%;
         right: 10%;
+        display: block;
     }
 
     .alaska-label{
         top: 5%;
         left: 37%;
+        display: block;
     }
 
     .canada-label{
         top: 25%;
         left: 10%;
+        display: block;
     }
 
     .finland-label{
         bottom: 36%;
         right: 25%;
+        display: block;
     }
 
     .greenland-label{
         top: 45%;
         left: 41%;
+        display: block;
     }
 
     .iceland-label{
         bottom: 40%;
         left: 32%;
+        display: block;
     }
 
     .norway-label{
         bottom: 30%;
         right: 45%;
+        display: block;
     }
 
     .spitzberg-label{
         bottom: 55%;
         left: 59%;
+        display: block;
     }
 
     .sweden-label{
         bottom: 30%;
         right: 30%;
+        display: block;
     }
 
     .countryCardName{
@@ -317,6 +408,11 @@
     }
 
     @media screen and (min-width: 1120px){
+
+        .sub-title-big, .main-title-big{
+            display: block ;
+        }
+
         .right-area{
             min-width: 41.666667%;
         }
@@ -328,6 +424,139 @@
 
         .right-item{
             max-width: calc(100% - 80px);
+
+            .item-image{
+                height: 200px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+
+
+    @media screen and (max-width: 1119px){
+        
+        .custom-dropdown{
+            display: block;
+        }
+
+        .world-right{
+            // border: 1px solid #222222;
+
+            .right-item{
+                right: 50%;
+                transform: translate(50%,0);
+            }
+        }
+    }
+ 
+    @media screen and (max-width: 768px){
+
+        .world-left{
+            width: 400px;
+        }
+
+        .right-item{
+            padding: 20px;
+            right: 50%;
+            transform: translate(50%, 0);
+
+            .stars{
+                margin: 15px 0 0 0;
+            }
+        }
+
+        .country{
+            pointer-events: none;
+        }
+
+        .country-label{
+            display: none;
+        }
+
+        .russia{
+            display: block;
+            top: 5.5%;
+            right: 6%;
+            width: 46%;
+            // height: 426px;
+            z-index: 5;
+        }
+    
+        .alaska{
+            display: block;
+            top: 4%;
+            left: 33%;
+            width: 14%;
+            // height: 85px;
+            z-index: 11;
+        }
+    
+        .canada{
+            display: block;
+            top: 11.5%;
+            left: 4.1%;
+            width: 41%;
+            // height: 322px;
+            z-index: 10;
+        }
+    
+        .finland{
+            display: block;
+            top: 51.8%;
+            left: 61.5%;
+            width: 7%;
+            // height: 75px;
+            z-index: 99;
+        }
+    
+        .greenland{
+            display: block;
+            top: 35.5%;
+            left: 27.9%;
+            width: 23%;
+            // height: 147px;
+            z-index: 11;
+        }
+    
+        .iceland{
+            display: block;
+            left: 40%;
+            bottom: 37.7%;
+            width: 6%;
+            // height: 29px;
+            z-index: 11;
+        }
+    
+        .norway{
+            display: block;
+            left: 54.9%;
+            bottom: 19.5%;
+            width: 12%;
+            // height: 118px;
+            z-index: 11;
+        }
+    
+        .spitzberg{
+            display: block;
+            left: 54.9%;
+            bottom: 49%;
+            width: 4.3%;
+            // height: 41px;
+            z-index: 11;
+        }
+    
+        .sweden{
+            display: block;
+            left: 57.9%;
+            bottom: 19.5%;
+            width: 6.7%;
+            // height: 110px;
+            z-index: 11;
         }
     }
 }

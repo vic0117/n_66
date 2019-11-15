@@ -10,11 +10,9 @@ body {
   padding: 0 !important;
   border-bottom: 1px solid #d5d5d5;
   background-color: #fff;
-  position: relative;
   position: fixed;
   top: 0;
-  z-index: 900;
-
+  z-index: 999;
 
   .nabar-items-container {
     height: 100%;
@@ -79,12 +77,25 @@ body {
     fill: #fff;
   }
 
+  .icon-container:hover .cart-icon {
+    fill: #fff;
+  }
+
+  .icon-container:hover .logout-icon {
+    fill: #fff;
+  }
+
   .user-icon {
     margin: auto;
     transition: 0.3s;
   }
 
   .cart-icon {
+    margin: auto;
+    transition: 0.3s;
+  }
+
+  .logout-icon {
     margin: auto;
     transition: 0.3s;
   }
@@ -194,10 +205,7 @@ body {
     }
   }
 
-
-
-
-  @media screen and (max-width: 858px) {
+  @media screen and (max-width: 900px) {
     .navBtn {
       display: flex !important;
     }
@@ -207,10 +215,9 @@ body {
     }
   }
 
-  @media screen and (min-width: 859px) {
+  @media screen and (min-width: 900px) {
     .right-menu {
       left: 100%;
     }
   }
-
 }

@@ -4,13 +4,14 @@ import { Nav, Breadcrumb } from "react-bootstrap";
 import { ReactComponent as Logo } from "./images/logo.svg";
 import { ReactComponent as User } from "./images/user.svg";
 import { ReactComponent as Cart } from "./images/cart.svg";
+import { ReactComponent as Logout } from "./images/logout.svg";
+
 // Routes
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 class NavBar extends React.Component {
   state = {};
 
-  
   componentDidMount() {
     // let navbar = document.querySelector(".navbar-container");
     let toggler = document.querySelector(".navBtn");
@@ -21,18 +22,12 @@ class NavBar extends React.Component {
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
 
-    //   window.onresize = ()=>{
-    //     if(window.innerWidth >= 850){
-    //         rightMenu.style.left = '100%';
-    //         toggler.style.backgroundColor = 'transparent';
-    //         navbar.style.backgroundColor = 'transparent';
-    //         toggler.style.borderLeftColor = '#fff';
-    //         upLine.style.transform = 'rotate(0)';
-    //         downLine.style.transform = 'rotate(0)';
-    //         middleLine.style.opacity = '1';
-    //     }
+      window.onresize = ()=>{
+        if(window.innerWidth >= 850){
+            rightMenu.style.left = '100%';
+        }
 
-    // }
+    }
 
     toggler.onclick = () => {
       rightMenuIsShow = !rightMenuIsShow;
@@ -63,6 +58,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <>
         <div className="navbar-container d-flex align-items-center ">
@@ -104,15 +100,23 @@ class NavBar extends React.Component {
                 <span>我們的理念</span>
                 <div className="blue-line"></div>
               </Nav.Link>
+
+              {currentUser && (
+                <>
+                  <Nav.Link className="icon-container" href="/logout">
+                    <Logout height="20" width="20" className="logout-icon" />
+                  </Nav.Link>
+                </>
+              )}
+
               <Nav.Link className="icon-container" href="/account">
                 <User height="20" width="20" className="user-icon" />
               </Nav.Link>
-              <Nav.Link className="icon-container" href="#link">
+              <Nav.Link className="icon-container" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
               </Nav.Link>
             </Nav>
           </div>
-
           <Breadcrumb className="mb-5">
             <Breadcrumb.Item href="#">66N</Breadcrumb.Item>
             <Breadcrumb.Item

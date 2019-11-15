@@ -1,9 +1,78 @@
 @charset "UTF-8";
 .planet-section {
+  position: relative;
   background-image: url("./images/bg-map.jpg");
   background-size: cover;
-  margin: 300px 0 0 0;
+  margin: 9rem 0 9rem 0;
   /* 國家標籤 */
+}
+
+.planet-section .sub-title-small {
+  color: #96daf0;
+  text-align: center;
+  letter-spacing: 0.4375rem;
+  display: block;
+}
+
+.planet-section .main-title-small {
+  color: #242a3a;
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 0 0 4.5rem 0;
+  display: block;
+}
+
+.planet-section .sub-title-big {
+  color: #96daf0;
+  text-align: center;
+  letter-spacing: 0.4375rem;
+  display: none;
+}
+
+.planet-section .main-title-big {
+  color: #242a3a;
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 0 0 4.5rem 0;
+  display: none;
+}
+
+.planet-section .custom-dropdown {
+  margin: auto;
+  width: 280px;
+  height: 63px;
+  position: relative;
+  z-index: 999;
+  display: none;
+}
+
+.planet-section .custom-dropdown .card .card-header {
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  text-align: center;
+  cursor: pointer;
+}
+
+.planet-section .custom-dropdown .card .collapse {
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.planet-section .custom-dropdown .card .collapse.show {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.planet-section .custom-dropdown .card .card-selection {
+  text-align: center;
+  padding: 15px 20px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.planet-section .custom-dropdown .card .card-selection:hover {
+  background-color: #242a3a;
+  color: #fff;
 }
 
 .planet-section .my-container {
@@ -24,16 +93,18 @@
   content: '';
   display: block;
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 0;
-  width: 100%;
-  height: 640px;
-  background-color: white;
+  width: 200%;
+  height: 100%;
+  background-color: #fff;
   opacity: 0;
   z-index: 2;
   pointer-events: none;
   -webkit-transition: .5s;
   transition: .5s;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
 }
 
 .planet-section .wrapper-1120 {
@@ -55,12 +126,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-left: 0px;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .planet-section .right-item {
   max-width: 480px;
-  height: 100%;
+  width: 400px;
   position: absolute;
   top: 0;
   right: 0;
@@ -82,8 +153,8 @@
   display: block;
   position: absolute;
   z-index: 10;
-  -webkit-transition: .7s ease-in-out;
-  transition: .7s ease-in-out;
+  -webkit-transition: opacity .7s ease-in-out;
+  transition: opacity .7s ease-in-out;
   opacity: 0;
 }
 
@@ -226,46 +297,55 @@
 .planet-section .russia-label {
   top: 50%;
   right: 10%;
+  display: block;
 }
 
 .planet-section .alaska-label {
   top: 5%;
   left: 37%;
+  display: block;
 }
 
 .planet-section .canada-label {
   top: 25%;
   left: 10%;
+  display: block;
 }
 
 .planet-section .finland-label {
   bottom: 36%;
   right: 25%;
+  display: block;
 }
 
 .planet-section .greenland-label {
   top: 45%;
   left: 41%;
+  display: block;
 }
 
 .planet-section .iceland-label {
   bottom: 40%;
   left: 32%;
+  display: block;
 }
 
 .planet-section .norway-label {
   bottom: 30%;
   right: 45%;
+  display: block;
 }
 
 .planet-section .spitzberg-label {
   bottom: 55%;
   left: 59%;
+  display: block;
 }
 
 .planet-section .sweden-label {
   bottom: 30%;
   right: 30%;
+  display: block;
 }
 
 .planet-section .countryCardName {
@@ -318,6 +398,9 @@
 }
 
 @media screen and (min-width: 1120px) {
+  .planet-section .sub-title-big, .planet-section .main-title-big {
+    display: block;
+  }
   .planet-section .right-area {
     min-width: 41.666667%;
   }
@@ -327,6 +410,110 @@
   }
   .planet-section .right-item {
     max-width: calc(100% - 80px);
+  }
+  .planet-section .right-item .item-image {
+    height: 200px;
+  }
+  .planet-section .right-item .item-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 1119px) {
+  .planet-section .custom-dropdown {
+    display: block;
+  }
+  .planet-section .world-right .right-item {
+    right: 50%;
+    -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .planet-section .world-left {
+    width: 400px;
+  }
+  .planet-section .right-item {
+    padding: 20px;
+    right: 50%;
+    -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+  }
+  .planet-section .right-item .stars {
+    margin: 15px 0 0 0;
+  }
+  .planet-section .country {
+    pointer-events: none;
+  }
+  .planet-section .country-label {
+    display: none;
+  }
+  .planet-section .russia {
+    display: block;
+    top: 5.5%;
+    right: 6%;
+    width: 46%;
+    z-index: 5;
+  }
+  .planet-section .alaska {
+    display: block;
+    top: 4%;
+    left: 33%;
+    width: 14%;
+    z-index: 11;
+  }
+  .planet-section .canada {
+    display: block;
+    top: 11.5%;
+    left: 4.1%;
+    width: 41%;
+    z-index: 10;
+  }
+  .planet-section .finland {
+    display: block;
+    top: 51.8%;
+    left: 61.5%;
+    width: 7%;
+    z-index: 99;
+  }
+  .planet-section .greenland {
+    display: block;
+    top: 35.5%;
+    left: 27.9%;
+    width: 23%;
+    z-index: 11;
+  }
+  .planet-section .iceland {
+    display: block;
+    left: 40%;
+    bottom: 37.7%;
+    width: 6%;
+    z-index: 11;
+  }
+  .planet-section .norway {
+    display: block;
+    left: 54.9%;
+    bottom: 19.5%;
+    width: 12%;
+    z-index: 11;
+  }
+  .planet-section .spitzberg {
+    display: block;
+    left: 54.9%;
+    bottom: 49%;
+    width: 4.3%;
+    z-index: 11;
+  }
+  .planet-section .sweden {
+    display: block;
+    left: 57.9%;
+    bottom: 19.5%;
+    width: 6.7%;
+    z-index: 11;
   }
 }
 /*# sourceMappingURL=HomeEarth.css.map */

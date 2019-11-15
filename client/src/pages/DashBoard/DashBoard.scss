@@ -6,6 +6,23 @@
   margin-top: 150px;
 }
 
+.Toastify__toast-container--top-right {
+  top: 40rem !important;
+  right: 1rem !important;
+}
+
+.Toastify__toast-body {
+  text-align: center;
+}
+
+.Toastify__toast--success {
+  background-color: #5cb85c;
+}
+
+.Toastify__toast--error {
+  background-color: #d9534f;
+}
+
 //RWD
 @media only screen and(max-width: 768px) {
   .member-right-section {

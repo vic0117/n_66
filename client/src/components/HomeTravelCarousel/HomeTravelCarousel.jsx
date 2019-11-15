@@ -9,27 +9,21 @@ import Slider from "react-slick";
 import cardImage2 from './images/aurores-boreales-en-laponie-norvegienne-1155.jpg';
 import cardImage3 from './images/canoe-sur-la-riviere-batiscan-au-quebec-2233.jpg';
 import cardImage4 from './images/macareux-moine-au-svalbard-135.jpg';
-
 import cardImage6 from './images/roadtrip-en-islande-115.jpg';
 import cardImage7 from './images/snaefellsnes-islande-1303.jpg';
 import cardImage8 from './images/trek-a-landmannalaugar-islande-219.jpg';
 import cardImage9 from './images/voiture-sur-le-lac-baikal-546.jpg';
-import cardImage10 from './images/voyage-aux-iles-feroe-68.jpg';
+// import cardImage10 from './images/voyage-aux-iles-feroe-68.jpg';
 
 //SIGNAL SVG
 import calender from './images/svg/calender.svg';
 import ring from './images/svg/ring3.svg';
 
-//TripDesCarousel
-// import carouselImg1 from './images/marche-sur-la-glace-de-stockholm-1220.jpg'
-// import carouselImg2 from './images/sotckholm-lhiver-1221.jpg'
-// import carouselImg3 from './images/stockholm-sous-les-aurores-boreales-1219.jpg'
-// import '../TripDesCarousel/TripDesCarousel.css'
 
 class HomeTravelCarousel extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             nav1: null,
             nav2: null,
@@ -149,7 +143,7 @@ class HomeTravelCarousel extends React.Component {
     render() {
 
         let mainSettings = {
-            dots: false,
+            // dots: false,
             infinity: true,
             speed: 900,
             arrow: true,
@@ -160,7 +154,7 @@ class HomeTravelCarousel extends React.Component {
             cssEase: 'cubic-bezier(.6,-0.55,0,1.01)',
             responsive: [
                 {
-                    breakpoint: 1160,
+                    breakpoint: 1530,
                     settings: {
                         slidesToShow: 3,
                         slidesToScroll: 3,
@@ -169,7 +163,7 @@ class HomeTravelCarousel extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 876,
+                    breakpoint: 1065,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
@@ -186,15 +180,14 @@ class HomeTravelCarousel extends React.Component {
             ],
 
             beforeChange: function (currentSlide, nextSlide) {
-                console.log("before change", currentSlide, nextSlide);
+                // console.log("before change", currentSlide, nextSlide);
             },
             afterChange: function (currentSlide) {
-                console.log("after change", currentSlide);
+                // console.log("after change", currentSlide);
             }
         }
 
         let subSettings = {
-            // dots: true,
             infinity: true,
             speed: 900,
             arrow: true,
@@ -204,10 +197,10 @@ class HomeTravelCarousel extends React.Component {
             verticalSwiping: true,
             autoplaySpeed: 5000,
             beforeChange: function (currentSlide, nextSlide) {
-                console.log("before change", currentSlide, nextSlide);
+                // console.log("before change", currentSlide, nextSlide);
             },
             afterChange: function (currentSlide) {
-                console.log("after change", currentSlide);
+                // console.log("after change", currentSlide);
             }
         }
 
@@ -274,7 +267,7 @@ class HomeTravelCarousel extends React.Component {
                                                     className='sub-slide'
                                                 >
                                                     {this.state.suggestion.map(current => (
-                                                        <div>
+                                                        <div key={current.id}>
                                                             <h1>{current.id}</h1>
                                                         </div>
                                                     ))}

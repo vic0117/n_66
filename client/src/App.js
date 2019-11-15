@@ -2,17 +2,22 @@ import React, { Component } from "react";
 import jwtDecode from "jwt-decode";
 import { Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
+
 //Components
 import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
-import TripDesNav from "./components/TripDesNav/TripDesNav";
-import CommentHeader from "./components/CommentHeader/CommentHeader";
 import Login from "./pages/Login/Login";
+import Logout from "./components/Logout/Logout";
 
 // test
 // import RegisterTest from "./components/RegisterTest/RegisterTest";
 import LoginTest from "./components/LoginTEST/LoginTest";
+//ProductPages
+import ProductList from "./pages/ProductList/ProductList";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import MyCart from "./pages/MyCart/MyCart";
+import CheckOut from "./pages/CheckOut/CheckOut";
 
 class App extends Component {
   state = {};
@@ -29,11 +34,28 @@ class App extends Component {
   render() {
     return (
       <Switch>
+        <Route path="/products" exact component={ProductList} />
+        <Route path="/products/:id" exact component={ProductDetail} />
+        <Route
+          path="/cart"
+          exact
+          render={props => (
+            <MyCart {...props} currentUser={this.state.currentUser} />
+          )}
+        />
+        <Route
+          path="/checkout"
+          exact
+          render={props => (
+            <CheckOut {...props} currentUser={this.state.currentUser} />
+          )}
+        />
         <Route path="/comments" component={Comment} />
+        <Route path="/logout" component={Logout} />
         <Route
           path="/login"
           render={props => (
-            <LoginTest {...props} currentUser={this.state.currentUser} />
+            <Login {...props} currentUser={this.state.currentUser} />
           )}
         />
         <Route
@@ -42,7 +64,13 @@ class App extends Component {
             <DashBoard {...props} currentUser={this.state.currentUser} />
           )}
         />
-        <Route path="/" exact component={Home} />
+        <Route
+          path="/"
+          exact
+          render={props => (
+            <Home {...props} currentUser={this.state.currentUser} />
+          )}
+        />
       </Switch>
     );
   }

@@ -1,13 +1,13 @@
 .smTitle {
   font-size: 1rem;
-  color: #96DAF0;
+  color: #96daf0;
   letter-spacing: 0.4375rem;
-  margin-top: 100px;
+  margin-top: 7rem;
 }
 
 .bigTitle {
-  font-size: 50px;
-  color: #242A3A;
+  color: #242a3a;
+  margin-bottom: 4.5rem;
 }
 
 .AdviserBox {
@@ -36,7 +36,7 @@
 .rightAdviser {
   width: 100%;
   height: 450px;
-  background: #242A3A;
+  background: #242a3a;
 }
 
 .AdviserDes {
@@ -46,12 +46,12 @@
 }
 
 .AdviserDes h2 {
-  color: #242A3A;
+  color: #242a3a;
 }
 
 .AdviserDes p {
   font-size: 1rem;
-  color: #242A3A;
+  color: #242a3a;
 }
 
 .AdviserBtn {
@@ -60,18 +60,18 @@
   left: 10%;
   width: 35%;
   height: 12%;
-  border: 1px solid #242A3A;
+  border: 1px solid #242a3a;
   text-align: center;
   line-height: 50px;
 }
 
 .AdviserBtn:hover {
   cursor: pointer;
-  background: #242A3A;
+  background: #242a3a;
   color: #fff;
 }
 
-.slick-list {
+.rightAdviser .slick-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,28 +89,28 @@
   height: 400px;
 }
 
-.slick-list h3 {
+.rightAdviser .slick-list h3 {
   margin-top: 10px;
   color: #fff;
   text-align: center;
 }
 
-.slick-list img {
+.rightAdviser .slick-list img {
   border-radius: 50%;
   margin: auto;
 }
 
-.slick-list .sliderDes1 {
-  color: #96DAF0;
+.rightAdviser .slick-list .sliderDes1 {
+  color: #96daf0;
   text-align: center;
 }
 
-.slick-list .sliderDes2 {
+.rightAdviser .slick-list .sliderDes2 {
   color: #fff;
   text-align: center;
 }
 
-.slick-dots li button {
+.rightAdviser .slick-dots li button {
   background-color: #fff !important;
   border: #fff;
   border-radius: 50%;
@@ -120,13 +120,16 @@
   height: 16px;
 }
 
-.slick-arrow {
+.rightAdviser .slick-arrow {
   display: none !important;
 }
 
 @media (max-width: 768px) {
-  .slick-list {
+  .smTitle {
+    margin-top: 3.5rem;
+  }
+  .rightAdviser .slick-list {
     width: 540px;
   }
 }
-/*# sourceMappingURL=adviser.css.map */
+/*# sourceMappingURL=HomeAdviser.css.map */

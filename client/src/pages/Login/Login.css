@@ -3,7 +3,7 @@
   position: relative;
   max-width: 960px;
   min-height: 550px;
-  margin: 6rem auto;
+  margin: 9.5rem auto 5rem auto;
 }
 
 .cont input,
@@ -13,14 +13,10 @@
   background: none;
 }
 
-.cont .logo svg {
+.cont .logo {
   padding: 15px 10px;
   height: 80px;
   width: 80px;
-}
-
-.cont .logo svg g {
-  fill: #242a3a;
 }
 
 .cont .signIn {
@@ -49,15 +45,37 @@
   transition: 0.7s 0.2s ease-out, opacity 0.7s 0.2s ease-out;
 }
 
+.cont .signIn .sign-in .feedback {
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  margin: 10px auto 0 auto;
+  color: #242a3a;
+  font-weight: 200;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
 .cont .signIn .sign-up {
   position: absolute !important;
   top: 200%;
   width: 100%;
   height: 100%;
-  -webkit-transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
-  transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out;
-  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  -webkit-transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  transition: top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 1.2s ease-in-out, top 1.2s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.cont .signIn .sign-up .feedback {
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  margin: 10px auto 0 auto;
+  padding-top: 5px;
+  color: #242a3a;
+  font-weight: 200;
+  font-size: 12px;
 }
 
 .cont .mountainBg {
@@ -296,7 +314,7 @@
 }
 
 .cont .submit {
-  margin: 65px auto 40px auto;
+  margin: 25px auto 40px auto;
   background: #fff;
   border: 2px solid #cacaca;
   color: #2a2a3a;
@@ -304,17 +322,20 @@
 }
 
 .cont .register {
-  margin-top: 45px !important;
+  margin-top: 6px !important;
 }
 
 @media screen and (max-width: 981px) {
+  .cont {
+    margin-top: 6.5rem;
+  }
   .loginRow {
     background-image: url("./images/photo-1501696088263-5696c92364bf.png");
     background-size: cover;
   }
   .signIn {
     width: 100% !important;
-    z-index: 999 !important;
+    z-index: 998 !important;
   }
   .registered {
     top: 100% !important;

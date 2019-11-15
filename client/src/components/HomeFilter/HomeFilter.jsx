@@ -221,7 +221,7 @@ class HomeFilter extends Component {
     let filterToggler = document.querySelector(".filterToggler");
     let body = document.querySelector("body");
     let anotherSearch = document.querySelector(".anotherSearch");
-    let searchDaysBtn = document.querySelector(".searchDaysBtn");
+    // let searchDaysBtn = document.querySelector(".searchDaysBtn");
     let windowWidth = 0;
 
     filterIcon.addEventListener("click", () => {
@@ -280,7 +280,7 @@ class HomeFilter extends Component {
               </div>
               <div className="search">
                 <p>搜尋</p>
-                <a className="anotherSearch" href="#5" role="button"></a>
+                <a className="anotherSearch" href="#5" role="button"> </a>
               </div>
             </div>
           </Col>
@@ -290,6 +290,7 @@ class HomeFilter extends Component {
           <div className="fakeNav">
             <a
               className="filterToggler ml-auto d-flex justify-content-center align-items-center"
+              href="#3"
               role="button"
             >
               <div className="toggle-inner ">
