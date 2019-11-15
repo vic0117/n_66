@@ -45,13 +45,14 @@ class ProductLeftMenu extends Component {
     render() {
 
         const {data} = this.props;
+        // console.log(data);
 
         return (
             <div className="ProductLeftMenuContainer">
 
                 <div className="product-filter-menu">
 
-                    <div class="product-filter-btn d-flex justify-content-center align-items-center">
+                    <div className="product-filter-btn d-flex justify-content-center align-items-center">
                         <div>
                             <img src={filterImg} alt="filterImg" />
                         </div>
@@ -197,8 +198,7 @@ class ProductLeftMenu extends Component {
                                     </div>
 
                                     <DropdownButton
-
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -215,7 +215,7 @@ class ProductLeftMenu extends Component {
                                     </div>
                                     <DropdownButton
                                         className=""
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -233,7 +233,7 @@ class ProductLeftMenu extends Component {
                                     </div>
                                     <DropdownButton
                                         className=""
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}
@@ -252,7 +252,7 @@ class ProductLeftMenu extends Component {
                                     </div>
                                     <DropdownButton
                                         className=""
-                                        id="dropdown-basic-button"
+                                        // id="dropdown-basic-button"
                                         onSelect={eventKey => {
                                             this.setState({});
                                         }}

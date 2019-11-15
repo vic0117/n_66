@@ -36,6 +36,39 @@ class CartContent extends React.Component {
                                         <div className="title">Aqua Marina Betta HM-K0 雙人充氣皮艇</div>
                                         <span>尺寸:  <span className="size">412 X 83cm</span></span>
 
+                                        <div className="quantity">
+                                            <span>
+                                                數量 :
+                                            </span>
+                                            <a href="#minus" className="qtyBtn minusBtn" role="button">-</a>
+                                            <input defaultValue="1" className="counter" type="text" />
+                                            <a href="plus" className="qtyBtn plus" role="button">+</a>
+                                        </div>
+                                    </div>
+                                </Card.Body>
+                            </div>
+
+
+                            {/* <div className="cartItem">
+                                <div className="itemImg">
+                                    <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
+                                </div>
+                                <Card.Body>
+                                    <div className="d-flex w-100 flex-column align-items-start">
+                                        <h6>
+                                            獨木舟
+                                            <div className="price">
+                                                12,800
+                                            </div>
+
+                                            <div className="deleteBtn">
+                                                <div className="slash leftLine"></div>
+                                                <div className="slash rightLine"></div>
+                                            </div>
+                                        </h6>
+                                        <div className="title">Aqua Marina Betta HM-K0 雙人充氣皮艇</div>
+                                        <span>尺寸:  <span className="size">412 X 83cm</span></span>
+
                                         <div>
                                             <span>
                                                 數量 :
@@ -46,9 +79,42 @@ class CartContent extends React.Component {
                                         </div>
                                     </div>
                                 </Card.Body>
-                            </div>
+                            </div> */}
 
 
+                            {/* <div className="cartItem">
+                                <div className="itemImg">
+                                    <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
+                                </div>
+                                <Card.Body>
+                                    <div className="d-flex w-100 flex-column align-items-start">
+                                        <h6>
+                                            獨木舟
+                                            <div className="price">
+                                                12,800
+                                            </div>
+
+                                            <div className="deleteBtn">
+                                                <div className="slash leftLine"></div>
+                                                <div className="slash rightLine"></div>
+                                            </div>
+                                        </h6>
+                                        <div className="title">Aqua Marina Betta HM-K0 雙人充氣皮艇</div>
+                                        <span>尺寸:  <span className="size">412 X 83cm</span></span>
+
+                                        <div>
+                                            <span>
+                                                數量 :
+                                        </span>
+                                            <a className="qtyBtn minusBtn" role="button">-</a>
+                                            <input value="1" className="counter" type="text" />
+                                            <a className="qtyBtn plus" role="button">+</a>
+                                        </div>
+                                    </div>
+                                </Card.Body>
+                            </div> */}
+
+{/* 
                             <div className="cartItem">
                                 <div className="itemImg">
                                     <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
@@ -79,10 +145,10 @@ class CartContent extends React.Component {
                                         </div>
                                     </div>
                                 </Card.Body>
-                            </div>
+                            </div> */}
 
 
-                            <div className="cartItem">
+                            {/* <div className="cartItem">
                                 <div className="itemImg">
                                     <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
                                 </div>
@@ -112,10 +178,10 @@ class CartContent extends React.Component {
                                         </div>
                                     </div>
                                 </Card.Body>
-                            </div>
+                            </div> */}
 
 
-                            <div className="cartItem">
+                            {/* <div className="cartItem">
                                 <div className="itemImg">
                                     <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
                                 </div>
@@ -145,73 +211,7 @@ class CartContent extends React.Component {
                                         </div>
                                     </div>
                                 </Card.Body>
-                            </div>
-
-
-                            <div className="cartItem">
-                                <div className="itemImg">
-                                    <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                </div>
-                                <Card.Body>
-                                    <div className="d-flex w-100 flex-column align-items-start">
-                                        <h6>
-                                            獨木舟
-                                            <div className="price">
-                                                12,800
-                                            </div>
-
-                                            <div className="deleteBtn">
-                                                <div className="slash leftLine"></div>
-                                                <div className="slash rightLine"></div>
-                                            </div>
-                                        </h6>
-                                        <div className="title">Aqua Marina Betta HM-K0 雙人充氣皮艇</div>
-                                        <span>尺寸:  <span className="size">412 X 83cm</span></span>
-
-                                        <div>
-                                            <span>
-                                                數量 :
-                                        </span>
-                                            <a className="qtyBtn minusBtn" role="button">-</a>
-                                            <input value="1" className="counter" type="text" />
-                                            <a className="qtyBtn plus" role="button">+</a>
-                                        </div>
-                                    </div>
-                                </Card.Body>
-                            </div>
-
-
-                            <div className="cartItem">
-                                <div className="itemImg">
-                                    <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                </div>
-                                <Card.Body>
-                                    <div className="d-flex w-100 flex-column align-items-start">
-                                        <h6>
-                                            獨木舟
-                                            <div className="price">
-                                                12,800
-                                            </div>
-
-                                            <div className="deleteBtn">
-                                                <div className="slash leftLine"></div>
-                                                <div className="slash rightLine"></div>
-                                            </div>
-                                        </h6>
-                                        <div className="title">Aqua Marina Betta HM-K0 雙人充氣皮艇</div>
-                                        <span>尺寸:  <span className="size">412 X 83cm</span></span>
-
-                                        <div>
-                                            <span>
-                                                數量 :
-                                        </span>
-                                            <a className="qtyBtn minusBtn" role="button">-</a>
-                                            <input value="1" className="counter" type="text" />
-                                            <a className="qtyBtn plus" role="button">+</a>
-                                        </div>
-                                    </div>
-                                </Card.Body>
-                            </div>
+                            </div> */}
                         </Col>
                         <Col md={4} >
                             <div className="userCard">
