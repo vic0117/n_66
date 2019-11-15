@@ -47,7 +47,7 @@ $secColor: #96daf0;
     .main-slide {
 
       .slick-dots{
-        display: none;
+        display: none !important;
       }
 
       .slick-arrow {

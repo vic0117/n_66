@@ -77,7 +77,6 @@ $secColor: #96daf0;
 
 
 	.dropdown{
-
 		width: 100%;
 
 		.btn{
@@ -123,6 +122,12 @@ $secColor: #96daf0;
 
 
 	.card-container{
+
+		a{
+			color: #242A3A;
+			text-decoration: none;
+		}
+
 		.product-card{
 			padding: 15px;
 			border: none;
@@ -152,7 +157,7 @@ $secColor: #96daf0;
 		top: 0px;
 		left: 100%;
 		transition: .5s;
-		z-index: 901;
+		z-index: 999;
 
 		.product-fake-nav{
 			width: 100%;

@@ -112,7 +112,7 @@ class NavBar extends React.Component {
               <Nav.Link className="icon-container" href="/account">
                 <User height="20" width="20" className="user-icon" />
               </Nav.Link>
-              <Nav.Link className="icon-container" href="#link">
+              <Nav.Link className="icon-container" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
               </Nav.Link>
             </Nav>

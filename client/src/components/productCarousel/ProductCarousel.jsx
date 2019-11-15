@@ -34,14 +34,12 @@ class ProductCarousel extends React.Component {
     ));
 }
 
-
 sliders2() {
   return this.props.pics.map(item => (
       
           <div key={item} className="pic2">
               <img alt="image" src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} />
           </div>
-      
   ));
 }
 
@@ -57,6 +55,7 @@ sliders2() {
       // slidesToScroll: 1,
       // vertical: false,
       // verticalSwiping: false,
+      
     };
 
     const thumbSettings = {
@@ -67,7 +66,7 @@ sliders2() {
       vertical: true,
       verticalSwiping: true,
       autoplay:true,
-      autoplaySpeed: 1000
+      autoplaySpeed: 3000
     };
 
     return (
@@ -113,7 +112,7 @@ sliders2() {
                 <div key={item.product_id} className="detailCard">
                   <div>
                     <h2>{item.product_name}</h2>
-                    <h5>NT$ {item.produc_price}</h5>
+                    <h5>NT$ {item.product_price}</h5>
                     <a href="#1" className="wishBtn mx-auto" role="button">
                       加入願望清單
                     </a>
@@ -131,7 +130,7 @@ sliders2() {
                     >
                       <Tab eventKey="home" title="材質">
                         <p>
-                          {item.produc_material}
+                          {item.product_material}
                         </p>
                       </Tab>
                       <Tab eventKey="profile" title="內容">

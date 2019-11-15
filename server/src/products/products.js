@@ -7,20 +7,18 @@ const bluebird = require('bluebird');
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 
-router.get("/product_list", (req, res) => {
+router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `products`";
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
-    console.log('aaa');
-    // res.send('aaa');
-    res.json( results);
+    res.json(results);
   });
-  
+  // res.send('aaaa')
 })
 
 router.get("/products/:id", (req, res) => {
@@ -34,17 +32,7 @@ router.get("/products/:id", (req, res) => {
   
 });
    
-//細節
-// router.get('/products/:id',(req,res,next)=>{
-// 	let id=req.params.id;
-	 
-// 	const sql=`SELECT * FROM trip_list WHERE product_id=${id}`
-// 	db.query(sql,(err,results,fields)=>{
-// 		 if(err) throw err; 
-// 		//  console.log(results) 
-// 		 res.send(JSON.stringify(results))
-// 	}) 
-// });
+
 
 //搜尋
 // router.post('/products/search',(req,res,next)=>{
