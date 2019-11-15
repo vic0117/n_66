@@ -9,7 +9,7 @@ const db = mysql.createConnection({
   user: "root",
   password: "root",
   database: "n_66"
-});
+}); 
 
 router.get("/trips/page", (req, res) => {
   const sql = "SELECT * FROM `trip_list`";

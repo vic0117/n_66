@@ -64,7 +64,6 @@ app.use(register);
 const members = require("./members/members");
 app.use(members);
 
-const trips = require('./trips/trips')
 const members_upload_file = require("./members/members_upload_file");
 app.use(members_upload_file);
 
