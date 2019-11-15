@@ -4,12 +4,12 @@ const mysql = require("mysql");
 const moment = require("moment-timezone");
 const bluebird = require('bluebird');
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "n_66"
-});
+// const db = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "n_66"
+// });
 
 router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `products`";
