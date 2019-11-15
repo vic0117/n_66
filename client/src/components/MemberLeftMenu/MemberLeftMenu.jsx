@@ -52,7 +52,7 @@ class MemberLeftMenu extends Component {
 
   render() {
     const { userInfo } = this.props;
-    console.log("userInfo", userInfo);
+    // console.log("userInfo", userInfo);
     if (!userInfo.u_id) return <></>;
 
     return (

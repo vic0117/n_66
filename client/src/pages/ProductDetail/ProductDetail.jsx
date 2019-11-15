@@ -32,7 +32,7 @@ class ProductDetail extends React.Component {
 
               let picArray = JSON.parse(picsJsonString);
 
-              // console.log(picArray)
+              // console.log(picArray) 
       
               this.setState({
                  ProductsDetail: json,

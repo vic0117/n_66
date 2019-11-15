@@ -12,7 +12,7 @@ class MemberOrderList extends Component {
     const { userOrder } = this.props;
     let addModalClose = () => this.setState({ addModalShow: false });
 
-    console.log(userOrder);
+    console.log(userOrder[0]);
     return (
       <div className="order-list-container">
         <Row>
@@ -21,9 +21,7 @@ class MemberOrderList extends Component {
           </Col>
         </Row>
         <Row>
-          {/* {userOrder.map(order => order.map(item => console.log(item.order_num)))} */}
-          {/* {console.log(this.props.userOrder[0][0].order_num)} */}
-
+          {/* {userOrder.map(order => <div>{order.order_id}</div>)} */}
           {
             <Col className="order-card-container">
               <Card style={{ width: "100%" }} className="d-flex">
@@ -64,7 +62,6 @@ class MemberOrderList extends Component {
                         onHide={addModalClose}
                       />
                     </div>
-                    
                   </Col>
                   <div className="mt-3 d-flex status">
                     <p>狀態: 已送達</p>

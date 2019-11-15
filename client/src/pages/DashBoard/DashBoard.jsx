@@ -38,11 +38,7 @@ class DashBoard extends Component {
       tel: "",
       avatar: ""
     },
-    // userOrder: [
-    //   [{}, {}, {}],
-    //   [{}, {}, {}],
-    //   [{}, {}, {}]
-    // ],
+    userOrder: [],
     feedback: {
       success: "",
       msg: { type: "", text: "" }
@@ -68,24 +64,19 @@ class DashBoard extends Component {
     info.new_password = "";
     await this.setState({ userInfo: info }); // 注意一下這個await 不知道會不會出事
 
-    const { data: userOrder } = await axios.get(
+    const { data } = await axios.get(
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
 
-    console.log(userOrder.rows);
-    for (let i = 0; i < userOrder.rows.length; i++) {
-      JSON.parse(userOrder.rows[i].order_trip);
-      console.log(userOrder.rows);
+    console.log("results", data.rows);
+    const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
+    const productJson = data.rows.map(item => JSON.parse(item.order_product));
+    for (let i = 0; i < data.rows.length; i++) {
+      data.rows[i].order_trip = tripJson[i];
+      data.rows[i].order_product = productJson[i];
     }
-    // await this.setState({ userOrder: userOrder.rows });
-
-    // let results = {};
-    // results = [...new Set(userOrder.rows.map(row => row.order_num))].map(key =>
-    //   userOrder.rows.filter(row => row.order_num === key)
-    // );
-    // console.log(results);
-    // await this.setState({ userOrder: results });
-    // console.log(this.state.userOrder);
+    console.log(data.rows);
+    await this.setState({ userOrder: data.rows });
   }
 
   handleInfoChange = e => {
