@@ -31,7 +31,7 @@ const corsOptions = {
   }
 };
 
-app.use('/static', express.static('public'));
+app.use("/static", express.static("public"));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -66,12 +66,14 @@ app.use(members);
 const members_upload_file = require("./members/members_upload_file");
 app.use(members_upload_file);
 
-
 const members_edit = require("./members/members_edit");
 app.use(members_edit);
 
 const members_change_password = require("./members/members_change_password");
 app.use(members_change_password);
+
+const members_order = require("./members/members_order");
+app.use(members_order);
 
 // trips
 const trips = require("./trips/trips");

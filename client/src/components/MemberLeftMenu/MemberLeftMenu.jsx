@@ -8,7 +8,6 @@ import { ReactComponent as Order } from "./images/order.svg";
 import { ReactComponent as Like } from "./images/like.svg";
 import { ReactComponent as Comment } from "./images/comment.svg";
 import "./MemberLeftMenu.css";
-//
 
 class MemberLeftMenu extends Component {
   state = { my_file: "" };
@@ -75,7 +74,7 @@ class MemberLeftMenu extends Component {
           <Card.Body>
             <div className="text-align-center card-body-1">
               <Card.Title>
-                <span>用戶名</span>
+                <span>{userInfo.last_name_zh}{userInfo.first_name_zh}</span>
               </Card.Title>
               <Card.Text className="text-align-center">
                 <Link to="/account">編輯個人資訊</Link>

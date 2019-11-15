@@ -60,7 +60,13 @@ class DashBoard extends Component {
     );
     const info = { ...userInfo.rows[0] };
     info.new_password = "";
-    this.setState({ userInfo: info });
+    await this.setState({ userInfo: info }); // 注意一下這個await 不知道會不會出事
+
+    const { data: userOrder } = await axios.get(
+      "http://localhost:3001/members_order/" + currentUser.u_id
+    );
+    console.log(userOrder);
+    await this.setState({ userOrder: [userOrder] });
     console.log(this.state);
   }
 
@@ -106,7 +112,11 @@ class DashBoard extends Component {
         console.log(data);
         this.setState({ feedback: data });
         if (this.state.feedback.success) {
+          function pageReload() {
+            window.location = "/account";
+          }
           toast.success(this.state.feedback.msg.text);
+          window.setTimeout(pageReload, 3000);
         } else {
           toast.error(this.state.feedback.msg.text);
         }
@@ -157,7 +167,7 @@ class DashBoard extends Component {
   };
 
   render() {
-    const { userInfo } = this.state;
+    const { userInfo, userOrder } = this.state;
     return (
       <>
         <NavBar currentUser={this.props.currentUser} />
@@ -173,7 +183,10 @@ class DashBoard extends Component {
               <Switch>
                 <Route path="/account/coupons" component={MemberCoupon} />
                 <Route path="/account/comments" component={MemberCommentList} />
-                <Route path="/account/orders" component={MemberOrderList} />
+                <Route
+                  path="/account/orders"
+                  render={() => <MemberOrderList userOrder={userOrder} />}
+                />
                 <Route
                   path="/account/wishlists"
                   exact
