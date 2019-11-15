@@ -52,6 +52,9 @@ class MemberLeftMenu extends Component {
 
   render() {
     const { userInfo } = this.props;
+    console.log("userInfo", userInfo);
+    if (!userInfo.u_id) return <></>;
+
     return (
       <div className="member-left-menu-sticky">
         <Card className="member-left-menu-container mb-4 ">
@@ -74,7 +77,10 @@ class MemberLeftMenu extends Component {
           <Card.Body>
             <div className="text-align-center card-body-1">
               <Card.Title>
-                <span>{userInfo.last_name_zh}{userInfo.first_name_zh}</span>
+                <span>
+                  {userInfo.last_name_zh}
+                  {userInfo.first_name_zh}
+                </span>
               </Card.Title>
               <Card.Text className="text-align-center">
                 <Link to="/account">編輯個人資訊</Link>
