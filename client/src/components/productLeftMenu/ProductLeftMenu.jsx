@@ -5,7 +5,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import search from "../../components/TripLeftmenu/images//search.svg";
 // import location from "../TripLeftmenu/images/location.svg";
 import trac from "../../components/TripLeftmenu/images/trac.svg";
-import SliderPrice from '../../components/TripLeftmenu/SliderPrice';
+import SliderPrice from '../TripLeftmenu/SliderPrice';
 
 //IMAGES
 import filterImg from './img/filter.svg';
