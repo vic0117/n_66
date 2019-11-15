@@ -154,7 +154,7 @@ class HomeTravelCarousel extends React.Component {
             cssEase: 'cubic-bezier(.6,-0.55,0,1.01)',
             responsive: [
                 {
-                    breakpoint: 1160,
+                    breakpoint: 1530,
                     settings: {
                         slidesToShow: 3,
                         slidesToScroll: 3,
@@ -163,7 +163,7 @@ class HomeTravelCarousel extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 876,
+                    breakpoint: 1065,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,

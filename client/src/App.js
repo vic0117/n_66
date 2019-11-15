@@ -10,6 +10,12 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 
+//ProductPages
+import ProductList from './pages/ProductList/ProductList';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
+import MyCart from './pages/MyCart/MyCart';
+import CheckOut from './pages/CheckOut/CheckOut';
+
 class App extends Component {
   state = {};
 
@@ -44,6 +50,23 @@ class App extends Component {
           exact
           render={props => (
             <Home {...props} currentUser={this.state.currentUser} />
+          )}
+        />
+
+        <Route path="/products" exact component={ProductList} />
+        <Route path="/products/:id" exact component={ProductDetail} />
+        <Route
+          path="/cart"
+          exact
+          render={props => (
+            <MyCart {...props} currentUser={this.state.currentUser} />
+          )}
+        />
+        <Route
+          path="/checkout"
+          exact
+          render={props => (
+            <CheckOut {...props} currentUser={this.state.currentUser} />
           )}
         />
       </Switch>

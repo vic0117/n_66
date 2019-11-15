@@ -23,9 +23,9 @@ $secColor: #96daf0;
     display: block;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 35px;
     height: 570px;
-    width: 400px;
+    width: 35%;
     background-color: $primaryColor;
   }
 
@@ -33,21 +33,21 @@ $secColor: #96daf0;
     height: 570px;
     width: 100%;
     color: $primaryColor;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     position: relative;
 
     .slider-container {
       position: absolute;
-      width: 95%;
-      margin-top: 5%;
+      width: 80%;
+      margin-top: 100px;
       margin-right: 0;
-      margin-left: 20%;
+      margin-left: 30%;
     }
 
     .main-slide {
 
       .slick-dots{
-        display: none;
+        display: none !important;
       }
 
       .slick-arrow {
@@ -55,21 +55,25 @@ $secColor: #96daf0;
       }
 
       .slick-track {
-        height: 405px;
+        height: 570px;
         // transition-duration: 1.2s !important;
       }
 
       .tavel-card {
         border: none;
+        border-radius: 0;
         margin-left: 20px;
         margin-right: 20px;
-        box-shadow: 3px 3px 8px rgb(105, 105, 105);
+        box-shadow: 3px 3px 8px rgba(105, 105, 105, 0.616);
         transition: 0.3s;
         text-decoration: none !important;
+        height: 405px;
+        width: 319px;
 
         .card-img-top {
           position: relative;
           overflow: hidden;
+          border-radius: 0;
 
           img {
             width: 100%;
@@ -148,7 +152,7 @@ $secColor: #96daf0;
   .sub-slide {
     transform: rotate(180deg);
     position: absolute;
-    bottom: 20px;
+    bottom: 30%;
     left: -15%;
     width: 90px;
 
@@ -209,16 +213,50 @@ $secColor: #96daf0;
     }
   }
 
-  @media screen and(max-width: 876px) {
+  @media screen and(max-width: 1728px) {
     .slider-container {
       width: 90% !important;
+      margin-left: 30% !important;
+    }
+  }
+
+  @media screen and(max-width: 1530px) {
+    .slider-container {
+      width: 80% !important;
+      margin-left: 25% !important;
+    }
+  }
+
+  @media screen and(max-width: 1320px) {
+    .slider-container {
+      width: 100% !important;
+      margin-left: 20% !important;
+    }
+  }
+
+  @media screen and(max-width: 1065px) {
+    .slider-container {
+      width: 80% !important;
+      margin-left: 20% !important;
     }
   }
 
   @media screen and(max-width: 678px) {
+
+    .main-title{
+      margin-bottom: 0;
+    }
+
     .slider-container {
-      width: 60% !important;
-      margin: auto;
+      width: 100% !important;
+      left: 50%;
+      transform: translate(-38%,0);
+      margin-left: 0% !important;
+
+      .tavel-card{
+        // width: 280px !important;
+        margin: 0 20px 0 20px !important;
+      }
     }
 
     .sub-slide {
@@ -230,7 +268,7 @@ $secColor: #96daf0;
       display: block;
       position: absolute;
       left: 0;
-      top: 20%;
+      top: 30%;
 
       height: 400px;
       width: 100%;

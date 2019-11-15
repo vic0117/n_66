@@ -141,6 +141,11 @@
   color: #242A3A !important;
 }
 
+.ProductLeftMenuContainer .card-container a {
+  color: #242A3A;
+  text-decoration: none;
+}
+
 .ProductLeftMenuContainer .card-container .product-card {
   padding: 15px;
   border: none;
@@ -172,7 +177,7 @@
   left: 100%;
   -webkit-transition: .5s;
   transition: .5s;
-  z-index: 901;
+  z-index: 999;
 }
 
 .ProductLeftMenuContainer .product-filter-menu .product-fake-nav {
@@ -389,4 +394,4 @@
     display: flex !important;
   }
 }
-/*# sourceMappingURL=productLeftMenu.css.map */
+/*# sourceMappingURL=ProductLeftMenu.css.map */

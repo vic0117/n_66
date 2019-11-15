@@ -426,6 +426,11 @@
   .planet-section .custom-dropdown {
     display: block;
   }
+  .planet-section .world-right .right-item {
+    right: 50%;
+    -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+  }
 }
 
 @media screen and (max-width: 768px) {
