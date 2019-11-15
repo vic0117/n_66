@@ -5,12 +5,14 @@ import { ReactComponent as Calendar } from "./images/calendar.svg";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
-class OrderList extends Component {
+class MemberOrderList extends Component {
   state = { addModalShow: false };
 
   render() {
     const { userOrder } = this.props;
     let addModalClose = () => this.setState({ addModalShow: false });
+
+    console.log(userOrder);
     return (
       <div className="order-list-container">
         <Row>
@@ -19,6 +21,9 @@ class OrderList extends Component {
           </Col>
         </Row>
         <Row>
+          {/* {userOrder.map(order => order.map(item => console.log(item.order_num)))} */}
+          {/* {console.log(this.props.userOrder[0][0].order_num)} */}
+
           {
             <Col className="order-card-container">
               <Card style={{ width: "100%" }} className="d-flex">
@@ -59,7 +64,7 @@ class OrderList extends Component {
                         onHide={addModalClose}
                       />
                     </div>
-                    {/*  */}
+                    
                   </Col>
                   <div className="mt-3 d-flex status">
                     <p>狀態: 已送達</p>
@@ -75,4 +80,4 @@ class OrderList extends Component {
   }
 }
 
-export default OrderList;
+export default MemberOrderList;

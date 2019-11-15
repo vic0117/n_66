@@ -38,6 +38,11 @@ class DashBoard extends Component {
       tel: "",
       avatar: ""
     },
+    // userOrder: [
+    //   [{}, {}, {}],
+    //   [{}, {}, {}],
+    //   [{}, {}, {}]
+    // ],
     feedback: {
       success: "",
       msg: { type: "", text: "" }
@@ -54,6 +59,7 @@ class DashBoard extends Component {
       // 如果沒登入 (localStorage中找不到東西)
       this.props.history.push("/login"); // 暫時先跳轉首頁
     }
+
     const { currentUser } = this.state;
     const { data: userInfo } = await axios.get(
       "http://localhost:3001/members/" + currentUser.u_id
@@ -65,9 +71,21 @@ class DashBoard extends Component {
     const { data: userOrder } = await axios.get(
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
-    console.log(userOrder);
-    await this.setState({ userOrder: [userOrder] });
-    console.log(this.state);
+
+    console.log(userOrder.rows);
+    for (let i = 0; i < userOrder.rows.length; i++) {
+      JSON.parse(userOrder.rows[i].order_trip);
+      console.log(userOrder.rows);
+    }
+    // await this.setState({ userOrder: userOrder.rows });
+
+    // let results = {};
+    // results = [...new Set(userOrder.rows.map(row => row.order_num))].map(key =>
+    //   userOrder.rows.filter(row => row.order_num === key)
+    // );
+    // console.log(results);
+    // await this.setState({ userOrder: results });
+    // console.log(this.state.userOrder);
   }
 
   handleInfoChange = e => {
