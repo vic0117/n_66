@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
-import { Container, Row, Col, Tabs, Tab, Card } from "react-bootstrap";
+import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
 import "./ProductCarousel.css";
+// import { object } from "prop-types";
 
 class ProductCarousel extends React.Component {
 
@@ -11,7 +12,8 @@ class ProductCarousel extends React.Component {
       nav1: null,
       nav2: null,
       productPics: props.pics,
-      data: props.data
+      data: props.data,
+      productsToBuy: []
     };
   }
 
@@ -24,23 +26,54 @@ class ProductCarousel extends React.Component {
   }
 
 
-sliders() {
-    return this.props.pics.map(item => (
-            <div key={item} className="pic">
-                <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} 
-                alt={this.props.data[0].product_file_name} />
-            </div>
-    ));
-}
+  sliders() {
+      return this.props.pics.map(item => (
+        <div key={item} className="pic">
+          <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} 
+          alt={this.props.data[0].product_file_name} />
+        </div>
+      ));
+  }
 
-sliders2() {
-  return this.props.pics.map(item => (
-          <div key={item} className="pic2">
-              <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} 
-              alt={this.props.data[0].product_file_name}  />
-          </div>
-  ));
-}
+  sliders2() {
+    return this.props.pics.map(item => (
+      <div key={item} className="pic2">
+        <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item} 
+        alt={this.props.data[0].product_file_name}  />
+      </div>
+    ));
+  }
+
+  addToCart = ()=>{
+    
+    let aaa =  this.props.data[0];
+    let product = {};
+    product.product_name = aaa.product_name;
+    product.product_img = aaa.product_pictures;
+    product.product_size = aaa.product_size;
+    product.product_price = aaa.product_price;
+    product.product_amount = aaa.product_quantity;
+
+    // console.log(product)
+
+    if(localStorage.getItem('productsToBuy') ){
+      let bbb = JSON.parse(localStorage.getItem('productsToBuy'));
+      bbb.push(product);
+      localStorage.setItem("productsToBuy", JSON.stringify(bbb));
+    }
+    else{
+      let ddd= []
+      ddd.push(product)
+      localStorage.setItem("productsToBuy", JSON.stringify( ddd));
+    }
+
+    
+   
+    
+    
+    // localStorage.setItem("productsToBuy" , bbb );
+    
+  }
 
   render() {
 
@@ -110,12 +143,12 @@ sliders2() {
                   <div>
                     <h2>{item.product_name}</h2>
                     <h5>NT$ {item.product_price}</h5>
-                    <a href="#1" className="wishBtn mx-auto" role="button">
+                    <Button className="wishBtn mx-auto" >
                       加入願望清單
-                    </a>
-                    <a href="#2" className="addToCartBtn mx-auto" role="button">
+                    </Button>
+                    <Button onClick={this.addToCart} className="addToCartBtn mx-auto" >
                       放入購物車
-                    </a>
+                    </Button>
                     <p>免費快遞送貨 / 免費退貨</p>
                   </div>
 
@@ -204,6 +237,7 @@ sliders2() {
             </Col>
           </Row>
         </Container>
+
       </>
     );
   }
