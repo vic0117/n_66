@@ -75,7 +75,9 @@ class DashBoard extends Component {
     for (let i = 0; i < data.rows.length; i++) {
       data.rows[i].order_trip = tripJson[i];
       data.rows[i].order_product = productJson[i];
+      data.rows[i].order_info = [...tripJson[i], ...productJson[i]];
     }
+    console.log(data.rows);
 
     await this.setState({ userOrder: data.rows });
     console.log("userOrder", this.state.userOrder);

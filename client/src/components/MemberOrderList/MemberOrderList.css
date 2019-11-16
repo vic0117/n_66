@@ -39,6 +39,14 @@
 .order-container {
   padding-bottom: 1.5rem !important;
   border-bottom: 1px solid #EAEAEA;
+  margin-bottom: 1.5rem;
+}
+
+.order-container .img-container {
+  background: url("./images/sotckholm-lhiver-1221 (2).jpg") no-repeat center center;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
 }
 
 .order-list-title {
@@ -84,5 +92,24 @@
 .to-comment:hover {
   background: #d5d5d5;
   border: 1px solid #d5d5d5;
+}
+
+@media only screen and (max-width: 990px) {
+  .order-container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .to-comment-container {
+    width: 100%;
+    padding: 1.5rem 0 !important;
+  }
+  .to-comment-container button {
+    width: 100%;
+  }
+  .price-amount-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 /*# sourceMappingURL=MemberOrderList.css.map */
