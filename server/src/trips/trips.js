@@ -17,7 +17,7 @@ router.get("/trips/page", (req, res) => {
     if (error) throw error;
     res.send(JSON.stringify(results));
   });
-});
+}); 
 
 //細節
 router.get("/trips/:id", (req, res, next) => {
@@ -42,17 +42,20 @@ router.post("/trips/search", (req, res, next) => {
     res.send(JSON.stringify(results));
   });
 });
+  
+// 依照國家搜尋所要資料 
+router.post('/trips/place',(req,res,next)=>{
+		let place = req.body.carouselPlace
+		console.log(place)
 
-//依照價格排列
-// router.post('/trips/tripprice',(req,res,next)=>{
-
-// 	const sql="SELECT * FROM `trip_list` ORDER BY `trip_price` ASC"
-// 	db.query(sql,(err,results,fields)=>{
-// 		 if(err) throw err;
-// 		//  console.log(results)
-// 		 res.send(JSON.stringify(results))
-// 	})
-// });
+	const sql="SELECT * FROM `trip_list` WHERE `trip_place` = " + `'${place}'`
+	console.log(sql);
+	db.query(sql,(err,results,fields)=>{
+		 if(err) throw err;
+		//  console.log(results)
+		 res.send(JSON.stringify(results))
+	})
+});
 
 //leftMenu select
 router.post("/trips/select", (req, res, next) => {

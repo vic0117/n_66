@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import jwtDecode from "jwt-decode";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
 
 //Components
@@ -20,7 +20,28 @@ import MyCart from "./pages/MyCart/MyCart";
 import CheckOut from "./pages/CheckOut/CheckOut";
 
 class App extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    props.history.listen(location => {
+      //在這裡監聽location对象
+      console.log(location.pathname);
+      switch (
+        location.pathname //根據路徑不同切换不同的瀏覽器title
+      ) {
+        case "/":
+          document.title = "N66";
+          break;
+        case "/trips":
+          document.title = "N66 旅遊列表";
+          break;
+        case "./trips/:id":
+          document.title = "N66 旅遊細節";
+          break;
+        default:
+          break;
+      }
+    });
+  }
 
   componentDidMount() {
     try {
@@ -71,9 +92,12 @@ class App extends Component {
             <Home {...props} currentUser={this.state.currentUser} />
           )}
         />
+        <Route path="/trips/page/:page" exact component={TripMenuPage} />
+        <Route path="/trips/page" exact component={TripMenuPage} />
+        <Route path="/trips/:id" exact component={TripDesPage} />
       </Switch>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

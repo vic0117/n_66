@@ -1,14 +1,16 @@
 .TripSortBox{
-	width: 750px;
+	width: 100%;
 	height: 45px;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom:50px;
 	.TripSortBtn{
 		border:1px solid #eaeaea;
 		width: 170px;
 		display: flex;
 		align-items: center;
 		color:#74767D;
+		transition: .3s;
 	}
 	.TripSortBtn:hover{
 		border:1px solid #96DAF0;
@@ -17,5 +19,13 @@
 	
 	img{
 		margin:0px 20px;
+	}
+	.TripSortBtnActive{
+		border:2px solid #96DAF0 !important;
+		width: 200px;
+		color:#242a3a;
+		img{
+			fill:#242a3a !important;
+		}
 	}
 }

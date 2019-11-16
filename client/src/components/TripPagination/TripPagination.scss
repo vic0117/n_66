@@ -1,0 +1,25 @@
+.tripPageButton{
+
+	.page-link{
+		border-radius: 0;
+		width: 100px !important;
+		height:50px !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border:none;
+		span{
+			font-size: 30px;
+			color:#74767d;
+		}
+		span:hover{
+			background: #eaeaea;
+		}
+	}
+	.page-item.active .page-link{
+		background: #96daf0;
+	}
+	.page-link:focus{
+		box-shadow: none;
+	}
+}

@@ -1,21 +1,23 @@
 .leftMenu{
-	width: 325px;
+	width: 30%;
 	height: 867px;
 	background: #F8F8F8;
-	margin:100px;
+	// margin:100px;
 	display: flex;
 	flex-direction: column;
 	// justify-content: center;
 	align-items: center;
 	padding-top:50px;
+	position: sticky;
+	top:0;
 }
 .searchBox{
-	width: 303px;
+	width: 80%;
 	height: 45px;
 	display:flex;
 	justify-content: center;
 	input{
-		width: 230px;
+		width: 100%;
 		border:1px solid #EAEAEA;
 		text-align: center;
 	}
@@ -58,8 +60,6 @@
 		color:#74767d;
 		border:1px solid #EAEAEA;
 		height: 50px !important;
-		
-		// text-align: start;
 	}
 	.btn:hover{
 		color:#242A3A;
