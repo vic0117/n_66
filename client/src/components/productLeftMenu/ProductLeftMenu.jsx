@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Container, Row, Col, Card, Pagination, Dropdown, Accordion, } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import React, { Component } from "./node_modules/react";
+import { Container, Row, Col, Card, Pagination, Dropdown, Accordion, } from './node_modules/react-bootstrap';
+import { Link } from "./node_modules/react-router-dom";
+import DropdownButton from "./node_modules/react-bootstrap/DropdownButton";
 import search from "../../components/TripLeftmenu/images//search.svg";
 // import location from "../TripLeftmenu/images/location.svg";
 import trac from "../../components/TripLeftmenu/images/trac.svg";
