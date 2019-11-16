@@ -43,11 +43,11 @@
 		font-weight:300;
 	}
 	p{
+		text-align: center;
 		font-size:1.5rem;
 		color:#96DAF0;
 		letter-spacing: 10px;
-		text-align: center;
-		margin: auto;
+		// margin-left:45%
 	}
 }
 
@@ -68,27 +68,34 @@
 }
 
 
-
-@media(max-width:996px){
-
-	.patternBlueInside{
-		h1{
-			font-size:2rem;
-		}
-	}
-}
-
 @media(max-width:992px){
+	// .patternBlueInside{
+	// 	left:30%;
 
+	// 	h1{
+	// 		font-size:3rem;
+	// 	}
+	// 	p{
+	// 		font-size:1.25rem;
+	// 	}
+	// }
 	.backGroundImgCover{
 		height:550px;
 	}
-	// .patternBlue{
-	// 	height:1200px;
-	// }
+	.patternBlue{
+		height:1000px;
+	}
 }
 
 
+@media(max-width:981px){
+	.patternBlueInside{
+		h1{
+			font-size: 30px;
+		}
+		
+	}
+}
 
 
 @media (max-width:768px){
@@ -100,20 +107,14 @@
 	.TripDesNavLocationImg{
 		// width:30% !important;
 		top:25%;
-		
+		// left:35%;
+	}
+	.backGroundImgCover{
+		height:400px;
 	}
 
 	.patternBlueInside{
 		top: 25%;
-
-		p{
-			font-size: 1rem;
-		}
-	}
-
-
-	.backGroundImgCover{
-		height:400px;
 	}
 	// .patternBlue{
 	// 	height: 950px;
@@ -128,4 +129,13 @@
 	// 		font-size:1rem;
 	// 	}
 	// }
+}
+
+@media (max-width:420px){
+	.patternBlueInside{
+		h1{
+			font-size: 24px;
+		}
+		
+	}
 }

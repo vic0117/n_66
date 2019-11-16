@@ -1,6 +1,7 @@
 .TripDes1Box{
 	display: flex;
 	justify-content: space-between;
+	margin-top:100px;
 }
 .TripDes1LeftBox{
 	width: 35%;
@@ -69,5 +70,11 @@
 	}
 	.TripDes1RightBox{
 		width: 100%;
+	}
+	.TripDes1LeftImg{
+		height:300px !important;
+	}
+	.TripDes1RightImg{
+		height:300px !important;
 	}
 }

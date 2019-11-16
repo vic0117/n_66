@@ -1,4 +1,5 @@
 .TripDesCarouselBox{
+   width: 100%;
 	position: relative;
 }
 .BigSlide{
@@ -74,5 +75,32 @@
 	}
 	.slick-next:before {
 		content: url('./images/arrow-right-solid.svg');
+	}
+}
+@media(max-width:768px){
+	.BigSlide{
+		width: 100%;
+		height:300px !important;
+		.slick-slider{
+			height: 300px !important;
+		}
+		.TripDesCarouselImg{
+			height: 300px;
+		}
+		.slick-list{
+			height:300px !important;
+		}
+	}
+	.slick-dots{
+		display: none;
+	}
+	.slick-prev{
+		display: none;
+	}
+	.slick-next{
+		display: none;
+	}
+	.SmallSlide{
+		display: none;
 	}
 }
