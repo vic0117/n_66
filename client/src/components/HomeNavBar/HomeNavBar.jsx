@@ -4,8 +4,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 //Components
-// import DashBoard from "../../page/DashBoard/DashBoard";
-// import Home from "../../page/Home/Home";
+import HomeNavBarRightMenu from "../HomeNavBarRightMenu/HomeNavBarRightMenu";
+
 //CSS
 import "./HomeNavBar.css";
 
@@ -167,33 +167,7 @@ class HomeNavBar extends React.Component {
             </div>
           </a>
         </div>
-
-        <ul className="right-menu">
-          <li>
-            <a href="#88" role="button">
-              <h6>旅程目的地</h6>
-              <h6>探險的開始</h6>
-            </a>
-          </li>
-          <li>
-            <a href="#19" role="button">
-              <h5>活動與主題</h5>
-              <h6>我們的旅程</h6>
-            </a>
-          </li>
-          <li>
-            <a href="#2">
-              <h5>器具與裝備</h5>
-              <h6>戶外用品</h6>
-            </a>
-          </li>
-          <li>
-            <a href="#3">
-              <h5>關於66N</h5>
-              <h6>我們的價值觀</h6>
-            </a>
-          </li>
-        </ul>
+          <HomeNavBarRightMenu/>
       </>
     );
   }

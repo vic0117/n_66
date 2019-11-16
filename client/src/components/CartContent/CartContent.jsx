@@ -8,19 +8,26 @@ import './CartContent.css';
 class CartContent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+
+        }
     }
 
 
 
 
     render() {
+
+        let productInCart = JSON.parse(localStorage.getItem('productsToBuy'));
+        console.log(productInCart);
+
         return (
             <>
                 <Container className="cartSection">
                     <Row>
                         <Col md={8}>
-                            <div className="cartItem">
+                            { productInCart.map(item=>(
+                                <div className="cartItem">
                                 <div className="itemImg">
                                     <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
                                 </div>
@@ -51,8 +58,7 @@ class CartContent extends React.Component {
                                     </div>
                                 </Card.Body>
                             </div>
-
-
+                            )) }
                         </Col>
                         <Col md={4} >
                             <div className="userCard">
