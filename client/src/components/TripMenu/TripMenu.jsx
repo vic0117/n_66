@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./TripMenu.scss";
+import "./Tripmenu.scss";
 import calender from "./images/calender.svg";
 import customize from "./images/customize.svg";
 import multiActivities from "./images/multiActivities.svg";
@@ -7,7 +7,7 @@ import ring3 from "./images/ring3.svg";
 // import TripMenuImg from "./images/sotckholm.jpg";
 // import TripMenuImgCover from "./images/carte-voyage-suede-1197.jpg";
 import { Link } from "react-router-dom";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 
 class TripMenu extends Component {
   constructor(props) {
@@ -16,10 +16,8 @@ class TripMenu extends Component {
       data: props.data1
     };
   }
- 
-  componentDidMount() {
-	
-  }
+
+  componentDidMount() {}
 
   render() {
     // 注意props.match.params.page來自網址，是字串資料類型

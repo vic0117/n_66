@@ -9,13 +9,9 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
-import TripDesPage from './pages/TripDesPage/TripDesPage'
-import TripMenuPage from './pages/TripMenuPage/TripMenuPage'
+import TripDesPage from "./pages/TripDesPage/TripDesPage";
+// import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 
-
-// test
-// import RegisterTest from "./components/RegisterTest/RegisterTest";
-// import LoginTest from "./components/LoginTEST/LoginTest";
 //ProductPages
 import ProductList from "./pages/ProductList/ProductList";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
@@ -45,7 +41,7 @@ class App extends Component {
       }
     });
   }
-
+  state = {};
   componentDidMount() {
     try {
       const jwt = localStorage.getItem("token");
@@ -88,6 +84,9 @@ class App extends Component {
             <DashBoard {...props} currentUser={this.state.currentUser} />
           )}
         />
+        {/* <Route path="/trips/page/:page" exact component={TripMenuPage} /> */}
+        {/* <Route path="/trips/page" exact component={TripMenuPage} /> */}
+        <Route path="/trips/:id" exact component={TripDesPage} />
         <Route
           path="/"
           exact
@@ -95,9 +94,6 @@ class App extends Component {
             <Home {...props} currentUser={this.state.currentUser} />
           )}
         />
-        <Route path="/trips/page/:page" exact component={TripMenuPage} />
-        <Route path="/trips/page" exact component={TripMenuPage} />
-        <Route path="/trips/:id" exact component={TripDesPage} />
       </Switch>
     );
   }
