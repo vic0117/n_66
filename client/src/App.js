@@ -9,10 +9,13 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
+import TripDesPage from './pages/TripDesPage/TripDesPage'
+import TripMenuPage from './pages/TripMenuPage/TripMenuPage'
+
 
 // test
 // import RegisterTest from "./components/RegisterTest/RegisterTest";
-import LoginTest from "./components/LoginTEST/LoginTest";
+// import LoginTest from "./components/LoginTEST/LoginTest";
 //ProductPages
 import ProductList from "./pages/ProductList/ProductList";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
