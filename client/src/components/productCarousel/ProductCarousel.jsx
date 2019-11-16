@@ -1,6 +1,6 @@
-import React from "./node_modules/react";
-import Slider from "./node_modules/react-slick";
-import { Container, Row, Col, Tabs, Tab, Card, Button } from "./node_modules/react-bootstrap";
+import React from "react";
+import Slider from "react-slick";
+import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
 import "./ProductCarousel.css";
 // import { object } from "prop-types";
 
