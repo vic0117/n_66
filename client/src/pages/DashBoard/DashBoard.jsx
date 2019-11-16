@@ -38,7 +38,7 @@ class DashBoard extends Component {
       tel: "",
       avatar: ""
     },
-    userOrder: [],
+    userOrder: null,
     feedback: {
       success: "",
       msg: { type: "", text: "" }
@@ -71,12 +71,14 @@ class DashBoard extends Component {
     console.log("results", data.rows);
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
     const productJson = data.rows.map(item => JSON.parse(item.order_product));
+
     for (let i = 0; i < data.rows.length; i++) {
       data.rows[i].order_trip = tripJson[i];
       data.rows[i].order_product = productJson[i];
     }
-    console.log(data.rows);
+
     await this.setState({ userOrder: data.rows });
+    console.log("userOrder", this.state.userOrder);
   }
 
   handleInfoChange = e => {
@@ -177,6 +179,9 @@ class DashBoard extends Component {
 
   render() {
     const { userInfo, userOrder } = this.state;
+    if (userOrder === null) {
+      return null;
+    }
     return (
       <>
         <NavBar currentUser={this.props.currentUser} />

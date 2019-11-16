@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
+
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
@@ -12,7 +13,7 @@ class MemberOrderList extends Component {
     const { userOrder } = this.props;
     let addModalClose = () => this.setState({ addModalShow: false });
 
-    console.log(userOrder[0]);
+    console.log(userOrder[0].order_trip[0].trip_name);
     return (
       <div className="order-list-container">
         <Row>
