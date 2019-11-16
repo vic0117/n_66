@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./TripDesNav.css";
-
-import snowCity from "./images/snowcity.jpg";
-import { ReactComponent as Suede } from "./images/suede.svg";
+import "./TripDesNav.scss";
+import N66navbarButton from "./N66navbar";
+// import snowCity from "./images/snowcity.jpg";
+// import { ReactComponent as Suede } from "./images/suede.svg";
 
 class TripDesNav extends Component {
   constructor(props) {
@@ -10,22 +10,30 @@ class TripDesNav extends Component {
     this.state = {};
   }
   render() {
+    const { detailData } = this.props;
+    //   console.log(detailData)
     return (
       <>
-        
-        <div>
-          <div className="backGroundImg">
-            <img src={snowCity} alt="snowCity" />
-            <div className="backGroundImgCover"></div>
-          </div>
-          <div className="patternBlue">
-            <Suede className="TripDesNavLocationImg" />
-            <div className="patternBlueInside">
-              <p>瑞士</p>
-              <h1>斯德哥爾摩冬季</h1>
+        {detailData.map(item => (
+          <div key={item.sid}>
+            <N66navbarButton className="N66navbarButton" />
+            <div className="backGroundImg">
+              <img src={`http://localhost:3000/images/${item.trip_desnav_img}`} alt="snowCity" /> 
+              <div className="backGroundImgCover"></div>
+            </div>
+            <div className="patternBlue">
+              {/* <Suede className="TripDesNavLocationImg" /> */}
+				  <img src={`http://localhost:3000/images/${item.trip_desnav_img2}`} 
+				  alt='TripDesNavLocationImg'
+					  className='TripDesNavLocationImg'
+				  />
+              <div className="patternBlueInside">
+                <p>{item.trip_place}</p>
+                <h1>{item.trip_name}</h1>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </>
     );
   }

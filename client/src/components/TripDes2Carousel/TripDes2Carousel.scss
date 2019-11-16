@@ -1,0 +1,289 @@
+$primaryColor: #242a3a;
+$secColor: #96daf0;
+
+.travelCarouselContainer {
+  padding: 0;
+  height: 570px;
+  margin-top: 5rem;
+
+  .sub-title {
+    color: $secColor;
+    margin-bottom: 1rem;
+    letter-spacing: 0.4375rem;
+  }
+
+  .main-title {
+    color: $primaryColor;
+    margin-bottom: 4.5rem;
+    font-size: 2.5rem;
+  }
+
+  .rectNavyBlue::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    height: 570px;
+    width: 35%;
+    background-color: $primaryColor;
+  }
+
+  .rectNavyBlue {
+    height: 570px;
+    width: 100%;
+    color: $primaryColor;
+    // overflow-x: hidden;
+    position: relative;
+
+    .slider-container {
+      position: absolute;
+      width: 80%;
+      margin-top: 100px;
+      margin-right: 0;
+      margin-left: 30%;
+    }
+
+    .main-slide2 {
+		.slick-list{
+			margin-top:20px;
+			height:500px;
+		}
+      .slick-dots{
+        display: none !important;
+      }
+
+      .slick-arrow {
+        display: none !important;
+      }
+
+      .slick-track {
+        height: 570px;
+        // transition-duration: 1.2s !important;
+      }
+
+      .tavel-card {
+        border: none;
+        border-radius: 0;
+        margin-left: 20px;
+        margin-right: 20px;
+        box-shadow: 3px 3px 8px rgba(105, 105, 105, 0.616);
+        transition: 0.3s;
+        text-decoration: none !important;
+        height: 405px;
+        width: 319px;
+
+        .card-img-top {
+          position: relative;
+          overflow: hidden;
+			 border-radius: 0;
+			 height:400px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin: auto;
+            transition: 0.3s ease-in-out;
+          }
+        }
+
+        h3 {
+          color: $primaryColor;
+          margin: 10px 0 5px 0;
+        }
+
+        .card-text {
+          color: $secColor;
+          font-size: 1rem;
+        }
+
+        .days {
+          color: $primaryColor;
+          margin-top: 10px;
+          width: 30%;
+          text-decoration: none;
+          img {
+            margin: 0 10px 0 0;
+            height: 12px;
+            width: 12px;
+          }
+        }
+
+        .card-price {
+          margin-top: 20px;
+          padding-top: 10px;
+          border-top: 1px solid #ccc;
+
+          span {
+            color: $primaryColor;
+          }
+
+          p {
+            color: $secColor;
+            font-size: 36px;
+            font-weight: 900;
+            margin: 0;
+            text-decoration: none;
+          }
+        }
+
+        .fallow {
+          display: block;
+          margin-left: auto;
+          background-color: $primaryColor;
+          color: #ffffff;
+        }
+
+        &:hover {
+          // transform: translateY(-20px);
+          .card-img-top {
+            img {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      .out {
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .sub-slide {
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 30%;
+    left: -15%;
+    width: 90px;
+
+    h1 {
+      text-align: center;
+      font-size: 3.75rem;
+      font-weight: 600;
+      color: #fff;
+      transform: rotate(-180deg);
+    }
+    .slick-dots {
+      margin-bottom: 110px;
+      margin-left: 10px;
+      button {
+        color: #fff !important;
+      }
+      button::before {
+        color: #fff;
+      }
+      .slick-active button::before {
+        color: #fff !important;
+      }
+      transform: rotate(-180deg);
+    }
+    .slick-prev {
+      position: absolute;
+      top: 150px;
+      left: 15px;
+      width: 60px;
+      height: 60px;
+      border: 4px solid #eaeaea;
+      border-radius: 50%;
+      transform: rotate(-180deg);
+      transition: 0.3s;
+    }
+    .slick-next:hover {
+      border-color: #96daf0;
+    }
+    .slick-prev:hover {
+      border-color: #96daf0;
+    }
+    .slick-next {
+      position: absolute;
+      top: 225px;
+      left: 15px;
+      width: 60px;
+      height: 60px;
+      border: 4px solid #eaeaea;
+      border-radius: 50%;
+      transform: rotate(-180deg);
+      transition: 0.3s;
+    }
+    .slick-prev:before {
+      content: url("./images/svg/arrow-left-solid.svg");
+    }
+    .slick-next:before {
+      content: url("./images/svg/arrow-right-solid.svg");
+    }
+  }
+
+  @media screen and(max-width: 1728px) {
+    .slider-container {
+      width: 90% !important;
+      margin-left: 30% !important;
+    }
+  }
+
+  @media screen and(max-width: 1530px) {
+    .slider-container {
+      width: 80% !important;
+      margin-left: 25% !important;
+    }
+  }
+
+  @media screen and(max-width: 1320px) {
+    .slider-container {
+      width: 100% !important;
+      margin-left: 20% !important;
+    }
+  }
+
+  @media screen and(max-width: 1065px) {
+    .slider-container {
+      width: 80% !important;
+      margin-left: 20% !important;
+    }
+  }
+
+  @media screen and(max-width: 678px) {
+
+    .main-title{
+      margin-bottom: 0;
+	 }
+	 .main-slide2 {
+		.slick-list{
+			margin-top:20px;
+			margin-left:50px;
+			// height:500px;
+		}
+	}
+
+    .slider-container {
+      width: 100% !important;
+      left: 50%;
+      transform: translate(-38%,0);
+      margin-left: 0% !important;
+
+      .tavel-card{
+        // width: 280px !important;
+        margin: 0 20px 0 20px !important;
+      }
+    }
+
+    .sub-slide {
+      display: none;
+    }
+
+    .rectNavyBlue::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 30%;
+
+      height: 400px;
+      width: 100%;
+      background-color: $primaryColor;
+    }
+  }
+}
