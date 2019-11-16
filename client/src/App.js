@@ -9,14 +9,14 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
-import TripDesPage from "./pages/TripDesPage/TripDesPage";
+// import TripDesPage from "./pages/TripDesPage/TripDesPage";
 // import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 
 //ProductPages
-import ProductList from "./pages/ProductList/ProductList";
-import ProductDetail from "./pages/ProductDetail/ProductDetail";
-import MyCart from "./pages/MyCart/MyCart";
-import CheckOut from "./pages/CheckOut/CheckOut";
+// import ProductList from "./pages/ProductList/ProductList";
+// import ProductDetail from "./pages/ProductDetail/ProductDetail";
+// import MyCart from "./pages/MyCart/MyCart";
+// import CheckOut from "./pages/CheckOut/CheckOut";
 
 class App extends Component {
   constructor(props) {
@@ -54,22 +54,22 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/products" exact component={ProductList} />
-        <Route path="/products/:id" exact component={ProductDetail} />
-        <Route
+        {/* <Route path="/products" exact component={ProductList} /> */}
+        {/* <Route path="/products/:id" exact component={ProductDetail} /> */}
+        {/* <Route
           path="/cart"
           exact
           render={props => (
             <MyCart {...props} currentUser={this.state.currentUser} />
           )}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/checkout"
           exact
           render={props => (
             <CheckOut {...props} currentUser={this.state.currentUser} />
           )}
-        />
+        /> */}
         <Route path="/comments" component={Comment} />
         <Route path="/logout" component={Logout} />
         <Route
@@ -86,7 +86,7 @@ class App extends Component {
         />
         {/* <Route path="/trips/page/:page" exact component={TripMenuPage} /> */}
         {/* <Route path="/trips/page" exact component={TripMenuPage} /> */}
-        <Route path="/trips/:id" exact component={TripDesPage} />
+        {/* <Route path="/trips/:id" exact component={TripDesPage} /> */}
         <Route
           path="/"
           exact
