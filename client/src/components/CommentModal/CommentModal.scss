@@ -1,3 +1,7 @@
+.modal-content {
+  padding: 1rem;
+}
+
 .modal-rank-container {
   width: 100px;
   justify-content: space-between;
@@ -10,6 +14,7 @@
   margin: 10px 0;
   height: 150px;
   resize: none;
+  padding: 1rem;
 }
 
 .modal-btn {
@@ -23,9 +28,6 @@
 
 .modal-btn:hover {
   border: none;
-
   background: #d5d5d5;
   border: 1px solid #d5d5d5;
 }
-
-

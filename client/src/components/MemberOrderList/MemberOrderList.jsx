@@ -88,13 +88,16 @@ class MemberOrderList extends Component {
                             onClick={() =>
                               this.setState({ addModalShow: true })
                             }
+                            reviewInfo={item}
                           >
                             前往評論
                           </Button>
                         )}
+
                         <CommentModal
                           show={this.state.addModalShow}
                           onHide={addModalClose}
+                          reviewInfo={item}
                         />
                       </div>
                     </Col>
