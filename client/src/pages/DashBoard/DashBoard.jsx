@@ -201,7 +201,12 @@ class DashBoard extends Component {
                 <Route path="/account/comments" component={MemberCommentList} />
                 <Route
                   path="/account/orders"
-                  render={() => <MemberOrderList userOrder={userOrder} />}
+                  render={() => (
+                    <MemberOrderList
+                      userInfo={userInfo}
+                      userOrder={userOrder}
+                    />
+                  )}
                 />
                 <Route
                   path="/account/wishlists"

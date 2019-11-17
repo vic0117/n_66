@@ -10,6 +10,15 @@ import "./MemberOrderList.css";
 class MemberOrderList extends Component {
   state = { addModalShow: false };
 
+  getModal = value => {
+    console.log(value);
+    let key_to_update = {};
+    key_to_update[value] = true;
+    this.setState({
+      addModalShow: Object.assign({}, this.state.addModalShow, key_to_update)
+    });
+  };
+
   render() {
     const { userOrder } = this.props;
     userOrder.map(order => console.log(order));
@@ -85,19 +94,18 @@ class MemberOrderList extends Component {
                         {item.trip_name && (
                           <Button
                             className="to-comment"
-                            onClick={() =>
-                              this.setState({ addModalShow: true })
-                            }
-                            reviewInfo={item}
+                            onClick={() => this.getModal(item.code)}
+                            reviewinfo={item}
                           >
                             前往評論
                           </Button>
                         )}
 
                         <CommentModal
-                          show={this.state.addModalShow}
+                          show={this.state.addModalShow[item.code]}
                           onHide={addModalClose}
-                          reviewInfo={item}
+                          reviewinfo={item}
+                          userInfo={this.props.userInfo}
                         />
                       </div>
                     </Col>
