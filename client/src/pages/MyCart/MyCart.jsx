@@ -8,14 +8,32 @@ class MyCart extends React.Component {
         this.state = {
             // ProductsData: [],
             productsToBuy: [],
+            tripsToBuy: [],
             posObj: {},
+            totalCost: 0
         }
     }
 
     componentDidMount() {
         const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
-        this.setState({ productsToBuy: productsToBuy }, ()=>{
-            console.log(this.state.productsToBuy);
+        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
+
+        let  totalCost = 0;
+
+        productsToBuy.forEach(item => {
+            let subCost = item.product_amount * item.product_price;
+            totalCost += subCost;
+        });
+
+        tripsToBuy.forEach(trip => {
+            let tripCost = trip.trip_amount * trip.trip_price;
+            totalCost += tripCost;
+        });
+
+        this.setState({ 
+            productsToBuy: productsToBuy,
+            tripsToBuy: tripsToBuy,
+            totalCost: totalCost
         });
     }
 
@@ -30,6 +48,10 @@ class MyCart extends React.Component {
 
     count2 = (aaa)=>{
         this.setState({productsToBuy: aaa})
+    }
+    
+    countTotalCost = (cost)=>{
+        this.setState({totalCost: cost})
     } 
 
 
@@ -39,9 +61,12 @@ class MyCart extends React.Component {
                 <NavBar />
                 <CartContent 
                     data={this.state.productsToBuy}
+                    tripData={this.state.tripsToBuy}
+                    totalCost={this.state.totalCost}
                     delete={this.delete}
                     count1={this.count1}
                     count2={this.count2}
+                    countTotalCost={this.countTotalCost}
                 />
             </>
         );
