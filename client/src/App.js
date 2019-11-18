@@ -12,7 +12,6 @@ import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
 
-
 //ProductPages
 import ProductList from "./pages/ProductList/ProductList";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
@@ -37,9 +36,9 @@ class App extends Component {
         case "./trips/:id":
           document.title = "N66 旅遊細節";
           break;
-          case "./products":
-            document.title = "N66 商品列表";
-            break;
+        case "./products":
+          document.title = "N66 商品列表";
+          break;
         default:
           break;
       }
@@ -73,8 +72,13 @@ class App extends Component {
           render={props => (
             <CheckOut {...props} currentUser={this.state.currentUser} />
           )}
-
+        />
+        <Route
+          path="/comments"
+          render={props => <Comment currentUser={this.state.currentUser} />}
+        />
         <Route path="/logout" component={Logout} />
+
         <Route
           path="/login"
           render={props => (
