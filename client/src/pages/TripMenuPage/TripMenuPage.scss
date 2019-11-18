@@ -1,105 +1,108 @@
-.norway{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
+
 .TripMenuNavBox{
 	max-height: 95%;
 	width: 100%;
 	position: relative;
-}
-.TripMenuNavCover{
-	background-image:-webkit-linear-gradient(bottom, #242a3a,#242a3ac8);
-	width: 100%;
-	height:100%;
-	position: absolute;
-	top:0;
-	left:0;
-}
-.TripMenuContentBox{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	margin-top:100px;
-	a{text-decoration: none !important;}
 
-}
-.TripMenuContentInsideBox{
-	width: 65%;
-		a{
-		text-decoration: none !important;
-		color:#74767d;
+	.norway{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
-}
-.noResult{
-	margin:auto;
-	color:#242a3a;
-	display: block;
-	text-align: center;
-}
-.titleYes{
-	margin:auto;
-	color:#242a3a;
-	display: none;
-	text-align: center;
-}
 
-
-@media(max-width:992px){
-	.leftMenu{
-		display: none !important;
+	.TripMenuNavCover{
+		background-image:-webkit-linear-gradient(bottom, #242a3a,#242a3ac8);
+		width: 100%;
+		height:100%;
+		position: absolute;
+		top:0;
+		left:0;
 	}
-	.TripSortBox{
-		display: none !important;
+	.TripMenuContentBox{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		margin-top:100px;
+		a{text-decoration: none !important;}
+
 	}
 	.TripMenuContentInsideBox{
-		margin:auto;
-	}
-}
-.TripMenuNavInputBox{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	p{
-		font-size: 20px;
-		color:#96daf0;
-		letter-spacing: 20px;
-	}
-	h1{
-
-		color:#fff;
-		font-size:4.375rem;
-		font-weight: 300 !important;
-	}
-	button{
-		background:transparent;
-		border:none;
-	}
-	button:focus {outline:0;}
-	img{
-		width: 24px;
-		fill:#fff;
-	}
-	.TripSearchInput{
-		margin-top:50px;
-		margin-left:70px;
-		width: 500px;
-		color:#96daf0;
-		font-size: 30px;
-		border-bottom:1px solid #eaeaea;
-	}
-	.TripSearchInput:after{
-		border-bottom:1px solid #eaeaea;
-	}
-	
-}
-@media(max-width:786px){
-	.TripMenuNavInputBox{
-		h1{
-			font-size:50px;
+		width: 65%;
+			a{
+			text-decoration: none !important;
+			color:#74767d;
 		}
 	}
+	.noResult{
+		margin:auto;
+		color:#242a3a;
+		display: block;
+		text-align: center;
+	}
+	.titleYes{
+		margin:auto;
+		color:#242a3a;
+		display: none;
+		text-align: center;
+	}
+
+
+	@media(max-width:992px){
+		.leftMenu{
+			display: none !important;
+		}
+		.TripSortBox{
+			display: none !important;
+		}
+		.TripMenuContentInsideBox{
+			margin:auto;
+		}
+	}
+	.TripMenuNavInputBox{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		p{
+			font-size: 20px;
+			color:#96daf0;
+			letter-spacing: 20px;
+		}
+		h1{
+
+			color:#fff;
+			font-size:4.375rem;
+			font-weight: 300 !important;
+		}
+		button{
+			background:transparent;
+			border:none;
+		}
+		button:focus {outline:0;}
+		img{
+			width: 24px;
+			fill:#fff;
+		}
+		.TripSearchInput{
+			margin-top:50px;
+			margin-left:70px;
+			width: 500px;
+			color:#96daf0;
+			font-size: 30px;
+			border-bottom:1px solid #eaeaea;
+		}
+		.TripSearchInput:after{
+			border-bottom:1px solid #eaeaea;
+		}
+		
+	}
+	@media(max-width:786px){
+		
+			h1{
+				font-size:50px;
+			}
+	}
+
 }
