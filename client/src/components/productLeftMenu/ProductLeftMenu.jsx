@@ -3,10 +3,10 @@ import { Container, Row, Col, Card, Pagination, Dropdown, Accordion, } from 'rea
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
-import search from '../../components/TripLeftmenu/images/search.svg'
-import location from "../TripLeftmenu/images/location.svg";
-import trac from "../../components/TripLeftmenu/images/trac.svg";
-import SliderPrice from '../TripLeftmenu/SliderPrice';
+import search from '../../components/TripLeftMenu/images/search.svg'
+import location from "../TripLeftMenu/images/location.svg";
+import trac from "../../components/TripLeftMenu/images/trac.svg";
+import SliderPrice from '../TripLeftMenu/SliderPrice';
 
 //IMAGES
 import filterImg from './img/filter.svg';

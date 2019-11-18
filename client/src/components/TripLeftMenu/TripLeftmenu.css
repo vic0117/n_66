@@ -1,0 +1,112 @@
+.leftMenu {
+  width: 30%;
+  height: 867px;
+  background: #F8F8F8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 50px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.leftMenu .searchBox {
+  width: 80%;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.leftMenu .searchBox input {
+  width: 100%;
+  border: 1px solid #EAEAEA;
+  text-align: center;
+}
+
+.leftMenu .searchBox input:focus {
+  outline: none;
+  border: 1px solid #96DAF0;
+}
+
+.leftMenu .searchBox .searchImg {
+  background: #fff;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #EAEAEA;
+  cursor: pointer;
+}
+
+.leftMenu .buttonTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+  margin-left: -150px;
+}
+
+.leftMenu .buttonTitle img {
+  width: 20px;
+  color: #242A3A;
+  margin: 10px;
+}
+
+.leftMenu .buttonTitle p {
+  margin-top: 20px;
+  color: #242A3A;
+}
+
+.leftMenu .dropdown .btn {
+  width: 245px !important;
+  background: #fff !important;
+  color: #74767d;
+  border: 1px solid #EAEAEA;
+  height: 50px !important;
+}
+
+.leftMenu .dropdown .btn:hover {
+  color: #242A3A;
+  border: 1px solid #96DAF0;
+}
+
+.leftMenu .dropdown-menu {
+  height: 200px !important;
+  width: 245px !important;
+  overflow: scroll;
+}
+
+.leftMenu .dropdown-item {
+  height: 50px !important;
+  line-height: 50px;
+  border-bottom: 1px solid #EAEAEA !important;
+}
+
+.leftMenu .MuiSlider-root {
+  color: #96DAF0 !important;
+}
+
+.leftMenu .PrivateValueLabel-label-56 {
+  color: #242A3A !important;
+}
+/*# sourceMappingURL=TripLeftmenu.css.map */

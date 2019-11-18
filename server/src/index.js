@@ -10,10 +10,10 @@ const session = require("express-session");
 const cors = require("cors");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 db.connect();
