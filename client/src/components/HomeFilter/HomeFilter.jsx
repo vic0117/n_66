@@ -11,7 +11,8 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from "../TripLeftMenu/SliderDays"
+import SliderDays from '../TripLeftmenu/SliderDays';
+
 
 //SVG
 import { ReactComponent as Location } from "./images/location.svg";
@@ -418,7 +419,7 @@ class HomeFilter extends Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="4">
                   <Card.Body id="days-of-stay">
-                    <SliderDays />
+                    <SliderDays />  
                     <a
                       className="searchDaysBtn"
                       onClick={this.searchByStay}

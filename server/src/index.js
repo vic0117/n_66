@@ -10,7 +10,7 @@ const session = require("express-session");
 const cors = require("cors");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
   user: "root",
   password: "root",
@@ -35,7 +35,6 @@ app.use("/static", express.static("public"));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 // route
 app.get("/", (req, res) => {
@@ -75,6 +74,9 @@ app.use(members_change_password);
 
 const members_order = require("./members/members_order");
 app.use(members_order);
+
+const members_comments = require("./members/members_comments");
+app.use(members_comments);
 
 // trips
 const trips = require("./trips/trips");

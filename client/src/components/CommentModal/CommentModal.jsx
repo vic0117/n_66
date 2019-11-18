@@ -1,16 +1,40 @@
 import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
+
 import { ReactComponent as Star } from "./images/star.svg";
+import StarRatingComponent from "react-star-rating-component";
 // import { ReactComponent as StarSolid } from "./images/star-solid.svg";
 import "./CommentModal.css";
 class CommentModal extends Component {
-  state = {};
+  state = {
+    rating: 1,
+    reviews: "",
+    commentContent: ""
+  };
+
+  handleChange = event => {
+    this.setState({ commentContent: event.target.value });
+  };
+
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({ rating: nextValue });
+  };
+
+  onClick = async value => {
+    await this.props.handlerating(this.state.rating);
+    await this.props.handlesubmitcomment(value);
+    await this.props.handlecommentcontent(this.state.commentContent);
+    // await this.props.onHide();
+    await this.props.handlecommentssubmit();
+  };
 
   render() {
+    const { rating } = this.state;
     const { reviewinfo } = this.props;
-    console.log(reviewinfo);
+    // console.log(reviewinfo);
+
     return (
-      <form>
+      <>
         <Modal
           {...this.props}
           size="lg"
@@ -24,35 +48,42 @@ class CommentModal extends Component {
           </Modal.Header>
 
           <Modal.Body>
-            <h4>
-              {this.props.userInfo.last_name_zh}
-              {this.props.userInfo.first_name_zh}
+            <h4 style={{ fontSize: "1rem" }}>
+              {this.props.userinfo.last_name_zh}
+              {this.props.userinfo.first_name_zh}
             </h4>
             <div className="d-flex modal-rank-container">
-              <Star height="16" width="16" />
-              <Star height="16" width="16" />
-              <Star height="16" width="16" />
-              <Star height="16" width="16" />
-              <Star height="16" width="16" />
+              <StarRatingComponent
+                name="rate1"
+                starCount={5}
+                value={rating}
+                onStarClick={this.onStarClick.bind(this)}
+              />
             </div>
             <textarea
               className="comment-content"
               type="text"
-              name=""
-              id=""
+              name="review"
+              id="review"
               placeholder="分享您的旅行體驗..."
+              value={this.state.commentContent}
+              onChange={this.handleChange}
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.props.onHide} className="modal-btn">
+            <Button
+              type="submit"
+              className="modal-btn"
+              onClick={() => this.onClick(this.props.reviewinfo)}
+            >
               送出
             </Button>
-            <Button onClick={this.props.onHide} className="modal-btn">
+            {/* <Button onClick={this.props.onHide} className="modal-btn">
               取消
-            </Button>
+            </Button> */}
           </Modal.Footer>
         </Modal>
-      </form>
+      </>
     );
   }
 }

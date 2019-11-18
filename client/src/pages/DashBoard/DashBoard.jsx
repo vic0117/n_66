@@ -83,11 +83,11 @@ class DashBoard extends Component {
     console.log("userOrder", this.state.userOrder);
   }
 
-  handleInfoChange = e => {
+  handleInfoChange = async e => {
     const userInfo = { ...this.state.userInfo };
     console.log(userInfo);
     userInfo[e.target.name] = e.target.value;
-    this.setState({ userInfo });
+    await this.setState({ userInfo });
   };
 
   handleInfoSubmit = async e => {
@@ -96,7 +96,7 @@ class DashBoard extends Component {
     let info = {
       first_name_zh: this.state.userInfo.first_name_zh,
       last_name_zh: this.state.userInfo.last_name_zh,
-      first_name_en: this.state.userInfo.first_name_zh,
+      first_name_en: this.state.userInfo.first_name_en,
       last_name_en: this.state.userInfo.last_name_en,
       gender: this.state.userInfo.gender,
       bday_year: this.state.userInfo.bday_year,
@@ -205,6 +205,7 @@ class DashBoard extends Component {
                     <MemberOrderList
                       userInfo={userInfo}
                       userOrder={userOrder}
+                      currentUser={this.props.currentUser}
                     />
                   )}
                 />
