@@ -78,6 +78,13 @@ app.use(members_order);
 const members_comments = require("./members/members_comments");
 app.use(members_comments);
 
+const members_comments_list = require("./members/members_comments_list");
+app.use(members_comments_list);
+
+// comments
+const comments = require("./comments/comment");
+app.use(comments);
+
 // trips
 const trips = require("./trips/trips");
 app.use(trips);

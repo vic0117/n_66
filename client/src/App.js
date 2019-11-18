@@ -70,7 +70,10 @@ class App extends Component {
             <CheckOut {...props} currentUser={this.state.currentUser} />
           )}
         /> */}
-        <Route path="/comments" component={Comment} />
+        <Route
+          path="/comments"
+          render={props => <Comment currentUser={this.state.currentUser} />}
+        />
         <Route path="/logout" component={Logout} />
         <Route
           path="/login"
