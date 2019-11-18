@@ -39,7 +39,7 @@
 
 .comment-info-container {
   margin: 0;
-  padding: 0 2rem 1.5rem 2rem;
+  padding: 1.5rem 2rem 1.5rem 2rem !important;
 }
 
 .comment-btn-outer-container {

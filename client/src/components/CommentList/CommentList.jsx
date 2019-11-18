@@ -24,9 +24,6 @@ class CommentList extends Component {
             className="comment-container d-flex flex-column"
             key={comment.c_id}
           >
-            <Row className="mx-0">
-              <Col className="comment-title"></Col>
-            </Row>
             <Row className="comment-info-container">
               <div className="rank-container">
                 <StarRatingComponent

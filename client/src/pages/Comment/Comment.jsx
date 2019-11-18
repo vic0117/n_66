@@ -4,7 +4,6 @@ import CommentHeader from "./../../components/CommentHeader/CommentHeader";
 import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox";
 import Footer from "../../components/Footer/Footer";
 import CommentList from "../../components/CommentList/CommentList";
-
 import { Row, Col } from "react-bootstrap";
 import { ReactComponent as Star } from "./images/star.svg";
 import { ReactComponent as StarSolid } from "./images/star-solid.svg";
