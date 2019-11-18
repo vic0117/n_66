@@ -38,9 +38,7 @@
   margin-bottom: 1.5rem;
   // flex-wrap: wrap;
   .img-container {
-    background: url("./images/sotckholm-lhiver-1221\ \(2\).jpg") no-repeat
-      center center;
-    background-size: cover;
+    background-size: cover !important;
     width: 200px;
     height: 200px;
   }

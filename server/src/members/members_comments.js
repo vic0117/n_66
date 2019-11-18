@@ -42,13 +42,15 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
       res.json(data);
     } else {
       console.log("req.body", req.body);
-      console.log("req.params", req.params);
+      // console.log("req.params", req.params);
 
-      //   沒輸入新舊password時;
-      //   if (!req.body.password || !req.body.new_password) {
-      //     data.msg.text = "資料不足";
-      //     res.json(data);
-      //   }
+      沒輸入東西時;
+      if (!req.body.reviews) {
+        data.msg.text = "資料不足";
+        res.json(data);
+      }
+      
+      console.log('reviews',req.body.reviews);
       const sql =
         "INSERT INTO comments_list ( u_id,last_name_zh, gender, trip_name, trip_country, rating, reviews) VALUES(?,?,?,?,?,?,?)";
       db.query(
@@ -65,13 +67,13 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
         (error, results, fields) => {
           if (error) throw error;
           console.log(results);
-          //   if (results.changedRows === 1) {
-          //     data.success = true;
-          //     data.msg.type = "primary";
-          //     data.msg.text = "修改成功";
-          //   } else {
-          //     data.msg.text = "資料沒有修改";
-          //   }
+          if (results.affectedRows === 1) {
+            data.success = true;
+            data.msg.type = "primary";
+            data.msg.text = "發布成功";
+          } else {
+            data.msg.text = "發布失敗";
+          }
           res.json(data);
         }
       );

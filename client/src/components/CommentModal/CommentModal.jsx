@@ -23,8 +23,9 @@ class CommentModal extends Component {
   onClick = async value => {
     await this.props.handlerating(this.state.rating);
     await this.props.handlesubmitcomment(value);
-    await this.props.onHide();
-    this.props.handlecommentcontent(this.state.commentContent);
+    await this.props.handlecommentcontent(this.state.commentContent);
+    // await this.props.onHide();
+    await this.props.handlecommentssubmit();
   };
 
   render() {
@@ -33,7 +34,7 @@ class CommentModal extends Component {
     // console.log(reviewinfo);
 
     return (
-      <form method="POST">
+      <>
         <Modal
           {...this.props}
           size="lg"
@@ -82,7 +83,7 @@ class CommentModal extends Component {
             </Button> */}
           </Modal.Footer>
         </Modal>
-      </form>
+      </>
     );
   }
 }

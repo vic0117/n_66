@@ -96,7 +96,7 @@ class DashBoard extends Component {
     let info = {
       first_name_zh: this.state.userInfo.first_name_zh,
       last_name_zh: this.state.userInfo.last_name_zh,
-      first_name_en: this.state.userInfo.first_name_zh,
+      first_name_en: this.state.userInfo.first_name_en,
       last_name_en: this.state.userInfo.last_name_en,
       gender: this.state.userInfo.gender,
       bday_year: this.state.userInfo.bday_year,
