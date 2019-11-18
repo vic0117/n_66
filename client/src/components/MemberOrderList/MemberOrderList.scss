@@ -93,6 +93,11 @@
   border: 1px solid #d5d5d5;
 }
 
+.to-comment-container button:focus {
+  box-shadow: none;
+  background-color: #d5d5d5 !important;
+}
+
 // RWD
 @media only screen and (max-width: 990px) {
   .order-container {

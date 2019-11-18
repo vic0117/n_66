@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
-
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
+
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
 class MemberOrderList extends Component {
-  state = { addModalShow: false };
+  state = { addModalShow: false, rating: "", reviewInfo: null, reviews: "" };
 
   getModal = value => {
     console.log(value);
@@ -19,11 +19,75 @@ class MemberOrderList extends Component {
     });
   };
 
+  ModalClose = e => {
+    this.setState({ addModalShow: false });
+    this.handleCommentsSubmit(e);
+  };
+
+  handleCommentsSubmit = e => {
+    // 問題: 不用onsubmit 用 onclick 可以傳資料給後端嗎
+    // 問題: 如何把下層的state 提升到這層
+    // e.preventDefault();
+    console.log("clicked");
+    // const { currentUser } = this.props;
+    let info = {
+      last_name_zh: this.props.userInfo.last_name_zh,
+      gender: this.props.userInfo.gender,
+      trip_name: this.state.reviewInfo.trip_name,
+      trip_country: this.state.reviewInfo.trip_country,
+      rating: this.state.rating,
+      reviews: this.state.reviews,
+      u_id: this.props.currentUser.user.u_id
+    };
+    fetch(`http://localhost:3001/members_comments/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token")
+      },
+      body: JSON.stringify(info)
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        // this.setState({ feedback: data });
+        // if (this.state.feedback.success) {
+        //   function pageReload() {
+        //     window.location = "/account";
+        //   }
+        // toast.success(this.state.feedback.msg.text);
+        // window.setTimeout(pageReload, 3000);
+        // } else {
+        // toast.error(this.state.feedback.msg.text);
+        // }
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  };
+
+  handleRating = async value => {
+    await this.setState({ rating: value });
+  };
+
+  handleSubmitComment = async value => {
+    await this.setState({ reviewInfo: value });
+  };
+
+  handleCommentContent = async value => {
+    await this.setState({ reviews: value });
+  };
+
   render() {
     const { userOrder } = this.props;
-    userOrder.map(order => console.log(order));
-    console.log(userOrder);
-    let addModalClose = () => this.setState({ addModalShow: false });
+
+    // let addModalClose = () => this.setState({ addModalShow: false });
+    console.log(this.props.currentUser.user.u_id);
     return (
       <div className="order-list-container">
         <Row>
@@ -52,7 +116,10 @@ class MemberOrderList extends Component {
                     </Card.Title>
                   </Col>
                   {order.order_info.map(item => (
-                    <Col className="d-flex position-relative order-container">
+                    <Col
+                      className="d-flex position-relative order-container"
+                      key={item.code}
+                    >
                       <div className="img-container col-md-4">
                         {/* <img src={sotckholm} height="200" width="200" alt="" /> */}
                       </div>
@@ -103,9 +170,13 @@ class MemberOrderList extends Component {
 
                         <CommentModal
                           show={this.state.addModalShow[item.code]}
-                          onHide={addModalClose}
                           reviewinfo={item}
-                          userInfo={this.props.userInfo}
+                          userinfo={this.props.userInfo}
+                          currentuser={this.props.currentUser}
+                          onHide={this.ModalClose}
+                          handlerating={this.handleRating}
+                          handlesubmitcomment={this.handleSubmitComment}
+                          handlecommentcontent={this.handleCommentContent}
                         />
                       </div>
                     </Col>

@@ -93,6 +93,11 @@
   transition: 0.5s;
 }
 
+.member-info-content-container button:focus {
+  box-shadow: none;
+  background-color: #d5d5d5 !important;
+}
+
 select:not([multiple]) {
   -webkit-appearance: none;
   -moz-appearance: none;
