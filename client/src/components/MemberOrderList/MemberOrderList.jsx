@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
+import { toast } from "react-toastify";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
-import { toast } from "react-toastify";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
@@ -21,11 +21,9 @@ class MemberOrderList extends Component {
 
   ModalClose = e => {
     this.setState({ addModalShow: false });
-    // this.handleCommentsSubmit();
   };
 
   handleCommentsSubmit = event => {
-    //event.preventDefault();
     let info = {
       last_name_zh: this.props.userInfo.last_name_zh,
       gender: this.props.userInfo.gender,
@@ -33,7 +31,9 @@ class MemberOrderList extends Component {
       trip_country: this.state.reviewInfo.trip_country,
       rating: this.state.rating,
       reviews: this.state.reviews,
-      u_id: this.props.currentUser.user.u_id
+      u_id: this.props.currentUser.user.u_id,
+      trip_start_date: this.state.reviewInfo.trip_start_date,
+      trip_end_date: this.state.reviewInfo.trip_end_date
     };
     fetch(`http://localhost:3001/members_comments/`, {
       method: "POST",
@@ -121,7 +121,7 @@ class MemberOrderList extends Component {
                         style={{
                           background: `url(
                             "http://localhost:3000/images/${item.trip_img ||
-                              item.product_img} "
+                              item.product_img}"
                           ) no-repeat center center`
                         }}
                       ></div>

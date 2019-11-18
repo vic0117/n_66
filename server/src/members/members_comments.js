@@ -44,15 +44,15 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
       console.log("req.body", req.body);
       // console.log("req.params", req.params);
 
-      沒輸入東西時;
+      // 沒輸入東西時;
       if (!req.body.reviews) {
         data.msg.text = "資料不足";
         res.json(data);
       }
-      
-      console.log('reviews',req.body.reviews);
+
+      console.log("reviews", req.body.reviews);
       const sql =
-        "INSERT INTO comments_list ( u_id,last_name_zh, gender, trip_name, trip_country, rating, reviews) VALUES(?,?,?,?,?,?,?)";
+        "INSERT INTO comments_list ( u_id,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?)";
       db.query(
         sql,
         [
@@ -61,6 +61,8 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
           req.body.gender,
           req.body.trip_name,
           req.body.trip_country,
+          req.body.trip_start_date,
+          req.body.trip_end_date,
           req.body.rating,
           req.body.reviews
         ],

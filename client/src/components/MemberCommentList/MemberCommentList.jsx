@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import "./MemberCommentList.css";
-import { ReactComponent as Star } from "./images/star.svg";
+import StarRatingComponent from "react-star-rating-component";
 import { Row, Col } from "react-bootstrap";
+import "./MemberCommentList.css";
 
 class MemberCommentList extends Component {
   render() {
+    const { userComments } = this.props;
+    if (userComments === null) return null;
+    console.log(userComments);
     return (
       <div className="comment-container d-flex flex-column ">
         <Row className="mx-0">
@@ -12,53 +15,35 @@ class MemberCommentList extends Component {
             <span>我的評論</span>
           </Col>
         </Row>
-        <Row className="comment-info-container">
-          <div className="rank-container">
-            <Star className="rank" />
-            <Star className="rank" />
-            <Star className="rank" />
-            <Star className="rank" />
-            <Star className="rank" />
-            <p className="my-2">張小姐</p>
-            <div className="duration">2020/01/04 - 2020/01/09</div>
-            <p className="mt-2 mb-4">
-              這是一個非常美好的時光，並得到了出色的指導。
-              非常感謝Alvaro，他非常關心我們，並與我們分享了他的豐富知識。
-            </p>
-          </div>
-
-          <div className="comment-btn-outer-container">
-            <div className="mt-auto comment-btn-container">
-              <a href="#1" className="comment-btn">
-                <span>我們的瑞典之旅</span>
-              </a>
+        {userComments.map(comment => (
+          <Row className="comment-info-container" key={comment.c_id}>
+            <div className="rank-container">
+              <StarRatingComponent
+                name="rate1"
+                starCount={5}
+                value={comment.rating}
+              />
+              <p>
+                {comment.last_name_zh}
+                {comment.gender}
+              </p>
+              <div className="duration">
+                {comment.trip_start_date} - {comment.trip_end_date}
+              </div>
+              <p className="mt-2 mb-4">{comment.reviews}</p>
             </div>
-          </div>
-        </Row>
 
-        <Row className="comment-info-container">
-          <div className="rank-container">
-            <Star className="rank" />
-            <Star className="rank" />
-            <Star className="rank" />
-            <Star className="rank" />
-            <Star className="rank" />
-            <p className="my-2">張小姐</p>
-            <div className="duration">2020/01/04 - 2020/01/09</div>
-            <p className="mt-2 mb-4">
-              這是一個非常美好的時光，並得到了出色的指導。
-              非常感謝Alvaro，他非常關心我們，並與我們分享了他的豐富知識。
-            </p>
-          </div>
-
-          <div className="comment-btn-outer-container">
-            <div className="mt-auto comment-btn-container">
-              <a href="#2" className="comment-btn">
-                <span>我們的瑞典之旅</span>
-              </a>
+            <div className="comment-btn-outer-container">
+              <div className="mt-auto comment-btn-container">
+                <a href="#1" className="comment-btn">
+                  <span style={{ fontSize: "14px" }}>
+                    我們的{comment.trip_country}之旅
+                  </span>
+                </a>
+              </div>
             </div>
-          </div>
-        </Row>
+          </Row>
+        ))}
       </div>
     );
   }

@@ -42,7 +42,8 @@ class DashBoard extends Component {
     feedback: {
       success: "",
       msg: { type: "", text: "" }
-    }
+    },
+    userComments: null
   };
 
   async componentDidMount() {
@@ -68,7 +69,6 @@ class DashBoard extends Component {
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
 
-    console.log("results", data.rows);
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
     const productJson = data.rows.map(item => JSON.parse(item.order_product));
 
@@ -77,10 +77,13 @@ class DashBoard extends Component {
       data.rows[i].order_product = productJson[i];
       data.rows[i].order_info = [...tripJson[i], ...productJson[i]];
     }
-    console.log(data.rows);
 
     await this.setState({ userOrder: data.rows });
-    console.log("userOrder", this.state.userOrder);
+
+    const { data: userComments } = await axios.get(
+      "http://localhost:3001/members_comments_list/" + currentUser.u_id
+    );
+    await this.setState({ userComments: userComments.rows });
   }
 
   handleInfoChange = async e => {
@@ -181,6 +184,7 @@ class DashBoard extends Component {
 
   render() {
     const { userInfo, userOrder } = this.state;
+    console.log(this.state.userComments);
     if (userOrder === null) {
       return null;
     }
@@ -198,7 +202,15 @@ class DashBoard extends Component {
             <Col className="col-xl-9 col-md-8 member-right-section">
               <Switch>
                 <Route path="/account/coupons" component={MemberCoupon} />
-                <Route path="/account/comments" component={MemberCommentList} />
+                <Route
+                  path="/account/comments"
+                  render={() => (
+                    <MemberCommentList
+                      currentUser={this.props.currentUser}
+                      userComments={this.state.userComments}
+                    />
+                  )}
+                />
                 <Route
                   path="/account/orders"
                   render={() => (

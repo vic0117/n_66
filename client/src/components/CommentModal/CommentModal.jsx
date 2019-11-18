@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
-
 import { ReactComponent as Star } from "./images/star.svg";
 import StarRatingComponent from "react-star-rating-component";
 // import { ReactComponent as StarSolid } from "./images/star-solid.svg";
 import "./CommentModal.css";
+
 class CommentModal extends Component {
   state = {
     rating: 1,
@@ -24,15 +24,13 @@ class CommentModal extends Component {
     await this.props.handlerating(this.state.rating);
     await this.props.handlesubmitcomment(value);
     await this.props.handlecommentcontent(this.state.commentContent);
-    // await this.props.onHide();
     await this.props.handlecommentssubmit();
   };
 
   render() {
     const { rating } = this.state;
     const { reviewinfo } = this.props;
-    // console.log(reviewinfo);
-
+    console.log(this.props.reviewinfo);
     return (
       <>
         <Modal
