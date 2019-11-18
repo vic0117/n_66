@@ -6,35 +6,43 @@ class MyCart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ProductsData: [],
+            // ProductsData: [],
+            productsToBuy: [],
+            posObj: {},
         }
     }
 
     componentDidMount() {
-        // fetch("http://localhost:3001/products", {
-        //     // body: JSON.stringify({}),
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     method: "get"
-        // })
-        //     .then(response => {
-        //         return response.json();
-        //         // return console.log(response);
-        //     })
-        //     .then(json => {
-        //         this.setState({
-        //             ProductsData: json,
-        //         });
-        //     });
+        const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
+        this.setState({ productsToBuy: productsToBuy }, ()=>{
+            console.log(this.state.productsToBuy);
+        });
     }
+
+
+    delete = (result) =>{
+        this.setState({productsToBuy: result})
+    }
+
+    count1 = (aaa)=>{
+        this.setState({productsToBuy: aaa})
+    } 
+
+    count2 = (aaa)=>{
+        this.setState({productsToBuy: aaa})
+    } 
 
 
     render() {
         return (
             <>
                 <NavBar />
-                <CartContent/>
+                <CartContent 
+                    data={this.state.productsToBuy}
+                    delete={this.delete}
+                    count1={this.count1}
+                    count2={this.count2}
+                />
             </>
         );
     }

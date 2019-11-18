@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from '../../components/NavBar/NavBar';
 import ProductLeftMenu from '../../components/ProductLeftMenu/ProductLeftMenu';
 
+
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
@@ -37,6 +38,7 @@ class ProductList extends React.Component {
             <>
                 <NavBar />
                 <ProductLeftMenu data={this.state.ProductsData} />
+                
             </>
         );
     }

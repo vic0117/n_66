@@ -43,7 +43,7 @@ class TripDesCarousel extends Component {
       //   console.log("after change", currentSlide);
       }
 	 };
-	 const {detailData}=this.props;
+	 const {detailData} = this.props;
     return (
 		 <>
 		{detailData.map(item=>(
