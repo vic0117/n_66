@@ -7,6 +7,8 @@ class CommentModal extends Component {
   state = {};
 
   render() {
+    const { reviewinfo } = this.props;
+    console.log(reviewinfo);
     return (
       <form>
         <Modal
@@ -17,12 +19,15 @@ class CommentModal extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              冬季的斯格哥爾摩
+              {reviewinfo.trip_name}
             </Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <h4>用戶名</h4>
+            <h4>
+              {this.props.userInfo.last_name_zh}
+              {this.props.userInfo.first_name_zh}
+            </h4>
             <div className="d-flex modal-rank-container">
               <Star height="16" width="16" />
               <Star height="16" width="16" />
