@@ -9,7 +9,6 @@ class MyCart extends React.Component {
             // ProductsData: [],
             productsToBuy: [],
             tripsToBuy: [],
-            posObj: {},
             totalCost: 0
         }
     }
@@ -30,6 +29,9 @@ class MyCart extends React.Component {
             totalCost += tripCost;
         });
 
+        totalCost = JSON.stringify(totalCost)
+        localStorage.setItem('totalCost', totalCost);
+
         this.setState({ 
             productsToBuy: productsToBuy,
             tripsToBuy: tripsToBuy,
@@ -49,6 +51,10 @@ class MyCart extends React.Component {
     count2 = (aaa)=>{
         this.setState({productsToBuy: aaa})
     }
+
+    setTripState = (result)=>{
+        this.setState({tripsToBuy: result})
+    }
     
     countTotalCost = (cost)=>{
         this.setState({totalCost: cost})
@@ -67,6 +73,7 @@ class MyCart extends React.Component {
                     count1={this.count1}
                     count2={this.count2}
                     countTotalCost={this.countTotalCost}
+                    setTripState={this.setTripState}
                 />
             </>
         );

@@ -25,14 +25,21 @@
   // padding: 0 2rem 1.5rem 2rem;
   .rank-container {
     margin-bottom: 0.5rem;
-
+    // width: 100% !important;
     .rank {
       margin-right: 0.25rem;
+
+    }
+
+    .duration {
+      color: #96daf0;
+    }
+  
+    .comment-text{
+      word-break: break-all;
     }
   }
-  .duration {
-    color: #96daf0;
-  }
+  
 }
 
 .comment-info-container {
