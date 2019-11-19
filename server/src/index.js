@@ -9,6 +9,7 @@ const moment = require("moment-timezone");
 const session = require("express-session");
 const cors = require("cors");
 
+
 const db = mysql.createConnection({
   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
@@ -41,6 +42,8 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+
 
 // login
 // app.use(
@@ -79,6 +82,11 @@ app.use(members_order);
 // trips
 const trips = require("./trips/trips");
 app.use(trips);
+
+// socket server
+const socketServer = require("./socketServer/socketServer");
+app.use(socketServer);
+
 
 //products
 const products = require("./products/products");

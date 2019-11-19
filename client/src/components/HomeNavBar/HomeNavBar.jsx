@@ -121,11 +121,11 @@ class HomeNavBar extends React.Component {
             </div>
 
             <div className="ml-auto d-flex nav-bottom">
-              <a href="#features" className="navItem">
+              <Link to ="./trips/page/1" className="navItem">
                 <h6>旅程目的地</h6>
                 <h6>探險的開始</h6>
                 <div className="blue-line"></div>
-              </a>
+				  </Link>
               <Link to="/products" className="navItem">
                 <h6>裝備與器具</h6>
                 <h6>戶外用品</h6>

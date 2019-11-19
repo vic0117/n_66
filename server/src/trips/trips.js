@@ -77,7 +77,7 @@ router.post("/trips/select", (req, res, next) => {
   let where5 = "";
   let where6 = "";
   let order = ""; 
-  
+   
   if (place) {
     where1 += " AND `trip_place` = " + `'${place}'`;
     	if(place == "所有目的地"){
@@ -86,7 +86,7 @@ router.post("/trips/select", (req, res, next) => {
   }
   if (type) {
 	 where2 += " AND `trip_type` =  " + `'${type}'`;
-	 if(type == "所有類型"){
+	 if(type == "所有活動"){
 		where2 = ''
 	} 
   }

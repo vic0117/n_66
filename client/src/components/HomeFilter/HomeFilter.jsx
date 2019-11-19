@@ -11,7 +11,7 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from "../TripLeftmenu/SliderDays";
+// import SliderDays from "../TripLeftMenu/SliderDays";
 
 //SVG
 import { ReactComponent as Location } from "./images/location.svg";
@@ -24,28 +24,30 @@ import "./HomeFilter.css";
 class HomeFilter extends Component {
   state = {
     searchbox: {
-      isActive: false,
+		isActive: false,
       originalDom: (
         <>
-          <Dropdown className="filter-icon-container d-flex-2">
+          <Dropdown className="filter-icon-container d-flex-2" 
+          
+			 >
             <Dropdown.Toggle id="dropdown-basic" className="filter-icon">
               <Location className="location" height="24" width="24"></Location>
               <span className="filter-icon-title">目的地</span>
             </Dropdown.Toggle>
-            <Dropdown.Menu className="toggle-menu">
-              <Dropdown.Item href="#/action-1" className="toggle-item">
+            <Dropdown.Menu className="toggle-menu"
+				onSelect={eventKey=>this.setState({qwe:eventKey})}
+				>
+              <Dropdown.Item eventKey = '冰島' className="toggle-item">
                 冰島
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-2" className="toggle-item">
-                挪威
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-3" className="toggle-item">
+              
+              <Dropdown.Item eventKey = '芬蘭' className="toggle-item">
                 芬蘭
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-3" className="toggle-item">
+              <Dropdown.Item eventKey = '加拿大' className="toggle-item">
                 加拿大
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-3" className="toggle-item">
+              <Dropdown.Item eventKey = '俄羅斯' className="toggle-item">
                 俄羅斯
               </Dropdown.Item>
             </Dropdown.Menu>
@@ -185,7 +187,10 @@ class HomeFilter extends Component {
       )
     }
   };
-
+  handleSelect1 = eventKey => {
+	this.setState({ buttonTitleName1: eventKey });
+	// this.props.select1(eventKey);
+ };
   handleSearch = e => {
     const { isActive } = this.state.searchbox;
     if (isActive === false) {
@@ -245,7 +250,9 @@ class HomeFilter extends Component {
     anotherSearch.addEventListener("click", () => {
       filterMenu.style.left = "0%";
       body.style.overflowY = "hidden";
-    });
+	 });
+	 
+
   }
 
   render() {
@@ -281,7 +288,6 @@ class HomeFilter extends Component {
               <div className="search">
                 <p>搜尋</p>
                 <a className="anotherSearch" href="#5" role="button">
-                  {" "}
                 </a>
               </div>
             </div>
