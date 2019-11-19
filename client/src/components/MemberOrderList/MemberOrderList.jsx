@@ -25,7 +25,7 @@ class MemberOrderList extends Component {
     this.setState({ addModalShow: false });
   };
 
-  handleCommentsSubmit = async () => {
+  handleCommentsSubmit = () => {
     // let info = {
     //   last_name_zh: this.props.userInfo.last_name_zh,
     //   gender: this.props.userInfo.gender,
@@ -70,36 +70,32 @@ class MemberOrderList extends Component {
     //   });
     //
     const { currentUser } = this.props;
-    fetch(`http://localhost:3001/members_order/${currentUser.user.u_id}`, {
-      method: "POST",
+    let addCommented = [];
+    fetch(`http://localhost:3001/members_order/69`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token")
       }
-        .then(response => {
-          if (response.status >= 400) {
-            throw new Error("Bad response from server");
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log(data);
-          // this.setState({ feedback: data });
-          // if (this.state.feedback.success) {
-          //   this.setState({ addModalShow: false });
-          //   function pageReload() {
-          //     window.location = "/account/orders";
-          //   }
-          //   toast.success(this.state.feedback.msg.text);
-          //   window.setTimeout(pageReload, 3000);
-          // } else {
-          //   toast.error(this.state.feedback.msg.text);
-          // }
-        })
-        .catch(function(err) {
-          console.log(err);
-        })
-    });
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data.rows[0].order_trip);
+
+        for (let i = 0; i < data.rows.length; i++) {
+          // addCommented.push(data.rows.rows[i].order_tirp);
+        }
+        console.log("added", addCommented);
+        // JSON.parse(addCommented);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
 
   handleRating = value => {
@@ -184,7 +180,7 @@ class MemberOrderList extends Component {
                         <div className="price-amount-container">
                           <div className="d-flex mb-2">
                             <span>
-                              NT$: {+item.trip_price || item.product_price}
+                              NT$: {item.trip_price || item.product_price}
                             </span>
                             <span className="ml-3">
                               數量: {item.trip_amount || item.product_amount}

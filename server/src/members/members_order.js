@@ -22,4 +22,9 @@ router.get("/members_order/:id?", (req, res) => {
     });
 });
 
+
+// rouer.post("/members_order/addcomment/:id",(req,res)=> {
+
+// })
+
 module.exports = router;
