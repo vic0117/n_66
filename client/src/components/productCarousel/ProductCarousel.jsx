@@ -59,6 +59,7 @@ class ProductCarousel extends React.Component {
     product.product_size = aaa.product_size;
     product.product_price = aaa.product_price;
     product.product_amount = 1;
+    product.commented = 1;
     product.code = Date.now();
 
 

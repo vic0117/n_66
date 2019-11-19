@@ -9,14 +9,43 @@ class CheckOutContent extends React.Component {
         this.state = {
             productsToBuy: props.productsToBuy,
             tripsToBuy: props.tripsToBuy,
-            totalCost: props.totalCost
+            totalCost: props.totalCost,
+            userId: props.userId
         };
     }
+
+
+    CheckOut= ()=>{
+        console.log('aaaaa')
+
+        let bodyObj = {
+            productsToBuy: localStorage.getItem('productsToBuy'),
+            tripsToBuy: localStorage.getItem('tripsToBuy'),
+            totalCost: localStorage.getItem('totalCost'),
+            userId: localStorage.getItem('userId'),
+            orderStatus: '運送中'
+        }
+
+        console.log(bodyObj);
+
+        fetch('http://localhost:3001/checkout',{
+            method: "POST",
+            body: JSON.stringify(bodyObj),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        .then(response=>{
+            console.log(response);
+        })
+    }
+
 
     render() {
         const { productsToBuy } = this.props;
         const { tripsToBuy } = this.props;
         const { totalCost } = this.props;
+        // const { userId } = this.props;
         return (
             <>
                 <Container className="mt-5">
@@ -171,6 +200,9 @@ class CheckOutContent extends React.Component {
                                         <h6>民生北路1段 26巷 8號 13-1</h6>
                                         <a href="#7">修改帳單地址</a>
                                     </div>
+                                </div>
+                                <div>
+                                    <button onClick={this.CheckOut} >確認下單</button>
                                 </div>
                             </div>
                         </Col>

@@ -10,7 +10,7 @@ import duraction from "./images/duration.svg";
 import dollar from "./images/dollar.svg";
 import SliderDays from "./SliderDays";
 import SliderPrice from "./SliderPrice";
-import "./TripLeftMenu.scss";
+import "./TripLeftmenu.css";
 
 class TripLeftMenu extends Component {
   constructor(props) {
