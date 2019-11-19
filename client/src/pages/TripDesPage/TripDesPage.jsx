@@ -74,7 +74,6 @@ class TripDesPage extends Component {
     product.trip_start = aaa.trip_start;
     product.trip_end = aaa.trip_end;
     product.trip_amount = 1;
-    product.commented = 1;
     product.code = Date.now();
 
 
