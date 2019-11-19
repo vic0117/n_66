@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
 import { toast } from "react-toastify";
-import { axios } from "axios";
-
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
@@ -25,58 +23,25 @@ class MemberOrderList extends Component {
     this.setState({ addModalShow: false });
   };
 
-  handleCommentsSubmit = () => {
-    // let info = {
-    //   last_name_zh: this.props.userInfo.last_name_zh,
-    //   gender: this.props.userInfo.gender,
-    //   trip_name: this.state.reviewInfo.trip_name,
-    //   trip_country: this.state.reviewInfo.trip_country,
-    //   rating: this.state.rating,
-    //   reviews: this.state.reviews,
-    //   u_id: this.props.currentUser.user.u_id,
-    //   trip_start_date: this.state.reviewInfo.trip_start_date,
-    //   trip_end_date: this.state.reviewInfo.trip_end_date
-    // };
-    // fetch(`http://localhost:3001/members_comments/`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Bearer " + localStorage.getItem("token")
-    //   },
-    //   body: JSON.stringify(info)
-    // })
-    //   .then(response => {
-    //     if (response.status >= 400) {
-    //       throw new Error("Bad response from server");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(data => {
-    //     console.log(data);
-    //     this.setState({ feedback: data });
-    //     if (this.state.feedback.success) {
-    //       this.setState({ addModalShow: false });
-    //       function pageReload() {
-    //         window.location = "/account/orders";
-    //       }
-    //       toast.success(this.state.feedback.msg.text);
-    //       window.setTimeout(pageReload, 3000);
-    //     } else {
-    //       toast.error(this.state.feedback.msg.text);
-    //     }
-    //   })
-    //   .catch(function(err) {
-    //     console.log(err);
-    //   });
-    //
-    const { currentUser } = this.props;
-    let addCommented = [];
-    fetch(`http://localhost:3001/members_order/69`, {
-      method: "GET",
+  handleCommentsSubmit = item => {
+    let info = {
+      last_name_zh: this.props.userInfo.last_name_zh,
+      gender: this.props.userInfo.gender,
+      trip_name: this.state.reviewInfo.trip_name,
+      trip_country: this.state.reviewInfo.trip_country,
+      rating: this.state.rating,
+      reviews: this.state.reviews,
+      u_id: this.props.currentUser.user.u_id,
+      trip_start_date: this.state.reviewInfo.trip_start_date,
+      trip_end_date: this.state.reviewInfo.trip_end_date
+    };
+    fetch(`http://localhost:3001/members_comments/`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token")
-      }
+      },
+      body: JSON.stringify(info)
     })
       .then(response => {
         if (response.status >= 400) {
@@ -85,13 +50,77 @@ class MemberOrderList extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data.rows[0].order_trip);
-
-        for (let i = 0; i < data.rows.length; i++) {
-          // addCommented.push(data.rows.rows[i].order_tirp);
+        console.log(data);
+        this.setState({ feedback: data });
+        if (this.state.feedback.success) {
+          this.setState({ addModalShow: false });
+          function pageReload() {
+            window.location = "/account/orders";
+          }
+          toast.success(this.state.feedback.msg.text);
+          window.setTimeout(pageReload, 3000);
+        } else {
+          toast.error(this.state.feedback.msg.text);
         }
-        console.log("added", addCommented);
-        // JSON.parse(addCommented);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    //
+
+    const { currentUser } = this.props;
+    let addCommented;
+    fetch(
+      `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token")
+        }
+      }
+    )
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        addCommented = data.rows[0].order_trip;
+        addCommented = JSON.parse(addCommented);
+        addCommented.forEach(product => {
+          if (product.code === item.code) {
+            product.commented = 1;
+          }
+        });
+        addCommented = JSON.stringify(addCommented);
+        const info = { results: addCommented };
+        console.log("results", info);
+        console.log("item.id", item.id);
+        fetch(
+          `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify(info)
+          }
+        )
+          .then(response => {
+            if (response.status >= 400) {
+              throw new Error("Bad response from server");
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
       })
       .catch(function(err) {
         console.log(err);
@@ -209,7 +238,9 @@ class MemberOrderList extends Component {
                           handlerating={this.handleRating}
                           handlesubmitcomment={this.handleSubmitComment}
                           handlecommentcontent={this.handleCommentContent}
-                          handlecommentssubmit={this.handleCommentsSubmit}
+                          handlecommentssubmit={() =>
+                            this.handleCommentsSubmit(item)
+                          }
                         />
                       </div>
                     </Col>

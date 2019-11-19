@@ -9,7 +9,6 @@ const moment = require("moment-timezone");
 const session = require("express-session");
 const cors = require("cors");
 
-
 const db = mysql.createConnection({
   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
@@ -41,8 +40,6 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-
-
 
 // login
 // app.use(
@@ -90,6 +87,9 @@ app.use(members_wish_list);
 const member_wish_list_del = require("./members/member_wish_list_del");
 app.use(member_wish_list_del);
 
+const members_coupon_list = require("./members/member_coupon_list");
+app.use(members_coupon_list);
+
 // comments
 const comments = require("./comments/comment");
 app.use(comments);
@@ -101,7 +101,6 @@ app.use(trips);
 // socket server
 const socketServer = require("./socketServer/socketServer");
 app.use(socketServer);
-
 
 //products
 const products = require("./products/products");

@@ -4,6 +4,8 @@ import "./MemberCoupon.css";
 class MemberCoupon extends Component {
   state = {};
   render() {
+    const { userCoupons } = this.props;
+    if (userCoupons === null) return null;
     return (
       <div className="coupon-outer-container">
         <Row className="mx-0">
@@ -11,45 +13,24 @@ class MemberCoupon extends Component {
             <span>我的優惠碼</span>
           </Col>
         </Row>
-        <Row className="mx-0" style={{ padding: '0px 1.75rem', justifyContent:'space-between' }}>
-
-          <div className="coupon-container">
-            <div className="banner">
-              <h5 className="py-2">85折優惠碼</h5>
-              <span>適用所有露營類產品</span>
-              <p className="m-0">有效期限: 2020/3/4</p>
+        <Row
+          className="mx-0"
+          style={{ padding: "0px 1.75rem", justifyContent: "space-between" }}
+        >
+          {userCoupons.map(coupon => (
+            <div className="coupon-container" key={coupon.c_id}>
+              <div className="banner">
+                <h5 className="py-2">{coupon.discount}折優惠碼</h5>
+                <span>適用所有{coupon.type}類產品</span>
+                <p className="m-0">有效期限: {coupon.valid_date}</p>
+              </div>
+              <div className="footer d-flex">
+                <button className="btn">前往使用</button>
+              </div>
+              <div className="left-circle"></div>
+              <div className="right-circle"></div>
             </div>
-            <div className="footer d-flex">
-              <button className="btn">前往使用</button>
-            </div>
-            <div className="left-circle"></div>
-            <div className="right-circle"></div>
-          </div>
-          <div className="coupon-container">
-            <div className="banner">
-              <h5 className="py-2">85折優惠碼</h5>
-              <span>適用所有露營類產品</span>
-              <p className="m-0">有效期限: 2020/3/4</p>
-            </div>
-            <div className="footer d-flex">
-              <button className="btn">前往使用</button>
-            </div>
-            <div className="left-circle"></div>
-            <div className="right-circle"></div>
-          </div>
-          <div className="coupon-container">
-            <div className="banner">
-              <h5 className="py-2">85折優惠碼</h5>
-              <span>適用所有露營類產品</span>
-              <p className="m-0">有效期限: 2020/3/4</p>
-            </div>
-            <div className="footer d-flex">
-              <button className="btn">前往使用</button>
-            </div>
-            <div className="left-circle"></div>
-            <div className="right-circle"></div>
-          </div>
-
+          ))}
         </Row>
       </div>
     );

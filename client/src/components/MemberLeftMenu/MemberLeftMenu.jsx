@@ -51,9 +51,12 @@ class MemberLeftMenu extends Component {
   };
 
   render() {
-    const { userInfo } = this.props;
-
+    const { userInfo, userCoupons } = this.props;
     if (!userInfo.u_id) return <></>;
+
+    // const coupons = { ...userCoupons };
+    // const coupon = { ...coupons[0] };
+    // console.log(coupon.length);
 
     return (
       <div className="member-left-menu-sticky">

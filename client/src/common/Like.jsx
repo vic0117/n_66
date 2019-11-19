@@ -7,11 +7,13 @@ const Like = props => {
   return (
     <i
       className={classes}
-      style={{ cursor: "pointer" }}
+      style={{
+        cursor: "pointer",
+        color: "#f06292"
+      }}
       onClick={props.onClick}
     ></i>
   );
 };
-
 
 export default Like;
