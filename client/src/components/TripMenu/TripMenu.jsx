@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Tripmenu.scss";
+import "./TripMenu.scss";
 import calender from "./images/calender.svg";
 import customize from "./images/customize.svg";
 import multiActivities from "./images/multiActivities.svg";

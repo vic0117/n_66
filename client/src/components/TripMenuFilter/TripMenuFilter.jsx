@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SliderDays from "../TripLeftmenu/SliderDays";
+import SliderDays from "../TripLeftMenu/SliderDays";
 import {
 	Dropdown,
 	Form,
@@ -98,7 +98,7 @@ import {
 					  <Card.Body>
 						 <ul>
 							<li>不拘</li>
-							<li>阿拉斯加</li>
+							<li>阿拉斯加洲</li>
 							<li>南極洲</li>
 							<li>加拿大</li>
 							<li>芬蘭</li>
