@@ -10,8 +10,58 @@ import { ReactComponent as StarSolid } from "./images/star-solid.svg";
 
 import "./Comment.css";
 class Comment extends Component {
-  state = {};
+  state = {
+	  comments:[],
+	  place:''
+  };
+
+
+componentDidMount() {
+	fetch("http://localhost:3001/comments")
+	.then(
+	  response => {
+		 console.log(response);
+		 return response.json();
+	  },
+	  error => {
+		 console.log(error);
+	  }
+	)
+	.then(data => {
+	  
+	  this.setState({ comments: data });
+	});
+}
+
+selectComments = (place)=>{
+	let obj = JSON.parse(JSON.stringify(this.state));
+    this.setState({ place: place });
+    obj.place = place;
+
+    fetch(`http://localhost:3001/comments/select`, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(
+        response => {
+          console.log(response);
+          return response.json();
+        },
+        error => {
+          console.log(error);
+        }
+      )
+      .then(data => {
+        this.setState({ comments: data });
+        console.log(data);
+      });
+}
+
   render() {
+	  console.log(this.state.comments)
     return (
       <>
         <CommentHeader currentUser={this.props.currentUser} />
@@ -92,10 +142,14 @@ class Comment extends Component {
 
             <Col className="col-lg-8 member-comment-container">
               <div className="member-comment">
-                <CommentFilterBox />
+                <CommentFilterBox 
+						 selectComments = {this.selectComments}
+					 />
               </div>
               <div className="mt-4">
-                <CommentList />
+                <CommentList 
+					 	comments={this.state.comments}
+					 />
               </div>
             </Col>
           </Row>
