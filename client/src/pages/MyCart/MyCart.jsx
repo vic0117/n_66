@@ -6,17 +6,23 @@ class MyCart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // ProductsData: [],
+            currentUser: props.currentUser,
             productsToBuy: [],
             tripsToBuy: [],
             totalCost: 0
         }
     }
 
-    componentDidMount() {
+     componentDidMount() {
         const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
-        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
 
+        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
+        // const currentUser = this.props.currentUser;
+        // console.log(currentUser)
+        // console.log(this.state.currentUser)
+        // console.log(productsToBuy)
+        // await this.setState({currentUser: this.props.currentUser});
+        // console.log(this.state.currentUser)
         let  totalCost = 0;
 
         productsToBuy.forEach(item => {
@@ -62,6 +68,22 @@ class MyCart extends React.Component {
 
 
     render() {
+            //解構付值props
+            const {currentUser} =  this.props
+            console.log(currentUser);
+            //複製props
+            let obj = {...currentUser};
+            //解構付值obj
+            let {user} = obj;
+            console.log(user);
+            //複製user
+            let uid = {...user};
+            // // 複製u_id
+            let user_id = uid.u_id;
+            // console.log(email.email);
+            // console.log(user_id);
+            localStorage.setItem('userId', user_id);
+
         return (
             <>
                 <NavBar />

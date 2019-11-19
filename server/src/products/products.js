@@ -5,7 +5,8 @@ const moment = require("moment-timezone");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  host: "localhost", 
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "root",
@@ -33,6 +34,23 @@ router.get("/products/:id", (req, res) => {
     res.json(results);
   });
 });
+
+router.post("/checkout", (req, res) => {
+  let data = req.body;
+
+  const sql = `INSERT INTO order_list( u_id, order_trip, order_product, order_status, order_total_price) 
+  VALUES ( '${data.userId}', '${data.tripsToBuy}', '${data.productsToBuy}', '${data.orderStatus}', '${data.totalCost}' )`;
+
+  db.query(sql, (error, results, fields) => {
+    if (error) throw error;
+    console.log('以傳送');
+    res.json( '以傳送');
+  });
+  // console.log(req.body);
+  // res.json(req.body);
+  
+});
+
 
 //搜尋
 // router.post('/products/search',(req,res,next)=>{
