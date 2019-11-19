@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 const moment = require("moment-timezone");
-const bluebird = require('bluebird');
+const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "root",
@@ -15,12 +16,12 @@ router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `product_list`";
 
   db.query(sql, (error, results, fields) => {
-    if (error) throw error; 
-    console.log(results); 
+    if (error) throw error;
+    console.log(results);
     res.json(results);
-  });  
+  });
   // res.send('aaaa')
-})
+});
 
 router.get("/products/:id", (req, res) => {
   let id = req.params.id;
@@ -29,34 +30,31 @@ router.get("/products/:id", (req, res) => {
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
     console.log(results);
-    res.json( results);
+    res.json(results);
   });
-  
 });
-   
-
 
 //搜尋
 // router.post('/products/search',(req,res,next)=>{
-// 	let data2 = JSON.parse(req.body.data2)  
-	
+// 	let data2 = JSON.parse(req.body.data2)
+
 // 	const sql=`SELECT * FROM trip_list WHERE trip_name LIKE %${data2}%`
 // 	db.query(sql,(err,results,fields)=>{
-// 		 if(err) throw err; 
-// 		//  console.log(results) 
+// 		 if(err) throw err;
+// 		//  console.log(results)
 // 		 res.send(JSON.stringify(results))
-// 	}) 
+// 	})
 // });
-  
+
 //依照價格排列
 // router.post('/products/productsSort',(req,res,next)=>{
-	
+
 // 	const sql=`SELECT * FROM trip_list ORDER BY trip_price DESC`
 // 	db.query(sql,(err,results,fields)=>{
-// 		 if(err) throw err; 
-// 		//  console.log(results) 
+// 		 if(err) throw err;
+// 		//  console.log(results)
 // 		 res.send(JSON.stringify(results))
-// 	}) 
+// 	})
 // });
-      
+
 module.exports = router;

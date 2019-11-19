@@ -16,7 +16,7 @@ class MemberCommentList extends Component {
           </Col>
         </Row>
         {userComments.map(comment => (
-          <Row className="comment-info-container" key={comment.c_id}>
+          <Row className="member_comment-info-container" key={comment.c_id}>
             <div className="rank-container">
               <StarRatingComponent
                 name="rate1"

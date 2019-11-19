@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
 import { toast } from "react-toastify";
+import { axios } from "axios";
+
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
@@ -19,53 +21,85 @@ class MemberOrderList extends Component {
     });
   };
 
-  ModalClose = e => {
+  closeModal = e => {
     this.setState({ addModalShow: false });
   };
 
-  handleCommentsSubmit = event => {
-    let info = {
-      last_name_zh: this.props.userInfo.last_name_zh,
-      gender: this.props.userInfo.gender,
-      trip_name: this.state.reviewInfo.trip_name,
-      trip_country: this.state.reviewInfo.trip_country,
-      rating: this.state.rating,
-      reviews: this.state.reviews,
-      u_id: this.props.currentUser.user.u_id,
-      trip_start_date: this.state.reviewInfo.trip_start_date,
-      trip_end_date: this.state.reviewInfo.trip_end_date
-    };
-    fetch(`http://localhost:3001/members_comments/`, {
+  handleCommentsSubmit = async () => {
+    // let info = {
+    //   last_name_zh: this.props.userInfo.last_name_zh,
+    //   gender: this.props.userInfo.gender,
+    //   trip_name: this.state.reviewInfo.trip_name,
+    //   trip_country: this.state.reviewInfo.trip_country,
+    //   rating: this.state.rating,
+    //   reviews: this.state.reviews,
+    //   u_id: this.props.currentUser.user.u_id,
+    //   trip_start_date: this.state.reviewInfo.trip_start_date,
+    //   trip_end_date: this.state.reviewInfo.trip_end_date
+    // };
+    // fetch(`http://localhost:3001/members_comments/`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Bearer " + localStorage.getItem("token")
+    //   },
+    //   body: JSON.stringify(info)
+    // })
+    //   .then(response => {
+    //     if (response.status >= 400) {
+    //       throw new Error("Bad response from server");
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     console.log(data);
+    //     this.setState({ feedback: data });
+    //     if (this.state.feedback.success) {
+    //       this.setState({ addModalShow: false });
+    //       function pageReload() {
+    //         window.location = "/account/orders";
+    //       }
+    //       toast.success(this.state.feedback.msg.text);
+    //       window.setTimeout(pageReload, 3000);
+    //     } else {
+    //       toast.error(this.state.feedback.msg.text);
+    //     }
+    //   })
+    //   .catch(function(err) {
+    //     console.log(err);
+    //   });
+    //
+    const { currentUser } = this.props;
+    fetch(`http://localhost:3001/members_order/${currentUser.user.u_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token")
-      },
-      body: JSON.stringify(info)
-    })
-      .then(response => {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        this.setState({ feedback: data });
-        if (this.state.feedback.success) {
-          this.setState({ addModalShow: false });
-          function pageReload() {
-            window.location = "/account/orders";
+      }
+        .then(response => {
+          if (response.status >= 400) {
+            throw new Error("Bad response from server");
           }
-          toast.success(this.state.feedback.msg.text);
-          window.setTimeout(pageReload, 3000);
-        } else {
-          toast.error(this.state.feedback.msg.text);
-        }
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          // this.setState({ feedback: data });
+          // if (this.state.feedback.success) {
+          //   this.setState({ addModalShow: false });
+          //   function pageReload() {
+          //     window.location = "/account/orders";
+          //   }
+          //   toast.success(this.state.feedback.msg.text);
+          //   window.setTimeout(pageReload, 3000);
+          // } else {
+          //   toast.error(this.state.feedback.msg.text);
+          // }
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
+    });
   };
 
   handleRating = value => {
@@ -82,7 +116,7 @@ class MemberOrderList extends Component {
 
   render() {
     const { userOrder } = this.props;
-
+    console.log("props", this.props);
     console.log(this.props.currentUser.user.u_id);
     return (
       <div className="order-list-container">
@@ -160,7 +194,7 @@ class MemberOrderList extends Component {
                       </div>
 
                       <div className="ml-auto mt-auto to-comment-container ">
-                        {item.trip_name && (
+                        {item.trip_name && !item.commented && (
                           <Button
                             className="to-comment"
                             onClick={() => this.getModal(item.code)}
@@ -175,7 +209,7 @@ class MemberOrderList extends Component {
                           reviewinfo={item}
                           userinfo={this.props.userInfo}
                           currentuser={this.props.currentUser}
-                          onHide={this.ModalClose}
+                          onHide={this.closeModal}
                           handlerating={this.handleRating}
                           handlesubmitcomment={this.handleSubmitComment}
                           handlecommentcontent={this.handleCommentContent}
