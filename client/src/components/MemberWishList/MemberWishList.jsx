@@ -14,7 +14,7 @@ class WishList extends Component {
     const index = wishes.indexOf(wish);
     wishes[index].liked = !wishes[index].liked;
     this.setState({ wishes });
-
+    // if (confirm(`確定要將此商品移除願望清單嗎?`)) {}
     fetch("http://localhost:3001/members_wish_list_del/" + wish.w_id, {
       method: "DELETE"
     })
@@ -37,9 +37,9 @@ class WishList extends Component {
             <span>願望清單</span>
           </Col>
         </Row>
-        {userWishes.map(wish => (
           <Row>
-            <Col className="card-container d-flex">
+        {userWishes.map(wish => (
+            <Col className="card-container d-flex col-lg-4 col-md-6 col-12">
               <Card className="wish-list-item">
                 <Card.Img variant="top" src={sotckholm} />
                 <Card.Body className="py-3">
@@ -69,8 +69,8 @@ class WishList extends Component {
                 </Card.Footer>
               </Card>
             </Col>
-          </Row>
         ))}
+          </Row>
       </div>
     );
   }
