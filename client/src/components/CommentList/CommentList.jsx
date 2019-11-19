@@ -38,7 +38,7 @@ class CommentList extends Component {
                 <div className="duration">
                   {comment.trip_start_date} - {comment.trip_end_date}
                 </div>
-                <p className="mt-2 mb-4">{comment.reviews}</p>
+                <p className="mt-2 mb-4 comment-text">{comment.reviews}</p>
               </div>
 
               <div className="comment-btn-outer-container">

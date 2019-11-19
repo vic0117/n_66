@@ -11,7 +11,7 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from '../TripLeftmenu/SliderDays';
+import SliderDays from '../TripLeftMenu/SliderDays';
 
 
 //SVG
