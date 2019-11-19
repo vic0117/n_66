@@ -1,20 +1,89 @@
 import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
-
+import { toast } from "react-toastify";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
 class MemberOrderList extends Component {
-  state = { addModalShow: false };
+  state = { addModalShow: false, rating: "", reviewInfo: "", reviews: "" };
+
+  getModal = value => {
+    console.log(value);
+    let key_to_update = {};
+    key_to_update[value] = true;
+    this.setState({
+      addModalShow: Object.assign({}, this.state.addModalShow, key_to_update)
+    });
+  };
+
+  ModalClose = e => {
+    this.setState({ addModalShow: false });
+  };
+
+  handleCommentsSubmit = event => {
+    let info = {
+      last_name_zh: this.props.userInfo.last_name_zh,
+      gender: this.props.userInfo.gender,
+      trip_name: this.state.reviewInfo.trip_name,
+      trip_country: this.state.reviewInfo.trip_country,
+      rating: this.state.rating,
+      reviews: this.state.reviews,
+      u_id: this.props.currentUser.user.u_id,
+      trip_start_date: this.state.reviewInfo.trip_start_date,
+      trip_end_date: this.state.reviewInfo.trip_end_date
+    };
+    fetch(`http://localhost:3001/members_comments/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token")
+      },
+      body: JSON.stringify(info)
+    })
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        this.setState({ feedback: data });
+        if (this.state.feedback.success) {
+          this.setState({ addModalShow: false });
+          function pageReload() {
+            window.location = "/account/orders";
+          }
+          toast.success(this.state.feedback.msg.text);
+          window.setTimeout(pageReload, 3000);
+        } else {
+          toast.error(this.state.feedback.msg.text);
+        }
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  };
+
+  handleRating = value => {
+    this.setState({ rating: value });
+  };
+
+  handleSubmitComment = value => {
+    this.setState({ reviewInfo: value });
+  };
+
+  handleCommentContent = value => {
+    this.setState({ reviews: value });
+  };
 
   render() {
     const { userOrder } = this.props;
-    userOrder.map(order => console.log(order));
-    console.log(userOrder);
-    let addModalClose = () => this.setState({ addModalShow: false });
+
+    console.log(this.props.currentUser.user.u_id);
     return (
       <div className="order-list-container">
         <Row>
@@ -43,10 +112,19 @@ class MemberOrderList extends Component {
                     </Card.Title>
                   </Col>
                   {order.order_info.map(item => (
-                    <Col className="d-flex position-relative order-container">
-                      <div className="img-container col-md-4">
-                        {/* <img src={sotckholm} height="200" width="200" alt="" /> */}
-                      </div>
+                    <Col
+                      className="d-flex position-relative order-container"
+                      key={item.code}
+                    >
+                      <div
+                        className="img-container col-md-4"
+                        style={{
+                          background: `url(
+                            "http://localhost:3000/images/${item.trip_img ||
+                              item.product_img}"
+                          ) no-repeat center center`
+                        }}
+                      ></div>
 
                       <div className="order-info-container d-flex flex-column justify-content-between ">
                         <span style={{ color: "#96daf0" }}>
@@ -85,16 +163,23 @@ class MemberOrderList extends Component {
                         {item.trip_name && (
                           <Button
                             className="to-comment"
-                            onClick={() =>
-                              this.setState({ addModalShow: true })
-                            }
+                            onClick={() => this.getModal(item.code)}
+                            reviewinfo={item}
                           >
                             前往評論
                           </Button>
                         )}
+
                         <CommentModal
-                          show={this.state.addModalShow}
-                          onHide={addModalClose}
+                          show={this.state.addModalShow[item.code]}
+                          reviewinfo={item}
+                          userinfo={this.props.userInfo}
+                          currentuser={this.props.currentUser}
+                          onHide={this.ModalClose}
+                          handlerating={this.handleRating}
+                          handlesubmitcomment={this.handleSubmitComment}
+                          handlecommentcontent={this.handleCommentContent}
+                          handlecommentssubmit={this.handleCommentsSubmit}
                         />
                       </div>
                     </Col>

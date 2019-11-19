@@ -8,9 +8,10 @@ import TripSort from "../../components/TripSort/TripSort";
 import TripMenuFooter from "../../components/TripMenuFooter/TripMenuFooter";
 import Footer from "../../components/Footer/Footer";
 import search from "./images/search.svg";
-import N66navbarButton from "../../components/TripDesNav/N66navbar";
+// import N66navbarButton from "../../components/TripDesNav/N66navbar";
 import TripPagination from "../../components/TripPagination/TripPagination";
 import { Row } from "react-bootstrap";
+
 class TripMenuPage extends Component {
   constructor(props) {
     super(props);
@@ -368,7 +369,7 @@ class TripMenuPage extends Component {
     return (
       <>
         <div className="TripMenuNavBox">
-          <N66navbarButton />
+          {/* <N66navbarButton /> */}
 
           <img src={norway} alt="norway" className="norway" />
 

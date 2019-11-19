@@ -37,7 +37,6 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 // route
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -78,6 +77,22 @@ app.use(members_change_password);
 
 const members_order = require("./members/members_order");
 app.use(members_order);
+
+const members_comments = require("./members/members_comments");
+app.use(members_comments);
+
+const members_comments_list = require("./members/members_comments_list");
+app.use(members_comments_list);
+
+const members_wish_list = require("./members/member_wish_list");
+app.use(members_wish_list);
+
+const member_wish_list_del = require("./members/member_wish_list_del");
+app.use(member_wish_list_del);
+
+// comments
+const comments = require("./comments/comment");
+app.use(comments);
 
 // trips
 const trips = require("./trips/trips");

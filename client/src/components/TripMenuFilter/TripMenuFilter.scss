@@ -330,22 +330,16 @@ $secColor:#96daf0;
         }
       }
     }
-
-
   }
 
-}
-
-//RWD
-@media only screen and (max-width: 768px) {
-  .filter-home-container{
+  //RWD
+  @media only screen and (max-width: 768px) {
     
-    .main-filter-container {
-      display: none;
-    }
-    .before-rwd {
-      display: block;
-    }
+      .main-filter-container {
+        display: none;
+      }
+      .before-rwd {
+        display: block;
+      }
   }
- 
 }

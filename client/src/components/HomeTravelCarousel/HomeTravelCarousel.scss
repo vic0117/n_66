@@ -46,8 +46,15 @@ $secColor: #96daf0;
 
     .main-slide {
 
+      .slick-list{
+        height: 500px ;
+        margin-top: 20px;
+      }
+
       .slick-dots{
         display: none !important;
+
+        
       }
 
       .slick-arrow {

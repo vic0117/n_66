@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 // Components
-import CommentHeader from './../../components/CommentHeader/CommentHeader';
+import CommentHeader from "./../../components/CommentHeader/CommentHeader";
 import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox";
-import MemberCommentList from "../../components/MemberCommentList/MemberCommentList";
 import Footer from "../../components/Footer/Footer";
-
+import CommentList from "../../components/CommentList/CommentList";
 import { Row, Col } from "react-bootstrap";
 import { ReactComponent as Star } from "./images/star.svg";
 import { ReactComponent as StarSolid } from "./images/star-solid.svg";
@@ -15,7 +14,7 @@ class Comment extends Component {
   render() {
     return (
       <>
-        <CommentHeader />
+        <CommentHeader currentUser={this.props.currentUser} />
         <div className="container mt-5">
           <Row>
             <Col>
@@ -32,17 +31,17 @@ class Comment extends Component {
           </Row>
           <Row>
             <Col className="col-lg-4 col-md-12 col-12 comment-regulation-container">
-              <div style={{ position: 'sticky', top: '1.5rem' }}>
+              <div style={{ position: "sticky", top: "1.5rem" }}>
                 <div className="comment-regulation ">
                   <h5>如何評論?</h5>
                   <ol className="comment-term">
                     <li>參加66°N的旅行</li>
                     <li>
                       旅行結束後，我們將向您發送電子郵件，讓我們知 道您的感想。
-                  </li>
+                    </li>
                     <li>
                       您的意見（無論是正面還是負面）都直接發佈在我 們的網站上。
-                  </li>
+                    </li>
                   </ol>
                   <a href="#1">了解更多信息</a>
                 </div>
@@ -96,10 +95,7 @@ class Comment extends Component {
                 <CommentFilterBox />
               </div>
               <div className="mt-4">
-                <MemberCommentList />
-              </div>
-              <div className="mt-4">
-                <MemberCommentList />
+                <CommentList />
               </div>
             </Col>
           </Row>

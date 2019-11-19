@@ -6,27 +6,22 @@ class CheckOut extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ProductsData: [],
+            productsToBuy: [],
+            tripsToBuy: [],
+            totalCost: 0
         }
     }
 
     componentDidMount() {
-        // fetch("http://localhost:3001/products", {
-        //     // body: JSON.stringify({}),
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     method: "get"
-        // })
-        //     .then(response => {
-        //         return response.json();
-        //         // return console.log(response);
-        //     })
-        //     .then(json => {
-        //         this.setState({
-        //             ProductsData: json,
-        //         });
-        //     });
+        const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
+        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
+        const totalCost = JSON.parse(localStorage.getItem("totalCost"));
+
+        this.setState({ 
+            productsToBuy: productsToBuy,
+            tripsToBuy: tripsToBuy,
+            totalCost: totalCost
+        });
     }
 
 
@@ -34,7 +29,11 @@ class CheckOut extends React.Component {
         return (
             <>
                 <NavBar />
-                <CheckOutContent/>
+                <CheckOutContent
+                   productsToBuy={this.state.productsToBuy} 
+                   tripsToBuy={this.state.tripsToBuy}
+                   totalCost={this.state.totalCost}
+                />
             </>
         );
     }

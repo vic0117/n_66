@@ -37,6 +37,10 @@
   color: #96daf0;
 }
 
+.comment-container .reviews {
+  word-break: break-all;
+}
+
 .comment-info-container {
   margin: 0;
   padding: 0 2rem 1.5rem 2rem;

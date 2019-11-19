@@ -7,7 +7,7 @@ const bluebird = require('bluebird');
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 
@@ -15,15 +15,16 @@ router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `product_list`";
 
   db.query(sql, (error, results, fields) => {
-    if (error) throw error;
-    console.log(results);
+    if (error) throw error; 
+    console.log(results); 
     res.json(results);
-  });
+  });  
   // res.send('aaaa')
 })
 
 router.get("/products/:id", (req, res) => {
-  const sql = "SELECT * FROM `product_list`";
+  let id = req.params.id;
+  const sql = `SELECT * FROM product_list WHERE product_id=${id}`;
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;

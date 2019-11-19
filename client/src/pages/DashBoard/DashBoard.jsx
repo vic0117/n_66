@@ -39,6 +39,8 @@ class DashBoard extends Component {
       avatar: ""
     },
     userOrder: null,
+    userComments: null,
+    userWishes: null,
     feedback: {
       success: "",
       msg: { type: "", text: "" }
@@ -62,13 +64,13 @@ class DashBoard extends Component {
     );
     const info = { ...userInfo.rows[0] };
     info.new_password = "";
-    await this.setState({ userInfo: info }); // 注意一下這個await 不知道會不會出事
+    await this.setState({ userInfo: info });
 
+    // 使用者訂單
     const { data } = await axios.get(
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
 
-    console.log("results", data.rows);
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
     const productJson = data.rows.map(item => JSON.parse(item.order_product));
 
@@ -77,17 +79,28 @@ class DashBoard extends Component {
       data.rows[i].order_product = productJson[i];
       data.rows[i].order_info = [...tripJson[i], ...productJson[i]];
     }
-    console.log(data.rows);
 
     await this.setState({ userOrder: data.rows });
-    console.log("userOrder", this.state.userOrder);
+
+    // 使用者評論
+    const { data: userComments } = await axios.get(
+      "http://localhost:3001/members_comments_list/" + currentUser.u_id
+    );
+    await this.setState({ userComments: userComments.rows });
+
+    // 使用者願望清單
+    const { data: userWishes } = await axios.get(
+      "http://localhost:3001/members_wish_list/" + currentUser.u_id
+    );
+
+    await this.setState({ userWishes: userWishes.rows });
   }
 
-  handleInfoChange = e => {
+  handleInfoChange = async e => {
     const userInfo = { ...this.state.userInfo };
     console.log(userInfo);
     userInfo[e.target.name] = e.target.value;
-    this.setState({ userInfo });
+    await this.setState({ userInfo });
   };
 
   handleInfoSubmit = async e => {
@@ -96,7 +109,7 @@ class DashBoard extends Component {
     let info = {
       first_name_zh: this.state.userInfo.first_name_zh,
       last_name_zh: this.state.userInfo.last_name_zh,
-      first_name_en: this.state.userInfo.first_name_zh,
+      first_name_en: this.state.userInfo.first_name_en,
       last_name_en: this.state.userInfo.last_name_en,
       gender: this.state.userInfo.gender,
       bday_year: this.state.userInfo.bday_year,
@@ -181,9 +194,9 @@ class DashBoard extends Component {
 
   render() {
     const { userInfo, userOrder } = this.state;
-    if (userOrder === null) {
-      return null;
-    }
+
+    if (userOrder === null) return null;
+
     return (
       <>
         <NavBar currentUser={this.props.currentUser} />
@@ -198,15 +211,31 @@ class DashBoard extends Component {
             <Col className="col-xl-9 col-md-8 member-right-section">
               <Switch>
                 <Route path="/account/coupons" component={MemberCoupon} />
-                <Route path="/account/comments" component={MemberCommentList} />
+                <Route
+                  path="/account/comments"
+                  render={() => (
+                    <MemberCommentList
+                      currentUser={this.props.currentUser}
+                      userComments={this.state.userComments}
+                    />
+                  )}
+                />
                 <Route
                   path="/account/orders"
-                  render={() => <MemberOrderList userOrder={userOrder} />}
+                  render={() => (
+                    <MemberOrderList
+                      userInfo={userInfo}
+                      userOrder={userOrder}
+                      currentUser={this.props.currentUser}
+                    />
+                  )}
                 />
                 <Route
                   path="/account/wishlists"
                   exact
-                  component={MemberWishList}
+                  render={() => (
+                    <MemberWishList userWishes={this.state.userWishes} />
+                  )}
                 />
                 <>
                   <Route
