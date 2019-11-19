@@ -8,7 +8,8 @@ class CheckOut extends React.Component {
         this.state = {
             productsToBuy: [],
             tripsToBuy: [],
-            totalCost: 0
+            totalCost: 0,
+            userId: '',
         }
     }
 
@@ -16,11 +17,13 @@ class CheckOut extends React.Component {
         const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
         const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
         const totalCost = JSON.parse(localStorage.getItem("totalCost"));
+        const userId = JSON.parse(localStorage.getItem("userId"));
 
         this.setState({ 
             productsToBuy: productsToBuy,
             tripsToBuy: tripsToBuy,
-            totalCost: totalCost
+            totalCost: totalCost,
+            userId: userId
         });
     }
 
@@ -33,6 +36,7 @@ class CheckOut extends React.Component {
                    productsToBuy={this.state.productsToBuy} 
                    tripsToBuy={this.state.tripsToBuy}
                    totalCost={this.state.totalCost}
+                   userId = {this.state.userId}
                 />
             </>
         );

@@ -12,6 +12,7 @@ import SliderDays from "./SliderDays";
 import SliderPrice from "./SliderPrice";
 import "./TripLeftmenu.scss";
 
+
 class TripLeftMenu extends Component {
   constructor(props) {
     super(props);
