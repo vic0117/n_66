@@ -2,7 +2,7 @@
   padding: 1.75rem 2.75rem;
   position: relative;
 }
-  .comment-title span {
+.comment-title span {
   font-size: 1.25rem;
   color: #2a2a3a;
   font-weight: 300;
@@ -25,7 +25,7 @@
   // padding: 0 2rem 1.5rem 2rem;
   .rank-container {
     margin-bottom: 0.5rem;
-  
+
     .rank {
       margin-right: 0.25rem;
     }
@@ -34,20 +34,19 @@
     color: #96daf0;
   }
 
-  .reviews{
+  .reviews {
     word-break: break-all;
   }
 }
 
-.comment-info-container{
-  margin:0;
+.member_comment-info-container {
+  margin: 0;
   padding: 0 2rem 1.5rem 2rem;
- 
 }
 
-.comment-btn-outer-container{
-  width:100%;
-  padding-bottom:1.5rem;
+.comment-btn-outer-container {
+  width: 100%;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid #eaeaea;
 }
 

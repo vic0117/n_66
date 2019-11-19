@@ -74,9 +74,6 @@ class CommentModal extends Component {
             >
               送出
             </Button>
-            {/* <Button onClick={this.props.onHide} className="modal-btn">
-              取消
-            </Button> */}
           </Modal.Footer>
         </Modal>
       </>
