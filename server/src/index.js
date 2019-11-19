@@ -6,7 +6,7 @@ const fs = require("fs");
 const upload = multer({ dest: "tmp_uploads" });
 const mysql = require("mysql");
 const moment = require("moment-timezone");
-const session = require("express-session"); 
+const session = require("express-session");
 const cors = require("cors");
 
 const db = mysql.createConnection({
@@ -80,6 +80,12 @@ app.use(members_comments);
 
 const members_comments_list = require("./members/members_comments_list");
 app.use(members_comments_list);
+
+const members_wish_list = require("./members/member_wish_list");
+app.use(members_wish_list);
+
+const member_wish_list_del = require("./members/member_wish_list_del");
+app.use(member_wish_list_del);
 
 // comments
 const comments = require("./comments/comment");

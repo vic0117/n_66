@@ -39,11 +39,12 @@ class DashBoard extends Component {
       avatar: ""
     },
     userOrder: null,
+    userComments: null,
+    userWishes: null,
     feedback: {
       success: "",
       msg: { type: "", text: "" }
-    },
-    userComments: null
+    }
   };
 
   async componentDidMount() {
@@ -63,8 +64,9 @@ class DashBoard extends Component {
     );
     const info = { ...userInfo.rows[0] };
     info.new_password = "";
-    await this.setState({ userInfo: info }); // 注意一下這個await 不知道會不會出事
+    await this.setState({ userInfo: info });
 
+    // 使用者訂單
     const { data } = await axios.get(
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
@@ -80,10 +82,18 @@ class DashBoard extends Component {
 
     await this.setState({ userOrder: data.rows });
 
+    // 使用者評論
     const { data: userComments } = await axios.get(
       "http://localhost:3001/members_comments_list/" + currentUser.u_id
     );
     await this.setState({ userComments: userComments.rows });
+
+    // 使用者願望清單
+    const { data: userWishes } = await axios.get(
+      "http://localhost:3001/members_wish_list/" + currentUser.u_id
+    );
+
+    await this.setState({ userWishes: userWishes.rows });
   }
 
   handleInfoChange = async e => {
@@ -184,10 +194,9 @@ class DashBoard extends Component {
 
   render() {
     const { userInfo, userOrder } = this.state;
-    console.log(this.state.userComments);
-    if (userOrder === null) {
-      return null;
-    }
+
+    if (userOrder === null) return null;
+
     return (
       <>
         <NavBar currentUser={this.props.currentUser} />
@@ -224,7 +233,9 @@ class DashBoard extends Component {
                 <Route
                   path="/account/wishlists"
                   exact
-                  component={MemberWishList}
+                  render={() => (
+                    <MemberWishList userWishes={this.state.userWishes} />
+                  )}
                 />
                 <>
                   <Route

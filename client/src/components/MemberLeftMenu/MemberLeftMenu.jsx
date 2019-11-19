@@ -123,7 +123,7 @@ class MemberLeftMenu extends Component {
                     style={{ height: "100%" }}
                   >
                     <Comment height="16" width="16" />
-                    <span className="vertical-align-middle">我的評價</span>
+                    <span className="vertical-align-middle">我的評論</span>
                   </Link>
                 </ListGroup.Item>
                 <ListGroup.Item className="member-ul-container">

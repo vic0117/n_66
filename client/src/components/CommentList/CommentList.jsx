@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import axios from "axios";
 import "./CommentList.css";
 
@@ -25,7 +25,7 @@ class CommentList extends Component {
             key={comment.c_id}
           >
             <Row className="comment-info-container">
-              <div className="rank-container">
+              <div className="rank-container ">
                 <StarRatingComponent
                   name="rate1"
                   starCount={5}

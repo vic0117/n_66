@@ -2,12 +2,34 @@ import React, { Component } from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
-import { ReactComponent as Like } from "./images/like.svg";
+// import { ReactComponent as Like } from "./images/like.svg";
+import Like from "../../common/Like";
 import "./MemberWishList.css";
 
 class WishList extends Component {
-  state = {};
+  handleLike = async wish => {
+    // con  sole.log(wish);
+    const wishes = [...this.props.userWishes];
+    // console.log(wishes)
+    const index = wishes.indexOf(wish);
+    wishes[index].liked = !wishes[index].liked;
+    this.setState({ wishes });
+
+    fetch("http://localhost:3001/members_wish_list_del/" + wish.w_id, {
+      method: "DELETE"
+    })
+      .then(() => {
+        console.log("removed");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
   render() {
+    const { userWishes } = this.props;
+    if (userWishes === null) return null;
+
     return (
       <div className="wish-list-container">
         <Row>
@@ -15,148 +37,40 @@ class WishList extends Component {
             <span>願望清單</span>
           </Col>
         </Row>
-        <Row>
-          <Col className="card-container d-flex">
-            <Card className="wish-list-item">
-              <Card.Img variant="top" src={sotckholm} />
-              <Card.Body className="py-3">
-                <span style={{ color: "#96daf0" }}>瑞典</span>
-                <Card.Title className="mt-1 mb-2">冬季的斯德哥爾摩</Card.Title>
-                <div className="d-flex align-items-center mb-2">
-                  <Calendar />
-                  <span className="ml-2">5天</span>
-                </div>
-                <div className="mb-2">
-                  <span className="vertical-align-middle product-duration">
-                    2020/01/04 - 2020/01/09
-                  </span>
-                </div>
-                <div>
-                  <h5>NT$ 18,000</h5>
-                </div>
-              </Card.Body>
-              <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
-                <Like />
-                <span className="pl-1">移出願望清單</span>
-              </Card.Footer>
-            </Card>
-            <Card className="wish-list-item">
-              <Card.Img variant="top" src={sotckholm} />
-              <Card.Body className="py-3">
-                <span style={{ color: "#96daf0" }}>瑞典</span>
-                <Card.Title className="mt-1 mb-2">冬季的斯德哥爾摩</Card.Title>
-                <div className="d-flex align-items-center mb-2">
-                  <Calendar />
-                  <span className="ml-2">5天</span>
-                </div>
-                <div className="mb-2">
-                  <span className="vertical-align-middle product-duration">
-                    2020/01/04 - 2020/01/09
-                  </span>
-                </div>
-                <div>
-                  <h5>NT$ 18,000</h5>
-                </div>
-              </Card.Body>
-              <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
-                <Like />
-                <span className="pl-1">移出願望清單</span>
-              </Card.Footer>
-            </Card>
-            <Card className="wish-list-item">
-              <Card.Img variant="top" src={sotckholm} />
-              <Card.Body className="py-3">
-                <span style={{ color: "#96daf0" }}>瑞典</span>
-                <Card.Title className="mt-1 mb-2">冬季的斯德哥爾摩</Card.Title>
-                <div className="d-flex align-items-center mb-2">
-                  <Calendar />
-                  <span className="ml-2">5天</span>
-                </div>
-                <div className="mb-2">
-                  <span className="vertical-align-middle product-duration">
-                    2020/01/04 - 2020/01/09
-                  </span>
-                </div>
-                <div>
-                  <h5>NT$ 18,000</h5>
-                </div>
-              </Card.Body>
-              <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
-                <Like />
-                <span className="pl-1">移出願望清單</span>
-              </Card.Footer>
-            </Card>
-            <Card className="wish-list-item">
-              <Card.Img variant="top" src={sotckholm} />
-              <Card.Body className="py-3">
-                <span style={{ color: "#96daf0" }}>瑞典</span>
-                <Card.Title className="mt-1 mb-2">冬季的斯德哥爾摩</Card.Title>
-                <div className="d-flex align-items-center mb-2">
-                  <Calendar />
-                  <span className="ml-2">5天</span>
-                </div>
-                <div className="mb-2">
-                  <span className="vertical-align-middle product-duration">
-                    2020/01/04 - 2020/01/09
-                  </span>
-                </div>
-                <div>
-                  <h5>NT$ 18,000</h5>
-                </div>
-              </Card.Body>
-              <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
-                <Like />
-                <span className="pl-1">移出願望清單</span>
-              </Card.Footer>
-            </Card>
-            <Card className="wish-list-item">
-              <Card.Img variant="top" src={sotckholm} />
-              <Card.Body className="py-3">
-                <span style={{ color: "#96daf0" }}>瑞典</span>
-                <Card.Title className="mt-1 mb-2">冬季的斯德哥爾摩</Card.Title>
-                <div className="d-flex align-items-center mb-2">
-                  <Calendar />
-                  <span className="ml-2">5天</span>
-                </div>
-                <div className="mb-2">
-                  <span className="vertical-align-middle product-duration">
-                    2020/01/04 - 2020/01/09
-                  </span>
-                </div>
-                <div>
-                  <h5>NT$ 18,000</h5>
-                </div>
-              </Card.Body>
-              <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
-                <Like />
-                <span className="pl-1">移出願望清單</span>
-              </Card.Footer>
-            </Card>
-            <Card className="wish-list-item">
-              <Card.Img variant="top" src={sotckholm} />
-              <Card.Body className="py-3">
-                <span style={{ color: "#96daf0" }}>瑞典</span>
-                <Card.Title className="mt-1 mb-2">冬季的斯德哥爾摩</Card.Title>
-                <div className="d-flex align-items-center mb-2">
-                  <Calendar />
-                  <span className="ml-2">5天</span>
-                </div>
-                <div className="mb-2">
-                  <span className="vertical-align-middle product-duration">
-                    2020/01/04 - 2020/01/09
-                  </span>
-                </div>
-                <div>
-                  <h5>NT$ 18,000</h5>
-                </div>
-              </Card.Body>
-              <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
-                <Like />
-                <span className="pl-1">移出願望清單</span>
-              </Card.Footer>
-            </Card>
-          </Col>
-        </Row>
+        {userWishes.map(wish => (
+          <Row>
+            <Col className="card-container d-flex">
+              <Card className="wish-list-item">
+                <Card.Img variant="top" src={sotckholm} />
+                <Card.Body className="py-3">
+                  <span style={{ color: "#96daf0" }}>{wish.product_label}</span>
+                  <Card.Title className="mt-1 mb-2">
+                    {wish.product_name}
+                  </Card.Title>
+                  <div className="d-flex align-items-center mb-2">
+                    <Calendar />
+                    <span className="ml-2">{wish.product_info}</span>
+                  </div>
+                  <div className="mb-2">
+                    <span className="vertical-align-middle product-duration">
+                      {wish.trip_start_date} - {wish.trip_end_date}
+                    </span>
+                  </div>
+                  <div>
+                    <h5>NT${wish.product_price}</h5>
+                  </div>
+                </Card.Body>
+                <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
+                  <Like
+                    liked={wish.liked}
+                    onClick={() => this.handleLike(wish)}
+                  />
+                  <span className="pl-1">移出願望清單</span>
+                </Card.Footer>
+              </Card>
+            </Col>
+          </Row>
+        ))}
       </div>
     );
   }
