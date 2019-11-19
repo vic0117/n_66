@@ -8,22 +8,23 @@ import "./MemberWishList.css";
 
 class WishList extends Component {
   handleLike = async wish => {
-    // con  sole.log(wish);
-    const wishes = [...this.props.userWishes];
-    // console.log(wishes)
-    const index = wishes.indexOf(wish);
-    wishes[index].liked = !wishes[index].liked;
-    this.setState({ wishes });
-    // if (confirm(`確定要將此商品移除願望清單嗎?`)) {}
-    fetch("http://localhost:3001/members_wish_list_del/" + wish.w_id, {
-      method: "DELETE"
-    })
-      .then(() => {
-        console.log("removed");
+    if (window.confirm(`確定要將此商品移除願望清單嗎?`)) {
+      const wishes = [...this.props.userWishes];
+      // console.log(wishes)
+      const index = wishes.indexOf(wish);
+      wishes[index].liked = !wishes[index].liked;
+      this.setState({ wishes });
+      fetch("http://localhost:3001/members_wish_list_del/" + wish.w_id, {
+        method: "DELETE"
       })
-      .catch(err => {
-        console.error(err);
-      });
+        .then(() => {
+          console.log("removed");
+          window.location = "/account/wishlists";
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   };
 
   render() {
@@ -37,8 +38,8 @@ class WishList extends Component {
             <span>願望清單</span>
           </Col>
         </Row>
-          <Row>
-        {userWishes.map(wish => (
+        <Row>
+          {userWishes.map(wish => (
             <Col className="card-container d-flex col-lg-4 col-md-6 col-12">
               <Card className="wish-list-item">
                 <Card.Img variant="top" src={sotckholm} />
@@ -69,8 +70,8 @@ class WishList extends Component {
                 </Card.Footer>
               </Card>
             </Col>
-        ))}
-          </Row>
+          ))}
+        </Row>
       </div>
     );
   }
