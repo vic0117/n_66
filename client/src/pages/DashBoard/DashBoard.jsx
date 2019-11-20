@@ -41,7 +41,7 @@ class DashBoard extends Component {
     userOrder: null,
     userComments: null,
     userWishes: null,
-    userCoupons: null,
+    userCoupons: [],
     feedback: {
       success: "",
       msg: { type: "", text: "" }
@@ -71,10 +71,9 @@ class DashBoard extends Component {
     const { data } = await axios.get(
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
-
+    console.log(data);
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
     const productJson = data.rows.map(item => JSON.parse(item.order_product));
-
     for (let i = 0; i < data.rows.length; i++) {
       data.rows[i].order_trip = tripJson[i];
       data.rows[i].order_product = productJson[i];

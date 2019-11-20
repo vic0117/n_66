@@ -16,7 +16,7 @@ router.get("/members_order/:id?", (req, res) => {
     if (error) throw error;
     let output = {};
     output.rows = results;
-    // console.log(results);
+    
     res.json(output);
   });
 });

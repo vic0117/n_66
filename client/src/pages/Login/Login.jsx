@@ -12,29 +12,64 @@ class Login extends React.Component {
     errors: {}
   };
 
-  schema = {
-    email: Joi.string().required(),
-    password: Joi.string().required()
-  };
+  // schema = Joi.object().keys({
+  //   email: Joi.string()
+  //     .required()
+  //     .messages({
+  //       "string.base": `"username" should be a type of 'text'`,
+  //       "any.required": `此為必填欄位 `
+  //     })
+  // });
 
-  validate = () => {
-    const results_email = Joi.validate(this.state.email, this.schema.email);
-    const results_pwd = Joi.validate(this.state.password, this.schema.password);
+  schema = Joi.object().keys({
+    email: Joi.string()
+      .required()
+      .email()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = `此為必填欄位`;
+              break;
+            case "string.email":
+              err.message = `不正確的email格式`;
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      }),
+    password: Joi.string()
+      .required()
+      .error(() => {
+        return {
+          message: "此為必填欄位"
+        };
+      })
+  });
 
+  validate = async () => {
+    let email = this.state.email;
+    let password = this.state.password;
+    await this.setState({ joi: { email, password } });
+    console.log(this.state.joi);
+    const result = Joi.validate(this.state.joi, this.schema, {
+      abortEarly: false
+    });
+    console.log(result);
+    if (!result.error) return null;
     const errors = {};
-    const { email, password } = this.state;
-    if (email.trim() === "") errors.email = "Email is required";
-    if (password.trim() === "") errors.password = "Password is required";
-
-    return Object.keys(errors).length === 0 ? null : errors;
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
+    return errors;
   };
 
-  handleLoginSubmit = e => {
+  handleLoginSubmit = async e => {
     e.preventDefault();
 
-    const errors = this.validate();
+    const errors = await this.validate();
     console.log(errors);
-    this.setState({ errors: errors || {} });
+    await this.setState({ errors: errors || {} });
     if (errors) return;
 
     // Call the server
@@ -264,7 +299,6 @@ class Login extends React.Component {
   }
 
   render() {
-    console.log(this.state.errors);
     return (
       <>
         <NavBar />
@@ -281,7 +315,6 @@ class Login extends React.Component {
                   <h2>會員登入</h2>
                   <label>
                     <input
-                      type="email"
                       name="email"
                       placeholder="電子信箱"
                       onChange={this.logChange}
