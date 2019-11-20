@@ -1,23 +1,43 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import Joi from "joi-browser";
 import NavBar from "../../components/NavBar/NavBar";
-
-//IMAGE SVG
-// import { ReactComponent as Logo } from "./images/logo.svg";
-//CSS
 import "./Login.css";
 
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
-    msg: {}
+    msg: {},
+    errors: {}
+  };
+
+  schema = {
+    email: Joi.string().required(),
+    password: Joi.string().required()
+  };
+
+  validate = () => {
+    const results_email = Joi.validate(this.state.email, this.schema.email);
+    const results_pwd = Joi.validate(this.state.password, this.schema.password);
+
+    const errors = {};
+    const { email, password } = this.state;
+    if (email.trim() === "") errors.email = "Email is required";
+    if (password.trim() === "") errors.password = "Password is required";
+
+    return Object.keys(errors).length === 0 ? null : errors;
   };
 
   handleLoginSubmit = e => {
     e.preventDefault();
-    // req.body
-    console.log(this.props);
+
+    const errors = this.validate();
+    console.log(errors);
+    this.setState({ errors: errors || {} });
+    if (errors) return;
+
+    // Call the server
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -97,8 +117,22 @@ class Login extends React.Component {
       });
   };
 
+  validateProperty = ({ name, value }) => {
+    if (name === "email") {
+      if (value.trim() === "") return "Email is required";
+    }
+    if (name === "password") {
+      if (value.trim() === "") return "Password is required";
+    }
+  };
+
   logChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const errors = { ...this.state.errors };
+    const errorMsg = this.validateProperty(e.target);
+    if (errorMsg) errors[e.target.name] = errorMsg;
+    else delete errors[e.target.name];
+
+    this.setState({ [e.target.name]: e.target.value, errors });
   };
 
   componentDidMount() {
@@ -230,6 +264,7 @@ class Login extends React.Component {
   }
 
   render() {
+    console.log(this.state.errors);
     return (
       <>
         <NavBar />
@@ -252,6 +287,11 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
+                  {this.state.errors.email && (
+                    <div className="alert alert-danger">
+                      {this.state.errors.email}
+                    </div>
+                  )}
                   <label>
                     <input
                       type="password"
@@ -260,6 +300,11 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
+                  {this.state.errors.password && (
+                    <div className="alert alert-danger">
+                      {this.state.errors.password}
+                    </div>
+                  )}
                   <a href="#6" className="forgot-pass">
                     忘記密碼?
                   </a>

@@ -226,7 +226,7 @@ class HomeFilter extends Component {
       filterMenu.style.left = "0%";
       body.style.overflowY = "hidden";
     });
-
+    // toggle 分類和搜尋
     const search_btn = document.querySelector(".search-btn");
     search_btn.addEventListener("click", function() {
       let filter_icons = document
