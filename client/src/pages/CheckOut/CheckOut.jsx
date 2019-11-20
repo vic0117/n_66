@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from '../../components/NavBar/NavBar';
 import CheckOutContent from '../../components/CheckOutContent/CheckOutContent';
+// import CheckOutContentNew from '../../components/CheckOutContentNew/CheckOutContentNew'
 
 class CheckOut extends React.Component {
     constructor(props) {
