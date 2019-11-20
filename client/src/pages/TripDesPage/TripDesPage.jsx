@@ -68,12 +68,13 @@ class TripDesPage extends Component {
     product.trip_name = aaa.trip_name;
     product.trip_angency = aaa.trip_angency;
     product.trip_price = aaa.trip_price;
-    product.trip_menu_img = aaa.trip_menu_img;
-    product.trip_place = aaa.trip_place;
-    product.trip_days = aaa.trip_days;
-    product.trip_start = aaa.trip_start;
-    product.trip_end = aaa.trip_end;
+    product.trip_img = aaa.trip_menu_img;
+    product.trip_country = aaa.trip_place;
+    product.trip_duration = aaa.trip_days;
+    product.trip_start_date = aaa.trip_start;
+    product.trip_end_date = aaa.trip_end;
     product.trip_amount = 1;
+    product.commented = 0;
     product.code = Date.now();
 
 
