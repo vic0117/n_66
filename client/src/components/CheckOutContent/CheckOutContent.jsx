@@ -107,7 +107,7 @@ class CheckOutContent extends React.Component {
                                             <div className="itemImg d-flex" style={{ flex: 2 }}>
                                                 <Card.Img
                                                     variant="top"
-                                                    src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_img)[0]}
+                                                    src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + item.product_img}
                                                 />
                                             </div>
 
@@ -249,12 +249,12 @@ class CheckOutContent extends React.Component {
                                                         type="radio"
                                                         name="exampleRadios"
                                                         id="exampleRadios1"
-                                                        value="option1"
-                                                        checked
+                                                        defaultValue="option1"
+                                                        defaultChecked
                                                     ></input>
                                                     <label
                                                         class="form-check-label text-left font-size-14"
-                                                        for="exampleRadios1"
+                                                        htmlFor="exampleRadios1"
                                                     >
                                                         超商取貨
                                                     </label>
