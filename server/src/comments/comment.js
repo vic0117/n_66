@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "root",
@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 // [req.params.id]
 router.get("/comments", (req, res) => {
   // console.log("req.params", req.params);
-  const sql = "SELECT * FROM `comments_list` ";
+  const sql = "SELECT * FROM `comments_list` ORDER BY c_id DESC ";
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
     // console.log(results);
