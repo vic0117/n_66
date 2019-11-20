@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
-import "./ProductCarousel.css";
+import "./ProductCarousel.scss";
 // import { object } from "prop-types";
 
 class ProductCarousel extends React.Component {
