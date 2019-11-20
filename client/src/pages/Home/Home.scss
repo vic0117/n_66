@@ -1,0 +1,38 @@
+.MessageButton{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: #96daf0;
+	position: fixed;
+	z-index: 10000;
+	right:20px;
+	bottom:50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	img{
+		width: 50px !important;
+	}
+	.joinContent{
+		display:none !important;
+	}
+}
+.messageIn{
+	width: 30%;
+	height: 500px;
+	position: fixed;
+	z-index: 9000;
+	left: 35%;
+	top:35%;
+	transition:.5s;
+}
+.messageInOpen{
+	display: none;
+	
+}
+@media(max-width:1000px){
+	.messageIn{
+		width: 100%;
+		left: 0;
+	}
+}

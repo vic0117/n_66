@@ -4,6 +4,7 @@ import TripDesNav from "../../components/TripDesNav/TripDesNav";
 import TripDesCarousel from "../../components/TripDesCarousel/TripDesCarousel";
 import TripDes1 from "../../components/TripDes1/TripDes1";
 import TripDes2 from "../../components/TripDes2/TripDes2";
+import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
 import TripDes2Carousel from "../../components/TripDes2Carousel/TripDes2Carousel";
 import Footer from "../../components/Footer/Footer";
 import "./TripDesPage.scss";
@@ -16,6 +17,7 @@ class TripDesPage extends Component {
 		detailData: [],
 		carouselPlace:'',
 		carouselData:[],
+		carouselImg:null
     };
   }
 
@@ -31,8 +33,8 @@ class TripDesPage extends Component {
         }
       )
       .then(data => {
-		  this.setState({ detailData: data , carouselPlace: data[0].trip_place});
-		//   console.log(data[0].trip_place)
+		  this.setState({carouselImg:JSON.parse(data[0].trip_des2_carousel_img), detailData: data , carouselPlace: data[0].trip_place});
+		//   console.log(JSON.parse(data[0].trip_des2_carousel_img))
 		});
 
 		
@@ -58,48 +60,13 @@ class TripDesPage extends Component {
 		});
   }
 
-
-
-  addToCart = () => {
-    // console.log(this.state.detailData[0].trip_name);
-    let aaa = this.state.detailData[0];
-    let product = {};
-    product.sid = aaa.sid;
-    product.trip_name = aaa.trip_name;
-    product.trip_angency = aaa.trip_angency;
-    product.trip_price = aaa.trip_price;
-    product.trip_menu_img = aaa.trip_menu_img;
-    product.trip_place = aaa.trip_place;
-    product.trip_days = aaa.trip_days;
-    product.trip_start = aaa.trip_start;
-    product.trip_end = aaa.trip_end;
-    product.trip_amount = 1;
-    product.code = Date.now();
-
-
-
-    if (localStorage.getItem('tripsToBuy')) {
-      let bbb = JSON.parse(localStorage.getItem('tripsToBuy'));
-      bbb.push(product);
-
-
-      console.log(JSON.parse(localStorage.getItem('tripsToBuy')).length)
-      localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
-    }
-    else {
-      let ddd = []
-      ddd.push(product)
-      localStorage.setItem("tripsToBuy", JSON.stringify(ddd));
-    }
-  }
-
-
   render() {
     return (
       <div>
         <TripDesNav detailData={this.state.detailData} />
+		  <HomeNavBar/>
         <div className="TripDesCarousel">
-          <TripDesCarousel detailData={this.state.detailData} />
+          <TripDesCarousel carouselImg={this.state.carouselImg} detailData={this.state.detailData} />
         </div>
         <Container>
           <div className="purchaseBtnBox" style={{ marginTop: "100px" }}>
@@ -112,9 +79,8 @@ class TripDesPage extends Component {
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} />
           <div className="purchaseBtnBox">
-            <div onClick={this.addToCart} className="purchaseBtn">
+            <div className="purchaseBtn">
               <Cart className="purchaseBtnImg" />
-
               <p>加入購物車</p>
               <div className="purchaseBtnCover"></div>
             </div>

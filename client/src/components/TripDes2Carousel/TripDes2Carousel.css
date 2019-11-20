@@ -42,24 +42,19 @@
   margin-left: 30%;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .slick-list {
-  margin-top: 20px;
-  height: 500px;
-}
-
-.travelCarouselContainer .rectNavyBlue .main-slide2 .slick-dots {
+.travelCarouselContainer .rectNavyBlue .main-slide .slick-dots {
   display: none !important;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .slick-arrow {
+.travelCarouselContainer .rectNavyBlue .main-slide .slick-arrow {
   display: none !important;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .slick-track {
+.travelCarouselContainer .rectNavyBlue .main-slide .slick-track {
   height: 570px;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card {
   border: none;
   border-radius: 0;
   margin-left: 20px;
@@ -73,14 +68,13 @@
   width: 319px;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .card-img-top {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-img-top {
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  height: 400px;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .card-img-top img {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-img-top img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -90,40 +84,40 @@
   transition: 0.3s ease-in-out;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card h3 {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card h3 {
   color: #242a3a;
   margin: 10px 0 5px 0;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .card-text {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-text {
   color: #96daf0;
   font-size: 1rem;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .days {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .days {
   color: #242a3a;
   margin-top: 10px;
   width: 30%;
   text-decoration: none;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .days img {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .days img {
   margin: 0 10px 0 0;
   height: 12px;
   width: 12px;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .card-price {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-price {
   margin-top: 20px;
   padding-top: 10px;
   border-top: 1px solid #ccc;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .card-price span {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-price span {
   color: #242a3a;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .card-price p {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .card-price p {
   color: #96daf0;
   font-size: 36px;
   font-weight: 900;
@@ -131,19 +125,19 @@
   text-decoration: none;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card .fallow {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card .fallow {
   display: block;
   margin-left: auto;
   background-color: #242a3a;
   color: #ffffff;
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .tavel-card:hover .card-img-top img {
+.travelCarouselContainer .rectNavyBlue .main-slide .tavel-card:hover .card-img-top img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.travelCarouselContainer .rectNavyBlue .main-slide2 .out a {
+.travelCarouselContainer .rectNavyBlue .main-slide .out a {
   text-decoration: none;
 }
 
@@ -260,10 +254,6 @@
   .travelCarouselContainer .main-title {
     margin-bottom: 0;
   }
-  .travelCarouselContainer .main-slide2 .slick-list {
-    margin-top: 20px;
-    margin-left: 50px;
-  }
   .travelCarouselContainer .slider-container {
     width: 100% !important;
     left: 50%;
@@ -288,4 +278,4 @@
     background-color: #242a3a;
   }
 }
-/*# sourceMappingURL=TripDes2Carousel.css.map */
+/*# sourceMappingURL=HomeTravelCarousel.css.map */

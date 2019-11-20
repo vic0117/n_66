@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import jwtDecode from "jwt-decode";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
-import "font-awesome/css/font-awesome.css"
+import "font-awesome/css/font-awesome.css";
 
 //Components
 import Comment from "./pages/Comment/Comment";
@@ -12,6 +12,9 @@ import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
+import Join from "./pages/socketClient/Join";
+import Chat from "./pages/socketClient/Chat";
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
 //ProductPages
 import ProductList from "./pages/ProductList/ProductList";
@@ -57,52 +60,56 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route path="/products" exact component={ProductList} />
-        <Route path="/products/:id" exact component={ProductDetail} />
-        <Route
-          path="/cart"
-          exact
-          render={props => (
-            <MyCart {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route
-          path="/checkout"
-          exact
-          render={props => (
-            <CheckOut {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route
-          path="/comments"
-          render={props => <Comment currentUser={this.state.currentUser} />}
-        />
-        <Route path="/logout" component={Logout} />
+      <ScrollToTop>
+        <Switch>
+          <Route path="/products" exact component={ProductList} />
+          <Route path="/products/:id" exact component={ProductDetail} />
+          <Route
+            path="/cart"
+            exact
+            render={props => (
+              <MyCart {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route
+            path="/checkout"
+            exact
+            render={props => (
+              <CheckOut {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route
+            path="/comments"
+            render={props => <Comment currentUser={this.state.currentUser} />}
+          />
+          <Route path="/logout" component={Logout} />
 
-        <Route
-          path="/login"
-          render={props => (
-            <Login {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route
-          path="/account"
-          render={props => (
-            <DashBoard {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route path="/trips/page/:page" exact component={TripMenuPage} />
-        <Route path="/trips/page" exact component={TripMenuPage} />
-        <Route path="/trips/:id" exact component={TripDesPage} />
-        <Route
-          path="/"
-          exact
-          render={props => (
-            <Home {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-      </Switch>
+          <Route
+            path="/login"
+            render={props => (
+              <Login {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route
+            path="/account"
+            render={props => (
+              <DashBoard {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route path="/trips/page/:page" exact component={TripMenuPage} />
+          <Route path="/trips/page" exact component={TripMenuPage} />
+          <Route path="/trips/:id" exact component={TripDesPage} />
+          <Route path="/join" exact component={Join} />
+          <Route path="/chat" exact component={Chat} />
+          <Route
+            path="/"
+            exact
+            render={props => (
+              <Home {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+        </Switch>
+      </ScrollToTop>
     );
   }
 }

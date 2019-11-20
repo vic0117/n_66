@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./TripDesNav.scss";
-import N66navbarButton from "./N66navbar";
 // import snowCity from "./images/snowcity.jpg";
 // import { ReactComponent as Suede } from "./images/suede.svg";
 
@@ -16,7 +15,7 @@ class TripDesNav extends Component {
       <>
         {detailData.map(item => (
           <div key={item.sid}>
-            <N66navbarButton className="N66navbarButton" />
+            {/* <N66navbarButton className="N66navbarButton" /> */}
             <div className="backGroundImg">
               <img src={`http://localhost:3000/images/${item.trip_desnav_img}`} alt="snowCity" /> 
               <div className="backGroundImgCover"></div>
