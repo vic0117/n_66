@@ -1,23 +1,78 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import Joi from "joi-browser";
 import NavBar from "../../components/NavBar/NavBar";
-
-//IMAGE SVG
-// import { ReactComponent as Logo } from "./images/logo.svg";
-//CSS
 import "./Login.css";
 
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
-    msg: {}
+    msg: {},
+    errors: {}
   };
 
-  handleLoginSubmit = e => {
+  // schema = Joi.object().keys({
+  //   email: Joi.string()
+  //     .required()
+  //     .messages({
+  //       "string.base": `"username" should be a type of 'text'`,
+  //       "any.required": `此為必填欄位 `
+  //     })
+  // });
+
+  schema = Joi.object().keys({
+    email: Joi.string()
+      .required()
+      .email()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = `此為必填欄位`;
+              break;
+            case "string.email":
+              err.message = `不正確的email格式`;
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      }),
+    password: Joi.string()
+      .required()
+      .error(() => {
+        return {
+          message: "此為必填欄位"
+        };
+      })
+  });
+
+  validate = async () => {
+    let email = this.state.email;
+    let password = this.state.password;
+    await this.setState({ joi: { email, password } });
+    console.log(this.state.joi);
+    const result = Joi.validate(this.state.joi, this.schema, {
+      abortEarly: false
+    });
+    console.log(result);
+    if (!result.error) return null;
+    const errors = {};
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
+    return errors;
+  };
+
+  handleLoginSubmit = async e => {
     e.preventDefault();
-    // req.body
-    console.log(this.props);
+
+    const errors = await this.validate();
+    console.log(errors);
+    await this.setState({ errors: errors || {} });
+    if (errors) return;
+
+    // Call the server
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -97,8 +152,22 @@ class Login extends React.Component {
       });
   };
 
+  validateProperty = ({ name, value }) => {
+    if (name === "email") {
+      if (value.trim() === "") return "Email is required";
+    }
+    if (name === "password") {
+      if (value.trim() === "") return "Password is required";
+    }
+  };
+
   logChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const errors = { ...this.state.errors };
+    const errorMsg = this.validateProperty(e.target);
+    if (errorMsg) errors[e.target.name] = errorMsg;
+    else delete errors[e.target.name];
+
+    this.setState({ [e.target.name]: e.target.value, errors });
   };
 
   componentDidMount() {
@@ -246,12 +315,16 @@ class Login extends React.Component {
                   <h2>會員登入</h2>
                   <label>
                     <input
-                      type="email"
                       name="email"
                       placeholder="電子信箱"
                       onChange={this.logChange}
                     />
                   </label>
+                  {this.state.errors.email && (
+                    <div className="alert alert-danger">
+                      {this.state.errors.email}
+                    </div>
+                  )}
                   <label>
                     <input
                       type="password"
@@ -260,6 +333,11 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
+                  {this.state.errors.password && (
+                    <div className="alert alert-danger">
+                      {this.state.errors.password}
+                    </div>
+                  )}
                   <a href="#6" className="forgot-pass">
                     忘記密碼?
                   </a>
