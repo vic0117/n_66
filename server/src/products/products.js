@@ -5,8 +5,7 @@ const moment = require("moment-timezone");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  // host: "localhost",  
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "root",
@@ -44,17 +43,17 @@ router.post("/checkout", (req, res) => {
   // console.log(data)
 
   db.queryAsync(sql)
-    .then(results=>{
+    .then(results => {
       newId = results[0].order_id + 1;
       // console.log(newId);
 
-      let productsArray = JSON.parse(data.productsToBuy)
-      
+      let productsArray = JSON.parse(data.productsToBuy);
+
       productsArray.forEach(item => {
         item.id = newId;
       });
 
-      let tripsArray = JSON.parse(data.tripsToBuy)
+      let tripsArray = JSON.parse(data.tripsToBuy);
       tripsArray.forEach(trip => {
         trip.id = newId;
       });
@@ -64,18 +63,18 @@ router.post("/checkout", (req, res) => {
 
       return db.queryAsync(sql);
     })
-   
-    .then(results=>{
+
+    .then(results => {
       newId = results[0].order_id + 1;
       console.log(newId);
 
-      let productsArray = JSON.parse(data.productsToBuy)
-      
+      let productsArray = JSON.parse(data.productsToBuy);
+
       productsArray.forEach(item => {
         item.id = newId;
       });
 
-      let tripsArray = JSON.parse(data.tripsToBuy)
+      let tripsArray = JSON.parse(data.tripsToBuy);
       tripsArray.forEach(trip => {
         trip.id = newId;
       });
@@ -87,15 +86,13 @@ router.post("/checkout", (req, res) => {
        VALUES ( '${data.userId}', '${data.tripsToBuy}', '${data.productsToBuy}', '${data.orderStatus}', '${data.totalCost}' )`;
       return db.queryAsync(sql);
     })
-    .then(results=>{
-      
-      output.text = '購買成功';
-      output.rows = data
-      console.log(output)
+    .then(results => {
+      output.text = "購買成功";
+      output.rows = data;
+      console.log(output);
       res.json(output);
-    })
+    });
 });
-
 
 //搜尋
 // router.post('/products/search',(req,res,next)=>{

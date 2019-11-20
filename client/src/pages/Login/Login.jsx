@@ -8,20 +8,12 @@ class Login extends React.Component {
   state = {
     email: "",
     password: "",
+    repeat_password: "",
     msg: {},
     errors: {}
   };
 
-  // schema = Joi.object().keys({
-  //   email: Joi.string()
-  //     .required()
-  //     .messages({
-  //       "string.base": `"username" should be a type of 'text'`,
-  //       "any.required": `此為必填欄位 `
-  //     })
-  // });
-
-  schema = Joi.object().keys({
+  schema = Joi.object({
     email: Joi.string()
       .required()
       .email()
@@ -29,10 +21,10 @@ class Login extends React.Component {
         errors.forEach(err => {
           switch (err.type) {
             case "any.empty":
-              err.message = `此為必填欄位`;
+              err.message = "此為必填欄位";
               break;
             case "string.email":
-              err.message = `不正確的email格式`;
+              err.message = "不正確的email格式";
               break;
             default:
               break;
@@ -41,18 +33,58 @@ class Login extends React.Component {
         return errors;
       }),
     password: Joi.string()
+      .min(5)
+      .max(10)
       .required()
-      .error(() => {
-        return {
-          message: "此為必填欄位"
-        };
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = "此為必填欄位";
+              break;
+            case "string.min":
+              err.message = "密碼至少為5個字元";
+              break;
+            case "string.max":
+              err.message = "密碼最多為10個字元";
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      }),
+    repeat_password: Joi.any()
+      .valid(Joi.ref("password"))
+      .required()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = "此為必填欄位";
+              break;
+            case "string.min":
+              err.message = "密碼至少為5個字元";
+              break;
+            case "string.max":
+              err.message = "密碼最多為10個字元";
+              break;
+            case "any.allowOnly":
+              err.message = "密碼不一致";
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
       })
   });
 
   validate = async () => {
     let email = this.state.email;
     let password = this.state.password;
-    await this.setState({ joi: { email, password } });
+    let repeat_password = this.state.repeat_password;
+    await this.setState({ joi: { email, password, repeat_password } });
     console.log(this.state.joi);
     const result = Joi.validate(this.state.joi, this.schema, {
       abortEarly: false
@@ -111,8 +143,14 @@ class Login extends React.Component {
       });
   };
 
-  handleSignUpSubmit = e => {
+  handleSignUpSubmit = async e => {
     e.preventDefault();
+
+    const errors = await this.validate();
+    console.log(errors);
+    await this.setState({ errors: errors || {} });
+    if (errors) return;
+
     // req.body
     let data = {
       email: this.state.email,
@@ -152,22 +190,8 @@ class Login extends React.Component {
       });
   };
 
-  validateProperty = ({ name, value }) => {
-    if (name === "email") {
-      if (value.trim() === "") return "Email is required";
-    }
-    if (name === "password") {
-      if (value.trim() === "") return "Password is required";
-    }
-  };
-
   logChange = e => {
-    const errors = { ...this.state.errors };
-    const errorMsg = this.validateProperty(e.target);
-    if (errorMsg) errors[e.target.name] = errorMsg;
-    else delete errors[e.target.name];
-
-    this.setState({ [e.target.name]: e.target.value, errors });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   componentDidMount() {
@@ -362,6 +386,11 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
+                    {this.state.errors.email && (
+                      <div className="alert alert-danger">
+                        {this.state.errors.email}
+                      </div>
+                    )}
                     <label>
                       <input
                         type="password"
@@ -370,9 +399,24 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
+                    {this.state.errors.password && (
+                      <div className="alert alert-danger">
+                        {this.state.errors.password}
+                      </div>
+                    )}
                     <label>
-                      <input type="password" placeholder="確認密碼" />
+                      <input
+                        type="password"
+                        placeholder="確認密碼"
+                        onChange={this.logChange}
+                        name="repeat_password"
+                      />
                     </label>
+                    {this.state.errors.repeat_password && (
+                      <div className="alert alert-danger">
+                        {this.state.errors.repeat_password}
+                      </div>
+                    )}
                     <div className="feedback">{this.state.msg.signUpMsg}</div>
                     <button type="submit" className="submit register">
                       註冊
