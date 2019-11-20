@@ -19,6 +19,16 @@
           flex: 2;
 }
 
+.filter-home-container .home-filter-hide {
+  display: none !important;
+}
+
+.filter-home-container .home-filter-show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .filter-home-container .main-filter-container {
   position: relative;
   max-width: 800px;
@@ -28,6 +38,12 @@
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
   z-index: 900;
+}
+
+.filter-home-container .drop-down-container {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
 }
 
 .filter-home-container .filter-icon-container {
@@ -197,8 +213,8 @@
   position: fixed;
   top: 0;
   left: 100%;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   z-index: 999;
 }
 
@@ -256,8 +272,8 @@
   background-color: #fff;
   border-bottom: 1px solid #eaeaea;
   cursor: pointer;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .filter-home-container .filter-menu .list .card-header:hover {
@@ -277,7 +293,9 @@
      object-fit: contain;
 }
 
-.filter-home-container .filter-menu .list .card-header #calender, .filter-home-container .filter-menu .list .card-header #ring, .filter-home-container .filter-menu .list .card-header #duration {
+.filter-home-container .filter-menu .list .card-header #calender,
+.filter-home-container .filter-menu .list .card-header #ring,
+.filter-home-container .filter-menu .list .card-header #duration {
   width: 26px;
   height: 26px;
 }
@@ -301,11 +319,11 @@
 }
 
 .filter-home-container .filter-menu .list .card-body .makeStyles-root-1 .MuiSlider-root {
-  color: #96DAF0 !important;
+  color: #96daf0 !important;
 }
 
 .filter-home-container .filter-menu .list .card-body .makeStyles-root-1 .PrivateValueLabel-label-56 {
-  color: #242A3A !important;
+  color: #242a3a !important;
 }
 
 .filter-home-container .filter-menu .list .card-body .searchDaysBtn {
@@ -317,8 +335,8 @@
   color: #242a3a;
   border: 1px solid #242a3a;
   padding: 15px 25px;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .filter-home-container .filter-menu .list .card-body .searchDaysBtn:hover {
@@ -339,8 +357,8 @@
 
 .filter-home-container .filter-menu .list .card-body ul li:hover {
   background-color: #eaeaea;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 @media only screen and (max-width: 768px) {

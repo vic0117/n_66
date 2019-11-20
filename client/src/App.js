@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import jwtDecode from "jwt-decode";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"; // 這個位置不能動!!
-import "font-awesome/css/font-awesome.css"
+import "font-awesome/css/font-awesome.css";
 
 //Components
 import Comment from "./pages/Comment/Comment";
