@@ -18,7 +18,7 @@ const db = mysql.createConnection({
   password: "root",
   database: "n_66"
 });
-db.connect();
+db.connect(); 
 const app = express();
 
 const whitelist = ["http://localhost:3000", undefined, "http://localhost:3001"];

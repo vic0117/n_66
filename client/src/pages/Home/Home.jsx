@@ -10,7 +10,7 @@ import HomeEarth from "../../components/HomeEarth/HomeEarth";
 import Footer from "../../components/Footer/Footer";
 import message from './images/comment-dots-solid.svg'
 import './Home.scss'
-import Join from "../socketClient/Join";
+// import Join from "../socketClient/Join";
 import Chat from "../socketClient/Chat";
 class Home extends Component {
   state = {
@@ -21,16 +21,16 @@ class Home extends Component {
 
   
   render() {
+	  const {currentUser} = this.props;
+	  console.log(currentUser)
     return (
       <>
 			<div className="MessageButton" onClick={()=>this.setState({system:!this.state.system})}>
 				<img src={message}/>	
 			</div>
 			<div className={this.state.system ? ' messageIn' : 'messageInOpen messageIn'}>
-				<Join className='joinContent'/>
-			</div>
-			<div>
-				<Chat />
+				{/* <Join className='joinContent'/> */}
+				<Chat currentUser={this.props.currentUser}/>
 			</div>
         <HomeNavBar currentUser={this.props.currentUser}/>
         <HomeMainCarousel />
