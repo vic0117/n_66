@@ -11,7 +11,7 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from "../TripLeftmenu/SliderDays";
+// import SliderDays from "../TripLeftmenu/SliderDays";
 
 //SVG
 import { ReactComponent as Location } from "./images/location.svg";
@@ -341,31 +341,6 @@ class HomeFilter extends Component {
                       <li>中等</li>
                       <li>困難</li>
                     </ul>
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey="4">
-                  <div id="duration" className="svgFrame">
-                    <img
-                      src="http://localhost:3000/images/svg/duration.svg"
-                      alt="duration"
-                    />
-                  </div>
-                  <p>停留時間</p>
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey="4">
-                  <Card.Body id="days-of-stay">
-                    <SliderDays />
-                    <a
-                      className="searchDaysBtn"
-                      onClick={this.searchByStay}
-                      href="#searchDays"
-                      role="button"
-                    >
-                      確定
-                    </a>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
