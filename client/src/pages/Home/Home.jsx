@@ -30,7 +30,7 @@ class Home extends Component {
 			</div>
 			<div className={this.state.system ? ' messageIn' : 'messageInOpen messageIn'}>
 				{/* <Join className='joinContent'/> */}
-				<Chat currentUser={this.props.currentUser}/>
+				{/* <Chat currentUser={this.props.currentUser}/> */}
 			</div>
         <HomeNavBar currentUser={this.props.currentUser}/>
         <HomeMainCarousel />
