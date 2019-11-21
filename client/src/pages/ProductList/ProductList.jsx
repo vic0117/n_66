@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from '../../components/NavBar/NavBar';
+import HomeNavBar from '../../components/HomeNavBar/HomeNavBar';
 import ProductLeftMenu from '../../components/ProductLeftMenu/ProductLeftMenu';
 
 
@@ -36,7 +36,7 @@ class ProductList extends React.Component {
     render() {
         return (
             <>
-                <NavBar />
+                <HomeNavBar />
                 <ProductLeftMenu data={this.state.ProductsData} />
                 
             </>
