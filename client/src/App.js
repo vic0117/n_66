@@ -63,7 +63,13 @@ class App extends Component {
       <ScrollToTop>
         <Switch>
           <Route path="/products" exact component={ProductList} />
-          <Route path="/products/:id" exact component={ProductDetail} />
+          <Route
+            path="/products/:id"
+            exact
+            render={props => (
+              <ProductDetail {...props} currentUser={this.state.currentUser} />
+            )}
+          />
           <Route
             path="/cart"
             exact
