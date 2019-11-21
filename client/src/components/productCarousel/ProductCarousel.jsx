@@ -61,11 +61,10 @@ class ProductCarousel extends React.Component {
     product.product_id = aaa.product_id;
     product.product_name = aaa.product_name;
     product.product_file_name = aaa.product_file_name;
-    product.product_img = JSON.parse(aaa.product_pictures)[0];
+    product.product_img = aaa.product_pictures;
     product.product_size = aaa.product_size;
     product.product_price = aaa.product_price;
     product.product_amount = 1;
-    product.commented = 0;
     product.code = Date.now();
 
     if (localStorage.getItem("productsToBuy")) {

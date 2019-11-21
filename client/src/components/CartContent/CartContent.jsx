@@ -32,7 +32,7 @@ class CartContent extends React.Component {
   deleteProduct = async (i) => {
     let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
     let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
-    
+    // console.log(i);
     productsArray.forEach(product => {
       if (product.code === i) {
         // console.log(productsArray.indexOf(product));
@@ -250,7 +250,7 @@ class CartContent extends React.Component {
                   <div className="itemImg">
                     <Card.Img
                       variant="top"
-                      src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + item.product_img}
+                      src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_img)[0]}
                     />
                   </div>
                   <Card.Body>

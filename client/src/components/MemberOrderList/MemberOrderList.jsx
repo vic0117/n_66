@@ -23,7 +23,7 @@ class MemberOrderList extends Component {
     this.setState({ addModalShow: false });
   };
 
-  handleCommentsSubmit = async item => {
+  handleCommentsSubmit = item => {
     let info = {
       last_name_zh: this.props.userInfo.last_name_zh,
       gender: this.props.userInfo.gender,
@@ -35,7 +35,7 @@ class MemberOrderList extends Component {
       trip_start_date: this.state.reviewInfo.trip_start_date,
       trip_end_date: this.state.reviewInfo.trip_end_date
     };
-    await fetch(`http://localhost:3001/members_comments/`, {
+    fetch(`http://localhost:3001/members_comments/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ class MemberOrderList extends Component {
 
     const { currentUser } = this.props;
     let addCommented;
-    await fetch(
+    fetch(
       `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
       {
         method: "GET",
@@ -177,13 +177,13 @@ class MemberOrderList extends Component {
                     >
                       <div
                         className="img-container col-md-4"
-                          style={{
-                            background: `url(
-                              "http://localhost:3000/images/${item.trip_img ||
-                                item.product_img}"
-                            ) no-repeat center center`
-                          }}
-                        ></div>
+                        style={{
+                          background: `url(
+                            "http://localhost:3000/images/${item.trip_img ||
+                              item.product_img}"
+                          ) no-repeat center center`
+                        }}
+                      ></div>
 
                       <div className="order-info-container d-flex flex-column justify-content-between ">
                         <span style={{ color: "#96daf0" }}>
