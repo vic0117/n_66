@@ -5,11 +5,10 @@ const moment = require("moment-timezone");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  host: "localhost", 
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 
@@ -38,19 +37,57 @@ router.get("/products/:id", (req, res) => {
 router.post("/checkout", (req, res) => {
   let data = req.body;
 
-  const sql = `INSERT INTO order_list( u_id, order_trip, order_product, order_status, order_total_price) 
-  VALUES ( '${data.userId}', '${data.tripsToBuy}', '${data.productsToBuy}', '${data.orderStatus}', '${data.totalCost}' )`;
+  db.queryAsync(sql)
+    .then(results => {
+      newId = results[0].order_id + 1;
+      // console.log(newId);
 
-  db.query(sql, (error, results, fields) => {
-    if (error) throw error;
-    console.log('以傳送');
-    res.json( '以傳送');
-  });
-  // console.log(req.body);
-  // res.json(req.body);
-  
+      let productsArray = JSON.parse(data.productsToBuy);
+
+      productsArray.forEach(item => {
+        item.id = newId;
+      });
+
+      let tripsArray = JSON.parse(data.tripsToBuy);
+      tripsArray.forEach(trip => {
+        trip.id = newId;
+      });
+
+      data.productsToBuy = JSON.stringify(productsArray);
+      data.tripsToBuy = JSON.stringify(tripsArray);
+
+      return db.queryAsync(sql);
+    })
+
+    .then(results => {
+      newId = results[0].order_id + 1;
+      console.log(newId);
+
+      let productsArray = JSON.parse(data.productsToBuy);
+
+      productsArray.forEach(item => {
+        item.id = newId;
+      });
+
+      let tripsArray = JSON.parse(data.tripsToBuy);
+      tripsArray.forEach(trip => {
+        trip.id = newId;
+      });
+
+      data.productsToBuy = JSON.stringify(productsArray);
+      data.tripsToBuy = JSON.stringify(tripsArray);
+
+      sql = `INSERT INTO order_list( u_id, order_trip, order_product, order_status, order_total_price) 
+       VALUES ( '${data.userId}', '${data.tripsToBuy}', '${data.productsToBuy}', '${data.orderStatus}', '${data.totalCost}' )`;
+      return db.queryAsync(sql);
+    })
+    .then(results => {
+      output.text = "購買成功";
+      output.rows = data;
+      console.log(output);
+      res.json(output);
+    });
 });
-
 
 //搜尋
 // router.post('/products/search',(req,res,next)=>{

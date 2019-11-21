@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 import './CheckOutContent.css'
 
@@ -71,105 +71,86 @@ class CheckOutContent extends React.Component {
                             </div>
                             <div className=" py-3" style={{ borderBottom: '1px solid #E8E8E8' }}>
                                 {
-                                    productsToBuy.map((item, i) => (
-                                        // <div key={i} id={i} className="cartItem" >
-                                        //     <div className="itemImg">
-                                        //         <Card.Img
-                                        //             variant="top"
-                                        //             src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_img)[0]}
-                                        //         />
-                                        //     </div>
-                                        //     <Card.Body>
-                                        //         <div className="d-flex w-100 flex-column align-items-start">
-                                        //             <h6>
-                                        //                 帳篷
-                                        //                 <div className="price">{item.product_price}</div>
-                                        //             </h6>
-                                        //             <div className="title">
-                                        //                 {item.product_name}
-                                        //             </div>
-                                        //             <span>
-                                        //                 尺寸: <span className="size">{item.product_size}</span>
-                                        //             </span>
-                                        //             <div className="quantity">
-                                        //                 <span>數量 : </span>
-                                        //                 <h5 className="counter">{item.product_amount}</h5>
-                                        //             </div>
-                                        //         </div>
-                                        //         <h3>{item.product_amount * item.product_price} 元</h3>
-                                        //     </Card.Body>
-                                        // </div>
+                                    productsToBuy === null ? (
+                                        <div>沒有買裝備</div>
+                                    ) : (
+                                            productsToBuy.map((item, i) => (
+                                                <div
+                                                    key={i}
+                                                    className="d-flex my-3"
+                                                    style={{ borderBottom: "1px solid #E8E8E8" }}
+                                                >
+                                                    <div className="itemImg d-flex" style={{ flex: 2 }}>
+                                                        <Card.Img
+                                                            variant="top"
+                                                            src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + item.product_img}
+                                                        />
+                                                    </div>
 
-                                        <div
-                                            className="d-flex my-3"
-                                            style={{ borderBottom: "1px solid #E8E8E8" }}
-                                        >
-                                            <div className="itemImg d-flex" style={{ flex: 2 }}>
-                                                <Card.Img
-                                                    variant="top"
-                                                    src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_img)[0]}
-                                                />
-                                            </div>
-
-                                            <div className="mb-2" style={{ flex: 3 }}>
-                                                <h6>獨木舟</h6>
-                                                <div className="title mb-1 font-size-14">
-                                                    {item.product_name}
+                                                    <div className="mb-2" style={{ flex: 3 }}>
+                                                        <h6>獨木舟</h6>
+                                                        <div className="title mb-1 font-size-14">
+                                                            {item.product_name}
+                                                        </div>
+                                                        <div className="mb-4">
+                                                            <span className="size font-size-14">{item.product_size}</span>
+                                                        </div>
+                                                        <div className="d-flex ">
+                                                            <span>數量</span>
+                                                            <input value={item.product_amount} className="counter" type="text" disabled />
+                                                        </div>
+                                                    </div>
+                                                    <div className="mb-2 pl-2" style={{ flex: 2 }}>
+                                                        NT$ {item.product_price}
+                                                    </div>
+                                                    <div className="mb-2" style={{ flex: 1 }}>
+                                                        <div className="deleteBtn ml-5">
+                                                            <div className="slash leftLine"></div>
+                                                            <div className="slash rightLine"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div className="mb-4">
-                                                    <span className="size font-size-14">{item.product_size}</span>
-                                                </div>
-                                                <div className="d-flex ">
-                                                    <span>數量</span>
-                                                    <input value={item.product_amount} className="counter" type="text" disabled/>
-                                                </div>
-                                            </div>
-                                            <div className="mb-2 pl-2" style={{ flex: 2 }}>
-                                                NT$ 12,800
-                                        </div>
-                                            <div className="mb-2" style={{ flex: 1 }}>
-                                                <div className="deleteBtn ml-5">
-                                                    <div className="slash leftLine"></div>
-                                                    <div className="slash rightLine"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))
+                                            ))
+                                        )
                                 }
 
                                 {
-                                    tripsToBuy.map((item, i) => (
-                                        <div key={i} id={i} className="cartItem" >
-                                            <div className="itemImg">
-                                                <Card.Img
-                                                    variant="top"
-                                                    src={"http://localhost:3000/images/" + item.trip_menu_img}
-                                                />
-                                            </div>
-                                            <Card.Body>
-                                                <div className="d-flex w-100 flex-column align-items-start">
-                                                    <h6>
-                                                        {item.trip_place}
-                                                        <div className="price">{item.trip_price}</div>
-                                                    </h6>
-                                                    <div className="title">
-                                                        {item.trip_name}
+                                    tripsToBuy === null ? (
+                                        <div>沒有買行程</div>
+                                    ) : (
+                                            tripsToBuy.map((item, i) => (
+                                                <div key={i} id={i} className="cartItem" >
+                                                    <div className="itemImg">
+                                                        <Card.Img
+                                                            variant="top"
+                                                            src={"http://localhost:3000/images/" + item.trip_menu_img}
+                                                        />
                                                     </div>
-                                                    <span className="d-flex">
-                                                        <span className="size ml-0">{item.trip_days} 天</span>
-                                                        <span className="size">{item.trip_start}</span>
-                                                        <span>~</span>
-                                                        <span className="size">{item.trip_end}</span>
-                                                    </span>
-                                                    <div className="quantity">
-                                                        <span>數量 : </span>
-                                                        <h5 className="counter">{item.trip_amount}</h5>
-                                                    </div>
+                                                    <Card.Body>
+                                                        <div className="d-flex w-100 flex-column align-items-start">
+                                                            <h6>
+                                                                {item.trip_place}
+                                                                <div className="price">{item.trip_price}</div>
+                                                            </h6>
+                                                            <div className="title">
+                                                                {item.trip_name}
+                                                            </div>
+                                                            <span className="d-flex">
+                                                                <span className="size ml-0">{item.trip_days} 天</span>
+                                                                <span className="size">{item.trip_start}</span>
+                                                                <span>~</span>
+                                                                <span className="size">{item.trip_end}</span>
+                                                            </span>
+                                                            <div className="quantity">
+                                                                <span>數量 : </span>
+                                                                <h5 className="counter">{item.trip_amount}</h5>
+                                                            </div>
+                                                        </div>
+                                                        <h3>{item.trip_amount * item.trip_price} 元</h3>
+                                                    </Card.Body>
                                                 </div>
-                                                <h3>{item.trip_amount * item.trip_price} 元</h3>
-                                            </Card.Body>
-                                        </div>
-                                    ))
+                                            ))
+                                        )
                                 }
                             </div>
 
@@ -189,40 +170,6 @@ class CheckOutContent extends React.Component {
                                 <div style={{ flex: 1 }}>NT$ {totalCost}</div>
                                 <div style={{ flex: 1 }}></div>
                             </div>
-
-
-                            {/* <div className="cartItem">
-                                <div className="itemImg">
-                                    <Card.Img variant="top" src="http://localhost:3000/images/products/AquaMarinaBettaHM/AquaMarinaBettaHM.jpg" />
-                                </div>
-                                <Card.Body>
-                                    <div className="d-flex w-100 flex-column align-items-start">
-                                        <h6>
-                                            獨木舟
-                                            <div className="price">
-                                                12,800
-                                            </div>
-
-                                            <div className="deleteBtn">
-                                                <div className="slash leftLine"></div>
-                                                <div className="slash rightLine"></div>
-                                            </div>
-                                        </h6>
-                                        <div className="title">Aqua Marina Betta HM-K0 雙人充氣皮艇</div>
-                                        <span>尺寸:  <span className="size">412 X 83cm</span></span>
-
-                                        <div>
-                                            <span>
-                                                數量 :
-                                        </span>
-                                            <a className="qtyBtn minusBtn" role="button">-</a>
-                                            <input value="1" className="counter" type="text" />
-                                            <a className="qtyBtn plus" role="button">+</a>
-                                        </div>
-                                    </div>
-                                </Card.Body>
-                            </div> */}
-
 
                         </Col>
                         <Col className="orderDetail-container" lg={4}>
@@ -321,3 +268,32 @@ class CheckOutContent extends React.Component {
 }
 
 export default CheckOutContent;
+
+
+// <div key={i} id={i} className="cartItem" >
+                                        //     <div className="itemImg">
+                                        //         <Card.Img
+                                        //             variant="top"
+                                        //             src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_img)[0]}
+                                        //         />
+                                        //     </div>
+                                        //     <Card.Body>
+                                        //         <div className="d-flex w-100 flex-column align-items-start">
+                                        //             <h6>
+                                        //                 帳篷
+                                        //                 <div className="price">{item.product_price}</div>
+                                        //             </h6>
+                                        //             <div className="title">
+                                        //                 {item.product_name}
+                                        //             </div>
+                                        //             <span>
+                                        //                 尺寸: <span className="size">{item.product_size}</span>
+                                        //             </span>
+                                        //             <div className="quantity">
+                                        //                 <span>數量 : </span>
+                                        //                 <h5 className="counter">{item.product_amount}</h5>
+                                        //             </div>
+                                        //         </div>
+                                        //         <h3>{item.product_amount * item.product_price} 元</h3>
+                                        //     </Card.Body>
+                                        // </div>

@@ -11,7 +11,7 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from "../TripLeftmenu/SliderDays";
+import SliderDays from "../../components/TripLeftMenu/SliderDays";
 
 //SVG
 import { ReactComponent as Location } from "./images/location.svg";
@@ -226,7 +226,7 @@ class HomeFilter extends Component {
       filterMenu.style.left = "0%";
       body.style.overflowY = "hidden";
     });
-
+    // toggle 分類和搜尋
     const search_btn = document.querySelector(".search-btn");
     search_btn.addEventListener("click", function() {
       let filter_icons = document
@@ -382,7 +382,7 @@ class HomeFilter extends Component {
               </div>
               <div className="search">
                 <p>搜尋</p>
-                <a className="anotherSearch" href="#1" role="button"></a>
+                <a className="anotherSearch" href="#1" role="button"> </a>
               </div>
             </div>
           </Col>

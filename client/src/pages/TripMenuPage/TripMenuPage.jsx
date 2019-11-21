@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Input, Container } from "@material-ui/core";
 import norway from "./images/norway-3840x2160-5k-4k-wallpaper-bridge-sea-lake-water-blue-sky-920.jpg";
-import TripLeftMenu from "../../components/TripLeftmenu/TripLeftMenu";
+import TripLeftMenu from '../../components/TripLeftMenu/TripLeftMenu';
 import TripMenu from "../../components/Tripmenu/TripMenu";
 import TripSort from "../../components/TripSort/TripSort";
 import TripMenuFooter from "../../components/TripMenuFooter/TripMenuFooter";
@@ -11,6 +11,7 @@ import search from "./images/search.svg";
 import TripPagination from "../../components/TripPagination/TripPagination";
 import { Row } from "react-bootstrap";
 import "./TripMenuPage.scss";
+
 
 class TripMenuPage extends Component {
   constructor(props) {
