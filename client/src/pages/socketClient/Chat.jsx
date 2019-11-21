@@ -26,7 +26,7 @@ const Chat = () => {
 		if ( localStorage.getItem("token")) {
 			
 		}else{
-			return null
+			return undefined
 		}
 		
 		const jwt = localStorage.getItem("token");
