@@ -19,7 +19,7 @@ import SliderPrice from "../TripLeftMenu/SliderPrice";
 import filterImg from "./img/filter.svg";
 
 //CSS
-import "./ProductLeftMenu.scss";
+import "./productLeftMenu.scss";
 import banner from "./img/header22.jpg";
 
 class ProductLeftMenu extends Component {

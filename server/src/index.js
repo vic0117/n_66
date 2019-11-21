@@ -12,10 +12,10 @@ const cors = require("cors");
 const { addUser , removeUser ,getUser ,getUsersInRoom } = require('./user.js') 
    
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
   user: "root", 
-  password: "",
+  password: "root",
   database: "n_66"
 });
 db.connect(); 
