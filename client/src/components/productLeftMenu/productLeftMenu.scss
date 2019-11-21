@@ -5,13 +5,62 @@ $secColor: #96daf0;
 .ProductLeftMenuContainer{
 
 	.bannerArea{
-		height: 70vh;
-		margin: 150px 0 100px 0;
+		height: 90vh;
+		// margin: 150px 0 100px 0;
 
 		img{
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+
+		&::before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 90vh;
+			background-color: rgba($color: #242a3a, $alpha: .6);
+			z-index: 10;
+		}
+
+		&::after{
+			content: '戶外用品';
+			// display: flex;
+			// justify-content: center;
+			// align-items: center;
+			color: #fff;
+			font-size: 50px;
+			line-height: 60px;
+			font-weight: 700;
+			position: absolute;
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 15;
+			// border: 1px solid red;
+			opacity: 0;
+			animation: upFadeIn .5s .5s ease-in-out forwards;
+		}
+
+
+		@keyframes upFadeIn {
+			from{
+				top: 80%;
+				opacity: 0;
+			}
+			to{
+				top: 50%;
+				opacity: 1;
+			}
+		}
+	}
+
+	.productsSection{
+		min-height: 150vh;
+		.leftMenuRow{
+			min-height: 150vh;
 		}
 	}
 
@@ -19,13 +68,14 @@ $secColor: #96daf0;
 		position: sticky;
 		top: 120px;
 		width: 100%;
-		height: 867px;
+		height: 750px;
 		background: #F8F8F8;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		padding:50px 15px 15px 15px;
 		margin: 0;
+		
 	}
 	.searchBox{
 		width: 100%;
@@ -62,7 +112,7 @@ $secColor: #96daf0;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		margin-right: auto;
+		margin-left: auto;
 		img{
 			width: 20px;
 			color:#242A3A;
@@ -80,7 +130,7 @@ $secColor: #96daf0;
 		width: 100%;
 
 		.btn{
-			width: 100%;
+			width: 100% !important;
 			background: #fff !important;
 			color:#74767d;
 			border:1px solid #EAEAEA;
@@ -96,8 +146,9 @@ $secColor: #96daf0;
 	}
 	.dropdown-menu{
 		height: 200px !important;
-		width: 100%;
-		overflow: scroll;
+		width: 100% !important;
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 	.dropdown-item{
 		height:50px !important;
