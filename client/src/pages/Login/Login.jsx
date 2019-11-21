@@ -188,7 +188,7 @@ class Login extends React.Component {
           state.msg.loginMsg = "登入成功";
           state.msg.type = "alert alert-success";
           this.setState(state);
-          // window.location = "/account";
+          window.location = "/account";
         }
       })
       .catch(function(err) {
@@ -232,7 +232,7 @@ class Login extends React.Component {
           state.msg.signUpMsg = "註冊成功";
           state.msg.type = "alert alert-success";
           this.setState(state);
-          // window.location = "/account";
+          window.location = "/account";
         } else {
           const state = { ...this.state };
           state.msg.signUpMsg = data.msg;
@@ -512,7 +512,9 @@ class Login extends React.Component {
                     )} */}
                     {
                       <div className={classes}>
-                        {this.state.errors.repeat_password || this.state.msg.signUpMsg || ""}
+                        {this.state.errors.repeat_password ||
+                          this.state.msg.signUpMsg ||
+                          ""}
                       </div>
                     }
                     <button type="submit" className="submit register">

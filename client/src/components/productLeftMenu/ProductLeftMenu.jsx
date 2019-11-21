@@ -10,10 +10,10 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
+import search from "../../components/TripLeftmenu/images/search.svg";
 // import location from '../TripLeftMenu/images/location.svg';
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "../TripLeftMenu/SliderPrice";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from "../TripLeftmenu/SliderPrice";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
@@ -441,7 +441,7 @@ class ProductLeftMenu extends Component {
             <Col sm={12} md={9} className="p-0">
               <Container className="p-0 card-container">
                 <Row>
-                  {data.map((item,i) => (
+                  {data.map((item, i) => (
                     <Col key={i} sm={6} lg={4}>
                       <Link to={`/products/${item.product_id}`}>
                         <Card key={item.product_id} className="product-card">

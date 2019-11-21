@@ -150,7 +150,7 @@ class ProductCarousel extends React.Component {
                   <div>
                     <h2>{item.product_name}</h2>
                     <h5>NT$ {item.product_price}</h5>
-                    <Button className="wishBtn mx-auto">加入願望清單</Button>
+                    <Button className="wishBtn mx-auto" onClick={this.props.addWish}>加入願望清單</Button>
                     <Button
                       onClick={this.addToCart}
                       className="addToCartBtn mx-auto"

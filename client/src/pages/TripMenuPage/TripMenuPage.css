@@ -1,0 +1,135 @@
+.norway {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.TripMenuNavBox {
+  max-height: 95%;
+  width: 100%;
+  position: relative;
+}
+
+.TripMenuNavCover {
+  background-image: -webkit-linear-gradient(bottom, #242a3a, #242a3ac8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.TripMenuContentBox {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 100px;
+}
+
+.TripMenuContentBox a {
+  text-decoration: none !important;
+}
+
+.TripMenuContentInsideBox {
+  width: 65%;
+}
+
+.TripMenuContentInsideBox a {
+  text-decoration: none !important;
+  color: #74767d;
+}
+
+.noResult {
+  margin: auto;
+  color: #242a3a;
+  display: block;
+  text-align: center;
+}
+
+.titleYes {
+  margin: auto;
+  color: #242a3a;
+  display: none;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .leftMenu {
+    display: none !important;
+  }
+  .TripSortBox {
+    display: none !important;
+  }
+  .TripMenuContentInsideBox {
+    margin: auto;
+  }
+}
+
+.TripMenuNavInputBox {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.TripMenuNavInputBox p {
+  font-size: 20px;
+  color: #96daf0;
+  letter-spacing: 20px;
+}
+
+.TripMenuNavInputBox h1 {
+  color: #fff;
+  font-size: 4.375rem;
+  font-weight: 300 !important;
+}
+
+.TripMenuNavInputBox button {
+  background: transparent;
+  border: none;
+}
+
+.TripMenuNavInputBox button:focus {
+  outline: 0;
+}
+
+.TripMenuNavInputBox img {
+  width: 24px;
+  fill: #fff;
+}
+
+.TripMenuNavInputBox .TripSearchInput {
+  margin-top: 50px;
+  margin-left: 70px;
+  width: 500px;
+  color: #96daf0;
+  font-size: 30px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.TripMenuNavInputBox .TripSearchInput:after {
+  border-bottom: 1px solid #eaeaea;
+}
+
+@media (max-width: 786px) {
+  .TripMenuNavInputBox h1 {
+    font-size: 50px;
+  }
+}
+/*# sourceMappingURL=TripMenuPage.css.map */

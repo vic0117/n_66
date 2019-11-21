@@ -5,10 +5,10 @@ const moment = require("moment-timezone");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 bluebird.promisifyAll(db);
@@ -33,6 +33,38 @@ router.get("/products/:id", (req, res) => {
     console.log(results);
     res.json(results);
   });
+});
+
+router.post("/products/add_wishlist", (req, res) => {
+  let data = { success: false, msg: { type: "danger", text: "" } };
+  const sql =
+    "INSERT INTO wish_list ( u_id, product_label, product_name, product_info, product_img, trip_start_date,trip_end_date, product_price, liked) VALUES(?,?,?,?,?,?,?,?,?)";
+  db.query(
+    sql,
+    [
+      req.body.u_id,
+      req.body.product_label,
+      req.body.product_name,
+      req.body.product_info,
+      req.body.product_img,
+      req.body.trip_start_date,
+      req.body.trip_end_date,
+      req.body.product_price,
+      req.body.liked
+    ],
+    (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+      if (results.affectedRows === 1) {
+        data.success = true;
+        data.msg.type = "primary";
+        data.msg.text = "發布成功";
+      } else {
+        data.msg.text = "發布失敗";
+      }
+      res.json(data);
+    }
+  );
 });
 
 router.post("/checkout", (req, res) => {
