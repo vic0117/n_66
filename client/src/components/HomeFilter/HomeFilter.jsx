@@ -11,9 +11,7 @@ import {
   Card
 } from "react-bootstrap";
 
-// import SliderDays from "../TripLeftMenu/SliderDays";
-import SliderDays from '../TripLeftMenu/SliderDays';
-
+import SliderDays from "../../components/TripLeftMenu/SliderDays";
 
 //SVG
 import { ReactComponent as Location } from "./images/location.svg";
@@ -26,30 +24,29 @@ import "./HomeFilter.css";
 class HomeFilter extends Component {
   state = {
     searchbox: {
-		isActive: false,
+      isActive: false,
       originalDom: (
         <>
-          <Dropdown className="filter-icon-container d-flex-2" 
-          
-			 >
+          <Dropdown className="filter-icon-container d-flex-2">
             <Dropdown.Toggle id="dropdown-basic" className="filter-icon">
               <Location className="location" height="24" width="24"></Location>
               <span className="filter-icon-title">目的地</span>
             </Dropdown.Toggle>
-            <Dropdown.Menu className="toggle-menu"
-				onSelect={eventKey=>this.setState({qwe:eventKey})}
-				>
-              <Dropdown.Item eventKey = '冰島' className="toggle-item">
+            <Dropdown.Menu
+              className="toggle-menu"
+              onSelect={eventKey => this.setState({ qwe: eventKey })}
+            >
+              <Dropdown.Item eventKey="冰島" className="toggle-item">
                 冰島
               </Dropdown.Item>
-              
-              <Dropdown.Item eventKey = '芬蘭' className="toggle-item">
+
+              <Dropdown.Item eventKey="芬蘭" className="toggle-item">
                 芬蘭
               </Dropdown.Item>
-              <Dropdown.Item eventKey = '加拿大' className="toggle-item">
+              <Dropdown.Item eventKey="加拿大" className="toggle-item">
                 加拿大
               </Dropdown.Item>
-              <Dropdown.Item eventKey = '俄羅斯' className="toggle-item">
+              <Dropdown.Item eventKey="俄羅斯" className="toggle-item">
                 俄羅斯
               </Dropdown.Item>
             </Dropdown.Menu>
@@ -190,32 +187,8 @@ class HomeFilter extends Component {
     }
   };
   handleSelect1 = eventKey => {
-	this.setState({ buttonTitleName1: eventKey });
-	// this.props.select1(eventKey);
- };
-  handleSearch = e => {
-    const { isActive } = this.state.searchbox;
-    if (isActive === false) {
-      const searchbox = { ...this.state.searchbox };
-      searchbox.isActive = true;
-      searchbox.dom = (
-        <InputGroup className="searchbox-input-container">
-          <FormControl
-            placeholder="請輸入關鍵字"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-            className="searchbox-input"
-          />
-        </InputGroup>
-      );
-      this.setState({ searchbox });
-    }
-    if (isActive === true) {
-      const searchbox = { ...this.state.searchbox };
-      searchbox.isActive = false;
-      searchbox.dom = this.state.searchbox.originalDom;
-      this.setState({ searchbox });
-    }
+    this.setState({ buttonTitleName1: eventKey });
+    // this.props.select1(eventKey);
   };
 
   searchByStay = () => {
@@ -252,22 +225,142 @@ class HomeFilter extends Component {
     anotherSearch.addEventListener("click", () => {
       filterMenu.style.left = "0%";
       body.style.overflowY = "hidden";
-	 });
-	 
+    });
+    // toggle 分類和搜尋
+    const search_btn = document.querySelector(".search-btn");
+    search_btn.addEventListener("click", function() {
+      let filter_icons = document
+        .querySelector(".drop-down-container")
+        .classList.contains("home-filter-show");
 
+      if (filter_icons) {
+        document
+          .querySelector(".drop-down-container")
+          .classList.remove("home-filter-show");
+        document
+          .querySelector(".drop-down-container")
+          .classList.add("home-filter-hide");
+        document
+          .querySelector(".searchbox-input-container")
+          .classList.remove("home-filter-hide");
+        document
+          .querySelector(".searchbox-input-container")
+          .classList.add("home-filter-show");
+      } else {
+        document
+          .querySelector(".drop-down-container")
+          .classList.remove("home-filter-hide");
+        document
+          .querySelector(".drop-down-container")
+          .classList.add("home-filter-show");
+        document
+          .querySelector(".searchbox-input-container")
+          .classList.remove("home-filter-show");
+        document
+          .querySelector(".searchbox-input-container")
+          .classList.add("home-filter-hide");
+      }
+    });
   }
 
   render() {
-    const { searchbox } = this.state;
     return (
       <div className="filter-home-container">
         <Form className="main-filter-container">
           <Row className="row-no-margin searchbox-row">
-            {searchbox.dom}
-            <div
-              className="d-flex d-flex-1 search-btn"
-              onClick={this.handleSearch}
-            >
+            {/*  */}
+            <div className="d-flex drop-down-container home-filter-show">
+              <Dropdown className="filter-icon-container d-flex-2 ">
+                <Dropdown.Toggle id="dropdown-basic" className="filter-icon">
+                  <Location
+                    className="location"
+                    height="24"
+                    width="24"
+                  ></Location>
+                  <span className="filter-icon-title">目的地</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu
+                  className="toggle-menu"
+                  onSelect={eventKey => this.setState({ qwe: eventKey })}
+                >
+                  <Dropdown.Item eventKey="冰島" className="toggle-item">
+                    冰島
+                  </Dropdown.Item>
+
+                  <Dropdown.Item eventKey="芬蘭" className="toggle-item">
+                    芬蘭
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="加拿大" className="toggle-item">
+                    加拿大
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="俄羅斯" className="toggle-item">
+                    俄羅斯
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown className="filter-icon-container d-flex-2">
+                <Dropdown.Toggle id="dropdown-basic" className="filter-icon">
+                  <Trac className="trac" height="24" width="24"></Trac>
+                  <span className="filter-icon-title">旅行類型</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="toggle-menu">
+                  <Dropdown.Item href="#/action-1" className="toggle-item">
+                    冰島
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2" className="toggle-item">
+                    挪威
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" className="toggle-item">
+                    芬蘭
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" className="toggle-item">
+                    加拿大
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" className="toggle-item">
+                    俄羅斯
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown className="filter-icon-container d-flex-2">
+                <Dropdown.Toggle id="dropdown-basic" className="filter-icon">
+                  <Binoculars
+                    className="binoculars"
+                    height="24"
+                    width="24"
+                  ></Binoculars>
+                  <span className="filter-icon-title">活動與主題</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="toggle-menu">
+                  <Dropdown.Item href="#/action-1" className="toggle-item">
+                    不拘
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2" className="toggle-item">
+                    北極光
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" className="toggle-item">
+                    獨木舟
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" className="toggle-item">
+                    動物觀察
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" className="toggle-item">
+                    多種活動
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <InputGroup className="searchbox-input-container home-filter-hide">
+              <FormControl
+                placeholder="請輸入關鍵字"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                className="searchbox-input"
+              />
+            </InputGroup>
+            {/*  */}
+            <div className="d-flex d-flex-1 search-btn">
               <Search heigth="20" width="20" className="margin-auto search" />
             </div>
             <div className="d-flex-1 submit-btn">
@@ -289,8 +382,7 @@ class HomeFilter extends Component {
               </div>
               <div className="search">
                 <p>搜尋</p>
-                <a className="anotherSearch" href="#5" role="button">
-                </a>
+                <a className="anotherSearch" href="#1" role="button"> </a>
               </div>
             </div>
           </Col>
@@ -426,7 +518,7 @@ class HomeFilter extends Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="4">
                   <Card.Body id="days-of-stay">
-                    <SliderDays />  
+                    <SliderDays />
                     <a
                       className="searchDaysBtn"
                       onClick={this.searchByStay}

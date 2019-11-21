@@ -19,11 +19,11 @@ class MemberOrderList extends Component {
     });
   };
 
-  ModalClose = e => {
+  closeModal = e => {
     this.setState({ addModalShow: false });
   };
 
-  handleCommentsSubmit = event => {
+  handleCommentsSubmit = async item => {
     let info = {
       last_name_zh: this.props.userInfo.last_name_zh,
       gender: this.props.userInfo.gender,
@@ -35,7 +35,7 @@ class MemberOrderList extends Component {
       trip_start_date: this.state.reviewInfo.trip_start_date,
       trip_end_date: this.state.reviewInfo.trip_end_date
     };
-    fetch(`http://localhost:3001/members_comments/`, {
+    await fetch(`http://localhost:3001/members_comments/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,6 +66,65 @@ class MemberOrderList extends Component {
       .catch(function(err) {
         console.log(err);
       });
+    //
+
+    const { currentUser } = this.props;
+    let addCommented;
+    await fetch(
+      `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token")
+        }
+      }
+    )
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(data => {
+        addCommented = data.rows[0].order_trip;
+        addCommented = JSON.parse(addCommented);
+        addCommented.forEach(product => {
+          if (product.code === item.code) {
+            product.commented = 1;
+          }
+        });
+        addCommented = JSON.stringify(addCommented);
+        const info = { results: addCommented };
+        console.log("results", info);
+        console.log("item.id", item.id);
+        fetch(
+          `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify(info)
+          }
+        )
+          .then(response => {
+            if (response.status >= 400) {
+              throw new Error("Bad response from server");
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
 
   handleRating = value => {
@@ -82,7 +141,7 @@ class MemberOrderList extends Component {
 
   render() {
     const { userOrder } = this.props;
-
+    console.log("props", this.props);
     console.log(this.props.currentUser.user.u_id);
     return (
       <div className="order-list-container">
@@ -118,13 +177,13 @@ class MemberOrderList extends Component {
                     >
                       <div
                         className="img-container col-md-4"
-                        style={{
-                          background: `url(
-                            "http://localhost:3000/images/${item.trip_img ||
-                              item.product_img}"
-                          ) no-repeat center center`
-                        }}
-                      ></div>
+                          style={{
+                            background: `url(
+                              "http://localhost:3000/images/${item.trip_img ||
+                                item.product_img}"
+                            ) no-repeat center center`
+                          }}
+                        ></div>
 
                       <div className="order-info-container d-flex flex-column justify-content-between ">
                         <span style={{ color: "#96daf0" }}>
@@ -150,7 +209,7 @@ class MemberOrderList extends Component {
                         <div className="price-amount-container">
                           <div className="d-flex mb-2">
                             <span>
-                              NT$: {+item.trip_price || item.product_price}
+                              NT$: {item.trip_price || item.product_price}
                             </span>
                             <span className="ml-3">
                               數量: {item.trip_amount || item.product_amount}
@@ -160,7 +219,7 @@ class MemberOrderList extends Component {
                       </div>
 
                       <div className="ml-auto mt-auto to-comment-container ">
-                        {item.trip_name && (
+                        {item.trip_name && !item.commented && (
                           <Button
                             className="to-comment"
                             onClick={() => this.getModal(item.code)}
@@ -175,11 +234,13 @@ class MemberOrderList extends Component {
                           reviewinfo={item}
                           userinfo={this.props.userInfo}
                           currentuser={this.props.currentUser}
-                          onHide={this.ModalClose}
+                          onHide={this.closeModal}
                           handlerating={this.handleRating}
                           handlesubmitcomment={this.handleSubmitComment}
                           handlecommentcontent={this.handleCommentContent}
-                          handlecommentssubmit={this.handleCommentsSubmit}
+                          handlecommentssubmit={() =>
+                            this.handleCommentsSubmit(item)
+                          }
                         />
                       </div>
                     </Col>

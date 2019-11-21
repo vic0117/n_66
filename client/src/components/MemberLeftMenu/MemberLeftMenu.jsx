@@ -51,10 +51,8 @@ class MemberLeftMenu extends Component {
   };
 
   render() {
-    const { userInfo } = this.props;
-    
+    const { userInfo, userCoupons } = this.props;
     if (!userInfo.u_id) return <></>;
-
     return (
       <div className="member-left-menu-sticky">
         <Card className="member-left-menu-container mb-4 ">
@@ -88,7 +86,7 @@ class MemberLeftMenu extends Component {
             </div>
             <div className="text-align-center card-body-2">
               <Card.Title>
-                <Link to="/account/coupons">0</Link>
+                <Link to="/account/coupons">{userCoupons.length}</Link>
               </Card.Title>
               <Card.Text className="text-align-center">
                 <span>可用優惠碼</span>

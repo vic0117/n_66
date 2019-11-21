@@ -1,11 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
-import "./ProductCarousel.css";
+import "./ProductCarousel.scss";
 // import { object } from "prop-types";
 
 class ProductCarousel extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -13,28 +12,29 @@ class ProductCarousel extends React.Component {
       nav2: null,
       productPics: props.pics,
       data: props.data[0],
-      productsToBuy: [],
-      
+      productsToBuy: []
     };
   }
 
   componentDidMount() {
-
     this.setState({
       nav1: this.slider1,
-      nav2: this.slider2,
+      nav2: this.slider2
     });
   }
 
-
-
-
   sliders() {
     return this.props.pics.map(item => (
-
       <div key={item} className="pic">
-        <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item}
-          alt={this.props.data.product_file_name} />
+        <img
+          src={
+            "http://localhost:3000/images/products/" +
+            this.props.data[0].product_file_name +
+            "/" +
+            item
+          }
+          alt={this.props.data.product_file_name}
+        />
       </div>
     ));
   }
@@ -42,52 +42,55 @@ class ProductCarousel extends React.Component {
   sliders2() {
     return this.props.pics.map(item => (
       <div key={item} className="pic2">
-        <img src={"http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item}
-          alt={this.props.data.product_file_name} />
+        <img
+          src={
+            "http://localhost:3000/images/products/" +
+            this.props.data[0].product_file_name +
+            "/" +
+            item
+          }
+          alt={this.props.data.product_file_name}
+        />
       </div>
     ));
   }
 
   addToCart = () => {
-
     let aaa = this.props.data[0];
     let product = {};
     product.product_id = aaa.product_id;
     product.product_name = aaa.product_name;
     product.product_file_name = aaa.product_file_name;
-    product.product_img = aaa.product_pictures;
+    product.product_img = JSON.parse(aaa.product_pictures)[0];
     product.product_size = aaa.product_size;
     product.product_price = aaa.product_price;
     product.product_amount = 1;
+    product.commented = 0;
     product.code = Date.now();
 
-
-
-    if (localStorage.getItem('productsToBuy')) {
-      let bbb = JSON.parse(localStorage.getItem('productsToBuy'));
+    if (localStorage.getItem("productsToBuy")) {
+      let bbb = JSON.parse(localStorage.getItem("productsToBuy"));
       bbb.push(product);
-      // product.pos = 
+      // product.pos =
 
-      console.log(JSON.parse(localStorage.getItem('productsToBuy')).length)
+      console.log(JSON.parse(localStorage.getItem("productsToBuy")).length);
       localStorage.setItem("productsToBuy", JSON.stringify(bbb));
-    }
-    else {
-      let ddd = []
-      ddd.push(product)
-      // product.pos = 
+    } else {
+      let ddd = [];
+      ddd.push(product);
+      // product.pos =
       localStorage.setItem("productsToBuy", JSON.stringify(ddd));
       // console.log()
     }
     // localStorage.setItem("productsToBuy" , bbb );
-
-  }
+  };
 
   render() {
     // console.log( this.state);
 
     const data = this.props.data;
     // console.log(data);
-    console.log(  Date.now() );
+    console.log(Date.now());
 
     const mainSettings = {
       // dots: false,
@@ -111,7 +114,6 @@ class ProductCarousel extends React.Component {
 
     return (
       <>
-
         <Container className="ProductCarousel">
           <Row className="mt-5 carouselsRow">
             <Col md={8} className="d-flex justify-content-center">
@@ -126,11 +128,9 @@ class ProductCarousel extends React.Component {
                 >
                   {this.sliders()}
                 </Slider>
-
               </div>
 
               <div className="">
-
                 <Slider
                   {...mainSettings}
                   className="mainCarousel"
@@ -141,52 +141,47 @@ class ProductCarousel extends React.Component {
                 >
                   {this.sliders2()}
                 </Slider>
-
               </div>
             </Col>
 
             <Col lg={4}>
-              {
-                data.map(item => (
-                  <div key={item.product_id} className="detailCard">
-                    <div>
-                      <h2>{item.product_name}</h2>
-                      <h5>NT$ {item.product_price}</h5>
-                      <Button className="wishBtn mx-auto" >
-                        加入願望清單
-                      </Button>
-                      <Button onClick={this.addToCart} className="addToCartBtn mx-auto" >
-                        放入購物車
-                      </Button>
-                      <p>免費快遞送貨 / 免費退貨</p>
-                    </div>
-
-                    <div>
-                      <h4>規格說明</h4>
-                      <Tabs
-                        className="text-left"
-                        defaultActiveKey="home"
-                        id="uncontrolled-tab-example"
-                      >
-                        <Tab eventKey="home" title="材質">
-                          <p className="text-left">
-                            {item.product_material}
-                          </p>
-                        </Tab>
-                        <Tab eventKey="profile" title="內容">
-                          <p className="text-left">
-                            {JSON.parse(item.product_intro)[0]}
-                          </p>
-                        </Tab>
-                        <Tab eventKey="contact" title="重量">
-                          <p className="text-left">{item.product_weight}</p>
-                        </Tab>
-                      </Tabs>
-                    </div>
+              {data.map(item => (
+                <div key={item.product_id} className="detailCard">
+                  <div>
+                    <h2>{item.product_name}</h2>
+                    <h5>NT$ {item.product_price}</h5>
+                    <Button className="wishBtn mx-auto">加入願望清單</Button>
+                    <Button
+                      onClick={this.addToCart}
+                      className="addToCartBtn mx-auto"
+                    >
+                      放入購物車
+                    </Button>
+                    <p>免費快遞送貨 / 免費退貨</p>
                   </div>
-                ))
-              }
 
+                  <div>
+                    <h4>規格說明</h4>
+                    <Tabs
+                      className="text-left"
+                      defaultActiveKey="home"
+                      id="uncontrolled-tab-example"
+                    >
+                      <Tab eventKey="home" title="材質">
+                        <p className="text-left">{item.product_material}</p>
+                      </Tab>
+                      <Tab eventKey="profile" title="內容">
+                        <p className="text-left">
+                          {JSON.parse(item.product_intro)[0]}
+                        </p>
+                      </Tab>
+                      <Tab eventKey="contact" title="重量">
+                        <p className="text-left">{item.product_weight}</p>
+                      </Tab>
+                    </Tabs>
+                  </div>
+                </div>
+              ))}
             </Col>
           </Row>
           <h1 className=" mx-auto text-center">還可搭配</h1>
@@ -248,7 +243,6 @@ class ProductCarousel extends React.Component {
             </Col>
           </Row>
         </Container>
-
       </>
     );
   }

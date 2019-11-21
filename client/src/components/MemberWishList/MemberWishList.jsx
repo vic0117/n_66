@@ -30,7 +30,7 @@ class WishList extends Component {
   render() {
     const { userWishes } = this.props;
     if (userWishes === null) return null;
-
+    console.log(userWishes);
     return (
       <div className="wish-list-container">
         <Row>
@@ -40,9 +40,15 @@ class WishList extends Component {
         </Row>
         <Row>
           {userWishes.map(wish => (
-            <Col className="card-container d-flex col-lg-4 col-md-6 col-12">
+            <Col
+              className="card-container d-flex col-lg-4 col-md-6 col-12"
+              key={wish.w_id}
+            >
               <Card className="wish-list-item">
-                <Card.Img variant="top" src={sotckholm} />
+                <Card.Img
+                  variant="top"
+                  src={`http://localhost:3000/images/${wish.product_img}`}
+                />
                 <Card.Body className="py-3">
                   <span style={{ color: "#96daf0" }}>{wish.product_label}</span>
                   <Card.Title className="mt-1 mb-2">
@@ -50,7 +56,7 @@ class WishList extends Component {
                   </Card.Title>
                   <div className="d-flex align-items-center mb-2">
                     <Calendar />
-                    <span className="ml-2">{wish.product_info}</span>
+                    <span className="ml-2">{wish.product_info}天</span>
                   </div>
                   <div className="mb-2">
                     <span className="vertical-align-middle product-duration">

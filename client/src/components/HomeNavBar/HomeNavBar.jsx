@@ -13,8 +13,9 @@ import "./HomeNavBar.css";
 import Logo from "./images/logo.svg";
 import email from "./images/email.svg";
 import user from "./images/user.svg";
-import phone from "./images/phone.svg";
+
 import signIn from "./images/sign-in-alt-solid.svg";
+import cart from "./images/cart.svg";
 
 class HomeNavBar extends React.Component {
   constructor() {
@@ -81,10 +82,14 @@ class HomeNavBar extends React.Component {
           </Link>
           <div className="n66Collapse " id="responsive-navbar-nav ">
             <div className="ml-auto d-flex  justify-content-end align-items-center navTop">
-              <a href="#4" className=" d-flex align-items-center nav_top_item">
+              <Link to="/" className=" d-flex align-items-center nav_top_item">
                 <img className="email" src={email} alt="email" />
-                通訊
-              </a>
+                我的訂單
+              </Link>
+              <Link to="cart" className=" d-flex align-items-center nav_top_item">
+                <img className="phone" src={cart} alt="phone" />
+                購物車
+              </Link>
               <Link
                 to="/account"
                 className=" d-flex align-items-center nav_top_item"
@@ -92,10 +97,7 @@ class HomeNavBar extends React.Component {
                 <img className="user" src={user} alt="user" />
                 會員專區
               </Link>
-              <a href="#6" className=" d-flex align-items-center nav_top_item">
-                <img className="phone" src={phone} alt="phone" />
-                聯繫我們
-              </a>
+              
               {!currentUser && (
                 <>
                   <Link
@@ -147,6 +149,16 @@ class HomeNavBar extends React.Component {
 
           <a
             className="n66-login-btn ml-auto d-flex justify-content-center align-items-center"
+            href="/cart"
+            role="button"
+          >
+            <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
+              <img src={cart} alt="cart" />
+            </div>
+          </a>
+
+          <a
+            className="n66-login-btn  d-flex justify-content-center align-items-center"
             href="#56"
             role="button"
           >

@@ -1,35 +1,19 @@
-.sectionCheckOut {
-  padding: 150px 0 0 0;
-}
-
-.sectionCheckOut .font-size-14 {
+.font-size-14 {
   font-size: 14px;
 }
 
-.sectionCheckOut .categories-container {
+.categories-container {
   width: 100%;
   height: 6.5%;
   border-bottom: 1px solid #e8e8e8;
 }
 
-.sectionCheckOut .cartItem {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.sectionCheckOut .cartItem .itemImg {
-  width: 145px !important;
-}
-
-.sectionCheckOut .cartItem .itemImg .card-img-top {
-  width: 100%;
+.categories-container .itemImg {
+  width: 145px;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
-.sectionCheckOut .itemImg img {
+.itemImg img {
   width: 80%;
   height: 80%;
   -o-object-fit: contain;
@@ -37,7 +21,7 @@
   margin: auto;
 }
 
-.sectionCheckOut .qtyBtn {
+.qtyBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -56,16 +40,16 @@
   color: #ababab;
 }
 
-.sectionCheckOut .minusBtn {
+.minusBtn {
   margin-left: 20px;
   border-right: none;
 }
 
-.sectionCheckOut .plus {
+.plus {
   border-left: none;
 }
 
-.sectionCheckOut .counter {
+.counter {
   text-align: center;
   height: 22px;
   width: 50px;
@@ -76,7 +60,7 @@
   padding: 0;
 }
 
-.sectionCheckOut .deleteBtn {
+.deleteBtn {
   position: relative;
   width: 16px;
   height: 16px;
@@ -85,7 +69,7 @@
   cursor: pointer;
 }
 
-.sectionCheckOut .deleteBtn .slash {
+.deleteBtn .slash {
   position: absolute;
   width: 23px;
   height: 1px;
@@ -96,62 +80,62 @@
   pointer-events: none;
 }
 
-.sectionCheckOut .deleteBtn .leftLine {
+.deleteBtn .leftLine {
   top: -1px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.sectionCheckOut .deleteBtn .rightLine {
+.deleteBtn .rightLine {
   bottom: -1px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
-.sectionCheckOut .orderDetail {
+.orderDetail {
   color: #242a3a;
 }
 
-.sectionCheckOut .orderDetail label {
+.orderDetail label {
   margin: 0;
   width: 100%;
   padding-left: 5px;
 }
 
-.sectionCheckOut .orderDetail input {
+.orderDetail input {
   margin-top: 3px;
 }
 
-.sectionCheckOut .payment-container {
+.payment-container {
   padding: 0.5rem 1rem 2rem 1rem;
   background-color: #eaeaea;
 }
 
-.sectionCheckOut .payment-container input {
+.payment-container input {
   width: 100%;
 }
 
-.sectionCheckOut .payment-container label {
+.payment-container label {
   width: 100%;
   text-align: left;
   margin: 8px 0;
 }
 
-.sectionCheckOut .payment-container .invalid-date {
+.payment-container .invalid-date {
   width: 45%;
   margin-right: 10px;
 }
 
-.sectionCheckOut .payment-container .security-code {
+.payment-container .security-code {
   width: 45%;
   margin-left: auto;
 }
 
-.sectionCheckOut .checkout-btn {
+.checkout-btn {
   width: 100%;
 }
 
-.sectionCheckOut .checkout-btn button {
+.checkout-btn button {
   margin-top: 1rem !important;
   width: 180px;
   height: 35px;
@@ -161,10 +145,10 @@
 }
 
 @media (max-width: 992px) {
-  .sectionCheckOut .categories-outer-container {
+  .categories-outer-container {
     width: 100%;
   }
-  .sectionCheckOut .orderDetail {
+  .orderDetail {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -172,12 +156,12 @@
     border-bottom: 1px solid #e8e8e8;
     padding: 1rem 0;
   }
-  .sectionCheckOut .orderDetail .time-method {
+  .orderDetail .time-method {
     margin-left: 25px !important;
     margin-top: 0.5rem !important;
   }
-  .sectionCheckOut .payment-container {
+  .payment-container {
     margin: 0.5rem 0rem !important;
   }
 }
-/*# sourceMappingURL=CheckOutContent.css.map */
+/*# sourceMappingURL=CheckOutContentNew.css.map */

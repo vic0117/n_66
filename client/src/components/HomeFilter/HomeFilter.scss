@@ -1,10 +1,8 @@
-
 $primaryColor: #242a3a;
-$secColor:#96daf0;
+$secColor: #96daf0;
 
-.filter-home-container{
-
-// common
+.filter-home-container {
+  // common
   .row-no-margin {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -19,6 +17,14 @@ $secColor:#96daf0;
     flex: 2;
   }
 
+  .home-filter-hide {
+    display: none !important;
+  }
+
+  .home-filter-show {
+    display: flex;
+  }
+
   .main-filter-container {
     position: relative;
     max-width: 800px;
@@ -31,9 +37,9 @@ $secColor:#96daf0;
     // bottom: 42px;
   }
 
-  // .searchbox-row {
-  //   width: 800px;
-  // }
+  .drop-down-container {
+    flex: 6;
+  }
 
   .filter-icon-container {
     border-right: 1px solid #d3d4d7;
@@ -134,14 +140,14 @@ $secColor:#96daf0;
         margin: auto;
       }
 
-      .anotherSearch{
+      .anotherSearch {
         display: block;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        
+
         z-index: 50;
       }
     }
@@ -181,8 +187,7 @@ $secColor:#96daf0;
     transition: 0.5s;
   }
 
-
-  .filter-menu{
+  .filter-menu {
     // border: 1px solid red;
     width: 100%;
     height: 100vh;
@@ -191,112 +196,110 @@ $secColor:#96daf0;
     position: fixed;
     top: 0;
     left: 100%;
-    transition: .5s;
+    transition: 0.5s;
     z-index: 999;
 
-    .fakeNav{
+    .fakeNav {
       background-color: $primaryColor;
     }
 
-    .filterToggler{
+    .filterToggler {
       height: 80px;
       width: 80px;
       background-color: $secColor;
       cursor: pointer;
 
-      .toggle-inner{
+      .toggle-inner {
         position: relative;
         width: 26px;
         height: 26px;
         // border: 1px solid rgba(0, 0, 0, 0.397);
 
-        .white-line{
+        .white-line {
           width: 32px;
           height: 4px;
           position: absolute;
           left: 0;
-          
+
           transform-origin: left;
           background-color: #fff;
         }
 
-        .up-line{
+        .up-line {
           transform: translate(2px, 0px) rotate(45deg);
           top: 0;
-          
         }
 
-        .down-line{
+        .down-line {
           bottom: 0;
           transform: translate(2px, 0px) rotate(-45deg);
         }
       }
     }
 
-    .list{
-      
-      .card{
+    .list {
+      .card {
         border-radius: 0%;
       }
-      
-      .card-header{
+
+      .card-header {
         display: flex;
         align-items: center;
         height: 80px;
         background-color: #fff;
         border-bottom: 1px solid #eaeaea;
         cursor: pointer;
-        transition: .3s;
+        transition: 0.3s;
 
-        &:hover{
-          background-color:  #eaeaea;;
+        &:hover {
+          background-color: #eaeaea;
         }
 
-        .svgFrame{
+        .svgFrame {
           height: 30px;
           width: 30px;
           margin: 0 15px 0 0;
 
-          img{
+          img {
             width: 100%;
             height: 100%;
             object-fit: contain;
           }
-
-
         }
 
-        #calender, #ring, #duration{
+        #calender,
+        #ring,
+        #duration {
           width: 26px;
           height: 26px;
         }
 
-        p{
+        p {
           font-size: 1.5rem;
           margin: 0;
           line-height: 80px;
         }
       }
 
-      #days-of-stay{
+      #days-of-stay {
         border-bottom: 1px solid #ccc;
       }
 
-      .card-body{
+      .card-body {
         padding: 0;
 
-        .makeStyles-root-1{
+        .makeStyles-root-1 {
           margin: 100px auto 0px;
 
-          .MuiSlider-root{
-            color:#96DAF0 !important;
+          .MuiSlider-root {
+            color: #96daf0 !important;
           }
-          .PrivateValueLabel-label-56{
-            color:#242A3A !important;
+          .PrivateValueLabel-label-56 {
+            color: #242a3a !important;
           }
         }
 
-        .searchDaysBtn{
+        .searchDaysBtn {
           display: block;
           width: 150px;
           text-align: center;
@@ -305,41 +308,37 @@ $secColor:#96daf0;
           color: $primaryColor;
           border: 1px solid $primaryColor;
           padding: 15px 25px;
-          transition: .3s;
+          transition: 0.3s;
 
-          &:hover{
+          &:hover {
             color: #fff;
             background-color: $primaryColor;
           }
         }
 
-        ul{
+        ul {
           padding: 0;
           list-style: none;
 
-          li{
+          li {
             padding: 20px 20px 20px 40px;
             font-size: 1.5rem;
             cursor: pointer;
 
-            &:hover{
+            &:hover {
               background-color: #eaeaea;
-              transition: .3s;
+              transition: 0.3s;
             }
           }
         }
       }
     }
-
-
   }
-
 }
 
 //RWD
 @media only screen and (max-width: 768px) {
-  .filter-home-container{
-    
+  .filter-home-container {
     .main-filter-container {
       display: none;
     }
@@ -347,5 +346,4 @@ $secColor:#96daf0;
       display: block;
     }
   }
- 
 }

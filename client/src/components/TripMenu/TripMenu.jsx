@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./TripMenu.scss";
 import calender from "./images/calender.svg";
 import customize from "./images/customize.svg";
 import multiActivities from "./images/multiActivities.svg";
@@ -8,6 +7,7 @@ import ring3 from "./images/ring3.svg";
 // import TripMenuImgCover from "./images/carte-voyage-suede-1197.jpg";
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router-dom'
+import './TripMenu.scss'
 
 class TripMenu extends Component {
   constructor(props) {

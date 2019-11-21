@@ -41,6 +41,7 @@ class DashBoard extends Component {
     userOrder: null,
     userComments: null,
     userWishes: null,
+    userCoupons: [],
     feedback: {
       success: "",
       msg: { type: "", text: "" }
@@ -54,7 +55,7 @@ class DashBoard extends Component {
     if (localStorage.getItem("token")) {
       await this.setState({ currentUser: this.props.currentUser.user });
     } else {
-      // 如果沒登入 (localStorage中找不到東西)
+      // 如果沒登入 (localStorage中沒東西)
       this.props.history.push("/login"); // 暫時先跳轉首頁
     }
 
@@ -71,8 +72,10 @@ class DashBoard extends Component {
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
 
+ 
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
     const productJson = data.rows.map(item => JSON.parse(item.order_product));
+      // console.log(productJson[0])
 
     for (let i = 0; i < data.rows.length; i++) {
       data.rows[i].order_trip = tripJson[i];
@@ -92,8 +95,13 @@ class DashBoard extends Component {
     const { data: userWishes } = await axios.get(
       "http://localhost:3001/members_wish_list/" + currentUser.u_id
     );
-
     await this.setState({ userWishes: userWishes.rows });
+
+    // 折扣碼
+    const { data: userCoupons } = await axios.get(
+      "http://localhost:3001/members_coupon_list/" + currentUser.u_id
+    );
+    await this.setState({ userCoupons: userCoupons.rows });
   }
 
   handleInfoChange = async e => {
@@ -206,11 +214,17 @@ class DashBoard extends Component {
               <MemberLeftMenu
                 userInfo={this.state.userInfo}
                 currentUser={this.props.currentUser}
+                userCoupons={this.state.userCoupons}
               />
             </Col>
             <Col className="col-xl-9 col-md-8 member-right-section">
               <Switch>
-                <Route path="/account/coupons" component={MemberCoupon} />
+                <Route
+                  path="/account/coupons"
+                  render={() => (
+                    <MemberCoupon userCoupons={this.state.userCoupons} />
+                  )}
+                />
                 <Route
                   path="/account/comments"
                   render={() => (

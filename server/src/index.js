@@ -12,10 +12,10 @@ const cors = require("cors");
 const { addUser , removeUser ,getUser ,getUsersInRoom } = require('./user.js') 
    
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
-  user: "root",
-  password: "root",
+  user: "root", 
+  password: "",
   database: "n_66"
 });
 db.connect(); 
@@ -96,6 +96,9 @@ app.use(members_wish_list);
 
 const member_wish_list_del = require("./members/member_wish_list_del");
 app.use(member_wish_list_del);
+
+const members_coupon_list = require("./members/member_coupon_list");
+app.use(members_coupon_list);
 
 // comments
 const comments = require("./comments/comment");

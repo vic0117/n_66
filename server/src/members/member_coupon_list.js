@@ -9,9 +9,8 @@ const db = mysql.createConnection({
   database: "n_66"
 });
 
-router.get("/members_comments_list/:id?", (req, res) => {
-  // console.log("req.params", req.params);
-  const sql = "SELECT * FROM `comments_list` WHERE u_id = ?";
+router.get("/members_coupon_list/:id?", (req, res) => {
+  const sql = "SELECT * FROM `coupon_list` WHERE u_id = ?";
   db.query(sql, [req.params.id], (error, results, fields) => {
     if (error) throw error;
     let output = {};
