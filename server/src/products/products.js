@@ -5,10 +5,10 @@ const moment = require("moment-timezone");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 bluebird.promisifyAll(db);

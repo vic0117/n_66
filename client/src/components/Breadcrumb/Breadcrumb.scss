@@ -1,0 +1,14 @@
+.BreadcrumbCss{
+	display: flex;
+	align-items: center;
+	margin:20px;
+	h6{
+		color:#96daf0;
+	}
+	.BreadActive{
+		color:#243a4a;
+	}
+	.Breadsticks{
+		margin: 0 20px 10px 20px;
+	}
+}

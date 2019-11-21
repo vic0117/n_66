@@ -1,3 +1,91 @@
+@charset "UTF-8";
+.cartBanner {
+  height: 100vh;
+}
+
+.cartBanner .cartBannerRow {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.cartBanner .cartBannerRow img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cartBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #242a3a;
+  z-index: 10;
+  -webkit-animation: begin 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
+          animation: begin 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
+}
+
+.cartBanner h1 {
+  content: '購物車是空的喔~';
+  color: #fff;
+  font-size: 50px;
+  line-height: 60px;
+  font-weight: 700;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 15;
+  opacity: 0;
+  -webkit-animation: upFadeIn 0.8s 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
+          animation: upFadeIn 0.8s 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
+}
+
+@-webkit-keyframes upFadeIn {
+  from {
+    top: 80%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes upFadeIn {
+  from {
+    top: 80%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes begin {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .6;
+  }
+}
+
+@keyframes begin {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .6;
+  }
+}
+
 .cartSection {
   padding-top: 104px;
 }

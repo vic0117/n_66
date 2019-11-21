@@ -11,7 +11,7 @@ import {
   Card
 } from "react-bootstrap";
 
-import SliderDays from "../../components/TripLeftmenu/SliderDays";
+import SliderDays from "../../components/TripLeftMenu/SliderDays";
 
 //SVG
 import { ReactComponent as Location } from "./images/location.svg";
@@ -219,7 +219,7 @@ class HomeFilter extends Component {
               </div>
               <div className="search">
                 <p>搜尋</p>
-                <a className="anotherSearch" href="#1" role="button"></a>
+                <a className="anotherSearch" href="#1" role="button"> </a>
               </div>
             </div>
           </Col>
