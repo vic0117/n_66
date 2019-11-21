@@ -152,7 +152,7 @@ class MemberOrderList extends Component {
         </Row>
         <Row>
           {userOrder.map(order => (
-            <Col className="order-card-container" key={order.order_id}>
+            <Col className="order-card-container col-12 " key={order.order_id}>
               <Card
                 style={{
                   width: "100%",
@@ -177,13 +177,13 @@ class MemberOrderList extends Component {
                     >
                       <div
                         className="img-container col-md-4"
-                          style={{
-                            background: `url(
+                        style={{
+                          background: `url(
                               "http://localhost:3000/images/${item.trip_img ||
                                 item.product_img}"
                             ) no-repeat center center`
-                          }}
-                        ></div>
+                        }}
+                      ></div>
 
                       <div className="order-info-container d-flex flex-column justify-content-between ">
                         <span style={{ color: "#96daf0" }}>
@@ -200,6 +200,7 @@ class MemberOrderList extends Component {
                           )}
                           <span className="ml-2">
                             {item.trip_duration || "尺寸: " + item.product_size}
+                            {item.trip_duration ? "天" : ""}
                           </span>
                         </div>
                         <div className="vertical-align-middle mb-2">
@@ -247,7 +248,7 @@ class MemberOrderList extends Component {
                   ))}
                   <div className="mt-3 d-flex status">
                     <p>狀態: {order.order_status}</p>
-                    <p className="ml-auto">合計:{order.order_total_price}</p>
+                    <p className="ml-auto">合計: NT$ {order.order_total_price}</p>
                   </div>
                 </Card.Body>
               </Card>

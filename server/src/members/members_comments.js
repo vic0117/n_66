@@ -47,7 +47,7 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
       // 沒輸入東西時;
       if (!req.body.reviews) {
         data.msg.text = "資料不足";
-        res.json(data);
+        return res.json(data);
       }
 
       console.log("reviews", req.body.reviews);

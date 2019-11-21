@@ -182,6 +182,11 @@ class MemberInfoList extends Component {
                     value={userInfo.passport}
                     onChange={this.props.onChange}
                   />
+                  {this.props.errors.passport && (
+                    <div className="alert alert-danger error-msg">
+                      {this.props.errors.passport}
+                    </div>
+                  )}
                 </Form.Group>
 
                 <Form.Group className="d-flex">

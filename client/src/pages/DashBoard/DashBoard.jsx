@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
+import Joi from "joi-browser";
 import { ToastContainer, toast } from "react-toastify";
 import { Route, Switch } from "react-router-dom";
 // Componensts
@@ -24,6 +25,7 @@ class DashBoard extends Component {
       email: "",
       password: "",
       new_password: "",
+      comfirm_password: "",
       first_name_zh: "",
       last_name_zh: "",
       first_name_en: "",
@@ -45,8 +47,58 @@ class DashBoard extends Component {
     feedback: {
       success: "",
       msg: { type: "", text: "" }
-    }
+    },
+    errors: {}
   };
+
+  schemaChangepwd = Joi.object({
+    new_password: Joi.string()
+      .min(5)
+      .max(10)
+      .required()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = "此為必填欄位";
+              break;
+            case "string.min":
+              err.message = "密碼至少為5個字元";
+              break;
+            case "string.max":
+              err.message = "密碼最多為10個字元";
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      }),
+    comfirm_password: Joi.any()
+      .valid(Joi.ref("new_password"))
+      .required()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = "此為必填欄位";
+              break;
+            case "string.min":
+              err.message = "密碼至少為5個字元";
+              break;
+            case "string.max":
+              err.message = "密碼最多為10個字元";
+              break;
+            case "any.allowOnly":
+              err.message = "密碼不一致";
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      })
+  });
 
   async componentDidMount() {
     // server
@@ -65,6 +117,7 @@ class DashBoard extends Component {
     );
     const info = { ...userInfo.rows[0] };
     info.new_password = "";
+    info.comfirm_password = "";
     await this.setState({ userInfo: info });
 
     // 使用者訂單
@@ -72,10 +125,9 @@ class DashBoard extends Component {
       "http://localhost:3001/members_order/" + currentUser.u_id
     );
 
- 
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
     const productJson = data.rows.map(item => JSON.parse(item.order_product));
-      // console.log(productJson[0])
+    // console.log(productJson[0])
 
     for (let i = 0; i < data.rows.length; i++) {
       data.rows[i].order_trip = tripJson[i];
@@ -111,8 +163,30 @@ class DashBoard extends Component {
     await this.setState({ userInfo });
   };
 
+  // 護照
+  validateInfo = () => {
+    const info = {
+      success: false,
+      passport: ""
+    };
+    let str = this.state.userInfo.passport;
+    let result = /^\d{9}$/.test(str);
+    if (!result) {
+      info.passport = "不正確的護照格式";
+      return info;
+    }
+    info.success = true;
+    return info;
+  };
+
   handleInfoSubmit = async e => {
     e.preventDefault();
+    // 護照
+    const infoMsg = this.validateInfo();
+    console.log(infoMsg);
+    this.setState({ errors: { passport: infoMsg.passport } });
+    if (!infoMsg.success) return;
+
     const { currentUser } = this.state;
     let info = {
       first_name_zh: this.state.userInfo.first_name_zh,
@@ -160,8 +234,31 @@ class DashBoard extends Component {
       });
   };
 
+  changepwdValidate = async () => {
+    let new_password = this.state.userInfo.new_password;
+    let comfirm_password = this.state.userInfo.comfirm_password;
+    console.log("new", new_password);
+    console.log("comfirm", comfirm_password);
+    await this.setState({
+      changepwdJoi: { new_password, comfirm_password }
+    });
+    const result = Joi.validate(this.state.changepwdJoi, this.schemaChangepwd, {
+      abortEarly: false
+    });
+    if (!result.error) return null;
+    const errors = {};
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
+    return errors;
+  };
+
   handlePasswordSubmit = async e => {
     e.preventDefault();
+
+    const errors = await this.changepwdValidate();
+    console.log(errors);
+    await this.setState({ errors: errors || {} });
+    if (errors) return;
+
     const { currentUser } = this.state;
     let passwordInfo = {
       password: this.state.userInfo.password,
@@ -201,10 +298,9 @@ class DashBoard extends Component {
   };
 
   render() {
-    const { userInfo, userOrder } = this.state;
-
+    const { userInfo, userOrder, errors } = this.state;
+    console.log("userInfo", this.state.userInfo);
     if (userOrder === null) return null;
-
     return (
       <>
         <NavBar currentUser={this.props.currentUser} />
@@ -257,6 +353,7 @@ class DashBoard extends Component {
                     render={() => (
                       <MemberInfoList
                         userInfo={userInfo}
+                        errors={errors}
                         onChange={this.handleInfoChange}
                         onSubmit={this.handleInfoSubmit}
                       />
@@ -268,6 +365,7 @@ class DashBoard extends Component {
                       <MemberPassword
                         onChange={this.handleInfoChange}
                         onSubmit={this.handlePasswordSubmit}
+                        errors={errors}
                       />
                     )}
                   />
