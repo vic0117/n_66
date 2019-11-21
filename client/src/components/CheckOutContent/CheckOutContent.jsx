@@ -72,7 +72,7 @@ class CheckOutContent extends React.Component {
                             <div className=" py-3" style={{ borderBottom: '1px solid #E8E8E8' }}>
                                 {
                                     productsToBuy === null ? (
-                                        <div>沒有買裝備</div>
+                                        <div></div>
                                     ) : (
                                             productsToBuy.map((item, i) => (
                                                 <div
@@ -116,7 +116,7 @@ class CheckOutContent extends React.Component {
 
                                 {
                                     tripsToBuy === null ? (
-                                        <div>沒有買行程</div>
+                                        <div></div>
                                     ) : (
                                             tripsToBuy.map((item, i) => (
                                                 <div key={i} id={i} className="cartItem" >
