@@ -14,7 +14,7 @@ import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
 import Join from "./pages/socketClient/Join";
 import Chat from "./pages/socketClient/Chat";
-import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 //ProductPages
 import ProductList from "./pages/ProductList/ProductList";
@@ -63,7 +63,13 @@ class App extends Component {
       <ScrollToTop>
         <Switch>
           <Route path="/products" exact component={ProductList} />
-          <Route path="/products/:id" exact component={ProductDetail} />
+          <Route
+            path="/products/:id"
+            exact
+            render={props => (
+              <ProductDetail {...props} currentUser={this.state.currentUser} />
+            )}
+          />
           <Route
             path="/cart"
             exact

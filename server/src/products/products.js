@@ -36,7 +36,7 @@ router.get("/products/:id", (req, res) => {
 });
 
 router.post("/products/add_wishlist", (req, res) => {
-  let data = { success: false, msg: { type: "danger", text: "" } };
+  let data = { success: false, msg: { text: "" } };
   const sql =
     "INSERT INTO wish_list ( u_id, product_label, product_name, product_info, product_img, trip_start_date,trip_end_date, product_price, liked) VALUES(?,?,?,?,?,?,?,?,?)";
   db.query(
@@ -57,10 +57,9 @@ router.post("/products/add_wishlist", (req, res) => {
       console.log(results);
       if (results.affectedRows === 1) {
         data.success = true;
-        data.msg.type = "primary";
-        data.msg.text = "發布成功";
+        data.msg.text = "已加入願望清單";
       } else {
-        data.msg.text = "發布失敗";
+        data.msg.text = "沒有加入願望清單";
       }
       res.json(data);
     }
