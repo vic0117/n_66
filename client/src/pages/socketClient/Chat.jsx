@@ -5,11 +5,14 @@ import './Chat.scss'
 import InfoBar from './InfoBar/InfoBar'
 import Input from './Input/Input'
 import Messages from './Messages/Messages'
+import jwtDecode from "jwt-decode";
 let socket;
 
-const Chat = ( {location} ) => {
+const Chat = () => {
+	
 		const [name,setName] = useState('')
 		const [room,setRoom] = useState('')
+		const [users, setUsers] = useState('');
 		const [message,setMessage] = useState('')
 		const [messages,setMessages] = useState([])
 		// console.log(name,room)
@@ -19,26 +22,39 @@ const Chat = ( {location} ) => {
 		// const { name, room} = queryString.parse(location.search)
 		// console.log(name,room)
 		socket = io(ENDPOINT)
-
-		setName(name);
-		setRoom(room);
 		
-		socket.emit('join',{name:name , room:room},()=>{
-
-		});
-
-			return()=>{
-				socket.emit('disconnect');
-				socket.off();
+		if ( localStorage.getItem("token")) {
+			
+		}else{
+			return null
+		}
+		
+		const jwt = localStorage.getItem("token");
+      const currentUser = jwtDecode(jwt);
+		const name1 = currentUser.user.email
+		const room1 = ' 66N 客服'
+		setName(name1);
+		setRoom(room1);
+		
+		socket.emit('join', { name:name1, room:room1 }, (error) => {
+			if(error) {
+			  alert(error);
 			}
-
-	},[name,room])
+		 });	
+	},[ENDPOINT])
 
 	//等待每次傳過來的訊息 注意：沒s的是當前的 s的是儲存之前對話
 	useEffect(() => {
 		socket.on('message',(message)=>{
 			setMessages([...messages,message]);
 		})
+		socket.on('roomData', ({ users }) => {
+			setUsers(users);
+		 })
+		return()=>{
+			socket.emit('disconnect');
+			socket.off();
+		}
 	},[messages])
 
 	//發送訊息的fn

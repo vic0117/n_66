@@ -149,19 +149,22 @@ io.on('connect',(socket)=>{
 
 		socket.join(user.room)
 		//自動信息
-		if(user.name !=='admin@gmail.com'){
-			socket.emit('message',{user:'admin' ,text:`${user.name}您好,歡迎使用N66客服系統`})
-		}else{
-			socket.emit('message',{user:'admin' ,text:`${user.name}客服專員已上線`})
-		}
-		
-		//自己看不到,聊天室其他人看得到
 		if(user.name =='admin@gmail.com'){
+			socket.emit('message',{user:'admin' ,text:`${user.name}客服專員您已上線`})
 			socket.broadcast.to(user.room).emit('message',{user:'admin',text:`您好我是${user.name}客服很高興為您服務`})
-
+		
 		}else{
+			socket.emit('message',{user:'admin' ,text:`${user.name}您好,歡迎使用N66客服系統`})
 			socket.broadcast.to(user.room).emit('message',{user:'admin',text:`${user.name}用戶已連線`})
 		}
+		
+				// // 自己看不到,聊天室其他人看得到
+				// if(user.name =="admin@gmail.com"){
+				// 	socket.broadcast.to(user.room).emit('message',{user:'admin',text:`您好我是${user.name}客服很高興為您服務`})
+
+				// }else{
+				// 	socket.broadcast.to(user.room).emit('message',{user:'admin',text:`${user.name}用戶已連線`})
+				// }
 		
 		io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
@@ -182,7 +185,7 @@ io.on('connect',(socket)=>{
 		    
 		if(user){
 			io.to(user.room).emit('message',{user:'admin',text:`${user.name}已離開。`})
-			io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
+			// io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
 		}
 	}) 
 })

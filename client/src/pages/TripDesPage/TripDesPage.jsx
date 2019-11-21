@@ -60,6 +60,41 @@ class TripDesPage extends Component {
 		});
   }
 
+
+  addToCart = () => {
+	// console.log(this.state.detailData[0].trip_name);
+	let aaa = this.state.detailData[0];
+	let product = {};
+	product.sid = aaa.sid;
+	product.trip_name = aaa.trip_name;
+	product.trip_angency = aaa.trip_angency;
+	product.trip_price = aaa.trip_price;
+	product.trip_img = aaa.trip_menu_img;
+	product.trip_country = aaa.trip_place;
+	product.trip_duration = aaa.trip_days;
+	product.trip_start_date = aaa.trip_start;
+	product.trip_end_date = aaa.trip_end;
+	product.trip_amount = 1;
+	product.commented = 0;
+	product.code = Date.now();
+
+
+
+	if (localStorage.getItem('tripsToBuy')) {
+	  let bbb = JSON.parse(localStorage.getItem('tripsToBuy'));
+	  bbb.push(product);
+
+
+	  console.log(JSON.parse(localStorage.getItem('tripsToBuy')).length)
+	  localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
+	}
+	else {
+	  let ddd = []
+	  ddd.push(product)
+	  localStorage.setItem("tripsToBuy", JSON.stringify(ddd));
+	}
+ }
+
   render() {
     return (
       <div>
@@ -79,7 +114,7 @@ class TripDesPage extends Component {
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} />
           <div className="purchaseBtnBox">
-            <div className="purchaseBtn">
+            <div onClick={this.addToCart} className="purchaseBtn">
               <Cart className="purchaseBtnImg" />
               <p>加入購物車</p>
               <div className="purchaseBtnCover"></div>
