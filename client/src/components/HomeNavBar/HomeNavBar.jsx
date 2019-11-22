@@ -76,28 +76,25 @@ class HomeNavBar extends React.Component {
       <>
         <div className="n66navbar d-flex">
           <Link to="/">
-            <div className="Brand" >
+            <div className="Brand">
               <img src={Logo} alt="N66" />
             </div>
           </Link>
           <div className="n66Collapse " id="responsive-navbar-nav ">
             <div className="ml-auto d-flex  justify-content-end align-items-center navTop">
-              <Link to="/" className=" d-flex align-items-center nav_top_item">
+              {/* <Link to="/" className=" d-flex align-items-center nav_top_item">
                 <img className="email" src={email} alt="email" />
                 我的訂單
-              </Link>
-              <Link to="cart" className=" d-flex align-items-center nav_top_item">
-                <img className="phone" src={cart} alt="phone" />
-                購物車
-              </Link>
+              </Link> */}
+
               <Link
                 to="/account"
                 className=" d-flex align-items-center nav_top_item"
               >
-                <img className="user" src={user} alt="user" />
+                <img className="user" src={user} alt="user"  />
                 會員專區
               </Link>
-              
+
               {!currentUser && (
                 <>
                   <Link
@@ -120,6 +117,13 @@ class HomeNavBar extends React.Component {
                   </Link>
                 </>
               )}
+              <Link
+                to="cart"
+                className=" d-flex align-items-center nav_top_item"
+              >
+                <img className="phone" src={cart} alt="phone"  />
+                購物車
+              </Link>
             </div>
 
             <div className="ml-auto d-flex nav-bottom">
@@ -179,7 +183,7 @@ class HomeNavBar extends React.Component {
             </div>
           </a>
         </div>
-          <HomeNavBarRightMenu/>
+        <HomeNavBarRightMenu />
       </>
     );
   }
