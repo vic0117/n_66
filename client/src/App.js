@@ -48,7 +48,13 @@ class App extends Component {
       }
     });
   }
-  state = {};
+  state = {
+	  place:'',
+	  type:'',
+	  month:'',
+	  data:[],
+	  HomeSearch:false
+  };
   componentDidMount() {
     try {
       const jwt = localStorage.getItem("token");
@@ -58,7 +64,21 @@ class App extends Component {
     } catch (error) {}
   }
 
+  HomeSelect1 = (eventKey)=>{
+		this.setState({place:eventKey})
+  }
+  HomeSelect2 = (eventKey)=>{
+	  this.setState({type:eventKey})
+  }
+  HomeSelect3 = (eventKey)=>{
+	  this.setState({month:eventKey})
+  }
+  HomeSearch = ()=>{
+	this.setState({HomeSearch:true})
+	
+  }
   render() {
+	//   console.log(this.state.HomeSearch)
     return (
       <ScrollToTop>
         <Switch>
@@ -102,7 +122,12 @@ class App extends Component {
               <DashBoard {...props} currentUser={this.state.currentUser} />
             )}
           />
-          <Route path="/trips/page/:page" exact component={TripMenuPage} />
+          <Route path="/trips/page/:page" exact render={props=>(<TripMenuPage {...props} 
+				 HomeSearch = {this.HomeSearch}
+				 place = {this.state.place}
+				 type = {this.state.type}
+				 month = {this.state.month}
+			 />)} />
           <Route path="/trips/page" exact component={TripMenuPage} />
           <Route path="/trips/:id" exact component={TripDesPage} />
           {/* <Route path="/join" exact component={Join} />
@@ -111,7 +136,12 @@ class App extends Component {
             path="/"
             exact
             render={props => (
-              <Home {...props} currentUser={this.state.currentUser} />
+              <Home {...props} currentUser={this.state.currentUser} 
+				  HomeSelect1={this.HomeSelect1}
+				  HomeSelect2={this.HomeSelect2}
+				  HomeSelect3={this.HomeSelect3}
+				  HomeSearch = {this.HomeSearch}
+				  />
             )}
           />
         </Switch>

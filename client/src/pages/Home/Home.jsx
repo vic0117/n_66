@@ -33,7 +33,12 @@ class Home extends Component {
 			</div>
         <HomeNavBar currentUser={this.props.currentUser}/>
         <HomeMainCarousel />
-        <HomeFilter />
+        <HomeFilter 
+			  HomeSelect1={this.props.HomeSelect1}
+			  HomeSelect2={this.props.HomeSelect2}
+			  HomeSelect3={this.props.HomeSelect3}
+			  HomeSearch = {this.props.HomeSearch}
+		  />
         <HomeTravelCarousel />
         <HomeAdviser />
         <HomeEarth />
