@@ -45,10 +45,12 @@ class WishList extends Component {
               key={wish.w_id}
             >
               <Card className="wish-list-item">
-                <Card.Img
-                  variant="top"
-                  src={`http://localhost:3000/images/${wish.product_img}`}
-                />
+                <div style={{ width: "100%", height: 150 }}>
+                  <Card.Img
+                    variant="top"
+                    src={`http://localhost:3000/images/${wish.product_img}`}
+                  />
+                </div>
                 <Card.Body className="py-3">
                   <span style={{ color: "#96daf0" }}>{wish.product_label}</span>
                   <Card.Title className="mt-1 mb-2">

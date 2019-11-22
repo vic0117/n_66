@@ -103,8 +103,20 @@ class App extends Component {
             )}
           />
           <Route path="/trips/page/:page" exact component={TripMenuPage} />
-          <Route path="/trips/page" exact component={TripMenuPage} />
-          <Route path="/trips/:id" exact component={TripDesPage} />
+          <Route
+            path="/trips/page"
+            exact
+            render={props => (
+              <TripMenuPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route
+            path="/trips/:id"
+            exact
+            render={props => (
+              <TripDesPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
           <Route path="/join" exact component={Join} />
           <Route path="/chat" exact component={Chat} />
           <Route
