@@ -34,35 +34,36 @@ router.get("/trips/:id", (req, res, next) => {
 // 加入願望清單
 router.post("/trips/add_wishlist", (req, res) => {
   let data = { success: false, msg: { text: "" } };
-  console.log(req.body);
-  // // const sql =
-  // //   "INSERT INTO `wish_list` ( `u_id`, `product_label`, `product_name`, `product_info`, `product_img`, `trip_start_date`, `trip_end_date`, `product_price`, `liked`,`router`) VALUES (?,?,?,?,?,?,?,?,?,?)";
-  // // db.query(
-  // //   sql,
-  // //   [
-  // //     req.body.u_id,
-  // //     req.body.product_label,
-  // //     req.body.product_name,
-  // //     req.body.product_info,
-  // //     req.body.product_img,
-  // //     req.body.trip_start_date,
-  // //     req.body.trip_end_date,
-  // //     req.body.product_price,
-  // //     req.body.liked,
-  // //     req.body.router
-  // //   ],
-  // //   (error, results, fields) => {
-  // //     if (error) throw error;
-  // //     console.log(results);
-  // //     if (results.affectedRows === 1) {
-  // //       data.success = true;
-  // //       data.msg.text = "已加入願望清單";
-  // //     } else {
-  // //       data.msg.text = "沒有加入願望清單";
-  // //     }
-  // //     res.json(data);
-  // //   }
-  // );
+  const sql =
+    "INSERT INTO `wish_list` ( `u_id`, `product_label`, `product_name`, `product_info`, `product_img`, `trip_start_date`, `trip_end_date`, `trip_angency`, `product_price`, `product_router`, `product_id`, `liked`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+  db.query(
+    sql,
+    [
+      req.body.u_id,
+      req.body.product_label,
+      req.body.product_name,
+      req.body.product_info,
+      req.body.product_img,
+      req.body.trip_start_date,
+      req.body.trip_end_date,
+      req.body.trip_angency,
+      req.body.product_price,
+      req.body.product_router,
+      req.body.product_id,
+      req.body.liked
+    ],
+    (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+      if (results.affectedRows === 1) {
+        data.success = true;
+        data.msg.text = "已加入願望清單";
+      } else {
+        data.msg.text = "沒有加入願望清單";
+      }
+      res.json(data);
+    }
+  );
 });
 
 //搜尋

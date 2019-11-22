@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Card, Row, Col } from "react-bootstrap";
-import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
+import { Link } from "react-router-dom";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
-// import { ReactComponent as Like } from "./images/like.svg";
 import Like from "../../common/Like";
 import "./MemberWishList.css";
 
@@ -45,30 +44,58 @@ class WishList extends Component {
               key={wish.w_id}
             >
               <Card className="wish-list-item">
-                <div style={{ width: "100%", height: 150 }}>
-                  <Card.Img
-                    variant="top"
-                    src={`http://localhost:3000/images/${wish.product_img}`}
-                  />
-                </div>
-                <Card.Body className="py-3">
-                  <span style={{ color: "#96daf0" }}>{wish.product_label}</span>
-                  <Card.Title className="mt-1 mb-2">
-                    {wish.product_name}
-                  </Card.Title>
-                  <div className="d-flex align-items-center mb-2">
-                    <Calendar />
-                    <span className="ml-2">{wish.product_info}天</span>
+                <Link
+                  to={`/${wish.product_router}/${wish.product_id}`}
+                  className="link-container"
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      height: 150,
+                      borderBottom: "1px solid #eaeaea"
+                    }}
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={`http://localhost:3000/images/${wish.product_img}`}
+                    />
                   </div>
-                  <div className="mb-2">
-                    <span className="vertical-align-middle product-duration">
-                      {wish.trip_start_date} - {wish.trip_end_date}
+                  <Card.Body className="py-3">
+                    <span style={{ color: "#96daf0" }}>
+                      {wish.product_label}
                     </span>
-                  </div>
-                  <div>
-                    <h5>NT${wish.product_price}</h5>
-                  </div>
-                </Card.Body>
+                    <Card.Title className="mt-1 mb-2">
+                      {wish.product_name}
+                    </Card.Title>
+                    <div className="d-flex align-items-center mb-2">
+                      <span>
+                        {wish.product_router === "trips"
+                          ? wish.trip_angency
+                          : null}
+                      </span>
+                      <span
+                        className={
+                          wish.product_router === "trips" ? "ml-4" : null
+                        }
+                      ></span>
+                      <Calendar />
+                      <span className="ml-1">
+                        {wish.product_info}
+                        {wish.product_router === "trips" ? "天" : ""}
+                      </span>
+                    </div>
+                    <div className="mb-2">
+                      <span className="vertical-align-middle product-duration">
+                        {wish.product_router === "trips"
+                          ? `${wish.trip_start_date} - ${wish.trip_end_date}`
+                          : `重量: ${wish.trip_start_date}`}
+                      </span>
+                    </div>
+                    <div>
+                      <h5>NT${wish.product_price}</h5>
+                    </div>
+                  </Card.Body>
+                </Link>
                 <Card.Footer className="text-muted justify-content-center d-flex align-items-center">
                   <Like
                     liked={wish.liked}

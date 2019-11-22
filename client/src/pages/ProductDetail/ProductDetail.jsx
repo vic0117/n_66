@@ -52,11 +52,14 @@ class ProductDetail extends React.Component {
       product_info: productsDetail.product_size,
       product_img: this.state.Pictures[0],
       product_price: productsDetail.product_price,
-      trip_start_date: "",
+      trip_start_date: productsDetail.product_weight,
       trip_end_date: "",
+      trip_angency: "",
+      product_router: productsDetail.product_router,
+      product_id: productsDetail.product_id,
       liked: 1
     };
-    console.log(this.props.currentUser);
+    console.log(productsDetail.product_router);
     if (isLogin) {
       const { data } = axios
         .post("http://localhost:3001/products/add_wishlist", obj)

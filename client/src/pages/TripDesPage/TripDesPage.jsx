@@ -116,14 +116,15 @@ class TripDesPage extends Component {
       product_price: productsDetail.trip_price,
       trip_start_date: productsDetail.trip_start,
       trip_end_date: productsDetail.trip_end,
-      // router: productsDetail.trip_router,
-      // product_id: productsDetail.sid,
+      trip_angency: productsDetail.trip_angency,
+      product_router: productsDetail.trip_router,
+      product_id: productsDetail.sid,
       liked: 1
     };
     console.log("obj", obj);
     if (isLogin) {
       const { data } = axios
-        .post("http://localhost:3001/products/add_wishlist", obj)
+        .post("http://localhost:3001/trips/add_wishlist", obj)
         .then(res => {
           console.log(res.data);
           this.setState({ feedback: res.data });

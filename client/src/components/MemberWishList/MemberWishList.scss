@@ -15,6 +15,11 @@
   }
 }
 
+.wish-list-container .link-container {
+  text-decoration: none;
+  color: #2a2a3a !important;
+}
+
 .wish-list-container .row {
   margin: 0;
 }
@@ -38,7 +43,7 @@
 
 .wish-list-title span {
   font-size: 1.25rem;
-  color: #2a2a3a;
+  color: #2a2a3a !important;
   font-weight: 300;
 }
 
