@@ -29,8 +29,7 @@ class Home extends Component {
 				<img src={message}/>	
 			</div>
 			<div className={this.state.system ? ' messageIn' : 'messageInOpen messageIn'}>
-				{/* <Join className='joinContent'/> */}
-				{/* <Chat currentUser={this.props.currentUser}/> */}
+				<Chat/>
 			</div>
         <HomeNavBar currentUser={this.props.currentUser}/>
         <HomeMainCarousel />

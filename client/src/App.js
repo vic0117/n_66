@@ -12,8 +12,8 @@ import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
-import Join from "./pages/socketClient/Join";
-import Chat from "./pages/socketClient/Chat";
+// import Join from "./pages/socketClient/Join";
+// import Chat from "./pages/socketClient/Chat";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 //ProductPages
@@ -103,6 +103,7 @@ class App extends Component {
             )}
           />
           <Route path="/trips/page/:page" exact component={TripMenuPage} />
+
           <Route
             path="/trips/page"
             exact
@@ -119,6 +120,7 @@ class App extends Component {
           />
           <Route path="/join" exact component={Join} />
           <Route path="/chat" exact component={Chat} />
+
           <Route
             path="/"
             exact
