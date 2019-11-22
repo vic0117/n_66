@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
+import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import "./MemberCommentList.css";
 
@@ -34,11 +35,14 @@ class MemberCommentList extends Component {
 
             <div className="comment-btn-outer-container">
               <div className="mt-auto comment-btn-container">
-                <a href="#1" className="comment-btn">
+                <Link
+                  to={`/trips/page/1?place=${comment.trip_country}`}
+                  className="comment-btn"
+                >
                   <span style={{ fontSize: "14px" }}>
                     我們的{comment.trip_country}之旅
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </Row>
