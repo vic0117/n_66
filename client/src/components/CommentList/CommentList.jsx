@@ -5,14 +5,12 @@ import { Row } from "react-bootstrap";
 import "./CommentList.css";
 
 class CommentList extends Component {
-  state = { };
-  componentDidMount() {
-    
-  }
+  state = {};
+  componentDidMount() {}
   render() {
     const { comments } = this.props;
     console.log(comments);
-   //  if (comments === null) return null;
+    //  if (comments === null) return null;
     return (
       <>
         {this.props.comments.map(comment => (
@@ -22,17 +20,27 @@ class CommentList extends Component {
           >
             <Row className="comment-info-container">
               <div className="rank-container ">
-                <StarRatingComponent
-                  name="rate1"
-                  starCount={5}
-                  value={comment.rating}
-                />
-                <p>
-                  {comment.last_name_zh}
-                  {comment.gender}
-                </p>
-                <div className="duration">
-                  {comment.trip_start_date} - {comment.trip_end_date}
+                <div className="d-flex mb-3">
+                  <div className="comment-avatar mr-3">
+                    <img
+                      src={`http://localhost:3001/static/images/${comment.avatar}`}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    {comment.last_name_zh}
+                    {comment.gender}
+                    <div style={{ height: "2rem" }} className="mt-1">
+                      <StarRatingComponent
+                        name="rate1"
+                        starCount={5}
+                        value={comment.rating}
+                      />
+                    </div>
+                    <div className="duration">
+                      {comment.trip_start_date} - {comment.trip_end_date}
+                    </div>
+                  </div>
                 </div>
                 <p className="mt-2 mb-4 comment-text">{comment.reviews}</p>
               </div>

@@ -42,7 +42,7 @@ router.get("/members_comments_list/:id?", (req, res) => {
     output.rows = results;
     res.json(output);
   });
-}); 
+});
 
 // 發表評論
 router.post("/members_comments/:id?", verifyToken, (req, res) => {
@@ -64,11 +64,12 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
 
       console.log("reviews", req.body.reviews);
       const sql =
-        "INSERT INTO comments_list ( u_id,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?)";
+        "INSERT INTO comments_list ( u_id,avatar,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?,?)";
       db.query(
         sql,
         [
           req.body.u_id,
+          req.body.avatar,
           req.body.last_name_zh,
           req.body.gender,
           req.body.trip_name,
@@ -94,7 +95,5 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
     }
   });
 });
-
-
 
 module.exports = router;

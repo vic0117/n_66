@@ -7,7 +7,6 @@ class MemberCommentList extends Component {
   render() {
     const { userComments } = this.props;
     if (userComments === null) return null;
-    console.log(userComments);
     return (
       <div className="comment-container d-flex flex-column ">
         <Row className="mx-0">

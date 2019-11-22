@@ -28,18 +28,27 @@
     // width: 100% !important;
     .rank {
       margin-right: 0.25rem;
-
     }
 
     .duration {
       color: #96daf0;
     }
-  
-    .comment-text{
+
+    .comment-text {
       word-break: break-all;
     }
   }
-  
+  .comment-avatar {
+    height: 80px;
+    width: 80px;
+    // background-color: red;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
 }
 
 .comment-info-container {

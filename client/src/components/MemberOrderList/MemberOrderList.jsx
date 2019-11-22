@@ -25,6 +25,7 @@ class MemberOrderList extends Component {
 
   handleCommentsSubmit = async item => {
     let info = {
+      avatar: this.props.userInfo.avatar,
       last_name_zh: this.props.userInfo.last_name_zh,
       gender: this.props.userInfo.gender,
       trip_name: this.state.reviewInfo.trip_name,
@@ -141,8 +142,7 @@ class MemberOrderList extends Component {
 
   render() {
     const { userOrder } = this.props;
-    console.log("props", this.props);
-    console.log(this.props.currentUser.user.u_id);
+    console.log(this.props.userInfo.avatar);
     return (
       <div className="order-list-container">
         <Row>
@@ -248,7 +248,9 @@ class MemberOrderList extends Component {
                   ))}
                   <div className="mt-3 d-flex status">
                     <p>狀態: {order.order_status}</p>
-                    <p className="ml-auto">合計: NT$ {order.order_total_price}</p>
+                    <p className="ml-auto">
+                      合計: NT$ {order.order_total_price}
+                    </p>
                   </div>
                 </Card.Body>
               </Card>
