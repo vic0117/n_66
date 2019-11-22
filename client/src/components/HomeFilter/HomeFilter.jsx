@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   Dropdown,
-  DropdownButton,
   Form,
   Button,
   Row,
@@ -21,8 +20,6 @@ import { ReactComponent as Binoculars } from "./images/binoculars.svg";
 import { ReactComponent as Search } from "./images/search.svg";
 import { ReactComponent as Filter } from "./images/filter.svg";
 import "./HomeFilter.scss";
-import DropdownToggle from "react-bootstrap/DropdownToggle";
-import { display } from "@material-ui/system";
 
 class HomeFilter extends Component {
   state = {
@@ -678,7 +675,7 @@ class HomeFilter extends Component {
               </div>
               <div className="search">
                 <p>搜尋</p>
-                <a className="anotherSearch" href="#1" role="button"></a>
+                <a className="anotherSearch" href='#' role="button"></a>
               </div>
             </div>
           </Col>
@@ -708,7 +705,7 @@ class HomeFilter extends Component {
                     />
                   </div>
                   <p>選擇目的地</p>
-						<h6 className = {this.state.place =='所有目的地'? 'displayNone' : '' }>{this.state.place}</h6>
+						<h6 className = {this.state.place ==='所有目的地'? 'displayNone' : '' }>{this.state.place}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
@@ -760,7 +757,7 @@ class HomeFilter extends Component {
                     />
                   </div>
                   <p>活動與主題</p>
-						<h6 className = {this.state.type =='所有活動'? 'displayNone' : '' }>{this.state.type}</h6>
+						<h6 className = {this.state.type ==='所有活動'? 'displayNone' : '' }>{this.state.type}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
@@ -821,7 +818,7 @@ class HomeFilter extends Component {
                     />
                   </div>
                   <p>出發月份</p>
-						<h6 className = {this.state.month =='所有月份'? 'displayNone' : '' }>{this.state.month}</h6>
+						<h6 className = {this.state.month ==='所有月份'? 'displayNone' : '' }>{this.state.month}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="2">
                   <Card.Body>
@@ -876,7 +873,7 @@ class HomeFilter extends Component {
                     />
                   </div>
                   <p>困難度</p>
-						<h6 className = {this.state.difficulty =='所有難度'? 'displayNone' : '' }>{this.state.difficulty}</h6>
+						<h6 className = {this.state.difficulty ==='所有難度'? 'displayNone' : '' }>{this.state.difficulty}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="3">
                   <Card.Body>

@@ -26,7 +26,7 @@ class Home extends Component {
     return (
       <>
 			<div className="MessageButton" onClick={()=>this.setState({system:!this.state.system})}>
-				<img src={message}/>	
+				<img src={message} alt='message'/>	
 			</div>
 			<div className={this.state.system ? ' messageIn' : 'messageInOpen messageIn'}>
 				<Chat/>
