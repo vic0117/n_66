@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
+import { toast } from "react-toastify";
 import "./productCarousel.scss";
 // import { object } from "prop-types";
 
@@ -56,6 +57,7 @@ class ProductCarousel extends React.Component {
   }
 
   addToCart = () => {
+    const isLogin = localStorage.getItem("token");
     let aaa = this.props.data[0];
     let product = {};
     product.product_id = aaa.product_id;
@@ -68,21 +70,23 @@ class ProductCarousel extends React.Component {
     product.commented = 0;
     product.code = Date.now();
 
-    if (localStorage.getItem("productsToBuy")) {
-      let bbb = JSON.parse(localStorage.getItem("productsToBuy"));
-      bbb.push(product);
-      // product.pos =
-
-      console.log(JSON.parse(localStorage.getItem("productsToBuy")).length);
-      localStorage.setItem("productsToBuy", JSON.stringify(bbb));
+    if (isLogin) {
+      if (localStorage.getItem("productsToBuy")) {
+        let bbb = JSON.parse(localStorage.getItem("productsToBuy"));
+        bbb.push(product);
+        console.log(JSON.parse(localStorage.getItem("productsToBuy")).length);
+        localStorage.setItem("productsToBuy", JSON.stringify(bbb));
+        toast.success("已加入購物車");
+      } else {
+        let ddd = [];
+        ddd.push(product);
+        // product.pos =
+        localStorage.setItem("productsToBuy", JSON.stringify(ddd));
+        toast.success("已加入購物車");
+      }
     } else {
-      let ddd = [];
-      ddd.push(product);
-      // product.pos =
-      localStorage.setItem("productsToBuy", JSON.stringify(ddd));
-      // console.log()
+      toast.error("請先登入或註冊為會員");
     }
-    // localStorage.setItem("productsToBuy" , bbb );
   };
 
   render() {
@@ -150,7 +154,12 @@ class ProductCarousel extends React.Component {
                   <div>
                     <h2>{item.product_name}</h2>
                     <h5>NT$ {item.product_price}</h5>
-                    <Button className="wishBtn mx-auto" onClick={this.props.addWish}>加入願望清單</Button>
+                    <Button
+                      className="wishBtn mx-auto"
+                      onClick={this.props.addWish}
+                    >
+                      加入願望清單
+                    </Button>
                     <Button
                       onClick={this.addToCart}
                       className="addToCartBtn mx-auto"

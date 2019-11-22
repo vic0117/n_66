@@ -44,6 +44,7 @@ class ProductDetail extends React.Component {
     const productsDetail = { ...this.state.ProductsDetail[0] };
     const currentUser = { ...this.props.currentUser };
     const user = { ...currentUser.user };
+    const isLogin = localStorage.getItem("token");
     const obj = {
       u_id: user.u_id,
       product_label: productsDetail.product_brand,
@@ -51,24 +52,32 @@ class ProductDetail extends React.Component {
       product_info: productsDetail.product_size,
       product_img: this.state.Pictures[0],
       product_price: productsDetail.product_price,
-      trip_start_date: "",
+      trip_start_date: productsDetail.product_weight,
       trip_end_date: "",
+      trip_angency: "",
+      product_router: productsDetail.product_router,
+      product_id: productsDetail.product_id,
       liked: 1
     };
-    const { data } = axios
-      .post("http://localhost:3001/products/add_wishlist", obj)
-      .then(res => {
-        console.log(res.data);
-        this.setState({ feedback: res.data });
-        if (this.state.feedback.success) {
-          toast.success(this.state.feedback.msg.text);
-        } else {
-          toast.error(this.state.feedback.msg.text);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    console.log(productsDetail.product_router);
+    if (isLogin) {
+      const { data } = axios
+        .post("http://localhost:3001/products/add_wishlist", obj)
+        .then(res => {
+          console.log(res.data);
+          this.setState({ feedback: res.data });
+          if (this.state.feedback.success) {
+            toast.success(this.state.feedback.msg.text);
+          } else {
+            toast.error(this.state.feedback.msg.text);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      toast.error("請先登入或註冊為會員");
+    }
   };
 
   render() {

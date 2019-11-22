@@ -38,7 +38,7 @@ router.get("/products/:id", (req, res) => {
 router.post("/products/add_wishlist", (req, res) => {
   let data = { success: false, msg: { text: "" } };
   const sql =
-    "INSERT INTO wish_list ( u_id, product_label, product_name, product_info, product_img, trip_start_date,trip_end_date, product_price, liked) VALUES(?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO wish_list ( u_id, product_label, product_name, product_info, product_img, trip_start_date,trip_end_date, trip_angency, product_price, product_router, product_id, liked) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
   db.query(
     sql,
     [
@@ -49,7 +49,10 @@ router.post("/products/add_wishlist", (req, res) => {
       req.body.product_img,
       req.body.trip_start_date,
       req.body.trip_end_date,
+      req.body.trip_angency,
       req.body.product_price,
+      req.body.product_router,
+      req.body.product_id,
       req.body.liked
     ],
     (error, results, fields) => {

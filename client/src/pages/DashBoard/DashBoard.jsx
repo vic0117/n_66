@@ -163,29 +163,9 @@ class DashBoard extends Component {
     await this.setState({ userInfo });
   };
 
-  // 護照
-  validateInfo = () => {
-    const info = {
-      success: false,
-      passport: ""
-    };
-    let str = this.state.userInfo.passport;
-    let result = /^\d{9}$/.test(str);
-    if (!result) {
-      info.passport = "不正確的護照格式";
-      return info;
-    }
-    info.success = true;
-    return info;
-  };
 
   handleInfoSubmit = async e => {
     e.preventDefault();
-    // 護照
-    const infoMsg = this.validateInfo();
-    console.log(infoMsg);
-    this.setState({ errors: { passport: infoMsg.passport } });
-    if (!infoMsg.success) return;
 
     const { currentUser } = this.state;
     let info = {

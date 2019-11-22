@@ -12,9 +12,9 @@ import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
-// import Join from "./pages/socketClient/Join";
-// import Chat from "./pages/socketClient/Chat";
-import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import Join from "./pages/socketClient/Join";
+import Chat from "./pages/socketClient/Chat";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 //ProductPages
 import ProductList from "./pages/ProductList/ProductList";
@@ -128,10 +128,24 @@ class App extends Component {
 				 type = {this.state.type}
 				 month = {this.state.month}
 			 />)} />
-          <Route path="/trips/page" exact component={TripMenuPage} />
-          <Route path="/trips/:id" exact component={TripDesPage} />
-          {/* <Route path="/join" exact component={Join} />
-          <Route path="/chat" exact component={Chat} /> */}
+
+          <Route
+            path="/trips/page"
+            exact
+            render={props => (
+              <TripMenuPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route
+            path="/trips/:id"
+            exact
+            render={props => (
+              <TripDesPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+          <Route path="/join" exact component={Join} />
+          <Route path="/chat" exact component={Chat} />
+
           <Route
             path="/"
             exact

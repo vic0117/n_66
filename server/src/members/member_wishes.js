@@ -9,6 +9,17 @@ const db = mysql.createConnection({
   database: "n_66"
 });
 
+router.get("/members_wish_list/:id?", (req, res) => {
+  // console.log("req.params", req.params);
+  const sql = "SELECT * FROM `wish_list` WHERE u_id = ?";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
+  });
+});
+
 router.delete("/members_wish_list_del/:id?", (req, res) => {
   console.log("req.params", req.params);
   const sql = `DELETE FROM wish_list WHERE w_id=${req.params.id};`;

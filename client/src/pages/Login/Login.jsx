@@ -401,11 +401,7 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-                  {/* {this.state.errors.email && (
-                    <div className="alert alert-danger error-msg">
-                      {this.state.errors.email}
-                    </div>
-                  )} */}
+
                   {
                     <div className="alert alert-danger error-msg">
                       {this.state.errors.email || ""}
@@ -419,11 +415,7 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-                  {/* {this.state.errors.password && (
-                    <div className="alert alert-danger error-msg">
-                      {this.state.errors.password}
-                    </div>
-                  )} */}
+
                   {
                     <div className="alert alert-danger error-msg">
                       {this.state.errors.password || ""}
@@ -432,10 +424,7 @@ class Login extends React.Component {
                   <a href="#6" className="forgot-pass">
                     忘記密碼?
                   </a>
-                  {/* {!this.state.msg.loginMsg && <div className="feedback"></div>} */}
-                  {/* {this.state.msg.loginMsg && (
-                    <div className={classes}>{this.state.msg.loginMsg}</div>
-                  )} */}
+
                   {
                     <div className={classes}>
                       {this.state.msg.loginMsg || ""}
@@ -461,11 +450,7 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
-                    {/* {this.state.errors.email && (
-                      <div className="alert alert-danger error-msg">
-                        {this.state.errors.email}
-                      </div>
-                    )} */}
+
                     {
                       <div className="alert alert-danger error-msg">
                         {this.state.errors.email || ""}
@@ -479,11 +464,7 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
-                    {/* {this.state.errors.register_password && (
-                      <div className="alert alert-danger error-msg">
-                        {this.state.errors.register_password}
-                      </div>
-                    )} */}
+
                     {
                       <div className="alert alert-danger error-msg">
                         {this.state.errors.register_password || ""}
@@ -497,19 +478,7 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
-                    {/* {this.state.errors.repeat_password && (
-                      <div className="alert alert-danger error-msg">
-                        {this.state.errors.repeat_password}
-                      </div>
-                    )} */}
-                    {/* {
-                      <div className="alert alert-danger error-msg">
-                        {this.state.errors.repeat_password}
-                      </div>
-                    } */}
-                    {/* {!this.state.msg.signUpMsg && (
-                      <div className="feedback"></div>
-                    )} */}
+
                     {
                       <div className={classes}>
                         {this.state.errors.repeat_password ||
