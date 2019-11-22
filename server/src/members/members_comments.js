@@ -32,7 +32,19 @@ function verifyToken(req, res, next) {
     res.json("forbidden");
   }
 }
+// 我的評論
+router.get("/members_comments_list/:id?", (req, res) => {
+  // console.log("req.params", req.params);
+  const sql = "SELECT * FROM `comments_list` WHERE u_id = ?";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
+  });
+}); 
 
+// 發表評論
 router.post("/members_comments/:id?", verifyToken, (req, res) => {
   let data = { success: false, msg: { type: "danger", text: "" } };
   // jwt authentication
@@ -82,5 +94,7 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
     }
   });
 });
+
+
 
 module.exports = router;

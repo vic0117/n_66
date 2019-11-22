@@ -12,8 +12,8 @@ import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
-// import Join from "./pages/socketClient/Join";
-// import Chat from "./pages/socketClient/Chat";
+import Join from "./pages/socketClient/Join";
+import Chat from "./pages/socketClient/Chat";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 //ProductPages

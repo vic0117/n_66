@@ -49,38 +49,16 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
- 
-
 // login
-// app.use(
-//   session({
-//     saveUninitialized: false,
-//     resave: false,
-//     secret: "i123oidoajd",
-//     cookie: {
-//       maxAge: 1200000
-//     }
-//   })
-// );
-
 const login = require("./login/login");
 app.use(login);
 
-// member
 const register = require("./login/register");
 app.use(register);
 
+// member
 const members = require("./members/members");
 app.use(members);
-
-const members_upload_file = require("./members/members_upload_file");
-app.use(members_upload_file);
-
-const members_edit = require("./members/members_edit");
-app.use(members_edit);
-
-const members_change_password = require("./members/members_change_password");
-app.use(members_change_password);
 
 const members_order = require("./members/members_order");
 app.use(members_order);
@@ -88,17 +66,11 @@ app.use(members_order);
 const members_comments = require("./members/members_comments");
 app.use(members_comments);
 
-const members_comments_list = require("./members/members_comments_list");
-app.use(members_comments_list);
+const members_wishes = require("./members/member_wishes");
+app.use(members_wishes);
 
-const members_wish_list = require("./members/member_wish_list");
-app.use(members_wish_list);
-
-const member_wish_list_del = require("./members/member_wish_list_del");
-app.use(member_wish_list_del);
-
-const members_coupon_list = require("./members/member_coupon_list");
-app.use(members_coupon_list);
+const members_coupons = require("./members/member_coupons");
+app.use(members_coupons);
 
 // comments
 const comments = require("./comments/comment");
@@ -118,26 +90,6 @@ app.use((req, res) => {
   res.status(404);
   res.send("404 - Can not found page");
 });
-
-// Verify Token
-// function verifyToken(req, res, next) {
-//   // Get auth header value
-//   const bearerHeader = req.headers["authorization"];
-//   // Check if bearer is undefined
-//   if (typeof bearerHeader !== "undefined") {
-//     // Split at the space
-//     const bearer = bearerHeader.split(" ");
-//     // Get Token from array
-//     const bearerToken = bearer[1];
-//     // Set the token
-//     req.token = bearerToken;
-//     // Next middleware
-//     next();
-//   } else {
-//     //Forbidden
-//     res.json("forbidden");
-//   }
-// }
 
 ///////////////////////socket io server ////////////////////////////////////
 
