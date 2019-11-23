@@ -168,7 +168,7 @@ class MemberOrderList extends Component {
         <div className="order-list-container mt-4">
           <Row>
             <Col className="order-list-title">
-              <span>我的訂單</span>
+              <span>訂單紀錄</span>
             </Col>
           </Row>
           <Row>
