@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import ".././CommentFilterBox/CommentFilterBox.css";
+
 class MemberOrderFilter extends Component {
   state = {
     titleName: "選擇訂單狀態"
@@ -8,7 +9,8 @@ class MemberOrderFilter extends Component {
 
   handleSelect = eventKey => {
     this.setState({ titleName: eventKey });
-    this.props.selectComments(eventKey);
+
+    this.props.onSelectComments(eventKey);
   };
 
   render() {
@@ -19,8 +21,8 @@ class MemberOrderFilter extends Component {
         className="member-comment-filter-container"
         onSelect={this.handleSelect}
       >
-        <Dropdown.Item eventKey="所有訂單狀態" value="1">
-          所有目的地
+        <Dropdown.Item eventKey="選擇訂單狀態" value="1">
+          選擇訂單狀態
         </Dropdown.Item>
         <Dropdown.Item eventKey="已送達" value="1">
           已送達

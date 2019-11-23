@@ -111,7 +111,7 @@ class MemberLeftMenu extends Component {
                     style={{ height: "100%" }}
                   >
                     <Order height="16" width="16" />
-                    <span className="vertical-align-middle">我的訂單</span>
+                    <span className="vertical-align-middle">訂單紀錄</span>
                   </Link>
                 </ListGroup.Item>
                 <ListGroup.Item className="member-ul-container">

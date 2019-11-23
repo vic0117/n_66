@@ -56,23 +56,4 @@ router.post("/members_order/:u_id?/:id?", (req, res) => {
   );
 });
 
-// 篩選訂單狀態
-// router.post("/members_order_select/:u_id", (req, res, next) => {
-//   let orderStatus = req.body.orderStatus;
-//   let where1 = "";
-//   if (orderStatus) {
-//     where1 += " AND `order_status` = " + `'${orderStatus}'`;
-//     if (orderStatus == "所有訂單狀態") {
-//       where1 = "";
-//     }
-//   }
-//   const sql = `SELECT * FROM order_list WHERE u_id=${req.params.u_id} ${where1}`;
-//   console.log(sql);
-//   db.query(sql, (err, results, fields) => {
-//     if (err) throw err;
-//      console.log(results)
-//     res.json(results);
-//   });
-// });
-
 module.exports = router;

@@ -24,7 +24,6 @@ class MemberCommentList extends Component {
     const comments = paginate(userComments, currentPage, pageSize);
     return (
       <>
-       
         <div className="comment-container d-flex flex-column ">
           <Row className="mx-0">
             <Col className="comment-title">
@@ -52,7 +51,7 @@ class MemberCommentList extends Component {
               <div className="comment-btn-outer-container">
                 <div className="mt-auto comment-btn-container">
                   <Link
-                    to={`/trips/page/1?place=${comment.trip_country}`}
+                    to={`/trips/page/1?place=${comment.trip_country}&type=活動與主題&month=出發月份&search=`}
                     className="comment-btn"
                   >
                     <span style={{ fontSize: "14px" }}>

@@ -41,6 +41,7 @@ class DashBoard extends Component {
       avatar: ""
     },
     userOrder: null,
+    filteredUserOrder: [],
     userComments: null,
     userWishes: null,
     userCoupons: [],
@@ -154,6 +155,9 @@ class DashBoard extends Component {
       "http://localhost:3001/members_coupon_list/" + currentUser.u_id
     );
     await this.setState({ userCoupons: userCoupons.rows });
+
+    // 
+    await this.setState({ filteredUserOrder: this.state.userOrder });
   }
 
   handleInfoChange = async e => {
@@ -162,7 +166,6 @@ class DashBoard extends Component {
     userInfo[e.target.name] = e.target.value;
     await this.setState({ userInfo });
   };
-
 
   handleInfoSubmit = async e => {
     e.preventDefault();
@@ -277,8 +280,28 @@ class DashBoard extends Component {
       });
   };
 
+  handleSelectComments = async orderStatus => {
+    // filteredUserOrder: ""
+    console.log(orderStatus);
+    console.log(this.state.userOrder);
+
+    // const filtered = orderStatus
+    //   ? this.state.userOrder.filter(order => order.order_status === orderStatus)
+    //   : this.state.userOrder;
+
+    let filtered = "";
+    if (orderStatus === "選擇訂單狀態") {
+      filtered = this.state.userOrder;
+    } else {
+      filtered = this.state.userOrder.filter(
+        order => order.order_status === orderStatus
+      );
+    }
+    this.setState({ filteredUserOrder: filtered });
+  };
+
   render() {
-    const { userInfo, userOrder, errors } = this.state;
+    const { userInfo, userOrder, errors, filteredUserOrder } = this.state;
     console.log("userInfo", this.state.userInfo);
     if (userOrder === null) return null;
     return (
@@ -315,8 +338,9 @@ class DashBoard extends Component {
                   render={() => (
                     <MemberOrderList
                       userInfo={userInfo}
-                      userOrder={userOrder}
+                      userOrder={filteredUserOrder}
                       currentUser={this.props.currentUser}
+                      onSelectComments={this.handleSelectComments}
                     />
                   )}
                 />

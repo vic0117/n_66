@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import CommentModal from "../CommentModal/CommentModal";
 import { toast } from "react-toastify";
+import { paginate } from "../../utils/paginate";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
 import MemberOrderFilter from "../MemberOrderFilter/MemberOrderFilter";
+import Pagination from "../../common/Pagination";
 
 // import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
@@ -15,8 +17,9 @@ class MemberOrderList extends Component {
     rating: "",
     reviewInfo: "",
     reviews: "",
-    userOrder: this.props.userOrder,
-    orderStatus: ""
+    orderStatus: "",
+    pageSize: 2, // 每頁幾筆
+    currentPage: 1
   };
 
   getModal = value => {
@@ -149,47 +152,18 @@ class MemberOrderList extends Component {
     this.setState({ reviews: value });
   };
 
-  selectComments = async orderStatus => {
-    const { currentUser } = this.props;
-    await this.setState({ orderStatus });
-    // let obj = {
-    //   orderStatus: this.state.orderStatus
-    // };
-    // let obj = JSON.parse(JSON.stringify(this.state));
-    // console.log('obj1',obj);
-    // console.log("obj2", obj);
-    // obj.orderStatus = orderStatus;
-
-    // fetch(
-    //   `http://localhost:3001/members_order_select/${currentUser.user.u_id}`,
-    //   {
-    //     method: "POST",
-    //     body: JSON.stringify(obj),
-    //     headers: {
-    //       "content-type": "application/json"
-    //     }
-    //   }
-    // )
-    //   .then(
-    //     response => {
-    //       console.log(response);
-    //       return response.json();
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     }
-    //   )
-    //   .then(data => {
-    //     this.setState({ userOrder: data });
-    //     console.log(data);
-    //   });
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
   };
 
   render() {
-    const { userOrder } = this.props;
+    let { userOrder } = this.props;
+    const { pageSize, currentPage } = this.state;
+    const { length: count } = userOrder;
+    const orders = paginate(userOrder, currentPage, pageSize);
     return (
       <>
-        <MemberOrderFilter selectComments={this.selectComments} />
+        <MemberOrderFilter onSelectComments={this.props.onSelectComments} />
         <div className="order-list-container mt-4">
           <Row>
             <Col className="order-list-title">
@@ -197,7 +171,7 @@ class MemberOrderList extends Component {
             </Col>
           </Row>
           <Row>
-            {userOrder.map(order => (
+            {orders.map(order => (
               <Col
                 className="order-card-container col-12 "
                 key={order.order_id}
@@ -307,6 +281,14 @@ class MemberOrderList extends Component {
               </Col>
             ))}
           </Row>
+        </div>
+        <div className="mt-4 d-flex mx-auto justify-content-center">
+          <Pagination
+            itemsCount={count}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={this.handlePageChange}
+          />
         </div>
       </>
     );
