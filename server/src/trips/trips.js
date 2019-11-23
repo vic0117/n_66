@@ -133,11 +133,13 @@ router.post('/trips/homeselect',(req,res,next)=>{
 		where3 += " AND `trip_month` = " + `'${month}'`
 	}
 	if(difficulty =='困難度'){
-		where3=''
+		where5=''
+	}else if(difficulty =='undefined'){
+		where5 ==''
 	}else if(difficulty=='所有難度'){
-		where3 =''
+		where5 =''
 	}else{
-		where3 += " AND `trip_difficulty` = " + `'${difficulty}'`
+			where5 += " AND `trip_difficulty` = " + `'${difficulty}'`
 	}
 
 const sql=`SELECT * FROM trip_list WHERE sid>0 ${where1}${where2}${where3}${where4}`
