@@ -85,7 +85,7 @@ class LoginNavBar extends React.Component {
                 <span>戶外用品</span>
                 <div className="blue-line"></div>
               </Link>
-              <Link to="/trips/page/1" className="navbar-item nav-link">
+              <Link to="/comments" className="navbar-item nav-link">
                 <span>旅遊評價</span>
                 <div className="blue-line"></div>
               </Link>
