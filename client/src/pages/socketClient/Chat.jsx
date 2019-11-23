@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import queryString from 'query-string'
+// import queryString from 'query-string'
 import io from 'socket.io-client'
 import './Chat.scss'
 import InfoBar from './InfoBar/InfoBar'
@@ -15,7 +15,7 @@ const Chat = () => {
 		const [users, setUsers] = useState('');
 		const [message,setMessage] = useState('')
 		const [messages,setMessages] = useState([])
-		// console.log(name,room)
+		console.log(users)
 		const ENDPOINT = 'http://localhost:3001'
 
 	useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Input, Container } from "@material-ui/core";
 import norway from "./images/norway-3840x2160-5k-4k-wallpaper-bridge-sea-lake-water-blue-sky-920.jpg";
-import TripLeftMenu from "../../components/TripLeftmenu/TripLeftMenu";
+import TripLeftMenu from "../../components/TripLeftMenu/TripLeftMenu";
 
 import TripMenu from "../../components/TripMenu/TripMenu";
 import TripSort from "../../components/TripSort/TripSort";
@@ -15,6 +15,7 @@ import { Row } from "react-bootstrap";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { withRouter } from "react-router-dom";
 import "./TripMenuPage.css";
+import queryString from "query-string";
 
 class TripMenuPage extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class TripMenuPage extends Component {
       priceSort: false,
       sortName: "trip_price",
       page: 1,
-      pageTotal: 1
+      pageTotal: 1,
+      HomeSearch: false
     };
   }
   //搜尋
@@ -58,22 +60,53 @@ class TripMenuPage extends Component {
   };
   //畫面第一次渲染
   componentDidMount() {
-    fetch("http://localhost:3001/trips/page")
-      .then(
-        response => {
-          console.log(response);
-          return response.json();
-        },
-        error => {
-          console.log(error);
+    const { place, type, month, search,difficulty } = queryString.parse(
+      this.props.location.search
+    );
+    if (place || type || month || difficulty) {
+      let obj = JSON.parse(JSON.stringify(this.state));
+      obj.place = place;
+      obj.type = type;
+		obj.month = month;
+		obj.search = search
+		obj.difficulty = difficulty
+      fetch(`http://localhost:3001/trips/homeselect`, {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "content-type": "application/json"
         }
-      )
-      .then(data => {
-        // 計算頁數，每頁5筆，用ceil計算頁數
-        const pageTotal = Math.ceil(data.length / 5);
-        console.log(pageTotal);
-        this.setState({ data1: data, pageTotal: pageTotal });
-      });
+      })
+        .then(
+          response => {
+            console.log(response);
+            return response.json();
+          },
+          error => {
+            console.log(error);
+          }
+        )
+        .then(data => {
+          this.setState({ data1: data });
+        });
+    } else {
+      fetch("http://localhost:3001/trips/page")
+        .then(
+          response => {
+            console.log(response);
+            return response.json();
+          },
+          error => {
+            console.log(error);
+          }
+        )
+        .then(data => {
+          // 計算頁數，每頁5筆，用ceil計算頁數
+          const pageTotal = Math.ceil(data.length / 5);
+          console.log(pageTotal);
+          this.setState({ data1: data, pageTotal: pageTotal });
+        });
+    }
     // 如果目前網址上沒有頁面的參教(第一次進入時)
     // 讓網址變為第1頁樣子
 

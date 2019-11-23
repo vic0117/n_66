@@ -11,7 +11,7 @@ import "./HomeNavBar.css";
 
 //SIGNAL
 import Logo from "./images/logo.svg";
-import email from "./images/email.svg";
+// import email from "./images/email.svg";
 import user from "./images/user.svg";
 
 import signIn from "./images/sign-in-alt-solid.svg";

@@ -26,14 +26,19 @@ class Home extends Component {
     return (
       <>
 			<div className="MessageButton" onClick={()=>this.setState({system:!this.state.system})}>
-				<img src={message}/>	
+				<img src={message} alt='message'/>	
 			</div>
 			<div className={this.state.system ? ' messageIn' : 'messageInOpen messageIn'}>
 				<Chat/>
 			</div>
         <HomeNavBar currentUser={this.props.currentUser}/>
         <HomeMainCarousel />
-        <HomeFilter />
+        <HomeFilter 
+			  HomeSelect1={this.props.HomeSelect1}
+			  HomeSelect2={this.props.HomeSelect2}
+			  HomeSelect3={this.props.HomeSelect3}
+			  HomeSearch = {this.props.HomeSearch}
+		  />
         <HomeTravelCarousel />
         <HomeAdviser />
         <HomeEarth />

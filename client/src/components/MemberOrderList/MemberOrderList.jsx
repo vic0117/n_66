@@ -4,7 +4,7 @@ import CommentModal from "../CommentModal/CommentModal";
 import { toast } from "react-toastify";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
-import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
+// import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
 class MemberOrderList extends Component {
