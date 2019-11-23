@@ -5,14 +5,18 @@ import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox
 import Footer from "../../components/Footer/Footer";
 import CommentList from "../../components/CommentList/CommentList";
 import { Row, Col } from "react-bootstrap";
+import Pagination from "../../common/Pagination";
 import { ReactComponent as Star } from "./images/star.svg";
 import { ReactComponent as StarSolid } from "./images/star-solid.svg";
+import { paginate } from "../../utils/paginate";
 
 import "./Comment.css";
 class Comment extends Component {
   state = {
     comments: [],
-    place: ""
+    place: "",
+    pageSize: 4, // 每頁幾筆
+    currentPage: 1
   };
 
   componentDidMount() {
@@ -58,8 +62,16 @@ class Comment extends Component {
       });
   };
 
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
+
   render() {
-    console.log(this.state.comments);
+    const { length: count } = this.state.comments;
+    const { pageSize, currentPage, comments: allComments } = this.state;
+
+    const comments = paginate(allComments, currentPage, pageSize);
+
     return (
       <>
         <CommentHeader currentUser={this.props.currentUser} />
@@ -143,11 +155,20 @@ class Comment extends Component {
                 <CommentFilterBox selectComments={this.selectComments} />
               </div>
               <div className="mt-4">
-                <CommentList comments={this.state.comments} />
+                <CommentList comments={comments} />
+                <div className="d-flex justify-content-center">
+                  <Pagination
+                    itemsCount={count}
+                    pageSize={pageSize}
+                    currentPage={currentPage}
+                    onPageChange={this.handlePageChange}
+                  />
+                </div>
               </div>
             </Col>
           </Row>
         </div>
+
         <Footer />
       </>
     );

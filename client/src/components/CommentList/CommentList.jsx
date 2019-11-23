@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import { Row } from "react-bootstrap";
-// import axios from "axios";
 import "./CommentList.css";
 
 class CommentList extends Component {
-  state = {};
-  componentDidMount() {}
   render() {
     const { comments } = this.props;
-    console.log(comments);
-    //  if (comments === null) return null;
     return (
       <>
-        {this.props.comments.map(comment => (
+        {comments.map(comment => (
           <div
-            className="comment-container d-flex flex-column"
+            className="comment-container d-flex flex-column mb-4"
             key={comment.c_id}
           >
             <Row className="comment-info-container">

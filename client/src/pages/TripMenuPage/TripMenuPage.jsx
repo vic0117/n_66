@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Input, Container } from "@material-ui/core";
 import norway from "./images/norway-3840x2160-5k-4k-wallpaper-bridge-sea-lake-water-blue-sky-920.jpg";
-import TripLeftMenu from "../../components/TripLeftMenu/TripLeftMenu";
-
+// import TripLeftMenu from "../../components/TripLeftMenu/TripLeftMenu";
+import TripLeftMenu from "../../components/TripLeftmenu/TripLeftMenu";
 import TripMenu from "../../components/TripMenu/TripMenu";
 import TripSort from "../../components/TripSort/TripSort";
 import TripFilter from "../../components/TripFilter/TripFilter";
@@ -14,8 +14,8 @@ import TripPagination from "../../components/TripPagination/TripPagination";
 import { Row } from "react-bootstrap";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { withRouter } from "react-router-dom";
-import "./TripMenuPage.css";
 import queryString from "query-string";
+import "./TripMenuPage.css";
 
 class TripMenuPage extends Component {
   constructor(props) {
@@ -60,16 +60,16 @@ class TripMenuPage extends Component {
   };
   //畫面第一次渲染
   componentDidMount() {
-    const { place, type, month, search,difficulty } = queryString.parse(
+    const { place, type, month, search, difficulty } = queryString.parse(
       this.props.location.search
     );
     if (place || type || month || difficulty) {
       let obj = JSON.parse(JSON.stringify(this.state));
       obj.place = place;
       obj.type = type;
-		obj.month = month;
-		obj.search = search
-		obj.difficulty = difficulty
+      obj.month = month;
+      obj.search = search;
+      obj.difficulty = difficulty;
       fetch(`http://localhost:3001/trips/homeselect`, {
         method: "POST",
         body: JSON.stringify(obj),

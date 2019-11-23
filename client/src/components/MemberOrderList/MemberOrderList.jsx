@@ -4,11 +4,20 @@ import CommentModal from "../CommentModal/CommentModal";
 import { toast } from "react-toastify";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
+import MemberOrderFilter from "../MemberOrderFilter/MemberOrderFilter";
+
 // import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
 class MemberOrderList extends Component {
-  state = { addModalShow: false, rating: "", reviewInfo: "", reviews: "" };
+  state = {
+    addModalShow: false,
+    rating: "",
+    reviewInfo: "",
+    reviews: "",
+    userOrder: this.props.userOrder,
+    orderStatus: ""
+  };
 
   getModal = value => {
     console.log(value);
@@ -140,124 +149,166 @@ class MemberOrderList extends Component {
     this.setState({ reviews: value });
   };
 
+  selectComments = async orderStatus => {
+    const { currentUser } = this.props;
+    await this.setState({ orderStatus });
+    // let obj = {
+    //   orderStatus: this.state.orderStatus
+    // };
+    // let obj = JSON.parse(JSON.stringify(this.state));
+    // console.log('obj1',obj);
+    // console.log("obj2", obj);
+    // obj.orderStatus = orderStatus;
+
+    // fetch(
+    //   `http://localhost:3001/members_order_select/${currentUser.user.u_id}`,
+    //   {
+    //     method: "POST",
+    //     body: JSON.stringify(obj),
+    //     headers: {
+    //       "content-type": "application/json"
+    //     }
+    //   }
+    // )
+    //   .then(
+    //     response => {
+    //       console.log(response);
+    //       return response.json();
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     }
+    //   )
+    //   .then(data => {
+    //     this.setState({ userOrder: data });
+    //     console.log(data);
+    //   });
+  };
+
   render() {
     const { userOrder } = this.props;
-    console.log(this.props.userInfo.avatar);
     return (
-      <div className="order-list-container">
-        <Row>
-          <Col className="order-list-title">
-            <span>我的訂單</span>
-          </Col>
-        </Row>
-        <Row>
-          {userOrder.map(order => (
-            <Col className="order-card-container col-12 " key={order.order_id}>
-              <Card
-                style={{
-                  width: "100%",
-                  borderTop: "1px solid #eaeaea",
-                  borderRadius: "0",
-                  paddingTop: "1rem"
-                }}
-                className="d-flex"
+      <>
+        <MemberOrderFilter selectComments={this.selectComments} />
+        <div className="order-list-container mt-4">
+          <Row>
+            <Col className="order-list-title">
+              <span>我的訂單</span>
+            </Col>
+          </Row>
+          <Row>
+            {userOrder.map(order => (
+              <Col
+                className="order-card-container col-12 "
+                key={order.order_id}
               >
-                <Card.Body>
-                  <Col>
-                    <Card.Title>
-                      <span className="order-num">
-                        訂單編號:{order.order_id}
-                      </span>
-                    </Card.Title>
-                  </Col>
-                  {order.order_info.map(item => (
-                    <Col
-                      className="d-flex position-relative order-container"
-                      key={item.code}
-                    >
-                      <div
-                        className="img-container col-md-4"
-                        style={{
-                          background: `url(
+                <Card
+                  style={{
+                    width: "100%",
+                    borderTop: "1px solid #eaeaea",
+                    borderRadius: "0",
+                    paddingTop: "1rem"
+                  }}
+                  className="d-flex"
+                >
+                  <Card.Body>
+                    <Col>
+                      <Card.Title>
+                        <span className="order-num">
+                          訂單編號:{order.order_id}
+                        </span>
+                      </Card.Title>
+                    </Col>
+                    {order.order_info.map(item => (
+                      <Col
+                        className="d-flex position-relative order-container"
+                        key={item.code}
+                      >
+                        <div
+                          className="img-container col-md-4"
+                          style={{
+                            background: `url(
                               "http://localhost:3000/images/${item.trip_img ||
                                 item.product_img}"
                             ) no-repeat center center`
-                        }}
-                      ></div>
+                          }}
+                        ></div>
 
-                      <div className="order-info-container d-flex flex-column justify-content-between ">
-                        <span style={{ color: "#96daf0" }}>
-                          {item.trip_country || item.product_brand}
-                        </span>
-                        <Card.Title className="mt-1 mb-2">
-                          {item.trip_name || item.product_name}
-                        </Card.Title>
-                        <div className="d-flex align-items-center mb-2">
-                          {item.trip_duration ? (
-                            <Calendar />
-                          ) : (
-                            <Size height="18" width="18" />
-                          )}
-                          <span className="ml-2">
-                            {item.trip_duration || "尺寸: " + item.product_size}
-                            {item.trip_duration ? "天" : ""}
+                        <div className="order-info-container d-flex flex-column justify-content-between ">
+                          <span style={{ color: "#96daf0" }}>
+                            {item.trip_country || item.product_brand}
                           </span>
-                        </div>
-                        <div className="vertical-align-middle mb-2">
-                          {item.trip_name &&
-                            item.trip_start_date + " - " + item.trip_end_date}
-                        </div>
-                        <div className="price-amount-container">
-                          <div className="d-flex mb-2">
-                            <span>
-                              NT$: {item.trip_price || item.product_price}
-                            </span>
-                            <span className="ml-3">
-                              數量: {item.trip_amount || item.product_amount}
+                          <Card.Title className="mt-1 mb-2">
+                            {item.trip_name || item.product_name}
+                          </Card.Title>
+                          <div className="d-flex align-items-center mb-2">
+                            {item.trip_duration ? (
+                              <Calendar />
+                            ) : (
+                              <Size height="18" width="18" />
+                            )}
+                            <span className="ml-2">
+                              {item.trip_duration ||
+                                "尺寸: " + item.product_size}
+                              {item.trip_duration ? "天" : ""}
                             </span>
                           </div>
+                          <div className="vertical-align-middle mb-2">
+                            {item.trip_name &&
+                              item.trip_start_date + " - " + item.trip_end_date}
+                          </div>
+                          <div className="price-amount-container">
+                            <div className="d-flex mb-2">
+                              <span>
+                                NT$: {item.trip_price || item.product_price}
+                              </span>
+                              <span className="ml-3">
+                                數量: {item.trip_amount || item.product_amount}
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="ml-auto mt-auto to-comment-container ">
-                        {item.trip_name && !item.commented && (
-                          <Button
-                            className="to-comment"
-                            onClick={() => this.getModal(item.code)}
+                        <div className="ml-auto mt-auto to-comment-container ">
+                          {item.trip_name && !item.commented && (
+                            <Button
+                              className="to-comment"
+                              onClick={() => this.getModal(item.code)}
+                              reviewinfo={item}
+                            >
+                              前往評論
+                            </Button>
+                          )}
+
+                          <CommentModal
+                            show={this.state.addModalShow[item.code]}
                             reviewinfo={item}
-                          >
-                            前往評論
-                          </Button>
-                        )}
-
-                        <CommentModal
-                          show={this.state.addModalShow[item.code]}
-                          reviewinfo={item}
-                          userinfo={this.props.userInfo}
-                          currentuser={this.props.currentUser}
-                          onHide={this.closeModal}
-                          handlerating={this.handleRating}
-                          handlesubmitcomment={this.handleSubmitComment}
-                          handlecommentcontent={this.handleCommentContent}
-                          handlecommentssubmit={() =>
-                            this.handleCommentsSubmit(item)
-                          }
-                        />
-                      </div>
-                    </Col>
-                  ))}
-                  <div className="mt-3 d-flex status">
-                    <p>狀態: {order.order_status}</p>
-                    <p className="ml-auto">
-                      合計: NT$ {order.order_total_price}
-                    </p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </div>
+                            userinfo={this.props.userInfo}
+                            currentuser={this.props.currentUser}
+                            onHide={this.closeModal}
+                            handlerating={this.handleRating}
+                            handlesubmitcomment={this.handleSubmitComment}
+                            handlecommentcontent={this.handleCommentContent}
+                            handlecommentssubmit={() =>
+                              this.handleCommentsSubmit(item)
+                            }
+                          />
+                        </div>
+                      </Col>
+                    ))}
+                    <div className="mt-3 d-flex status">
+                      <p>狀態: {order.order_status}</p>
+                      <p className="ml-auto">
+                        合計: NT$ {order.order_total_price}
+                      </p>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </>
     );
   }
 }
