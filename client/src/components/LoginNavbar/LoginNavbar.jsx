@@ -2,16 +2,14 @@ import React from "react";
 import { Nav, Breadcrumb } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // Components
-import { ReactComponent as Logo } from "./images/logo.svg";
-import { ReactComponent as User } from "./images/user.svg";
-import { ReactComponent as Cart } from "./images/cart.svg";
-import { ReactComponent as Logout } from "./images/logout.svg";
+import { ReactComponent as Logo } from "../NavBar/images/logo.svg";
+import { ReactComponent as User } from "../NavBar/images/user.svg";
+import { ReactComponent as Cart } from "../NavBar/images/cart.svg";
+import { ReactComponent as Logout } from "../NavBar/images/logout.svg";
 
-import "./NavBar.css";
+import "../NavBar/NavBar.css";
 
-class NavBar extends React.Component {
-  state = {};
-
+class LoginNavBar extends React.Component {
   componentDidMount() {
     // let navbar = document.querySelector(".navbar-container");
     let toggler = document.querySelector(".navBtn");
@@ -101,7 +99,11 @@ class NavBar extends React.Component {
               </Link>
               {currentUser && (
                 <>
-                  <Link to="/logout" className="navbar-link icon-container">
+                  <Link
+                    to="/logout"
+                    className="navbar-link icon-container"
+                    style={{ marginRight: "2rem" }}
+                  >
                     <Logout height="20" width="20" className="logout-icon" />
                   </Link>
                 </>
@@ -109,9 +111,11 @@ class NavBar extends React.Component {
               <Link to="/account" className="navbar-link icon-container">
                 <User height="20" width="20" className="user-icon" />
               </Link>
-              <Link to="/cart" className="navbar-link icon-container">
-                <Cart height="20" width="20" className="cart-icon" />
-              </Link>
+              {currentUser ? (
+                <Link to="/cart" className="navbar-link icon-container">
+                  <Cart height="20" width="20" className="cart-icon" />
+                </Link>
+              ) : null}
             </Nav>
           </div>
 
@@ -119,12 +123,19 @@ class NavBar extends React.Component {
             <Breadcrumb.Item href="/" className="p-1">
               首頁
             </Breadcrumb.Item>
-            <Breadcrumb.Item href="/account" className="p-1" active>
-              會員專區
+            <Breadcrumb.Item href="/login" className="p-1" active>
+              登入
             </Breadcrumb.Item>
           </Breadcrumb>
 
           <ul className="right-menu mt-3">
+            {currentUser ? (
+              <li>
+                <Link to="/cart">
+                  <h5>我的購物車</h5>
+                </Link>
+              </li>
+            ) : null}
             <li>
               <Link to="/trips/page/1">
                 <h5>旅遊行程</h5>
@@ -140,13 +151,6 @@ class NavBar extends React.Component {
                 <h5>旅遊評價</h5>
               </Link>
             </li>
-            {currentUser ? (
-              <li>
-                <Link to="/cart">
-                  <h5>我的購物車</h5>
-                </Link>
-              </li>
-            ) : null}
             {!currentUser ? (
               <li>
                 <Link to="/login">
@@ -167,4 +171,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default LoginNavBar;

@@ -109,7 +109,7 @@ class DashBoard extends Component {
       await this.setState({ currentUser: this.props.currentUser.user });
     } else {
       // 如果沒登入 (localStorage中沒東西)
-      this.props.history.push("/login"); // 暫時先跳轉首頁
+      this.props.history.push("/login"); 
     }
 
     const { currentUser } = this.state;
@@ -281,13 +281,8 @@ class DashBoard extends Component {
   };
 
   handleSelectComments = async orderStatus => {
-    // filteredUserOrder: ""
     console.log(orderStatus);
     console.log(this.state.userOrder);
-
-    // const filtered = orderStatus
-    //   ? this.state.userOrder.filter(order => order.order_status === orderStatus)
-    //   : this.state.userOrder;
 
     let filtered = "";
     if (orderStatus === "選擇訂單狀態") {

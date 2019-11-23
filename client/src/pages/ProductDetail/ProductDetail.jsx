@@ -83,7 +83,7 @@ class ProductDetail extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
+        <NavBar currentUser={this.props.currentUser} />
         <ProductCarousel
           data={this.state.ProductsDetail}
           pics={this.state.Pictures}

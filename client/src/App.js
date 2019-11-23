@@ -49,11 +49,11 @@ class App extends Component {
     });
   }
   state = {
-	  place:'',
-	  type:'',
-	  month:'',
-	  data:[],
-	  HomeSearch:false
+    place: "",
+    type: "",
+    month: "",
+    data: [],
+    HomeSearch: false
   };
   componentDidMount() {
     try {
@@ -64,25 +64,30 @@ class App extends Component {
     } catch (error) {}
   }
 
-  HomeSelect1 = (eventKey)=>{
-		this.setState({place:eventKey})
-  }
-  HomeSelect2 = (eventKey)=>{
-	  this.setState({type:eventKey})
-  }
-  HomeSelect3 = (eventKey)=>{
-	  this.setState({month:eventKey})
-  }
-  HomeSearch = ()=>{
-	this.setState({HomeSearch:true})
-	
-  }
+  HomeSelect1 = eventKey => {
+    this.setState({ place: eventKey });
+  };
+  HomeSelect2 = eventKey => {
+    this.setState({ type: eventKey });
+  };
+  HomeSelect3 = eventKey => {
+    this.setState({ month: eventKey });
+  };
+  HomeSearch = () => {
+    this.setState({ HomeSearch: true });
+  };
   render() {
-	//   console.log(this.state.HomeSearch)
+    //   console.log(this.state.HomeSearch)
     return (
       <ScrollToTop>
         <Switch>
-          <Route path="/products" exact component={ProductList} />
+          <Route
+            path="/products"
+            exact
+            render={props => (
+              <ProductList currentUser={this.state.currentUser} />
+            )}
+          />
           <Route
             path="/products/:id"
             exact
@@ -122,12 +127,20 @@ class App extends Component {
               <DashBoard {...props} currentUser={this.state.currentUser} />
             )}
           />
-          <Route path="/trips/page/:page" exact render={props=>(<TripMenuPage {...props} 
-				 HomeSearch = {this.HomeSearch}
-				 place = {this.state.place}
-				 type = {this.state.type}
-				 month = {this.state.month}
-			 />)} />
+          <Route
+            path="/trips/page/:page"
+            exact
+            render={props => (
+              <TripMenuPage
+                {...props}
+                HomeSearch={this.HomeSearch}
+                place={this.state.place}
+                type={this.state.type}
+                month={this.state.month}
+                currentUser={this.state.currentUser}
+              />
+            )}
+          />
 
           <Route
             path="/trips/page"
@@ -150,12 +163,14 @@ class App extends Component {
             path="/"
             exact
             render={props => (
-              <Home {...props} currentUser={this.state.currentUser} 
-				  HomeSelect1={this.HomeSelect1}
-				  HomeSelect2={this.HomeSelect2}
-				  HomeSelect3={this.HomeSelect3}
-				  HomeSearch = {this.HomeSearch}
-				  />
+              <Home
+                {...props}
+                currentUser={this.state.currentUser}
+                HomeSelect1={this.HomeSelect1}
+                HomeSelect2={this.HomeSelect2}
+                HomeSelect3={this.HomeSelect3}
+                HomeSearch={this.HomeSearch}
+              />
             )}
           />
         </Switch>

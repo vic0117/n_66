@@ -90,7 +90,7 @@ class MyCart extends React.Component {
 
       return (
         <>
-          <HomeNavBar currentUser={this.props.currenUser} />
+          <HomeNavBar currentUser={this.props.currentUser} />
           <CartContent
             data={this.state.productsToBuy}
             tripData={this.state.tripsToBuy}

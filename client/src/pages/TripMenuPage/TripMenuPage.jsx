@@ -407,7 +407,7 @@ class TripMenuPage extends Component {
       <>
         <div className="TripMenuNavBox">
           {/* <N66navbarButton /> */}
-          <HomeNavBar />
+          <HomeNavBar currentUser={this.props.currentUser} />
 
           <img src={norway} alt="norway" className="norway" />
 

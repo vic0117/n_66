@@ -35,11 +35,10 @@ class ProductList extends React.Component {
 
     render() {
         return (
-            <>
-                <HomeNavBar />
-                <ProductLeftMenu data={this.state.ProductsData} />
-                
-            </>
+          <>
+            <HomeNavBar currentUser={this.props.currentUser} />
+            <ProductLeftMenu data={this.state.ProductsData} />
+          </>
         );
     }
 }
