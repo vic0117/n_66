@@ -41,7 +41,7 @@ class HomeNavBarRightMenu extends React.Component {
           </Link>
         </li>
 
-        {currentUser ? (
+        {!currentUser ? (
           <li>
             <Link to="/login">
               <h5>會員登入</h5>
