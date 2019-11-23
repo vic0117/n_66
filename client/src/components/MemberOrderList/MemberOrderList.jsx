@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { paginate } from "../../utils/paginate";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
 import { ReactComponent as Size } from "./images/tshirt.svg";
+import { ReactComponent as Checked } from "./images/check-circle-regular.svg";
 import MemberOrderFilter from "../MemberOrderFilter/MemberOrderFilter";
 import Pagination from "../../common/Pagination";
 
@@ -270,8 +271,13 @@ class MemberOrderList extends Component {
                         </div>
                       </Col>
                     ))}
-                    <div className="mt-3 d-flex status">
-                      <p>狀態: {order.order_status}</p>
+                    <div className="mt-3 d-flex status ">
+                      <p className="d-flex align-items-center">
+                        狀態: {order.order_status}
+                        {order.order_status === "已送達" ? (
+                          <Checked width="18" height="18" className="ml-1" />
+                        ) : null}
+                      </p>
                       <p className="ml-auto">
                         合計: NT$ {order.order_total_price}
                       </p>
