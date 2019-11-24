@@ -360,8 +360,8 @@ class CheckOutContent extends React.Component {
                                                         type="radio"
                                                         name="exampleRadios"
                                                         id="exampleRadios1"
-                                                        defaultValue="option1"
-                                                        defaultChecked
+                                                        value="option1"
+                                                        checked
                                                     ></input>
                                                     <label
                                                         className="form-check-label text-left font-size-14"

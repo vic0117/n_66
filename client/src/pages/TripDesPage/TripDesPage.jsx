@@ -78,7 +78,6 @@ class TripDesPage extends Component {
     product.trip_end_date = aaa.trip_end;
     product.trip_type = aaa.trip_type;
     product.trip_amount = 1;
-    product.commented = 0;
     product.code = Date.now();
 
     console.log(product);

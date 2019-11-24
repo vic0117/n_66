@@ -28,6 +28,7 @@ class CartContent extends React.Component {
   deleteProduct = async (i) => {
     let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
     let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
+    // console.log(i);
 
     productsArray.forEach(product => {
       if (product.code === i) {

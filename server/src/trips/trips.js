@@ -12,7 +12,7 @@ const db = mysql.createConnection({
 }); 
 
 router.get("/trips/page", (req, res) => {
-  const sql = "SELECT * FROM `trip_list`"; 
+  const sql = "SELECT * FROM `trip_list`";
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
     res.send(JSON.stringify(results));

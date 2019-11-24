@@ -11,7 +11,6 @@ const db = mysql.createConnection({
   password: "",  
   database: "n_66"
 });
-bluebird.promisifyAll(db);
 
 router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `product_list`";
