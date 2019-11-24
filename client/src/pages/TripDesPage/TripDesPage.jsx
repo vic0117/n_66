@@ -68,8 +68,8 @@ class TripDesPage extends Component {
   addToCart = () => {
     const isLogin = localStorage.getItem("token");
     let aaa = this.state.detailData[0];
-    console.log(aaa)
-    console.log(aaa.trip_type);
+    // console.log(aaa)
+    // console.log(aaa.trip_type);
 
     let product = {};
     product.sid = aaa.sid;

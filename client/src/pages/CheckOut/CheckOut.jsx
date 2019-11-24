@@ -38,7 +38,7 @@ class CheckOut extends React.Component {
             return result.json()
         })
         .then(json=>{
-            console.log(json);
+            // console.log(json);
             let hasCoupon = json;
 
             this.setState({ 
@@ -48,6 +48,8 @@ class CheckOut extends React.Component {
                 userId: userId,
                 hasCoupon: hasCoupon
             });
+
+            
         })
     }
 

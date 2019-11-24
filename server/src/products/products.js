@@ -5,19 +5,21 @@ const moment = require('moment');
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "",  
   database: "n_66"
 });
 
+bluebird.promisifyAll(db);
+
 router.get("/products", (req, res) => {
   const sql = "SELECT * FROM `product_list`";
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
-    console.log(results);
+    // console.log(results);
     res.json(results);
   });
   // res.send('aaaa')
@@ -29,7 +31,7 @@ router.get("/products/:id", (req, res) => {
 
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
-    console.log(results);
+    // console.log(results);
     res.json(results);
   });
 });
@@ -56,7 +58,7 @@ router.post("/products/add_wishlist", (req, res) => {
     ],
     (error, results, fields) => {
       if (error) throw error;
-      console.log(results);
+      // console.log(results);
       if (results.affectedRows === 1) {
         data.success = true;
         data.msg.text = "已加入願望清單";
@@ -72,7 +74,7 @@ router.post("/products/add_wishlist", (req, res) => {
 
 //我的購物車
 router.get("/cart", (req, res)=>{
-  console.log(req.body)
+  // console.log(req.body)
   res.json(req.body)
 })
 
@@ -81,14 +83,14 @@ router.get("/cart", (req, res)=>{
 //結帳頁面 搜尋使用者是否有折價卷
 router.post("/checkout/findCoupon", (req, res)=>{
   let user = req.body;
-  console.log(user.userId);
+  // console.log(user.userId);
 
   let sql = `SELECT * FROM coupon_list WHERE u_id = ${user.userId}`;
   let couponList = {};
  
   db.queryAsync(sql)
     .then(results=>{
-      console.log(results.length)
+      // console.log(results.length)
       if(results.length == 0){
         couponList.answer = ["沒有折價卷"]
       }
@@ -96,7 +98,7 @@ router.post("/checkout/findCoupon", (req, res)=>{
         couponList.answer = results;
       }
 
-      console.log(couponList)
+      // console.log(couponList)
       res.json(couponList);
     })
 })
@@ -116,11 +118,21 @@ router.post("/checkout", (req, res) => {
   db.queryAsync(sql)
     .then(results => { 
       
-      sql = `SELECT order_id FROM order_list ORDER BY order_id DESC LIMIT 0 , 1`;
+      sql = `SELECT * FROM order_list ORDER BY order_id DESC LIMIT 0 , 1`;
       return db.queryAsync(sql);
     })
     .then(results=>{
+      // console.log(results);
+      // 新id
       newId = results[0].order_id;
+      // 到貨時間
+      // crateAt = JSON.stringify(results[0].create_at).split('T')[0].split('"')[1].split('-').join('/');
+      // console.log( crateAt)
+      // let crateAt = results[0].create_at
+      // 預計到貨日期
+      let arrivalDate = moment( new Date(), 'YYYY/MM/DD').add(3, 'day');
+      let arrivalDateStr = JSON.stringify(arrivalDate).split('T')[0].split('"')[1].split("-").join("/");
+      // console.log(arrivalDateStr)
 
       let productsArray = JSON.parse(data.productsToBuy);
 
@@ -140,7 +152,7 @@ router.post("/checkout", (req, res) => {
       data.productsToBuy = JSON.stringify(productsArray);
       data.tripsToBuy = JSON.stringify(tripsArray);
 
-      sql=` UPDATE order_list SET order_trip = '${data.tripsToBuy}', order_product = '${data.productsToBuy}' WHERE u_id = '${data.userId}'`
+      sql=` UPDATE order_list SET order_trip = '${data.tripsToBuy}', order_product = '${data.productsToBuy}' , arrival_date = '${arrivalDateStr}' WHERE u_id = '${data.userId}'`
       return db.queryAsync(sql);
     })
     .then(results=>{
@@ -156,6 +168,7 @@ router.post("/checkout", (req, res) => {
     .then(results=>{
       output.text = "購買成功";
       output.rows = data;
+      // console.log(output)
       res.json(output);
     })
 });

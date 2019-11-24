@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import "./productCarousel.scss";
+import "./productCarousel.css";
 // import { object } from "prop-types";
 
 class ProductCarousel extends React.Component {
@@ -72,6 +72,7 @@ class ProductCarousel extends React.Component {
       let product = {};
       product.product_id = aaa.product_id;
       product.product_name = aaa.product_name;
+      product.product_brand = aaa.product_brand;
       product.product_file_name = aaa.product_file_name;
       product.product_img = JSON.parse(aaa.product_pictures)[0];
       product.product_size = aaa.product_size;

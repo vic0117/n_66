@@ -392,7 +392,7 @@ class CartContent extends React.Component {
                     </Link>
                   <Link className="checkOut" to="/checkout">
                     進行結帳
-                    </Link>
+                  </Link>
                 </div>
               </Col>
             </Row>

@@ -11,17 +11,17 @@ import {
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
 // import search from "../../components/TripLeftMenu/images/search.svg"
-import search from "../../components/TripLeftmenu/images/search.svg";
+import search from "../../components/TripLeftMenu/images/search.svg";
 // import location from '../TripLeftMenu/images/location.svg';
 // import trac from "../../components/TripLeftMenu/images/trac.svg";
-import trac from "../../components/TripLeftmenu/images/trac.svg";
-import SliderPrice from "../TripLeftmenu/SliderPrice";
+import trac from "../../components/TripLeftMenu/images/trac.svg";
+import SliderPrice from "../TripLeftMenu/SliderDays";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
 
 //CSS
-import "./productLeftMenu.scss";
+import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
 
 class ProductLeftMenu extends Component {
@@ -37,9 +37,6 @@ class ProductLeftMenu extends Component {
   componentDidMount() {
     let pages = document.querySelector('.page1');
     console.log(pages);
-    
-    
-
     let filterBtn = document.querySelector(".product-filter-btn");
     let filterMenu = document.querySelector(".product-filter-menu");
     let filterToggler = document.querySelector(".filterToggler");
@@ -333,12 +330,60 @@ class ProductLeftMenu extends Component {
           <Row className="leftMenuRow d-flax justify-content-center">
             <Col md={3} className="leftMenuContent">
               <div className="leftMenu">
-                <div className="searchBox">
+                {/* <div className="searchBox">
                   <input type="text" placeholder="搜尋"></input>
                   <div className="searchImg">
                     <img src={search} alt="search" />
                   </div>
-                </div>
+                </div> */}
+                  <div className="buttonTitle">
+                    <img src={trac} alt="trac" />
+                    <p>森林露營</p>
+                  </div>
+                  <DropdownButton
+                    className=""
+                    title="所有類型"
+                    // id="dropdown-basic-button"
+                    onSelect={eventKey => {
+                      this.setState({});
+                    }}
+                  >
+                    <Dropdown.Item
+                      eventKey="所有類型"
+                      value="1"
+                      href="#/action-1"
+                    >
+                      所有類型
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="帳篷"
+                      value="2"
+                      href="#/action-2"
+                    >
+                      帳篷
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="燈具爐具"
+                      value="3"
+                      href="#/action-3"
+                    >
+                      燈具爐具
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="焚火燒烤"
+                      value="4"
+                      href="#/action-4"
+                    >
+                      焚火燒烤
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="寢室用具"
+                      value="5"
+                      href="#/action-5"
+                    >
+                      寢室用具
+                    </Dropdown.Item>
+                  </DropdownButton>
 
                 <div className="dropDowns">
                   <div className="buttonTitle">
@@ -348,37 +393,24 @@ class ProductLeftMenu extends Component {
 
                   <DropdownButton
                     // id="dropdown-basic-button"
+                    title="所有類型"
                     onSelect={eventKey => {
                       this.setState({});
                     }}
                   >
                     <Dropdown.Item
-                      eventKey="北極光"
+                      eventKey="所有類型"
                       value="1"
                       href="#/action-1"
                     >
-                      北極光
+                      所有類型
                     </Dropdown.Item>
                     <Dropdown.Item
-                      eventKey="駕車遊覽"
+                      eventKey="登山背包"
                       value="2"
                       href="#/action-2"
                     >
-                      駕車遊覽
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="獨木舟"
-                      value="3"
-                      href="#/action-3"
-                    >
-                      獨木舟
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="雪橇犬"
-                      value="3"
-                      href="#/action-3"
-                    >
-                      雪橇犬
+                      登山背包
                     </Dropdown.Item>
                   </DropdownButton>
 
@@ -388,17 +420,18 @@ class ProductLeftMenu extends Component {
                   </div>
                   <DropdownButton
                     className=""
+                    title="所有類型"
                     // id="dropdown-basic-button"
                     onSelect={eventKey => {
                       this.setState({});
                     }}
                   >
                     <Dropdown.Item
-                      eventKey="所有活動"
+                      eventKey="所有類型"
                       value="1"
                       href="#/action-1"
                     >
-                      所有活動
+                      所有類型
                     </Dropdown.Item>
                     <Dropdown.Item
                       eventKey="北極光"
@@ -560,28 +593,7 @@ class ProductLeftMenu extends Component {
             <Col sm={12} md={9} className="p-0">
               <Container className="p-0 card-container">
                 <Row>
-                  {data.map((item, i) => (
-                    <Col key={i} sm={6} lg={4}>
-                      <Link to={`/products/${item.product_id}`}>
-                        <Card key={item.product_id} className="product-card">
-                          <div className="photoFrame">
-                            <Card.Img
-                              variant="top"
-                              src={
-                                "http://localhost:3000/images/products/" +
-                                item.product_file_name +
-                                "/" +
-                                JSON.parse(item.product_pictures)[0]
-                              }
-                            />
-                          </div>
-                          <Card.Body>
-                            <Card.Title>{item.product_name}</Card.Title>
-                          </Card.Body>
-                        </Card>
-                      </Link>
-                    </Col>
-                  ))}
+                  {renderTodos}
                 </Row>
                 <Row>
                   <Col>

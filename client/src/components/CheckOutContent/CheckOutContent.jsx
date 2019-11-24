@@ -63,9 +63,9 @@ class CheckOutContent extends React.Component {
                 //TODO:
                 // tosty
 
-                localStorage.setItem('tripsToBuy', '[]')
-                localStorage.setItem('productsToBuy', '[]')
-                localStorage.setItem('totalCost', '0')
+                // localStorage.setItem('tripsToBuy', '[]')
+                // localStorage.setItem('productsToBuy', '[]')
+                // localStorage.setItem('totalCost', '0')
             })
     }
 
@@ -180,12 +180,7 @@ class CheckOutContent extends React.Component {
                                 <div className="align-self-end mb-2 text-right" style={{ flex: 2 }}>
                                     價格
                                 </div>
-                                {/* <div
-                                    className="align-self-end text-center mb-2"
-                                    style={{ flex: 1 }}
-                                >
-                                    刪除
-                                </div> */}
+
                             </div>
                             <div className=" py-3" style={{ borderBottom: '1px solid #E8E8E8' }}>
                                 {

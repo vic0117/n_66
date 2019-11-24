@@ -110,6 +110,6 @@ class MyCart extends React.Component {
         }
     }
   }
-}
+
 
 export default MyCart;

@@ -34,20 +34,16 @@ class ProductList extends React.Component {
 
 
     render() {
-
         const {currentUser} = this.props;
-        
-        
-        if(currentUser){
-            // console.log(currentUser);
-        }
+        // if(currentUser){
+        //     // console.log(currentUser);
+        // }
             return (
                 <>
                     <HomeNavBar 
                         numberOfProducts={this.props.numberOfProducts}
                         currentUser={this.props.currentUser} />
                     <ProductLeftMenu data={this.state.ProductsData} currentUser={this.props.currentUser}/>
-                    {/* <Pagination data={this.state.ProductsData}/> */}
                 </>
             );
     }
