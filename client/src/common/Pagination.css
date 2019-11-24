@@ -1,0 +1,8 @@
+.pagination-container .page-item {
+  cursor: pointer;
+}
+
+.pagination-container .page-item.active .page-link {
+  border-color: #dee2e6 !important;
+  background-color: #96daf0;
+}

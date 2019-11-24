@@ -9,6 +9,9 @@ import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import UpdatePassword from "./components/UpdatePassword/UpdatePassword";
+
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
@@ -77,7 +80,7 @@ class App extends Component {
     this.setState({ HomeSearch: true });
   };
   render() {
-    //   console.log(this.state.HomeSearch)
+    console.log(this.props);
     return (
       <ScrollToTop>
         <Switch>
@@ -114,6 +117,24 @@ class App extends Component {
             render={props => <Comment currentUser={this.state.currentUser} />}
           />
           <Route path="/logout" component={Logout} />
+
+          <Route
+            path="/password/recover"
+            render={props => (
+              <ForgotPassword {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/password/reset/:userId/:token"
+            render={props => (
+              <UpdatePassword
+                {...props}
+                userId={props.match.params.userId}
+                token={props.match.params.token}
+              />
+            )}
+          />
 
           <Route
             path="/login"
