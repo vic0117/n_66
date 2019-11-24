@@ -1,0 +1,22 @@
+.BreadcrumbCss {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+}
+
+.BreadcrumbCss h6 {
+  color: #96daf0;
+}
+
+.BreadcrumbCss .BreadActive {
+  color: #243a4a;
+}
+
+.BreadcrumbCss .Breadsticks {
+  margin: 0 20px 10px 20px;
+}
+/*# sourceMappingURL=Breadcrumb.css.map */

@@ -5,7 +5,7 @@ const bluebird = require("bluebird");
 const jwt = require("jsonwebtoken");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "root",
@@ -32,7 +32,18 @@ function verifyToken(req, res, next) {
     res.json("forbidden");
   }
 }
+// 我的評論
+router.get("/members_comments_list/:id?", (req, res) => {
+  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
+  });
+});
 
+// 發表評論
 router.post("/members_comments/:id?", verifyToken, (req, res) => {
   let data = { success: false, msg: { type: "danger", text: "" } };
   // jwt authentication
@@ -47,16 +58,17 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
       // 沒輸入東西時;
       if (!req.body.reviews) {
         data.msg.text = "資料不足";
-        res.json(data);
+        return res.json(data);
       }
 
       console.log("reviews", req.body.reviews);
       const sql =
-        "INSERT INTO comments_list ( u_id,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?)";
+        "INSERT INTO comments_list ( u_id,avatar,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?,?)";
       db.query(
         sql,
         [
           req.body.u_id,
+          req.body.avatar,
           req.body.last_name_zh,
           req.body.gender,
           req.body.trip_name,

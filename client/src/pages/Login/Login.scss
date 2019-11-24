@@ -11,11 +11,10 @@ $btnH: 50px;
 
 .cont {
   background-color: #fff;
-  // overflow: hidden;
   position: relative;
   max-width: $contW;
   min-height: 550px;
-  margin: 9.5rem auto 5rem auto;
+  margin: 11.5rem auto 5rem auto;
 
   input,
   button {
@@ -28,6 +27,25 @@ $btnH: 50px;
     padding: 15px 10px;
     height: 80px;
     width: 80px;
+  }
+
+  .error-msg {
+    font-size: 12px;
+    text-align: center;
+    height: 25px;
+    margin: 10px auto 0 auto;
+    padding: 0 !important;
+  }
+
+  .alert-danger {
+    background-color: transparent !important;
+    border: none !important;
+  }
+
+  .alert-success {
+    background-color: transparent !important;
+    border: none !important;
+    color: #155724 !important;
   }
 
   .signIn {
@@ -51,13 +69,12 @@ $btnH: 50px;
       transition: 0.7s 0.2s ease-out, opacity 0.7s 0.2s ease-out;
       .feedback {
         text-align: center;
-        width: 100%;
-        height: 30px;
-        margin: 10px auto 0 auto;
-        color: #242a3a;
-        font-weight: 200;
         font-size: 12px;
-        padding-top: 10px;
+        text-align: center;
+        width: 150px;
+        height: 30px;
+        margin: 5px auto;
+        padding: 5px;
       }
     }
 
@@ -66,19 +83,17 @@ $btnH: 50px;
       top: 200%;
       width: 100%;
       height: 100%;
-      // margin-bottom: 500px;
-      // background-color: rgba(255, 255, 255, 0.801);
       transition: transform 1.2s ease-in-out, top 1.2s ease-in-out,
         opacity 0.3s ease-in-out;
       .feedback {
         text-align: center;
-        width: 100%;
-        height: 30px;
-        margin: 10px auto 0 auto;
-        padding-top: 5px;
-        color: #242a3a;
-        font-weight: 200;
         font-size: 12px;
+        text-align: center;
+        width: 150px;
+        height: 30px;
+        margin: 5px auto;
+        padding: 5px;
+        color: #721c24;
       }
     }
   }
@@ -134,21 +149,8 @@ $btnH: 50px;
       z-index: -1;
     }
 
-    // .sub-cont{
-    //   // pointer-events: none;
-    // }
-
     .__text {
       transition: all $switchAT ease-in-out;
-      // z-index: 2;
-      // // position: absolute;
-      // // left: 65px;
-      // // bottom: 180px;
-      // width: $btnW;
-      // padding: 0 20px;
-      // text-align: center;
-      // color: #fff;
-      // margin: 0 auto;
 
       h2 {
         margin-bottom: 10px;
@@ -166,16 +168,6 @@ $btnH: 50px;
         z-index: 2;
       }
     }
-
-    // .m--in{
-    //   // position: absolute;
-    //   // right: 610px;
-    // }
-
-    // .m--up{
-    //   // position: absolute;
-
-    // }
 
     .__btn {
       overflow: hidden;
@@ -218,13 +210,7 @@ $btnH: 50px;
 
       .m--in {
         transform: translateY($btnH * -2);
-        // transform: translateY(0);
       }
-
-      // .m--up {
-      //     // transform: translateY($btnH * 2);
-
-      // }
     }
   }
 
@@ -269,7 +255,7 @@ $btnH: 50px;
   label {
     display: block;
     width: $inputW;
-    margin: 25px auto 0;
+    margin: 10px auto 0;
     text-align: center;
 
     span {
@@ -299,7 +285,7 @@ $btnH: 50px;
 
   .forgot-pass {
     display: block;
-    margin-top: 27px;
+    // margin-top: 10px;
     text-align: center;
     font-size: 12px;
     color: #cfcfcf;
@@ -311,15 +297,11 @@ $btnH: 50px;
   }
 
   .submit {
-    margin: 25px auto 40px auto;
+    margin: 0px auto 40px auto;
     background: #fff;
     border: 2px solid #cacaca;
     color: #2a2a3a;
     font-weight: 200;
-  }
-
-  .register {
-    margin-top: 6px !important;
   }
 }
 

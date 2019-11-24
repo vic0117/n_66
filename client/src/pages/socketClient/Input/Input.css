@@ -1,0 +1,37 @@
+.form22 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 2px solid #d3d3d3;
+}
+
+.form22 .input {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 80%;
+  font-size: 1.2em;
+}
+
+.form22 input:focus,
+.form22 textarea:focus,
+.form22 select:focus {
+  outline: none;
+}
+
+.form22 .sendButton {
+  color: #242a3a !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #96daf0;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  width: 80px;
+}
+
+.form22 .sendButton:hover {
+  background: #242a3a;
+  color: #fff !important;
+}
+/*# sourceMappingURL=Input.css.map */

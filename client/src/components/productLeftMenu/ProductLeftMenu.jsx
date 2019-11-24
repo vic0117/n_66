@@ -10,10 +10,12 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
+// import search from "../../components/TripLeftMenu/images/search.svg"
+import search from "../../components/TripLeftmenu/images/search.svg";
 // import location from '../TripLeftMenu/images/location.svg';
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "../TripLeftMenu/SliderPrice";
+// import trac from "../../components/TripLeftMenu/images/trac.svg";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from "../TripLeftmenu/SliderPrice";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
@@ -558,7 +560,28 @@ class ProductLeftMenu extends Component {
             <Col sm={12} md={9} className="p-0">
               <Container className="p-0 card-container">
                 <Row>
-                  {renderTodos}
+                  {data.map((item, i) => (
+                    <Col key={i} sm={6} lg={4}>
+                      <Link to={`/products/${item.product_id}`}>
+                        <Card key={item.product_id} className="product-card">
+                          <div className="photoFrame">
+                            <Card.Img
+                              variant="top"
+                              src={
+                                "http://localhost:3000/images/products/" +
+                                item.product_file_name +
+                                "/" +
+                                JSON.parse(item.product_pictures)[0]
+                              }
+                            />
+                          </div>
+                          <Card.Body>
+                            <Card.Title>{item.product_name}</Card.Title>
+                          </Card.Body>
+                        </Card>
+                      </Link>
+                    </Col>
+                  ))}
                 </Row>
                 <Row>
                   <Col>

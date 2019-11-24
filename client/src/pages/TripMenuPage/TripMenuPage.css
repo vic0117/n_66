@@ -1,17 +1,17 @@
-.TripMenuNavBox {
-  max-height: 95%;
-  width: 100%;
-  position: relative;
-}
-
-.TripMenuNavBox .norway {
+.norway {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.TripMenuNavBox .TripMenuNavCover {
+.TripMenuNavBox {
+  max-height: 95%;
+  width: 100%;
+  position: relative;
+}
+
+.TripMenuNavCover {
   background-image: -webkit-linear-gradient(bottom, #242a3a, #242a3ac8);
   width: 100%;
   height: 100%;
@@ -20,38 +20,38 @@
   left: 0;
 }
 
-.TripMenuNavBox .TripMenuContentBox {
+.TripMenuContentBox {
   width: 100%;
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 100px;
 }
 
-.TripMenuNavBox .TripMenuContentBox a {
+.TripMenuContentBox a {
   text-decoration: none !important;
 }
 
-.TripMenuNavBox .TripMenuContentInsideBox {
+.TripMenuContentInsideBox {
   width: 65%;
 }
 
-.TripMenuNavBox .TripMenuContentInsideBox a {
+.TripMenuContentInsideBox a {
   text-decoration: none !important;
   color: #74767d;
 }
 
-.TripMenuNavBox .noResult {
+.noResult {
   margin: auto;
   color: #242a3a;
   display: block;
   text-align: center;
 }
 
-.TripMenuNavBox .titleYes {
+.titleYes {
   margin: auto;
   color: #242a3a;
   display: none;
@@ -59,18 +59,18 @@
 }
 
 @media (max-width: 992px) {
-  .TripMenuNavBox .leftMenu {
+  .leftMenu {
     display: none !important;
   }
-  .TripMenuNavBox .TripSortBox {
+  .TripSortBox {
     display: none !important;
   }
-  .TripMenuNavBox .TripMenuContentInsideBox {
+  .TripMenuContentInsideBox {
     margin: auto;
   }
 }
 
-.TripMenuNavBox .TripMenuNavInputBox {
+.TripMenuNavInputBox {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -88,33 +88,33 @@
           align-items: center;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox p {
+.TripMenuNavInputBox p {
   font-size: 20px;
   color: #96daf0;
   letter-spacing: 20px;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox h1 {
+.TripMenuNavInputBox h1 {
   color: #fff;
   font-size: 4.375rem;
   font-weight: 300 !important;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox button {
+.TripMenuNavInputBox button {
   background: transparent;
   border: none;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox button:focus {
+.TripMenuNavInputBox button:focus {
   outline: 0;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox img {
+.TripMenuNavInputBox img {
   width: 24px;
   fill: #fff;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox .TripSearchInput {
+.TripMenuNavInputBox .TripSearchInput {
   margin-top: 50px;
   margin-left: 70px;
   width: 500px;
@@ -123,12 +123,12 @@
   border-bottom: 1px solid #eaeaea;
 }
 
-.TripMenuNavBox .TripMenuNavInputBox .TripSearchInput:after {
+.TripMenuNavInputBox .TripSearchInput:after {
   border-bottom: 1px solid #eaeaea;
 }
 
 @media (max-width: 786px) {
-  .TripMenuNavBox h1 {
+  .TripMenuNavInputBox h1 {
     font-size: 50px;
   }
 }

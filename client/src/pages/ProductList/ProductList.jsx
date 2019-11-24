@@ -43,7 +43,9 @@ class ProductList extends React.Component {
         }
             return (
                 <>
-                    <HomeNavBar numberOfProducts={this.props.numberOfProducts}/>
+                    <HomeNavBar 
+                        numberOfProducts={this.props.numberOfProducts}
+                        currentUser={this.props.currentUser} />
                     <ProductLeftMenu data={this.state.ProductsData} currentUser={this.props.currentUser}/>
                     {/* <Pagination data={this.state.ProductsData}/> */}
                 </>

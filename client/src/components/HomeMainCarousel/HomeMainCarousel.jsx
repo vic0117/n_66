@@ -1,17 +1,17 @@
 import React from "react";
 import Slider from "react-slick";
-
+import { Link } from "react-router-dom";
 //CSS
 import "./HomeMainCarousel.css";
 // import "../../fontawesome/css/all.min.css"
 
 //HEADER CAROUSEL IMAGES
 import sliderImg1 from "./images/aurore-boreale-en-islande-121.jpg";
-import sliderImg2 from "./images/vtt-en-finlande-lete-233.jpg";
+import sliderImg2 from "./images/photo-1533400986144-1bc90df04d1a.jpeg";
 import sliderImg3 from "./images/lac-baikal-siberie-75.jpg";
-import sliderImg4 from "./images/voyage-croisieres-polaires-405.jpg";
-import sliderImg5 from "./images/canoe-sur-la-riviere-batiscan-au-quebec-2233.jpg";
-// import sliderImg6 from "../../images/images/ours-polaires-au-spitzberg-234.jpg";
+import sliderImg4 from "./images/photo-1509122696753-d01769640838.jpeg";
+import sliderImg5 from "./images/photo-1498243870367-481948a6b82a.jpeg";
+// import sliderImg6 from "../../images/images/photo-1498243870367-481948a6b82a.jpeg";
 import sliderImg7 from "./images/voyage-dans-les-iles-lofoten-en-norvege-du-nord-72.jpg";
 import sliderImg8 from "./images/voyage-ski-pulka-au-spitzberg-2143.jpg";
 
@@ -30,11 +30,9 @@ class HomeMainCarousel extends React.Component {
       nav2: this.slider2
     });
 
-
     let slickPrev = document.querySelector(".slick-prev");
     let slickNext = document.querySelector(".slick-next");
     let blackMask = document.querySelector(".black-mask");
-
 
     //左箭頭
     let prevArrow = document.createElement("div");
@@ -132,8 +130,8 @@ class HomeMainCarousel extends React.Component {
           arrows={false}
           fade={true}
           speed={900}
-          // autoplay={true}
-          // autoplaySpeed={5000}
+          autoplay={true}
+          autoplaySpeed={5000}
         >
           <div className="photo-frame">
             <img src={sliderImg8} alt="sliderImg" />
@@ -180,36 +178,47 @@ class HomeMainCarousel extends React.Component {
               </div>
 
               <div className="information d-flex justify-content-center align-items-center">
-                <div className="people ">
-                  3798 個人的選擇
-                </div>
+                <div className="people ">3798 個人的選擇</div>
                 <div className="stars d-flex justify-content-center align-items-center">
                   <div className="star">
-                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                    <img
+                      src="http://localhost:3000/images/svg/star.svg"
+                      alt="star"
+                    />
                   </div>
                   <div className="star">
-                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                    <img
+                      src="http://localhost:3000/images/svg/star.svg"
+                      alt="star"
+                    />
                   </div>
                   <div className="star">
-                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                    <img
+                      src="http://localhost:3000/images/svg/star.svg"
+                      alt="star"
+                    />
                   </div>
                   <div className="star">
-                    <img src="http://localhost:3000/images/svg/star.svg" alt="star" />
+                    <img
+                      src="http://localhost:3000/images/svg/star.svg"
+                      alt="star"
+                    />
                   </div>
                   <div className="star">
-                    <img src="http://localhost:3000/images/svg/half_star.svg" alt="half_star" />
+                    <img
+                      src="http://localhost:3000/images/svg/half_star.svg"
+                      alt="half_star"
+                    />
                   </div>
                 </div>
 
-                <div className="score">
-                  4.6 / 5
-                </div>
+                <div className="score">4.6 / 5</div>
               </div>
 
-              <a className="more-btn" href="#123">
+              <Link className="more-btn" to="/comments">
                 <div className="button-font">查看所有評論</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -233,7 +242,7 @@ class HomeMainCarousel extends React.Component {
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">
               <div className="slider-title">
                 <div className="slider-title-sub">
-                  <span>在翠綠的針葉林</span>
+                  <span>在白雪皚皚的針葉林</span>
                 </div>
                 <p className="title-main">芬蘭</p>
               </div>

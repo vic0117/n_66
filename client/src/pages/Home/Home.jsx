@@ -8,17 +8,47 @@ import HomeTravelCarousel from "../../components/HomeTravelCarousel/HomeTravelCa
 import HomeAdviser from "../../components/HomeAdviser/HomeAdviser";
 import HomeEarth from "../../components/HomeEarth/HomeEarth";
 import Footer from "../../components/Footer/Footer";
+import message from "./images/comment-dots-solid.svg";
+import "./Home.scss";
+// import Join from "../socketClient/Join";
+import Chat from "../socketClient/Chat";
 class Home extends Component {
-  state = {};
+  state = {
+    system: false,
+    name: "",
+    room: ""
+  };
+
   render() {
+    const { currentUser } = this.props;
+    console.log(currentUser);
     // let {numberOfProducts} = this.props
     return (
       <>
+        
+        <div
+          className="MessageButton"
+          onClick={() => this.setState({ system: !this.state.system })}
+        >
+          <img src={message} alt="message" />
+        </div>
+        <div
+          className={
+            this.state.system ? " messageIn" : "messageInOpen messageIn"
+          }
+        >
+          <Chat />
+        </div>
         <HomeNavBar 
           currentUser={this.props.currentUser}
           numberOfProducts = {this.props.numberOfProducts}/>
         <HomeMainCarousel />
-        <HomeFilter />
+        <HomeFilter
+          HomeSelect1={this.props.HomeSelect1}
+          HomeSelect2={this.props.HomeSelect2}
+          HomeSelect3={this.props.HomeSelect3}
+          HomeSearch={this.props.HomeSearch}
+        />
         <HomeTravelCarousel />
         <HomeAdviser />
         <HomeEarth />

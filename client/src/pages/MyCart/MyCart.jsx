@@ -1,6 +1,6 @@
 import React from "react";
-import HomeNavBar from '../../components/HomeNavBar/HomeNavBar';
-import CartContent from '../../components/CartContent/CartContent';
+import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
+import CartContent from "../../components/CartContent/CartContent";
 
 class MyCart extends React.Component {
     constructor(props) {
@@ -109,6 +109,7 @@ class MyCart extends React.Component {
             );
         }
     }
+  }
 }
 
 export default MyCart;

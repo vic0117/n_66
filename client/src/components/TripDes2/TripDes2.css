@@ -9,6 +9,24 @@
   margin-top: 100px;
 }
 
+.TripDes2Box .active {
+  background: #242a3a;
+  pointer-events: none;
+}
+
+.TripDes2Box .active p {
+  color: #fff !important;
+}
+
+.TripDes2Box .active .TripDes2InsideIcon {
+  fill: #fff !important;
+  color: #fff !important;
+}
+
+.TripDes2Box .active .TripDes2Inside {
+  border: none;
+}
+
 .TripDes2BtnBox {
   width: 35%;
   height: 210px;
@@ -58,8 +76,8 @@
   height: 0px;
   overflow: hidden;
   margin: auto;
-  -webkit-transition: .6s;
-  transition: .6s;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
   background: #eaeaea;
 }
 
@@ -74,24 +92,6 @@
 
 .TripDes2Btn:hover {
   background: #96daf0;
-}
-
-.active {
-  background: #242a3a;
-  pointer-events: none;
-}
-
-.active p {
-  color: #fff !important;
-}
-
-.active .TripDes2InsideIcon {
-  fill: #fff !important;
-  color: #fff !important;
-}
-
-.active .TripDes2Inside {
-  border: none;
 }
 
 .active1 {
@@ -115,7 +115,7 @@
 
 .TripImportantDesBox li:before {
   content: "\2022";
-  color: #96DAF0;
+  color: #96daf0;
   font-size: 1rem;
   margin-left: -20px;
   margin-right: 20px;
@@ -146,7 +146,7 @@
 }
 
 .AllDayTitle span {
-  color: #96DAF0;
+  color: #96daf0;
   margin-top: 30px;
   display: block;
 }
@@ -160,7 +160,7 @@
 }
 
 .everyday span {
-  color: #96DAF0;
+  color: #96daf0;
 }
 
 .everyday .everydayTitle {
@@ -204,7 +204,7 @@
 }
 
 .everydayLive span {
-  color: #96DAF0;
+  color: #96daf0;
 }
 
 .TripDesDetailBox {
@@ -214,7 +214,7 @@
 }
 
 .TripDesDetailBox span {
-  color: #96DAF0;
+  color: #96daf0;
   margin-top: 20px;
   display: block;
 }

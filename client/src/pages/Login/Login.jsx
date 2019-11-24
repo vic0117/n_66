@@ -1,19 +1,20 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Joi from "joi-browser";
-import NavBar from "../../components/NavBar/NavBar";
+import LoginNavBar from "../../components/LoginNavbar/LoginNavbar";
 import "./Login.css";
 
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
+    register_password: "",
     repeat_password: "",
     msg: {},
     errors: {}
   };
 
-  schema = Joi.object({
+  schemaLogin = Joi.object({
     email: Joi.string()
       .required()
       .email()
@@ -33,6 +34,40 @@ class Login extends React.Component {
         return errors;
       }),
     password: Joi.string()
+      .required()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = "此為必填欄位";
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      })
+  });
+  schemaSignUp = Joi.object({
+    email: Joi.string()
+      .required()
+      .email()
+      .error(errors => {
+        errors.forEach(err => {
+          switch (err.type) {
+            case "any.empty":
+              err.message = "此為必填欄位";
+              break;
+            case "string.email":
+              err.message = "不正確的email格式";
+              break;
+            default:
+              break;
+          }
+        });
+        return errors;
+      }),
+    register_password: Joi.string()
       .min(5)
       .max(10)
       .required()
@@ -55,7 +90,7 @@ class Login extends React.Component {
         return errors;
       }),
     repeat_password: Joi.any()
-      .valid(Joi.ref("password"))
+      .valid(Joi.ref("register_password"))
       .required()
       .error(errors => {
         errors.forEach(err => {
@@ -80,13 +115,14 @@ class Login extends React.Component {
       })
   });
 
-  validate = async () => {
+  loginValidate = async () => {
     let email = this.state.email;
     let password = this.state.password;
-    let repeat_password = this.state.repeat_password;
-    await this.setState({ joi: { email, password, repeat_password } });
+    await this.setState({
+      loginJoi: { email, password }
+    });
     console.log(this.state.joi);
-    const result = Joi.validate(this.state.joi, this.schema, {
+    const result = Joi.validate(this.state.loginJoi, this.schemaLogin, {
       abortEarly: false
     });
     console.log(result);
@@ -96,10 +132,26 @@ class Login extends React.Component {
     return errors;
   };
 
+  signupValidate = async () => {
+    let email = this.state.email;
+    let register_password = this.state.register_password;
+    let repeat_password = this.state.repeat_password;
+    await this.setState({
+      signupJoi: { email, register_password, repeat_password }
+    });
+    const result = Joi.validate(this.state.signupJoi, this.schemaSignUp, {
+      abortEarly: false
+    });
+    if (!result.error) return null;
+    const errors = {};
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
+    return errors;
+  };
+
   handleLoginSubmit = async e => {
     e.preventDefault();
 
-    const errors = await this.validate();
+    const errors = await this.loginValidate();
     console.log(errors);
     await this.setState({ errors: errors || {} });
     if (errors) return;
@@ -126,16 +178,17 @@ class Login extends React.Component {
         if (!data.loggedIn) {
           const state = { ...this.state };
           state.msg.loginMsg = data.msg;
+          state.msg.type = "alert alert-danger";
           console.log(data.msg);
           this.setState(state);
         } else {
           const { token: jwt } = data;
           localStorage.setItem("token", jwt);
           const state = { ...this.state };
-          state.msg.loginMsg = "登入成功!";
+          state.msg.loginMsg = "登入成功";
+          state.msg.type = "alert alert-success";
           this.setState(state);
-          // this.props.history.push("/account");
-          window.location = "/account";
+          window.location = "/  ";
         }
       })
       .catch(function(err) {
@@ -146,7 +199,7 @@ class Login extends React.Component {
   handleSignUpSubmit = async e => {
     e.preventDefault();
 
-    const errors = await this.validate();
+    const errors = await this.signupValidate();
     console.log(errors);
     await this.setState({ errors: errors || {} });
     if (errors) return;
@@ -154,7 +207,7 @@ class Login extends React.Component {
     // req.body
     let data = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.register_password
     };
 
     fetch("http://localhost:3001/register", {
@@ -173,14 +226,17 @@ class Login extends React.Component {
         if (data.loggedIn) {
           // 註冊成功, jwt存進localstorage
           const { token: jwt } = data;
+          console.log("data", data);
           localStorage.setItem("token", jwt);
           const state = { ...this.state };
-          state.msg.signUpMsg = "註冊成功!";
+          state.msg.signUpMsg = "註冊成功";
+          state.msg.type = "alert alert-success";
           this.setState(state);
           window.location = "/account";
         } else {
           const state = { ...this.state };
           state.msg.signUpMsg = data.msg;
+          state.msg.type = "alert alert-danger";
           this.setState(state);
           console.log(this.state);
         }
@@ -323,9 +379,10 @@ class Login extends React.Component {
   }
 
   render() {
+    let classes = `feedback ${this.state.msg.type}`;
     return (
       <>
-        <NavBar />
+        <LoginNavBar currentUser={this.props.currentUser} />
         <Container className="cont">
           <Row className="loginRow">
             <div className="signIn">
@@ -344,11 +401,12 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-                  {this.state.errors.email && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.email}
+
+                  {
+                    <div className="alert alert-danger error-msg">
+                      {this.state.errors.email || ""}
                     </div>
-                  )}
+                  }
                   <label>
                     <input
                       type="password"
@@ -357,15 +415,21 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-                  {this.state.errors.password && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.password}
+
+                  {
+                    <div className="alert alert-danger error-msg">
+                      {this.state.errors.password || ""}
                     </div>
-                  )}
+                  }
                   <a href="#6" className="forgot-pass">
                     忘記密碼?
                   </a>
-                  <div className="feedback">{this.state.msg.loginMsg}</div>
+
+                  {
+                    <div className={classes}>
+                      {this.state.msg.loginMsg || ""}
+                    </div>
+                  }
                   <button type="submit" className="submit">
                     登入
                   </button>
@@ -386,38 +450,40 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
-                    {this.state.errors.email && (
-                      <div className="alert alert-danger">
-                        {this.state.errors.email}
+
+                    {
+                      <div className="alert alert-danger error-msg">
+                        {this.state.errors.email || ""}
                       </div>
-                    )}
+                    }
                     <label>
                       <input
                         type="password"
-                        name="password"
+                        name="register_password"
                         placeholder="密碼"
                         onChange={this.logChange}
                       />
                     </label>
-                    {this.state.errors.password && (
-                      <div className="alert alert-danger">
-                        {this.state.errors.password}
+                    {
+                      <div className="alert alert-danger error-msg">
+                        {this.state.errors.register_password || ""}
                       </div>
-                    )}
+                    }
                     <label>
                       <input
+                        name="repeat_password"
                         type="password"
                         placeholder="確認密碼"
                         onChange={this.logChange}
-                        name="repeat_password"
                       />
                     </label>
-                    {this.state.errors.repeat_password && (
-                      <div className="alert alert-danger">
-                        {this.state.errors.repeat_password}
+                    {
+                      <div className={classes}>
+                        {this.state.errors.repeat_password ||
+                          this.state.msg.signUpMsg ||
+                          ""}
                       </div>
-                    )}
-                    <div className="feedback">{this.state.msg.signUpMsg}</div>
+                    }
                     <button type="submit" className="submit register">
                       註冊
                     </button>

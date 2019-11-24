@@ -7,7 +7,7 @@ import ring3 from "./images/ring3.svg";
 // import TripMenuImgCover from "./images/carte-voyage-suede-1197.jpg";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import "./Tripmenu.scss";
+import "./Tripmenu.css";
 
 class TripMenu extends Component {
   constructor(props) {
@@ -48,6 +48,7 @@ class TripMenu extends Component {
               </div>
               <div className="TripMenuDes">
                 <p>{item.trip_place}</p>
+                <h6>{item.trip_angency}</h6>
                 <h4>{item.trip_name}</h4>
                 <div className="smallDes">
                   <img src={multiActivities} alt="multiActivities" />
@@ -66,7 +67,7 @@ class TripMenu extends Component {
                 </ul>
                 <div className="TripMenuDes2">
                   <div className="TripMenuDays">
-                    <img src={calender} alt="calender" />{" "}
+                    <img src={calender} alt="calender" />
                     <span>{item.trip_days}天</span>
                   </div>
                   <span>|</span>

@@ -5,7 +5,7 @@ const moment = require('moment');
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "",  
@@ -33,6 +33,41 @@ router.get("/products/:id", (req, res) => {
     res.json(results);
   });
 });
+
+router.post("/products/add_wishlist", (req, res) => {
+  let data = { success: false, msg: { text: "" } };
+  const sql =
+    "INSERT INTO wish_list ( u_id, product_label, product_name, product_info, product_img, trip_start_date,trip_end_date, trip_angency, product_price, product_router, product_id, liked) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+  db.query(
+    sql,
+    [
+      req.body.u_id,
+      req.body.product_label,
+      req.body.product_name,
+      req.body.product_info,
+      req.body.product_img,
+      req.body.trip_start_date,
+      req.body.trip_end_date,
+      req.body.trip_angency,
+      req.body.product_price,
+      req.body.product_router,
+      req.body.product_id,
+      req.body.liked
+    ],
+    (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+      if (results.affectedRows === 1) {
+        data.success = true;
+        data.msg.text = "已加入願望清單";
+      } else {
+        data.msg.text = "沒有加入願望清單";
+      }
+      res.json(data);
+    }
+  );
+});
+
 
 
 //我的購物車
@@ -127,6 +162,7 @@ router.post("/checkout", (req, res) => {
 
 
 
+module.exports = router;
 
 
 //搜尋
@@ -152,4 +188,3 @@ router.post("/checkout", (req, res) => {
 // 	})
 // });
 
-module.exports = router;

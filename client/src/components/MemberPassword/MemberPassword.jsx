@@ -21,7 +21,7 @@ class MemberPassword extends Component {
           >
             <Card.Body>
               <Form onSubmit={this.props.onSubmit} method="POST">
-                <p>須包含至少8個字符，並使用字母與數字組合</p>
+                <p>須包含至少5個字符，最多10個字符</p>
                 <Form.Group className="width-300">
                   <Form.Label className="text-align-left">現有密碼</Form.Label>
                   <Form.Control
@@ -31,21 +31,31 @@ class MemberPassword extends Component {
                     onChange={this.props.onChange}
                   />
                 </Form.Group>
-                <Form.Group className="width-300 mb-5">
-                  <Form.Label className="text-align-left">新密碼</Form.Label>
+                <Form.Group className="width-300 mb-4">
+                  <Form.Label className="text-align-left mt-2">新密碼</Form.Label>
                   <Form.Control
-                    className="my-2 mb-3"
-                    style={{ marginBottom: "1rem" }}
+                    className="my-2"
                     type="password"
                     name="new_password"
                     onChange={this.props.onChange}
                     placeholder="更改密碼"
                   />
+                  {
+                    <div className="alert alert-danger error-msg">
+                      {this.props.errors.new_password || ""}
+                    </div>
+                  }
                   <Form.Control
-                    className="my-2 mb-3"
                     type="password"
+                    onChange={this.props.onChange}
+                    name="comfirm_password"
                     placeholder="確認新密碼"
                   />
+                  {
+                    <div className="alert alert-danger error-msg">
+                      {this.props.errors.comfirm_password || ""}
+                    </div>
+                  }
                 </Form.Group>
                 <Button type="submit">儲存</Button>
               </Form>

@@ -1,0 +1,45 @@
+.MessageButton{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: #96daf0;
+	position: fixed;
+	z-index: 10000;
+	right:20px;
+	bottom:50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	img{
+		width: 50px !important;
+	}
+	.joinContent{
+		display:none !important;
+	}
+}
+.messageIn{
+	width: 20%;
+	height: 600px !important;
+	position: fixed;
+	z-index: 9000;
+	right:5%;
+	top:40%;
+	opacity: 1;
+	transition:.5s;
+	overflow: hidden;
+}
+.messageInOpen{
+	// display: none;
+	width: 0;
+	height:0;
+	right:5%;
+	top:86%;
+	opacity: 0;
+	overflow: hidden;
+}
+@media(max-width:1000px){
+	.messageIn{
+		width: 100%;
+		left: 0;
+	}
+}

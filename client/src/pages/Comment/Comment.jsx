@@ -5,36 +5,38 @@ import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox
 import Footer from "../../components/Footer/Footer";
 import CommentList from "../../components/CommentList/CommentList";
 import { Row, Col } from "react-bootstrap";
+import Pagination from "../../common/Pagination";
 import { ReactComponent as Star } from "./images/star.svg";
 import { ReactComponent as StarSolid } from "./images/star-solid.svg";
+import { paginate } from "../../utils/paginate";
 
 import "./Comment.css";
 class Comment extends Component {
   state = {
-	  comments:[],
-	  place:''
+    comments: [],
+    place: "",
+    pageSize: 4, // 每頁幾筆
+    currentPage: 1
   };
 
+  componentDidMount() {
+    fetch("http://localhost:3001/comments")
+      .then(
+        response => {
+          console.log(response);
+          return response.json();
+        },
+        error => {
+          console.log(error);
+        }
+      )
+      .then(data => {
+        this.setState({ comments: data });
+      });
+  }
 
-componentDidMount() {
-	fetch("http://localhost:3001/comments")
-	.then(
-	  response => {
-		 console.log(response);
-		 return response.json();
-	  },
-	  error => {
-		 console.log(error);
-	  }
-	)
-	.then(data => {
-	  
-	  this.setState({ comments: data });
-	});
-}
-
-selectComments = (place)=>{
-	let obj = JSON.parse(JSON.stringify(this.state));
+  selectComments = place => {
+    let obj = JSON.parse(JSON.stringify(this.state));
     this.setState({ place: place });
     obj.place = place;
 
@@ -58,10 +60,18 @@ selectComments = (place)=>{
         this.setState({ comments: data });
         console.log(data);
       });
-}
+  };
+
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
 
   render() {
-	  console.log(this.state.comments)
+    const { length: count } = this.state.comments;
+    const { pageSize, currentPage, comments: allComments } = this.state;
+
+    const comments = paginate(allComments, currentPage, pageSize);
+
     return (
       <>
         <CommentHeader currentUser={this.props.currentUser} />
@@ -142,18 +152,23 @@ selectComments = (place)=>{
 
             <Col className="col-lg-8 member-comment-container">
               <div className="member-comment">
-                <CommentFilterBox 
-						 selectComments = {this.selectComments}
-					 />
+                <CommentFilterBox selectComments={this.selectComments} />
               </div>
               <div className="mt-4">
-                <CommentList 
-					 	comments={this.state.comments}
-					 />
+                <CommentList comments={comments} />
+                <div className="d-flex justify-content-center">
+                  <Pagination
+                    itemsCount={count}
+                    pageSize={pageSize}
+                    currentPage={currentPage}
+                    onPageChange={this.handlePageChange}
+                  />
+                </div>
               </div>
             </Col>
           </Row>
         </div>
+
         <Footer />
       </>
     );
