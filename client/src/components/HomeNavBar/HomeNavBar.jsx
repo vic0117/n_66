@@ -32,6 +32,7 @@ class HomeNavBar extends React.Component {
     let upLine = document.querySelector(".up-line");
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
+    
 
     window.onresize = () => {
       if (window.innerWidth >= 850) {
@@ -72,6 +73,8 @@ class HomeNavBar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    const { numberOfProducts } = this.props;
+
     return (
       <>
         <div className="n66navbar d-flex">
@@ -82,14 +85,8 @@ class HomeNavBar extends React.Component {
           </Link>
           <div className="n66Collapse " id="responsive-navbar-nav ">
             <div className="ml-auto d-flex  justify-content-end align-items-center navTop">
-              <Link to="/" className=" d-flex align-items-center nav_top_item">
-                <img className="email" src={email} alt="email" />
-                我的訂單
-              </Link>
-              <Link to="cart" className=" d-flex align-items-center nav_top_item">
-                <img className="phone" src={cart} alt="phone" />
-                購物車
-              </Link>
+
+              
               <Link
                 to="/account"
                 className=" d-flex align-items-center nav_top_item"
@@ -97,6 +94,7 @@ class HomeNavBar extends React.Component {
                 <img className="user" src={user} alt="user" />
                 會員專區
               </Link>
+              
               
               {!currentUser && (
                 <>
@@ -120,6 +118,11 @@ class HomeNavBar extends React.Component {
                   </Link>
                 </>
               )}
+              <Link to="cart" className=" d-flex align-items-center nav_top_item">
+                <img className="phone" src={cart} alt="phone" />
+                {/* 購物車 */}
+                <div>{numberOfProducts || 0}</div>
+              </Link>
             </div>
 
             <div className="ml-auto d-flex nav-bottom">

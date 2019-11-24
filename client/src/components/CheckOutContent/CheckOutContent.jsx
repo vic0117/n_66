@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Dropdown, DropdownButton } from 'react-bootstrap';
 
 import './CheckOutContent.css'
 
@@ -9,18 +9,40 @@ class CheckOutContent extends React.Component {
         this.state = {
             productsToBuy: props.productsToBuy,
             tripsToBuy: props.tripsToBuy,
-            totalCost: props.totalCost,
-            userId: props.userId
+            totalCost: 0,
+            userId: props.userId,
+            useCouponName: "",
+            useCouponType: "",
+            useCouponDiscount: 0
         };
     }
 
 
     CheckOut = () => {
+        let { userId } = this.props;
+        // console.log(userId)
+        let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
+        let couponList = []
+
+        if(tripsToBuy){
+            tripsToBuy.forEach((trip) => {
+                // let coupon = trip.trip_type;
+                let coupon = {};
+                coupon.type = trip.trip_type;
+                coupon.u_id = userId;
+                coupon.discount = "0.85";
+    
+                couponList.push(coupon);
+            })
+        }
+
+
         let bodyObj = {
             productsToBuy: localStorage.getItem('productsToBuy'),
             tripsToBuy: localStorage.getItem('tripsToBuy'),
             totalCost: localStorage.getItem('totalCost'),
             userId: localStorage.getItem('userId'),
+            couponList: couponList,
             orderStatus: '運送中'
         }
 
@@ -40,7 +62,89 @@ class CheckOutContent extends React.Component {
                 console.log(json)
                 //TODO:
                 // tosty
+
+                localStorage.setItem('tripsToBuy', '[]')
+                localStorage.setItem('productsToBuy', '[]')
+                localStorage.setItem('totalCost', '0')
             })
+    }
+
+
+    showCouponType = (e) => {
+        let coupon = e.target.innerText;
+        let couponName = coupon.split(' ')[0].toString();
+        let couponDiscount = coupon.split(' ')[1] / 100
+        let productsArray = JSON.parse(localStorage.getItem('productsToBuy'));
+        let tripsArray = JSON.parse(localStorage.getItem('tripsToBuy'));
+        let totalCost = 0;
+
+        if(coupon === '原價購買'){
+            console.log(totalCost)
+            // console.log(productsArray);
+            if (productsArray) {
+                productsArray.forEach(product => {
+                    totalCost += product.product_price * 1;
+                })
+            }
+
+            if (tripsArray) {
+                tripsArray.forEach(trip => {
+                    totalCost += trip.trip_price * 1 ;
+                })
+            }
+            console.log(totalCost)
+
+            this.setState({
+                useCouponType: coupon,
+                useCouponName: '原價購買',
+                useCouponDiscount: couponDiscount,
+                totalCost: totalCost
+            }, () => {
+                console.log(this.state.totalCost);
+                console.log(this.state.useCouponName);
+                console.log(this.state.useCouponType);
+            })
+
+            totalCost = JSON.stringify(totalCost);
+            localStorage.setItem('totalCost', totalCost);
+        }
+        else{
+            if (couponName !== this.state.useCouponName && couponName !== '原價購買' ) {
+                console.log(true);
+    
+                if (productsArray) {
+                    productsArray.forEach(product => {
+                        if(product.product_category === couponName){
+                            totalCost += parseInt(product.product_price * couponDiscount);
+                        }
+                        else{
+                            totalCost += product.product_price * 1
+                        }
+                        
+                    })
+                }
+    
+                if (tripsArray) {
+                    tripsArray.forEach(trip => {
+                        totalCost += trip.trip_price * 1;
+                    })
+                }
+    
+                this.setState({
+                    useCouponType: coupon,
+                    useCouponName: couponName,
+                    useCouponDiscount: couponDiscount,
+                    totalCost: totalCost
+                }, () => {
+                    console.log(this.state.totalCost);
+                    console.log(this.state.useCouponName);
+                    console.log(this.state.useCouponType);
+                })
+    
+                totalCost = JSON.stringify(totalCost);
+                localStorage.setItem('totalCost', totalCost);
+            }
+        }
     }
 
 
@@ -48,7 +152,21 @@ class CheckOutContent extends React.Component {
         const { productsToBuy } = this.props;
         const { tripsToBuy } = this.props;
         const { totalCost } = this.props;
-        // const { userId } = this.props;
+        const { userId } = this.props;
+        const { hasCoupon } = this.props;
+        // console.log(tripsToBuy)
+        // console.log(hasCoupon)
+        const coupons = { ...hasCoupon }
+        let { answer } = coupons;
+        let userCoupons = []
+        // console.log(answer)
+        if (answer) {
+            answer.forEach(sb => {
+                userCoupons.push(sb);
+            })
+        }
+
+        // console.log(userCoupons);
         return (
             <>
                 <Container className=" mt-5 sectionCheckOut">
@@ -59,20 +177,20 @@ class CheckOutContent extends React.Component {
                                 <div className="align-self-end mb-2 pl-2" style={{ flex: 3 }}>
                                     品項
                                 </div>
-                                <div className="align-self-end mb-2" style={{ flex: 2 }}>
+                                <div className="align-self-end mb-2 text-right" style={{ flex: 2 }}>
                                     價格
                                 </div>
-                                <div
+                                {/* <div
                                     className="align-self-end text-center mb-2"
                                     style={{ flex: 1 }}
                                 >
                                     刪除
-                                </div>
+                                </div> */}
                             </div>
                             <div className=" py-3" style={{ borderBottom: '1px solid #E8E8E8' }}>
                                 {
                                     productsToBuy === null ? (
-                                        <div>沒有買裝備</div>
+                                        <div></div>
                                     ) : (
                                             productsToBuy.map((item, i) => (
                                                 <div
@@ -88,7 +206,8 @@ class CheckOutContent extends React.Component {
                                                     </div>
 
                                                     <div className="mb-2" style={{ flex: 3 }}>
-                                                        <h6>獨木舟</h6>
+                                                        <h6>{item.product_category}</h6>
+                                                        {/* <h6>{item.code}</h6> */}
                                                         <div className="title mb-1 font-size-14">
                                                             {item.product_name}
                                                         </div>
@@ -97,12 +216,25 @@ class CheckOutContent extends React.Component {
                                                         </div>
                                                         <div className="d-flex ">
                                                             <span>數量</span>
-                                                            <input value={item.product_amount} className="counter" type="text" disabled />
+                                                            <h5 className="ml-3 counter">{item.product_amount}</h5>
+                                                            <div className="mb-2 pl-2" style={{ flex: 1 }}>
+                                                                {
+                                                                    this.state.useCouponName === item.product_category ? (<del className="discountPrice">{'NT$' + item.product_price}</del>) :
+                                                                        ('NT$' + item.product_price)
+                                                                }
+
+                                                            </div>
+                                                            <div className="mb-2 pl-2" style={{ flex: 4 }}>
+                                                                {
+                                                                    this.state.useCouponName === item.product_category ? ('NT$' + Math.floor(item.product_price * item.product_amount * this.state.useCouponDiscount)) :
+                                                                        ('NT$' + item.product_price * item.product_amount)
+
+                                                                }
+                                                            </div>
                                                         </div>
+
                                                     </div>
-                                                    <div className="mb-2 pl-2" style={{ flex: 2 }}>
-                                                        NT$ {item.product_price}
-                                                    </div>
+
                                                     <div className="mb-2" style={{ flex: 1 }}>
                                                         <div className="deleteBtn ml-5">
                                                             <div className="slash leftLine"></div>
@@ -116,37 +248,40 @@ class CheckOutContent extends React.Component {
 
                                 {
                                     tripsToBuy === null ? (
-                                        <div>沒有買行程</div>
+                                        <div></div>
                                     ) : (
                                             tripsToBuy.map((item, i) => (
                                                 <div key={i} id={i} className="cartItem" >
                                                     <div className="itemImg">
                                                         <Card.Img
                                                             variant="top"
-                                                            src={"http://localhost:3000/images/" + item.trip_menu_img}
+                                                            src={"http://localhost:3000/images/" + item.trip_img}
                                                         />
                                                     </div>
-                                                    <Card.Body>
+                                                    <Card.Body className="pr-0">
                                                         <div className="d-flex w-100 flex-column align-items-start">
-                                                            <h6>
-                                                                {item.trip_place}
-                                                                <div className="price">{item.trip_price}</div>
+                                                            <h6 className="d-flex">
+                                                                <div>{item.trip_country}</div>
+                                                                <div className="">{item.trip_type}</div>
+
                                                             </h6>
                                                             <div className="title">
                                                                 {item.trip_name}
                                                             </div>
                                                             <span className="d-flex">
-                                                                <span className="size ml-0">{item.trip_days} 天</span>
-                                                                <span className="size">{item.trip_start}</span>
+                                                                <span className="size ">{item.trip_duration} 天</span>
+                                                                <span className="size ml-3">{item.trip_start_date}</span>
                                                                 <span>~</span>
-                                                                <span className="size">{item.trip_end}</span>
+                                                                <span className="size">{item.trip_end_date}</span>
                                                             </span>
-                                                            <div className="quantity">
-                                                                <span>數量 : </span>
-                                                                <h5 className="counter">{item.trip_amount}</h5>
+                                                            <div className="d-flex w-100 quantity">
+                                                                <div style={{ flex: 2 }}>數量 : </div>
+                                                                <h5 className=" counter" style={{ flex: 1 }}>{item.trip_amount}</h5>
+                                                                <div className="text-center price" style={{ flex: 3 }}>{item.trip_price}</div>
+                                                                <div className="text-right price" style={{ flex: 5 }}>NT$ {item.trip_amount * item.trip_price} </div>
                                                             </div>
                                                         </div>
-                                                        <h3>{item.trip_amount * item.trip_price} 元</h3>
+
                                                     </Card.Body>
                                                 </div>
                                             ))
@@ -158,17 +293,46 @@ class CheckOutContent extends React.Component {
 
                             {/* ---------------------------------------------------------------------- */}
 
+                            <div>
+                                {
+                                    answer === null ? ('') : (
+                                        <DropdownButton id="dropdown-basic-button" title="使用折價卷">
+                                            {
+                                                userCoupons.map((coupon, i) => (
+                                                    <Dropdown.Item
+                                                        as="button"
+                                                        key={i}
+                                                        onClick={this.showCouponType}
+                                                    >{`${coupon.type} ${coupon.discount * 100} 折`}</Dropdown.Item>
+                                                ))
+                                            }
+                                            <Dropdown.Item
+                                                as="button"
+                                                onClick={this.showCouponType}
+                                            >原價購買
+                                            </Dropdown.Item>
+                                        </DropdownButton>
+                                    )
+                                }
+                            </div>
+
+                            {/* ---------------------------------------------------------------------- */}
                             <div className="d-flex mt-2">
                                 <div style={{ flex: 2 }}></div>
                                 <div style={{ flex: 3 }}>運費</div>
-                                <div style={{ flex: 1 }}>NT$ 60</div>
-                                <div style={{ flex: 1 }}></div>
+                                <div className="text-right" style={{ flex: 1 }}>NT$ 60</div>
+                                {/* <div style={{ flex: 1 }}></div> */}
                             </div>
                             <div className="d-flex mt-1">
                                 <div style={{ flex: 2 }}></div>
                                 <div style={{ flex: 3 }}>合計</div>
-                                <div style={{ flex: 1 }}>NT$ {totalCost}</div>
-                                <div style={{ flex: 1 }}></div>
+                                <h5 className="text-right" style={{ flex: 1 }}>
+                                    {
+                                        this.state.useCouponDiscount === 0 ? (`NT$ ${totalCost}`) :
+                                            (`NT$ ${this.state.totalCost}`)
+                                    }
+
+                                </h5>
                             </div>
 
                         </Col>
@@ -189,10 +353,10 @@ class CheckOutContent extends React.Component {
                                     <div className="m-2 mt-3 d-flex time-method">
                                         <div>
                                             <div className="mb-1">運送方式</div>
-                                            <div class="form-check">
+                                            <div className="form-check">
                                                 <div>
                                                     <input
-                                                        class="form-check-input"
+                                                        className="form-check-input"
                                                         type="radio"
                                                         name="exampleRadios"
                                                         id="exampleRadios1"
@@ -200,7 +364,7 @@ class CheckOutContent extends React.Component {
                                                         defaultChecked
                                                     ></input>
                                                     <label
-                                                        class="form-check-label text-left font-size-14"
+                                                        className="form-check-label text-left font-size-14"
                                                         htmlFor="exampleRadios1"
                                                     >
                                                         超商取貨
@@ -208,17 +372,17 @@ class CheckOutContent extends React.Component {
                                                 </div>
                                                 <div>
                                                     <input
-                                                        class="form-check-input"
+                                                        className="form-check-input"
                                                         type="radio"
                                                         name="exampleRadios"
                                                         id="exampleRadios1"
                                                         value="option1"
-                                                        checked
+                                                        defaultChecked
                                                     ></input>
 
                                                     <label
-                                                        class="form-check-label text-left font-size-14"
-                                                        for="exampleRadios1"
+                                                        className="form-check-label text-left font-size-14"
+                                                        htmlFor="exampleRadios1"
                                                     >
                                                         宅配
                                                     </label>
@@ -256,7 +420,14 @@ class CheckOutContent extends React.Component {
                                     </div>
                                 </div>
                                 <div className="checkout-btn d-flex">
-                                    <button onClick={this.CheckOut} className="m-auto">確認結帳</button>
+                                    <button onClick={this.CheckOut} className="mx-auto mb-3">確認結帳</button>
+                                    <div>
+                                        {
+                                            this.state.useCouponType === '' ? ('') : (
+                                                this.state.useCouponType
+                                            )
+                                        }
+                                    </div>
                                 </div>
                             </form>
                         </Col>

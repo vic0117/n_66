@@ -26,7 +26,7 @@ class App extends Component {
       //在這裡監聽location对象
       console.log(location.pathname);
       switch (
-        location.pathname //根據路徑不同切换不同的瀏覽器title
+      location.pathname //根據路徑不同切换不同的瀏覽器title
       ) {
         case "/":
           document.title = "N66";
@@ -44,34 +44,81 @@ class App extends Component {
           break;
       }
     });
+
+    this.state = {
+      numberOfProducts: ''
+    };
   }
-  state = {};
+  
   componentDidMount() {
+    //計算商品數量用
+
+    let productsArray = JSON.parse(localStorage.getItem("productsToBuy")) || [];
+    let tripsArray = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
+
+    let numberOfProducts = productsArray.length + tripsArray.length;
+    if(numberOfProducts){
+      this.setState({numberOfProducts: JSON.stringify(numberOfProducts)})
+    }
+    
     try {
       const jwt = localStorage.getItem("token");
       const currentUser = jwtDecode(jwt);
       console.log(currentUser);
       this.setState({ currentUser });
-    } catch (error) {}
+    } catch (error) { }
+  }
+
+  changeNumOfProduct = (num)=>{
+    this.setState({numberOfProducts: num});
   }
 
   render() {
+    
+
     return (
       <Switch>
-        <Route path="/products" exact component={ProductList} />
-        <Route path="/products/:id" exact component={ProductDetail} />
+        <Route
+          path="/products"
+          exact
+          render={props => (
+            <ProductList {...props} 
+              currentUser={this.state.currentUser}
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}
+               />
+          )}
+        />
+        <Route
+          path="/products/:id"
+          exact
+          render={props => (
+            <ProductDetail {...props} 
+              currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}
+              />
+          )}
+        />
         <Route
           path="/cart"
           exact
           render={props => (
-            <MyCart {...props} currentUser={this.state.currentUser} />
+            <MyCart {...props} 
+              currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}
+              />
           )}
         />
         <Route
           path="/checkout"
           exact
           render={props => (
-            <CheckOut {...props} currentUser={this.state.currentUser} />
+            <CheckOut {...props} 
+            currentUser={this.state.currentUser} 
+            numberOfProducts={this.state.numberOfProducts}
+            changeNumOfProduct={this.changeNumOfProduct}/>
           )}
         />
         <Route
@@ -99,7 +146,10 @@ class App extends Component {
           path="/"
           exact
           render={props => (
-            <Home {...props} currentUser={this.state.currentUser} />
+            <Home {...props} 
+              currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              />
           )}
         />
       </Switch>

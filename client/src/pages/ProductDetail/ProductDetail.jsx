@@ -8,9 +8,9 @@ class ProductDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            
             ProductsDetail: [],
-            Pictures: []
+            Pictures: [],
+            numberOfProducts: ''
         }
     }
 
@@ -24,7 +24,7 @@ class ProductDetail extends React.Component {
             })
             .then(json => {
 
-              console.log(json);
+            //   console.log(json);
               let picsJsonString = json[0].product_pictures;
               // console.log(picsJsonString);
               let picArray = JSON.parse(picsJsonString);
@@ -34,17 +34,26 @@ class ProductDetail extends React.Component {
                  ProductsDetail: json,
                  Pictures: picArray 
               }, function(){
-                  console.log(this.state)
+                //   console.log(this.state)
               });
             });
     }
 
+
     render() { 
+        const {numberOfProducts} = this.props.numberOfProducts
+        // console.log('numberOfProducts' + this.props.numberOfProducts )
         return ( 
             <>
-                <NavBar/>
-                <ProductCarousel data={this.state.ProductsDetail}  pics={this.state.Pictures}/>
-                {/* <h1>{this.state.Pictures}</h1> */}
+                <NavBar 
+                  numberOfProducts={this.props.numberOfProducts}
+                  changeNumOfProduct={this.changeNumOfProduct}
+                />
+                <ProductCarousel 
+                  data={this.state.ProductsDetail}  
+                  pics={this.state.Pictures}
+                  changeNumOfProduct={this.props.changeNumOfProduct}
+                />
             </>
         );
     }

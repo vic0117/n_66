@@ -11,9 +11,12 @@ import Footer from "../../components/Footer/Footer";
 class Home extends Component {
   state = {};
   render() {
+    // let {numberOfProducts} = this.props
     return (
       <>
-        <HomeNavBar currentUser={this.props.currentUser}/>
+        <HomeNavBar 
+          currentUser={this.props.currentUser}
+          numberOfProducts = {this.props.numberOfProducts}/>
         <HomeMainCarousel />
         <HomeFilter />
         <HomeTravelCarousel />

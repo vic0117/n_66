@@ -8,20 +8,17 @@ class MyCart extends React.Component {
         this.state = {
             currentUser: props.currentUser,
             productsToBuy: [],
+            numberOfProducts: '',
             tripsToBuy: [],
             totalCost: 0
         }
     }
 
     componentDidMount() {
-        const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
-        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
-        // const currentUser = this.props.currentUser;
+        const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy")) || [];
+        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
+        let numberOfProducts = productsToBuy.length + tripsToBuy.length
 
-        // console.log(this.state.currentUser)
-        // console.log(productsToBuy)
-        // await this.setState({currentUser: this.props.currentUser});
-        // console.log(this.state.currentUser)
         let totalCost = 0;
         if (productsToBuy) {
             productsToBuy.forEach(item => {
@@ -43,6 +40,7 @@ class MyCart extends React.Component {
 
         this.setState({
             productsToBuy: productsToBuy,
+            numberOfProducts: JSON.stringify(numberOfProducts),
             tripsToBuy: tripsToBuy,
             totalCost: totalCost
         });
@@ -50,7 +48,11 @@ class MyCart extends React.Component {
 
 
     delete = (result) => {
-        this.setState({ productsToBuy: result })
+        let numberOfProducts = result.length
+        this.setState({ 
+            productsToBuy: result,
+            numberOfProducts: JSON.stringify(numberOfProducts)
+        })
     }
 
     count1 = (aaa) => {
@@ -71,11 +73,8 @@ class MyCart extends React.Component {
 
 
     render() {
-
-
         //解構付值props
         const { currentUser } = this.props
-        console.log(!currentUser);
 
         if (!currentUser) {
             return (
@@ -87,19 +86,16 @@ class MyCart extends React.Component {
             let obj = { ...currentUser };
             //解構付值obj
             let { user } = obj;
-            console.log(user);
             //複製user
             let uid = { ...user };
-            // // 複製u_id
             let user_id = uid.u_id;
-            // console.log(email.email);
-            // console.log(user_id);
             localStorage.setItem('userId', user_id);
 
             return (
                 <>
-                    <HomeNavBar />
+                    <HomeNavBar numberOfProducts={this.state.numberOfProducts}/>
                     <CartContent
+                        numberOfProducts = {this.state.numberOfProducts}
                         data={this.state.productsToBuy}
                         tripData={this.state.tripsToBuy}
                         totalCost={this.state.totalCost}

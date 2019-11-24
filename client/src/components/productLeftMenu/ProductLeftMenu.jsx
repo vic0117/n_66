@@ -26,11 +26,18 @@ class ProductLeftMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttonTitleName1: "選擇主題"
+      currentPage: 1,
+      todosPerPage: 10,
+      productsData: []
     };
   }
 
   componentDidMount() {
+    let pages = document.querySelector('.page1');
+    console.log(pages);
+    
+    
+
     let filterBtn = document.querySelector(".product-filter-btn");
     let filterMenu = document.querySelector(".product-filter-menu");
     let filterToggler = document.querySelector(".filterToggler");
@@ -49,9 +56,119 @@ class ProductLeftMenu extends Component {
     });
   }
 
+  handleClick = (event)=> {
+    let pageItems = document.querySelectorAll('.page-item')
+    // console.log(pageItems)
+    for (let i = 0; i < pageItems.length; i++) {
+      pageItems[i].classList.remove('active');
+    }
+
+    event.target.classList.add('active');
+
+    let currentNumber = parseInt( event.target.id)
+    console.log(currentNumber);
+    this.setState({
+      currentPage: currentNumber
+    });
+  }
+
+  goPrev = ()=> {
+
+    let {currentPage} = this.state;
+
+    currentPage -= 1;
+
+    if(currentPage < 1){
+      currentPage = 1
+    }
+
+    let pageItems = document.querySelectorAll('.page-item')
+    // console.log(pageItems)
+    for (let i = 0; i < pageItems.length; i++) {
+      pageItems[i].classList.remove('active');
+    }
+
+    pageItems[currentPage].classList.add('active');
+
+    // console.log(currentNumber);
+    this.setState({
+      currentPage: currentPage
+    });
+  }
+
+  goNext = ()=> {
+    let {currentPage} = this.state;
+    let pageItems = document.querySelectorAll('.page-item')
+
+    currentPage += 1;
+
+    if(currentPage >= pageItems.length -1){
+      currentPage = pageItems.length -1
+    }
+
+    // console.log(pageItems)
+    for (let i = 0; i < pageItems.length; i++) {
+      pageItems[i].classList.remove('active');
+    }
+
+    pageItems[currentPage].classList.add('active');
+
+    // console.log(currentNumber);
+    this.setState({
+      currentPage: currentPage
+    });
+  }
+
   render() {
     const { data } = this.props;
     // console.log(data);
+    const { currentPage, todosPerPage } = this.state;
+    const indexOfLastTodo = currentPage * todosPerPage;
+    const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+    const currentTodos = data.slice(indexOfFirstTodo, indexOfLastTodo);
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / todosPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          className={number == 1 ? 'page-item active' : 'page-item' }
+          key={number}
+          id={number}
+          onClick={this.handleClick}
+        >
+          {number}
+        </li>
+      );
+    });
+
+    const renderTodos = currentTodos.map((item, i) => {
+      return (
+        <Col key={i} sm={6} lg={4}>
+          <Link to={`/products/${item.product_id}`}>
+            <Card key={item.product_id} className="product-card">
+              <div className="photoFrame">
+                <Card.Img
+                  variant="top"
+                  src={
+                    "http://localhost:3000/images/products/" +
+                    item.product_file_name +
+                    "/" +
+                    JSON.parse(item.product_pictures)[0]
+                  }
+                />
+              </div>
+              <Card.Body>
+                <Card.Title>{item.product_name}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </Col>
+      )
+    });
 
     return (
       <div className="ProductLeftMenuContainer">
@@ -441,51 +558,28 @@ class ProductLeftMenu extends Component {
             <Col sm={12} md={9} className="p-0">
               <Container className="p-0 card-container">
                 <Row>
-                  {data.map((item,i) => (
-                    <Col key={i} sm={6} lg={4}>
-                      <Link to={`/products/${item.product_id}`}>
-                        <Card key={item.product_id} className="product-card">
-                          <div className="photoFrame">
-                            <Card.Img
-                              variant="top"
-                              src={
-                                "http://localhost:3000/images/products/" +
-                                item.product_file_name +
-                                "/" +
-                                JSON.parse(item.product_pictures)[0]
-                              }
-                            />
-                          </div>
-                          <Card.Body>
-                            <Card.Title>{item.product_name}</Card.Title>
-                          </Card.Body>
-                        </Card>
-                      </Link>
-                    </Col>
-                  ))}
+                  {renderTodos}
+                </Row>
+                <Row>
+                  <Col>
+                    <ul id="page-numbers" className="pagination">
+                      <li
+                        className="page-item"
+                        onClick={this.goPrev}
+                        >
+                        -
+                      </li>
+                      {renderPageNumbers}
+                      <li
+                        className="page-item"
+                        onClick={this.goNext}>
+                        +
+                      </li>
+                    </ul>
+                  </Col>
                 </Row>
               </Container>
-              <Container>
-                <Row className="d-flex justify-content-center align-items-center">
-                  <Pagination>
-                    <Pagination.First />
-                    <Pagination.Prev />
-                    <Pagination.Item>{1}</Pagination.Item>
-                    <Pagination.Ellipsis />
 
-                    <Pagination.Item>{10}</Pagination.Item>
-                    <Pagination.Item>{11}</Pagination.Item>
-                    <Pagination.Item active>{12}</Pagination.Item>
-                    <Pagination.Item>{13}</Pagination.Item>
-                    <Pagination.Item>{14}</Pagination.Item>
-
-                    <Pagination.Ellipsis />
-                    <Pagination.Item>{20}</Pagination.Item>
-                    <Pagination.Next />
-                    <Pagination.Last />
-                  </Pagination>
-                </Row>
-              </Container>
             </Col>
           </Row>
         </Container>

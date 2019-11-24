@@ -63,6 +63,9 @@ class TripDesPage extends Component {
   addToCart = () => {
     // console.log(this.state.detailData[0].trip_name);
     let aaa = this.state.detailData[0];
+    console.log(aaa)
+    console.log(aaa.trip_type);
+
     let product = {};
     product.sid = aaa.sid;
     product.trip_name = aaa.trip_name;
@@ -73,18 +76,18 @@ class TripDesPage extends Component {
     product.trip_duration = aaa.trip_days;
     product.trip_start_date = aaa.trip_start;
     product.trip_end_date = aaa.trip_end;
+    product.trip_type = aaa.trip_type;
     product.trip_amount = 1;
     product.commented = 0;
     product.code = Date.now();
 
+    console.log(product);
 
 
     if (localStorage.getItem('tripsToBuy')) {
       let bbb = JSON.parse(localStorage.getItem('tripsToBuy'));
       bbb.push(product);
-
-
-      console.log(JSON.parse(localStorage.getItem('tripsToBuy')).length)
+      // console.log(JSON.parse(localStorage.getItem('tripsToBuy')).length)
       localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
     }
     else {
