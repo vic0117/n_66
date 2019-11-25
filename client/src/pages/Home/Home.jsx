@@ -22,8 +22,10 @@ class Home extends Component {
   render() {
     const { currentUser } = this.props;
     console.log(currentUser);
+    // let {numberOfProducts} = this.props
     return (
       <>
+        
         <div
           className="MessageButton"
           onClick={() => this.setState({ system: !this.state.system })}
@@ -37,7 +39,9 @@ class Home extends Component {
         >
           <Chat />
         </div>
-        <HomeNavBar currentUser={this.props.currentUser} />
+        <HomeNavBar 
+          currentUser={this.props.currentUser}
+          numberOfProducts = {this.props.numberOfProducts}/>
         <HomeMainCarousel />
         <HomeFilter
           HomeSelect1={this.props.HomeSelect1}

@@ -11,6 +11,7 @@ class CheckOut extends React.Component {
             tripsToBuy: [],
             totalCost: 0,
             userId: '',
+            hasCoupon: [],
         }
     }
 
@@ -20,12 +21,41 @@ class CheckOut extends React.Component {
         const totalCost = JSON.parse(localStorage.getItem("totalCost"));
         const userId = JSON.parse(localStorage.getItem("userId"));
 
-        this.setState({ 
-            productsToBuy: productsToBuy,
-            tripsToBuy: tripsToBuy,
-            totalCost: totalCost,
+
+        let user={
             userId: userId
-        });
+        }
+
+        fetch('http://localhost:3001/checkout/findCoupon',{
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json"
+            },
+            
+        })
+        .then(result=>{
+            return result.json()
+        })
+        .then(json=>{
+            // console.log(json);
+            let hasCoupon = json;
+
+            this.setState({ 
+                productsToBuy: productsToBuy,
+                tripsToBuy: tripsToBuy,
+                totalCost: totalCost,
+                userId: userId,
+                hasCoupon: hasCoupon
+            });
+
+            
+        })
+    }
+
+
+    changeTotalCost = ()=>{
+
     }
 
 
@@ -38,6 +68,7 @@ class CheckOut extends React.Component {
                    tripsToBuy={this.state.tripsToBuy}
                    totalCost={this.state.totalCost}
                    userId = {this.state.userId}
+                   hasCoupon = {this.state.hasCoupon}
                 />
             </>
         );

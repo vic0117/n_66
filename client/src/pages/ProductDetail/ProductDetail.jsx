@@ -9,8 +9,9 @@ class ProductDetail extends React.Component {
     super(props);
     this.state = {
       ProductsDetail: [],
-      Pictures: []
-    };
+      Pictures: [],
+      numberOfProducts: ''
+    }
   }
 
   componentDidMount() {
@@ -32,7 +33,7 @@ class ProductDetail extends React.Component {
             ProductsDetail: json,
             Pictures: picArray
           },
-          function() {
+          function () {
             console.log(this.state);
           }
         );
@@ -80,13 +81,19 @@ class ProductDetail extends React.Component {
     }
   };
 
+
   render() {
+    const { numberOfProducts } = this.props.numberOfProducts
     return (
       <>
-        <NavBar currentUser={this.props.currentUser} />
+        <NavBar
+          currentUser={this.props.currentUser}
+          numberOfProducts={this.props.numberOfProducts}
+          changeNumOfProduct={this.changeNumOfProduct} />
         <ProductCarousel
           data={this.state.ProductsDetail}
           pics={this.state.Pictures}
+          changeNumOfProduct={this.props.changeNumOfProduct}
           addWish={this.handelAddWish}
         />
         {/* <h1>{this.state.Pictures}</h1> */}

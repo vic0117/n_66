@@ -383,12 +383,20 @@ $secColor: #96daf0;
 
 	.pagination{
 		margin: 50px 0 ;
-
-		.page-item{
+		list-style: none;
+		justify-content: center;
 			
-			.page-link{
+		.page-item{
 				color: $primaryColor;
 				transition: .3s;
+				cursor: pointer;
+				border: 1px solid #ccc;
+				width: 30px;
+				height: 30px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: $primaryColor;
 
 				&:hover{
 					background-color: $secColor;
@@ -399,21 +407,17 @@ $secColor: #96daf0;
 					box-shadow: none;
 					outline: none;
 				}
+
+				
 			}
-			
 
-		}
-
-		.page-item.active {
-			.page-link{
+			.page-item.active{
 				background-color: $primaryColor;
 				color: #fff;
 				border: 1px solid $primaryColor;
+
 			}
-
-		}
 	}
-
 }
 
 @media screen and (max-width: 992px) {

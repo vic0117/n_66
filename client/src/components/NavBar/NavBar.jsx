@@ -21,6 +21,7 @@ class NavBar extends React.Component {
     let upLine = document.querySelector(".up-line");
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
+    
 
     window.onresize = () => {
       if (window.innerWidth >= 850) {
@@ -58,6 +59,9 @@ class NavBar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    const {numberOfProducts} = this.props;
+    // let numberOfProduct = JSON.parse( localStorage.getItem('productsToBuy')).length;
+
     return (
       <>
         <div className="navbar-container d-flex align-items-center ">
@@ -109,9 +113,10 @@ class NavBar extends React.Component {
               <Link to="/account" className="navbar-link icon-container">
                 <User height="20" width="20" className="user-icon" />
               </Link>
-              <Link to="/cart" className="navbar-link icon-container">
+              <Nav.Link className="icon-container cart" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
-              </Link>
+                {!numberOfProducts ? ''  : <div>{numberOfProducts}</div>}
+              </Nav.Link>
             </Nav>
           </div>
 

@@ -36,7 +36,7 @@ class MemberOrderList extends Component {
     this.setState({ addModalShow: false });
   };
 
-  handleCommentsSubmit = async item => {
+  handleCommentsSubmit = item => {
     let info = {
       avatar: this.props.userInfo.avatar,
       last_name_zh: this.props.userInfo.last_name_zh,
@@ -49,7 +49,7 @@ class MemberOrderList extends Component {
       trip_start_date: this.state.reviewInfo.trip_start_date,
       trip_end_date: this.state.reviewInfo.trip_end_date
     };
-    await fetch(`http://localhost:3001/members_comments/`, {
+    fetch(`http://localhost:3001/members_comments/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

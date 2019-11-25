@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import "./productCarousel.scss";
+import "./productCarousel.css";
 // import { object } from "prop-types";
 
 class ProductCarousel extends React.Component {
@@ -13,6 +13,7 @@ class ProductCarousel extends React.Component {
       nav2: null,
       productPics: props.pics,
       data: props.data[0],
+      currentUser: props.currentUser,
       productsToBuy: []
     };
   }
@@ -57,52 +58,57 @@ class ProductCarousel extends React.Component {
   }
 
   addToCart = () => {
+    // const currentUser = localStorage.getItem('userId');
+    // console.log(currentUser)
     const isLogin = localStorage.getItem("token");
-    let aaa = this.props.data[0];
-    let product = {};
-    product.product_id = aaa.product_id;
-    product.product_name = aaa.product_name;
-    product.product_file_name = aaa.product_file_name;
-    product.product_img = JSON.parse(aaa.product_pictures)[0];
-    product.product_size = aaa.product_size;
-    product.product_price = aaa.product_price;
-    product.product_amount = 1;
-    product.commented = 0;
-    product.code = Date.now();
+    if (!isLogin) {
+      toast.error("請先登入或註冊為會員");
 
-    if (isLogin) {
+      window.location = "http://localhost:3000/login";
+
+    }
+    else {
+      let aaa = this.props.data[0];
+      let product = {};
+      product.product_id = aaa.product_id;
+      product.product_name = aaa.product_name;
+      product.product_brand = aaa.product_brand;
+      product.product_file_name = aaa.product_file_name;
+      product.product_img = JSON.parse(aaa.product_pictures)[0];
+      product.product_size = aaa.product_size;
+      product.product_category = aaa.product_category;
+      product.product_class = aaa.product_class;
+      product.product_weight = aaa.product_weight;
+      product.product_price = aaa.product_price;
+      product.product_amount = 1;
+      product.commented = 0;
+      product.code = Date.now();
+
       if (localStorage.getItem("productsToBuy")) {
         let bbb = JSON.parse(localStorage.getItem("productsToBuy"));
         bbb.push(product);
-        console.log(JSON.parse(localStorage.getItem("productsToBuy")).length);
         localStorage.setItem("productsToBuy", JSON.stringify(bbb));
         toast.success("已加入購物車");
-      } else {
+        this.props.changeNumOfProduct(JSON.stringify(bbb.length))
+      }
+      else {
         let ddd = [];
         ddd.push(product);
         // product.pos =
         localStorage.setItem("productsToBuy", JSON.stringify(ddd));
+        this.props.changeNumOfProduct(JSON.stringify(ddd.length))
         toast.success("已加入購物車");
       }
-    } else {
-      toast.error("請先登入或註冊為會員");
     }
-  };
+
+  }
+
 
   render() {
-    // console.log( this.state);
 
     const data = this.props.data;
-    // console.log(data);
-    console.log(Date.now());
-
+    const { numberOfProducts } = this.props;
     const mainSettings = {
-      // dots: false,
-      // infinite: true,
-      // slidesToShow: 1,
-      // slidesToScroll: 1,
-      // vertical: false,
-      // verticalSwiping: false,
     };
 
     const thumbSettings = {

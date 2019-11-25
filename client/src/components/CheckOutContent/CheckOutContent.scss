@@ -20,12 +20,12 @@ $secColor: #96daf0;
 
         .itemImg {
             width: 145px !important;
-            // height: 100%;
+            padding: 10px;
 
             .card-img-top{
                 width: 100%;
                 height: 100%;
-                object-fit: contain;
+                object-fit: cover !important;
             }
         }
     }
@@ -35,6 +35,10 @@ $secColor: #96daf0;
         height: 80%;
         object-fit: contain;
         margin: auto;
+    }
+
+    .discountPrice{
+        color: red ;
     }
 
     .qtyBtn {
@@ -150,6 +154,7 @@ $secColor: #96daf0;
             width: 100%;
         }
         .orderDetail {
+            margin-top: 30px;
             display: flex;
             border-top: 1px solid rgb(232, 232, 232);
             border-bottom: 1px solid rgb(232, 232, 232);

@@ -2,11 +2,11 @@ import React from "react";
 import HomeNavBar from '../../components/HomeNavBar/HomeNavBar';
 import ProductLeftMenu from '../../components/ProductLeftMenu/ProductLeftMenu';
 
-
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentUser: props.currentUser,
             ProductsData: [],
         }
     }
@@ -34,12 +34,18 @@ class ProductList extends React.Component {
 
 
     render() {
-        return (
-          <>
-            <HomeNavBar currentUser={this.props.currentUser} />
-            <ProductLeftMenu data={this.state.ProductsData} />
-          </>
-        );
+        const {currentUser} = this.props;
+        // if(currentUser){
+        //     // console.log(currentUser);
+        // }
+            return (
+                <>
+                    <HomeNavBar 
+                        numberOfProducts={this.props.numberOfProducts}
+                        currentUser={this.props.currentUser} />
+                    <ProductLeftMenu data={this.state.ProductsData} currentUser={this.props.currentUser}/>
+                </>
+            );
     }
 }
 

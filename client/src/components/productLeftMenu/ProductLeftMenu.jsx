@@ -11,28 +11,32 @@ import {
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
 // import search from "../../components/TripLeftMenu/images/search.svg"
-import search from "../../components/TripLeftmenu/images/search.svg";
+import search from "../../components/TripLeftMenu/images/search.svg";
 // import location from '../TripLeftMenu/images/location.svg';
 // import trac from "../../components/TripLeftMenu/images/trac.svg";
-import trac from "../../components/TripLeftmenu/images/trac.svg";
-import SliderPrice from "../TripLeftmenu/SliderPrice";
+import trac from "../../components/TripLeftMenu/images/trac.svg";
+import SliderPrice from "../TripLeftMenu/SliderDays";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
 
 //CSS
-import "./productLeftMenu.scss";
+import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
 
 class ProductLeftMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttonTitleName1: "選擇主題"
+      currentPage: 1,
+      todosPerPage: 10,
+      productsData: []
     };
   }
 
   componentDidMount() {
+    let pages = document.querySelector('.page1');
+    console.log(pages);
     let filterBtn = document.querySelector(".product-filter-btn");
     let filterMenu = document.querySelector(".product-filter-menu");
     let filterToggler = document.querySelector(".filterToggler");
@@ -51,9 +55,119 @@ class ProductLeftMenu extends Component {
     });
   }
 
+  handleClick = (event)=> {
+    let pageItems = document.querySelectorAll('.page-item')
+    // console.log(pageItems)
+    for (let i = 0; i < pageItems.length; i++) {
+      pageItems[i].classList.remove('active');
+    }
+
+    event.target.classList.add('active');
+
+    let currentNumber = parseInt( event.target.id)
+    console.log(currentNumber);
+    this.setState({
+      currentPage: currentNumber
+    });
+  }
+
+  goPrev = ()=> {
+
+    let {currentPage} = this.state;
+
+    currentPage -= 1;
+
+    if(currentPage < 1){
+      currentPage = 1
+    }
+
+    let pageItems = document.querySelectorAll('.page-item')
+    // console.log(pageItems)
+    for (let i = 0; i < pageItems.length; i++) {
+      pageItems[i].classList.remove('active');
+    }
+
+    pageItems[currentPage].classList.add('active');
+
+    // console.log(currentNumber);
+    this.setState({
+      currentPage: currentPage
+    });
+  }
+
+  goNext = ()=> {
+    let {currentPage} = this.state;
+    let pageItems = document.querySelectorAll('.page-item')
+
+    currentPage += 1;
+
+    if(currentPage >= pageItems.length -1){
+      currentPage = pageItems.length -1
+    }
+
+    // console.log(pageItems)
+    for (let i = 0; i < pageItems.length; i++) {
+      pageItems[i].classList.remove('active');
+    }
+
+    pageItems[currentPage].classList.add('active');
+
+    // console.log(currentNumber);
+    this.setState({
+      currentPage: currentPage
+    });
+  }
+
   render() {
     const { data } = this.props;
     // console.log(data);
+    const { currentPage, todosPerPage } = this.state;
+    const indexOfLastTodo = currentPage * todosPerPage;
+    const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+    const currentTodos = data.slice(indexOfFirstTodo, indexOfLastTodo);
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / todosPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          className={number == 1 ? 'page-item active' : 'page-item' }
+          key={number}
+          id={number}
+          onClick={this.handleClick}
+        >
+          {number}
+        </li>
+      );
+    });
+
+    const renderTodos = currentTodos.map((item, i) => {
+      return (
+        <Col key={i} sm={6} lg={4}>
+          <Link to={`/products/${item.product_id}`}>
+            <Card key={item.product_id} className="product-card">
+              <div className="photoFrame">
+                <Card.Img
+                  variant="top"
+                  src={
+                    "http://localhost:3000/images/products/" +
+                    item.product_file_name +
+                    "/" +
+                    JSON.parse(item.product_pictures)[0]
+                  }
+                />
+              </div>
+              <Card.Body>
+                <Card.Title>{item.product_name}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </Col>
+      )
+    });
 
     return (
       <div className="ProductLeftMenuContainer">
@@ -216,12 +330,60 @@ class ProductLeftMenu extends Component {
           <Row className="leftMenuRow d-flax justify-content-center">
             <Col md={3} className="leftMenuContent">
               <div className="leftMenu">
-                <div className="searchBox">
+                {/* <div className="searchBox">
                   <input type="text" placeholder="搜尋"></input>
                   <div className="searchImg">
                     <img src={search} alt="search" />
                   </div>
-                </div>
+                </div> */}
+                  <div className="buttonTitle">
+                    <img src={trac} alt="trac" />
+                    <p>森林露營</p>
+                  </div>
+                  <DropdownButton
+                    className=""
+                    title="所有類型"
+                    // id="dropdown-basic-button"
+                    onSelect={eventKey => {
+                      this.setState({});
+                    }}
+                  >
+                    <Dropdown.Item
+                      eventKey="所有類型"
+                      value="1"
+                      href="#/action-1"
+                    >
+                      所有類型
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="帳篷"
+                      value="2"
+                      href="#/action-2"
+                    >
+                      帳篷
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="燈具爐具"
+                      value="3"
+                      href="#/action-3"
+                    >
+                      燈具爐具
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="焚火燒烤"
+                      value="4"
+                      href="#/action-4"
+                    >
+                      焚火燒烤
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="寢室用具"
+                      value="5"
+                      href="#/action-5"
+                    >
+                      寢室用具
+                    </Dropdown.Item>
+                  </DropdownButton>
 
                 <div className="dropDowns">
                   <div className="buttonTitle">
@@ -231,37 +393,24 @@ class ProductLeftMenu extends Component {
 
                   <DropdownButton
                     // id="dropdown-basic-button"
+                    title="所有類型"
                     onSelect={eventKey => {
                       this.setState({});
                     }}
                   >
                     <Dropdown.Item
-                      eventKey="北極光"
+                      eventKey="所有類型"
                       value="1"
                       href="#/action-1"
                     >
-                      北極光
+                      所有類型
                     </Dropdown.Item>
                     <Dropdown.Item
-                      eventKey="駕車遊覽"
+                      eventKey="登山背包"
                       value="2"
                       href="#/action-2"
                     >
-                      駕車遊覽
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="獨木舟"
-                      value="3"
-                      href="#/action-3"
-                    >
-                      獨木舟
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="雪橇犬"
-                      value="3"
-                      href="#/action-3"
-                    >
-                      雪橇犬
+                      登山背包
                     </Dropdown.Item>
                   </DropdownButton>
 
@@ -271,17 +420,18 @@ class ProductLeftMenu extends Component {
                   </div>
                   <DropdownButton
                     className=""
+                    title="所有類型"
                     // id="dropdown-basic-button"
                     onSelect={eventKey => {
                       this.setState({});
                     }}
                   >
                     <Dropdown.Item
-                      eventKey="所有活動"
+                      eventKey="所有類型"
                       value="1"
                       href="#/action-1"
                     >
-                      所有活動
+                      所有類型
                     </Dropdown.Item>
                     <Dropdown.Item
                       eventKey="北極光"
@@ -443,51 +593,28 @@ class ProductLeftMenu extends Component {
             <Col sm={12} md={9} className="p-0">
               <Container className="p-0 card-container">
                 <Row>
-                  {data.map((item, i) => (
-                    <Col key={i} sm={6} lg={4}>
-                      <Link to={`/products/${item.product_id}`}>
-                        <Card key={item.product_id} className="product-card">
-                          <div className="photoFrame">
-                            <Card.Img
-                              variant="top"
-                              src={
-                                "http://localhost:3000/images/products/" +
-                                item.product_file_name +
-                                "/" +
-                                JSON.parse(item.product_pictures)[0]
-                              }
-                            />
-                          </div>
-                          <Card.Body>
-                            <Card.Title>{item.product_name}</Card.Title>
-                          </Card.Body>
-                        </Card>
-                      </Link>
-                    </Col>
-                  ))}
+                  {renderTodos}
+                </Row>
+                <Row>
+                  <Col>
+                    <ul id="page-numbers" className="pagination">
+                      <li
+                        className="page-item"
+                        onClick={this.goPrev}
+                        >
+                        -
+                      </li>
+                      {renderPageNumbers}
+                      <li
+                        className="page-item"
+                        onClick={this.goNext}>
+                        +
+                      </li>
+                    </ul>
+                  </Col>
                 </Row>
               </Container>
-              <Container>
-                <Row className="d-flex justify-content-center align-items-center">
-                  <Pagination>
-                    <Pagination.First />
-                    <Pagination.Prev />
-                    <Pagination.Item>{1}</Pagination.Item>
-                    <Pagination.Ellipsis />
 
-                    <Pagination.Item>{10}</Pagination.Item>
-                    <Pagination.Item>{11}</Pagination.Item>
-                    <Pagination.Item active>{12}</Pagination.Item>
-                    <Pagination.Item>{13}</Pagination.Item>
-                    <Pagination.Item>{14}</Pagination.Item>
-
-                    <Pagination.Ellipsis />
-                    <Pagination.Item>{20}</Pagination.Item>
-                    <Pagination.Next />
-                    <Pagination.Last />
-                  </Pagination>
-                </Row>
-              </Container>
             </Col>
           </Row>
         </Container>
