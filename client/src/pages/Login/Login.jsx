@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Joi from "joi-browser";
+import { Link } from "react-router-dom";
 import LoginNavBar from "../../components/LoginNavbar/LoginNavbar";
 import "./Login.css";
 
@@ -421,9 +422,9 @@ class Login extends React.Component {
                       {this.state.errors.password || ""}
                     </div>
                   }
-                  <a href="#6" className="forgot-pass">
+                  <Link to="/password/recover" className="forgot-pass">
                     忘記密碼?
-                  </a>
+                  </Link>
 
                   {
                     <div className={classes}>

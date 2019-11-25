@@ -9,6 +9,9 @@ import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import UpdatePassword from "./components/UpdatePassword/UpdatePassword";
+
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
@@ -96,9 +99,8 @@ class App extends Component {
     this.setState({ HomeSearch: true });
   };
   render() {
-    
-
     return (
+      <ScrollToTop>
       <Switch>
         <Route
           path="/products"
@@ -149,130 +151,86 @@ class App extends Component {
         />
         <Route path="/logout" component={Logout} />
 
-        <Route
-          path="/login"
-          render={props => (
-            <Login {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route
-          path="/account"
-          render={props => (
-            <DashBoard {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-        <Route path="/trips/page/:page" exact component={TripMenuPage} />
-        <Route path="/trips/page" exact component={TripMenuPage} />
-        <Route path="/trips/:id" exact component={TripDesPage} />
-        <Route
-          path="/"
-          exact
-          render={props => (
-            <Home {...props} 
-              currentUser={this.state.currentUser} 
-              numberOfProducts={this.state.numberOfProducts}
+          <Route
+            path="/password/recover"
+            render={props => (
+              <ForgotPassword {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/password/reset/:userId/:token"
+            render={props => (
+              <UpdatePassword
+                {...props}
+                userId={props.match.params.userId}
+                token={props.match.params.token}
               />
-          )}
-        />
+            )}
+          />
+
+          <Route
+            path="/login"
+            render={props => (
+              <Login {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+        <Route
+            path="/account"
+            render={props => (
+              <DashBoard {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/trips/page/:page"
+            exact
+            render={props => (
+              <TripMenuPage
+                {...props}
+                HomeSearch={this.HomeSearch}
+                place={this.state.place}
+                type={this.state.type}
+                month={this.state.month}
+                currentUser={this.state.currentUser}
+              />
+            )}
+          />
+        
+         <Route
+            path="/trips/page"
+            exact
+            render={props => (
+              <TripMenuPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+           <Route
+            path="/trips/:id"
+            exact
+            render={props => (
+              <TripDesPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+           <Route
+            path="/"
+            exact
+            render={props => (
+              <Home
+                {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                HomeSelect1={this.HomeSelect1}
+                HomeSelect2={this.HomeSelect2}
+                HomeSelect3={this.HomeSelect3}
+                HomeSearch={this.HomeSearch}
+              />
+            )}
+          />
       </Switch>
-    //   console.log(this.state.HomeSearch)
-    // return (
-    //   <ScrollToTop>
-    //     <Switch>
-    //       <Route
-    //         path="/products"
-    //         exact
-    //         render={props => (
-    //           <ProductList currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/products/:id"
-    //         exact
-    //         render={props => (
-    //           <ProductDetail {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/cart"
-    //         exact
-    //         render={props => (
-    //           <MyCart {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/checkout"
-    //         exact
-    //         render={props => (
-    //           <CheckOut {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/comments"
-    //         render={props => <Comment currentUser={this.state.currentUser} />}
-    //       />
-    //       <Route path="/logout" component={Logout} />
-
-    //       <Route
-    //         path="/login"
-    //         render={props => (
-    //           <Login {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/account"
-    //         render={props => (
-    //           <DashBoard {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/trips/page/:page"
-    //         exact
-    //         render={props => (
-    //           <TripMenuPage
-    //             {...props}
-    //             HomeSearch={this.HomeSearch}
-    //             place={this.state.place}
-    //             type={this.state.type}
-    //             month={this.state.month}
-    //             currentUser={this.state.currentUser}
-    //           />
-    //         )}
-    //       />
-
-    //       <Route
-    //         path="/trips/page"
-    //         exact
-    //         render={props => (
-    //           <TripMenuPage {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       <Route
-    //         path="/trips/:id"
-    //         exact
-    //         render={props => (
-    //           <TripDesPage {...props} currentUser={this.state.currentUser} />
-    //         )}
-    //       />
-    //       {/* <Route path="/join" exact component={Join} />
-    //       <Route path="/chat" exact component={Chat} /> */}
-
-    //       <Route
-    //         path="/"
-    //         exact
-    //         render={props => (
-    //           <Home
-    //             {...props}
-    //             currentUser={this.state.currentUser}
-    //             HomeSelect1={this.HomeSelect1}
-    //             HomeSelect2={this.HomeSelect2}
-    //             HomeSelect3={this.HomeSelect3}
-    //             HomeSearch={this.HomeSearch}
-    //           />
-    //         )}
-    //       />
-    //     </Switch>
-    //   </ScrollToTop>
+</ScrollToTop>
     );
   }
 }
