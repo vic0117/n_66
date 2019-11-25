@@ -124,6 +124,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
+  font-size: 12px;
   pointer-events: none;
 }
 

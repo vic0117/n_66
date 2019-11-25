@@ -60,15 +60,23 @@ class CheckOut extends React.Component {
 
 
     render() {
+
+        // const {currentUser} = this.props
+
         return (
             <>
-                <NavBar />
+                <NavBar 
+                    currentUser={this.props.currentUser}
+                    changeNumOfProduct={this.props.changeNumOfProduct}
+                    numberOfProducts={this.props.numberOfProducts} />
                 <CheckOutContent
                    productsToBuy={this.state.productsToBuy} 
                    tripsToBuy={this.state.tripsToBuy}
                    totalCost={this.state.totalCost}
                    userId = {this.state.userId}
                    hasCoupon = {this.state.hasCoupon}
+                   numberOfProducts={this.props.numberOfProducts}
+                   changeNumOfProduct={this.props.changeNumOfProduct}
                 />
             </>
         );

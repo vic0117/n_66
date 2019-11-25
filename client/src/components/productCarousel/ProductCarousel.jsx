@@ -68,6 +68,7 @@ class ProductCarousel extends React.Component {
 
     }
     else {
+      let tripsArray = JSON.parse( localStorage.getItem('tripsToBuy'));
       let aaa = this.props.data[0];
       let product = {};
       product.product_id = aaa.product_id;
@@ -87,16 +88,17 @@ class ProductCarousel extends React.Component {
       if (localStorage.getItem("productsToBuy")) {
         let bbb = JSON.parse(localStorage.getItem("productsToBuy"));
         bbb.push(product);
+        this.props.changeNumOfProduct(JSON.stringify(bbb.length + tripsArray.length))
         localStorage.setItem("productsToBuy", JSON.stringify(bbb));
         toast.success("已加入購物車");
-        this.props.changeNumOfProduct(JSON.stringify(bbb.length))
+        
       }
       else {
         let ddd = [];
         ddd.push(product);
         // product.pos =
         localStorage.setItem("productsToBuy", JSON.stringify(ddd));
-        this.props.changeNumOfProduct(JSON.stringify(ddd.length))
+        this.props.changeNumOfProduct(JSON.stringify(ddd.length + tripsArray.length))
         toast.success("已加入購物車");
       }
     }

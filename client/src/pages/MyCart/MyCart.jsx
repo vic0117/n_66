@@ -93,9 +93,12 @@ class MyCart extends React.Component {
 
             return (
                 <>
-                    <HomeNavBar numberOfProducts={this.state.numberOfProducts}/>
+                    <HomeNavBar 
+                        currentUser={this.props.currentUser}
+                        numberOfProducts={this.props.numberOfProducts}
+                        changeNumOfProduct={this.props.changeNumOfProduct}
+                        />
                     <CartContent
-                        numberOfProducts = {this.state.numberOfProducts}
                         data={this.state.productsToBuy}
                         tripData={this.state.tripsToBuy}
                         totalCost={this.state.totalCost}
@@ -104,6 +107,8 @@ class MyCart extends React.Component {
                         count2={this.count2}
                         countTotalCost={this.countTotalCost}
                         setTripState={this.setTripState}
+                        numberOfProducts = {this.props.numberOfProducts}
+                        changeNumOfProduct={this.props.changeNumOfProduct}
                     />
                 </>
             );

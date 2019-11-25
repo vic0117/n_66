@@ -93,6 +93,7 @@ class ProductDetail extends React.Component {
         <ProductCarousel
           data={this.state.ProductsDetail}
           pics={this.state.Pictures}
+          numberOfProducts={this.props.numberOfProducts}
           changeNumOfProduct={this.props.changeNumOfProduct}
           addWish={this.handelAddWish}
         />
