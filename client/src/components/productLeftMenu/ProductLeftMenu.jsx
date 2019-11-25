@@ -10,12 +10,11 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-// import search from "../../components/TripLeftMenu/images/search.svg"
-import search from "../../components/TripLeftMenu/images/search.svg";
+import search from "../../components/TripLeftmenu/images/search.svg";
 // import location from '../TripLeftMenu/images/location.svg';
-// import trac from "../../components/TripLeftMenu/images/trac.svg";
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "../TripLeftMenu/SliderDays";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from "../TripLeftmenu/SliderPrice";
+import SliderDays from "../TripLeftmenu/SliderDays";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
@@ -35,7 +34,7 @@ class ProductLeftMenu extends Component {
   }
 
   componentDidMount() {
-    let pages = document.querySelector('.page1');
+    let pages = document.querySelector(".page1");
     console.log(pages);
     let filterBtn = document.querySelector(".product-filter-btn");
     let filterMenu = document.querySelector(".product-filter-menu");
@@ -55,68 +54,67 @@ class ProductLeftMenu extends Component {
     });
   }
 
-  handleClick = (event)=> {
-    let pageItems = document.querySelectorAll('.page-item')
+  handleClick = event => {
+    let pageItems = document.querySelectorAll(".page-item");
     // console.log(pageItems)
     for (let i = 0; i < pageItems.length; i++) {
-      pageItems[i].classList.remove('active');
+      pageItems[i].classList.remove("active");
     }
 
-    event.target.classList.add('active');
+    event.target.classList.add("active");
 
-    let currentNumber = parseInt( event.target.id)
+    let currentNumber = parseInt(event.target.id);
     console.log(currentNumber);
     this.setState({
       currentPage: currentNumber
     });
-  }
+  };
 
-  goPrev = ()=> {
-
-    let {currentPage} = this.state;
+  goPrev = () => {
+    let { currentPage } = this.state;
 
     currentPage -= 1;
 
-    if(currentPage < 1){
-      currentPage = 1
+    if (currentPage < 1) {
+      currentPage = 1;
     }
 
-    let pageItems = document.querySelectorAll('.page-item')
+    let pageItems = document.querySelectorAll(".page-item");
     // console.log(pageItems)
     for (let i = 0; i < pageItems.length; i++) {
-      pageItems[i].classList.remove('active');
+      pageItems[i].classList.remove("active");
     }
 
-    pageItems[currentPage].classList.add('active');
+    pageItems[currentPage].classList.add("active");
 
     // console.log(currentNumber);
     this.setState({
       currentPage: currentPage
     });
-  }
+  };
 
-  goNext = ()=> {
-    let {currentPage} = this.state;
-    let pageItems = document.querySelectorAll('.page-item')
+  goNext = () => {
+    let { currentPage } = this.state;
+    let pageItems = document.querySelectorAll(".page-item");
 
     currentPage += 1;
 
-    if(currentPage >= pageItems.length -1){
-      currentPage = pageItems.length -1
+    if (currentPage >= pageItems.length - 1) {
+      currentPage = pageItems.length - 1;
     }
 
     // console.log(pageItems)
     for (let i = 0; i < pageItems.length; i++) {
-      pageItems[i].classList.remove('active');
+      pageItems[i].classList.remove("active");
     }
 
-    pageItems[currentPage].classList.add('active');
+    pageItems[currentPage].classList.add("active");
 
     // console.log(currentNumber);
     this.setState({
       currentPage: currentPage
     });
-  }
+  };
 
   render() {
     const { data } = this.props;
@@ -134,7 +132,7 @@ class ProductLeftMenu extends Component {
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li
-          className={number == 1 ? 'page-item active' : 'page-item' }
+          className={number == 1 ? "page-item active" : "page-item"}
           key={number}
           id={number}
           onClick={this.handleClick}
@@ -166,7 +164,7 @@ class ProductLeftMenu extends Component {
             </Card>
           </Link>
         </Col>
-      )
+      );
     });
 
     return (
@@ -336,54 +334,50 @@ class ProductLeftMenu extends Component {
                     <img src={search} alt="search" />
                   </div>
                 </div> */}
-                  <div className="buttonTitle">
-                    <img src={trac} alt="trac" />
-                    <p>森林露營</p>
-                  </div>
-                  <DropdownButton
-                    className=""
-                    title="所有類型"
-                    // id="dropdown-basic-button"
-                    onSelect={eventKey => {
-                      this.setState({});
-                    }}
+                <div className="buttonTitle">
+                  <img src={trac} alt="trac" />
+                  <p>森林露營</p>
+                </div>
+                <DropdownButton
+                  className=""
+                  title="所有類型"
+                  // id="dropdown-basic-button"
+                  onSelect={eventKey => {
+                    this.setState({});
+                  }}
+                >
+                  <Dropdown.Item
+                    eventKey="所有類型"
+                    value="1"
+                    href="#/action-1"
                   >
-                    <Dropdown.Item
-                      eventKey="所有類型"
-                      value="1"
-                      href="#/action-1"
-                    >
-                      所有類型
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="帳篷"
-                      value="2"
-                      href="#/action-2"
-                    >
-                      帳篷
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="燈具爐具"
-                      value="3"
-                      href="#/action-3"
-                    >
-                      燈具爐具
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="焚火燒烤"
-                      value="4"
-                      href="#/action-4"
-                    >
-                      焚火燒烤
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="寢室用具"
-                      value="5"
-                      href="#/action-5"
-                    >
-                      寢室用具
-                    </Dropdown.Item>
-                  </DropdownButton>
+                    所有類型
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="帳篷" value="2" href="#/action-2">
+                    帳篷
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    eventKey="燈具爐具"
+                    value="3"
+                    href="#/action-3"
+                  >
+                    燈具爐具
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    eventKey="焚火燒烤"
+                    value="4"
+                    href="#/action-4"
+                  >
+                    焚火燒烤
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    eventKey="寢室用具"
+                    value="5"
+                    href="#/action-5"
+                  >
+                    寢室用具
+                  </Dropdown.Item>
+                </DropdownButton>
 
                 <div className="dropDowns">
                   <div className="buttonTitle">
@@ -592,29 +586,21 @@ class ProductLeftMenu extends Component {
             </Col>
             <Col sm={12} md={9} className="p-0">
               <Container className="p-0 card-container">
-                <Row>
-                  {renderTodos}
-                </Row>
+                <Row>{renderTodos}</Row>
                 <Row>
                   <Col>
                     <ul id="page-numbers" className="pagination">
-                      <li
-                        className="page-item"
-                        onClick={this.goPrev}
-                        >
+                      <li className="page-item" onClick={this.goPrev}>
                         -
                       </li>
                       {renderPageNumbers}
-                      <li
-                        className="page-item"
-                        onClick={this.goNext}>
+                      <li className="page-item" onClick={this.goNext}>
                         +
                       </li>
                     </ul>
                   </Col>
                 </Row>
               </Container>
-
             </Col>
           </Row>
         </Container>

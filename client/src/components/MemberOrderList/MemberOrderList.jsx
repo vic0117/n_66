@@ -68,6 +68,66 @@ class MemberOrderList extends Component {
         this.setState({ feedback: data });
         if (this.state.feedback.success) {
           this.setState({ addModalShow: false });
+          
+          // 如果有輸入評論, 將commented改為1
+          const { currentUser } = this.props;
+          let addCommented;
+          fetch(
+            `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem("token")
+              }
+            }
+          )
+            .then(response => {
+              if (response.status >= 400) {
+                throw new Error("Bad response from server");
+              }
+              return response.json();
+            })
+            .then(data => {
+              addCommented = data.rows[0].order_trip;
+              addCommented = JSON.parse(addCommented);
+              addCommented.forEach(product => {
+                if (product.code === item.code) {
+                  product.commented = 1;
+                }
+              });
+              addCommented = JSON.stringify(addCommented);
+              const info = { results: addCommented };
+              console.log("results", info);
+              console.log("item.id", item.id);
+              fetch(
+                `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                  },
+                  body: JSON.stringify(info)
+                }
+              )
+                .then(response => {
+                  if (response.status >= 400) {
+                    throw new Error("Bad response from server");
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(function(err) {
+                  console.log(err);
+                });
+            })
+            .catch(function(err) {
+              console.log(err);
+            });
+
           function pageReload() {
             window.location = "/account/orders";
           }
@@ -76,65 +136,6 @@ class MemberOrderList extends Component {
         } else {
           toast.error(this.state.feedback.msg.text);
         }
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-    //
-
-    const { currentUser } = this.props;
-    let addCommented;
-    fetch(
-      `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token")
-        }
-      }
-    )
-      .then(response => {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .then(data => {
-        addCommented = data.rows[0].order_trip;
-        addCommented = JSON.parse(addCommented);
-        addCommented.forEach(product => {
-          if (product.code === item.code) {
-            product.commented = 1;
-          }
-        });
-        addCommented = JSON.stringify(addCommented);
-        const info = { results: addCommented };
-        console.log("results", info);
-        console.log("item.id", item.id);
-        fetch(
-          `http://localhost:3001/members_order/${currentUser.user.u_id}/${item.id}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token")
-            },
-            body: JSON.stringify(info)
-          }
-        )
-          .then(response => {
-            if (response.status >= 400) {
-              throw new Error("Bad response from server");
-            }
-            return response.json();
-          })
-          .then(data => {
-            console.log(data);
-          })
-          .catch(function(err) {
-            console.log(err);
-          });
       })
       .catch(function(err) {
         console.log(err);

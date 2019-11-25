@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import "./Pagination.css";
 
 const Pagination = props => {
   const { itemsCount, pageSize, currentPage, onPageChange } = props;
@@ -9,9 +10,11 @@ const Pagination = props => {
   if (pageCount === 1) return null;
   const pages = _.range(1, pageCount + 1); // [1,2,...pageCount + 1]
 
+  
+
   return (
     <nav>
-      <ul className="pagination">
+      <ul className="pagination pagination-container">
         {pages.map(page => (
           <li
             className={page === currentPage ? "page-item active" : "page-item"}

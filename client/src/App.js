@@ -9,6 +9,9 @@ import Comment from "./pages/Comment/Comment";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import UpdatePassword from "./components/UpdatePassword/UpdatePassword";
+
 import Logout from "./components/Logout/Logout";
 import TripMenuPage from "./pages/TripMenuPage/TripMenuPage";
 import TripDesPage from "./pages/TripDesPage/TripDesPage";
@@ -29,7 +32,7 @@ class App extends Component {
       //在這裡監聽location对象
       console.log(location.pathname);
       switch (
-      location.pathname //根據路徑不同切换不同的瀏覽器title
+        location.pathname //根據路徑不同切换不同的瀏覽器title
       ) {
         case "/":
           document.title = "N66";
@@ -49,10 +52,10 @@ class App extends Component {
     });
 
     this.state = {
-      numberOfProducts: ''
+      numberOfProducts: ""
     };
   }
-  
+
   state = {
     place: "",
     type: "",
@@ -67,21 +70,21 @@ class App extends Component {
     let tripsArray = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
 
     let numberOfProducts = productsArray.length + tripsArray.length;
-    if(numberOfProducts){
-      this.setState({numberOfProducts: JSON.stringify(numberOfProducts)})
+    if (numberOfProducts) {
+      this.setState({ numberOfProducts: JSON.stringify(numberOfProducts) });
     }
-    
+
     try {
       const jwt = localStorage.getItem("token");
       const currentUser = jwtDecode(jwt);
       console.log(currentUser);
       this.setState({ currentUser });
-    } catch (error) { }
+    } catch (error) {}
   }
 
-  changeNumOfProduct = (num)=>{
-    this.setState({numberOfProducts: num});
-  }
+  changeNumOfProduct = num => {
+    this.setState({ numberOfProducts: num });
+  };
 
   HomeSelect1 = eventKey => {
     this.setState({ place: eventKey });
@@ -96,41 +99,42 @@ class App extends Component {
     this.setState({ HomeSearch: true });
   };
   render() {
-    
-
     return (
       <ScrollToTop>
-      <Switch>
-        <Route
-          path="/products"
-          exact
-          render={props => (
-            <ProductList {...props} 
-              currentUser={this.state.currentUser}
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct}
-               />
-          )}
-        />
-        <Route
-          path="/products/:id"
-          exact
-          render={props => (
-            <ProductDetail {...props} 
-              currentUser={this.state.currentUser} 
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct}
+        <Switch>
+          <Route
+            path="/products"
+            exact
+            render={props => (
+              <ProductList
+                {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}
               />
-          )}
-        />
-        <Route
-          path="/cart"
-          exact
-          render={props => (
-            <MyCart {...props} 
-              currentUser={this.state.currentUser} 
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct}
+            )}
+          />
+          <Route
+            path="/products/:id"
+            exact
+            render={props => (
+              <ProductDetail
+                {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}
+              />
+            )}
+          />
+          <Route
+            path="/cart"
+            exact
+            render={props => (
+              <MyCart
+                {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}
               />
           )}
         />
@@ -146,20 +150,28 @@ class App extends Component {
         />
         <Route
           path="/comments"
-          render={props => <Comment {...props} currentUser={this.state.currentUser} changeNumOfProduct={this.changeNumOfProduct}/> }
+          render={props => <Comment {...props} 
+            currentUser={this.state.currentUser} 
+            numberOfProducts={this.state.numberOfProducts}
+            changeNumOfProduct={this.changeNumOfProduct}/> 
+          }
         />
         <Route path="/logout" component={Logout} />
 
         <Route
           path="/login"
           render={props => (
-            <Login {...props} currentUser={this.state.currentUser} changeNumOfProduct={this.changeNumOfProduct}/>
+            <Login {...props} currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}/>
           )}
         />
         <Route
           path="/account"
           render={props => (
-            <DashBoard {...props} currentUser={this.state.currentUser} changeNumOfProduct={this.changeNumOfProduct}/>
+            <DashBoard {...props} currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}/>
           )}
         />
          <Route
@@ -173,6 +185,7 @@ class App extends Component {
                 type={this.state.type}
                 month={this.state.month}
                 currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
                 changeNumOfProduct={this.changeNumOfProduct}
               />
             )}
@@ -181,29 +194,113 @@ class App extends Component {
             path="/trips/page"
             exact
             render={props => (
-              <TripMenuPage {...props} currentUser={this.state.currentUser} changeNumOfProduct={this.changeNumOfProduct}/>
+              <TripMenuPage {...props} 
+                currentUser={this.state.currentUser} 
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}/>
             )}
           />
           <Route
             path="/trips/:id"
             exact
             render={props => (
-              <TripDesPage {...props} currentUser={this.state.currentUser} changeNumOfProduct={this.changeNumOfProduct}/>
+              <TripDesPage {...props} 
+                currentUser={this.state.currentUser} 
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}/>
             )}
           />
-        <Route
-          path="/"
-          exact
-          render={props => (
-            <Home {...props} 
-              currentUser={this.state.currentUser} 
-              numberOfProducts={this.state.numberOfProducts}
-              />
-          )}
-        />
-      </Switch>
-      </ScrollToTop>
+       
+          <Route
+            path="/comments"
+            render={props => 
+              <Comment {...props}
+              currentUser={this.state.currentUser}
+              numberOfProducts={this.state.numberOfProducts} 
+              numberOfProducts={this.state.numberOfProducts}/>}
+          />
+          <Route path="/logout" component={Logout} />
 
+          <Route
+            path="/password/recover"
+            render={props => (
+              <ForgotPassword {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/password/reset/:userId/:token"
+            render={props => (
+              <UpdatePassword
+                {...props}
+                userId={props.match.params.userId}
+                token={props.match.params.token}
+              />
+            )}
+          />
+
+          <Route
+            path="/login"
+            render={props => (
+              <Login {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/account"
+            render={props => (
+              <DashBoard {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/trips/page/:page"
+            exact
+            render={props => (
+              <TripMenuPage
+                {...props}
+                HomeSearch={this.HomeSearch}
+                place={this.state.place}
+                type={this.state.type}
+                month={this.state.month}
+                currentUser={this.state.currentUser}
+              />
+            )}
+          />
+
+          <Route
+            path="/trips/page"
+            exact
+            render={props => (
+              <TripMenuPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/trips/:id"
+            exact
+            render={props => (
+              <TripDesPage {...props} currentUser={this.state.currentUser} />
+            )}
+          />
+
+          <Route
+            path="/"
+            exact
+            render={props => (
+              <Home
+                {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                HomeSelect1={this.HomeSelect1}
+                HomeSelect2={this.HomeSelect2}
+                HomeSelect3={this.HomeSelect3}
+                HomeSearch={this.HomeSearch}
+              />
+            )}
+          />
+        </Switch>
+      </ScrollToTop>
     );
   }
 }
