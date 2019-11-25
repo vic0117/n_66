@@ -89,7 +89,7 @@ class MyCart extends React.Component {
                 </>
             );
         }
-    }
+    
   }
 }
 
