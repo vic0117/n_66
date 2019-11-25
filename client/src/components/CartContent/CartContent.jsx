@@ -26,27 +26,25 @@ class CartContent extends React.Component {
 
 
   deleteProduct = async (i) => {
-    let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
-    let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
-    // console.log(i);
-
-    productsArray.forEach(product => {
-      if (product.code === i) {
-        // console.log(productsArray.indexOf(product));
-        productsArray.splice(productsArray.indexOf(product), 1);
-      }
-    });
-
-    console.log(productsArray)
-    this.props.delete(productsArray)
+    let productsArray = JSON.parse(localStorage.getItem('productsToBuy')) || [];
+    let tripsArray = JSON.parse(localStorage.getItem('tripsToBuy')) || [];
 
     let totalCost = 0;
 
     if (productsArray) {
       productsArray.forEach(item => {
+
+        if (item.code === i) {
+          // console.log(productsArray.indexOf(product));
+          productsArray.splice(productsArray.indexOf(item), 1);
+        }
+
         let subCost = item.product_amount * item.product_price;
         totalCost += subCost;
       })
+
+      console.log(productsArray)
+      
     }
 
     if (tripsArray) {
@@ -61,6 +59,9 @@ class CartContent extends React.Component {
     localStorage.setItem('totalCost', totalCost);
 
     this.props.countTotalCost(totalCost);
+
+    this.props.delete(productsArray)
+    this.props.changeNumOfProduct(JSON.stringify(productsArray.length + tripsArray.length));
 
     productsArray = JSON.stringify(productsArray);
     localStorage.setItem('productsToBuy', productsArray);
@@ -146,8 +147,8 @@ class CartContent extends React.Component {
   }
 
   deleteTrip = async (i) => {
-    let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
-    let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
+    let productsArray = await JSON.parse(localStorage.getItem('productsToBuy')) || [];
+    let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy')) || [];
     // console.log(i);
     tripsArray.forEach(trip => {
       if (trip.code === i) {
@@ -158,6 +159,7 @@ class CartContent extends React.Component {
 
     // console.log(tripsArray)
     this.props.setTripState(tripsArray)
+    this.props.changeNumOfProduct(JSON.stringify(productsArray.length + tripsArray.length));
 
     let totalCost = 0;
 
@@ -267,10 +269,10 @@ class CartContent extends React.Component {
 
     const { data } = this.props;
     const { tripData } = this.props;
-    const {numberOfProducts} = this.props;
+    const { numberOfProducts } = this.props;
     // console.log(numberOfProducts);
 
-  
+
     if (numberOfProducts === '0') {
       return (
 
@@ -351,7 +353,7 @@ class CartContent extends React.Component {
                           <Card.Body>
                             <div className="d-flex w-100 flex-column align-items-start">
                               <h6>
-                              <div className="">{item.trip_country}</div>
+                                <div className="">{item.trip_country}</div>
                                 <div className="">{item.trip_type}</div>
                                 <div className="price">{item.trip_price}</div>
 

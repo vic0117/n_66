@@ -17,12 +17,18 @@ class CheckOutContent extends React.Component {
         };
     }
 
-
+    // 結帳按鈕
     CheckOut = () => {
         let { userId } = this.props;
-        // console.log(userId)
         let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
+        let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
         let couponList = []
+
+        // 如果沒有買行程
+        if(!tripsToBuy){
+            tripsToBuy = []
+            localStorage.setItem('tripsToBuy', JSON.stringify(tripsToBuy))
+        }
 
         if(tripsToBuy){
             tripsToBuy.forEach((trip) => {
@@ -30,16 +36,22 @@ class CheckOutContent extends React.Component {
                 let coupon = {};
                 coupon.type = trip.trip_type;
                 coupon.u_id = userId;
-                coupon.discount = "0.85";
+                coupon.discount = "85";
     
                 couponList.push(coupon);
             })
         }
 
+        // 如果沒有買商品
+        if(!productsToBuy){
+            productsToBuy = [];
+            localStorage.setItem('productsToBuy', JSON.stringify(productsToBuy));
+        }
+
 
         let bodyObj = {
-            productsToBuy: localStorage.getItem('productsToBuy'),
-            tripsToBuy: localStorage.getItem('tripsToBuy'),
+            productsToBuy: JSON.stringify(productsToBuy),
+            tripsToBuy: JSON.stringify(tripsToBuy),
             totalCost: localStorage.getItem('totalCost'),
             userId: localStorage.getItem('userId'),
             couponList: couponList,
@@ -63,13 +75,13 @@ class CheckOutContent extends React.Component {
                 //TODO:
                 // tosty
 
-                // localStorage.setItem('tripsToBuy', '[]')
-                // localStorage.setItem('productsToBuy', '[]')
-                // localStorage.setItem('totalCost', '0')
+                localStorage.setItem('tripsToBuy', '[]')
+                localStorage.setItem('productsToBuy', '[]')
+                localStorage.setItem('totalCost', '0')
             })
     }
 
-
+    // 折價卷
     showCouponType = (e) => {
         let coupon = e.target.innerText;
         let couponName = coupon.split(' ')[0].toString();
@@ -154,19 +166,15 @@ class CheckOutContent extends React.Component {
         const { totalCost } = this.props;
         const { userId } = this.props;
         const { hasCoupon } = this.props;
-        // console.log(tripsToBuy)
-        // console.log(hasCoupon)
         const coupons = { ...hasCoupon }
         let { answer } = coupons;
         let userCoupons = []
-        // console.log(answer)
         if (answer) {
             answer.forEach(sb => {
                 userCoupons.push(sb);
             })
         }
 
-        // console.log(userCoupons);
         return (
             <>
                 <Container className=" mt-5 sectionCheckOut">
@@ -298,7 +306,7 @@ class CheckOutContent extends React.Component {
                                                         as="button"
                                                         key={i}
                                                         onClick={this.showCouponType}
-                                                    >{`${coupon.type} ${coupon.discount * 100} 折`}</Dropdown.Item>
+                                                    >{`${coupon.type} ${coupon.discount} 折`}</Dropdown.Item>
                                                 ))
                                             }
                                             <Dropdown.Item
@@ -416,13 +424,6 @@ class CheckOutContent extends React.Component {
                                 </div>
                                 <div className="checkout-btn d-flex">
                                     <button onClick={this.CheckOut} className="mx-auto mb-3">確認結帳</button>
-                                    <div>
-                                        {
-                                            this.state.useCouponType === '' ? ('') : (
-                                                this.state.useCouponType
-                                            )
-                                        }
-                                    </div>
                                 </div>
                             </form>
                         </Col>

@@ -113,14 +113,54 @@ class App extends Component {
                 numberOfProducts={this.state.numberOfProducts}
                 changeNumOfProduct={this.changeNumOfProduct}
               />
-            )}
-          />
-          <Route
-            path="/checkout"
+          )}
+        />
+        <Route
+          path="/checkout"
+          exact
+          render={props => (
+            <CheckOut {...props} 
+            currentUser={this.state.currentUser} 
+            numberOfProducts={this.state.numberOfProducts}
+            changeNumOfProduct={this.changeNumOfProduct}/>
+          )}
+        />
+        <Route
+          path="/comments"
+          render={props => <Comment {...props} 
+            currentUser={this.state.currentUser} 
+            numberOfProducts={this.state.numberOfProducts}
+            changeNumOfProduct={this.changeNumOfProduct}/> 
+          }
+        />
+        <Route path="/logout" component={Logout} />
+
+        <Route
+          path="/login"
+          render={props => (
+            <Login {...props} currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}/>
+          )}
+        />
+        <Route
+          path="/account"
+          render={props => (
+            <DashBoard {...props} currentUser={this.state.currentUser} 
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct}/>
+          )}
+        />
+         <Route
+            path="/trips/page/:page"
             exact
             render={props => (
-              <CheckOut
+              <TripMenuPage
                 {...props}
+                HomeSearch={this.HomeSearch}
+                place={this.state.place}
+                type={this.state.type}
+                month={this.state.month}
                 currentUser={this.state.currentUser}
                 numberOfProducts={this.state.numberOfProducts}
                 changeNumOfProduct={this.changeNumOfProduct}
@@ -128,8 +168,33 @@ class App extends Component {
             )}
           />
           <Route
+            path="/trips/page"
+            exact
+            render={props => (
+              <TripMenuPage {...props} 
+                currentUser={this.state.currentUser} 
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}/>
+            )}
+          />
+          <Route
+            path="/trips/:id"
+            exact
+            render={props => (
+              <TripDesPage {...props} 
+                currentUser={this.state.currentUser} 
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}/>
+            )}
+          />
+       
+          <Route
             path="/comments"
-            render={props => <Comment currentUser={this.state.currentUser} />}
+            render={props => 
+              <Comment {...props}
+              currentUser={this.state.currentUser}
+              numberOfProducts={this.state.numberOfProducts} 
+              numberOfProducts={this.state.numberOfProducts}/>}
           />
           <Route path="/logout" component={Logout} />
 

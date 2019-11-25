@@ -48,63 +48,48 @@ class MyCart extends React.Component {
     });
   }
 
-  delete = result => {
-    let numberOfProducts = result.length;
-    this.setState({
-      productsToBuy: result,
-      numberOfProducts: JSON.stringify(numberOfProducts)
-    });
-  };
+    render() {
+        //解構付值props
+        const { currentUser } = this.props
 
-  count1 = aaa => {
-    this.setState({ productsToBuy: aaa });
-  };
+        if (!currentUser) {
+            return (
+                <h1>請登入</h1>
+            )
+        }
+        else {
+            //複製props
+            let obj = { ...currentUser };
+            //解構付值obj
+            let { user } = obj;
+            //複製user
+            let uid = { ...user };
+            let user_id = uid.u_id;
+            localStorage.setItem('userId', user_id);
 
-  count2 = aaa => {
-    this.setState({ productsToBuy: aaa });
-  };
-
-  setTripState = result => {
-    this.setState({ tripsToBuy: result });
-  };
-
-  countTotalCost = cost => {
-    this.setState({ totalCost: cost });
-  };
-
-  render() {
-    //解構付值props
-    const { currentUser } = this.props;
-
-    if (!currentUser) {
-      return <h1>請登入</h1>;
-    } else {
-      //複製props
-      let obj = { ...currentUser };
-      //解構付值obj
-      let { user } = obj;
-      //複製user
-      let uid = { ...user };
-      let user_id = uid.u_id;
-      localStorage.setItem("userId", user_id);
-
-      return (
-        <>
-          <HomeNavBar numberOfProducts={this.state.numberOfProducts} />
-          <CartContent
-            numberOfProducts={this.state.numberOfProducts}
-            data={this.state.productsToBuy}
-            tripData={this.state.tripsToBuy}
-            totalCost={this.state.totalCost}
-            delete={this.delete}
-            count1={this.count1}
-            count2={this.count2}
-            countTotalCost={this.countTotalCost}
-            setTripState={this.setTripState}
-          />
-        </>
-      );
-    }
+            return (
+                <>
+                    <HomeNavBar 
+                        currentUser={this.props.currentUser}
+                        numberOfProducts={this.props.numberOfProducts}
+                        changeNumOfProduct={this.props.changeNumOfProduct}
+                        />
+                    <CartContent
+                        data={this.state.productsToBuy}
+                        tripData={this.state.tripsToBuy}
+                        totalCost={this.state.totalCost}
+                        delete={this.delete}
+                        count1={this.count1}
+                        count2={this.count2}
+                        countTotalCost={this.countTotalCost}
+                        setTripState={this.setTripState}
+                        numberOfProducts = {this.props.numberOfProducts}
+                        changeNumOfProduct={this.props.changeNumOfProduct}
+                    />
+                </>
+            );
+        }
+    
   }
 }
 

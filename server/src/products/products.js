@@ -5,10 +5,10 @@ const moment = require('moment');
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "root",  
+  password: "",
   database: "n_66"
 });
 
@@ -73,7 +73,7 @@ router.post("/products/add_wishlist", (req, res) => {
 
 
 //我的購物車
-router.get("/cart", (req, res)=>{
+router.get("/cart", (req, res) => {
   // console.log(req.body)
   res.json(req.body)
 })
@@ -81,20 +81,20 @@ router.get("/cart", (req, res)=>{
 
 
 //結帳頁面 搜尋使用者是否有折價卷
-router.post("/checkout/findCoupon", (req, res)=>{
+router.post("/checkout/findCoupon", (req, res) => {
   let user = req.body;
   // console.log(user.userId);
 
   let sql = `SELECT * FROM coupon_list WHERE u_id = ${user.userId}`;
   let couponList = {};
- 
+
   db.queryAsync(sql)
-    .then(results=>{
+    .then(results => {
       // console.log(results.length)
-      if(results.length == 0){
+      if (results.length == 0) {
         couponList.answer = ["沒有折價卷"]
       }
-      else{
+      else {
         couponList.answer = results;
       }
 
@@ -108,42 +108,41 @@ router.post("/checkout/findCoupon", (req, res)=>{
 router.post("/checkout", (req, res) => {
   let data = req.body;
   // console.log(data.couponList);
-  
-  let sql = `INSERT INTO order_list( u_id, order_trip, order_product, order_status, order_total_price) 
-  VALUES ( '${data.userId}', '${data.tripsToBuy}', '${data.productsToBuy}', '${data.orderStatus}', '${data.totalCost}' )`;
+
+  // 下單日期
+  let createAt = moment(new Date(), 'YYYY/MM/DD');
+  let createAtStr = JSON.stringify(createAt).split('T')[0].split('"')[1].split('-').join('/');
+  // 預計到貨日期
+  let arrivalDate = moment(new Date(), 'YYYY/MM/DD').add(3, 'day');
+  let arrivalDateStr = JSON.stringify(arrivalDate).split('T')[0].split('"')[1].split("-").join("/");
+
+  let sql = `INSERT INTO order_list( u_id, order_trip, order_product, order_status, order_total_price, create_at, arrival_date) 
+  VALUES ( '${data.userId}', '${data.tripsToBuy}', '${data.productsToBuy}', '${data.orderStatus}', '${data.totalCost}', '${createAtStr}', '${arrivalDateStr}')`;
   let newId = 0;
   let output = {};
 
 
   db.queryAsync(sql)
-    .then(results => { 
-      
+    .then(results => {
+
       sql = `SELECT * FROM order_list ORDER BY order_id DESC LIMIT 0 , 1`;
       return db.queryAsync(sql);
     })
-    .then(results=>{
+    .then(results => {
       // console.log(results);
       // 新id
       newId = results[0].order_id;
-      // 到貨時間
-      // crateAt = JSON.stringify(results[0].create_at).split('T')[0].split('"')[1].split('-').join('/');
-      // console.log( crateAt)
-      // let crateAt = results[0].create_at
-      // 預計到貨日期
-      let arrivalDate = moment( new Date(), 'YYYY/MM/DD').add(3, 'day');
-      let arrivalDateStr = JSON.stringify(arrivalDate).split('T')[0].split('"')[1].split("-").join("/");
-      // console.log(arrivalDateStr)
 
       let productsArray = JSON.parse(data.productsToBuy);
 
-      if(productsArray){
+      if (productsArray) {
         productsArray.forEach(item => {
           item.id = newId;
         });
       }
-      
+
       let tripsArray = JSON.parse(data.tripsToBuy);
-      if(tripsArray){
+      if (tripsArray) {
         tripsArray.forEach(trip => {
           trip.id = newId;
         });
@@ -152,20 +151,20 @@ router.post("/checkout", (req, res) => {
       data.productsToBuy = JSON.stringify(productsArray);
       data.tripsToBuy = JSON.stringify(tripsArray);
 
-      sql=` UPDATE order_list SET order_trip = '${data.tripsToBuy}', order_product = '${data.productsToBuy}' , arrival_date = '${arrivalDateStr}' WHERE u_id = '${data.userId}'`
+      sql = ` UPDATE order_list SET order_trip = '${data.tripsToBuy}', order_product = '${data.productsToBuy}' WHERE u_id = '${data.userId}'`
       return db.queryAsync(sql);
     })
-    .then(results=>{
+    .then(results => {
       let couponList = data.couponList;
       let validDate = moment(new Date(), 'YYYY/MM/DD').add(3, 'month');
       let validDateStr = JSON.stringify(validDate).split('T')[0].split('"')[1].split("-").join("/");
-      
-      couponList.forEach(coupon=>{
-        let sql= `INSERT INTO coupon_list(u_id, type, discount, valid_date) VALUES ('${coupon.u_id}','${coupon.type}','${coupon.discount}','${validDateStr}')`;
+
+      couponList.forEach(coupon => {
+        let sql = `INSERT INTO coupon_list(u_id, type, discount, valid_date) VALUES ('${coupon.u_id}','${coupon.type}','${coupon.discount}','${validDateStr}')`;
         db.queryAsync(sql)
       })
     })
-    .then(results=>{
+    .then(results => {
       output.text = "購買成功";
       output.rows = data;
       // console.log(output)

@@ -68,6 +68,7 @@ class TripDesPage extends Component {
   addToCart = () => {
     const isLogin = localStorage.getItem("token");
     let aaa = this.state.detailData[0];
+    let productsArray = JSON.parse(localStorage.getItem('productsToBuy')) || [];
     // console.log(aaa)
     // console.log(aaa.trip_type);
 
@@ -89,14 +90,16 @@ class TripDesPage extends Component {
       if (localStorage.getItem("tripsToBuy")) {
         let bbb = JSON.parse(localStorage.getItem("tripsToBuy"));
         bbb.push(product);
-        console.log(JSON.parse(localStorage.getItem("tripsToBuy")).length);
+        // console.log(JSON.parse(localStorage.getItem("tripsToBuy")).length);
         localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
         toast.success("已加入購物車");
+        this.props.changeNumOfProduct(JSON.stringify(bbb.length + productsArray.length))
       } else {
         let ddd = [];
         ddd.push(product);
         localStorage.setItem("tripsToBuy", JSON.stringify(ddd));
         toast.success("已加入購物車");
+        this.props.changeNumOfProduct(JSON.stringify(ddd.length + productsArray.length))
       }
     } else {
       toast.error("請先登入或註冊為會員");
