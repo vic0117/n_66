@@ -114,19 +114,13 @@ class HomeNavBar extends React.Component {
                   </Link>
                 </>
               )}
-              <Link to="cart" className=" d-flex align-items-center nav_top_item">
-                <img className="phone" src={cart} alt="phone" />
-                {/* 購物車 */}
-                <div>{numberOfProducts || 0}</div>
-              </Link>
+              
               {currentUser && (
-                <Link
-                  to="/cart"
-                  className=" d-flex align-items-center nav_top_item"
-                >
-                  <img className="phone" src={cart} alt="phone" />
-                  購物車
-                </Link>
+                <Link to="cart" className=" d-flex align-items-center nav_top_item">
+                <img className="phone" src={cart} alt="phone" />
+                購物車
+                {/* <div>{numberOfProducts || ''}</div> */}
+              </Link>
               )}
             </div>
 
