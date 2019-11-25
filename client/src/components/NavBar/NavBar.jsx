@@ -86,7 +86,7 @@ class NavBar extends React.Component {
                 <span>旅遊行程</span>
                 <div className="blue-line"></div>
               </Link>
-              <Link to="/products " className="navbar-item nav-link">
+              <Link to="/products" className="navbar-item nav-link">
                 <span>戶外用品</span>
                 <div className="blue-line"></div>
               </Link>

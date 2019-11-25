@@ -23,7 +23,6 @@ class Home extends Component {
   }
   render() {
     const { currentUser } = this.props;
-    // let {numberOfProducts} = this.props
     return (
       <>
         <div
@@ -40,7 +39,7 @@ class Home extends Component {
           <Chat />
         </div>
         <HomeNavBar
-          currentUser={this.props.currentUser}
+          currentUser={currentUser}
           numberOfProducts={this.props.numberOfProducts}
         />
         <HomeMainCarousel />

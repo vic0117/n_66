@@ -319,7 +319,6 @@ class DashBoard extends Component {
       filteredUserOrder,
       filteredUserWishes
     } = this.state;
-    console.log("userInfo", this.state.userInfo);
     if (userOrder === null) return null;
     return (
       <>

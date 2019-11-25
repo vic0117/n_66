@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Dropdown, DropdownButton } from 'react-bootstrap';
+import { ToastContainer, toast } from "react-toastify";
 
 import './CheckOutContent.css'
 
@@ -18,7 +19,8 @@ class CheckOutContent extends React.Component {
     }
 
     // 結帳按鈕
-    CheckOut = () => {
+    CheckOut = e => {
+        e.preventDefault();
         let { userId } = this.props;
         let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
         let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
@@ -68,16 +70,28 @@ class CheckOutContent extends React.Component {
             }
         })
             .then(response => {
+                
                 return response.json();
             })
             .then(json => {
                 console.log(json)
                 //TODO:
-                // tosty
-
                 localStorage.setItem('tripsToBuy', '[]')
                 localStorage.setItem('productsToBuy', '[]')
                 localStorage.setItem('totalCost', '0')
+                if (json.success){
+                    // 購買成功
+                    function pageReload() {
+                        window.location = "/account/orders";
+                    }
+                    toast.success(json.text);
+                    window.setTimeout(pageReload, 3000);
+                }else{
+                   //購買失敗
+                    toast.error(json.text);
+                }
+             
+               
             })
     }
 
@@ -428,6 +442,7 @@ class CheckOutContent extends React.Component {
                             </form>
                         </Col>
                     </Row>
+                    <ToastContainer />
                 </Container>
             </>
         );
