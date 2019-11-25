@@ -44,6 +44,7 @@ class DashBoard extends Component {
     filteredUserOrder: [],
     userComments: null,
     userWishes: null,
+    filteredUserWishes: [],
     userCoupons: [],
     feedback: {
       success: "",
@@ -102,6 +103,7 @@ class DashBoard extends Component {
   });
 
   async componentDidMount() {
+    document.title = "66°N - 客戶專區";
     // server
     await this.setState({ currentUser: "" });
     // 如果有登入
@@ -109,7 +111,7 @@ class DashBoard extends Component {
       await this.setState({ currentUser: this.props.currentUser.user });
     } else {
       // 如果沒登入 (localStorage中沒東西)
-      this.props.history.push("/login"); 
+      this.props.history.push("/login");
     }
 
     const { currentUser } = this.state;
@@ -156,8 +158,9 @@ class DashBoard extends Component {
     );
     await this.setState({ userCoupons: userCoupons.rows });
 
-    // 
+    //
     await this.setState({ filteredUserOrder: this.state.userOrder });
+    await this.setState({ filteredUserWishes: this.state.userWishes });
   }
 
   handleInfoChange = async e => {
@@ -295,8 +298,27 @@ class DashBoard extends Component {
     this.setState({ filteredUserOrder: filtered });
   };
 
+  handleSelectWishes = async wishType => {
+    console.log(wishType);
+    let filtered = "";
+    if (wishType === "選擇商品類型") {
+      filtered = this.state.userWishes;
+    } else {
+      filtered = this.state.userWishes.filter(
+        wish => wish.product_router === wishType
+      );
+    }
+    this.setState({ filteredUserWishes: filtered });
+  };
+
   render() {
-    const { userInfo, userOrder, errors, filteredUserOrder } = this.state;
+    const {
+      userInfo,
+      userOrder,
+      errors,
+      filteredUserOrder,
+      filteredUserWishes
+    } = this.state;
     console.log("userInfo", this.state.userInfo);
     if (userOrder === null) return null;
     return (
@@ -343,7 +365,10 @@ class DashBoard extends Component {
                   path="/account/wishlists"
                   exact
                   render={() => (
-                    <MemberWishList userWishes={this.state.userWishes} />
+                    <MemberWishList
+                      userWishes={filteredUserWishes}
+                      onSelectWishes={this.handleSelectWishes}
+                    />
                   )}
                 />
                 <>

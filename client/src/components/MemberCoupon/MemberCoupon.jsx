@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./MemberCoupon.css";
 class MemberCoupon extends Component {
-  state = {};
   render() {
     const { userCoupons } = this.props;
     if (userCoupons === null) return null;
@@ -25,7 +25,15 @@ class MemberCoupon extends Component {
                 <p className="m-0">有效期限: {coupon.valid_date}</p>
               </div>
               <div className="footer d-flex">
-                <button className="btn">前往使用</button>
+                <button className="btn">
+                  <Link
+                    to="/products"
+                    style={{ textDecoration: "none", color: "#242a3a" }}
+                    className="use-coupon"
+                  >
+                    前往使用
+                  </Link>
+                </button>
               </div>
               <div className="left-circle"></div>
               <div className="right-circle"></div>

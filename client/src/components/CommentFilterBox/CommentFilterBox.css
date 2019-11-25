@@ -26,6 +26,16 @@
   color: #242a3a;
 }
 
+.member-comment-filter-container button:active {
+  color: #242a3a !important;
+  background-color: #fff !important;
+  border-color: #eaeaea !important;
+}
+
+.member-comment-filter-container .dropdown-item:active {
+  background-color: #fff !important;
+}
+
 .member-comment-filter-container button:hover {
   background-color: #fff;
   border: 1px solid #eaeaea;

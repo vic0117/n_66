@@ -107,6 +107,14 @@
   border: 1px solid #d5d5d5;
   border: none;
   color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.coupon-container .btn:hover .use-coupon {
+  color: #fff !important;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 @media only screen and (max-width: 1200px) {

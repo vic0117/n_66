@@ -1,28 +1,27 @@
 .coupon-outer-container {
   width: 100%;
   background-color: #f8f8f8;
- padding-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
 
-.coupon-title {
-  padding: 1.75rem 2.75rem;
-  position: relative;
-}
+  .coupon-title {
+    padding: 1.75rem 2.75rem;
+    position: relative;
+  }
   .coupon-title span {
-  font-size: 1.25rem;
-  color: #2a2a3a;
-  font-weight: 300;
-}
+    font-size: 1.25rem;
+    color: #2a2a3a;
+    font-weight: 300;
+  }
 
-.coupon-title span:before {
-  content: "";
-  position: absolute;
-  height: 1.3rem;
-  width: 0.2rem;
-  top: 2.1rem;
-  left: 2rem;
-  background-color: #96daf0;
-}
-
+  .coupon-title span:before {
+    content: "";
+    position: absolute;
+    height: 1.3rem;
+    width: 0.2rem;
+    top: 2.1rem;
+    left: 2rem;
+    background-color: #96daf0;
+  }
 }
 
 .coupon-container {
@@ -30,7 +29,7 @@
   position: relative;
   border-radius: 5px;
   background-color: #fff;
-  margin:0 0.5rem 1.5rem 0.5rem;
+  margin: 0 0.5rem 1.5rem 0.5rem;
   color: #242a3a;
   .banner {
     border-bottom: 2px dashed #eaeaea;
@@ -98,12 +97,17 @@
   border: 1px solid #d5d5d5;
   border: none;
   color: #fff;
+  transition: 0.5s;
+}
+
+.coupon-container .btn:hover .use-coupon {
+  color: #fff !important;
+  transition: 0.5s;
 }
 
 //RWD
 
 @media only screen and (max-width: 1200px) {
-
   .coupon-container .banner {
     padding: 1rem;
     h5 {
@@ -114,13 +118,13 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .coupon-container{
-    width:45%;
+  .coupon-container {
+    width: 45%;
   }
 }
 
-@media only screen and (max-width: 768px){
-.coupon-container{
-    width:100%;
+@media only screen and (max-width: 768px) {
+  .coupon-container {
+    width: 100%;
   }
 }
