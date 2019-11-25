@@ -16,8 +16,8 @@ class CheckOut extends React.Component {
     }
 
     componentDidMount() {
-        const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy"));
-        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy"));
+        const productsToBuy = JSON.parse(localStorage.getItem("productsToBuy")) || [];
+        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
         const totalCost = JSON.parse(localStorage.getItem("totalCost"));
         const userId = JSON.parse(localStorage.getItem("userId"));
 
