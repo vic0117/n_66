@@ -114,7 +114,7 @@ class Comment extends Component {
                 </div>
                 <div className="rank-info mt-4">
                   <div className="d-flex align-items-center mb-1">
-                    <StarSolid className="star" />
+                    <StarSolid className="star star-solid" />
                     <StarSolid className="star" />
                     <StarSolid className="star" />
                     <StarSolid className="star" />
