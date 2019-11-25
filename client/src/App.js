@@ -28,29 +28,6 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 class App extends Component {
   constructor(props) {
     super(props);
-    props.history.listen(location => {
-      //在這裡監聽location对象
-      console.log(location.pathname);
-      switch (
-        location.pathname //根據路徑不同切换不同的瀏覽器title
-      ) {
-        case "/":
-          document.title = "N66";
-          break;
-        case "/trips":
-          document.title = "N66 旅遊列表";
-          break;
-        case "./trips/:id":
-          document.title = "N66 旅遊細節";
-          break;
-        case "./products":
-          document.title = "N66 商品列表";
-          break;
-        default:
-          break;
-      }
-    });
-
     this.state = {
       numberOfProducts: ""
     };
@@ -63,9 +40,9 @@ class App extends Component {
     data: [],
     HomeSearch: false
   };
+
   componentDidMount() {
     //計算商品數量用
-
     let productsArray = JSON.parse(localStorage.getItem("productsToBuy")) || [];
     let tripsArray = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
 

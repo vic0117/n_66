@@ -32,7 +32,6 @@ class HomeNavBar extends React.Component {
     let upLine = document.querySelector(".up-line");
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
-    
 
     window.onresize = () => {
       if (window.innerWidth >= 850) {
@@ -90,7 +89,7 @@ class HomeNavBar extends React.Component {
                 className=" d-flex align-items-center nav_top_item"
               >
                 <img className="user" src={user} alt="user" />
-                會員專區
+                客戶專區
               </Link>
               {!currentUser && (
                 <>
@@ -114,7 +113,10 @@ class HomeNavBar extends React.Component {
                   </Link>
                 </>
               )}
-              <Link to="cart" className=" d-flex align-items-center nav_top_item">
+              <Link
+                to="cart"
+                className=" d-flex align-items-center nav_top_item"
+              >
                 <img className="phone" src={cart} alt="phone" />
                 {/* 購物車 */}
                 <div>{numberOfProducts || 0}</div>

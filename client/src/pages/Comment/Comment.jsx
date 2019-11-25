@@ -20,6 +20,7 @@ class Comment extends Component {
   };
 
   componentDidMount() {
+    document.title = "66°N - 客戶評論";
     fetch("http://localhost:3001/comments")
       .then(
         response => {

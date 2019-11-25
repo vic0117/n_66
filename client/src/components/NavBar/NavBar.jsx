@@ -21,7 +21,6 @@ class NavBar extends React.Component {
     let upLine = document.querySelector(".up-line");
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
-    
 
     window.onresize = () => {
       if (window.innerWidth >= 850) {
@@ -59,7 +58,7 @@ class NavBar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    const {numberOfProducts} = this.props;
+    const { numberOfProducts } = this.props;
     // let numberOfProduct = JSON.parse( localStorage.getItem('productsToBuy')).length;
 
     return (
@@ -87,7 +86,7 @@ class NavBar extends React.Component {
                 <span>旅遊行程</span>
                 <div className="blue-line"></div>
               </Link>
-              <Link to="/products" className="navbar-item nav-link">
+              <Link to="/products " className="navbar-item nav-link">
                 <span>戶外用品</span>
                 <div className="blue-line"></div>
               </Link>
@@ -115,7 +114,7 @@ class NavBar extends React.Component {
               </Link>
               <Nav.Link className="icon-container cart" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
-                {!numberOfProducts ? ''  : <div>{numberOfProducts}</div>}
+                {!numberOfProducts ? "" : <div>{numberOfProducts}</div>}
               </Nav.Link>
             </Nav>
           </div>

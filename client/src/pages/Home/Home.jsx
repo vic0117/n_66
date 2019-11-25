@@ -18,14 +18,14 @@ class Home extends Component {
     name: "",
     room: ""
   };
-
+  componentDidMount() {
+    document.title = "66°N - 首頁";
+  }
   render() {
     const { currentUser } = this.props;
-    console.log(currentUser);
     // let {numberOfProducts} = this.props
     return (
       <>
-        
         <div
           className="MessageButton"
           onClick={() => this.setState({ system: !this.state.system })}
@@ -39,9 +39,10 @@ class Home extends Component {
         >
           <Chat />
         </div>
-        <HomeNavBar 
+        <HomeNavBar
           currentUser={this.props.currentUser}
-          numberOfProducts = {this.props.numberOfProducts}/>
+          numberOfProducts={this.props.numberOfProducts}
+        />
         <HomeMainCarousel />
         <HomeFilter
           HomeSelect1={this.props.HomeSelect1}

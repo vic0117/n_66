@@ -59,6 +59,8 @@ class TripMenuPage extends Component {
   };
   //畫面第一次渲染
   componentDidMount() {
+    document.title = "66°N - 旅遊行程";
+
     const { place, type, month, search, difficulty } = queryString.parse(
       this.props.location.search
     );
