@@ -75,6 +75,7 @@ class App extends Component {
   HomeSearch = () => {
     this.setState({ HomeSearch: true });
   };
+  
   render() {
     return (
       <ScrollToTop>

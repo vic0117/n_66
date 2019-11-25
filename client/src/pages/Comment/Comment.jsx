@@ -14,8 +14,9 @@ import "./Comment.css";
 class Comment extends Component {
   state = {
     comments: [],
+    ratingAvg: "",
     place: "",
-    pageSize: 4, // 每頁幾筆
+    pageSize: 10, // 每頁幾筆
     currentPage: 1
   };
 
@@ -32,7 +33,11 @@ class Comment extends Component {
         }
       )
       .then(data => {
-        this.setState({ comments: data });
+        let ratingLength = data.length;
+        let totalRating = 0;
+        data.forEach(d => console.log((totalRating += +d.rating)));
+        let ratingAvg = (totalRating / ratingLength).toFixed(1);
+        this.setState({ comments: data, ratingAvg });
       });
   }
 
@@ -50,7 +55,6 @@ class Comment extends Component {
     })
       .then(
         response => {
-          console.log(response);
           return response.json();
         },
         error => {
@@ -59,7 +63,6 @@ class Comment extends Component {
       )
       .then(data => {
         this.setState({ comments: data });
-        console.log(data);
       });
   };
 
@@ -70,12 +73,15 @@ class Comment extends Component {
   render() {
     const { length: count } = this.state.comments;
     const { pageSize, currentPage, comments: allComments } = this.state;
-
     const comments = paginate(allComments, currentPage, pageSize);
 
     return (
       <>
-        <CommentHeader currentUser={this.props.currentUser} />
+        <CommentHeader
+          comments={count}
+          ratingAvg={this.state.ratingAvg}
+          currentUser={this.props.currentUser}
+        />
         <div className="container mt-5">
           <Row>
             <Col>

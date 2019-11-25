@@ -15,8 +15,8 @@ class CommentHeader extends Component {
             <Reviews className="reviews" />
             <div>評論</div>
             <div className="d-flex justify-content-center m-1">
-              <div className="votes">評語3798票</div>
-              <div className="ranking">4.6 / 5</div>
+              <div className="votes">{this.props.comments}則評論</div>
+              <div className="ranking">{this.props.ratingAvg} / 5</div>
             </div>
 
             <span>“您的意見對我們很重要”</span>
