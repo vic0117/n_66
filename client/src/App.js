@@ -101,6 +101,7 @@ class App extends Component {
     return (
       <ScrollToTop>
         <Switch>
+        {/* products */}
           <Route
             path="/products"
             exact
@@ -135,45 +136,21 @@ class App extends Component {
                 numberOfProducts={this.state.numberOfProducts}
                 changeNumOfProduct={this.changeNumOfProduct}
               />
-            )}
-          />
-          <Route
-            path="/checkout"
-            exact
-            render={props => (
-              <CheckOut {...props}
-                currentUser={this.state.currentUser}
-                numberOfProducts={this.state.numberOfProducts}
-                changeNumOfProduct={this.changeNumOfProduct} />
-            )}
-          />
-          {/* <Route
-            path="/comments"
-            render={props => <Comment {...props}
-              currentUser={this.state.currentUser}
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct} />
-            }
-          /> */}
-          <Route path="/logout" component={Logout} />
-
-          <Route
-            path="/login"
-            render={props => (
-              <Login {...props} currentUser={this.state.currentUser}
-                numberOfProducts={this.state.numberOfProducts}
-                changeNumOfProduct={this.changeNumOfProduct} />
-            )}
-          />
-          <Route
-            path="/account"
-            render={props => (
-              <DashBoard {...props} currentUser={this.state.currentUser}
-                numberOfProducts={this.state.numberOfProducts}
-                changeNumOfProduct={this.changeNumOfProduct} />
-            )}
-          />
-          <Route
+          )}
+        />
+        <Route
+          path="/checkout"
+          exact
+          render={props => (
+            <CheckOut {...props} 
+            currentUser={this.state.currentUser} 
+            numberOfProducts={this.state.numberOfProducts}
+            changeNumOfProduct={this.changeNumOfProduct}/>
+          )}
+        />
+        {/* products */}
+        {/* trips */}
+        <Route
             path="/trips/page/:page"
             exact
             render={props => (
@@ -209,13 +186,12 @@ class App extends Component {
                 changeNumOfProduct={this.changeNumOfProduct} />
             )}
           />
-
+          {/* USER */}
           <Route
             path="/comments"
             render={props =>
               <Comment {...props}
                 currentUser={this.state.currentUser}
-                numberOfProducts={this.state.numberOfProducts}
                 numberOfProducts={this.state.numberOfProducts} 
                 comments={this.state.comments}
                 ratingAvg={this.state.ratingAvg}
@@ -226,10 +202,13 @@ class App extends Component {
           <Route
             path="/password/recover"
             render={props => (
-              <ForgotPassword {...props} currentUser={this.state.currentUser} />
+              <ForgotPassword {...props} 
+                currentUser={this.state.currentUser} 
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}
+                />
             )}
           />
-
           <Route
             path="/password/reset/:userId/:token"
             render={props => (
@@ -237,55 +216,12 @@ class App extends Component {
                 {...props}
                 userId={props.match.params.userId}
                 token={props.match.params.token}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}
               />
             )}
           />
-
-          <Route
-            path="/login"
-            render={props => (
-              <Login {...props} currentUser={this.state.currentUser} />
-            )}
-          />
-
-          <Route
-            path="/account"
-            render={props => (
-              <DashBoard {...props} currentUser={this.state.currentUser} />
-            )}
-          />
-
-          <Route
-            path="/trips/page/:page"
-            exact
-            render={props => (
-              <TripMenuPage
-                {...props}
-                HomeSearch={this.HomeSearch}
-                place={this.state.place}
-                type={this.state.type}
-                month={this.state.month}
-                currentUser={this.state.currentUser}
-              />
-            )}
-          />
-
-          <Route
-            path="/trips/page"
-            exact
-            render={props => (
-              <TripMenuPage {...props} currentUser={this.state.currentUser} />
-            )}
-          />
-
-          <Route
-            path="/trips/:id"
-            exact
-            render={props => (
-              <TripDesPage {...props} currentUser={this.state.currentUser} />
-            )}
-          />
-
+          {/* user */}
           <Route
             path="/"
             exact

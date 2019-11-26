@@ -56,6 +56,7 @@ class LoginNavBar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    const {numberOfProducts} = this.props;
     return (
       <>
         <div className="navbar-container d-flex align-items-center ">
@@ -133,6 +134,7 @@ class LoginNavBar extends React.Component {
               <li>
                 <Link to="/cart">
                   <h5>我的購物車</h5>
+                  {!numberOfProducts ? "" : <div>{numberOfProducts}</div>}
                 </Link>
               </li>
             ) : null}

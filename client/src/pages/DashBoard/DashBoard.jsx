@@ -322,7 +322,11 @@ class DashBoard extends Component {
     if (userOrder === null) return null;
     return (
       <>
-        <NavBar currentUser={this.props.currentUser} />
+        <NavBar 
+          currentUser={this.props.currentUser} 
+          numberOfProducts={this.props.numberOfProducts}
+          changeNumOfProduct={this.props.changeNumOfProduct}
+          />
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">

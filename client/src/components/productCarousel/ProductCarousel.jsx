@@ -14,7 +14,8 @@ class ProductCarousel extends React.Component {
       productPics: props.pics,
       data: props.data[0],
       currentUser: props.currentUser,
-      productsToBuy: []
+      productsToBuy: [],
+      bought: false
     };
   }
 
@@ -64,7 +65,7 @@ class ProductCarousel extends React.Component {
     if (!isLogin) {
       toast.error("請先登入或註冊為會員");
 
-      window.location = "http://localhost:3000/login";
+      // window.location = "http://localhost:3000/login";
 
     }
     else {
@@ -102,6 +103,8 @@ class ProductCarousel extends React.Component {
         toast.success("已加入購物車");
       }
     }
+
+    this.setState({ bought: true })
 
   }
 
@@ -168,13 +171,25 @@ class ProductCarousel extends React.Component {
                     >
                       加入願望清單
                     </Button>
-                    <Button
-                      onClick={this.addToCart}
-                      className="addToCartBtn mx-auto"
-                    >
-                      放入購物車
-                    </Button>
-                    <p>免費快遞送貨 / 免費退貨</p>
+                    {
+                      this.state.bought === false ? (
+                        <Button
+                          onClick={this.addToCart}
+                          className="addToCartBtn mx-auto"
+                        >
+                          放入購物車
+                      </Button>
+                      ):(
+                        <a
+                          href = "/"
+                          className="addToCartBtn mx-auto"
+                        >
+                          回到首頁
+                        </a>
+                      )
+                      
+                    }
+                    {/* <p>免費快遞送貨 / 免費退貨</p> */}
                   </div>
 
                   <div>

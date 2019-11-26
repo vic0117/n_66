@@ -34,7 +34,7 @@ function verifyToken(req, res, next) {
 }
 // 我的評論
 router.get("/members_comments_list/:id?", (req, res) => {
-  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ORDER BY `c_id` DESC";
+  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ";
   db.query(sql, [req.params.id], (error, results, fields) => {
     if (error) throw error;
     let output = {};
@@ -50,7 +50,7 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
   jwt.verify(req.token, "secretKey", (err, authData) => {
     if (err) {
       data.msg.text = "權限不足";
-      res.json(data);
+      res.json(data); 
     } else {
       console.log("req.body", req.body);
       // console.log("req.params", req.params);

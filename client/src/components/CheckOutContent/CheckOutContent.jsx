@@ -12,7 +12,7 @@ class CheckOutContent extends React.Component {
             tripsToBuy: props.tripsToBuy,
             totalCost: 0,
             userId: props.userId,
-            useCouponName: "",
+            useCouponName: "原價購買",
             useCouponType: "",
             useCouponDiscount: 0
         };
@@ -21,53 +21,70 @@ class CheckOutContent extends React.Component {
     // 結帳按鈕
     CheckOut = e => {
         e.preventDefault();
-        let { userId } = this.props;
-        let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
-        let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
-        let couponList = []
-
-        // 如果沒有買行程
-        if(!tripsToBuy){
-            tripsToBuy = []
-            localStorage.setItem('tripsToBuy', JSON.stringify(tripsToBuy))
-        }
-
-        if(tripsToBuy){
-            tripsToBuy.forEach((trip) => {
-                // let coupon = trip.trip_type;
-                let coupon = {};
-                coupon.type = trip.trip_type;
-                coupon.u_id = userId;
-                coupon.discount = "85";
-    
-                couponList.push(coupon);
-            })
-        }
-
-        // 如果沒有買商品
-        if(!productsToBuy){
-            productsToBuy = [];
-            localStorage.setItem('productsToBuy', JSON.stringify(productsToBuy));
-        }
-
-
-        let bodyObj = {
-            productsToBuy: JSON.stringify(productsToBuy),
-            tripsToBuy: JSON.stringify(tripsToBuy),
-            totalCost: localStorage.getItem('totalCost'),
-            userId: localStorage.getItem('userId'),
-            couponList: couponList,
-            orderStatus: '運送中'
-        }
-
-        // console.log(bodyObj);
-
-        fetch('http://localhost:3001/checkout', {
-            method: "POST",
-            body: JSON.stringify(bodyObj),
-            headers: {
-                "content-type": "application/json"
+        
+        const { userInfo } = this.props
+        let hasUserInfo = true;
+        userInfo.forEach(info => {
+            if (!info) {
+                hasUserInfo = false
             }
+        })
+
+        if (hasUserInfo === false) {
+            console.log("請填寫基本資料");
+            setTimeout(() => {
+                window.location = "http://localhost:3000/account";
+            }, 1000);
+        }
+        else {
+            // console.log(userInfo[1])
+            let { userId } = this.props;
+            let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
+            let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
+            let couponList = []
+            let useCouponName = this.state.useCouponName;
+            // console.log(useCouponName);
+            // 如果沒有買行程
+            if (!tripsToBuy) {
+                tripsToBuy = []
+                localStorage.setItem('tripsToBuy', JSON.stringify(tripsToBuy))
+            }
+
+            if (tripsToBuy) {
+                tripsToBuy.forEach((trip) => {
+                    // let coupon = trip.trip_type;
+                    let coupon = {};
+                    coupon.type = trip.trip_type;
+                    coupon.u_id = userId;
+                    coupon.discount = "85";
+                    couponList.push(coupon);
+                })
+            }
+            // 如果沒有買商品
+            if (!productsToBuy) {
+                productsToBuy = [];
+                localStorage.setItem('productsToBuy', JSON.stringify(productsToBuy));
+            }
+
+
+            let bodyObj = {
+                productsToBuy: JSON.stringify(productsToBuy),
+                tripsToBuy: JSON.stringify(tripsToBuy),
+                totalCost: localStorage.getItem('totalCost'),
+                userId: localStorage.getItem('userId'),
+                couponList: couponList,
+                useCouponName: useCouponName,
+                orderStatus: '運送中'
+            }
+
+            // console.log(bodyObj);
+
+            fetch('http://localhost:3001/checkout', {
+                method: "POST",
+                body: JSON.stringify(bodyObj),
+                headers: {
+                    "content-type": "application/json"
+                }
         })
             .then(response => {
                 
@@ -90,9 +107,8 @@ class CheckOutContent extends React.Component {
                    //購買失敗
                     toast.error(json.text);
                 }
-             
-               
             })
+        }
     }
 
     // 折價卷
@@ -104,8 +120,8 @@ class CheckOutContent extends React.Component {
         let tripsArray = JSON.parse(localStorage.getItem('tripsToBuy'));
         let totalCost = 0;
 
-        if(coupon === '原價購買'){
-            console.log(totalCost)
+        if (coupon === '原價購買') {
+            // console.log(totalCost)
             // console.log(productsArray);
             if (productsArray) {
                 productsArray.forEach(product => {
@@ -115,7 +131,7 @@ class CheckOutContent extends React.Component {
 
             if (tripsArray) {
                 tripsArray.forEach(trip => {
-                    totalCost += trip.trip_price * 1 ;
+                    totalCost += trip.trip_price * 1;
                 })
             }
             console.log(totalCost)
@@ -134,28 +150,28 @@ class CheckOutContent extends React.Component {
             totalCost = JSON.stringify(totalCost);
             localStorage.setItem('totalCost', totalCost);
         }
-        else{
-            if (couponName !== this.state.useCouponName && couponName !== '原價購買' ) {
-                console.log(true);
-    
+        else {
+            if (couponName !== this.state.useCouponName && couponName !== '原價購買') {
+                // console.log(true);
+
                 if (productsArray) {
                     productsArray.forEach(product => {
-                        if(product.product_category === couponName){
+                        if (product.product_category === couponName) {
                             totalCost += parseInt(product.product_price * couponDiscount);
                         }
-                        else{
+                        else {
                             totalCost += product.product_price * 1
                         }
-                        
+
                     })
                 }
-    
+
                 if (tripsArray) {
                     tripsArray.forEach(trip => {
                         totalCost += trip.trip_price * 1;
                     })
                 }
-    
+
                 this.setState({
                     useCouponType: coupon,
                     useCouponName: couponName,
@@ -166,7 +182,7 @@ class CheckOutContent extends React.Component {
                     console.log(this.state.useCouponName);
                     console.log(this.state.useCouponType);
                 })
-    
+
                 totalCost = JSON.stringify(totalCost);
                 localStorage.setItem('totalCost', totalCost);
             }
@@ -354,7 +370,7 @@ class CheckOutContent extends React.Component {
 
                         </Col>
                         <Col className="orderDetail-container" lg={4}>
-                            <form>
+                            <div>
                                 <div className="orderDetail ">
                                     <div className="m-2">
                                         <div className="mb-1">送貨資訊</div>
@@ -377,12 +393,12 @@ class CheckOutContent extends React.Component {
                                                         type="radio"
                                                         name="exampleRadios"
                                                         id="exampleRadios1"
-                                                        value="option1"
-                                                        checked
+                                                        
+                                                        defaultChecked
                                                     ></input>
                                                     <label
                                                         className="form-check-label text-left font-size-14"
-                                                        htmlFor="exampleRadios1"
+                                                        // htmlFor="exampleRadios1"
                                                     >
                                                         超商取貨
                                                     </label>
@@ -393,13 +409,10 @@ class CheckOutContent extends React.Component {
                                                         type="radio"
                                                         name="exampleRadios"
                                                         id="exampleRadios1"
-                                                        value="option1"
-                                                        defaultChecked
                                                     ></input>
 
                                                     <label
                                                         className="form-check-label text-left font-size-14"
-                                                        htmlFor="exampleRadios1"
                                                     >
                                                         宅配
                                                     </label>
@@ -439,7 +452,7 @@ class CheckOutContent extends React.Component {
                                 <div className="checkout-btn d-flex">
                                     <button onClick={this.CheckOut} className="mx-auto mb-3">確認結帳</button>
                                 </div>
-                            </form>
+                            </div>
                         </Col>
                     </Row>
                     <ToastContainer />
