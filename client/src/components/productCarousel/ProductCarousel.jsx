@@ -176,14 +176,14 @@ class ProductCarousel extends React.Component {
                           onClick={this.addToCart}
                           className="addToCartBtn mx-auto"
                         >
-                          放入購物車
+                          加入購物車
                       </Button>
                       ):(
                         <a
-                          href = "/products"
+                          href = "/checkout"
                           className="addToCartBtn mx-auto"
                         >
-                          回到商品列表
+                          我要結帳
                         </a>
                       )
                       

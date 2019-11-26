@@ -114,7 +114,7 @@ class NavBar extends React.Component {
               </Link>
               <Nav.Link className="icon-container cart" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
-                {!numberOfProducts ? "" : <div>{numberOfProducts}</div>}
+                { !!numberOfProducts === false ? <p></p> : <div>{numberOfProducts}</div>}
               </Nav.Link>
             </Nav>
           </div>

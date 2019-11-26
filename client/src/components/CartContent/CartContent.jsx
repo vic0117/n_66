@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 
 //CSS
 import "./CartContent.css";
@@ -262,6 +263,15 @@ class CartContent extends React.Component {
     localStorage.setItem('tripsToBuy', tripsArray);
   }
 
+  toCheckOut = ()=>{
+    if(this.props.userInfo === false){
+      toast.success('請先到會員中心填寫姓名和地址')
+    }
+    else{
+      window.location = "/checkout";
+    }
+  }
+
 
 
   render() {
@@ -272,7 +282,7 @@ class CartContent extends React.Component {
     // console.log(numberOfProducts);
 
 
-    if (numberOfProducts === '0') {
+    if (numberOfProducts === '') {
       return (
 
         <Container fluid className="p-0 cartBanner">
@@ -286,11 +296,11 @@ class CartContent extends React.Component {
     else {
       return (
         <>
-          <Container fluid className="p-0 cartBanner">
+          {/* <Container fluid className="p-0 cartBanner">
             <Row className="cartBannerRow">
               <img src="http://localhost:3000/images/bg/header22.jpg" alt="banner" />
             </Row>
-          </Container>
+          </Container> */}
           <Container className="cartSection">
             <Row>
               <Col md={8}>
@@ -390,10 +400,10 @@ class CartContent extends React.Component {
                   <p>@123gmail.com</p>
                   <Link className="toList" to="/products">
                     繼續逛逛
-                    </Link>
-                  <Link className="checkOut" to="/checkout">
-                    進行結帳
                   </Link>
+                  <Button onClick={this.toCheckOut} className="checkOut" >
+                    我要結帳
+                  </Button>
                 </div>
               </Col>
             </Row>
@@ -412,6 +422,7 @@ class CartContent extends React.Component {
               }
             </Row>
           </Container>
+          <ToastContainer autoClose={2000}/>
         </>
       );
     }
