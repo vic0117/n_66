@@ -22,7 +22,7 @@ class Home extends Component {
     document.title = "66°N - 首頁";
   }
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, comments, ratingAvg } = this.props;
     return (
       <>
         <div
@@ -42,7 +42,8 @@ class Home extends Component {
           currentUser={currentUser}
           numberOfProducts={this.props.numberOfProducts}
         />
-        <HomeMainCarousel />
+        <HomeMainCarousel comments={comments}
+          ratingAvg={ratingAvg} />
         <HomeFilter
           HomeSelect1={this.props.HomeSelect1}
           HomeSelect2={this.props.HomeSelect2}

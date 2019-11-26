@@ -121,6 +121,9 @@ class HomeMainCarousel extends React.Component {
   }
 
   render() {
+    if (this.props.comments === undefined) return <></>
+    const { length: count } = this.props.comments;
+    const { ratingAvg } = this.props;
     return (
       <div className="header-wrapper">
         <Slider
@@ -165,8 +168,8 @@ class HomeMainCarousel extends React.Component {
           swipeToSlide={true}
           focusOnSelect={true}
           speed={900}
-          // autoplay={true}
-          // autoplaySpeed={5000}
+        // autoplay={true}
+        // autoplaySpeed={5000}
         >
           <div>
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">
@@ -177,10 +180,10 @@ class HomeMainCarousel extends React.Component {
                 <p className="title-main">探險之旅</p>
               </div>
 
-              <div className="information d-flex justify-content-center align-items-center">
-                <div className="people ">3798 個人的選擇</div>
+              <div className="information d-flex justify-content-center align-items-center mt-4">
+                <div className="people ">{count} 個人的選擇</div>
                 <div className="stars d-flex justify-content-center align-items-center">
-                  <div className="star">
+                  {/* <div className="star">
                     <img
                       src="http://localhost:3000/images/svg/star.svg"
                       alt="star"
@@ -209,12 +212,10 @@ class HomeMainCarousel extends React.Component {
                       src="http://localhost:3000/images/svg/half_star.svg"
                       alt="half_star"
                     />
-                  </div>
+                  </div> */}
+                  <div className="score">{ratingAvg} / 5</div>
                 </div>
-
-                <div className="score">4.6 / 5</div>
               </div>
-
               <Link className="more-btn" to="/comments">
                 <div className="button-font">查看所有評論</div>
                 <div className="white-mask"></div>

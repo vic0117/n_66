@@ -13,11 +13,11 @@ import { paginate } from "../../utils/paginate";
 import "./Comment.css";
 class Comment extends Component {
   state = {
-    comments: [],
-    ratingAvg: "",
     place: "",
     pageSize: 10, // 每頁幾筆
-    currentPage: 1
+    currentPage: 1,
+    comments: [],
+    ratingAvg: ''
   };
 
   componentDidMount() {
@@ -72,15 +72,16 @@ class Comment extends Component {
 
   render() {
     const { length: count } = this.state.comments;
-    const { pageSize, currentPage, comments: allComments } = this.state;
+    const { currentUser } = this.props;
+    const { pageSize, currentPage, comments: allComments, ratingAvg } = this.state;
     const comments = paginate(allComments, currentPage, pageSize);
 
     return (
       <>
         <CommentHeader
           comments={count}
-          ratingAvg={this.state.ratingAvg}
-          currentUser={this.props.currentUser}
+          ratingAvg={ratingAvg}
+          currentUser={currentUser}
         />
         <div className="container mt-5">
           <Row>

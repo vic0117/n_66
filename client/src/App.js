@@ -38,10 +38,31 @@ class App extends Component {
     type: "",
     month: "",
     data: [],
-    HomeSearch: false
+    HomeSearch: false,
+    comments: [],
+    ratingAvg: "",
   };
 
   componentDidMount() {
+    // 首頁評論
+    fetch("http://localhost:3001/comments")
+      .then(
+        response => {
+          console.log(response);
+          return response.json();
+        },
+        error => {
+          console.log(error);
+        }
+      )
+      .then(data => {
+        let ratingLength = data.length;
+        let totalRating = 0;
+        data.forEach(d => console.log((totalRating += +d.rating)));
+        let ratingAvg = (totalRating / ratingLength).toFixed(1);
+        this.setState({ comments: data, ratingAvg });
+      });
+
     //計算商品數量用
     let productsArray = JSON.parse(localStorage.getItem("productsToBuy")) || [];
     let tripsArray = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
@@ -56,7 +77,7 @@ class App extends Component {
       const currentUser = jwtDecode(jwt);
       console.log(currentUser);
       this.setState({ currentUser });
-    } catch (error) {}
+    } catch (error) { }
   }
 
   changeNumOfProduct = num => {
@@ -75,7 +96,7 @@ class App extends Component {
   HomeSearch = () => {
     this.setState({ HomeSearch: true });
   };
-  
+
   render() {
     return (
       <ScrollToTop>
@@ -114,45 +135,45 @@ class App extends Component {
                 numberOfProducts={this.state.numberOfProducts}
                 changeNumOfProduct={this.changeNumOfProduct}
               />
-          )}
-        />
-        <Route
-          path="/checkout"
-          exact
-          render={props => (
-            <CheckOut {...props} 
-            currentUser={this.state.currentUser} 
-            numberOfProducts={this.state.numberOfProducts}
-            changeNumOfProduct={this.changeNumOfProduct}/>
-          )}
-        />
-        <Route
-          path="/comments"
-          render={props => <Comment {...props} 
-            currentUser={this.state.currentUser} 
-            numberOfProducts={this.state.numberOfProducts}
-            changeNumOfProduct={this.changeNumOfProduct}/> 
-          }
-        />
-        <Route path="/logout" component={Logout} />
+            )}
+          />
+          <Route
+            path="/checkout"
+            exact
+            render={props => (
+              <CheckOut {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct} />
+            )}
+          />
+          {/* <Route
+            path="/comments"
+            render={props => <Comment {...props}
+              currentUser={this.state.currentUser}
+              numberOfProducts={this.state.numberOfProducts}
+              changeNumOfProduct={this.changeNumOfProduct} />
+            }
+          /> */}
+          <Route path="/logout" component={Logout} />
 
-        <Route
-          path="/login"
-          render={props => (
-            <Login {...props} currentUser={this.state.currentUser} 
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct}/>
-          )}
-        />
-        <Route
-          path="/account"
-          render={props => (
-            <DashBoard {...props} currentUser={this.state.currentUser} 
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct}/>
-          )}
-        />
-         <Route
+          <Route
+            path="/login"
+            render={props => (
+              <Login {...props} currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct} />
+            )}
+          />
+          <Route
+            path="/account"
+            render={props => (
+              <DashBoard {...props} currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct} />
+            )}
+          />
+          <Route
             path="/trips/page/:page"
             exact
             render={props => (
@@ -172,30 +193,33 @@ class App extends Component {
             path="/trips/page"
             exact
             render={props => (
-              <TripMenuPage {...props} 
-                currentUser={this.state.currentUser} 
+              <TripMenuPage {...props}
+                currentUser={this.state.currentUser}
                 numberOfProducts={this.state.numberOfProducts}
-                changeNumOfProduct={this.changeNumOfProduct}/>
+                changeNumOfProduct={this.changeNumOfProduct} />
             )}
           />
           <Route
             path="/trips/:id"
             exact
             render={props => (
-              <TripDesPage {...props} 
-                currentUser={this.state.currentUser} 
+              <TripDesPage {...props}
+                currentUser={this.state.currentUser}
                 numberOfProducts={this.state.numberOfProducts}
-                changeNumOfProduct={this.changeNumOfProduct}/>
+                changeNumOfProduct={this.changeNumOfProduct} />
             )}
           />
-       
+
           <Route
             path="/comments"
-            render={props => 
+            render={props =>
               <Comment {...props}
-              currentUser={this.state.currentUser}
-              numberOfProducts={this.state.numberOfProducts} 
-              numberOfProducts={this.state.numberOfProducts}/>}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                numberOfProducts={this.state.numberOfProducts} 
+                comments={this.state.comments}
+                ratingAvg={this.state.ratingAvg}
+                />}
           />
           <Route path="/logout" component={Logout} />
 
@@ -274,6 +298,8 @@ class App extends Component {
                 HomeSelect2={this.HomeSelect2}
                 HomeSelect3={this.HomeSelect3}
                 HomeSearch={this.HomeSearch}
+                comments={this.state.comments}
+                ratingAvg={this.state.ratingAvg}
               />
             )}
           />
