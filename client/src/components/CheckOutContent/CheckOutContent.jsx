@@ -22,23 +22,6 @@ class CheckOutContent extends React.Component {
     // 結帳按鈕
     CheckOut = e => {
         e.preventDefault();
-
-        const { userInfo } = this.props
-        let hasUserInfo = true;
-        userInfo.forEach(info => {
-            if (!info) {
-                hasUserInfo = false
-            }
-        })
-
-        if (hasUserInfo === false) {
-            console.log("請填寫基本資料");
-            setTimeout(() => {
-                window.location = "http://localhost:3000/account";
-            }, 1000);
-        }
-        else {
-            // console.log(userInfo[1])
             let { userId } = this.props;
             let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
             let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
@@ -100,18 +83,18 @@ class CheckOutContent extends React.Component {
                     this.props.changeNumOfProduct('')
                     if (json.success) {
                         // 購買成功
-                        // function pageReload() {
-                        //     window.location = "/account/orders";
-                        // }
+
                         toast.success(json.text);
-                        this.setState({ dealSuccess: true })
-                        // window.setTimeout(pageReload, 3000);
+                        setTimeout(() => {
+                            this.setState({ dealSuccess: true })
+                        }, 2000);
+
                     } else {
                         //購買失敗
                         toast.error(json.text);
                     }
                 })
-        }
+        
     }
 
     // 折價卷
@@ -156,8 +139,6 @@ class CheckOutContent extends React.Component {
         }
         else {
             if (couponName !== this.state.useCouponName && couponName !== '原價購買') {
-                // console.log(true);
-
                 if (productsArray) {
                     productsArray.forEach(product => {
                         if (product.product_category === couponName) {
@@ -166,7 +147,6 @@ class CheckOutContent extends React.Component {
                         else {
                             totalCost += product.product_price * 1
                         }
-
                     })
                 }
 
@@ -181,12 +161,7 @@ class CheckOutContent extends React.Component {
                     useCouponName: couponName,
                     useCouponDiscount: couponDiscount,
                     totalCost: totalCost
-                }, () => {
-                    console.log(this.state.totalCost);
-                    console.log(this.state.useCouponName);
-                    console.log(this.state.useCouponType);
                 })
-
                 totalCost = JSON.stringify(totalCost);
                 localStorage.setItem('totalCost', totalCost);
             }
@@ -202,7 +177,7 @@ class CheckOutContent extends React.Component {
         
         // 淺拷貝userInfo
         let userInformation = Object.assign({}, userInfo);
-        console.log(userInformation.address);
+
         const { hasCoupon } = this.props;
         const coupons = { ...hasCoupon }
         let { answer } = coupons;
@@ -472,7 +447,7 @@ class CheckOutContent extends React.Component {
                                 </div>
                             </Col>
                         </Row>
-                        <ToastContainer />
+                        <ToastContainer autoClose={2000} />
                     </Container>
                 </>
             );
@@ -482,32 +457,3 @@ class CheckOutContent extends React.Component {
 }
 
 export default CheckOutContent;
-
-
-// <div key={i} id={i} className="cartItem" >
-                                        //     <div className="itemImg">
-                                        //         <Card.Img
-                                        //             variant="top"
-                                        //             src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + JSON.parse(item.product_img)[0]}
-                                        //         />
-                                        //     </div>
-                                        //     <Card.Body>
-                                        //         <div className="d-flex w-100 flex-column align-items-start">
-                                        //             <h6>
-                                        //                 帳篷
-                                        //                 <div className="price">{item.product_price}</div>
-                                        //             </h6>
-                                        //             <div className="title">
-                                        //                 {item.product_name}
-                                        //             </div>
-                                        //             <span>
-                                        //                 尺寸: <span className="size">{item.product_size}</span>
-                                        //             </span>
-                                        //             <div className="quantity">
-                                        //                 <span>數量 : </span>
-                                        //                 <h5 className="counter">{item.product_amount}</h5>
-                                        //             </div>
-                                        //         </div>
-                                        //         <h3>{item.product_amount * item.product_price} 元</h3>
-                                        //     </Card.Body>
-                                        // </div>
