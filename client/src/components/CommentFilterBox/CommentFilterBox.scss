@@ -24,6 +24,16 @@
   }
 }
 
+.member-comment-filter-container button:active {
+  color: #242a3a !important;
+  background-color: #fff !important;
+  border-color: #eaeaea !important;
+}
+
+.member-comment-filter-container .dropdown-item:active {
+  background-color: #fff !important;
+}
+
 // hover
 .member-comment-filter-container button:hover {
   background-color: #fff;

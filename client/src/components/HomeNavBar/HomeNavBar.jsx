@@ -72,6 +72,8 @@ class HomeNavBar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    const { numberOfProducts } = this.props;
+
     return (
       <>
         <div className="n66navbar d-flex">
@@ -82,19 +84,13 @@ class HomeNavBar extends React.Component {
           </Link>
           <div className="n66Collapse " id="responsive-navbar-nav ">
             <div className="ml-auto d-flex  justify-content-end align-items-center navTop">
-              {/* <Link to="/" className=" d-flex align-items-center nav_top_item">
-                <img className="email" src={email} alt="email" />
-                我的訂單
-              </Link> */}
-
               <Link
                 to="/account"
                 className=" d-flex align-items-center nav_top_item"
               >
-                <img className="user" src={user} alt="user"  />
-                會員專區
+                <img className="user" src={user} alt="user" />
+                客戶專區
               </Link>
-
               {!currentUser && (
                 <>
                   <Link
@@ -117,13 +113,14 @@ class HomeNavBar extends React.Component {
                   </Link>
                 </>
               )}
-              <Link
-                to="cart"
-                className=" d-flex align-items-center nav_top_item"
-              >
-                <img className="phone" src={cart} alt="phone"  />
+              
+              {currentUser && (
+                <Link to="/cart" className=" d-flex align-items-center nav_top_item">
+                <img className="phone" src={cart} alt="phone" />
                 購物車
+                {/* <div>{numberOfProducts || ''}</div> */}
               </Link>
+              )}
             </div>
 
             <div className="ml-auto d-flex nav-bottom">
@@ -143,37 +140,37 @@ class HomeNavBar extends React.Component {
                 <div className="blue-line"></div>
               </Link>
 
-              <a href="#deets" className="navItem">
+              <Link to="#" className="navItem">
                 <h6>關於66°N</h6>
                 <h6>我們的理念</h6>
                 <div className="blue-line"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
-          <a
+          <Link
             className="n66-login-btn ml-auto d-flex justify-content-center align-items-center"
-            href="/cart"
-            role="button"
-          >
-            <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
-              <img src={cart} alt="cart" />
-            </div>
-          </a>
-
-          <a
-            className="n66-login-btn  d-flex justify-content-center align-items-center"
-            href="#56"
+            to="/account"
             role="button"
           >
             <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
               <img src={user} alt="user" />
             </div>
-          </a>
-
-          <a
-            className="n66toggler  d-flex justify-content-center align-items-center"
-            href="#57"
+          </Link>
+          {currentUser && (
+            <Link
+              className="n66-login-btn d-flex justify-content-center align-items-center"
+              to="/cart"
+              role="button"
+            >
+              <div className="login-btn-inner d-flex flex-column justify-content-between align-items-center">
+                <img src={cart} alt="cart" />
+              </div>
+            </Link>
+          )}
+          <Link
+            className="n66toggler d-flex justify-content-center align-items-center"
+            to="#57"
             role="button"
           >
             <div className="toggle-inner d-flex flex-column justify-content-between align-items-center">
@@ -181,9 +178,9 @@ class HomeNavBar extends React.Component {
               <div className="white-line middle-line"></div>
               <div className="white-line down-line"></div>
             </div>
-          </a>
+          </Link>
         </div>
-        <HomeNavBarRightMenu />
+        <HomeNavBarRightMenu currentUser={this.props.currentUser} />
       </>
     );
   }

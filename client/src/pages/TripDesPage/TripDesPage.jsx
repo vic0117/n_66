@@ -20,7 +20,8 @@ class TripDesPage extends Component {
       detailData: [],
       carouselPlace: "",
       carouselData: [],
-      carouselImg: null
+      carouselImg: null,
+      bought: false
     };
   }
 
@@ -70,6 +71,10 @@ class TripDesPage extends Component {
   addToCart = () => {
     const isLogin = localStorage.getItem("token");
     let aaa = this.state.detailData[0];
+    let productsArray = JSON.parse(localStorage.getItem('productsToBuy')) || [];
+    // console.log(aaa)
+    // console.log(aaa.trip_type);
+
     let product = {};
     product.sid = aaa.sid;
     product.trip_name = aaa.trip_name;
@@ -80,27 +85,35 @@ class TripDesPage extends Component {
     product.trip_duration = aaa.trip_days;
     product.trip_start_date = aaa.trip_start;
     product.trip_end_date = aaa.trip_end;
+    product.trip_type = aaa.trip_type;
     product.trip_amount = 1;
-    product.commented = 0;
     product.code = Date.now();
 
     if (isLogin) {
       if (localStorage.getItem("tripsToBuy")) {
         let bbb = JSON.parse(localStorage.getItem("tripsToBuy"));
         bbb.push(product);
-        console.log(JSON.parse(localStorage.getItem("tripsToBuy")).length);
+        // console.log(JSON.parse(localStorage.getItem("tripsToBuy")).length);
         localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
         toast.success("已加入購物車");
+        this.props.changeNumOfProduct(JSON.stringify(bbb.length + productsArray.length))
+        this.setState({bought: true})
       } else {
         let ddd = [];
         ddd.push(product);
         localStorage.setItem("tripsToBuy", JSON.stringify(ddd));
         toast.success("已加入購物車");
+        this.props.changeNumOfProduct(JSON.stringify(ddd.length + productsArray.length))
+        this.setState({bought: true})
       }
     } else {
       toast.error("請先登入或註冊為會員");
     }
   };
+
+  gotoIndex = ()=>{
+    window.location = "http://localhost:3000";
+  }
 
   handleAddWish = () => {
     const productsDetail = {
@@ -180,11 +193,23 @@ class TripDesPage extends Component {
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} />
           <div className="purchaseBtnBox">
-            <div onClick={this.addToCart} className="purchaseBtn">
-              <Cart className="purchaseBtnImg" />
-              <p>加入購物車</p>
-              <div className="purchaseBtnCover"></div>
-            </div>
+            {
+              this.state.bought === false ? (
+                <div onClick={this.addToCart} className="purchaseBtn">
+                  <Cart className="purchaseBtnImg" />
+                  <p>加入購物車</p>
+                  <div className="purchaseBtnCover"></div>
+                </div>
+              ):(
+                <div onClick={this.gotoIndex} className="purchaseBtn">
+                  <Cart className="purchaseBtnImg" />
+                  <p>回到首頁</p>
+                  <div className="purchaseBtnCover"></div>
+                </div>
+              )
+              
+            }
+
           </div>
         </Container>
         <TripDes2Carousel carouselData={this.state.carouselData} />

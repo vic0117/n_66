@@ -102,6 +102,32 @@ body {
   transition: 0.3s;
 }
 
+.navbar-container .cart {
+  position: relative;
+}
+
+.navbar-container .cart div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #242a3a;
+  color: #96daf0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 12px;
+  pointer-events: none;
+}
+
 .navbar-container .logout-icon {
   margin: auto;
   -webkit-transition: 0.3s;

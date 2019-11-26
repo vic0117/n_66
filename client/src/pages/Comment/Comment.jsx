@@ -5,17 +5,23 @@ import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox
 import Footer from "../../components/Footer/Footer";
 import CommentList from "../../components/CommentList/CommentList";
 import { Row, Col } from "react-bootstrap";
+import Pagination from "../../common/Pagination";
 import { ReactComponent as Star } from "./images/star.svg";
 import { ReactComponent as StarSolid } from "./images/star-solid.svg";
+import { paginate } from "../../utils/paginate";
 
 import "./Comment.css";
 class Comment extends Component {
   state = {
+    place: "",
+    pageSize: 10, // 每頁幾筆
+    currentPage: 1,
     comments: [],
-    place: ""
+    ratingAvg: ''
   };
 
   componentDidMount() {
+    document.title = "66°N - 客戶評論";
     fetch("http://localhost:3001/comments")
       .then(
         response => {
@@ -27,7 +33,11 @@ class Comment extends Component {
         }
       )
       .then(data => {
-        this.setState({ comments: data });
+        let ratingLength = data.length;
+        let totalRating = 0;
+        data.forEach(d => console.log((totalRating += +d.rating)));
+        let ratingAvg = (totalRating / ratingLength).toFixed(1);
+        this.setState({ comments: data, ratingAvg });
       });
   }
 
@@ -45,7 +55,6 @@ class Comment extends Component {
     })
       .then(
         response => {
-          console.log(response);
           return response.json();
         },
         error => {
@@ -54,15 +63,26 @@ class Comment extends Component {
       )
       .then(data => {
         this.setState({ comments: data });
-        console.log(data);
       });
   };
 
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
+
   render() {
-    console.log(this.state.comments);
+    const { length: count } = this.state.comments;
+    const { currentUser } = this.props;
+    const { pageSize, currentPage, comments: allComments, ratingAvg } = this.state;
+    const comments = paginate(allComments, currentPage, pageSize);
+
     return (
       <>
-        <CommentHeader currentUser={this.props.currentUser} />
+        <CommentHeader
+          comments={count}
+          ratingAvg={ratingAvg}
+          currentUser={currentUser}
+        />
         <div className="container mt-5">
           <Row>
             <Col>
@@ -95,7 +115,7 @@ class Comment extends Component {
                 </div>
                 <div className="rank-info mt-4">
                   <div className="d-flex align-items-center mb-1">
-                    <StarSolid className="star" />
+                    <StarSolid className="star star-solid" />
                     <StarSolid className="star" />
                     <StarSolid className="star" />
                     <StarSolid className="star" />
@@ -143,11 +163,20 @@ class Comment extends Component {
                 <CommentFilterBox selectComments={this.selectComments} />
               </div>
               <div className="mt-4">
-                <CommentList comments={this.state.comments} />
+                <CommentList comments={comments} />
+                <div className="d-flex justify-content-center">
+                  <Pagination
+                    itemsCount={count}
+                    pageSize={pageSize}
+                    currentPage={currentPage}
+                    onPageChange={this.handlePageChange}
+                  />
+                </div>
               </div>
             </Col>
           </Row>
         </div>
+
         <Footer />
       </>
     );

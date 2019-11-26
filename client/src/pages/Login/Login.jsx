@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Joi from "joi-browser";
-import NavBar from "../../components/NavBar/NavBar";
+import { Link } from "react-router-dom";
+import LoginNavBar from "../../components/LoginNavbar/LoginNavbar";
 import "./Login.css";
 
 class Login extends React.Component {
@@ -188,7 +189,7 @@ class Login extends React.Component {
           state.msg.loginMsg = "登入成功";
           state.msg.type = "alert alert-success";
           this.setState(state);
-          window.location = "/account";
+          window.location = "/  ";
         }
       })
       .catch(function(err) {
@@ -382,7 +383,11 @@ class Login extends React.Component {
     let classes = `feedback ${this.state.msg.type}`;
     return (
       <>
-        <NavBar />
+        <LoginNavBar 
+          currentUser={this.props.currentUser}
+          numberOfProducts={this.props.numberOfProducts}
+          changeNumOfProduct={this.props.changeNumOfProduct}
+          />
         <Container className="cont">
           <Row className="loginRow">
             <div className="signIn">
@@ -421,9 +426,9 @@ class Login extends React.Component {
                       {this.state.errors.password || ""}
                     </div>
                   }
-                  <a href="#6" className="forgot-pass">
+                  <Link to="/password/recover" className="forgot-pass">
                     忘記密碼?
-                  </a>
+                  </Link>
 
                   {
                     <div className={classes}>
@@ -464,7 +469,6 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
-
                     {
                       <div className="alert alert-danger error-msg">
                         {this.state.errors.register_password || ""}
@@ -478,7 +482,6 @@ class Login extends React.Component {
                         onChange={this.logChange}
                       />
                     </label>
-
                     {
                       <div className={classes}>
                         {this.state.errors.repeat_password ||

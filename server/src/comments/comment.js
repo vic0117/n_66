@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 // [req.params.id]
 router.get("/comments", (req, res) => {
   // console.log("req.params", req.params);
-  const sql = "SELECT * FROM `comments_list` ORDER BY c_id DESC ";
+  const sql = "SELECT * FROM `comments_list` ORDER BY `c_id` DESC";
   db.query(sql, (error, results, fields) => {
     if (error) throw error;
     // console.log(results);

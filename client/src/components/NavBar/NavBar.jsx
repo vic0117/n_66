@@ -1,14 +1,14 @@
 import React from "react";
 import { Nav, Breadcrumb } from "react-bootstrap";
+import { Link } from "react-router-dom";
 // Components
 import { ReactComponent as Logo } from "./images/logo.svg";
 import { ReactComponent as User } from "./images/user.svg";
 import { ReactComponent as Cart } from "./images/cart.svg";
 import { ReactComponent as Logout } from "./images/logout.svg";
 
-// Routes
-import { Link } from "react-router-dom";
 import "./NavBar.css";
+
 class NavBar extends React.Component {
   state = {};
 
@@ -22,12 +22,11 @@ class NavBar extends React.Component {
     let middleLine = document.querySelector(".middle-line");
     let downLine = document.querySelector(".down-line");
 
-      window.onresize = ()=>{
-        if(window.innerWidth >= 850){
-            rightMenu.style.left = '100%';
-        }
-
-    }
+    window.onresize = () => {
+      if (window.innerWidth >= 850) {
+        rightMenu.style.left = "100%";
+      }
+    };
 
     toggler.onclick = () => {
       rightMenuIsShow = !rightMenuIsShow;
@@ -59,6 +58,9 @@ class NavBar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    const { numberOfProducts } = this.props;
+    // let numberOfProduct = JSON.parse( localStorage.getItem('productsToBuy')).length;
+
     return (
       <>
         <div className="navbar-container d-flex align-items-center ">
@@ -80,74 +82,88 @@ class NavBar extends React.Component {
 
           <div id="basic-navbar-nav" className="navCollapse">
             <Nav className="ml-auto ">
-              <Nav.Link className="navbar-item" href="#home">
-                <span className="">旅遊行程</span>
+              <Link to="/trips/page/1" className="navbar-item nav-link">
+                <span>旅遊行程</span>
                 <div className="blue-line"></div>
-              </Nav.Link>
-              <Nav.Link className="navbar-item" href="#link">
-                <span className="">戶外用品</span>
+              </Link>
+              <Link to="/products" className="navbar-item nav-link">
+                <span>戶外用品</span>
                 <div className="blue-line"></div>
-              </Nav.Link>
-              <Nav.Link className="navbar-item" href="/comments">
-                <span className="">旅遊評價</span>
+              </Link>
+              <Link to="/comments" className="navbar-item nav-link">
+                <span>旅遊評價</span>
                 <div className="blue-line"></div>
-              </Nav.Link>
-              <Nav.Link
-                className="navbar-item"
-                href="#link"
+              </Link>
+              <Link
+                to="#"
+                className="navbar-item nav-link"
                 style={{ marginRight: "2rem" }}
               >
                 <span>我們的理念</span>
                 <div className="blue-line"></div>
-              </Nav.Link>
-
+              </Link>
               {currentUser && (
                 <>
-                  <Nav.Link className="icon-container" href="/logout">
+                  <Link to="/logout" className="navbar-link icon-container">
                     <Logout height="20" width="20" className="logout-icon" />
-                  </Nav.Link>
+                  </Link>
                 </>
               )}
-
-              <Nav.Link className="icon-container" href="/account">
+              <Link to="/account" className="navbar-link icon-container">
                 <User height="20" width="20" className="user-icon" />
-              </Nav.Link>
-              <Nav.Link className="icon-container" href="/cart">
+              </Link>
+              <Nav.Link className="icon-container cart" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
+                {!numberOfProducts ? "" : <div>{numberOfProducts}</div>}
               </Nav.Link>
             </Nav>
           </div>
+
           <Breadcrumb className="mb-5">
-            <Breadcrumb.Item href="#">66N</Breadcrumb.Item>
-            <Breadcrumb.Item
-              href="https://getbootstrap.com/docs/4.0/components/breadcrumb/"
-              active
-            >
-              戶外用品
+            <Breadcrumb.Item href="/" className="p-1">
+              首頁
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href="/account" className="p-1" active>
+              會員專區
             </Breadcrumb.Item>
           </Breadcrumb>
 
-          <ul className="right-menu">
+          <ul className="right-menu mt-3">
             <li>
-              <a href="#8">
-                <h5>登入</h5>
-              </a>
-            </li>
-            <li>
-              <a href="#19">
-                <h5>我的購物車</h5>
-              </a>
-            </li>
-            <li>
-              <a href="#2">
+              <Link to="/trips/page/1">
                 <h5>旅遊行程</h5>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#3">
-                <h5>旅遊評價</h5>
-              </a>
+              <Link to="/products">
+                <h5>戶外用品</h5>
+              </Link>
             </li>
+            <li>
+              <Link to="/comments">
+                <h5>旅遊評價</h5>
+              </Link>
+            </li>
+            {currentUser ? (
+              <li>
+                <Link to="/cart">
+                  <h5>我的購物車</h5>
+                </Link>
+              </li>
+            ) : null}
+            {!currentUser ? (
+              <li>
+                <Link to="/login">
+                  <h5>會員登入</h5>
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/logout">
+                  <h5>會員登出</h5>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </>

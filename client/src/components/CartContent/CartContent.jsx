@@ -26,26 +26,25 @@ class CartContent extends React.Component {
 
 
   deleteProduct = async (i) => {
-    let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
-    let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
-
-    productsArray.forEach(product => {
-      if (product.code === i) {
-        // console.log(productsArray.indexOf(product));
-        productsArray.splice(productsArray.indexOf(product), 1);
-      }
-    });
-
-    console.log(productsArray)
-    this.props.delete(productsArray)
+    let productsArray = JSON.parse(localStorage.getItem('productsToBuy')) || [];
+    let tripsArray = JSON.parse(localStorage.getItem('tripsToBuy')) || [];
 
     let totalCost = 0;
 
     if (productsArray) {
       productsArray.forEach(item => {
+
+        if (item.code === i) {
+          // console.log(productsArray.indexOf(product));
+          productsArray.splice(productsArray.indexOf(item), 1);
+        }
+
         let subCost = item.product_amount * item.product_price;
         totalCost += subCost;
       })
+
+      console.log(productsArray)
+      
     }
 
     if (tripsArray) {
@@ -60,6 +59,8 @@ class CartContent extends React.Component {
     localStorage.setItem('totalCost', totalCost);
 
     this.props.countTotalCost(totalCost);
+    this.props.delete(productsArray)
+    this.props.changeNumOfProduct(JSON.stringify(productsArray.length + tripsArray.length));
 
     productsArray = JSON.stringify(productsArray);
     localStorage.setItem('productsToBuy', productsArray);
@@ -74,7 +75,7 @@ class CartContent extends React.Component {
       }
     });
 
-    this.props.count1(productsArray)
+    this.props.countProducts(productsArray)
 
     let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
     let totalCost = 0
@@ -112,8 +113,8 @@ class CartContent extends React.Component {
       }
     });
 
-    const { count2 } = this.props
-    count2(productsArray)
+    // const { countProducts } = this.props
+    this.props.countProducts(productsArray)
 
     let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
     let totalCost = 0;
@@ -145,8 +146,8 @@ class CartContent extends React.Component {
   }
 
   deleteTrip = async (i) => {
-    let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
-    let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
+    let productsArray = await JSON.parse(localStorage.getItem('productsToBuy')) || [];
+    let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy')) || [];
     // console.log(i);
     tripsArray.forEach(trip => {
       if (trip.code === i) {
@@ -155,8 +156,9 @@ class CartContent extends React.Component {
       }
     });
 
-    console.log(tripsArray)
-    this.props.setTripState(tripsArray)
+    // console.log(tripsArray)
+    this.props.countTrips(tripsArray)
+    this.props.changeNumOfProduct(JSON.stringify(productsArray.length + tripsArray.length));
 
     let totalCost = 0;
 
@@ -194,7 +196,7 @@ class CartContent extends React.Component {
       }
     });
 
-    this.props.setTripState(tripsArray)
+    this.props.countTrips(tripsArray)
 
     let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
     let totalCost = 0
@@ -232,7 +234,7 @@ class CartContent extends React.Component {
       }
     });
 
-    this.props.setTripState(tripsArray)
+    this.props.countTrips(tripsArray)
 
     let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
     let totalCost = 0
@@ -266,9 +268,11 @@ class CartContent extends React.Component {
 
     const { data } = this.props;
     const { tripData } = this.props;
+    const { numberOfProducts } = this.props;
+    // console.log(numberOfProducts);
 
-    console.log(data);
-    if (data === null && tripData == null) {
+
+    if (numberOfProducts === '0') {
       return (
 
         <Container fluid className="p-0 cartBanner">
@@ -342,13 +346,14 @@ class CartContent extends React.Component {
                           <div className="itemImg">
                             <Card.Img
                               variant="top"
-                              src={"http://localhost:3000/images/" + item.trip_menu_img}
+                              src={"http://localhost:3000/images/" + item.trip_img}
                             />
                           </div>
                           <Card.Body>
                             <div className="d-flex w-100 flex-column align-items-start">
                               <h6>
-                                {item.trip_place}
+                                <div className="">{item.trip_country}</div>
+                                <div className="">{item.trip_type}</div>
                                 <div className="price">{item.trip_price}</div>
 
                                 <div onClick={() => this.deleteTrip(item.code)} className="deleteBtn">
@@ -360,10 +365,10 @@ class CartContent extends React.Component {
                                 {item.trip_name}
                               </div>
                               <span className="d-flex">
-                                <span className="size ml-0">{item.trip_days} 天</span>
-                                <span className="size">{item.trip_start}</span>
+                                <span className="size ml-0">{item.trip_duration} 天</span>
+                                <span className="size">{item.trip_start_date}</span>
                                 <span>~</span>
-                                <span className="size">{item.trip_end}</span>
+                                <span className="size">{item.trip_end_date}</span>
                               </span>
 
                               <div className="quantity">
@@ -388,7 +393,7 @@ class CartContent extends React.Component {
                     </Link>
                   <Link className="checkOut" to="/checkout">
                     進行結帳
-                    </Link>
+                  </Link>
                 </div>
               </Col>
             </Row>

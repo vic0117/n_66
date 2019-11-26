@@ -41,8 +41,10 @@ class DashBoard extends Component {
       avatar: ""
     },
     userOrder: null,
+    filteredUserOrder: [],
     userComments: null,
     userWishes: null,
+    filteredUserWishes: [],
     userCoupons: [],
     feedback: {
       success: "",
@@ -101,28 +103,40 @@ class DashBoard extends Component {
   });
 
   async componentDidMount() {
+    document.title = "66°N - 客戶專區";
+
     // server
+
+    let config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    };
+
     await this.setState({ currentUser: "" });
     // 如果有登入
     if (localStorage.getItem("token")) {
       await this.setState({ currentUser: this.props.currentUser.user });
     } else {
       // 如果沒登入 (localStorage中沒東西)
-      this.props.history.push("/login"); // 暫時先跳轉首頁
+      this.props.history.push("/login");
     }
-
     const { currentUser } = this.state;
+
+    // 會員資料
     const { data: userInfo } = await axios.get(
-      "http://localhost:3001/members/" + currentUser.u_id
+      "http://localhost:3001/members/" + currentUser.u_id,
+      config
     );
     const info = { ...userInfo.rows[0] };
     info.new_password = "";
     info.comfirm_password = "";
     await this.setState({ userInfo: info });
 
-    // 使用者訂單
+    // 訂單紀錄
     const { data } = await axios.get(
-      "http://localhost:3001/members_order/" + currentUser.u_id
+      "http://localhost:3001/members_order/" + currentUser.u_id,
+      config
     );
 
     const tripJson = data.rows.map(item => JSON.parse(item.order_trip));
@@ -137,23 +151,30 @@ class DashBoard extends Component {
 
     await this.setState({ userOrder: data.rows });
 
-    // 使用者評論
+    // 我的評論
     const { data: userComments } = await axios.get(
-      "http://localhost:3001/members_comments_list/" + currentUser.u_id
+      "http://localhost:3001/members_comments_list/" + currentUser.u_id,
+      config
     );
     await this.setState({ userComments: userComments.rows });
 
-    // 使用者願望清單
+    // 我的收藏
     const { data: userWishes } = await axios.get(
-      "http://localhost:3001/members_wish_list/" + currentUser.u_id
+      "http://localhost:3001/members_wish_list/" + currentUser.u_id,
+      config
     );
     await this.setState({ userWishes: userWishes.rows });
 
-    // 折扣碼
+    // 優惠卷
     const { data: userCoupons } = await axios.get(
-      "http://localhost:3001/members_coupon_list/" + currentUser.u_id
+      "http://localhost:3001/members_coupon_list/" + currentUser.u_id,
+      config
     );
     await this.setState({ userCoupons: userCoupons.rows });
+
+    // 訂單記錄, 我的收藏 篩選
+    await this.setState({ filteredUserOrder: this.state.userOrder });
+    await this.setState({ filteredUserWishes: this.state.userWishes });
   }
 
   handleInfoChange = async e => {
@@ -163,24 +184,22 @@ class DashBoard extends Component {
     await this.setState({ userInfo });
   };
 
-
   handleInfoSubmit = async e => {
     e.preventDefault();
-
-    const { currentUser } = this.state;
+    const { currentUser, userInfo } = this.state;
     let info = {
-      first_name_zh: this.state.userInfo.first_name_zh,
-      last_name_zh: this.state.userInfo.last_name_zh,
-      first_name_en: this.state.userInfo.first_name_en,
-      last_name_en: this.state.userInfo.last_name_en,
-      gender: this.state.userInfo.gender,
-      bday_year: this.state.userInfo.bday_year,
-      bday_month: this.state.userInfo.bday_month,
-      bday_date: this.state.userInfo.bday_date,
-      passport: this.state.userInfo.passport,
-      zip_code: this.state.userInfo.zip_code,
-      address: this.state.userInfo.address,
-      tel: this.state.userInfo.tel
+      first_name_zh: userInfo.first_name_zh,
+      last_name_zh: userInfo.last_name_zh,
+      first_name_en: userInfo.first_name_en,
+      last_name_en: userInfo.last_name_en,
+      gender: userInfo.gender,
+      bday_year: userInfo.bday_year,
+      bday_month: userInfo.bday_month,
+      bday_date: userInfo.bday_date,
+      passport: userInfo.passport,
+      zip_code: userInfo.zip_code,
+      address: userInfo.address,
+      tel: userInfo.tel
     };
     fetch(`http://localhost:3001/members_edit/${currentUser.u_id}`, {
       method: "POST",
@@ -197,14 +216,13 @@ class DashBoard extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({ feedback: data });
         if (this.state.feedback.success) {
           function pageReload() {
             window.location = "/account";
           }
           toast.success(this.state.feedback.msg.text);
-          window.setTimeout(pageReload, 3000);
+          window.setTimeout(pageReload, 1500);
         } else {
           toast.error(this.state.feedback.msg.text);
         }
@@ -217,8 +235,6 @@ class DashBoard extends Component {
   changepwdValidate = async () => {
     let new_password = this.state.userInfo.new_password;
     let comfirm_password = this.state.userInfo.comfirm_password;
-    console.log("new", new_password);
-    console.log("comfirm", comfirm_password);
     await this.setState({
       changepwdJoi: { new_password, comfirm_password }
     });
@@ -235,7 +251,6 @@ class DashBoard extends Component {
     e.preventDefault();
 
     const errors = await this.changepwdValidate();
-    console.log(errors);
     await this.setState({ errors: errors || {} });
     if (errors) return;
 
@@ -244,7 +259,7 @@ class DashBoard extends Component {
       password: this.state.userInfo.password,
       new_password: this.state.userInfo.new_password
     };
-    console.log(passwordInfo);
+
     fetch(`http://localhost:3001/members_change_password/${currentUser.u_id}`, {
       method: "POST",
       headers: {
@@ -267,7 +282,7 @@ class DashBoard extends Component {
             window.location = "/account";
           }
           toast.success(this.state.feedback.msg.text);
-          window.setTimeout(pageReload, 3000);
+          window.setTimeout(pageReload, 1500);
         } else {
           toast.error(this.state.feedback.msg.text);
         }
@@ -277,20 +292,56 @@ class DashBoard extends Component {
       });
   };
 
+  handleSelectComments = async orderStatus => {
+    let filtered = "";
+    if (orderStatus === "選擇訂單狀態") {
+      filtered = this.state.userOrder;
+    } else {
+      filtered = this.state.userOrder.filter(
+        order => order.order_status === orderStatus
+      );
+    }
+    this.setState({ filteredUserOrder: filtered });
+  };
+
+  handleSelectWishes = async wishType => {
+    let filtered = "";
+    if (wishType === "選擇商品類型") {
+      filtered = this.state.userWishes;
+    } else {
+      filtered = this.state.userWishes.filter(
+        wish => wish.product_router === wishType
+      );
+    }
+    this.setState({ filteredUserWishes: filtered });
+  };
+
   render() {
-    const { userInfo, userOrder, errors } = this.state;
-    console.log("userInfo", this.state.userInfo);
+    const {
+      userInfo,
+      userOrder,
+      userCoupons,
+      userComments,
+      errors,
+      filteredUserOrder,
+      filteredUserWishes
+    } = this.state;
+    const { currentUser, numberOfProducts, changeNumOfProduct } = this.props;
     if (userOrder === null) return null;
     return (
       <>
-        <NavBar currentUser={this.props.currentUser} />
+        <NavBar
+          currentUser={currentUser}
+          numberOfProducts={numberOfProducts}
+          changeNumOfProduct={changeNumOfProduct}
+        />
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">
               <MemberLeftMenu
-                userInfo={this.state.userInfo}
-                currentUser={this.props.currentUser}
-                userCoupons={this.state.userCoupons}
+                userInfo={userInfo}
+                currentUser={currentUser}
+                userCoupons={userCoupons}
               />
             </Col>
             <Col className="col-xl-9 col-md-8 member-right-section">
@@ -298,15 +349,15 @@ class DashBoard extends Component {
                 <Route
                   path="/account/coupons"
                   render={() => (
-                    <MemberCoupon userCoupons={this.state.userCoupons} />
+                    <MemberCoupon userCoupons={userCoupons} />
                   )}
                 />
                 <Route
                   path="/account/comments"
                   render={() => (
                     <MemberCommentList
-                      currentUser={this.props.currentUser}
-                      userComments={this.state.userComments}
+                      currentUser={currentUser}
+                      userComments={userComments}
                     />
                   )}
                 />
@@ -315,8 +366,9 @@ class DashBoard extends Component {
                   render={() => (
                     <MemberOrderList
                       userInfo={userInfo}
-                      userOrder={userOrder}
-                      currentUser={this.props.currentUser}
+                      userOrder={filteredUserOrder}
+                      currentUser={currentUser}
+                      onSelectComments={this.handleSelectComments}
                     />
                   )}
                 />
@@ -324,7 +376,10 @@ class DashBoard extends Component {
                   path="/account/wishlists"
                   exact
                   render={() => (
-                    <MemberWishList userWishes={this.state.userWishes} />
+                    <MemberWishList
+                      userWishes={filteredUserWishes}
+                      onSelectWishes={this.handleSelectWishes}
+                    />
                   )}
                 />
                 <>
@@ -352,7 +407,7 @@ class DashBoard extends Component {
                 </>
               </Switch>
             </Col>
-            <ToastContainer />
+            <ToastContainer autoClose={2000} />
           </Row>
         </div>
         <Footer />
