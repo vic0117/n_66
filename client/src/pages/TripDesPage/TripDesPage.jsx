@@ -192,9 +192,7 @@ class TripDesPage extends Component {
                   <div className="purchaseBtnCover"></div>
                 </div>
               )
-              
             }
-
           </div>
         </Container>
         <TripDes2Carousel carouselData={this.state.carouselData} />
