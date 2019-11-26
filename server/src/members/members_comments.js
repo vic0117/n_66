@@ -34,7 +34,7 @@ function verifyToken(req, res, next) {
 }
 // 我的評論
 router.get("/members_comments_list/:id?", (req, res) => {
-  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ";
+  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ORDER BY `c_id` DESC";
   db.query(sql, [req.params.id], (error, results, fields) => {
     if (error) throw error;
     let output = {};
