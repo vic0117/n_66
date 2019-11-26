@@ -4,12 +4,10 @@ import CommentModal from "../CommentModal/CommentModal";
 import { toast } from "react-toastify";
 import { paginate } from "../../utils/paginate";
 import { ReactComponent as Calendar } from "./images/calendar.svg";
-import { ReactComponent as Size } from "./images/tshirt.svg";
 import { ReactComponent as Checked } from "./images/check-circle-regular.svg";
 import MemberOrderFilter from "../MemberOrderFilter/MemberOrderFilter";
 import Pagination from "../../common/Pagination";
 
-// import sotckholm from "./images/sotckholm-lhiver-1221 (2).jpg";
 import "./MemberOrderList.css";
 
 class MemberOrderList extends Component {
@@ -64,12 +62,12 @@ class MemberOrderList extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({ feedback: data });
         if (this.state.feedback.success) {
           this.setState({ addModalShow: false });
 
           // 如果有輸入評論, 將commented改為1
+          
           const { currentUser } = this.props;
           let addCommented;
           fetch(

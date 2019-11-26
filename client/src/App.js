@@ -48,7 +48,6 @@ class App extends Component {
     fetch("http://localhost:3001/comments")
       .then(
         response => {
-          console.log(response);
           return response.json();
         },
         error => {
@@ -200,8 +199,6 @@ class App extends Component {
                 {...props}
                 currentUser={this.state.currentUser}
                 numberOfProducts={this.state.numberOfProducts}
-                comments={this.state.comments}
-                ratingAvg={this.state.ratingAvg}
               />
             )}
           />
@@ -217,13 +214,15 @@ class App extends Component {
               />
             )}
           />
-            <Route
+          <Route
             path="/account"
             render={props => (
-              <DashBoard {...props} 
-              currentUser={this.state.currentUser}
-              numberOfProducts={this.state.numberOfProducts}
-              changeNumOfProduct={this.changeNumOfProduct} />
+              <DashBoard
+                {...props}
+                currentUser={this.state.currentUser}
+                numberOfProducts={this.state.numberOfProducts}
+                changeNumOfProduct={this.changeNumOfProduct}
+              />
             )}
           />
 

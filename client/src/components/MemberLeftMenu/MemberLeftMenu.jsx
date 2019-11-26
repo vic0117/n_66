@@ -22,7 +22,6 @@ class MemberLeftMenu extends Component {
     await this.setState({ my_file: e.target.files[0] });
     const fd = new FormData();
     fd.append("my_file", this.state.my_file);
-    // fetch(
 
     let config = {
       headers: {
@@ -30,6 +29,7 @@ class MemberLeftMenu extends Component {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
     };
+
     axios
       .post(
         `http://localhost:3001/members_upload_file/${currentUser.user.u_id}`,
@@ -42,11 +42,10 @@ class MemberLeftMenu extends Component {
             window.location = "/account";
           }
           toast.success(res.data.msg.text);
-          window.setTimeout(pageReload, 3000);
+          window.setTimeout(pageReload, 1500);
         } else {
           toast.error(res.data.msg.text);
         }
-        console.log(res);
       });
   };
 
@@ -89,7 +88,7 @@ class MemberLeftMenu extends Component {
                 <Link to="/account/coupons">{userCoupons.length}</Link>
               </Card.Title>
               <Card.Text className="text-align-center">
-                <span>可用優惠碼</span>
+                <span>可用優惠卷</span>
               </Card.Text>
             </div>
             <div className="text-align-center card-body-3">
@@ -131,7 +130,7 @@ class MemberLeftMenu extends Component {
                     style={{ height: "100%" }}
                   >
                     <Like height="16" width="16" />
-                    <span className="vertical-align-middle">願望清單</span>
+                    <span className="vertical-align-middle">我的收藏</span>
                   </Link>
                 </ListGroup.Item>
               </ListGroup>

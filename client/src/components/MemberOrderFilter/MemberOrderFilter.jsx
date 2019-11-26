@@ -9,7 +9,6 @@ class MemberOrderFilter extends Component {
 
   handleSelect = eventKey => {
     this.setState({ titleName: eventKey });
-
     this.props.onSelectComments(eventKey);
   };
 

@@ -10,12 +10,15 @@ class WishList extends Component {
   handleLike = async wish => {
     if (window.confirm(`確定要將此商品移除願望清單嗎?`)) {
       const wishes = [...this.props.userWishes];
-      // console.log(wishes)
       const index = wishes.indexOf(wish);
       wishes[index].liked = !wishes[index].liked;
       this.setState({ wishes });
       fetch("http://localhost:3001/members_wish_list_del/" + wish.w_id, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token")
+        }
       })
         .then(() => {
           console.log("removed");
@@ -33,11 +36,11 @@ class WishList extends Component {
     console.log(userWishes);
     return (
       <>
-        <MemberWishFilter onSelectWishes={this.props.onSelectWishes}/>
+        <MemberWishFilter onSelectWishes={this.props.onSelectWishes} />
         <div className="wish-list-container mt-4">
           <Row>
             <Col className="wish-list-title">
-              <span>願望清單</span>
+              <span>我的收藏</span>
             </Col>
           </Row>
           <Row>
@@ -105,7 +108,7 @@ class WishList extends Component {
                       liked={wish.liked}
                       onClick={() => this.handleLike(wish)}
                     />
-                    <span className="pl-1">移出願望清單</span>
+                    <span className="pl-1">移出我的收藏</span>
                   </Card.Footer>
                 </Card>
               </div>

@@ -1,23 +1,17 @@
 // settings
 const express = require("express");
 const bodyParser = require("body-parser");
-const multer = require("multer");
-const fs = require("fs");
-const upload = multer({ dest: "tmp_uploads" });
 const mysql = require("mysql");
-const moment = require("moment-timezone");
-const session = require("express-session");
 const cors = require("cors");
+const moment = require("moment-timezone");
 
-
-// const http = require('http');
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./user.js");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 db.connect();
@@ -41,7 +35,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //socket io server
-// var app = require('express')();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 
@@ -54,24 +47,9 @@ app.get("/", (req, res) => {
 const login = require("./login/login");
 app.use(login);
 
-const register = require("./login/register");
-app.use(register);
-
 // member
 const members = require("./members/members");
 app.use(members);
-
-const members_order = require("./members/members_order");
-app.use(members_order);
-
-const members_comments = require("./members/members_comments");
-app.use(members_comments);
-
-const members_wishes = require("./members/member_wishes");
-app.use(members_wishes);
-
-const members_coupons = require("./members/member_coupons");
-app.use(members_coupons);
 
 // comments
 const comments = require("./comments/comment");
