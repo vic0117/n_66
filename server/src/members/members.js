@@ -8,14 +8,16 @@ const fs = require("fs");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 
 bluebird.promisifyAll(db);
+
+// JWT verify
 
 function verifyToken(req, res, next) {
   // Get auth header value
@@ -35,9 +37,10 @@ function verifyToken(req, res, next) {
     res.json("forbidden");
   }
 }
+
 // 顯示會員資料
+
 router.get("/members/:id?", (req, res) => {
-  // console.log("req.params", req.params);
   const sql = "SELECT * FROM `members_list` WHERE u_id = ?";
   db.query(sql, [req.params.id], (error, results, fields) => {
     if (error) throw error;
@@ -49,6 +52,7 @@ router.get("/members/:id?", (req, res) => {
 });
 
 // 修改會員資料
+
 router.post("/members_edit/:id?", verifyToken, (req, res) => {
   let data = { success: false, msg: { type: "danger", text: "" } };
   jwt.verify(req.token, "secretKey", (err, authData) => {
@@ -92,6 +96,7 @@ router.post("/members_edit/:id?", verifyToken, (req, res) => {
 });
 
 // 更改會員頭像
+
 router.post(
   "/members_upload_file/:id?",
   verifyToken,
@@ -174,6 +179,153 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
           }
         });
     }
+  });
+});
+
+// 顯示訂單記錄
+
+router.get("/members_order/:id?", (req, res) => {
+  const sql =
+    "SELECT * FROM `order_list` WHERE u_id = ? ORDER BY order_id DESC";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+
+    res.json(output);
+  });
+});
+
+//判斷旅遊訂單是否評論
+
+router.get("/members_order/:u_id?/:id?", (req, res) => {
+  const sql = "SELECT * FROM `order_list` WHERE u_id = ? AND order_id = ?";
+  db.query(sql, [req.params.u_id, req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    // console.log(results);
+    res.json(output);
+  });
+});
+
+// 更新旅遊訂單為已評論
+
+router.post("/members_order/:u_id?/:id?", (req, res) => {
+  const sql = `UPDATE order_list SET order_trip=? WHERE u_id=? AND order_id = ?`;
+  db.query(
+    sql,
+    [req.body.results, req.params.u_id, req.params.id],
+    (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+      if (results.changedRows === 1) {
+        res.json("success");
+        console.log("success");
+      } else {
+        console.log("failed");
+      }
+    }
+  );
+});
+
+// 我的評論
+
+router.get("/members_comments_list/:id?", (req, res) => {
+  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ORDER BY `c_id` DESC";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
+  });
+});
+
+// 發表評論
+
+router.post("/members_comments/:id?", verifyToken, (req, res) => {
+  let data = { success: false, msg: { type: "danger", text: "" } };
+  // jwt authentication
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      data.msg.text = "權限不足";
+      res.json(data);
+    } else {
+      // 沒輸入東西時;
+      if (!req.body.reviews) {
+        data.msg.text = "資料不足";
+        return res.json(data);
+      }
+
+      console.log("reviews", req.body.reviews);
+      const sql =
+        "INSERT INTO comments_list ( u_id,avatar,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?,?)";
+      db.query(
+        sql,
+        [
+          req.body.u_id,
+          req.body.avatar,
+          req.body.last_name_zh,
+          req.body.gender,
+          req.body.trip_name,
+          req.body.trip_country,
+          req.body.trip_start_date,
+          req.body.trip_end_date,
+          req.body.rating,
+          req.body.reviews
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          console.log(results);
+          if (results.affectedRows === 1) {
+            data.success = true;
+            data.msg.type = "primary";
+            data.msg.text = "發布成功";
+          } else {
+            data.msg.text = "發布失敗";
+          }
+          res.json(data);
+        }
+      );
+    }
+  });
+});
+
+// 我的收藏
+
+router.get("/members_wish_list/:id?", (req, res) => {
+  // console.log("req.params", req.params);
+  const sql = "SELECT * FROM `wish_list` WHERE u_id = ?";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
+  });
+});
+
+// 刪除我的收藏
+
+router.delete("/members_wish_list_del/:id?", (req, res) => {
+  console.log("req.params", req.params);
+  const sql = `DELETE FROM wish_list WHERE w_id=${req.params.id};`;
+  db.query(sql, (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
+  });
+});
+
+// 我的優惠卷
+
+router.get("/members_coupon_list/:id?", (req, res) => {
+  const sql = "SELECT * FROM `coupon_list` WHERE u_id = ?";
+  db.query(sql, [req.params.id], (error, results, fields) => {
+    if (error) throw error;
+    let output = {};
+    output.rows = results;
+    res.json(output);
   });
 });
 

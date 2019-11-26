@@ -64,12 +64,12 @@ class MemberOrderList extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({ feedback: data });
         if (this.state.feedback.success) {
           this.setState({ addModalShow: false });
 
           // 如果有輸入評論, 將commented改為1
+          
           const { currentUser } = this.props;
           let addCommented;
           fetch(
