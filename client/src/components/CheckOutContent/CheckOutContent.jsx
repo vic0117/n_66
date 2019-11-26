@@ -15,86 +15,93 @@ class CheckOutContent extends React.Component {
             useCouponName: "原價購買",
             useCouponType: "",
             useCouponDiscount: 0,
-            dealSuccess: false
+            dealSuccess: false,
+            Freight: 30,
         };
     }
+
+    //radios
+    pickUp = (Freight) => {
+        this.setState({Freight: Freight})
+    }
+
 
     // 結帳按鈕
     CheckOut = e => {
         e.preventDefault();
-            let { userId } = this.props;
-            let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
-            let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
-            let couponList = []
-            let useCouponName = this.state.useCouponName;
-            // console.log(useCouponName);
-            // 如果沒有買行程
-            if (!tripsToBuy) {
-                tripsToBuy = []
-                localStorage.setItem('tripsToBuy', JSON.stringify(tripsToBuy))
+        let { userId } = this.props;
+        let totalCost = JSON.parse(localStorage.getItem('totalCost'))
+        let tripsToBuy = JSON.parse(localStorage.getItem('tripsToBuy'))
+        let productsToBuy = JSON.parse(localStorage.getItem('productsToBuy'))
+        let couponList = []
+        let useCouponName = this.state.useCouponName;
+        console.log(totalCost + this.state.Freight);
+        // 如果沒有買行程
+        if (!tripsToBuy) {
+            tripsToBuy = []
+            localStorage.setItem('tripsToBuy', JSON.stringify(tripsToBuy))
+        }
+
+        if (tripsToBuy) {
+            tripsToBuy.forEach((trip) => {
+                // let coupon = trip.trip_type;
+                let coupon = {};
+                coupon.type = trip.trip_type;
+                coupon.u_id = userId;
+                coupon.discount = "85";
+                couponList.push(coupon);
+            })
+        }
+        // 如果沒有買商品
+        if (!productsToBuy) {
+            productsToBuy = [];
+            localStorage.setItem('productsToBuy', JSON.stringify(productsToBuy));
+        }
+
+
+        let bodyObj = {
+            productsToBuy: JSON.stringify(productsToBuy),
+            tripsToBuy: JSON.stringify(tripsToBuy),
+            totalCost: JSON.stringify(totalCost + this.state.Freight),
+            userId: localStorage.getItem('userId'),
+            couponList: couponList,
+            useCouponName: useCouponName,
+            orderStatus: '運送中',
+        }
+
+        // console.log(bodyObj);
+
+        fetch('http://localhost:3001/checkout', {
+            method: "POST",
+            body: JSON.stringify(bodyObj),
+            headers: {
+                "content-type": "application/json"
             }
+        })
+            .then(response => {
 
-            if (tripsToBuy) {
-                tripsToBuy.forEach((trip) => {
-                    // let coupon = trip.trip_type;
-                    let coupon = {};
-                    coupon.type = trip.trip_type;
-                    coupon.u_id = userId;
-                    coupon.discount = "85";
-                    couponList.push(coupon);
-                })
-            }
-            // 如果沒有買商品
-            if (!productsToBuy) {
-                productsToBuy = [];
-                localStorage.setItem('productsToBuy', JSON.stringify(productsToBuy));
-            }
+                return response.json();
+            })
+            .then(json => {
+                console.log(json)
+                //TODO:
+                localStorage.setItem('tripsToBuy', '[]')
+                localStorage.setItem('productsToBuy', '[]')
+                localStorage.setItem('totalCost', '0')
+                this.props.changeNumOfProduct('')
+                if (json.success) {
+                    // 購買成功
 
+                    toast.success(json.text);
+                    setTimeout(() => {
+                        this.setState({ dealSuccess: true })
+                    }, 2000);
 
-            let bodyObj = {
-                productsToBuy: JSON.stringify(productsToBuy),
-                tripsToBuy: JSON.stringify(tripsToBuy),
-                totalCost: localStorage.getItem('totalCost'),
-                userId: localStorage.getItem('userId'),
-                couponList: couponList,
-                useCouponName: useCouponName,
-                orderStatus: '運送中'
-            }
-
-            // console.log(bodyObj);
-
-            fetch('http://localhost:3001/checkout', {
-                method: "POST",
-                body: JSON.stringify(bodyObj),
-                headers: {
-                    "content-type": "application/json"
+                } else {
+                    //購買失敗
+                    toast.error(json.text);
                 }
             })
-                .then(response => {
-
-                    return response.json();
-                })
-                .then(json => {
-                    console.log(json)
-                    //TODO:
-                    localStorage.setItem('tripsToBuy', '[]')
-                    localStorage.setItem('productsToBuy', '[]')
-                    localStorage.setItem('totalCost', '0')
-                    this.props.changeNumOfProduct('')
-                    if (json.success) {
-                        // 購買成功
-
-                        toast.success(json.text);
-                        setTimeout(() => {
-                            this.setState({ dealSuccess: true })
-                        }, 2000);
-
-                    } else {
-                        //購買失敗
-                        toast.error(json.text);
-                    }
-                })
-        
     }
 
     // 折價卷
@@ -168,13 +175,12 @@ class CheckOutContent extends React.Component {
         }
     }
 
-
     render() {
         const { productsToBuy } = this.props;
         const { tripsToBuy } = this.props;
         const { totalCost } = this.props;
-        const {userInfo} = this.props;
-        
+        const { userInfo } = this.props;
+
         // 淺拷貝userInfo
         let userInformation = Object.assign({}, userInfo);
 
@@ -247,7 +253,6 @@ class CheckOutContent extends React.Component {
                                                                         this.state.useCouponName === item.product_category ? (<del className="discountPrice">{'NT$' + item.product_price}</del>) :
                                                                             ('NT$' + item.product_price)
                                                                     }
-
                                                                 </div>
                                                                 <div className="mb-2 pl-2" style={{ flex: 4 }}>
                                                                     {
@@ -321,7 +326,7 @@ class CheckOutContent extends React.Component {
                                 <div>
                                     {
                                         answer === null ? ('') : (
-                                            <DropdownButton id="dropdown-basic-button" title={this.state.useCouponName === "原價購買" ? "使用折價卷" : this.state.useCouponType }>
+                                            <DropdownButton id="dropdown-basic-button" title={this.state.useCouponName === "原價購買" ? "使用折價卷" : this.state.useCouponType}>
                                                 {
                                                     userCoupons.map((coupon, i) => (
                                                         <Dropdown.Item
@@ -345,7 +350,7 @@ class CheckOutContent extends React.Component {
                                 <div className="d-flex mt-2">
                                     <div style={{ flex: 2 }}></div>
                                     <div style={{ flex: 3 }}>運費</div>
-                                    <div className="text-right" style={{ flex: 1 }}>NT$ 60</div>
+                                <div className="text-right" style={{ flex: 1 }}>NT$ {this.state.Freight}</div>
                                     {/* <div style={{ flex: 1 }}></div> */}
                                 </div>
                                 <div className="d-flex mt-1">
@@ -353,8 +358,8 @@ class CheckOutContent extends React.Component {
                                     <div style={{ flex: 3 }}>合計</div>
                                     <h5 className="text-right" style={{ flex: 1 }}>
                                         {
-                                            this.state.useCouponDiscount === 0 ? (`NT$ ${totalCost}`) :
-                                                (`NT$ ${this.state.totalCost}`)
+                                            this.state.useCouponDiscount === 0 ? (`NT$ ${totalCost + this.state.Freight}`) :
+                                                (`NT$ ${this.state.totalCost + this.state.Freight}`)
                                         }
 
                                     </h5>
@@ -381,11 +386,12 @@ class CheckOutContent extends React.Component {
                                                 <div className="form-check">
                                                     <div>
                                                         <input
-                                                            className="form-check-input"
+                                                            onChange={()=>this.pickUp(30)}
+                                                            className="pickUpRadios"
                                                             type="radio"
-                                                            name="exampleRadios"
+                                                            name="pickUpRadios"
                                                             id="exampleRadios1"
-
+                                                            defaultValue="convenienceStore"
                                                             defaultChecked
                                                         ></input>
                                                         <label
@@ -397,10 +403,12 @@ class CheckOutContent extends React.Component {
                                                     </div>
                                                     <div>
                                                         <input
-                                                            className="form-check-input"
+                                                            onChange={()=>this.pickUp(60)}
+                                                            className="pickUpRadios"
                                                             type="radio"
-                                                            name="exampleRadios"
+                                                            name="pickUpRadios"
                                                             id="exampleRadios1"
+                                                            defaultValue="homeDelivery"
                                                         ></input>
 
                                                         <label
