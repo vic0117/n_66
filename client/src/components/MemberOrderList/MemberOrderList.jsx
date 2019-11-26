@@ -130,7 +130,7 @@ class MemberOrderList extends Component {
             window.location = "/account/orders";
           }
           toast.success(this.state.feedback.msg.text);
-          window.setTimeout(pageReload, 3000);
+          window.setTimeout(pageReload, 1500);
         } else {
           toast.error(this.state.feedback.msg.text);
         }
