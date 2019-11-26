@@ -9,7 +9,10 @@ class Order extends Component {
   render() {
     return (
       <>
-        <NavBar />
+        <NavBar 
+          numberOfProducts={this.props.numberOfProducts}
+          changeNumOfProduct={this.props.changeNumOfProduct}
+        />
         <div className="container">
           <Row>
             <Col className="col-xl-3 col-md-4 col-sm-12 col-xs-12">

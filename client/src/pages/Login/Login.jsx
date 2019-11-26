@@ -383,7 +383,11 @@ class Login extends React.Component {
     let classes = `feedback ${this.state.msg.type}`;
     return (
       <>
-        <LoginNavBar currentUser={this.props.currentUser} />
+        <LoginNavBar 
+          currentUser={this.props.currentUser}
+          numberOfProducts={this.props.numberOfProducts}
+          changeNumOfProduct={this.props.changeNumOfProduct}
+          />
         <Container className="cont">
           <Row className="loginRow">
             <div className="signIn">

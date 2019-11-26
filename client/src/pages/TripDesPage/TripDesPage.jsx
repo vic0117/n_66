@@ -19,7 +19,8 @@ class TripDesPage extends Component {
       detailData: [],
       carouselPlace: "",
       carouselData: [],
-      carouselImg: null
+      carouselImg: null,
+      bought: false
     };
   }
 
@@ -94,17 +95,23 @@ class TripDesPage extends Component {
         localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
         toast.success("已加入購物車");
         this.props.changeNumOfProduct(JSON.stringify(bbb.length + productsArray.length))
+        this.setState({bought: true})
       } else {
         let ddd = [];
         ddd.push(product);
         localStorage.setItem("tripsToBuy", JSON.stringify(ddd));
         toast.success("已加入購物車");
         this.props.changeNumOfProduct(JSON.stringify(ddd.length + productsArray.length))
+        this.setState({bought: true})
       }
     } else {
       toast.error("請先登入或註冊為會員");
     }
   };
+
+  gotoIndex = ()=>{
+    window.location = "http://localhost:3000";
+  }
 
   handleAddWish = () => {
     const productsDetail = {
@@ -171,11 +178,23 @@ class TripDesPage extends Component {
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} />
           <div className="purchaseBtnBox">
-            <div onClick={this.addToCart} className="purchaseBtn">
-              <Cart className="purchaseBtnImg" />
-              <p>加入購物車</p>
-              <div className="purchaseBtnCover"></div>
-            </div>
+            {
+              this.state.bought === false ? (
+                <div onClick={this.addToCart} className="purchaseBtn">
+                  <Cart className="purchaseBtnImg" />
+                  <p>加入購物車</p>
+                  <div className="purchaseBtnCover"></div>
+                </div>
+              ):(
+                <div onClick={this.gotoIndex} className="purchaseBtn">
+                  <Cart className="purchaseBtnImg" />
+                  <p>回到首頁</p>
+                  <div className="purchaseBtnCover"></div>
+                </div>
+              )
+              
+            }
+
           </div>
         </Container>
         <TripDes2Carousel carouselData={this.state.carouselData} />

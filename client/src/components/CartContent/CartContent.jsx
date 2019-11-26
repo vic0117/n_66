@@ -59,7 +59,6 @@ class CartContent extends React.Component {
     localStorage.setItem('totalCost', totalCost);
 
     this.props.countTotalCost(totalCost);
-
     this.props.delete(productsArray)
     this.props.changeNumOfProduct(JSON.stringify(productsArray.length + tripsArray.length));
 
@@ -76,7 +75,7 @@ class CartContent extends React.Component {
       }
     });
 
-    this.props.count1(productsArray)
+    this.props.countProducts(productsArray)
 
     let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
     let totalCost = 0
@@ -114,8 +113,8 @@ class CartContent extends React.Component {
       }
     });
 
-    const { count2 } = this.props
-    count2(productsArray)
+    // const { countProducts } = this.props
+    this.props.countProducts(productsArray)
 
     let tripsArray = await JSON.parse(localStorage.getItem('tripsToBuy'));
     let totalCost = 0;
@@ -158,7 +157,7 @@ class CartContent extends React.Component {
     });
 
     // console.log(tripsArray)
-    this.props.setTripState(tripsArray)
+    this.props.countTrips(tripsArray)
     this.props.changeNumOfProduct(JSON.stringify(productsArray.length + tripsArray.length));
 
     let totalCost = 0;
@@ -197,7 +196,7 @@ class CartContent extends React.Component {
       }
     });
 
-    this.props.setTripState(tripsArray)
+    this.props.countTrips(tripsArray)
 
     let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
     let totalCost = 0
@@ -235,7 +234,7 @@ class CartContent extends React.Component {
       }
     });
 
-    this.props.setTripState(tripsArray)
+    this.props.countTrips(tripsArray)
 
     let productsArray = await JSON.parse(localStorage.getItem('productsToBuy'));
     let totalCost = 0

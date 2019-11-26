@@ -3,50 +3,66 @@ import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
 import CartContent from "../../components/CartContent/CartContent";
 
 class MyCart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentUser: props.currentUser,
-      productsToBuy: [],
-      numberOfProducts: "",
-      tripsToBuy: [],
-      totalCost: 0
-    };
-  }
-
-  componentDidMount() {
-    document.title = "66°N - 我的購物車";
-
-    const productsToBuy =
-      JSON.parse(localStorage.getItem("productsToBuy")) || [];
-    const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
-    let numberOfProducts = productsToBuy.length + tripsToBuy.length;
-
-    let totalCost = 0;
-    if (productsToBuy) {
-      productsToBuy.forEach(item => {
-        let subCost = item.product_amount * item.product_price;
-        totalCost += subCost;
-      });
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentUser: props.currentUser,
+            productsToBuy: [],
+            numberOfProducts: "",
+            tripsToBuy: [],
+            totalCost: 0
+        };
     }
 
-    if (tripsToBuy) {
-      tripsToBuy.forEach(trip => {
-        let tripCost = trip.trip_amount * trip.trip_price;
-        totalCost += tripCost;
-      });
+    componentDidMount() {
+        document.title = "66°N - 我的購物車";
+
+        const productsToBuy =
+            JSON.parse(localStorage.getItem("productsToBuy")) || [];
+        const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
+        let numberOfProducts = productsToBuy.length + tripsToBuy.length;
+
+        let totalCost = 0;
+        if (productsToBuy) {
+            productsToBuy.forEach(item => {
+                let subCost = item.product_amount * item.product_price;
+                totalCost += subCost;
+            });
+        }
+
+        if (tripsToBuy) {
+            tripsToBuy.forEach(trip => {
+                let tripCost = trip.trip_amount * trip.trip_price;
+                totalCost += tripCost;
+            });
+        }
+
+        totalCost = JSON.stringify(totalCost);
+        localStorage.setItem("totalCost", totalCost);
+
+        this.setState({
+            productsToBuy: productsToBuy,
+            numberOfProducts: JSON.stringify(numberOfProducts),
+            tripsToBuy: tripsToBuy,
+            totalCost: totalCost
+        });
     }
 
-    totalCost = JSON.stringify(totalCost);
-    localStorage.setItem("totalCost", totalCost);
+    delete = (productsToBuy) => {
+        this.setState({ productsToBuy: productsToBuy })
+    }
 
-    this.setState({
-      productsToBuy: productsToBuy,
-      numberOfProducts: JSON.stringify(numberOfProducts),
-      tripsToBuy: tripsToBuy,
-      totalCost: totalCost
-    });
-  }
+    countTotalCost = (totalCost) => {
+        this.setState({ totalCost: totalCost })
+    }
+
+    countProducts = (productsToBuy) => {
+        this.setState({ productsToBuy: productsToBuy })
+    }
+
+    countTrips = (tripsToBuy)=>{
+        this.setState({ tripsToBuy: tripsToBuy })
+    }
 
     render() {
         //解構付值props
@@ -69,28 +85,27 @@ class MyCart extends React.Component {
 
             return (
                 <>
-                    <HomeNavBar 
+                    <HomeNavBar
                         currentUser={this.props.currentUser}
                         numberOfProducts={this.props.numberOfProducts}
                         changeNumOfProduct={this.props.changeNumOfProduct}
-                        />
+                    />
                     <CartContent
                         data={this.state.productsToBuy}
                         tripData={this.state.tripsToBuy}
                         totalCost={this.state.totalCost}
                         delete={this.delete}
-                        count1={this.count1}
-                        count2={this.count2}
+                        countProducts={this.countProducts}
                         countTotalCost={this.countTotalCost}
-                        setTripState={this.setTripState}
-                        numberOfProducts = {this.props.numberOfProducts}
+                        countTrips={this.countTrips}
+                        numberOfProducts={this.props.numberOfProducts}
                         changeNumOfProduct={this.props.changeNumOfProduct}
                     />
                 </>
             );
         }
-    
-  }
+
+    }
 }
 
 export default MyCart;

@@ -10,10 +10,11 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftmenu/images/search.svg";
+import search from "../../components/TripLeftMenu/images/search.svg";
 // import location from '../TripLeftMenu/images/location.svg';
-import trac from "../../components/TripLeftmenu/images/trac.svg";
-import SliderPrice from "../../components/TripLeftmenu/SliderPrice";
+import trac from "../../components/TripLeftMenu/images/trac.svg";
+import SliderPrice from "../../components/TripLeftMenu/SliderPrice";
+import TripLeftMenu from "../TripLeftMenu/TripLeftMenu";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
@@ -21,7 +22,7 @@ import filterImg from "./img/filter.svg";
 //CSS
 import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
-import TripLeftMenu from "../TripLeftmenu/TripLeftMenu";
+
 
 class ProductLeftMenu extends Component {
   constructor(props) {
