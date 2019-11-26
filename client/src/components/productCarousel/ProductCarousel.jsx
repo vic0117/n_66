@@ -59,8 +59,6 @@ class ProductCarousel extends React.Component {
   }
 
   addToCart = () => {
-    // const currentUser = localStorage.getItem('userId');
-    // console.log(currentUser)
     const isLogin = localStorage.getItem("token");
     if (!isLogin) {
       toast.error("請先登入或註冊為會員");
@@ -163,6 +161,7 @@ class ProductCarousel extends React.Component {
               {data.map(item => (
                 <div key={item.product_id} className="detailCard">
                   <div>
+                    <h4>{item.product_brand}</h4>
                     <h2>{item.product_name}</h2>
                     <h5>NT$ {item.product_price}</h5>
                     <Button
@@ -177,19 +176,18 @@ class ProductCarousel extends React.Component {
                           onClick={this.addToCart}
                           className="addToCartBtn mx-auto"
                         >
-                          放入購物車
+                          加入購物車
                       </Button>
                       ):(
                         <a
-                          href = "/"
+                          href = "/checkout"
                           className="addToCartBtn mx-auto"
                         >
-                          回到首頁
+                          我要結帳
                         </a>
                       )
                       
                     }
-                    {/* <p>免費快遞送貨 / 免費退貨</p> */}
                   </div>
 
                   <div>

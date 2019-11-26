@@ -1,5 +1,5 @@
 import React from "react";
-import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import CartContent from "../../components/CartContent/CartContent";
 
 class MyCart extends React.Component {
@@ -10,7 +10,8 @@ class MyCart extends React.Component {
             productsToBuy: [],
             numberOfProducts: "",
             tripsToBuy: [],
-            totalCost: 0
+            totalCost: 0,
+            userInfo: true
         };
     }
 
@@ -21,6 +22,9 @@ class MyCart extends React.Component {
             JSON.parse(localStorage.getItem("productsToBuy")) || [];
         const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
         let numberOfProducts = productsToBuy.length + tripsToBuy.length;
+        
+
+
 
         let totalCost = 0;
         if (productsToBuy) {
@@ -40,12 +44,34 @@ class MyCart extends React.Component {
         totalCost = JSON.stringify(totalCost);
         localStorage.setItem("totalCost", totalCost);
 
-        this.setState({
-            productsToBuy: productsToBuy,
-            numberOfProducts: JSON.stringify(numberOfProducts),
-            tripsToBuy: tripsToBuy,
-            totalCost: totalCost
-        });
+        const userId = JSON.parse(localStorage.getItem("userId"));
+        let user = {
+            userId: userId
+        }
+        
+        fetch('http://localhost:3001/cart',{
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        .then(result=>{
+            return result.json()
+        })
+        .then(json=>{
+            // console.log(json);
+
+            this.setState({
+                productsToBuy: productsToBuy,
+                numberOfProducts: JSON.stringify(numberOfProducts),
+                tripsToBuy: tripsToBuy,
+                totalCost: totalCost,
+                userInfo: json.userInformation
+            },()=>{
+                console.log(this.state.userInfo);
+            });
+        })
     }
 
     delete = (productsToBuy) => {
@@ -85,7 +111,7 @@ class MyCart extends React.Component {
 
             return (
                 <>
-                    <HomeNavBar
+                    <NavBar
                         currentUser={this.props.currentUser}
                         numberOfProducts={this.props.numberOfProducts}
                         changeNumOfProduct={this.props.changeNumOfProduct}
@@ -100,6 +126,7 @@ class MyCart extends React.Component {
                         countTrips={this.countTrips}
                         numberOfProducts={this.props.numberOfProducts}
                         changeNumOfProduct={this.props.changeNumOfProduct}
+                        userInfo={this.props.userInfo}
                     />
                 </>
             );
