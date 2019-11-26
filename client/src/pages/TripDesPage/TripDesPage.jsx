@@ -20,7 +20,6 @@ class TripDesPage extends Component {
       carouselPlace: "",
       carouselData: [],
       carouselImg: null,
-      collected: false,
       bought: false
     };
   }
@@ -173,19 +172,11 @@ class TripDesPage extends Component {
         </div>
         <Container>
           <div className="purchaseBtnBox" style={{ marginTop: "100px" }}>
-            {this.state.collected ? (
-              <div className="purchaseBtn" onClick={this.handleAddWish}>
-                <Cart className="purchaseBtnImg" />
-                <p>加入我的收藏</p>
-                <div className="purchaseBtnCover"></div>
-              </div>
-            ) : (
-              <div className="purchaseBtn" style={{ cursor: "default" }}>
-                <Cart className="purchaseBtnImg" />
-                <p>已加入我的收藏</p>
-                <div className="purchaseBtnCover"></div>
-              </div>
-            )}
+            <div className="purchaseBtn" onClick={this.handleAddWish}>
+              <Cart className="purchaseBtnImg" />
+              <p>加入我的收藏</p>
+              <div className="purchaseBtnCover"></div>
+            </div>
           </div>
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} />
