@@ -198,8 +198,8 @@ class CheckOutContent extends React.Component {
         const { productsToBuy } = this.props;
         const { tripsToBuy } = this.props;
         const { totalCost } = this.props;
-
         const {userInfo} = this.props;
+        
         // 淺拷貝userInfo
         let userInformation = Object.assign({}, userInfo);
         console.log(userInformation.address);
