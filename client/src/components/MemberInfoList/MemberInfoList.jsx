@@ -38,6 +38,7 @@ class MemberInfoList extends Component {
                       <option value="0">請選擇</option>
                       <option value="先生">先生</option>
                       <option value="女士">女士</option>
+                      <option value="小姐">小姐</option>
                     </Form.Control>
                   </div>
                   <div className="width-200 mr-2">
