@@ -168,7 +168,7 @@ class ProductCarousel extends React.Component {
                       className="wishBtn mx-auto"
                       onClick={this.props.addWish}
                     >
-                      加入我的蒐藏
+                      加入我的收藏
                     </Button>
                     {
                       this.state.bought === false ? (
