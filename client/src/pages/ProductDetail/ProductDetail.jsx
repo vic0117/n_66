@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import ProductCarousel from './../../components/ProductCarousel/ProductCarousel';
+import ProductCarousel from "./../../components/ProductCarousel/ProductCarousel";
 
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,8 +11,8 @@ class ProductDetail extends React.Component {
     this.state = {
       ProductsDetail: [],
       Pictures: [],
-      numberOfProducts: ''
-    }
+      numberOfProducts: ""
+    };
   }
 
   componentDidMount() {
@@ -34,7 +34,7 @@ class ProductDetail extends React.Component {
             ProductsDetail: json,
             Pictures: picArray
           },
-          function () {
+          function() {
             console.log(this.state);
           }
         );
@@ -82,15 +82,15 @@ class ProductDetail extends React.Component {
     }
   };
 
-
   render() {
-    const { numberOfProducts } = this.props.numberOfProducts
+    const { numberOfProducts } = this.props.numberOfProducts;
     return (
       <>
         <NavBar
           currentUser={this.props.currentUser}
           numberOfProducts={this.props.numberOfProducts}
-          changeNumOfProduct={this.changeNumOfProduct} />
+          changeNumOfProduct={this.changeNumOfProduct}
+        />
         <ProductCarousel
           data={this.state.ProductsDetail}
           pics={this.state.Pictures}
@@ -99,7 +99,7 @@ class ProductDetail extends React.Component {
           addWish={this.handelAddWish}
         />
         {/* <h1>{this.state.Pictures}</h1> */}
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
       </>
     );
   }
