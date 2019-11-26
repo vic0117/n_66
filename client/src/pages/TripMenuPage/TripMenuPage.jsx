@@ -60,6 +60,7 @@ class TripMenuPage extends Component {
   };
   //畫面第一次渲染
   componentDidMount() {
+	  document.title = '旅遊列表'
     const { place, type, month, search,difficulty } = queryString.parse(
       this.props.location.search
     );

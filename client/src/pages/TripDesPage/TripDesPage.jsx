@@ -11,6 +11,7 @@ import TripDes2Carousel from "../../components/TripDes2Carousel/TripDes2Carousel
 import Footer from "../../components/Footer/Footer";
 import "./TripDesPage.scss";
 import { ReactComponent as Cart } from "./cart.svg";
+import {Link} from 'react-router-dom'
 
 class TripDesPage extends Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class TripDesPage extends Component {
   }
 
   async componentDidMount() {
-    await fetch(`http://localhost:3001/trips/${this.props.match.params.id}`)
+	document.title = `旅遊細節${this.props.match.params.id}`    
+	await fetch(`http://localhost:3001/trips/${this.props.match.params.id}`)
       .then(
         response => {
           console.log(response);
@@ -155,6 +157,19 @@ class TripDesPage extends Component {
           />
         </div>
         <Container>
+		 
+		<div className = 'BreadcrumbCss'>
+        <Link to="/" exact>
+          <h6>首頁</h6>
+        </Link>
+        <span className='Breadsticks'>/</span>
+		  <Link to='/trips/page/1' exact>
+			<h6>旅遊列表</h6>  
+		  </Link>
+        <span className='Breadsticks'>/</span>
+        <h6 className='BreadActive'>旅遊細節</h6>
+		  </div>
+      
           <div className="purchaseBtnBox" style={{ marginTop: "100px" }}>
             <div className="purchaseBtn" onClick={this.handleAddWish}>
               <Cart className="purchaseBtnImg" />

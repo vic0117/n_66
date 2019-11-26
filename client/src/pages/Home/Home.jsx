@@ -19,7 +19,9 @@ class Home extends Component {
 	  room:''
   };
 
-  
+  componentDidMount() {
+	  document.title='66N'
+  }  
   render() {
 	  const {currentUser} = this.props;
 	  console.log(currentUser)

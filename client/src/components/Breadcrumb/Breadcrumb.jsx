@@ -12,12 +12,13 @@ class Breadcrumb extends Component {
   }
   render() {
     return (
-      <Container className = 'BreadcrumbCss'>
+      <Container >
+		<div className = 'BreadcrumbCss'>
         <Link to="/" exact>
           <h6>首頁</h6>
         </Link>
         <span className='Breadsticks'>/</span>
-        <h6 className='BreadActive'>旅遊列表</h6>
+        <h6 className='BreadActive'>旅遊列表</h6></div>
       </Container>
    )
   }

@@ -9,6 +9,7 @@ import { ReactComponent as SnowBoot } from "./images/snowBoot.svg";
 import { ReactComponent as Trac } from "./images/trac.svg";
 import { ReactComponent as Dog } from "./images/dog.svg";
 import { ReactComponent as Boat } from "./images/boat.svg";
+// import {Link} from 'reactrouter-dom'
 
 class TripMenuFooter extends Component {
   constructor(props) {
