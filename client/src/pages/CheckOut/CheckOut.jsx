@@ -12,7 +12,7 @@ class CheckOut extends React.Component {
             totalCost: 0,
             userId: '',
             hasCoupon: [],
-            // userInfo:[]
+            userInfo:false
         }
     }
 
@@ -42,7 +42,8 @@ class CheckOut extends React.Component {
                 // console.log(json);
                 let hasCoupon = json;
                 let userInfo = json.userInfo[0]
-
+                // console.log(userInfo)
+                // let userInfoArray = [userInfo.address, userInfo.]
                 this.setState({
                     productsToBuy: productsToBuy,
                     tripsToBuy: tripsToBuy,
