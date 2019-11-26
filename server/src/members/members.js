@@ -40,14 +40,20 @@ function verifyToken(req, res, next) {
 
 // 顯示會員資料
 
-router.get("/members/:id?", (req, res) => {
-  const sql = "SELECT * FROM `members_list` WHERE u_id = ?";
-  db.query(sql, [req.params.id], (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-    // console.log(results);
-    res.json(output);
+router.get("/members/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      data.msg.text = "權限不足";
+      res.json(data);
+    } else {
+      const sql = "SELECT * FROM `members_list` WHERE u_id = ?";
+      db.query(sql, [req.params.id], (error, results, fields) => {
+        if (error) throw error;
+        let output = {};
+        output.rows = results;
+        res.json(output);
+      });
+    }
   });
 });
 
@@ -108,7 +114,6 @@ router.post(
         data.msg.text = "權限不足";
         res.json(data);
       } else {
-        // console.log("req.file", req.file)
         if (req.file && req.file.originalname) {
           if (/\.(jpg|jpeg|png)$/i.test(req.file.originalname)) {
             fs.createReadStream(req.file.path).pipe(
@@ -146,8 +151,6 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
       data.msg.text = "權限不足";
       res.json(data);
     } else {
-      console.log("req.body", req.body.password);
-
       //   沒輸入新舊password時;
       if (!req.body.password || !req.body.new_password) {
         data.msg.text = "資料不足";
@@ -184,60 +187,86 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
 
 // 顯示訂單記錄
 
-router.get("/members_order/:id?", (req, res) => {
-  const sql =
-    "SELECT * FROM `order_list` WHERE u_id = ? ORDER BY order_id DESC";
-  db.query(sql, [req.params.id], (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-
-    res.json(output);
+router.get("/members_order/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql =
+        "SELECT * FROM `order_list` WHERE u_id = ? ORDER BY order_id DESC";
+      db.query(sql, [req.params.id], (error, results, fields) => {
+        if (error) throw error;
+        let output = {};
+        output.rows = results;
+        res.json(output);
+      });
+    }
   });
 });
 
 //判斷旅遊訂單是否評論
 
-router.get("/members_order/:u_id?/:id?", (req, res) => {
-  const sql = "SELECT * FROM `order_list` WHERE u_id = ? AND order_id = ?";
-  db.query(sql, [req.params.u_id, req.params.id], (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-    // console.log(results);
-    res.json(output);
+router.get("/members_order/:u_id?/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql = "SELECT * FROM `order_list` WHERE u_id = ? AND order_id = ?";
+      db.query(
+        sql,
+        [req.params.u_id, req.params.id],
+        (error, results, fields) => {
+          if (error) throw error;
+          let output = {};
+          output.rows = results;
+          res.json(output);
+        }
+      );
+    }
   });
 });
 
 // 更新旅遊訂單為已評論
 
-router.post("/members_order/:u_id?/:id?", (req, res) => {
-  const sql = `UPDATE order_list SET order_trip=? WHERE u_id=? AND order_id = ?`;
-  db.query(
-    sql,
-    [req.body.results, req.params.u_id, req.params.id],
-    (error, results, fields) => {
-      if (error) throw error;
-      console.log(results);
-      if (results.changedRows === 1) {
-        res.json("success");
-        console.log("success");
-      } else {
-        console.log("failed");
-      }
+router.post("/members_order/:u_id?/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql = `UPDATE order_list SET order_trip=? WHERE u_id=? AND order_id = ?`;
+      db.query(
+        sql,
+        [req.body.results, req.params.u_id, req.params.id],
+        (error, results, fields) => {
+          if (error) throw error;
+          console.log(results);
+          if (results.changedRows === 1) {
+            res.json("success");
+          } else {
+            res.json("success");
+          }
+        }
+      );
     }
-  );
+  });
 });
 
 // 我的評論
 
-router.get("/members_comments_list/:id?", (req, res) => {
-  const sql = "SELECT * FROM `comments_list` WHERE u_id = ? ORDER BY `c_id` DESC";
-  db.query(sql, [req.params.id], (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-    res.json(output);
+router.get("/members_comments_list/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql =
+        "SELECT * FROM `comments_list` WHERE u_id = ? ORDER BY `c_id` DESC";
+      db.query(sql, [req.params.id], (error, results, fields) => {
+        if (error) throw error;
+        let output = {};
+        output.rows = results;
+        res.json(output);
+      });
+    }
   });
 });
 
@@ -256,8 +285,6 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
         data.msg.text = "資料不足";
         return res.json(data);
       }
-
-      console.log("reviews", req.body.reviews);
       const sql =
         "INSERT INTO comments_list ( u_id,avatar,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?,?)";
       db.query(
@@ -293,39 +320,55 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
 
 // 我的收藏
 
-router.get("/members_wish_list/:id?", (req, res) => {
-  // console.log("req.params", req.params);
-  const sql = "SELECT * FROM `wish_list` WHERE u_id = ?";
-  db.query(sql, [req.params.id], (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-    res.json(output);
+router.get("/members_wish_list/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql = "SELECT * FROM `wish_list` WHERE u_id = ?";
+      db.query(sql, [req.params.id], (error, results, fields) => {
+        if (error) throw error;
+        let output = {};
+        output.rows = results;
+        res.json(output);
+      });
+    }
   });
 });
 
 // 刪除我的收藏
 
-router.delete("/members_wish_list_del/:id?", (req, res) => {
-  console.log("req.params", req.params);
-  const sql = `DELETE FROM wish_list WHERE w_id=${req.params.id};`;
-  db.query(sql, (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-    res.json(output);
+router.delete("/members_wish_list_del/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql = `DELETE FROM wish_list WHERE w_id=${req.params.id};`;
+      db.query(sql, (error, results, fields) => {
+        if (error) throw error;
+        let output = {};
+        output.rows = results;
+        res.json(output);
+      });
+    }
   });
 });
 
 // 我的優惠卷
 
-router.get("/members_coupon_list/:id?", (req, res) => {
-  const sql = "SELECT * FROM `coupon_list` WHERE u_id = ?";
-  db.query(sql, [req.params.id], (error, results, fields) => {
-    if (error) throw error;
-    let output = {};
-    output.rows = results;
-    res.json(output);
+router.get("/members_coupon_list/:id?", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const sql = "SELECT * FROM `coupon_list` WHERE u_id = ?";
+      db.query(sql, [req.params.id], (error, results, fields) => {
+        if (error) throw error;
+        let output = {};
+        output.rows = results;
+        res.json(output);
+      });
+    }
   });
 });
 
