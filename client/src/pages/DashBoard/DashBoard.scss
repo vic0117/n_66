@@ -4,6 +4,15 @@
 
 .member-right-section {
   margin-top: 150px;
+  .form-control:focus {
+    border-color: #96daf0 !important;
+    box-shadow: none !important;
+  }
+  .btn:focus,
+  .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 }
 
 .Toastify__toast-container--top-right {

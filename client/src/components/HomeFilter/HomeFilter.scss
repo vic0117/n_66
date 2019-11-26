@@ -6,6 +6,11 @@ $secColor: #96daf0;
   .row-no-margin {
     margin-left: 0px !important;
     margin-right: 0px !important;
+    .btn:focus,
+    .btn:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
   }
   .margin-auto {
     margin: auto;
@@ -32,9 +37,6 @@ $secColor: #96daf0;
     box-shadow: 0 8px 8px #8888883f;
     transform: translate(0, -50%);
     z-index: 900;
-    // position: absolute;
-    // right: 320px;
-    // bottom: 42px;
   }
 
   .drop-down-container {
@@ -238,27 +240,27 @@ $secColor: #96daf0;
     }
 
     .list {
-		 .FilterSearchBox{
-			 width: 30%;
-			 height: 70px;
-			 font-size: 1.5rem;
-			 border:1px solid #242a3a;
-			 color:#242a3a;
-			//  background: #242a3a;
-			 margin:auto;
-			 margin-top:60px;
-			 text-align: center;
-			 line-height:70px;
-			//  box-shadow: 2px 2px 5px;
-		 }
-		 .FilterSearchBox:hover{
-			 color:#fff;
-			 background: #96daf0;
-			 border:none;
-		 }
-		 .displayNone{
-			 display: none;
-		 }
+      .FilterSearchBox {
+        width: 30%;
+        height: 70px;
+        font-size: 1.5rem;
+        border: 1px solid #242a3a;
+        color: #242a3a;
+        //  background: #242a3a;
+        margin: auto;
+        margin-top: 60px;
+        text-align: center;
+        line-height: 70px;
+        //  box-shadow: 2px 2px 5px;
+      }
+      .FilterSearchBox:hover {
+        color: #fff;
+        background: #96daf0;
+        border: none;
+      }
+      .displayNone {
+        display: none;
+      }
       .card {
         border-radius: 0%;
       }
@@ -299,11 +301,11 @@ $secColor: #96daf0;
           font-size: 1.5rem;
           margin: 0;
           line-height: 80px;
-		  }
-		  h6{
-			color:#96daf0;
-			margin:20px;
-		  }
+        }
+        h6 {
+          color: #96daf0;
+          margin: 20px;
+        }
       }
 
       #days-of-stay {
