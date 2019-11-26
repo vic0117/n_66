@@ -206,7 +206,7 @@ class TripDesPage extends Component {
           </div>
         </Container>
         <TripDes2Carousel carouselData={this.state.carouselData} />
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
         <Footer />
       </div>
     );
