@@ -67,7 +67,7 @@ class MemberOrderList extends Component {
           this.setState({ addModalShow: false });
 
           // 如果有輸入評論, 將commented改為1
-          
+
           const { currentUser } = this.props;
           let addCommented;
           fetch(
@@ -189,7 +189,7 @@ class MemberOrderList extends Component {
                     <Col>
                       <Card.Title className="d-flex">
                         <span className="order-num">
-                          訂單編號:{order.order_id}
+                          訂單編號: {order.order_id}
                         </span>
                         <span className="order-num ml-auto">
                           訂單建立日期: {order.create_at}
@@ -215,11 +215,13 @@ class MemberOrderList extends Component {
                           <span style={{ color: "#96daf0" }}>
                             {item.trip_country || item.product_brand}
                           </span>
-                          <Card.Title className="mt-1 mb-2">
+                          <Card.Title className="mt-1 mb-2 font-weight-bold">
                             {item.trip_name || item.product_name}
                           </Card.Title>
                           <div className="d-flex align-items-center mb-2">
-                            {item.trip_duration ? <Calendar className="mr-2"/> : null}
+                            {item.trip_duration ? (
+                              <Calendar className="mr-2" />
+                            ) : null}
                             <span>
                               {item.trip_duration ||
                                 "尺寸: " + item.product_size}

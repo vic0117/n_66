@@ -67,7 +67,7 @@ class WishList extends Component {
                       <span style={{ color: "#96daf0" }}>
                         {wish.product_label}
                       </span>
-                      <Card.Title className="mt-1 mb-2">
+                      <Card.Title className="mt-1 mb-2 font-weight-bold">
                         {wish.product_name}
                       </Card.Title>
                       <div className="d-flex align-items-center mb-2">

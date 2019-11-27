@@ -83,7 +83,6 @@ class UpdatePassword extends Component {
         window.location = "/account/orders";
       }
       window.setTimeout(pageReload, 3000);
-      return toast.success(data.msg.text);
     }
   };
 
@@ -104,13 +103,13 @@ class UpdatePassword extends Component {
 
         {submitted ? (
           <div className="pwd-reset-container text-center">
-            <h3 className="text-center mb-4">重置您的密碼</h3>
+            <h2 className="text-center mb-4 font-weight-bold">重置您的密碼</h2>
             <p className="text-center mb-4">新密碼重置完成</p>
             <Link to="/login">回到登入頁面</Link>
           </div>
         ) : (
-          <div className="pwd-reset-container" style={{ marginTop: "320px" }}>
-            <h3 className="text-center mb-4">重置您的密碼</h3>
+          <div className="pwd-reset-container" style={{ marginTop: "330px" }}>
+              <h3 className="text-center mb-4 font-weight-bold">重置您的密碼</h3>
             <form onSubmit={this.updatePassword}>
               <div className="form-group position-relative mb-0">
                 <input
