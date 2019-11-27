@@ -82,6 +82,7 @@
 
 .TripMenuDes h4 {
   color: #242a3a;
+  font-weight: 700;
 }
 
 .TripMenuDes h6 {
@@ -187,10 +188,14 @@
   .TripMenuPrice h3 {
     color: #96DAF0;
     font-size: 24px;
+    margin-top: 10px;
   }
   .TripMenuStartEnd {
     margin-right: 5px;
     font-size: 13px;
+  }
+  .TripMenuDes2 {
+    margin-left: -35px;
   }
 }
 /*# sourceMappingURL=Tripmenu.css.map */

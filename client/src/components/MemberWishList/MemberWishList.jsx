@@ -70,7 +70,7 @@ class WishList extends Component {
                       <Card.Title className="mt-1 mb-2">
                         {wish.product_name}
                       </Card.Title>
-                      <div className="d-flex align-items-center mb-2">
+                      <div className="d-flex align-items-center mb-2 size">
                         <span>
                           {wish.product_router === "trips"
                             ? wish.trip_angency
@@ -91,7 +91,7 @@ class WishList extends Component {
                           {wish.product_router === "trips" ? "天" : ""}
                         </span>
                       </div>
-                      <div className="mb-2">
+                      <div className="mb-2 weight">
                         <span className="vertical-align-middle product-duration">
                           {wish.product_router === "trips"
                             ? `${wish.trip_start_date} - ${wish.trip_end_date}`

@@ -10,15 +10,19 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
-// import location from '../TripLeftMenu/images/location.svg';
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "./../TripLeftMenu/SliderPrice";
-import $ from 'jquery'
+import search from "../../components/TripLeftmenu/images/search.svg";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from "./../TripLeftmenu/SliderPrice";
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+import $ from "jquery";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
-
+import left from "./img/left.svg";
+import right from "./img/right.svg";
 //CSS
 import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
@@ -131,99 +135,97 @@ class ProductLeftMenu extends Component {
     this.props.searchProduct(this.state.search);
   };
 
+  handlePrice = value => {
+    this.setState({ Price: value });
+    this.props.select6(value);
+  };
 
-
-  handlePrice=(value)=>{
-	  this.setState({Price:value})
-	  this.props.select6(value)
-  }
-
-  handleType1 = ()=>{
-	const type1 = $('.typeCard1').text()
-	this.setState({type:type1})
-	this.props.select1(type1)
- }
- handleType2 = ()=>{
-	const type2 = $('.typeCard2').text()
-	this.setState({type:type2})
-	this.props.select1(type2)
- }
- handleType3 = ()=>{
-	const type3 = $('.typeCard3').text()
-	this.setState({type:type3})
-	this.props.select1(type3)
- }
- handleType4 = ()=>{
-	const type4 = $('.typeCard4').text()
-	this.setState({type:type4})
-	this.props.select1(type4)
- }
- handleType5 = ()=>{
-	const type5 = $('.typeCard5').text()
-	this.setState({type:type5})
-	this.props.select1(type5)
- }
- handleType6 = ()=>{
-	const type6 = $('.typeCard6').text()
-	this.setState({type:type6})
-	this.props.select1(type6)
- }
- handleType7 = ()=>{
-	const type7 = $('.typeCard7').text()
-	this.setState({type:type7})
-	this.props.select1(type7)
- }
- handleType8 = ()=>{
-	const type8 = $('.typeCard8').text()
-	this.setState({type:type8})
-	this.props.select1(type8)
- }
- handleType9 = ()=>{
-	const type9 = $('.typeCard9').text()
-	this.setState({type:type9})
-	this.props.select1(type9)
- }
- handleType10 = ()=>{
-	const type10 = $('.typeCard10').text()
-	this.setState({type:type10})
-	this.props.select1(type10)
- }
- handleType11 = ()=>{
-	const type11 = $('.typeCard11').text()
-	this.setState({type:type11})
-	this.props.select1(type11)
- }
- handleType12 = ()=>{
-	const type12 = $('.typeCard12').text()
-	this.setState({type:type12})
-	this.props.select1(type12)
- }
- handleType13 = ()=>{
-	const type13 = $('.typeCard13').text()
-	this.setState({type:type13})
-	this.props.select1(type13)
- }
- handleType14 = ()=>{
-	const type14 = $('.typeCard14').text()
-	this.setState({type:type14})
-	this.props.select1(type14)
- }
-///////////////////////////////////////////
-handleBrand1 = ()=>{
-	const brand1 = $('.brandCard1').text()
-	this.setState({brand:brand1})
-	this.props.select2(brand1)
-}
-handleBrand2 = ()=>{
-	const brand2 = $('.brandCard2').text()
-	this.setState({brand:brand2})
-	this.props.select2(brand2)
-}
-handleBrand3 = ()=>{
-	const brand3 = $('.brandCard3').text()
-	this.setState({brand:brand3})
-	this.props.select2(brand3)
-}
+  handleType1 = () => {
+    const type1 = $(".typeCard1").text();
+    this.setState({ type: type1 });
+    this.props.select1(type1);
+  };
+  handleType2 = () => {
+    const type2 = $(".typeCard2").text();
+    this.setState({ type: type2 });
+    this.props.select1(type2);
+  };
+  handleType3 = () => {
+    const type3 = $(".typeCard3").text();
+    this.setState({ type: type3 });
+    this.props.select1(type3);
+  };
+  handleType4 = () => {
+    const type4 = $(".typeCard4").text();
+    this.setState({ type: type4 });
+    this.props.select1(type4);
+  };
+  handleType5 = () => {
+    const type5 = $(".typeCard5").text();
+    this.setState({ type: type5 });
+    this.props.select1(type5);
+  };
+  handleType6 = () => {
+    const type6 = $(".typeCard6").text();
+    this.setState({ type: type6 });
+    this.props.select1(type6);
+  };
+  handleType7 = () => {
+    const type7 = $(".typeCard7").text();
+    this.setState({ type: type7 });
+    this.props.select1(type7);
+  };
+  handleType8 = () => {
+    const type8 = $(".typeCard8").text();
+    this.setState({ type: type8 });
+    this.props.select1(type8);
+  };
+  handleType9 = () => {
+    const type9 = $(".typeCard9").text();
+    this.setState({ type: type9 });
+    this.props.select1(type9);
+  };
+  handleType10 = () => {
+    const type10 = $(".typeCard10").text();
+    this.setState({ type: type10 });
+    this.props.select1(type10);
+  };
+  handleType11 = () => {
+    const type11 = $(".typeCard11").text();
+    this.setState({ type: type11 });
+    this.props.select1(type11);
+  };
+  handleType12 = () => {
+    const type12 = $(".typeCard12").text();
+    this.setState({ type: type12 });
+    this.props.select1(type12);
+  };
+  handleType13 = () => {
+    const type13 = $(".typeCard13").text();
+    this.setState({ type: type13 });
+    this.props.select1(type13);
+  };
+  handleType14 = () => {
+    const type14 = $(".typeCard14").text();
+    this.setState({ type: type14 });
+    this.props.select1(type14);
+  };
+  ///////////////////////////////////////////
+  handleBrand1 = () => {
+    const brand1 = $(".brandCard1").text();
+    this.setState({ brand: brand1 });
+    this.props.select2(brand1);
+  };
+  handleBrand2 = () => {
+    const brand2 = $(".brandCard2").text();
+    this.setState({ brand: brand2 });
+    this.props.select2(brand2);
+  };
+  handleBrand3 = () => {
+    const brand3 = $(".brandCard3").text();
+    this.setState({ brand: brand3 });
+    this.props.select2(brand3);
+  };
   render() {
     const { data } = this.props;
     // console.log(data);
@@ -240,7 +242,7 @@ handleBrand3 = ()=>{
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li
-          className={number == 1 ? "page-item active" : "page-item"}
+          className={number === 1 ? "page-item active" : "page-item"}
           key={number}
           id={number}
           onClick={this.handleClick}
@@ -252,7 +254,7 @@ handleBrand3 = ()=>{
 
     const renderTodos = currentTodos.map((item, i) => {
       return (
-        <Col key={i} sm={6} lg={4}>
+        <Col key={i} sm={6} lg={4} className="cardColumn">
           <Link to={`/products/${item.product_id}`}>
             <Card key={item.product_id} className="product-card">
               <div className="photoFrame">
@@ -307,11 +309,11 @@ handleBrand3 = ()=>{
                     />
                   </div>
                   <p>活動與主題</p>
-						<h6>{this.state.type}</h6>
+                  <h6>{this.state.type}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-						<ul>
+                    <ul>
                       <li className="typeCard1" onClick={this.handleType1}>
                         所有活動
                       </li>
@@ -353,7 +355,8 @@ handleBrand3 = ()=>{
                       </li>
                       <li className="typeCard14" onClick={this.handleType14}>
                         攝影
-                      </li></ul>
+                      </li>
+                    </ul>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -367,14 +370,20 @@ handleBrand3 = ()=>{
                     />
                   </div>
                   <p>選擇品牌</p>
-						<h6>{this.state.brand}</h6>
+                  <h6>{this.state.brand}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="2">
                   <Card.Body>
                     <ul>
-                      <li className="brandCard1" onClick={this.handleBrand1}>所有品牌</li>
-                      <li className="brandCard2" onClick={this.handleBrand2}>snow peak</li>
-                      <li className="brandCard3" onClick={this.handleBrand2}>snow peak2</li>
+                      <li className="brandCard1" onClick={this.handleBrand1}>
+                        所有品牌
+                      </li>
+                      <li className="brandCard2" onClick={this.handleBrand2}>
+                      SnowPeak
+                      </li>
+                      <li className="brandCard3" onClick={this.handleBrand2}>
+                      AquaMarina
+                      </li>
                     </ul>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -388,11 +397,14 @@ handleBrand3 = ()=>{
                     />
                   </div>
                   <p>價格區間</p>
-						<h6>{this.state.Price}</h6>
+                  <h6>{this.state.Price}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="6">
                   <Card.Body id="days-of-stay">
-                    <SliderPrice handlePrice = {this.handlePrice} select6={this.props.select6}/>
+                    <SliderPrice
+                      handlePrice={this.handlePrice}
+                      select6={this.props.select6}
+                    />
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -407,7 +419,10 @@ handleBrand3 = ()=>{
         </Container>
         <Container className="productsSection">
           <Row className="leftMenuRow d-flax justify-content-center">
-            <Col md={3} className="leftMenuContent">
+            <Col
+              md={4}
+              className="leftMenuContent d-flex justify-content-center"
+            >
               <div className="leftMenu">
                 <div className="searchBox">
                   <input
@@ -419,63 +434,64 @@ handleBrand3 = ()=>{
                     <img src={search} alt="search" />
                   </div>
                 </div>
-                <div className="buttonTitle">
-                  <img src={trac} alt="trac" />
-                  <p>活動類型</p>
-                </div>
-                <DropdownButton
-                  id="dropdown-basic-button"
-                  title={this.state.buttonTitleName1}
-                  onSelect={this.handleSelect1}
-                >
-                  <Dropdown.Item eventKey="所有活動" value="1">
-                    所有活動
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="北極光" value="1">
-                    北極光
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="駕車遊覽" value="2">
-                    駕車遊覽
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="獨木舟" value="3">
-                    獨木舟
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="雪橇犬" value="3">
-                    雪橇犬
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="郵輪和帆船" value="3">
-                    郵輪和帆船
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="家庭" value="3">
-                    家庭
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="多活動" value="3">
-                    多活動
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="動物觀察" value="3">
-                    動物觀察
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="攝影" value="3">
-                    攝影
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="划艇" value="3">
-                    划艇
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="步行" value="3">
-                    步行
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="雪鞋" value="3">
-                    雪鞋
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="跨年" value="3">
-                    跨年
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="遠足" value="3">
-                    遠足
-                  </Dropdown.Item>
-                </DropdownButton>
 
                 <div className="dropDowns">
+                  <div className="buttonTitle">
+                    <img src={trac} alt="trac" />
+                    <p>活動類型</p>
+                  </div>
+                  <DropdownButton
+                    id="dropdown-basic-button"
+                    title={this.state.buttonTitleName1}
+                    onSelect={this.handleSelect1}
+                  >
+                    <Dropdown.Item eventKey="所有活動" value="1">
+                      所有活動
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="北極光" value="1">
+                      北極光
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="駕車遊覽" value="2">
+                      駕車遊覽
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="獨木舟" value="3">
+                      獨木舟
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="雪橇犬" value="3">
+                      雪橇犬
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="郵輪和帆船" value="3">
+                      郵輪和帆船
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="家庭" value="3">
+                      家庭
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="多活動" value="3">
+                      多活動
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="動物觀察" value="3">
+                      動物觀察
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="攝影" value="3">
+                      攝影
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="划艇" value="3">
+                      划艇
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="步行" value="3">
+                      步行
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="雪鞋" value="3">
+                      雪鞋
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="跨年" value="3">
+                      跨年
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="遠足" value="3">
+                      遠足
+                    </Dropdown.Item>
+                  </DropdownButton>
+
                   <div className="buttonTitle">
                     <img src={trac} alt="trac" />
                     <p>品牌</p>
@@ -492,8 +508,11 @@ handleBrand3 = ()=>{
                     <Dropdown.Item eventKey="snow peak" value="2">
                       snow peak
                     </Dropdown.Item>
-                    <Dropdown.Item eventKey="snow peak2" value="2">
-                      snow peak
+                    <Dropdown.Item eventKey="AquaMarina" value="3">
+                      AquaMarina
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="Sony" value="4">
+                    Sony
                     </Dropdown.Item>
                   </DropdownButton>
 
@@ -507,22 +526,25 @@ handleBrand3 = ()=>{
                     />
                     <p>價錢</p>
                   </div>
-                  <SliderPrice handlePrice = {this.handlePrice} select6={this.props.select6} />
+                  <SliderPrice
+                    handlePrice={this.handlePrice}
+                    select6={this.props.select6}
+                  />
                 </div>
               </div>
             </Col>
-            <Col sm={12} md={9} className="p-0">
-              <Container className="p-0 card-container">
-                <Row>{renderTodos}</Row>
+            <Col sm={12} md={8} className="p-0">
+              <Container className="p-0 card-container ">
+                <Row className="position-relative">{renderTodos}</Row>
                 <Row>
                   <Col>
                     <ul id="page-numbers" className="pagination">
                       <li className="page-item" onClick={this.goPrev}>
-                        -
+                        <img src={left} alt="left"/>
                       </li>
                       {renderPageNumbers}
                       <li className="page-item" onClick={this.goNext}>
-                        +
+                        <img src={right} alt="right"/>
                       </li>
                     </ul>
                   </Col>

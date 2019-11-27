@@ -58,6 +58,19 @@
 }
 
 // RWD
+@media only screen and (max-width: 1500px) {
+  .wish-list-container {
+    .card-title {
+      font-size: 18px;
+    }
+    .size {
+      font-size: 14px;
+    }
+    .weight {
+      font-size: 14px;
+    }
+  }
+}
 
 @media only screen and (max-width: 1200px) {
   .wish-list-container .card-container {

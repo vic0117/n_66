@@ -67,7 +67,7 @@ class MemberOrderList extends Component {
           this.setState({ addModalShow: false });
 
           // 如果有輸入評論, 將commented改為1
-          
+
           const { currentUser } = this.props;
           let addCommented;
           fetch(
@@ -153,6 +153,7 @@ class MemberOrderList extends Component {
   };
 
   handlePageChange = page => {
+    window.scrollTo(0, 0);
     this.setState({ currentPage: page });
   };
 
@@ -189,7 +190,7 @@ class MemberOrderList extends Component {
                     <Col>
                       <Card.Title className="d-flex">
                         <span className="order-num">
-                          訂單編號:{order.order_id}
+                          訂單編號: {order.order_id}
                         </span>
                         <span className="order-num ml-auto">
                           訂單建立日期: {order.create_at}
@@ -219,13 +220,18 @@ class MemberOrderList extends Component {
                             {item.trip_name || item.product_name}
                           </Card.Title>
                           <div className="d-flex align-items-center mb-2">
-                            {item.trip_duration ? <Calendar className="mr-2"/> : null}
+                            {item.trip_duration ? (
+                              <Calendar className="mr-2" />
+                            ) : null}
                             <span>
                               {item.trip_duration ||
                                 "尺寸: " + item.product_size}
                               {item.trip_duration ? "天" : ""}
                             </span>
                           </div>
+                          {item.product_weight && (
+                            <div>重量: {item.product_weight}</div>
+                          )}
                           <div className="vertical-align-middle mb-2">
                             {item.trip_name &&
                               item.trip_start_date + " - " + item.trip_end_date}
@@ -271,13 +277,12 @@ class MemberOrderList extends Component {
                     ))}
                     <div className="mt-3 d-flex status ">
                       <p>預計到貨日期: {order.arrival_date}</p>
-
                       <p className="ml-auto">
                         合計: NT$ {order.order_total_price}
                       </p>
                     </div>
                     <div>
-                      <p className="d-flex align-items-center">
+                      <p className="d-flex align-items-center mt-1">
                         狀態: {order.order_status}
                         {order.order_status === "已送達" ? (
                           <Checked width="18" height="18" className="ml-1" />

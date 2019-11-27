@@ -94,6 +94,7 @@
   box-shadow: none;
   background-color: #d5d5d5 !important;
   outline: none;
+  border-color: #d5d5d5 !important;
 }
 
 // RWD
@@ -112,6 +113,7 @@
     display: flex;
   }
 }
+
 
 @media only screen and (max-width: 512px) {
   .order-info-container {

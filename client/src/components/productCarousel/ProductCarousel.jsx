@@ -40,6 +40,7 @@ class ProductCarousel extends React.Component {
         />
       </div>
     ));
+ 
   }
 
   sliders2() {
@@ -100,9 +101,8 @@ class ProductCarousel extends React.Component {
         this.props.changeNumOfProduct(JSON.stringify(ddd.length + tripsArray.length))
         toast.success("已加入購物車");
       }
+      this.setState({ bought: true })
     }
-
-    this.setState({ bought: true })
 
   }
 
@@ -180,13 +180,12 @@ class ProductCarousel extends React.Component {
                       </Button>
                       ):(
                         <a
-                          href = "/checkout"
+                          href = "/cart"
                           className="addToCartBtn mx-auto"
                         >
-                          我要結帳
+                          去結帳
                         </a>
                       )
-                      
                     }
                   </div>
 

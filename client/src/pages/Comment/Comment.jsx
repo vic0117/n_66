@@ -17,7 +17,7 @@ class Comment extends Component {
     pageSize: 10, // 每頁幾筆
     currentPage: 1,
     comments: [],
-    ratingAvg: ''
+    ratingAvg: ""
   };
 
   componentDidMount() {
@@ -67,13 +67,19 @@ class Comment extends Component {
   };
 
   handlePageChange = page => {
+    window.scrollTo(0, 950);
     this.setState({ currentPage: page });
   };
 
   render() {
     const { length: count } = this.state.comments;
     const { currentUser } = this.props;
-    const { pageSize, currentPage, comments: allComments, ratingAvg } = this.state;
+    const {
+      pageSize,
+      currentPage,
+      comments: allComments,
+      ratingAvg
+    } = this.state;
     const comments = paginate(allComments, currentPage, pageSize);
 
     return (
@@ -92,7 +98,10 @@ class Comment extends Component {
                   因為您的意見對我們很重要，所以我們請您留下您寶貴的意見
                 </p>
                 <p className="m-auto">
-                  我們的首要工作是設計旅行，為了保證質量和透明度，我們選擇直接發布所有66°N旅行者的意見。如果您不滿意或覺得哪裡需要改進，歡迎留言讓我們知道，我們會盡快回覆您的問題。
+                  我們的首要工作是設計旅行行程，為了保證旅遊的品質和客戶評價的透明度，我們選擇直接發布所有66°N旅行者的意見。
+                </p>
+                <p className="m-auto">
+                  如果您不滿意或覺得哪裡需要改進，歡迎留言讓我們知道。
                 </p>
               </div>
             </Col>
@@ -105,10 +114,10 @@ class Comment extends Component {
                   <ol className="comment-term">
                     <li>參加66°N的旅行</li>
                     <li>
-                      旅行結束後，我們將向您發送電子郵件，讓我們知 道您的感想。
+                      購買行程後，您將可在客戶專區評論您對於本次旅行的感想。
                     </li>
                     <li>
-                      您的意見（無論是正面還是負面）都直接發佈在我 們的網站上。
+                      您的意見（無論是正面還是負面）都直接發佈在我們的網站上。
                     </li>
                   </ol>
                   <a href="#1">了解更多信息</a>

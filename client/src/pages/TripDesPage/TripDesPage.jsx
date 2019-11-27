@@ -118,7 +118,7 @@ class TripDesPage extends Component {
   };
 
   gotoIndex = () => {
-    window.location = "http://localhost:3000/checkout";
+    window.location = "http://localhost:3000/cart";
   };
 
   handleAddWish = () => {
@@ -207,7 +207,7 @@ class TripDesPage extends Component {
             ) : (
               <div onClick={this.gotoIndex} className="purchaseBtn">
                 <Cart className="purchaseBtnImg" />
-                <p>我要結帳</p>
+                <p>去結帳</p>
                 <div className="purchaseBtnCover"></div>
               </div>
             )}
