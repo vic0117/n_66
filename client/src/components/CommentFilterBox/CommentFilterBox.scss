@@ -11,12 +11,19 @@
     border-radius: 0;
     transform: translate3d(0px, 50px, 0px) !important;
     overflow: scroll;
+    z-index: 998;
     a {
       border-bottom: 1px solid #eaeaea;
       padding: 1rem;
       color: #242a3a;
     }
   }
+
+  .dropdown-menu::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
   .btn-primary.dropdown-toggle {
     background-color: #fff !important;
     border: 1px solid #eaeaea;
