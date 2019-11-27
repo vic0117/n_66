@@ -40,6 +40,7 @@ class ProductCarousel extends React.Component {
         />
       </div>
     ));
+ 
   }
 
   sliders2() {
@@ -182,7 +183,7 @@ class ProductCarousel extends React.Component {
                           href = "/cart"
                           className="addToCartBtn mx-auto"
                         >
-                          檢查購物車
+                          去結帳
                         </a>
                       )
                     }

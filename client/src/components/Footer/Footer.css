@@ -116,10 +116,15 @@
   height: 100vh;
 }
 
+.mountainBox ::-webkit-scrollbar {
+  width: 0 !important;
+}
+
 .mountainBox h1 {
+  font-family: 'Playfair Display', serif !important;
   position: absolute;
   font-size: 12rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #242a3a;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -167,11 +172,11 @@
 }
 
 .mountainBox2 h1 {
+  font-family: 'Noto Serif TC' !important;
   position: absolute;
   top: 25%;
   left: 27%;
   font-size: 150px;
-  font-weight: 800;
   color: #242a3a;
   z-index: 1;
 }
