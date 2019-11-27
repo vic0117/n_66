@@ -35,6 +35,8 @@ class TripDesCarousel extends Component {
   //   }
 
   render() {
+	  const {carouselImg} = this.props
+	 console.log(carouselImg)
     const settings = {
       dots: false,
       infinite: true,
@@ -58,23 +60,25 @@ class TripDesCarousel extends Component {
     return (
       <>
         <div className="TripDesCarouselBox">
-          {detailData.map(item => (
+          
             <Slider
               {...settings}
-              key={item.sid}
+              
               asNavFor={this.state.nav2}
               ref={slider => (this.slider1 = slider)}
               className="BigSlide"
               arrows={false}
             >
+				{carouselImg.map(item => (
               <div className="TripDesCarouselSmallBox">
                 <img
-                  src={`http://localhost:3000/images/${item.trip_des2_carousel_img1}`}
+                  // src={`http://localhost:3000/images/${item.trip_des2_carousel_img1}`}
+						src={"http://localhost:3000/images/" + item}
                   alt="carouselImg2"
                   className="TripDesCarouselImg"
                 />
-              </div>
-              <div className="TripDesCarouselSmallBox">
+              </div>))} 
+              {/* <div className="TripDesCarouselSmallBox">
                 <img
                   src={`http://localhost:3000/images/${item.trip_des2_carousel_img2}`}
                   alt="carouselImg2"
@@ -87,10 +91,11 @@ class TripDesCarousel extends Component {
                   alt="carouselImg3"
                   className="TripDesCarouselImg"
                 />
-              </div>
+              </div> */}
               {/* {this.sliders33()} */}
+				 
             </Slider>
-          ))}
+          
 
           <Slider
             {...settings}
