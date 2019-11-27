@@ -5,10 +5,10 @@ const moment = require("moment");
 const bluebird = require("bluebird");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 
@@ -73,6 +73,27 @@ router.post("/products/add_wishlist", (req, res) => {
 router.get("/cart", (req, res) => {
   // console.log(req.body)
   res.json(req.body);
+});
+
+// 購物車頁面搜尋使用者資訊
+router.post("/cart", (req, res) => {
+  let userId = req.body.userId;
+  let output = {userInformation : true}
+  let sql = `SELECT * FROM members_list WHERE u_id = ${userId}`
+  // console.log(userId)
+  db.queryAsync(sql)
+    .then(results =>{
+      // console.log(results)
+      let userInfoArray = [results[0].address, results[0].first_name_zh, results[0].last_name_zh]
+
+      userInfoArray.forEach(userInfo=>{
+        if(!userInfo){
+          output.userInformation = false
+        }
+      })
+      console.log(output);
+      res.json(output);
+    })
 });
 
 //結帳頁面 搜尋使用者是否有折價卷

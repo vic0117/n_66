@@ -3,6 +3,13 @@
   margin-right: 0px !important;
 }
 
+.filter-home-container .row-no-margin .btn:focus,
+.filter-home-container .row-no-margin .btn:active {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 .filter-home-container .margin-auto {
   margin: auto;
 }

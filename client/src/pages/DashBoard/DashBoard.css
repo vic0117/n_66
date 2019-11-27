@@ -6,6 +6,19 @@
   margin-top: 150px;
 }
 
+.member-right-section .form-control:focus {
+  border-color: #96daf0 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.member-right-section .btn:focus,
+.member-right-section .btn:active {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 .Toastify__toast-container--top-right {
   top: 90% !important;
   right: 1rem !important;

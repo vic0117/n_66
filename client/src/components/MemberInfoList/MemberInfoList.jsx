@@ -4,7 +4,7 @@ import "./MemberInfoList.css";
 class MemberInfoList extends Component {
   state = {};
   render() {
-    const { userInfo } = this.props;
+    const { userInfo, onChange, onSubmit } = this.props;
 
     return (
       <Accordion defaultActiveKey="0" className="member-info-list-container">
@@ -19,7 +19,7 @@ class MemberInfoList extends Component {
             className="member-info-content-container"
           >
             <Card.Body>
-              <Form onSubmit={this.props.onSubmit} method="POST">
+              <Form onSubmit={onSubmit} method="POST">
                 <p>
                   以下資訊僅用於幫助你在付款時自動填寫你的個人資料，你的資料將會安全地被客路保存且不會公開
                 </p>
@@ -32,7 +32,7 @@ class MemberInfoList extends Component {
                       className="dropdowns my-2"
                       name="gender"
                       value={userInfo.gender}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     >
                       <option value="0">請選擇</option>
                       <option value="先生">先生</option>
@@ -50,7 +50,7 @@ class MemberInfoList extends Component {
                       placeholder="姓氏"
                       name="last_name_zh"
                       value={userInfo.last_name_zh}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="width-200">
@@ -61,7 +61,7 @@ class MemberInfoList extends Component {
                       placeholder="名字"
                       name="first_name_zh"
                       value={userInfo.first_name_zh}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                 </Form.Group>
@@ -78,7 +78,7 @@ class MemberInfoList extends Component {
                       placeholder="姓氏"
                       name="last_name_en"
                       value={userInfo.last_name_en}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="width-200">
@@ -89,7 +89,7 @@ class MemberInfoList extends Component {
                       placeholder="名字"
                       name="first_name_en"
                       value={userInfo.first_name_en}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                 </Form.Group>
@@ -102,7 +102,7 @@ class MemberInfoList extends Component {
                       placeholder="西元年"
                       name="bday_year"
                       value={userInfo.bday_year}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="mt-4 mr-2">
@@ -112,7 +112,7 @@ class MemberInfoList extends Component {
                       className="dropdowns my-2"
                       name="bday_month"
                       value={userInfo.bday_month}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     >
                       <option value="0">月份</option>
                       <option value="1">1</option>
@@ -136,7 +136,7 @@ class MemberInfoList extends Component {
                       className="dropdowns my-2"
                       name="bday_date"
                       value={userInfo.bday_date}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     >
                       <option value="0">日期</option>
                       <option value="1">1</option>
@@ -180,7 +180,7 @@ class MemberInfoList extends Component {
                     type="text"
                     name="passport"
                     value={userInfo.passport}
-                    onChange={this.props.onChange}
+                    onChange={onChange}
                   />
                 </Form.Group>
 
@@ -194,7 +194,7 @@ class MemberInfoList extends Component {
                       type="text"
                       name="zip_code"
                       value={userInfo.zip_code}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="width-350 ">
@@ -206,7 +206,7 @@ class MemberInfoList extends Component {
                       type="text"
                       name="address"
                       value={userInfo.address}
-                      onChange={this.props.onChange}
+                      onChange={onChange}
                     />
                   </div>
                 </Form.Group>
@@ -217,7 +217,7 @@ class MemberInfoList extends Component {
                     type="tel"
                     name="tel"
                     value={userInfo.tel}
-                    onChange={this.props.onChange}
+                    onChange={onChange}
                   />
                 </Form.Group>
 
@@ -229,7 +229,7 @@ class MemberInfoList extends Component {
                     type="email"
                     name="email"
                     value={userInfo.email}
-                    onChange={this.props.onChange}
+                    onChange={onChange}
                     disabled
                   />
                 </Form.Group>

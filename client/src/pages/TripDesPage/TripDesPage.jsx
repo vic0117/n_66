@@ -71,7 +71,7 @@ class TripDesPage extends Component {
   addToCart = () => {
     const isLogin = localStorage.getItem("token");
     let aaa = this.state.detailData[0];
-    let productsArray = JSON.parse(localStorage.getItem('productsToBuy')) || [];
+    let productsArray = JSON.parse(localStorage.getItem("productsToBuy")) || [];
     // console.log(aaa)
     // console.log(aaa.trip_type);
 
@@ -96,24 +96,28 @@ class TripDesPage extends Component {
         // console.log(JSON.parse(localStorage.getItem("tripsToBuy")).length);
         localStorage.setItem("tripsToBuy", JSON.stringify(bbb));
         toast.success("已加入購物車");
-        this.props.changeNumOfProduct(JSON.stringify(bbb.length + productsArray.length))
-        this.setState({bought: true})
+        this.props.changeNumOfProduct(
+          JSON.stringify(bbb.length + productsArray.length)
+        );
+        this.setState({ bought: true });
       } else {
         let ddd = [];
         ddd.push(product);
         localStorage.setItem("tripsToBuy", JSON.stringify(ddd));
         toast.success("已加入購物車");
-        this.props.changeNumOfProduct(JSON.stringify(ddd.length + productsArray.length))
-        this.setState({bought: true})
+        this.props.changeNumOfProduct(
+          JSON.stringify(ddd.length + productsArray.length)
+        );
+        this.setState({ bought: true });
       }
     } else {
       toast.error("請先登入或註冊為會員");
     }
   };
 
-  gotoIndex = ()=>{
-    window.location = "http://localhost:3000";
-  }
+  gotoIndex = () => {
+    window.location = "http://localhost:3000/checkout";
+  };
 
   handleAddWish = () => {
     const productsDetail = {
@@ -131,8 +135,7 @@ class TripDesPage extends Component {
       product_price: productsDetail.trip_price,
       trip_start_date: productsDetail.trip_start,
       trip_end_date: productsDetail.trip_end,
-      trip_angency: productsDetail.trip_angency
-      ,
+      trip_angency: productsDetail.trip_angency,
       product_router: productsDetail.trip_router,
       product_id: productsDetail.sid,
       liked: 1
@@ -143,7 +146,7 @@ class TripDesPage extends Component {
         .post("http://localhost:3001/trips/add_wishlist", obj)
         .then(res => {
           console.log(res.data);
-          this.setState({ feedback: res.data });
+          this.setState({ feedback: res.data, collected: true });
           if (this.state.feedback.success) {
             toast.success(this.state.feedback.msg.text);
           } else {
@@ -186,34 +189,30 @@ class TripDesPage extends Component {
           <div className="purchaseBtnBox" style={{ marginTop: "100px" }}>
             <div className="purchaseBtn" onClick={this.handleAddWish}>
               <Cart className="purchaseBtnImg" />
-              <p>加入願望清單</p>
+              <p>加入我的收藏</p>
               <div className="purchaseBtnCover"></div>
             </div>
           </div>
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} />
           <div className="purchaseBtnBox">
-            {
-              this.state.bought === false ? (
-                <div onClick={this.addToCart} className="purchaseBtn">
-                  <Cart className="purchaseBtnImg" />
-                  <p>加入購物車</p>
-                  <div className="purchaseBtnCover"></div>
-                </div>
-              ):(
-                <div onClick={this.gotoIndex} className="purchaseBtn">
-                  <Cart className="purchaseBtnImg" />
-                  <p>回到首頁</p>
-                  <div className="purchaseBtnCover"></div>
-                </div>
-              )
-              
-            }
-
+            {this.state.bought === false ? (
+              <div onClick={this.addToCart} className="purchaseBtn">
+                <Cart className="purchaseBtnImg" />
+                <p>加入購物車</p>
+                <div className="purchaseBtnCover"></div>
+              </div>
+            ) : (
+              <div onClick={this.gotoIndex} className="purchaseBtn">
+                <Cart className="purchaseBtnImg" />
+                <p>我要結帳</p>
+                <div className="purchaseBtnCover"></div>
+              </div>
+            )}
           </div>
         </Container>
         <TripDes2Carousel carouselData={this.state.carouselData} />
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
         <Footer />
       </div>
     );

@@ -10,7 +10,7 @@ class MemberCoupon extends Component {
       <div className="coupon-outer-container">
         <Row className="mx-0">
           <Col className="coupon-title">
-            <span>我的優惠碼</span>
+            <span>我的優惠卷</span>
           </Col>
         </Row>
         <Row
@@ -20,7 +20,7 @@ class MemberCoupon extends Component {
           {userCoupons.map(coupon => (
             <div className="coupon-container" key={coupon.c_id}>
               <div className="banner">
-                <h5 className="py-2">{coupon.discount}折優惠碼</h5>
+                <h5 className="py-2">{coupon.discount}折優惠卷</h5>
                 <span>適用所有{coupon.type}類產品</span>
                 <p className="m-0">有效期限: {coupon.valid_date}</p>
               </div>
