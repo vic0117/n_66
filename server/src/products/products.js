@@ -393,13 +393,43 @@ module.exports = router;
 // 	})
 // });
 
-//依照價格排列
-// router.post('/products/productsSort',(req,res,next)=>{
+router.post("/products/select", (req, res, next) => {
+	// console.log(req.body.buttonTitleName1)
+	let type = req.body.buttonTitleName1;
+	let brand = req.body.buttonTitleName2;
+	let price = req.body.buttonTitleName6;
+	let search = req.body.buttonTitleName3;
+	// console.log(search)
 
-// 	const sql=`SELECT * FROM trip_list ORDER BY trip_price DESC`
-// 	db.query(sql,(err,results,fields)=>{
-// 		 if(err) throw err;
-// 		//  console.log(results)
-// 		 res.send(JSON.stringify(results))
-// 	})
-// });
+	let where1 = "";
+	let where2 = "";
+	let where3 = "";
+	let where6 = "";
+	
+	
+	if (type) {
+	  where1 += " AND `product_category` =  " + `'${type}'`;
+	  if (type == "所有活動") {
+		 where1 = "";
+	  }
+	}
+	if (brand) {
+	  where2 += " AND `product_brand` =  " + `'${brand}'`;
+	  if (brand == "所有品牌") {
+		 where2 = "";
+	  } 
+	}
+	if (price) {
+	  where6 += " AND `product_price` BETWEEN " + `${price[0]} AND ${price[1]}`;
+	} 
+	search? where3 += " AND `product_name` LIKE " + `'%${search}%'` :''
+ 
+	const sql = `SELECT * FROM product_list WHERE product_id>0 ${where1}${where2}${where3}${where6}`;
+	console.log(sql);
+	db.query(sql, (err, results, fields) => {
+	  if (err) throw err;
+	  //  console.log(results)
+	  res.send(JSON.stringify(results));
+	});
+ });
+ 
