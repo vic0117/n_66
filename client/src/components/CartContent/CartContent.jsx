@@ -264,6 +264,8 @@ class CartContent extends React.Component {
   }
 
   toCheckOut = ()=>{
+    let {userInfo} = this.props
+    console.log(userInfo)
     if(this.props.userInfo === false){
       toast.success('請先到會員中心填寫姓名和地址')
     }

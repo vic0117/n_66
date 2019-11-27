@@ -126,7 +126,7 @@ class MyCart extends React.Component {
                         countTrips={this.countTrips}
                         numberOfProducts={this.props.numberOfProducts}
                         changeNumOfProduct={this.props.changeNumOfProduct}
-                        userInfo={this.props.userInfo}
+                        userInfo={this.state.userInfo}
                     />
                 </>
             );
