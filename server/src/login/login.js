@@ -69,7 +69,7 @@ const resetPasswordTemplate = (user, url) => {
   const userInfo = user.last_name_zh + user.first_name_zh + user.gender;
   const html = `
   <p>親愛的${userInfo || user.email}，您好</p>
-  <p>這裡是N°66, 我們收到您重設密碼的請求</p>
+  <p>這裡是66°N, 我們收到您重設密碼的請求</p>
   <p>若您沒有重設密碼，請無須理會此封信件，此封郵件將在1小時內失效</p>
   <p>如您要重設密碼, 請點選下方連結：</p>
   <a href=${url}>${url}</a>
