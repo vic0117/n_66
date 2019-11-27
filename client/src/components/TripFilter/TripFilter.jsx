@@ -16,7 +16,7 @@ import {
 // import { ReactComponent as Search } from "./images/search.svg";
 import { ReactComponent as Filter } from "./images/filter.svg";
 import $ from 'jquery'
-import SliderPrice from '../TripLeftmenu/SliderPrice';
+import SliderPrice from '../TripLeftMenu/SliderPrice';
 
 
 import "./TripFilter.scss";
