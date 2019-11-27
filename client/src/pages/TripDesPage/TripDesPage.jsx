@@ -116,7 +116,7 @@ class TripDesPage extends Component {
   };
 
   gotoIndex = () => {
-    window.location = "http://localhost:3000/checkout";
+    window.location = "http://localhost:3000/cart";
   };
 
   handleAddWish = () => {

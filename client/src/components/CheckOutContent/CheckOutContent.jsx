@@ -376,7 +376,7 @@ class CheckOutContent extends React.Component {
                                             <div className="font-size-14">
                                                 {userInformation.address}
                                             </div>
-                                            <a className="font-size-14" href="#7">
+                                            <a className="font-size-14" href="/account">
                                                 修改送貨資訊
                                             </a>
                                         </div>
