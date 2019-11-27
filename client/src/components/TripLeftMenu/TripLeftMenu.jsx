@@ -59,7 +59,8 @@ class TripLeftMenu extends Component {
         </div>
         <DropdownButton
           style={{ width: "300px !important " }}
-          id="dropdown-basic-button"
+          id="dropdown-basic-buttoimport SliderPrice from './SliderPrice';
+n"
           title={this.state.buttonTitleName1}
           onSelect={this.handleSelect1}
         >
