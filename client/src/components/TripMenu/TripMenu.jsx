@@ -7,7 +7,7 @@ import ring3 from "./images/ring3.svg";
 // import TripMenuImgCover from "./images/carte-voyage-suede-1197.jpg";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import "./Tripmenu.css";
+import "./TripMenu.scss";
 
 class TripMenu extends Component {
   constructor(props) {
@@ -78,8 +78,7 @@ class TripMenu extends Component {
                   </div>
                   <span>|</span>
                   <div className="TripMenuPrice">
-                    <span>價格</span>
-                    <h3>{item.trip_price}</h3>
+                    <h3>NT{item.trip_price}</h3>
                   </div>
                 </div>
               </div>
