@@ -198,11 +198,10 @@ class CheckOutContent extends React.Component {
         this.props.changeNumOfProduct("");
         if (json.success) {
           // 購買成功
-
-          toast.success(json.text);
+          // console.log(json.text);
           setTimeout(() => {
             this.setState({ dealSuccess: true });
-          }, 2000);
+          }, 500);
         } else {
           //購買失敗
           toast.error(json.text);

@@ -153,6 +153,7 @@ class MemberOrderList extends Component {
   };
 
   handlePageChange = page => {
+    window.scrollTo(0, 0);
     this.setState({ currentPage: page });
   };
 
