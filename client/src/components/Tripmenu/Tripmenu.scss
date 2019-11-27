@@ -65,6 +65,7 @@
 	}
 	h4{
 		color: #242a3a;
+		font-weight:700;
 	}
 	h6{
 		color: #74767d;
@@ -140,10 +141,14 @@
 		h3{
 			color:#96DAF0;
 			font-size:24px;
+			margin-top:10px;
 		}
 	}
 	.TripMenuStartEnd{
 		margin-right:5px;
 		font-size:13px;
+	}
+	.TripMenuDes2{
+		margin-left:-35px;
 	}
 }
