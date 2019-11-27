@@ -273,13 +273,12 @@ class MemberOrderList extends Component {
                     ))}
                     <div className="mt-3 d-flex status ">
                       <p>預計到貨日期: {order.arrival_date}</p>
-
                       <p className="ml-auto">
                         合計: NT$ {order.order_total_price}
                       </p>
                     </div>
                     <div>
-                      <p className="d-flex align-items-center">
+                      <p className="d-flex align-items-center mt-1">
                         狀態: {order.order_status}
                         {order.order_status === "已送達" ? (
                           <Checked width="18" height="18" className="ml-1" />
