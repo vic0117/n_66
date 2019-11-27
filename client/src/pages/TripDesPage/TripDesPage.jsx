@@ -20,7 +20,7 @@ class TripDesPage extends Component {
       detailData: [],
       carouselPlace: "",
       carouselData: [],
-      carouselImg: null,
+      carouselImg: [],
       bought: false
     };
   }

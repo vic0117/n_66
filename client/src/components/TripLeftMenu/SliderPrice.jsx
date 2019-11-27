@@ -49,6 +49,7 @@ const SliderPrice = (props) => {
   const handleChange = (event, newValue) => {
 	 setValue(newValue);
 	 props.select6(newValue)
+	 props.handlePrice(newValue)
   };
 
   return (
