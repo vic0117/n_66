@@ -14,7 +14,7 @@ import { Row } from "react-bootstrap";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
-import "./TripMenuPage.css";
+import "./TripMenuPage.scss";
 
 class TripMenuPage extends Component {
   constructor(props) {
