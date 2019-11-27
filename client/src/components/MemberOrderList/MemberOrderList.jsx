@@ -215,7 +215,7 @@ class MemberOrderList extends Component {
                           <span style={{ color: "#96daf0" }}>
                             {item.trip_country || item.product_brand}
                           </span>
-                          <Card.Title className="mt-1 mb-2 font-weight-bold">
+                          <Card.Title className="mt-1 mb-2">
                             {item.trip_name || item.product_name}
                           </Card.Title>
                           <div className="d-flex align-items-center mb-2">
@@ -228,6 +228,9 @@ class MemberOrderList extends Component {
                               {item.trip_duration ? "天" : ""}
                             </span>
                           </div>
+                          {item.product_weight && (
+                            <div>重量: {item.product_weight}</div>
+                          )}
                           <div className="vertical-align-middle mb-2">
                             {item.trip_name &&
                               item.trip_start_date + " - " + item.trip_end_date}

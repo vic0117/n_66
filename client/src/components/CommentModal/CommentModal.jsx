@@ -38,10 +38,7 @@ class CommentModal extends Component {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title
-              id="contained-modal-title-vcenter"
-              className="font-weight-bold"
-            >
+            <Modal.Title id="contained-modal-title-vcenter">
               {reviewinfo.trip_name}
             </Modal.Title>
           </Modal.Header>
