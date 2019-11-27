@@ -252,6 +252,7 @@ class Login extends React.Component {
   };
 
   componentDidMount() {
+    document.title = "66°N - 登入";
     // JS DOM control
     let wantSignUp = false;
 
@@ -412,6 +413,7 @@ class Login extends React.Component {
                       {this.state.errors.email || ""}
                     </div>
                   }
+
                   <label>
                     <input
                       type="password"

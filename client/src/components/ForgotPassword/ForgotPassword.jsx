@@ -38,7 +38,7 @@ class ForgotPassword extends Component {
           </div>
         ) : (
           <div className="pwd-reset-container">
-            <h3 className="text-center mb-4">重置您的密碼</h3>
+              <h2 className="text-center mb-4 font-weight-bold">重置您的密碼</h2>
             <p className="my-4">
               如果您在嘗試密碼登入時遇到問題，請使用下列步驟進行重置，以重新取得帳號的存取權。
             </p>

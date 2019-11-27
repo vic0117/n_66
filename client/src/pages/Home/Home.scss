@@ -18,15 +18,17 @@
 	}
 }
 .messageIn{
-	width: 20%;
-	height: 600px !important;
+	width: 25%;
+	height: 800px !important;
 	position: fixed;
 	z-index: 9000;
-	right:5%;
+	right:6%;
 	top:40%;
 	opacity: 1;
 	transition:.5s;
 	overflow: hidden;
+	// margin-top:50px;
+	
 }
 .messageInOpen{
 	// display: none;
@@ -39,7 +41,13 @@
 }
 @media(max-width:1000px){
 	.messageIn{
+		width: 80%;
+		right: -60px;
+	}
+}
+@media(max-width:700px){
+	.messageIn{
 		width: 100%;
-		left: 0;
+		right: -150px;
 	}
 }

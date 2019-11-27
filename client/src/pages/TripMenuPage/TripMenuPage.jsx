@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Input, Container } from "@material-ui/core";
 import norway from "./images/norway-3840x2160-5k-4k-wallpaper-bridge-sea-lake-water-blue-sky-920.jpg";
-import TripLeftMenu from "../../components/TripLeftmenu/TripLeftMenu";
-import TripMenu from "../../components/TripMenu/TripMenu";
+import TripLeftMenu from './../../components/TripLeftmenu/TripLeftMenu';
+import TripMenu from '../../components/Tripmenu/TripMenu'
 import TripSort from "../../components/TripSort/TripSort";
 import TripFilter from "../../components/TripFilter/TripFilter";
 import TripMenuFooter from "../../components/TripMenuFooter/TripMenuFooter";
@@ -14,7 +14,7 @@ import { Row } from "react-bootstrap";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
-import "./TripMenuPage.css";
+import "./TripMenuPage.scss";
 
 class TripMenuPage extends Component {
   constructor(props) {

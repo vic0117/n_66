@@ -16,6 +16,7 @@ import {
 // import { ReactComponent as Search } from "./images/search.svg";
 import { ReactComponent as Filter } from "./images/filter.svg";
 import $ from 'jquery'
+import SliderPrice from '../TripLeftmenu/SliderPrice'
 
 import "./TripFilter.scss";
 
@@ -295,6 +296,11 @@ class TripFilter extends React.Component {
 			this.setState({difficulty:difficulty6})
 			this.props.select4(difficulty6)
 		}
+		handlePrice=(value)=>{
+			this.setState({Price:value})
+			this.props.select6(value)
+		}
+	 
 
 	 render() {
 		
@@ -449,6 +455,11 @@ class TripFilter extends React.Component {
                                         </ul>
                                     </Card.Body>
                                 </Accordion.Collapse>
+										  <Accordion.Collapse eventKey="6">
+                  						<Card.Body id="days-of-stay">
+                   						 <SliderPrice handlePrice = {this.handlePrice} select6={this.props.select6}/>
+                  						</Card.Body>
+               						 </Accordion.Collapse>
                             </Card>
 										{/* <div className='selectCom'>
 											<p>確定</p>

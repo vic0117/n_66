@@ -12,12 +12,18 @@
   -webkit-transform: translate3d(0px, 50px, 0px) !important;
           transform: translate3d(0px, 50px, 0px) !important;
   overflow: scroll;
+  z-index: 998;
 }
 
 .member-comment-filter-container .dropdown-menu a {
   border-bottom: 1px solid #eaeaea;
   padding: 1rem;
   color: #242a3a;
+}
+
+.member-comment-filter-container .dropdown-menu::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .member-comment-filter-container .btn-primary.dropdown-toggle {
