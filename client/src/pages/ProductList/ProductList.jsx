@@ -168,10 +168,10 @@ select6 = data => {
         <ProductLeftMenu
           data={this.state.ProductsData}
           currentUser={this.props.currentUser}
-			 select1={this.select1}
-            select2={this.select2}
-            select6={this.select6}
-				searchProduct={this.searchProduct}
+			    select1={this.select1}
+          select2={this.select2}
+          select6={this.select6}
+				  searchProduct={this.searchProduct}
         />
       </>
     );

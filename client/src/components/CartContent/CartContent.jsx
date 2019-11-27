@@ -281,20 +281,21 @@ class CartContent extends React.Component {
     const { data } = this.props;
     const { tripData } = this.props;
     const { numberOfProducts } = this.props;
-    // console.log(numberOfProducts);
+    console.log(numberOfProducts);
 
 
-    if (numberOfProducts === '') {
-      return (
+    
+      if(!numberOfProducts  || numberOfProducts === '0'){
+        return (
 
-        <Container fluid className="p-0 cartBanner">
-          <Row className="cartBannerRow">
-            <img src="http://localhost:3000/images/bg/header22.jpg" alt="banner" />
-            <h1>購物車是空的喔~</h1>
-          </Row>
-        </Container>
-      )
-    }
+          <Container fluid className="p-0 cartBanner">
+            <Row className="cartBannerRow">
+              <img src="http://localhost:3000/images/bg/header22.jpg" alt="banner" />
+              <h1>購物車是空的喔~</h1>
+            </Row>
+          </Container>
+        )
+      }
     else {
       return (
         <>
@@ -343,7 +344,7 @@ class CartContent extends React.Component {
                                 <button variant="primary" onClick={() => this.IncreaseQuantity(item.code)} className="qtyBtn plus"><span>+</span></button>
                               </div>
                             </div>
-                            <h3>{item.product_amount * item.product_price} 元</h3>
+                            <h3>NT$ {item.product_amount * item.product_price} </h3>
                           </Card.Body>
                         </div>
                       ))
@@ -390,7 +391,7 @@ class CartContent extends React.Component {
                                 <button variant="primary" onClick={() => this.IncreaseTrip(item.code)} className="qtyBtn plus"><span>+</span></button>
                               </div>
                             </div>
-                            <h3>{item.trip_amount * item.trip_price} 元</h3>
+                            <h3>NT$ {item.trip_amount * item.trip_price} </h3>
                           </Card.Body>
                         </div>
                       ))
@@ -399,7 +400,7 @@ class CartContent extends React.Component {
               </Col>
               <Col md={4}>
                 <div className="userCard">
-                  <p>@123gmail.com</p>
+                  {/* <p>@123gmail.com</p> */}
                   <Link className="toList" to="/products">
                     繼續逛逛
                   </Link>
