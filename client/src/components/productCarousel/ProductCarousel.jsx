@@ -40,6 +40,7 @@ class ProductCarousel extends React.Component {
         />
       </div>
     ));
+ 
   }
 
   sliders2() {

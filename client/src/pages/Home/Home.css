@@ -1,3 +1,7 @@
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
 .MessageButton {
   width: 80px;
   height: 80px;
@@ -28,7 +32,7 @@
 
 .messageIn {
   width: 20%;
-  height: 600px !important;
+  height: 800px !important;
   position: fixed;
   z-index: 9000;
   right: 5%;
@@ -37,6 +41,7 @@
   -webkit-transition: .5s;
   transition: .5s;
   overflow: hidden;
+  margin-top: 50px;
 }
 
 .messageInOpen {

@@ -24,6 +24,7 @@ class HomeMainCarousel extends React.Component {
     };
   }
 
+
   componentDidMount() {
     this.setState({
       nav1: this.slider1,
@@ -31,6 +32,7 @@ class HomeMainCarousel extends React.Component {
     });
 
     let slickPrev = document.querySelector(".slick-prev");
+    console.log(slickPrev);
     let slickNext = document.querySelector(".slick-next");
     let blackMask = document.querySelector(".black-mask");
 
@@ -121,7 +123,7 @@ class HomeMainCarousel extends React.Component {
   }
 
   render() {
-    if (this.props.comments === undefined) return <></>
+    if (this.props.comments === undefined) return <></>;
     const { length: count } = this.props.comments;
     const { ratingAvg } = this.props;
     return (
@@ -168,8 +170,8 @@ class HomeMainCarousel extends React.Component {
           swipeToSlide={true}
           focusOnSelect={true}
           speed={900}
-        // autoplay={true}
-        // autoplaySpeed={5000}
+          // autoplay={true}
+          // autoplaySpeed={5000}
         >
           <div>
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">

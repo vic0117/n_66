@@ -13,12 +13,16 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import search from "../../components/TripLeftMenu/images/search.svg";
 import trac from "../../components/TripLeftMenu/images/trac.svg";
 import SliderPrice from "./../TripLeftMenu/SliderPrice";
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 import $ from "jquery";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
-
+import left from "./img/left.svg";
+import right from "./img/right.svg";
 //CSS
 import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
@@ -238,7 +242,7 @@ class ProductLeftMenu extends Component {
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li
-          className={number == 1 ? "page-item active" : "page-item"}
+          className={number === 1 ? "page-item active" : "page-item"}
           key={number}
           id={number}
           onClick={this.handleClick}
@@ -250,7 +254,7 @@ class ProductLeftMenu extends Component {
 
     const renderTodos = currentTodos.map((item, i) => {
       return (
-        <Col key={i} sm={6} lg={4}>
+        <Col key={i} sm={6} lg={4} className="cardColumn">
           <Link to={`/products/${item.product_id}`}>
             <Card key={item.product_id} className="product-card">
               <div className="photoFrame">
@@ -375,10 +379,10 @@ class ProductLeftMenu extends Component {
                         所有品牌
                       </li>
                       <li className="brandCard2" onClick={this.handleBrand2}>
-                        snow peak
+                      SnowPeak
                       </li>
                       <li className="brandCard3" onClick={this.handleBrand2}>
-                        snow peak2
+                      AquaMarina
                       </li>
                     </ul>
                   </Card.Body>
@@ -415,7 +419,10 @@ class ProductLeftMenu extends Component {
         </Container>
         <Container className="productsSection">
           <Row className="leftMenuRow d-flax justify-content-center">
-            <Col md={3} className="leftMenuContent">
+            <Col
+              md={4}
+              className="leftMenuContent d-flex justify-content-center"
+            >
               <div className="leftMenu">
                 <div className="searchBox">
                   <input
@@ -427,63 +434,64 @@ class ProductLeftMenu extends Component {
                     <img src={search} alt="search" />
                   </div>
                 </div>
-                <div className="buttonTitle">
-                  <img src={trac} alt="trac" />
-                  <p>活動類型</p>
-                </div>
-                <DropdownButton
-                  id="dropdown-basic-button"
-                  title={this.state.buttonTitleName1}
-                  onSelect={this.handleSelect1}
-                >
-                  <Dropdown.Item eventKey="所有活動" value="1">
-                    所有活動
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="北極光" value="1">
-                    北極光
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="駕車遊覽" value="2">
-                    駕車遊覽
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="獨木舟" value="3">
-                    獨木舟
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="雪橇犬" value="3">
-                    雪橇犬
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="郵輪和帆船" value="3">
-                    郵輪和帆船
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="家庭" value="3">
-                    家庭
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="多活動" value="3">
-                    多活動
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="動物觀察" value="3">
-                    動物觀察
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="攝影" value="3">
-                    攝影
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="划艇" value="3">
-                    划艇
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="步行" value="3">
-                    步行
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="雪鞋" value="3">
-                    雪鞋
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="跨年" value="3">
-                    跨年
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="遠足" value="3">
-                    遠足
-                  </Dropdown.Item>
-                </DropdownButton>
 
                 <div className="dropDowns">
+                  <div className="buttonTitle">
+                    <img src={trac} alt="trac" />
+                    <p>活動類型</p>
+                  </div>
+                  <DropdownButton
+                    id="dropdown-basic-button"
+                    title={this.state.buttonTitleName1}
+                    onSelect={this.handleSelect1}
+                  >
+                    <Dropdown.Item eventKey="所有活動" value="1">
+                      所有活動
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="北極光" value="1">
+                      北極光
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="駕車遊覽" value="2">
+                      駕車遊覽
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="獨木舟" value="3">
+                      獨木舟
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="雪橇犬" value="3">
+                      雪橇犬
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="郵輪和帆船" value="3">
+                      郵輪和帆船
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="家庭" value="3">
+                      家庭
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="多活動" value="3">
+                      多活動
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="動物觀察" value="3">
+                      動物觀察
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="攝影" value="3">
+                      攝影
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="划艇" value="3">
+                      划艇
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="步行" value="3">
+                      步行
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="雪鞋" value="3">
+                      雪鞋
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="跨年" value="3">
+                      跨年
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="遠足" value="3">
+                      遠足
+                    </Dropdown.Item>
+                  </DropdownButton>
+
                   <div className="buttonTitle">
                     <img src={trac} alt="trac" />
                     <p>品牌</p>
@@ -500,8 +508,11 @@ class ProductLeftMenu extends Component {
                     <Dropdown.Item eventKey="snow peak" value="2">
                       snow peak
                     </Dropdown.Item>
-                    <Dropdown.Item eventKey="snow peak2" value="2">
-                      snow peak
+                    <Dropdown.Item eventKey="AquaMarina" value="3">
+                      AquaMarina
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="Sony" value="4">
+                    Sony
                     </Dropdown.Item>
                   </DropdownButton>
 
@@ -522,18 +533,18 @@ class ProductLeftMenu extends Component {
                 </div>
               </div>
             </Col>
-            <Col sm={12} md={9} className="p-0">
-              <Container className="p-0 card-container">
-                <Row>{renderTodos}</Row>
+            <Col sm={12} md={8} className="p-0">
+              <Container className="p-0 card-container ">
+                <Row className="position-relative">{renderTodos}</Row>
                 <Row>
                   <Col>
                     <ul id="page-numbers" className="pagination">
                       <li className="page-item" onClick={this.goPrev}>
-                        -
+                        <img src={left} alt="left"/>
                       </li>
                       {renderPageNumbers}
                       <li className="page-item" onClick={this.goNext}>
-                        +
+                        <img src={right} alt="right"/>
                       </li>
                     </ul>
                   </Col>

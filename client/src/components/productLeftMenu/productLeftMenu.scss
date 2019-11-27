@@ -5,7 +5,7 @@ $secColor: #96daf0;
 .ProductLeftMenuContainer{
 
 	.bannerArea{
-		height: 90vh;
+		height: 100vh;
 		// margin: 150px 0 100px 0;
 
 		img{
@@ -20,7 +20,7 @@ $secColor: #96daf0;
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 90vh;
+			height: 100vh;
 			background-color: rgba($color: #242a3a, $alpha: .6);
 			z-index: 10;
 		}
@@ -31,7 +31,7 @@ $secColor: #96daf0;
 			// justify-content: center;
 			// align-items: center;
 			color: #fff;
-			font-size: 50px;
+			font-size: 4.375rem;
 			line-height: 60px;
 			font-weight: 700;
 			position: absolute;
@@ -58,6 +58,8 @@ $secColor: #96daf0;
 	}
 
 	.productsSection{
+		max-width: 1280px;
+		padding-top: 150px;
 		min-height: 150vh;
 		.leftMenuRow{
 			min-height: 150vh;
@@ -67,18 +69,42 @@ $secColor: #96daf0;
 	.leftMenu{
 		position: sticky;
 		top: 120px;
-		width: 100%;
+		width: 364px;
 		height: 750px;
 		background: #F8F8F8;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		// justify-content: center;
 		padding:50px 15px 15px 15px;
 		margin: 0;
-		
+
+		.dropdown{
+			width: 80%;
+		}
+
+
+		.buttonTitle{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: auto;
+			// border: 1px solid red;
+			img{
+				width: 20px;
+				color:#242A3A;
+				margin:10px;
+			}
+			p{
+				margin-top:20px;
+				color:#242A3A;
+			}
+		}
+	
 	}
 	.searchBox{
-		width: 100%;
+		width: 80%;
 		height: 45px;
 		display:flex;
 		justify-content: center;
@@ -104,26 +130,13 @@ $secColor: #96daf0;
 	}
 
 	.dropDowns{
-		width: 100%;
-	}
-	.buttonTitle{
-		width: 100%;
-		
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		margin-left: auto;
-		img{
-			width: 20px;
-			color:#242A3A;
-			margin:10px;
-		}
-		p{
-			margin-top:20px;
-			color:#242A3A;
-		}
-	}
+		width: 80%;
 
+		.dropdown{
+			width: 100%;
+		}
+	}
+	
 
 
 	.dropdown{
@@ -179,9 +192,23 @@ $secColor: #96daf0;
 			text-decoration: none;
 		}
 
+		.cardColumn{
+			padding: 0px 10px 10px 10px;
+			margin: 0 0 10px 0;
+			position: relative;
+		}
+
 		.product-card{
+			// position: absolute;
 			padding: 15px;
 			border: none;
+			border: 1px solid #EAEAEA;
+			transition: .3s;
+
+			&:hover{
+				// transform: translateY(-20px), rotate(1.5);
+				box-shadow: 0 0 39px -3px rgba($color: #000, $alpha: .1)
+			}
 			.photoFrame{
 				height: 200px;
 
@@ -397,6 +424,12 @@ $secColor: #96daf0;
 				justify-content: center;
 				align-items: center;
 				color: $primaryColor;
+
+				img{
+					width: 15px;
+					height: 15px;
+					
+				}
 
 				&:hover{
 					background-color: $secColor;
