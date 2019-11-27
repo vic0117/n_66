@@ -119,13 +119,13 @@ class CheckOutContent extends React.Component {
             // console.log(productsArray);
             if (productsArray) {
                 productsArray.forEach(product => {
-                    totalCost += product.product_price * 1;
+                    totalCost += product.product_price * 1 * product.product_amount;
                 })
             }
 
             if (tripsArray) {
                 tripsArray.forEach(trip => {
-                    totalCost += trip.trip_price * 1;
+                    totalCost += trip.trip_price * 1 * trip.trip_amount;
                 })
             }
             console.log(totalCost)
@@ -149,17 +149,17 @@ class CheckOutContent extends React.Component {
                 if (productsArray) {
                     productsArray.forEach(product => {
                         if (product.product_category === couponName) {
-                            totalCost += parseInt(product.product_price * couponDiscount);
+                            totalCost += parseInt(product.product_price * product.product_amount * couponDiscount );
                         }
                         else {
-                            totalCost += product.product_price * 1
+                            totalCost += product.product_price * 1 * product.product_amount;
                         }
                     })
                 }
 
                 if (tripsArray) {
                     tripsArray.forEach(trip => {
-                        totalCost += trip.trip_price * 1;
+                        totalCost += trip.trip_price * 1 * trip.trip_amount;
                     })
                 }
 
