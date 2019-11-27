@@ -3,7 +3,7 @@ $primaryColor: #242A3A;
 $secColor: #96DAF0;
 
 .ProductCarousel{
-    padding: 80px 0 0 0;
+    padding: 180px 0 0 0;
 
     .carouselsRow{
         padding-bottom: 150px;
@@ -11,12 +11,41 @@ $secColor: #96DAF0;
 
 
     .thumbCarousel{
+        margin-top: 20px;
         width: 100px;
-        
-        .slick-list{
-            height: 400px;
-            .slick-track{
+        height: 460px !important;
+        .customArrow{
+            height: 20px;
+            cursor: pointer;
+            width: 100px;
+            background-color: #eaeaea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
+            img{
+                width: 20px;
+                height: 20px;
+            }
+        }
+        .prevArrow {
+            position: absolute;
+            left: 0%;
+            bottom: 0%;
+            // background-color: rgb(194, 27, 27);
+            transform: translateY(100%);
+        }
+        .nextArrow {
+            // background-color: rgb(27, 38, 194);
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            transform: translateY(-100%);
+        }
+        .slick-list{
+            height: 460px !important;
+            .slick-track{
+                height: 460px;
                 .slick-slide{
                     height: 100px;
 
@@ -27,7 +56,7 @@ $secColor: #96DAF0;
                             background-color: rgb(78, 78, 78);
                             color: #fff;
                             text-align: center;
-                
+                            
                             img{
                                 width: 100%;
                                 height: 100%;
@@ -43,7 +72,7 @@ $secColor: #96DAF0;
             background-color: #ccc;
             opacity: .5;
             position: relative;
-            top: 0%;
+            bottom: 0%;
             left: 0%;
             width: 100%;
             transform: translate(0, 0);
@@ -62,7 +91,7 @@ $secColor: #96DAF0;
             background-color: #ccc;
             opacity: .5;
             position: relative;
-            bottom: 0%;
+            top: 0%;
             left: 0%;
             width: 100%;
             transform: translate(0, 0);
@@ -126,8 +155,12 @@ $secColor: #96DAF0;
     }
 
     .detailCard{
+        h4{
+            text-align: center;
+        }
 
         h2{
+            color: $primaryColor;
             text-align: center;
             margin: 0 0 20px 0;
         }
@@ -138,31 +171,41 @@ $secColor: #96DAF0;
         }
 
         .wishBtn{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 0 20px 0;
+            margin: 0 auto 20px;
             color: #fff;
-            width: 80%;
-            height: 44px;
+            width: 220px;
             background-color: $primaryColor;
-            text-decoration: none;
-            font-size: 20px;
+            text-align: center;
             line-height: 44px;
+            border: none;
+            // line-height: 44px;
+            cursor: pointer;
+            
+            &:focus{
+                background-color: $primaryColor;
+                border: none;
+                outline: none;
+                box-shadow: none;
+            }
+
+            &:active{
+                background-color: $primaryColor;
+            }
         }
 
         .addToCartBtn{
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 0 20px 0;
+            margin: 0 auto 20px;
             color: #fff;
-            width: 80%;
-            height: 44px;
+            width: 220px;
             background-color: $secColor;
-            text-decoration: none;
-            font-size: 20px;
+            text-align: center;
             line-height: 44px;
+            border: none;
+            // line-height: 44px;
+            cursor: pointer;
         }
 
         p{
@@ -189,7 +232,7 @@ $secColor: #96DAF0;
 
             .tab-content{
                 height: 168px;
-                overflow-y: scroll;
+                overflow-y: auto;
             }
 
             .tab-pane.active{
@@ -274,13 +317,7 @@ $secColor: #96DAF0;
                     color: black;
                 }
     
-                .slick-prev::before{
-                    content: '<';
-                }
-    
-                .slick-next::before{
-                    content: '>';
-                }
+                
             }
         }
     
@@ -290,6 +327,7 @@ $secColor: #96DAF0;
     
         .sideCarousel{
             margin: 0 !important;
+           
         }
     }
 }

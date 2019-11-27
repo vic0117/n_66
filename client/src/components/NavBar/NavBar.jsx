@@ -59,6 +59,7 @@ class NavBar extends React.Component {
   render() {
     const { currentUser } = this.props;
     const { numberOfProducts } = this.props;
+    console.log(currentUser);
     // let numberOfProduct = JSON.parse( localStorage.getItem('productsToBuy')).length;
 
     return (
@@ -90,18 +91,18 @@ class NavBar extends React.Component {
                 <span>戶外用品</span>
                 <div className="blue-line"></div>
               </Link>
-              <Link to="/comments" className="navbar-item nav-link">
+              <Link to="/comments" className="navbar-item nav-link" style={{ marginRight: "2rem" }}>
                 <span>旅遊評價</span>
                 <div className="blue-line"></div>
               </Link>
-              <Link
+              {/* <Link
                 to="#"
                 className="navbar-item nav-link"
                 style={{ marginRight: "2rem" }}
               >
                 <span>我們的理念</span>
                 <div className="blue-line"></div>
-              </Link>
+              </Link> */}
               {currentUser && (
                 <>
                   <Link to="/logout" className="navbar-link icon-container">
@@ -114,7 +115,7 @@ class NavBar extends React.Component {
               </Link>
               <Nav.Link className="icon-container cart" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
-                { !!numberOfProducts === false ? <p></p> : <div>{numberOfProducts}</div>}
+                { !!numberOfProducts === false || !currentUser ? <p></p> : <div>{numberOfProducts}</div>}
               </Nav.Link>
             </Nav>
           </div>

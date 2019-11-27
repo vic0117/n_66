@@ -227,7 +227,7 @@ class DashBoard extends Component {
           toast.error(this.state.feedback.msg.text);
         }
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   };
@@ -287,7 +287,7 @@ class DashBoard extends Component {
           toast.error(this.state.feedback.msg.text);
         }
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   };
@@ -349,7 +349,9 @@ class DashBoard extends Component {
                 <Route
                   path="/account/coupons"
                   render={() => (
-                    <MemberCoupon userCoupons={userCoupons} />
+                    <MemberCoupon
+                      currentUser={currentUser}
+                      userCoupons={userCoupons} />
                   )}
                 />
                 <Route
@@ -377,6 +379,7 @@ class DashBoard extends Component {
                   exact
                   render={() => (
                     <MemberWishList
+                      currentUser={currentUser}
                       userWishes={filteredUserWishes}
                       onSelectWishes={this.handleSelectWishes}
                     />
@@ -387,6 +390,7 @@ class DashBoard extends Component {
                     path="/account"
                     render={() => (
                       <MemberInfoList
+                        currentUser={currentUser}
                         userInfo={userInfo}
                         errors={errors}
                         onChange={this.handleInfoChange}
@@ -398,6 +402,7 @@ class DashBoard extends Component {
                     path="/account"
                     render={() => (
                       <MemberPassword
+                        currentUser={currentUser}
                         onChange={this.handleInfoChange}
                         onSubmit={this.handlePasswordSubmit}
                         errors={errors}

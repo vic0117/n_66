@@ -117,6 +117,7 @@ class MyCart extends React.Component {
                         changeNumOfProduct={this.props.changeNumOfProduct}
                     />
                     <CartContent
+                        currentUser={this.props.currentUser}
                         data={this.state.productsToBuy}
                         tripData={this.state.tripsToBuy}
                         totalCost={this.state.totalCost}
