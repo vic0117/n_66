@@ -309,8 +309,8 @@ class CheckOutContent extends React.Component {
           <Row>
             <Col className="categories-outer-container " lg={8}>
               <div className="categories-container d-flex">
-                <div className="itemImg " style={{ flex: 2 }}></div>
-                <div className="align-self-end mb-2 pl-2" style={{ flex: 3 }}>
+                <div className="itemImg " ></div>
+                <div className="align-self-end mb-2 pl-2" >
                   品項
                 </div>
                 <div
@@ -333,7 +333,7 @@ class CheckOutContent extends React.Component {
                       className="d-flex my-3"
                       style={{ borderBottom: "1px solid #E8E8E8" }}
                     >
-                      <div className="itemImg d-flex" style={{ flex: 2 }}>
+                      <div className="itemImg d-flex " >
                         <Card.Img
                           variant="top"
                           src={
@@ -345,14 +345,14 @@ class CheckOutContent extends React.Component {
                         />
                       </div>
 
-                      <div className="mb-2" style={{ flex: 3 }}>
-                        <h6>{item.product_category}</h6>
+                      <div className="mb-2 w-100" >
+                        <h6 className="productCategory">{item.product_category}</h6>
                         {/* <h6>{item.code}</h6> */}
-                        <div className="title mb-1 font-size-14">
+                        <h5 className="title mb-1 ">
                           {item.product_name}
-                        </div>
+                        </h5>
                         <div className="mb-4">
-                          <span className="size font-size-14">
+                          <span className="size ">
                             {item.product_size}
                           </span>
                         </div>
@@ -361,7 +361,7 @@ class CheckOutContent extends React.Component {
                           <h5 className="ml-3 counter">
                             {item.product_amount}
                           </h5>
-                          <div className="mb-2 pl-2" style={{ flex: 1 }}>
+                          <div className="mb-2 pl-2" >
                             {this.state.useCouponName ===
                             item.product_category ? (
                               <del className="discountPrice">
@@ -371,7 +371,7 @@ class CheckOutContent extends React.Component {
                               "NT$" + item.product_price
                             )}
                           </div>
-                          <div className="mb-2 pl-2" style={{ flex: 4 }}>
+                          <div className="ml-auto mb-2 pl-2" >
                             {this.state.useCouponName === item.product_category
                               ? "NT$" +
                                 Math.floor(
@@ -382,13 +382,6 @@ class CheckOutContent extends React.Component {
                               : "NT$" +
                                 item.product_price * item.product_amount}
                           </div>
-                        </div>
-                      </div>
-
-                      <div className="mb-2" style={{ flex: 1 }}>
-                        <div className="deleteBtn ml-5">
-                          <div className="slash leftLine"></div>
-                          <div className="slash rightLine"></div>
                         </div>
                       </div>
                     </div>

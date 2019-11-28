@@ -20,62 +20,73 @@ $secColor: #96daf0;
   }
   .cartItem {
     display: flex;
-
+  
     .itemImg {
       width: 145px !important;
       padding: 10px;
-
+    }
       .card-img-top {
         width: 100%;
-        height: 100%;
-        object-fit: cover !important;
-      }
+        height: 6.5%;
+        border-bottom: 1px solid #e8e8e8;
     }
-  }
+    
+        
 
-  .itemImg img {
-    width: 80%;
-    height: 80%;
-    object-fit: contain;
-    margin: auto;
-  }
+        .itemImg {
+            width: 156px;
+            height: 156px;
+            padding: 10px;
 
-  .discountPrice {
-    color: red;
-  }
+            .card-img-top{
+                width: 100%;
+                height: 100%;
+                object-fit: cover !important;
+            }
+        }
+    
+        .productCategory{
+            color: $secColor;
+        }
 
-  .qtyBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 22px;
-    height: 22px;
-    font-size: 1rem;
-    text-align: center;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    color: #ababab;
-  }
 
-  .minusBtn {
-    margin-left: 20px;
-    border-right: none;
-  }
+    .discountPrice{
+        color: red ;
+    }
 
-  .plus {
-    border-left: none;
-  }
-  .counter {
-    text-align: center;
-    height: 22px;
-    width: 50px;
-    border: 1px solid #ccc;
-    color: #ababab;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-  }
-  .deleteBtn {
+    .qtyBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22px;
+        height: 22px;
+        font-size: 1rem;
+        text-align: center;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        color: #ababab;
+    }
+
+
+    .minusBtn {
+        margin-left: 20px;
+        border-right: none;
+    }
+
+    .plus {
+        border-left: none;
+    }
+    .counter {
+        text-align: center;
+        height: 22px;
+        width: 50px;
+        // border: 1px solid #ccc;
+        color: #ababab;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+    .deleteBtn {
     position: relative;
 
     width: 16px;
@@ -104,6 +115,7 @@ $secColor: #96daf0;
       transform: rotate(-45deg);
     }
   }
+}
 
   .orderDetail {
     color: #242a3a;
@@ -192,3 +204,4 @@ $secColor: #96daf0;
     }
   }
 }
+  
