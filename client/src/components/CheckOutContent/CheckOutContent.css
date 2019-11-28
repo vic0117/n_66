@@ -136,6 +136,25 @@
   background-color: #eaeaea;
 }
 
+.sectionCheckOut .payment-container .error-msg {
+  font-size: 12px;
+  text-align: center;
+  height: 25px;
+  margin: 10px auto 0 auto;
+  padding: 0 !important;
+}
+
+.sectionCheckOut .payment-container .alert-danger {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.sectionCheckOut .payment-container .alert-success {
+  background-color: transparent !important;
+  border: none !important;
+  color: #155724 !important;
+}
+
 .sectionCheckOut .payment-container input {
   width: 100%;
 }
