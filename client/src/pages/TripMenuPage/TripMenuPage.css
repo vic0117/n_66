@@ -139,4 +139,16 @@
     font-size: 45px !important;
   }
 }
+
+@media (max-width: 560px) {
+  .TripMenuNavInputBox {
+    margin-top: 35px;
+  }
+  .TripMenuNavInputBox h1 {
+    font-size: 45px !important;
+  }
+  .TripSearchInput {
+    margin-bottom: 20px;
+  }
+}
 /*# sourceMappingURL=TripMenuPage.css.map */
