@@ -17,6 +17,7 @@ class CheckOut extends React.Component {
   }
 
   componentDidMount() {
+   document.title = "66°N - 結帳";
     const productsToBuy =
       JSON.parse(localStorage.getItem("productsToBuy")) || [];
     const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
