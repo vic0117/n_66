@@ -24,6 +24,7 @@ class HomeMainCarousel extends React.Component {
     };
   }
 
+
   componentDidMount() {
     this.setState({
       nav1: this.slider1,
@@ -31,6 +32,7 @@ class HomeMainCarousel extends React.Component {
     });
     
     let slickPrev = document.querySelector(".slick-prev");
+    console.log(slickPrev);
     let slickNext = document.querySelector(".slick-next");
     let blackMask = document.querySelector(".black-mask");
 

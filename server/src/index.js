@@ -15,7 +15,7 @@ const db = mysql.createConnection({
   database: "n_66"
 });
 db.connect();
-const app = express();
+const app = express(); 
 
 const whitelist = ["http://localhost:3000", undefined, "http://localhost:3001"];
 const corsOptions = {

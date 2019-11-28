@@ -82,7 +82,7 @@ class Footer extends Component {
               </ParallaxLayer>
             </Parallax>
           </div>
-			 <div className='mountainBox2'>
+			    <div className='mountainBox2'>
 				<img
 					src={mountainBg}
 					alt="mountainBg"

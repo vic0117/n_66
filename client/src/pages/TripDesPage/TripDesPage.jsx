@@ -21,7 +21,8 @@ class TripDesPage extends Component {
       carouselPlace: "",
       carouselData: [],
       carouselImg: [],
-      bought: false
+		bought: false,
+		days:null,
     };
   }
 
@@ -41,9 +42,10 @@ class TripDesPage extends Component {
         this.setState({
           carouselImg: JSON.parse(data[0].trip_des2_carousel_img),
           detailData: data,
-          carouselPlace: data[0].trip_place
+			 carouselPlace: data[0].trip_place,
+			 days:data[0].trip_days
         });
-        //   console.log(JSON.parse(data[0].trip_des2_carousel_img))
+		  //   console.log(JSON.parse(data[0].trip_des2_carousel_img))
       });
 
     await fetch("http://localhost:3001/trips/place", {
@@ -194,7 +196,7 @@ class TripDesPage extends Component {
             </div>
           </div>
           <TripDes1 detailData={this.state.detailData} />
-          <TripDes2 detailData={this.state.detailData} />
+          <TripDes2 detailData={this.state.detailData} days = {this.state.days}/>
           <div className="purchaseBtnBox">
             {this.state.bought === false ? (
               <div onClick={this.addToCart} className="purchaseBtn">
@@ -205,7 +207,7 @@ class TripDesPage extends Component {
             ) : (
               <div onClick={this.gotoIndex} className="purchaseBtn">
                 <Cart className="purchaseBtnImg" />
-                <p>我要結帳</p>
+                <p>去結帳</p>
                 <div className="purchaseBtnCover"></div>
               </div>
             )}

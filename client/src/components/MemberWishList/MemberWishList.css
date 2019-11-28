@@ -60,6 +60,18 @@
   background-color: #96daf0;
 }
 
+@media only screen and (max-width: 1500px) {
+  .wish-list-container .card-title {
+    font-size: 18px;
+  }
+  .wish-list-container .size {
+    font-size: 14px;
+  }
+  .wish-list-container .weight {
+    font-size: 14px;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .wish-list-container .card-container {
     max-width: 50%;

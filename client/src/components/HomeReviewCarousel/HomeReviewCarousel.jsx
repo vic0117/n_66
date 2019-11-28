@@ -26,7 +26,7 @@ class HomeReviewCarousel extends React.Component {
             slidesToShow: 1,
             slidesToScroll: 1,
             // autoplay: true,
-            autoplaySpeed: 3000,
+            autoplaySpeed: 2500,
             dots: false,
             speed: 800,
         };
@@ -40,7 +40,7 @@ class HomeReviewCarousel extends React.Component {
             vertical: true,
             verticalSwiping: true,
             // autoplay: true,
-            autoplaySpeed: 3000,
+            // autoplaySpeed: 1000,
             dots: false,
             speed: 800,
         };
@@ -58,7 +58,7 @@ class HomeReviewCarousel extends React.Component {
                         className='BigSlide'
                     >
                         <div className='TripDesCarouselSmallBox'>
-                            <img src="http://localhost:3000/images/bg/aurore-boreale-en-islande-121.jpg" alt='carouselImg1' className='TripDesCarouselImg' style={{ height: '540px' }} />
+                            <img src="http://localhost:3000/images/bg/aurore-boreale-en-islande-121.jpg" alt='carouselImg1' className='TripDesCarouselImg'  />
                             <a href="#55">
                                 <Container fluid>
                                     <Row>
