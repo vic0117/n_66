@@ -5,7 +5,7 @@ const db = mysql.createConnection({
   // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 // [req.params.id]
@@ -23,7 +23,7 @@ router.post("/comments/select", (req, res, next) => {
   let place = req.body.place;
   console.log(place);
   let where1 = "";
-  if (place) {
+  if (place) { 
     where1 += " AND `trip_country` = " + `'${place}'`;
     if (place == "所有目的地") {
       where1 = "";
