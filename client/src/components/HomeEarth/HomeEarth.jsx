@@ -27,6 +27,8 @@ import half_star from './images/svg/half_star.svg';
 //CSS
 import "./HomeEarth.css";
 
+import {Link} from 'react-router-dom'
+
 
 class HomeEarth extends React.Component {
   componentDidMount() {
@@ -169,7 +171,10 @@ class HomeEarth extends React.Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body className="selection-body">
-                      <div className="card-selection" data-country="canada">加拿大</div>
+							<Link>
+								<div className="card-selection" data-country="canada">加拿大</div>
+							</Link>
+                      
                       <div className="card-selection" data-country="norway">挪威</div>
                       <div className="card-selection" data-country="alaska">阿拉斯加</div>
                       <div className="card-selection" data-country="russia">俄羅斯</div>

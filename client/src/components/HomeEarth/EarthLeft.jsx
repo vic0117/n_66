@@ -11,7 +11,7 @@ import spitzberg from "./images/spitzberg.svg";
 import sweden from "./images/sweden.svg";
 import world from "./images/world.png";
 import "./HomeEarth.css";
-
+import {Link} from 'react-router-dom'
 
 const EarthLeft = () => {
     return ( 
@@ -19,33 +19,33 @@ const EarthLeft = () => {
             <div className="world-left mx-auto">
                 <img className="planet" src={world} alt="world" />
 
-                <a className="russia country" href="#1" data-country="russia">
+                <Link to='trips/page/1?place=俄羅斯&type=所有活動&month=所有月份' className="russia country" data-country="russia">
                   <img src={russia} alt="russia" />
-                </a>
-                <a className="alaska country" href="#2" data-country="alaska">
+                </Link>
+                <Link to='trips/page/1?place=阿拉斯加州&type=所有活動&month=所有月份' className="alaska country"  data-country="alaska">
                   <img src={alaska} alt="alaska" />
-                </a>
-                <a className="canada country" href="#3" data-country="canada">
+                </Link>
+                <Link to='trips/page/1?place=加拿大&type=所有活動&month=所有月份' className="canada country" href="#3" data-country="canada">
                   <img src={canada} alt="canada" />
-                </a>
-                <a className="country finland " href="#4" data-country="finland">
+                </Link>
+                <Link to='trips/page/1?place=芬蘭&type=所有活動&month=所有月份' className="country finland " href="#4" data-country="finland">
                   <img src={finland} alt="finland" />
-                </a>
-                <a className="greenland country" href="#5" data-country="greenland">
+                </Link>
+                <Link to='trips/page/1?place=格陵蘭&type=所有活動&month=所有月份' className="greenland country" href="#5" data-country="greenland">
                   <img src={greenland} alt="greenland" />
-                </a>
-                <a className="iceland country" href="#6" data-country="iceland">
+                </Link>
+                <Link to='trips/page/1?place=冰島&type=所有活動&month=所有月份' className="iceland country" href="#6" data-country="iceland">
                   <img src={iceland} alt="iceland" />
-                </a>
-                <a className="norway country" href="#7" data-country="norway">
+                </Link>
+                <Link to='trips/page/1?place=挪威&type=所有活動&month=所有月份' className="norway country" href="#7" data-country="norway">
                   <img src={norway} alt="norway" />
-                </a>
-                <a className="spitzberg country" href="#8" data-country="spitzberg">
+                </Link>
+                <Link to='trips/page/1?place=斯匹茲卑爾根島&type=所有活動&month=所有月份' className="spitzberg country" href="#8" data-country="spitzberg">
                   <img src={spitzberg} alt="spitzberg" />
-                </a>
-                <a className="sweden country" href="#9" data-country="sweden">
+                </Link>
+                <Link to='trips/page/1?place=瑞典&type=所有活動&month=所有月份' className="sweden country" href="#9" data-country="sweden">
                   <img src={sweden} alt="sweden" />
-                </a>
+                </Link>
 
                 <div className="country-label russia-label" id="russia" data-country="russia">
                   <a className="country-name" href="#10">俄羅斯</a>
