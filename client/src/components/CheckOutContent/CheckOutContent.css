@@ -16,28 +16,45 @@
   border-bottom: 1px solid #e8e8e8;
 }
 
-.sectionCheckOut .itemImg {
+.sectionCheckOut .cartItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sectionCheckOut .cartItem .itemImg {
+  width: 145px !important;
+  padding: 10px;
+}
+
+.sectionCheckOut .cartItem .card-img-top {
+  width: 100%;
+  height: 6.5%;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.sectionCheckOut .cartItem .itemImg {
   width: 156px;
   height: 156px;
   padding: 10px;
 }
 
-.sectionCheckOut .itemImg .card-img-top {
+.sectionCheckOut .cartItem .itemImg .card-img-top {
   width: 100%;
   height: 100%;
   -o-object-fit: cover !important;
      object-fit: cover !important;
 }
 
-.sectionCheckOut .productCategory {
+.sectionCheckOut .cartItem .productCategory {
   color: #96daf0;
 }
 
-.sectionCheckOut .discountPrice {
+.sectionCheckOut .cartItem .discountPrice {
   color: red;
 }
 
-.sectionCheckOut .qtyBtn {
+.sectionCheckOut .cartItem .qtyBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -56,16 +73,16 @@
   color: #ababab;
 }
 
-.sectionCheckOut .minusBtn {
+.sectionCheckOut .cartItem .minusBtn {
   margin-left: 20px;
   border-right: none;
 }
 
-.sectionCheckOut .plus {
+.sectionCheckOut .cartItem .plus {
   border-left: none;
 }
 
-.sectionCheckOut .counter {
+.sectionCheckOut .cartItem .counter {
   text-align: center;
   height: 22px;
   width: 50px;
@@ -75,7 +92,7 @@
   padding: 0;
 }
 
-.sectionCheckOut .deleteBtn {
+.sectionCheckOut .cartItem .deleteBtn {
   position: relative;
   width: 16px;
   height: 16px;
@@ -84,7 +101,7 @@
   cursor: pointer;
 }
 
-.sectionCheckOut .deleteBtn .slash {
+.sectionCheckOut .cartItem .deleteBtn .slash {
   position: absolute;
   width: 23px;
   height: 1px;
@@ -95,13 +112,13 @@
   pointer-events: none;
 }
 
-.sectionCheckOut .deleteBtn .leftLine {
+.sectionCheckOut .cartItem .deleteBtn .leftLine {
   top: -1px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.sectionCheckOut .deleteBtn .rightLine {
+.sectionCheckOut .cartItem .deleteBtn .rightLine {
   bottom: -1px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
@@ -124,6 +141,25 @@
 .sectionCheckOut .payment-container {
   padding: 0.5rem 1rem 2rem 1rem;
   background-color: #eaeaea;
+}
+
+.sectionCheckOut .payment-container .error-msg {
+  font-size: 12px;
+  text-align: center;
+  height: 25px;
+  margin: 10px auto 0 auto;
+  padding: 0 !important;
+}
+
+.sectionCheckOut .payment-container .alert-danger {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.sectionCheckOut .payment-container .alert-success {
+  background-color: transparent !important;
+  border: none !important;
+  color: #155724 !important;
 }
 
 .sectionCheckOut .payment-container input {
