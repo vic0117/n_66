@@ -67,7 +67,7 @@ class TripMenu extends Component {
                 </ul>
                 <div className="TripMenuDes2">
                   <div className="TripMenuDays">
-                    <img src={calender} alt="calender" />
+                    <img src={calender} alt="calender" className='tripMenuCalender'/>
                     <span>{item.trip_days}天</span>
                   </div>
                   <span>|</span>

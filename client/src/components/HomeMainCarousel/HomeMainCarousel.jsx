@@ -30,7 +30,7 @@ class HomeMainCarousel extends React.Component {
       nav1: this.slider1,
       nav2: this.slider2
     });
-
+    
     let slickPrev = document.querySelector(".slick-prev");
     console.log(slickPrev);
     let slickNext = document.querySelector(".slick-next");
@@ -168,10 +168,10 @@ class HomeMainCarousel extends React.Component {
           ref={slider => (this.slider2 = slider)}
           slidesToShow={1}
           swipeToSlide={true}
-          focusOnSelect={true}
+          // focusOnSelect={true}
           speed={900}
-          // autoplay={true}
-          // autoplaySpeed={5000}
+          autoplay={true}
+          autoplaySpeed={5000}
         >
           <div>
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">
@@ -234,10 +234,13 @@ class HomeMainCarousel extends React.Component {
                 <p className="title-main">挪威</p>
               </div>
 
-              <a className="more-btn" href="#123">
+              <Link
+                className="more-btn"
+                to="trips/page/1?place=挪威&type=所有活動&month=所有月份"
+              >
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -249,10 +252,10 @@ class HomeMainCarousel extends React.Component {
                 </div>
                 <p className="title-main">芬蘭</p>
               </div>
-              <a href="#456">
+              <Link to="trips/page/1?place=芬蘭&type=所有活動&month=所有月份">
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -264,10 +267,13 @@ class HomeMainCarousel extends React.Component {
                 </div>
                 <p className="title-main">冰島</p>
               </div>
-              <a href="#789" role="button">
+              <Link
+                to="trips/page/1?place=冰島&type=所有活動&month=所有月份"
+                role="button"
+              >
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -279,10 +285,13 @@ class HomeMainCarousel extends React.Component {
                 </div>
                 <p className="title-main">斯匹次卑爾根</p>
               </div>
-              <a href="#7" role="button">
+              <Link
+                to="trips/page/1?place=斯匹次卑爾根&type=所有活動&month=所有月份"
+                role="button"
+              >
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -294,10 +303,13 @@ class HomeMainCarousel extends React.Component {
                 </div>
                 <p className="title-main">格陵蘭</p>
               </div>
-              <a href="#8" role="button">
+              <Link
+                to="trips/page/1?place=格陵蘭&type=所有活動&month=所有月份"
+                role="button"
+              >
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -309,10 +321,13 @@ class HomeMainCarousel extends React.Component {
                 </div>
                 <p className="title-main">加拿大</p>
               </div>
-              <a href="#9" role="button">
+              <Link
+                to="trips/page/1?place=加拿大&type=所有活動&month=所有月份"
+                role="button"
+              >
                 <div className="button-font">了解更多</div>
                 <div className="white-mask"></div>
-              </a>
+              </Link>
             </div>
           </div>
         </Slider>

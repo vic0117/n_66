@@ -2,6 +2,7 @@ import React from "react";
 import HomeNavBar from "../../components/HomeNavBar/HomeNavBar";
 import ProductLeftMenu from "../../components/ProductLeftMenu/ProductLeftMenu";
 
+
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,8 @@ class ProductList extends React.Component {
 
 
   componentDidMount() {
+    let body = document.querySelector('body');
+    body.style.overflowY = 'auto';
     document.title = "66°N - 戶外用品";
 
     fetch("http://localhost:3001/products", {
@@ -164,6 +167,7 @@ select6 = data => {
         <HomeNavBar
           numberOfProducts={this.props.numberOfProducts}
           currentUser={this.props.currentUser}
+          changeNumOfProduct={this.props.changeNumOfProduct}
         />
         <ProductLeftMenu
           data={this.state.ProductsData}

@@ -117,8 +117,13 @@ $secColor: #96DAF0;
         align-items: center;
         flex-wrap: nowrap;
         flex-grow: 0;
-        margin: 0 0 15px 0;
-    
+        // margin: 0 0 15px 0;
+        border-bottom: 1px solid #eaeaea;
+        // transform: translateX(-100vw);
+        // animation: drop 1s  forwards;
+        // opacity: 0;
+
+       
         .itemImg{
             width: 156px;
             height: 156px;
@@ -129,25 +134,35 @@ $secColor: #96DAF0;
                 object-fit: contain;
             }
         }
+
+        .tripImg{
+            width: 156px;
+            height: 156px;
+    
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
     
         .card-body{
             display: flex;
             width: 100%;
-            padding: 20px 0 0 20px;
+            padding: 0px 0 0 20px;
             
             h6{
                 width: 100%;
                 color: $secColor;
                 display: flex;
                 align-items: center;
-    
-                .price{
-                    color: $primaryColor;
-                    margin: 0 0 0 50%;
-                }
+
     
                 .deleteBtn{
-                    position: relative;
+                    // position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     margin-left: auto;
                     width: 16px;
                     height: 16px;
@@ -155,25 +170,11 @@ $secColor: #96DAF0;
                     box-sizing: content-box;
                     cursor: pointer;
     
-                    .slash{
-                        position: absolute;
-                        width: 23px;
-                        height: 1px;
-                        transform-origin: left;
-                        background-color: #ABABAB;
-                        left: 0;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        // object-fit: cover;
                         pointer-events: none;
-                    }
-    
-                    .leftLine{
-                        top: -1px;
-                        transform: rotate(45deg);
-                        
-                    }
-    
-                    .rightLine{
-                        bottom: -1px;
-                        transform: rotate(-45deg);
                     }
                 }
             }
@@ -184,17 +185,18 @@ $secColor: #96DAF0;
             }
     
             .size{
-                margin-left: 20px;
+                margin-top: 10px !important;
+                // margin-bottom:20px !important;
             }
     
             .quantity{
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                
-                
+                width: 100%;
+                margin-top: 20px;
                 .counter{
-                    text-align: center;
+                    text-align: center !important;
                     height: 22px;
                     width: 50px;
                     border: 1px solid #ccc;
@@ -227,7 +229,41 @@ $secColor: #96DAF0;
                 .plus{
                     border-left: none;
                 }
+                .x{
+                    margin: 0 20px 0 20px;
+                }
+
+                .price{
+                    color: $primaryColor;
+                    width: 20%;
+                    // margin: 0 0 0 50%;
+                }
+
+                .tripPrice{
+                    color: $primaryColor;
+                    width: 20%;
+                    // margin: 0 0 0 50%;
+                }
+
+                h5, h6{
+                    margin: 0;
+                }
             }
+
+                
+            
+        }
+    }
+
+    @keyframes drop {
+        from{
+            transform: translateX(-100vw);
+            opacity: 0;
+        }
+
+        to{
+            transform: translateX(0);
+            opacity: 1;
         }
     }
 }

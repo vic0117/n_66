@@ -12,34 +12,27 @@
 
 .sectionCheckOut .categories-container {
   width: 100%;
-  height: 6.5%;
   border-bottom: 1px solid #e8e8e8;
 }
 
-.sectionCheckOut .cartItem {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.sectionCheckOut .card-body {
+  padding: 0 0 0 20px;
 }
 
 .sectionCheckOut .cartItem .itemImg {
-  width: 145px !important;
-  padding: 10px;
+  width: 145px;
+  height: 145px;
 }
 
-.sectionCheckOut .cartItem .itemImg .card-img-top {
+.sectionCheckOut .cartItem .itemImg img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover !important;
-     object-fit: cover !important;
-}
-
-.sectionCheckOut .itemImg img {
-  width: 80%;
-  height: 80%;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: auto;
+}
+
+.sectionCheckOut .productCategory {
+  color: #96daf0;
 }
 
 .sectionCheckOut .discountPrice {
@@ -78,7 +71,6 @@
   text-align: center;
   height: 22px;
   width: 50px;
-  border: 1px solid #ccc;
   color: #ababab;
   font-weight: bold;
   margin: 0;
@@ -117,8 +109,35 @@
           transform: rotate(-45deg);
 }
 
+.sectionCheckOut .tripCartItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sectionCheckOut .tripCartItem .itemImg {
+  margin: 0;
+  width: 145px;
+  height: 145px;
+}
+
+.sectionCheckOut .tripCartItem .itemImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.sectionCheckOut .tripCartItem .tripType {
+  color: #96daf0;
+}
+
 .sectionCheckOut .orderDetail {
   color: #242a3a;
+  border: 1px solid #eaeaea;
 }
 
 .sectionCheckOut .orderDetail label {
@@ -134,6 +153,25 @@
 .sectionCheckOut .payment-container {
   padding: 0.5rem 1rem 2rem 1rem;
   background-color: #eaeaea;
+}
+
+.sectionCheckOut .payment-container .error-msg {
+  font-size: 12px;
+  text-align: center;
+  height: 25px;
+  margin: 10px auto 0 auto;
+  padding: 0 !important;
+}
+
+.sectionCheckOut .payment-container .alert-danger {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.sectionCheckOut .payment-container .alert-success {
+  background-color: transparent !important;
+  border: none !important;
+  color: #155724 !important;
 }
 
 .sectionCheckOut .payment-container input {

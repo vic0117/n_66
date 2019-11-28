@@ -152,6 +152,10 @@
   color: #96DAF0;
 }
 
+.tripMenuCalender {
+  margin-bottom: 5px;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -187,7 +191,7 @@
   }
   .TripMenuPrice h3 {
     color: #96DAF0;
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 10px;
   }
   .TripMenuStartEnd {
@@ -196,6 +200,18 @@
   }
   .TripMenuDes2 {
     margin-left: -35px;
+  }
+}
+
+@media (max-width: 560px) {
+  .TripMenuDays {
+    display: none;
+  }
+  .TripMenuDes {
+    margin-left: 20px;
+  }
+  .TripMenuDes2 {
+    margin-left: 0px;
   }
 }
 /*# sourceMappingURL=Tripmenu.css.map */

@@ -61,8 +61,8 @@ body {
 
 @media (max-width: 700px) {
   .messageIn {
-    width: 100%;
-    right: -150px;
+    width: 120%;
+    right: -100px;
   }
 }
 /*# sourceMappingURL=Home.css.map */
