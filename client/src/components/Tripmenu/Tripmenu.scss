@@ -117,6 +117,9 @@
 		}
 	}
 }
+.tripMenuCalender{
+	margin-bottom:5px;
+}
 @keyframes fadeIn{
 	from{
 		opacity: 0;
@@ -150,5 +153,16 @@
 	}
 	.TripMenuDes2{
 		margin-left:-35px;
+	}
+}
+@media (max-width:560px){
+	.TripMenuDays{
+		display: none;
+	}
+	.TripMenuDes{
+		margin-left:20px;
+	}
+	.TripMenuDes2{
+		margin-left:0px;
 	}
 }
