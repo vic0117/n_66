@@ -113,10 +113,15 @@ class NavBar extends React.Component {
               <Link to="/account" className="navbar-link icon-container">
                 <User height="20" width="20" className="user-icon" />
               </Link>
-              <Nav.Link className="icon-container cart" href="/cart">
+              {!!currentUser ? (
+                <Nav.Link className="icon-container cart" href="/cart">
                 <Cart height="20" width="20" className="cart-icon" />
                 { !!numberOfProducts === false || !currentUser ? <p></p> : <div>{numberOfProducts}</div>}
               </Nav.Link>
+              ): (
+                <p></p>
+              )}
+              
             </Nav>
           </div>
 
