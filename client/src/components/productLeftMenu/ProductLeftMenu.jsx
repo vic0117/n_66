@@ -10,12 +10,12 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "./../TripLeftMenu/SliderPrice";
-import ReactDOM from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import search from "../../components/TripLeftmenu/images/search.svg";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from "./../TripLeftmenu/SliderPrice";
+import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 import $ from "jquery";
 
@@ -379,10 +379,10 @@ class ProductLeftMenu extends Component {
                         所有品牌
                       </li>
                       <li className="brandCard2" onClick={this.handleBrand2}>
-                      SnowPeak
+                        SnowPeak
                       </li>
                       <li className="brandCard3" onClick={this.handleBrand2}>
-                      AquaMarina
+                        AquaMarina
                       </li>
                     </ul>
                   </Card.Body>
@@ -512,7 +512,7 @@ class ProductLeftMenu extends Component {
                       AquaMarina
                     </Dropdown.Item>
                     <Dropdown.Item eventKey="Sony" value="4">
-                    Sony
+                      Sony
                     </Dropdown.Item>
                   </DropdownButton>
 
@@ -540,11 +540,11 @@ class ProductLeftMenu extends Component {
                   <Col>
                     <ul id="page-numbers" className="pagination">
                       <li className="page-item" onClick={this.goPrev}>
-                        <img src={left} alt="left"/>
+                        <img src={left} alt="left" />
                       </li>
                       {renderPageNumbers}
                       <li className="page-item" onClick={this.goNext}>
-                        <img src={right} alt="right"/>
+                        <img src={right} alt="right" />
                       </li>
                     </ul>
                   </Col>
