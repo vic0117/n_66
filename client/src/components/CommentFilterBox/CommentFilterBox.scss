@@ -5,6 +5,11 @@
     border-color: #eaeaea;
     border-radius: 0;
   }
+
+  button:active {
+    box-shadow: none !important;
+  }
+
   .dropdown-menu {
     width: 11.25rem;
     height: 9rem;

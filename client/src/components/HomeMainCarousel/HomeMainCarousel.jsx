@@ -30,7 +30,7 @@ class HomeMainCarousel extends React.Component {
       nav1: this.slider1,
       nav2: this.slider2
     });
-
+    
     let slickPrev = document.querySelector(".slick-prev");
     console.log(slickPrev);
     let slickNext = document.querySelector(".slick-next");

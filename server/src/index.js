@@ -88,12 +88,10 @@ io.on("connect", socket => {
         user: "admin",
         text: `${user.name}客服專員您已上線`
       });
-      socket.broadcast
-        .to(user.room)
-        .emit("message", {
-          user: "admin",
-          text: `您好我是${user.name}客服很高興為您服務`
-        });
+      socket.broadcast.to(user.room).emit("message", {
+        user: "admin",
+        text: `您好我是${user.name}客服很高興為您服務`
+      });
     } else {
       socket.emit("message", {
         user: "admin",
