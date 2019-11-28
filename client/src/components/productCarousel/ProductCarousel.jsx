@@ -5,6 +5,37 @@ import { toast } from "react-toastify";
 import "./productCarousel.css";
 // import { object } from "prop-types";
 
+//image svg
+import up from './img/up.svg'
+import down from './img/down.svg'
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className="nextArrow customArrow"
+      onClick={onClick}
+    >
+      <img src={up} alt="up"/>
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className="prevArrow customArrow"
+      onClick={onClick}
+    >
+      <img src={down} alt="down"/>
+    </div>
+  );
+}
+
+
+
+
 class ProductCarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +71,7 @@ class ProductCarousel extends React.Component {
         />
       </div>
     ));
- 
+
   }
 
   sliders2() {
@@ -112,6 +143,13 @@ class ProductCarousel extends React.Component {
     const data = this.props.data;
     const { numberOfProducts } = this.props;
     const mainSettings = {
+      // dots: false,
+      // infinite: true,
+      // slidesToShow: 1,
+      // slidesToScroll: 1,
+      // // rtl: true,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
     };
 
     const thumbSettings = {
@@ -121,15 +159,18 @@ class ProductCarousel extends React.Component {
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
+      // rtl: true,
       autoplay: true,
-      autoplaySpeed: 3000
+      autoplaySpeed: 3000,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
     };
 
     return (
       <>
         <Container className="ProductCarousel">
           <Row className="mt-5 carouselsRow">
-            <Col md={8} className="d-flex justify-content-center">
+            <Col md={8} className="d-flex justify-content-center align-items-start">
               <div className="mr-5 sideCarousel">
                 <Slider
                   {...thumbSettings}
@@ -157,35 +198,35 @@ class ProductCarousel extends React.Component {
               </div>
             </Col>
 
-            <Col lg={4}>
+            <Col lg={4} className="border">
               {data.map(item => (
                 <div key={item.product_id} className="detailCard">
                   <div>
                     <h4>{item.product_brand}</h4>
                     <h2>{item.product_name}</h2>
                     <h5>NT$ {item.product_price}</h5>
-                    <Button
-                      className="wishBtn mx-auto"
+                    <div
+                      className="wishBtn"
                       onClick={this.props.addWish}
                     >
                       加入我的收藏
-                    </Button>
+                    </div>
                     {
                       this.state.bought === false ? (
-                        <Button
+                        <div
                           onClick={this.addToCart}
                           className="addToCartBtn mx-auto"
                         >
                           加入購物車
-                      </Button>
-                      ):(
-                        <a
-                          href = "/cart"
-                          className="addToCartBtn mx-auto"
-                        >
-                          去結帳
+                      </div>
+                      ) : (
+                          <a
+                            href="/cart"
+                            className="addToCartBtn mx-auto"
+                          >
+                            去結帳
                         </a>
-                      )
+                        )
                     }
                   </div>
 
@@ -215,7 +256,7 @@ class ProductCarousel extends React.Component {
           </Row>
           <h1 className=" mx-auto text-center">還可搭配</h1>
           <Row className="recommend  pt-5 d-flex ">
-            <Col sm={6} md={4} className="cardFrame">
+            <Col sm={6} md={3} className="cardFrame">
               <Card className="product-card">
                 <div className="photoFrame">
                   <Card.Img
@@ -229,7 +270,7 @@ class ProductCarousel extends React.Component {
               </Card>
             </Col>
 
-            <Col sm={6} md={4} className="cardFrame">
+            <Col sm={6} md={3} className="cardFrame">
               <Card className="product-card">
                 <div className="photoFrame">
                   <Card.Img
@@ -243,7 +284,7 @@ class ProductCarousel extends React.Component {
               </Card>
             </Col>
 
-            <Col sm={6} md={4} className="cardFrame">
+            <Col sm={6} md={3} className="cardFrame">
               <Card className="product-card">
                 <div className="photoFrame">
                   <Card.Img
@@ -257,7 +298,7 @@ class ProductCarousel extends React.Component {
               </Card>
             </Col>
 
-            <Col sm={6} md={4} className="cardFrame">
+            <Col sm={6} md={3} className="cardFrame">
               <Card className="product-card">
                 <div className="photoFrame">
                   <Card.Img

@@ -10,7 +10,7 @@ class WishList extends Component {
   render() {
     return (
       <>
-        <NavBar />
+        <NavBar currentUser={this.props.currentUser}/>
         <div className="container">
           <Row>
             <Col className="col-xl-3 col-md-4 col-sm-12 col-xs-12">
