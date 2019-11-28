@@ -2,81 +2,80 @@ $primaryColor: #242a3a;
 $secColor: #96daf0;
 //common
 
-.dealSuccess{
-    margin-top: 200px;
+.dealSuccess {
+  margin-top: 200px;
 }
 
-.sectionCheckOut{
+.sectionCheckOut {
+  padding: 150px 0 0 0;
 
-    padding: 150px 0 0 0;
+  .font-size-14 {
+    font-size: 14px;
+  }
 
-    .font-size-14 {
-        font-size: 14px;
-    }
+  .categories-container {
+    width: 100%;
+    height: 6.5%;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .cartItem {
+    display: flex;
 
-    .categories-container {
+    .itemImg {
+      width: 145px !important;
+      padding: 10px;
+
+      .card-img-top {
         width: 100%;
-        height: 6.5%;
-        border-bottom: 1px solid #e8e8e8;
+        height: 100%;
+        object-fit: cover !important;
+      }
     }
-    .cartItem{
-        display: flex;
+  }
 
-        .itemImg {
-            width: 145px !important;
-            padding: 10px;
+  .itemImg img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    margin: auto;
+  }
 
-            .card-img-top{
-                width: 100%;
-                height: 100%;
-                object-fit: cover !important;
-            }
-        }
-    }
-    
-    .itemImg img {
-        width: 80%;
-        height: 80%;
-        object-fit: contain;
-        margin: auto;
-    }
+  .discountPrice {
+    color: red;
+  }
 
-    .discountPrice{
-        color: red ;
-    }
+  .qtyBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #ababab;
+  }
 
-    .qtyBtn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 22px;
-        height: 22px;
-        font-size: 1rem;
-        text-align: center;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        color: #ababab;
-    }
+  .minusBtn {
+    margin-left: 20px;
+    border-right: none;
+  }
 
-    .minusBtn {
-        margin-left: 20px;
-        border-right: none;
-    }
-
-    .plus {
-        border-left: none;
-    }
-    .counter {
-        text-align: center;
-        height: 22px;
-        width: 50px;
-        border: 1px solid #ccc;
-        color: #ababab;
-        font-weight: bold;
-        margin: 0;
-        padding: 0;
-    }
-    .deleteBtn {
+  .plus {
+    border-left: none;
+  }
+  .counter {
+    text-align: center;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    color: #ababab;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+  .deleteBtn {
     position: relative;
 
     width: 16px;
@@ -85,92 +84,111 @@ $secColor: #96daf0;
     box-sizing: content-box;
     cursor: pointer;
 
-        .slash {
-            position: absolute;
-            width: 23px;
-            height: 1px;
-            transform-origin: left;
-            background-color: #ababab;
-            left: 0;
-            pointer-events: none;
-        }
-
-        .leftLine {
-            top: -1px;
-            transform: rotate(45deg);
-        }
-
-        .rightLine {
-            bottom: -1px;
-            transform: rotate(-45deg);
-        }
+    .slash {
+      position: absolute;
+      width: 23px;
+      height: 1px;
+      transform-origin: left;
+      background-color: #ababab;
+      left: 0;
+      pointer-events: none;
     }
 
-    .orderDetail {
-        color: #242a3a;
-
-        label {
-            margin: 0;
-            width: 100%;
-            padding-left: 5px;
-        }
-        input {
-            margin-top: 3px;
-        }
+    .leftLine {
+      top: -1px;
+      transform: rotate(45deg);
     }
 
-    .payment-container {
-        padding: 0.5rem 1rem 2rem 1rem;
-        background-color: #eaeaea;
-        
-        input {
-            width: 100%;
-        }
-        label {
-            width: 100%;
-            text-align: left;
-            margin: 8px 0;
-        }
-        .invalid-date {
-            width: 45%;
-            margin-right: 10px;
-        }
-        .security-code {
-            width: 45%;
-            margin-left: auto;
-        }
+    .rightLine {
+      bottom: -1px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .orderDetail {
+    color: #242a3a;
+
+    label {
+      margin: 0;
+      width: 100%;
+      padding-left: 5px;
+    }
+    input {
+      margin-top: 3px;
+    }
+  }
+
+  .payment-container {
+    padding: 0.5rem 1rem 2rem 1rem;
+    background-color: #eaeaea;
+
+    .error-msg {
+      font-size: 12px;
+      text-align: center;
+      height: 25px;
+      margin: 10px auto 0 auto;
+      padding: 0 !important;
     }
 
-    .checkout-btn {
+    .alert-danger {
+      background-color: transparent !important;
+      border: none !important;
+    }
+
+    .alert-success {
+      background-color: transparent !important;
+      border: none !important;
+      color: #155724 !important;
+    }
+
+    input {
+      width: 100%;
+    }
+    label {
+      width: 100%;
+      text-align: left;
+      margin: 8px 0;
+    }
+    .invalid-date {
+      width: 45%;
+      margin-right: 10px;
+    }
+    .security-code {
+      width: 45%;
+      margin-left: auto;
+    }
+  }
+
+  .checkout-btn {
     width: 100%;
-        button {
-            margin-top: 1rem !important;
-            width: 180px;
-            height: 35px;
-            background-color: #242a3a;
-            color: #fff;
-            font-size: 14px;
-        }
+    button {
+      margin-top: 1rem !important;
+      width: 180px;
+      height: 35px;
+      background-color: #242a3a;
+      color: #fff;
+      font-size: 14px;
     }
+  }
 
-    @media (max-width: 992px) {
-        .categories-outer-container {
-            width: 100%;
-        }
-        .orderDetail {
-            margin-top: 30px;
-            display: flex;
-            border-top: 1px solid rgb(232, 232, 232);
-            border-bottom: 1px solid rgb(232, 232, 232);
-            padding: 1rem 0;
-
-            .time-method {
-            margin-left: 25px !important;
-            margin-top: 0.5rem !important;
-            }
-        }
-        .payment-container {
-            margin: 0.5rem 0rem !important;
-        }
+  @media (max-width: 992px) {
+    .categories-outer-container {
+      width: 100%;
     }
+    .orderDetail {
+      margin-top: 30px;
+      display: flex;
+      border-top: 1px solid rgb(232, 232, 232);
+      border-bottom: 1px solid rgb(232, 232, 232);
+      padding: 1rem 0;
+
+      .time-method {
+        margin-left: 25px !important;
+        margin-top: 0.5rem !important;
+      }
+    }
+    .payment-container {
+      margin: 0.5rem 0rem !important;
+    }
+  }
 }
