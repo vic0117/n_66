@@ -19,11 +19,12 @@ $secColor: #96daf0;
         height: 6.5%;
         border-bottom: 1px solid #e8e8e8;
     }
-    .cartItem{
-        display: flex;
+    
+        
 
         .itemImg {
-            width: 145px !important;
+            width: 156px;
+            height: 156px;
             padding: 10px;
 
             .card-img-top{
@@ -32,14 +33,16 @@ $secColor: #96daf0;
                 object-fit: cover !important;
             }
         }
-    }
     
-    .itemImg img {
-        width: 80%;
-        height: 80%;
-        object-fit: contain;
-        margin: auto;
-    }
+        .productCategory{
+            color: $secColor;
+        }
+    // .itemImg img {
+    //     width: 80%;
+    //     height: 80%;
+    //     object-fit: contain;
+    //     margin: auto;
+    // }
 
     .discountPrice{
         color: red ;
@@ -70,7 +73,7 @@ $secColor: #96daf0;
         text-align: center;
         height: 22px;
         width: 50px;
-        border: 1px solid #ccc;
+        // border: 1px solid #ccc;
         color: #ababab;
         font-weight: bold;
         margin: 0;
