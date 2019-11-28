@@ -15,11 +15,24 @@ class TripDes2 extends Component {
 		btn: "預算",  //控制大button active
 		btn2:'',
 		Btn3:false, //控制li長出來
+		days1:false,
     };
   }
 
+
+   // days() {
+	// 	const {days} = this.props 
+	// 	const {detailData}=this.props;
+	//    days> 0 ? this.setState({days1:true}) : this.setState({days1:false})
+	// 	console.log(this.state.days1)
+   //    return detailData.map(item => (
+   //     <h1>幹</h1>
+   //    ))
+   //  }
+		
   render() {
 	  const {detailData}=this.props;
+	
     return (
 		 <>
 		 {detailData.map(item=>(
@@ -122,35 +135,42 @@ class TripDes2 extends Component {
 								<p>我們提出了我們設計的路線。這是指示性的和靈活的。如果沒有參與，請聯繫我們的專業顧問之一。他將很樂意與您一起為您選擇的行程提供個性化和詳細的評估。</p>
 							</div>
 							<div className='everyday'>
-								<span>第一天</span>
+								<span>行程一</span>
 								<div className='everydayTitle'><img src={location} alt='location'/><p>{item.trip_des2_content2_1}</p></div>
 								<p>{item.trip_des2_content2_2}</p>
 							</div>
 							<div className='everydayLive'><img src={home} alt='home'/><p>住宿：</p><span>飯店</span></div>
 							<div className='everyday'>
-								<span>第二天</span>
+								<span>行程二</span>
 								<div className='everydayTitle'><img src={location} alt='location'/><p>{item.trip_des2_content2_3}</p></div>
 								<p>{item.trip_des2_content2_4}</p>
 							</div>
 							<div className='everydayLive'><img src={home} alt='home'/><p>住宿：</p><span>飯店</span></div>
 							<div className='everyday'>
-								<span>第三天</span>
+								<span>行程三</span>
 								<div className='everydayTitle'><img src={location} alt='location'/><p>{item.trip_des2_content2_5}</p></div>
 								<p>{item.trip_des2_content2_6}</p>
 							</div>
 							<div className='everydayLive'><img src={home} alt='home'/><p>住宿：</p><span>飯店</span></div>
 							<div className='everyday'>
-								<span>第四天</span>
+								<span>行程四</span>
 								<div className='everydayTitle'><img src={location} alt='location'/><p>{item.trip_des2_content2_7}</p></div>
 								<p>{item.trip_des2_content2_8}</p>
 							</div>
 							<div className='everydayLive'><img src={home} alt='home'/><p>住宿：</p><span>飯店</span></div>
 							<div className='everyday'>
-								<span>第五天</span>
+								<span>行程五</span>
 								<div className='everydayTitle'><img src={location} alt='location'/><p>{item.trip_des2_content2_9}</p></div>
 								<p>{item.trip_des2_content2_10}</p>
 							</div>
 							<div className='everydayLive'><img src={home} alt='home'/><p>住宿：</p><span>飯店</span></div>
+							<div className='everyday'>
+								<span>行程六</span>
+								<div className='everydayTitle'><img src={location} alt='location'/><p>{item.trip_des2_content2_11}</p></div>
+								<p>{item.trip_des2_content2_12}</p>
+							</div>
+							<div className='everydayLive'><img src={home} alt='home'/><p>住宿：</p><span>飯店</span></div>
+							{/* {this.days()} */}
 						</div>
 					</div>
 				: null}
