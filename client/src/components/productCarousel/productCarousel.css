@@ -1,5 +1,5 @@
 .ProductCarousel {
-  padding: 80px 0 0 0;
+  padding: 180px 0 0 0;
 }
 
 .ProductCarousel .carouselsRow {
@@ -7,11 +7,54 @@
 }
 
 .ProductCarousel .thumbCarousel {
+  margin-top: 20px;
   width: 100px;
+  height: 460px !important;
+}
+
+.ProductCarousel .thumbCarousel .customArrow {
+  height: 20px;
+  cursor: pointer;
+  width: 100px;
+  background-color: #eaeaea;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ProductCarousel .thumbCarousel .customArrow img {
+  width: 20px;
+  height: 20px;
+}
+
+.ProductCarousel .thumbCarousel .prevArrow {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.ProductCarousel .thumbCarousel .nextArrow {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 
 .ProductCarousel .thumbCarousel .slick-list {
-  height: 400px;
+  height: 460px !important;
+}
+
+.ProductCarousel .thumbCarousel .slick-list .slick-track {
+  height: 460px;
 }
 
 .ProductCarousel .thumbCarousel .slick-list .slick-track .slick-slide {
@@ -39,7 +82,7 @@
   background-color: #ccc;
   opacity: .5;
   position: relative;
-  top: 0%;
+  bottom: 0%;
   left: 0%;
   width: 100%;
   -webkit-transform: translate(0, 0);
@@ -59,7 +102,7 @@
   background-color: #ccc;
   opacity: .5;
   position: relative;
-  bottom: 0%;
+  top: 0%;
   left: 0%;
   width: 100%;
   -webkit-transform: translate(0, 0);
@@ -119,7 +162,12 @@
   display: none !important;
 }
 
+.ProductCarousel .detailCard h4 {
+  text-align: center;
+}
+
 .ProductCarousel .detailCard h2 {
+  color: #242A3A;
   text-align: center;
   margin: 0 0 20px 0;
 }
@@ -130,23 +178,26 @@
 }
 
 .ProductCarousel .detailCard .wishBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 0 20px 0;
+  margin: 0 auto 20px;
   color: #fff;
-  width: 80%;
-  height: 44px;
+  width: 220px;
   background-color: #242A3A;
-  text-decoration: none;
-  font-size: 20px;
+  text-align: center;
   line-height: 44px;
+  border: none;
+  cursor: pointer;
+}
+
+.ProductCarousel .detailCard .wishBtn:focus {
+  background-color: #242A3A;
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.ProductCarousel .detailCard .wishBtn:active {
+  background-color: #242A3A;
 }
 
 .ProductCarousel .detailCard .addToCartBtn {
@@ -159,14 +210,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 0 20px 0;
+  margin: 0 auto 20px;
   color: #fff;
-  width: 80%;
-  height: 44px;
+  width: 220px;
   background-color: #96DAF0;
-  text-decoration: none;
-  font-size: 20px;
+  text-align: center;
   line-height: 44px;
+  border: none;
+  cursor: pointer;
 }
 
 .ProductCarousel .detailCard p {
@@ -190,7 +241,7 @@
 
 .ProductCarousel .detailCard div .tab-content {
   height: 168px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .ProductCarousel .detailCard div .tab-pane.active {
@@ -267,12 +318,6 @@
     height: 20px;
     color: black;
   }
-  .ProductCarousel .carouselsRow .mainCarousel .slick-prev::before {
-    content: '<';
-  }
-  .ProductCarousel .carouselsRow .mainCarousel .slick-next::before {
-    content: '>';
-  }
   .ProductCarousel .thumbCarousel {
     display: none;
   }
@@ -280,4 +325,4 @@
     margin: 0 !important;
   }
 }
-/*# sourceMappingURL=productCarousel.css.map */
+/*# sourceMappingURL=ProductCarousel.css.map */

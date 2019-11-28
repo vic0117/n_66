@@ -41,6 +41,7 @@ body {
   -webkit-transition: .5s;
   transition: .5s;
   overflow: hidden;
+  margin-top: 50px;
 }
 
 .messageInOpen {
