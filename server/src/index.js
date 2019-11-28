@@ -8,10 +8,10 @@ const moment = require("moment-timezone");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./user.js");
 
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", // for mac
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 db.connect();
@@ -88,12 +88,10 @@ io.on("connect", socket => {
         user: "admin",
         text: `${user.name}客服專員您已上線`
       });
-      socket.broadcast
-        .to(user.room)
-        .emit("message", {
-          user: "admin",
-          text: `您好我是${user.name}客服很高興為您服務`
-        });
+      socket.broadcast.to(user.room).emit("message", {
+        user: "admin",
+        text: `您好我是${user.name}客服很高興為您服務`
+      });
     } else {
       socket.emit("message", {
         user: "admin",
