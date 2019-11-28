@@ -11,7 +11,7 @@ import TripDes2Carousel from "../../components/TripDes2Carousel/TripDes2Carousel
 import Footer from "../../components/Footer/Footer";
 import "./TripDesPage.scss";
 import { ReactComponent as Cart } from "./cart.svg";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class TripDesPage extends Component {
   constructor(props) {
@@ -21,14 +21,14 @@ class TripDesPage extends Component {
       carouselPlace: "",
       carouselData: [],
       carouselImg: [],
-		bought: false,
-		days:null,
+      bought: false,
+      days: null
     };
   }
 
   async componentDidMount() {
-	document.title = "66°N - 旅遊詳情";  
-	await fetch(`http://localhost:3001/trips/${this.props.match.params.id}`)
+    document.title = "66°N - 旅遊詳情";
+    await fetch(`http://localhost:3001/trips/${this.props.match.params.id}`)
       .then(
         response => {
           console.log(response);
@@ -42,10 +42,10 @@ class TripDesPage extends Component {
         this.setState({
           carouselImg: JSON.parse(data[0].trip_des2_carousel_img),
           detailData: data,
-			 carouselPlace: data[0].trip_place,
-			 days:data[0].trip_days
+          carouselPlace: data[0].trip_place,
+          days: data[0].trip_days
         });
-		  //   console.log(JSON.parse(data[0].trip_des2_carousel_img))
+        //   console.log(JSON.parse(data[0].trip_des2_carousel_img))
       });
 
     await fetch("http://localhost:3001/trips/place", {
@@ -164,16 +164,15 @@ class TripDesPage extends Component {
   };
 
   render() {
-
-    let {currentUser} = this.props; 
-    if(currentUser){
+    let { currentUser } = this.props;
+    if (currentUser) {
       let obj = { ...currentUser };
       //解構付值obj
       let { user } = obj;
       //複製user
       let uid = { ...user };
       let user_id = uid.u_id;
-      localStorage.setItem('userId', user_id);
+      localStorage.setItem("userId", user_id);
     }
 
     return (
@@ -187,19 +186,18 @@ class TripDesPage extends Component {
           />
         </div>
         <Container>
-		 
-		<div className = 'BreadcrumbCss'>
-        <Link to="/" exact>
-          <h6>首頁</h6>
-        </Link>
-        <span className='Breadsticks'>/</span>
-		  <Link to='/trips/page/1' exact>
-			<h6>旅遊列表</h6>  
-		  </Link>
-        <span className='Breadsticks'>/</span>
-        <h6 className='BreadActive'>旅遊細節</h6>
-		  </div>
-      
+          <div className="BreadcrumbCss">
+            <Link to="/">
+              <h6>首頁</h6>
+            </Link>
+            <span className="Breadsticks">/</span>
+            <Link to="/trips/page/1">
+              <h6>旅遊列表</h6>
+            </Link>
+            <span className="Breadsticks">/</span>
+            <h6 className="BreadActive">旅遊細節</h6>
+          </div>
+
           <div className="purchaseBtnBox" style={{ marginTop: "100px" }}>
             <div className="purchaseBtn" onClick={this.handleAddWish}>
               <Cart className="purchaseBtnImg" />
@@ -208,9 +206,9 @@ class TripDesPage extends Component {
             </div>
           </div>
           <TripDes1 detailData={this.state.detailData} />
-          <TripDes2 detailData={this.state.detailData} days = {this.state.days}/>
+          <TripDes2 detailData={this.state.detailData} days={this.state.days} />
           <div className="purchaseBtnBox">
-            {currentUser && this.state.bought === false ? (
+            {this.state.bought === false ? (
               <div onClick={this.addToCart} className="purchaseBtn">
                 <Cart className="purchaseBtnImg" />
                 <p>加入購物車</p>
