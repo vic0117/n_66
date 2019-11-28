@@ -12,49 +12,34 @@
 
 .sectionCheckOut .categories-container {
   width: 100%;
-  height: 6.5%;
   border-bottom: 1px solid #e8e8e8;
 }
 
-.sectionCheckOut .cartItem {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.sectionCheckOut .card-body {
+  padding: 0 0 0 20px;
 }
 
 .sectionCheckOut .cartItem .itemImg {
-  width: 145px !important;
-  padding: 10px;
+  width: 145px;
+  height: 145px;
 }
 
-.sectionCheckOut .cartItem .card-img-top {
-  width: 100%;
-  height: 6.5%;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.sectionCheckOut .cartItem .itemImg {
-  width: 156px;
-  height: 156px;
-  padding: 10px;
-}
-
-.sectionCheckOut .cartItem .itemImg .card-img-top {
+.sectionCheckOut .cartItem .itemImg img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover !important;
-     object-fit: cover !important;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
-.sectionCheckOut .cartItem .productCategory {
+.sectionCheckOut .productCategory {
   color: #96daf0;
 }
 
-.sectionCheckOut .cartItem .discountPrice {
+.sectionCheckOut .discountPrice {
   color: red;
 }
 
-.sectionCheckOut .cartItem .qtyBtn {
+.sectionCheckOut .qtyBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,16 +58,16 @@
   color: #ababab;
 }
 
-.sectionCheckOut .cartItem .minusBtn {
+.sectionCheckOut .minusBtn {
   margin-left: 20px;
   border-right: none;
 }
 
-.sectionCheckOut .cartItem .plus {
+.sectionCheckOut .plus {
   border-left: none;
 }
 
-.sectionCheckOut .cartItem .counter {
+.sectionCheckOut .counter {
   text-align: center;
   height: 22px;
   width: 50px;
@@ -92,7 +77,7 @@
   padding: 0;
 }
 
-.sectionCheckOut .cartItem .deleteBtn {
+.sectionCheckOut .deleteBtn {
   position: relative;
   width: 16px;
   height: 16px;
@@ -101,7 +86,7 @@
   cursor: pointer;
 }
 
-.sectionCheckOut .cartItem .deleteBtn .slash {
+.sectionCheckOut .deleteBtn .slash {
   position: absolute;
   width: 23px;
   height: 1px;
@@ -112,20 +97,47 @@
   pointer-events: none;
 }
 
-.sectionCheckOut .cartItem .deleteBtn .leftLine {
+.sectionCheckOut .deleteBtn .leftLine {
   top: -1px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.sectionCheckOut .cartItem .deleteBtn .rightLine {
+.sectionCheckOut .deleteBtn .rightLine {
   bottom: -1px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
+.sectionCheckOut .tripCartItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sectionCheckOut .tripCartItem .itemImg {
+  margin: 0;
+  width: 145px;
+  height: 145px;
+}
+
+.sectionCheckOut .tripCartItem .itemImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.sectionCheckOut .tripCartItem .tripType {
+  color: #96daf0;
+}
+
 .sectionCheckOut .orderDetail {
   color: #242a3a;
+  border: 1px solid #eaeaea;
 }
 
 .sectionCheckOut .orderDetail label {

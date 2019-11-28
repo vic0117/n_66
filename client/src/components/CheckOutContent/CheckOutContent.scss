@@ -15,39 +15,29 @@ $secColor: #96daf0;
 
   .categories-container {
     width: 100%;
-    height: 6.5%;
+    // height: 6.5%;
     border-bottom: 1px solid #e8e8e8;
   }
-  .cartItem {
-    display: flex;
-  
+
+  .card-body{
+    padding: 0 0 0 20px;
+  }
+
+  .cartItem{
     .itemImg {
-      width: 145px !important;
-      padding: 10px;
-    }
-      .card-img-top {
+      width: 145px ;
+      height: 145px;
+      // padding: 10px;
+      img{
         width: 100%;
-        height: 6.5%;
-        border-bottom: 1px solid #e8e8e8;
+        height: 100%;
+        object-fit: contain;
+      }
     }
-    
-        
-
-        .itemImg {
-            width: 156px;
-            height: 156px;
-            padding: 10px;
-
-            .card-img-top{
-                width: 100%;
-                height: 100%;
-                object-fit: cover !important;
-            }
-        }
-    
-        .productCategory{
-            color: $secColor;
-        }
+  }
+    .productCategory{
+      color: $secColor;
+    }
 
 
     .discountPrice{
@@ -115,11 +105,33 @@ $secColor: #96daf0;
       transform: rotate(-45deg);
     }
   }
-}
+
+  .tripCartItem{
+    display: flex;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    .itemImg {
+      margin: 0;
+      width: 145px ;
+      height: 145px;
+      // padding: 10px;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .tripType{
+      color: $secColor;
+    }
+  }
+
 
   .orderDetail {
     color: #242a3a;
-
+    border: 1px solid #eaeaea;
     label {
       margin: 0;
       width: 100%;
@@ -129,6 +141,8 @@ $secColor: #96daf0;
       margin-top: 3px;
     }
   }
+
+
 
   .payment-container {
     padding: 0.5rem 1rem 2rem 1rem;
