@@ -30,7 +30,7 @@ class HomeMainCarousel extends React.Component {
       nav1: this.slider1,
       nav2: this.slider2
     });
-
+    
     let slickPrev = document.querySelector(".slick-prev");
     console.log(slickPrev);
     let slickNext = document.querySelector(".slick-next");
@@ -168,10 +168,10 @@ class HomeMainCarousel extends React.Component {
           ref={slider => (this.slider2 = slider)}
           slidesToShow={1}
           swipeToSlide={true}
-          focusOnSelect={true}
+          // focusOnSelect={true}
           speed={900}
-          // autoplay={true}
-          // autoplaySpeed={5000}
+          autoplay={true}
+          autoplaySpeed={5000}
         >
           <div>
             <div className="slider-inner d-flex flex-column justify-content-center align-items-center">

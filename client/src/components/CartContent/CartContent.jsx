@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 
+//images svg
+import cross from './img/cross.svg'
+
 //CSS
 import "./CartContent.css";
 
@@ -271,6 +274,7 @@ class CartContent extends React.Component {
   };
 
   render() {
+    const { currentUser } = this.props
     const { data } = this.props;
     const { tripData } = this.props;
     const { numberOfProducts } = this.props;
@@ -302,122 +306,123 @@ class CartContent extends React.Component {
                 {data === null ? (
                   <div></div>
                 ) : (
-                  data.map((item, i) => (
-                    <div key={i} id={i} className="cartItem">
-                      <div className="itemImg">
-                        <Card.Img
-                          variant="top"
-                          src={
-                            "http://localhost:3000/images/products/" +
-                            item.product_file_name +
-                            "/" +
-                            item.product_img
-                          }
-                        />
-                      </div>
-                      <Card.Body>
-                        <div className="d-flex w-100 flex-column align-items-start">
-                          <h6>
-                            帳篷
-                            <div className="price">{item.product_price}</div>
-                            <div
-                              onClick={() => this.deleteProduct(item.code)}
-                              className="deleteBtn"
-                            >
-                              <div className="slash leftLine"></div>
-                              <div className="slash rightLine"></div>
-                            </div>
-                          </h6>
-                          <div className="title">{item.product_name}</div>
-                          <span>
-                            尺寸:{" "}
-                            <span className="size">{item.product_size}</span>
-                          </span>
-
-                          <div className="quantity">
-                            <span>數量 : </span>
-                            <button
-                              variant="primary"
-                              onClick={() => this.DecreaseQuantity(item.code)}
-                              className="qtyBtn minusBtn"
-                            >
-                              <span>-</span>
-                            </button>
-                            <h5 className="counter">{item.product_amount}</h5>
-                            <button
-                              variant="primary"
-                              onClick={() => this.IncreaseQuantity(item.code)}
-                              className="qtyBtn plus"
-                            >
-                              <span>+</span>
-                            </button>
-                          </div>
+                    data.map((item, i) => (
+                      <div key={i} id={i} className="cartItem" style={{animation: `drop 1s ${0.3*i}s forwards`}}>
+                        <div className="itemImg">
+                          <Card.Img
+                            variant="top"
+                            src={
+                              "http://localhost:3000/images/products/" +
+                              item.product_file_name +
+                              "/" +
+                              item.product_img
+                            }
+                          />
                         </div>
-                        <h3>NT$ {item.product_amount * item.product_price} </h3>
-                      </Card.Body>
-                    </div>
-                  ))
-                )}
+                        <Card.Body>
+                          <div className="d-flex w-100 flex-column align-items-start">
+                            <h6>
+                              帳篷
+                           
+                              <div
+                                onClick={() => this.deleteProduct(item.code)}
+                                className="deleteBtn"
+                              >
+                                <img src={cross} alt={cross}/>
+                              </div>
+                            </h6>
+                            <div className="title">{item.product_name}</div>
+                            <span>
+                              尺寸:{" "}
+                              <span className="size">{item.product_size}</span>
+                            </span>
+
+                            <div className="quantity">
+                              <span>數量 : </span>
+                              <button
+                                variant="primary"
+                                onClick={() => this.DecreaseQuantity(item.code)}
+                                className="qtyBtn minusBtn"
+                              >
+                                <span>-</span>
+                              </button>
+                              <h5 className="counter">{item.product_amount}</h5>
+                              <button
+                                variant="primary"
+                                onClick={() => this.IncreaseQuantity(item.code)}
+                                className="qtyBtn plus"
+                              >
+                                <span>+</span>
+                              </button>
+                              <span> X </span>
+                              <h6 className="price">{item.product_price}</h6>
+                              <h5 className="ml-auto">NT$ {item.product_amount * item.product_price} </h5>
+                            </div>
+                          </div>
+                        </Card.Body>
+                      </div>
+                    ))
+                  )}
                 {tripData === null ? (
                   <div></div>
                 ) : (
-                  tripData.map((item, i) => (
-                    <div key={i} id={i} className="cartItem">
-                      <div className="itemImg">
-                        <Card.Img
-                          variant="top"
-                          src={"http://localhost:3000/images/" + item.trip_img}
-                        />
-                      </div>
-                      <Card.Body>
-                        <div className="d-flex w-100 flex-column align-items-start">
-                          <h6>
-                            <div className="">{item.trip_country}</div>
-                            <div className="">{item.trip_type}</div>
-                            <div className="price">{item.trip_price}</div>
-
-                            <div
-                              onClick={() => this.deleteTrip(item.code)}
-                              className="deleteBtn"
-                            >
-                              <div className="slash leftLine"></div>
-                              <div className="slash rightLine"></div>
-                            </div>
-                          </h6>
-                          <div className="title">{item.trip_name}</div>
-                          <span className="d-flex">
-                            <span className="size ml-0">
-                              {item.trip_duration} 天
-                            </span>
-                            <span className="size">{item.trip_start_date}</span>
-                            <span>~</span>
-                            <span className="size">{item.trip_end_date}</span>
-                          </span>
-
-                          <div className="quantity">
-                            <span>數量 : </span>
-                            <button
-                              variant="primary"
-                              onClick={() => this.DecreaseTrip(item.code)}
-                              className="qtyBtn minusBtn"
-                            >
-                              <span>-</span>
-                            </button>
-                            <h5 className="counter">{item.trip_amount}</h5>
-                            <button
-                              variant="primary"
-                              onClick={() => this.IncreaseTrip(item.code)}
-                              className="qtyBtn plus"
-                            >
-                              <span>+</span>
-                            </button>
-                          </div>
+                    tripData.map((item, i) => (
+                      <div key={i} id={i} className="cartItem">
+                        <div className="itemImg">
+                          <Card.Img
+                            variant="top"
+                            src={"http://localhost:3000/images/" + item.trip_img}
+                          />
                         </div>
-                        <h3>NT$ {item.trip_amount * item.trip_price} </h3>
-                      </Card.Body>
-                    </div>
-                  ))
-                )}
+                        <Card.Body>
+                          <div className="d-flex w-100 flex-column align-items-start">
+                            <h6>
+                              <div className="">{item.trip_country}</div>
+                              <div className="">{item.trip_type}</div>
+                              <div className="price">{item.trip_price}</div>
+
+                              <div
+                                onClick={() => this.deleteTrip(item.code)}
+                                className="deleteBtn"
+                              >
+                                <div className="slash leftLine"></div>
+                                <div className="slash rightLine"></div>
+                              </div>
+                            </h6>
+                            <div className="title">{item.trip_name}</div>
+                            <span className="d-flex">
+                              <span className="size ml-0">
+                                {item.trip_duration} 天
+                            </span>
+                              <span className="size">{item.trip_start_date}</span>
+                              <span>~</span>
+                              <span className="size">{item.trip_end_date}</span>
+                            </span>
+
+                            <div className="quantity">
+                              <span>數量 : </span>
+                              <button
+                                variant="primary"
+                                onClick={() => this.DecreaseTrip(item.code)}
+                                className="qtyBtn minusBtn"
+                              >
+                                <span>-</span>
+                              </button>
+                              <h5 className="counter">{item.trip_amount}</h5>
+                              <button
+                                variant="primary"
+                                onClick={() => this.IncreaseTrip(item.code)}
+                                className="qtyBtn plus"
+                              >
+                                <span>+</span>
+                              </button>
+                            </div>
+                          </div>
+                          <h3>NT$ {item.trip_amount * item.trip_price} </h3>
+                        </Card.Body>
+                      </div>
+                    ))
+                  )}
               </Col>
               <Col md={4}>
                 <div className="userCard">
@@ -438,8 +443,8 @@ class CartContent extends React.Component {
                   {data === null && tripData == null ? (
                     <div></div>
                   ) : (
-                    <h2>總價: {this.props.totalCost}</h2>
-                  )}
+                      <h2>總價: {this.props.totalCost}</h2>
+                    )}
                 </Col>
               }
             </Row>

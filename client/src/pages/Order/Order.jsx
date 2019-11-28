@@ -9,7 +9,8 @@ class Order extends Component {
   render() {
     return (
       <>
-        <NavBar 
+        <NavBar
+          currentUser={this.props.currentUser} 
           numberOfProducts={this.props.numberOfProducts}
           changeNumOfProduct={this.props.changeNumOfProduct}
         />

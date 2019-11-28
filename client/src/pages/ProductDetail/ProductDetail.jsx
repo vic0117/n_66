@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
+import ProductCarousel from "../../components/productCarousel/ProductCarousel";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -83,6 +83,17 @@ class ProductDetail extends React.Component {
 
   render() {
     const { numberOfProducts } = this.props.numberOfProducts;
+    let {currentUser} = this.props; 
+    if(currentUser){
+      let obj = { ...currentUser };
+      //解構付值obj
+      let { user } = obj;
+      //複製user
+      let uid = { ...user };
+      let user_id = uid.u_id;
+      localStorage.setItem('userId', user_id);
+    }
+    
     return (
       <>
         <NavBar
@@ -91,6 +102,7 @@ class ProductDetail extends React.Component {
           changeNumOfProduct={this.changeNumOfProduct}
         />
         <ProductCarousel
+          currentUser={this.props.currentUser}
           data={this.state.ProductsDetail}
           pics={this.state.Pictures}
           numberOfProducts={this.props.numberOfProducts}

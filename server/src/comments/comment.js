@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 const db = mysql.createConnection({
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
   password: "root",
