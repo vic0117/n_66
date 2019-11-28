@@ -164,6 +164,18 @@ class TripDesPage extends Component {
   };
 
   render() {
+
+    let {currentUser} = this.props; 
+    if(currentUser){
+      let obj = { ...currentUser };
+      //解構付值obj
+      let { user } = obj;
+      //複製user
+      let uid = { ...user };
+      let user_id = uid.u_id;
+      localStorage.setItem('userId', user_id);
+    }
+
     return (
       <div>
         <TripDesNav detailData={this.state.detailData} />
@@ -198,7 +210,7 @@ class TripDesPage extends Component {
           <TripDes1 detailData={this.state.detailData} />
           <TripDes2 detailData={this.state.detailData} days = {this.state.days}/>
           <div className="purchaseBtnBox">
-            {this.state.bought === false ? (
+            {currentUser && this.state.bought === false ? (
               <div onClick={this.addToCart} className="purchaseBtn">
                 <Cart className="purchaseBtnImg" />
                 <p>加入購物車</p>
