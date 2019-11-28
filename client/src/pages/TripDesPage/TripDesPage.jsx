@@ -27,7 +27,7 @@ class TripDesPage extends Component {
   }
 
   async componentDidMount() {
-	document.title = `旅遊細節${this.props.match.params.id}`    
+	document.title = "66°N - 旅遊詳情";  
 	await fetch(`http://localhost:3001/trips/${this.props.match.params.id}`)
       .then(
         response => {
