@@ -80,7 +80,7 @@ class App extends Component {
   }
 
   changeNumOfProduct = num => {
-    if(num === "0") num = "";
+    if (num === "0") num = "";
     this.setState({ numberOfProducts: num });
   };
 

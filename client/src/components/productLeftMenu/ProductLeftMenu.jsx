@@ -10,13 +10,12 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "./../TripLeftMenu/SliderPrice";
-import ReactDOM from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-
+import search from "../../components/TripLeftmenu/images/search.svg";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from '../TripLeftmenu/SliderPrice';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import $ from "jquery";
 
 //IMAGES

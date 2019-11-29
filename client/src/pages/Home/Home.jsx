@@ -26,27 +26,31 @@ class Home extends Component {
   }
   render() {
     const { currentUser, comments, ratingAvg } = this.props;
+    console.log(currentUser);
     return (
       <>
-        <div
-          className="MessageButton"
-          onClick={() => this.setState({ system: !this.state.system })}
-        >
-          <img src={message} alt="message" />
-        </div>
-        <div
-          className={
-            this.state.system ? " messageIn" : "messageInOpen messageIn"
-          }
-        >
-          <Chat />
-        </div>
+        {currentUser && (
+          <>
+            <div
+              className="MessageButton"
+              onClick={() => this.setState({ system: !this.state.system })}
+            >
+              <img src={message} alt="message" />
+            </div>
+            <div
+              className={
+                this.state.system ? " messageIn" : "messageInOpen messageIn"
+              }
+            >
+              <Chat />
+            </div>
+          </>
+        )}
         <HomeNavBar
           currentUser={currentUser}
           numberOfProducts={this.props.numberOfProducts}
         />
-        <HomeMainCarousel comments={comments}
-          ratingAvg={ratingAvg} />
+        <HomeMainCarousel comments={comments} ratingAvg={ratingAvg} />
         <HomeFilter
           HomeSelect1={this.props.HomeSelect1}
           HomeSelect2={this.props.HomeSelect2}
