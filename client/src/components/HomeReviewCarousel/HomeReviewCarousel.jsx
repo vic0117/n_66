@@ -25,8 +25,8 @@ class HomeReviewCarousel extends React.Component {
             infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
-            // autoplay: true,
-            autoplaySpeed: 2500,
+            autoplay: true,
+            autoplaySpeed: 3000,
             dots: false,
             speed: 800,
         };
@@ -39,8 +39,8 @@ class HomeReviewCarousel extends React.Component {
             slidesToScroll: 1,
             vertical: true,
             verticalSwiping: true,
-            // autoplay: true,
-            // autoplaySpeed: 1000,
+            autoplay: true,
+            autoplaySpeed: 3000,
             dots: false,
             speed: 800,
         };

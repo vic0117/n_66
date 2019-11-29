@@ -202,12 +202,12 @@
 
 @media screen and (max-width: 992px) {
   .SectionReviewCarousel {
-    margin-bottom: 0 !important;
+    margin-bottom: 200px !important;
   }
   .SectionReviewCarousel .BlueBlock {
     width: 100% !important;
     top: 30% !important;
-    height: 650px !important;
+    height: 600px !important;
   }
   .SectionReviewCarousel .SmallSlide {
     display: none !important;
