@@ -17,15 +17,16 @@ class Comment extends Component {
     pageSize: 10, // 每頁幾筆
     currentPage: 1,
     comments: [],
-    ratingAvg: ""
+    ratingAvg: "",
+    liked: false,
+    likedAmount: 0
   };
 
   componentDidMount() {
     document.title = "66°N - 客戶評論";
 
-    let body = document.querySelector('body');
-    body.style.overflowY ='auto';
-
+    let body = document.querySelector("body");
+    body.style.overflowY = "auto";
 
     fetch("http://localhost:3001/comments")
       .then(
@@ -76,10 +77,22 @@ class Comment extends Component {
     this.setState({ currentPage: page });
   };
 
+  handleLike = async comment => {
+    console.log(comment);
+    let liked = this.state.liked;
+    let likedAmount = this.state.likedAmount;
+    const comments = [...this.state.comments];
+    const index = comments.indexOf(comment);
+    // comments[index].liked = !comments[index].liked;
+    await this.setState({ liked: !liked, likedAmount: likedAmount + 1 });
+  };
+
   render() {
     const { length: count } = this.state.comments;
     const { currentUser } = this.props;
     const {
+      liked,
+      likedAmount,
       pageSize,
       currentPage,
       comments: allComments,
@@ -177,7 +190,12 @@ class Comment extends Component {
                 <CommentFilterBox selectComments={this.selectComments} />
               </div>
               <div className="mt-4">
-                <CommentList comments={comments} />
+                <CommentList
+                  comments={comments}
+                  onClick={this.handleLike}
+                  liked={liked}
+                  likedAmount={likedAmount}
+                />
                 <div className="d-flex justify-content-center">
                   <Pagination
                     itemsCount={count}
