@@ -15,7 +15,7 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 import "./TripMenuPage.scss";
-import TripLeftMenu from '../../components/TripLeftmenu/TripLeftMenu';
+
 
 class TripMenuPage extends Component {
   constructor(props) {
