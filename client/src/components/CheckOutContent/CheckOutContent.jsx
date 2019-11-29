@@ -321,7 +321,7 @@ class CheckOutContent extends React.Component {
               </div>
               <div
                 className=" py-3"
-                style={{ borderBottom: "1px solid #E8E8E8" }}
+                // style={{ borderBottom: "1px solid #E8E8E8" }}
               >
                 {productsToBuy === null ? (
                   <div></div>
@@ -404,7 +404,7 @@ class CheckOutContent extends React.Component {
                             <span className="size ml-3">
                               {item.trip_start_date}
                             </span>
-                            <span>~</span>
+                            <span className="mx-2">~</span>
                             <span className="size">{item.trip_end_date}</span>
                           </span>
                           <div className="d-flex w-100 quantity">
@@ -433,7 +433,8 @@ class CheckOutContent extends React.Component {
                   ""
                 ) : (
                   <DropdownButton
-                    id="dropdown-basic-button"
+                    className=""
+                    id="couponDropdown"
                     title={
                       this.state.useCouponName === "原價購買"
                         ? "使用折價卷"
@@ -455,17 +456,17 @@ class CheckOutContent extends React.Component {
               </div>
 
               {/* ---------------------------------------------------------------------- */}
-              <div className="d-flex mt-2">
-                <div style={{ flex: 2 }}></div>
-                <div style={{ flex: 3 }}>運費</div>
+              <div className="d-flex mt-2" style={{ borderTop: '1px solid #e8e8e8' }}>
+                {/* <div style={{ flex: 2 }}></div> */}
+                <div >運費</div>
                 <div className="text-right" style={{ flex: 1 }}>
                   NT$ {this.state.Freight}
                 </div>
                 {/* <div style={{ flex: 1 }}></div> */}
               </div>
               <div className="d-flex mt-1">
-                <div style={{ flex: 2 }}></div>
-                <div style={{ flex: 3 }}>合計</div>
+                {/* <div style={{ flex: 2 }}></div> */}
+                <div >合計</div>
                 <h5 className="text-right" style={{ flex: 1 }}>
                   {this.state.useCouponDiscount === 0
                     ? `NT$ ${totalCost + this.state.Freight}`
@@ -475,26 +476,37 @@ class CheckOutContent extends React.Component {
             </Col>
             <Col className="orderDetail-container" lg={4}>
               <div className="orderDetail ">
-                <div >
+                <div className="delivery-method">
                   <div className="m-2">
-                    <div className="mb-1">送貨資訊</div>
-                    <div className="font-size-14">
-                      {userInformation.last_name_zh}
-                      {userInformation.first_name_zh}
+                    <h5 className="mb-2">送貨資訊</h5>
+                    <div className="font-size-14 d-flex">
+                      姓名: 
+                      <span className="ml-3 d-block">
+                        {userInformation.last_name_zh}
+                        {userInformation.first_name_zh}
+                      </span>  
                     </div>
-                    <div className="font-size-14">{userInformation.email}</div>
-                    <div className="font-size-14">
-                      {userInformation.address}
+                    <div className="font-size-14 d-flex">
+                      帳號:  
+                      <span className="ml-3 d-block">
+                        {userInformation.email}
+                      </span>
+                    </div>
+                    <div className="font-size-14 d-flex">
+                      地址:  
+                      <span className="ml-3 d-block">
+                        {userInformation.address}
+                      </span> 
                     </div>
                     <a className="font-size-14" href="/account">
                       修改送貨資訊
                     </a>
                   </div>
-                  <div className="m-2 mt-3 d-flex time-method">
+                  <div className="m-2 d-flex time-method">
                     <div>
                       <div className="mb-1">運送方式</div>
-                      <div className="form-check">
-                        <div>
+                      <div className="form-check p-0">
+                        <div className="d-flex">
                           <input
                             onChange={() => this.pickUp(30)}
                             className="pickUpRadios"
@@ -511,7 +523,7 @@ class CheckOutContent extends React.Component {
                             超商取貨
                           </label>
                         </div>
-                        <div>
+                        <div className="d-flex">
                           <input
                             onChange={() => this.pickUp(60)}
                             className="pickUpRadios"
@@ -583,10 +595,12 @@ class CheckOutContent extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="checkout-btn d-flex">
-                  <button onClick={this.CheckOut} className="mx-auto mb-3">
-                    確認結帳
-                  </button>
+                <div className="checkout-btn-container d-flex">
+                  <div onClick={this.CheckOut} className="checkout-btn mx-auto mb-3">
+                    
+                    <div className="mask"></div>
+                    <div className="font">確認結帳</div>
+                  </div>
                 </div>
               </div>
             </Col>

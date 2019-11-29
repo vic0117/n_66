@@ -15,6 +15,10 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
+
+    let body = document.querySelector('body');
+    body.style.overflowY ='auto';
+
     // console.log(`http://localhost:3001/products/${this.props.match.params.id}`)
     fetch(`http://localhost:3001/products/${this.props.match.params.id}`)
       .then(response => {

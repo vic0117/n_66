@@ -20,7 +20,7 @@ class Footer extends Component {
   }
   render() {
     return (
-      <div style={{marginTop:'70px'}}>
+      <div>
         <Row>
           <div className="mountainBox">
             <Parallax pages={1.2} ref={ref => (this.parallax = ref)}>

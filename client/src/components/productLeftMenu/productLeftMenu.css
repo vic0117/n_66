@@ -250,6 +250,10 @@
   text-align: center;
 }
 
+.ProductLeftMenuContainer .card-container .product-card .card-body .brand {
+  color: #ccc;
+}
+
 .ProductLeftMenuContainer .product-filter-menu {
   width: 100vw;
   height: 100vh;

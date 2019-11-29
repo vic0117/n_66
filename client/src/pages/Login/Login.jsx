@@ -253,6 +253,10 @@ class Login extends React.Component {
 
   componentDidMount() {
     document.title = "66°N - 登入";
+
+    // let body = document.querySelector('body');
+    // body.style.overflowY ='auto';
+
     // JS DOM control
     let wantSignUp = false;
 

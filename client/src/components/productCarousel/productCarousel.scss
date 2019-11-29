@@ -174,7 +174,7 @@ $secColor: #96DAF0;
             margin: 0 auto 20px;
             color: #fff;
             width: 220px;
-            background-color: $primaryColor;
+            background-color: $secColor;
             text-align: center;
             line-height: 44px;
             border: none;
@@ -182,7 +182,7 @@ $secColor: #96DAF0;
             cursor: pointer;
             
             &:focus{
-                background-color: $primaryColor;
+                background-color: $secColor;
                 border: none;
                 outline: none;
                 box-shadow: none;
@@ -194,13 +194,14 @@ $secColor: #96DAF0;
         }
 
         .addToCartBtn{
+            
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0 auto 20px;
             color: #fff;
             width: 220px;
-            background-color: $secColor;
+            background-color: $primaryColor;
             text-align: center;
             line-height: 44px;
             border: none;
