@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import ProductCarousel from './../../components/productCarousel/ProductCarousel';
+import ProductCarousel from './../../components/ProductCarousel/ProductCarousel';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
