@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import ProductCarousel from './../../components/productCarousel/ProductCarousel';
+import ProductCarousel from './../../components/ProductCarousel/ProductCarousel';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -15,6 +15,10 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
+
+    let body = document.querySelector('body');
+    body.style.overflowY ='auto';
+
     // console.log(`http://localhost:3001/products/${this.props.match.params.id}`)
     fetch(`http://localhost:3001/products/${this.props.match.params.id}`)
       .then(response => {

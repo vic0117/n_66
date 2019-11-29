@@ -105,6 +105,9 @@ class DashBoard extends Component {
   async componentDidMount() {
     document.title = "66°N - 客戶專區";
 
+    let body = document.querySelector('body');
+    body.style.overflowY ='auto';
+
     // server
 
     let config = {

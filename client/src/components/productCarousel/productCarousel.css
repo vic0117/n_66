@@ -181,7 +181,7 @@
   margin: 0 auto 20px;
   color: #fff;
   width: 220px;
-  background-color: #242A3A;
+  background-color: #96DAF0;
   text-align: center;
   line-height: 44px;
   border: none;
@@ -189,7 +189,7 @@
 }
 
 .ProductCarousel .detailCard .wishBtn:focus {
-  background-color: #242A3A;
+  background-color: #96DAF0;
   border: none;
   outline: none;
   -webkit-box-shadow: none;
@@ -213,7 +213,7 @@
   margin: 0 auto 20px;
   color: #fff;
   width: 220px;
-  background-color: #96DAF0;
+  background-color: #242A3A;
   text-align: center;
   line-height: 44px;
   border: none;
@@ -325,4 +325,4 @@
     margin: 0 !important;
   }
 }
-/*# sourceMappingURL=productCarousel.css.map */
+/*# sourceMappingURL=ProductCarousel.css.map */
