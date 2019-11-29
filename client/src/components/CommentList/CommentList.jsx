@@ -6,7 +6,9 @@ import "./CommentList.css";
 
 class CommentList extends Component {
   render() {
-    const { comments } = this.props;
+    let classes = "fa fa-thumbs-o-up";
+    const { comments, liked, likedAmount, onClick } = this.props;
+    if (liked) classes = "fa fa-thumbs-up";
     return (
       <>
         {comments.map(comment => (
@@ -41,7 +43,7 @@ class CommentList extends Component {
                 <p className="mt-2 mb-4 comment-text">{comment.reviews}</p>
               </div>
 
-              <div className="comment-btn-outer-container">
+              <div className="comment-btn-outer-container d-flex">
                 <div className="mt-auto comment-btn-container">
                   <Link
                     to={`/trips/page/1?place=${comment.trip_country}&type=活動與主題&month=出發月份&search=`}
@@ -51,6 +53,18 @@ class CommentList extends Component {
                       我們的{comment.trip_country}之旅
                     </span>
                   </Link>
+                </div>
+                <div className="ml-auto">
+                  <i
+                    class={classes}
+                    // class="fa fa-thumbs-o-up"
+                    aria-hidden="true"
+                    onClick={() => onClick(comment.c_id)}
+                    style={{
+                      cursor: "pointer"
+                    }}
+                  />
+                  <spna>{likedAmount}</spna>
                 </div>
               </div>
             </Row>
