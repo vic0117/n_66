@@ -150,7 +150,7 @@ class HomeTravelCarousel extends React.Component {
             slidesToShow: 4,
             slidesToScroll: 3,
             autoplay: true,
-            autoplaySpeed: 5000,
+            autoplaySpeed: 3000,
             cssEase: 'cubic-bezier(.6,-0.55,0,1.01)',
             responsive: [
                 {
@@ -195,7 +195,8 @@ class HomeTravelCarousel extends React.Component {
             slidesToScroll: 3,
             vertical: true,
             verticalSwiping: true,
-            autoplaySpeed: 5000,
+            // autoplay: true,
+            // autoplaySpeed: 5000,
             beforeChange: function (currentSlide, nextSlide) {
                 // console.log("before change", currentSlide, nextSlide);
             },

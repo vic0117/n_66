@@ -2,6 +2,12 @@ $primaryColor: #242a3a;
 $secColor: #96daf0;
 //common
 
+.categories-outer-container{
+  // margin: 0 30px 0 0 ;
+  // width: 80%;
+  padding-right: 80px;
+} 
+
 .dealSuccess {
   margin-top: 200px;
 }
@@ -152,7 +158,7 @@ $secColor: #96daf0;
 
     .dropdown-item{
       text-align: center;
-      transition: .3s;
+      // transition: .3s;
       &:hover{
         background-color: $primaryColor;
         color: #fff;
@@ -163,7 +169,7 @@ $secColor: #96daf0;
 
   .orderDetail {
     color: #242a3a;
-    border: 1px solid #eaeaea;
+    // border: 1px solid #eaeaea;
     display: block !important;
     label {
       margin: 0;
@@ -172,6 +178,11 @@ $secColor: #96daf0;
     }
     input {
       margin-top: 3px;
+    }
+
+    .delivery-method{
+      border: 1px solid #e8e8e8;
+      padding: 20px;
     }
   }
 
@@ -280,6 +291,13 @@ $secColor: #96daf0;
   }
 
   @media (max-width: 992px) {
+
+    .categories-outer-container{
+      // margin: 0 30px 0 0 ;
+      // width: 80%;
+      padding-right: 15px;
+    } 
+
     .categories-outer-container {
       width: 90%;
       margin: auto;
