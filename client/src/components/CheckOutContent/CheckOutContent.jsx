@@ -404,7 +404,7 @@ class CheckOutContent extends React.Component {
                             <span className="size ml-3">
                               {item.trip_start_date}
                             </span>
-                            <span>~</span>
+                            <span className="mx-2">~</span>
                             <span className="size">{item.trip_end_date}</span>
                           </span>
                           <div className="d-flex w-100 quantity">
