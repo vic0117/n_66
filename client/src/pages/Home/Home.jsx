@@ -20,6 +20,9 @@ class Home extends Component {
   };
   componentDidMount() {
     document.title = "66°N - 首頁";
+
+    let body = document.querySelector('body');
+    body.style.overflowY ='auto';
   }
   render() {
     const { currentUser, comments, ratingAvg } = this.props;

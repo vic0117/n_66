@@ -223,6 +223,7 @@ class ProductCarousel extends React.Component {
                           <a
                             href="/cart"
                             className="addToCartBtn mx-auto"
+                            style={{'text-decoration': 'none'}}
                           >
                             去結帳
                         </a>

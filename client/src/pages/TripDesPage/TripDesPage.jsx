@@ -28,6 +28,10 @@ class TripDesPage extends Component {
 
   async componentDidMount() {
     document.title = "66°N - 旅遊詳情";
+
+    // let body = document.querySelector('body');
+    // body.style.overflowY ='auto';
+
     await fetch(`http://localhost:3001/trips/${this.props.match.params.id}`)
       .then(
         response => {

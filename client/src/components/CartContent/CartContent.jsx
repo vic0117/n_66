@@ -379,9 +379,8 @@ class CartContent extends React.Component {
                         <div className="d-flex w-100 flex-column align-items-start">
                           <h6>
                             <div className="">{item.trip_country}</div>
-                            <div className="">{item.trip_type}</div>
-                            <div className="price">{item.trip_price}</div>
-
+                            <div className="ml-5">{item.trip_type}</div>
+                            {/* <div className="price">{item.trip_price}</div> */}
                             <div
                               onClick={() => this.deleteTrip(item.code)}
                               className="deleteBtn"
@@ -391,11 +390,11 @@ class CartContent extends React.Component {
                           </h6>
                           <div className="title">{item.trip_name}</div>
                           <span className="d-flex">
-                            <span className=" ml-0">
+                            <span className=" mr-3">
                               {item.trip_duration} 天
                             </span>
-                            <span className="">{item.trip_start_date}</span>
-                            <span>~</span>
+                            <span >{item.trip_start_date}</span>
+                            <span className="mx-2">~</span>
                             <span className="">{item.trip_end_date}</span>
                           </span>
 
@@ -438,11 +437,16 @@ class CartContent extends React.Component {
                 <div className="userCard">
                   {/* <p>@123gmail.com</p> */}
                   <Link className="toList" to="/products">
-                    繼續逛逛
+                    
+                    <div className="mask"></div>
+                    <div className="font">繼續逛逛</div>
                   </Link>
-                  <Button onClick={this.toCheckOut} className="checkOut">
-                    我要結帳
-                  </Button>
+                  <div onClick={this.toCheckOut} className="checkOut">
+                    
+                    <div className="mask"></div>
+                    <div className="font">我要結帳</div>
+                  </div>
+                  
                 </div>
               </Col>
             </Row>

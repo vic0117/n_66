@@ -7,6 +7,12 @@ import MemberWishList from "../../component/MemberWishList/MemberWishList";
 import "./WishList.css";
 class WishList extends Component {
   state = {};
+
+  componentDidMount() {
+    // let body = document.querySelector('body');
+    // body.style.overflowY ='auto';
+  }
+
   render() {
     return (
       <>
