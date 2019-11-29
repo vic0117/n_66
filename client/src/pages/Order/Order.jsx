@@ -6,6 +6,12 @@ import MemberOrderList from "../../component/MemberOrderList/MemberOrderList";
 import "./Order.css";
 class Order extends Component {
   state = {};
+
+  componentDidMount() {
+    // let body = document.querySelector('body');
+    // body.style.overflowY ='auto';
+  }
+
   render() {
     return (
       <>

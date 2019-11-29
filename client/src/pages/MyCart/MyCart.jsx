@@ -18,6 +18,9 @@ class MyCart extends React.Component {
   componentDidMount() {
     document.title = "66°N - 我的購物車";
 
+    // let body = document.querySelector('body');
+    // body.style.overflowY ='auto';
+
     const productsToBuy =
       JSON.parse(localStorage.getItem("productsToBuy")) || [];
     const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
