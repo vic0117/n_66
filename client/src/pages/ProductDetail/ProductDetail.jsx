@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import ProductCarousel from './../../components/productCarousel/ProductCarousel';
+import ProductCarousel from './../../components/ProductCarousel/ProductCarousel';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -10,7 +10,8 @@ class ProductDetail extends React.Component {
     this.state = {
       ProductsDetail: [],
       Pictures: [],
-      numberOfProducts: ""
+      numberOfProducts: "",
+      relatedProducts: []
     };
   }
 
@@ -26,19 +27,21 @@ class ProductDetail extends React.Component {
         // return console.log(response);
       })
       .then(json => {
-        console.log(json);
-        let picsJsonString = json[0].product_pictures;
+        // console.log(json);
+        let picsJsonString = json.results[0].product_pictures;
         // console.log(picsJsonString);
         let picArray = JSON.parse(picsJsonString);
         // console.log(picArray)
-
+        let relatedProducts = json.relatedProducts;
+        console.log(relatedProducts)
         this.setState(
           {
-            ProductsDetail: json,
-            Pictures: picArray
+            ProductsDetail: json.results,
+            Pictures: picArray,
+            relatedProducts: relatedProducts
           },
           function() {
-            console.log(this.state);
+            // console.log(this.state);
           }
         );
       });
@@ -109,6 +112,7 @@ class ProductDetail extends React.Component {
           currentUser={this.props.currentUser}
           data={this.state.ProductsDetail}
           pics={this.state.Pictures}
+          relatedProducts={this.state.relatedProducts}
           numberOfProducts={this.props.numberOfProducts}
           changeNumOfProduct={this.props.changeNumOfProduct}
           addWish={this.handelAddWish}

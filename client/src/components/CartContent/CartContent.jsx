@@ -39,11 +39,16 @@ class CartContent extends React.Component {
           productsArray.splice(productsArray.indexOf(item), 1);
         }
 
-        let subCost = item.product_amount * item.product_price;
-        totalCost += subCost;
+        // let subCost = item.product_amount * item.product_price;
+        // totalCost += subCost;
       });
 
-      console.log(productsArray);
+     
+        productsArray.forEach(item => {
+          let subCost = item.product_amount * item.product_price;
+          totalCost += subCost;
+        });
+      
     }
 
     if (tripsArray) {
@@ -53,14 +58,16 @@ class CartContent extends React.Component {
       });
     }
 
-    totalCost = JSON.stringify(totalCost);
-    localStorage.setItem("totalCost", totalCost);
-
-    this.props.countTotalCost(totalCost);
-    this.props.delete(productsArray);
+    this.props.countProducts(productsArray);
     this.props.changeNumOfProduct(
       JSON.stringify(productsArray.length + tripsArray.length)
-    );
+      );
+      
+      console.log(totalCost)
+    this.props.countTotalCost(totalCost);
+
+    totalCost = JSON.stringify(totalCost);
+    localStorage.setItem("totalCost", totalCost);
 
     productsArray = JSON.stringify(productsArray);
     localStorage.setItem("productsToBuy", productsArray);
