@@ -16,7 +16,6 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 import "./TripMenuPage.scss";
 
-
 class TripMenuPage extends Component {
   constructor(props) {
     super(props);
@@ -62,8 +61,8 @@ class TripMenuPage extends Component {
   componentDidMount() {
     document.title = "66°N - 旅遊行程";
 
-    let body = document.querySelector('body');
-    body.style.overflowY ='auto';
+    let body = document.querySelector("body");
+    body.style.overflowY = "auto";
 
     const { place, type, month, search, difficulty } = queryString.parse(
       this.props.location.search
