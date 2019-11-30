@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 // Components
 import CommentHeader from "./../../components/CommentHeader/CommentHeader";
 import CommentFilterBox from "../../components/CommentFilterBox/CommentFilterBox";
@@ -17,9 +19,7 @@ class Comment extends Component {
     pageSize: 10, // 每頁幾筆
     currentPage: 1,
     comments: [],
-    ratingAvg: "",
-    liked: false,
-    likedAmount: 0
+    ratingAvg: ""
   };
 
   componentDidMount() {
@@ -31,7 +31,6 @@ class Comment extends Component {
     fetch("http://localhost:3001/comments")
       .then(
         response => {
-          console.log(response);
           return response.json();
         },
         error => {
@@ -39,11 +38,23 @@ class Comment extends Component {
         }
       )
       .then(data => {
+        // 評論數量
         let ratingLength = data.length;
         let totalRating = 0;
-        data.forEach(d => console.log((totalRating += +d.rating)));
+        data.forEach(d => (totalRating += +d.rating));
         let ratingAvg = (totalRating / ratingLength).toFixed(1);
-        this.setState({ comments: data, ratingAvg });
+
+        // 將 likedAmount轉為物件
+        let likedAmountJson = data.map(d => JSON.parse(d.likedAmount));
+
+        for (let i = 0; i < data.length; i++) {
+          data[i].likedAmount = likedAmountJson[i];
+        }
+
+        this.setState({
+          comments: data,
+          ratingAvg
+        });
       });
   }
 
@@ -78,21 +89,37 @@ class Comment extends Component {
   };
 
   handleLike = async comment => {
-    console.log(comment);
-    let liked = this.state.liked;
-    let likedAmount = this.state.likedAmount;
-    const comments = [...this.state.comments];
-    const index = comments.indexOf(comment);
+    // const comments = [...this.state.comments];
+    // const index = comments.indexOf(comment);
     // comments[index].liked = !comments[index].liked;
-    await this.setState({ liked: !liked, likedAmount: likedAmount + 1 });
+    // await this.setState({ comments });
+    // console.log("comment", comment.c_id);
+    if (this.props.currentUser) {
+      // server
+      const { data } = await axios.put(
+        "http://localhost:3001/comments/liked/" + comment.c_id,
+        { u_id: this.props.currentUser.user.u_id }
+      );
+
+      const {
+        data: likedNum
+      } = await axios.get(
+        "http://localhost:3001/comments/likedAmount/" + comment.c_id,
+        { u_id: this.props.currentUser.user.u_id }
+      );
+      const comments = [...this.state.comments];
+      const index = comments.indexOf(comment);
+      comments[index].likedAmount = JSON.parse(likedNum);
+      await this.setState({ comments });
+    } else {
+      toast.error("請先登入或註冊為會員");
+    }
   };
 
   render() {
     const { length: count } = this.state.comments;
     const { currentUser } = this.props;
     const {
-      liked,
-      likedAmount,
       pageSize,
       currentPage,
       comments: allComments,
@@ -193,8 +220,7 @@ class Comment extends Component {
                 <CommentList
                   comments={comments}
                   onClick={this.handleLike}
-                  liked={liked}
-                  likedAmount={likedAmount}
+                  currentUser={currentUser}
                 />
                 <div className="d-flex justify-content-center">
                   <Pagination
@@ -208,7 +234,7 @@ class Comment extends Component {
             </Col>
           </Row>
         </div>
-
+        <ToastContainer autoClose={1500} />
         <Footer />
       </>
     );
