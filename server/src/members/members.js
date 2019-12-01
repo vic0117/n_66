@@ -177,7 +177,7 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
             res.json(data);
           } else {
             data.success = false;
-            data.msg.text = "修改失敗";
+            data.msg.text = "密碼沒有修改";
             res.json(data);
           }
         });
