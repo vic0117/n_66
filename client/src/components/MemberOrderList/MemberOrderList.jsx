@@ -22,7 +22,6 @@ class MemberOrderList extends Component {
   };
 
   getModal = value => {
-    console.log(value);
     let key_to_update = {};
     key_to_update[value] = true;
     this.setState({

@@ -8,7 +8,7 @@ const db = mysql.createConnection({
   // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 
@@ -71,9 +71,9 @@ router.post("/products/add_wishlist", (req, res) => {
       if (error) throw error;
       if (results.affectedRows === 1) {
         data.success = true;
-        data.msg.text = "已加入願望清單";
+        data.msg.text = "已加入我的收藏";
       } else {
-        data.msg.text = "沒有加入願望清單";
+        data.msg.text = "沒有加入我的收藏";
       }
       res.json(data);
     }

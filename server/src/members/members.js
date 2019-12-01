@@ -11,7 +11,7 @@ const db = mysql.createConnection({
   // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 
@@ -177,7 +177,7 @@ router.post("/members_change_password/:id?", verifyToken, (req, res) => {
             res.json(data);
           } else {
             data.success = false;
-            data.msg.text = "修改失敗";
+            data.msg.text = "密碼沒有修改";
             res.json(data);
           }
         });
@@ -281,10 +281,10 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
       res.json(data);
     } else {
       // 沒輸入東西時;
-      if (!req.body.reviews) {
-        data.msg.text = "資料不足";
-        return res.json(data);
-      }
+      // if (!req.body.reviews) {
+      //   data.msg.text = "資料不足";
+      //   return res.json(data);
+      // }
       const sql =
         "INSERT INTO comments_list ( u_id,avatar,last_name_zh, gender, trip_name, trip_country, trip_start_date,trip_end_date, rating, reviews) VALUES(?,?,?,?,?,?,?,?,?,?)";
       db.query(
@@ -310,6 +310,37 @@ router.post("/members_comments/:id?", verifyToken, (req, res) => {
             data.msg.text = "發布成功";
           } else {
             data.msg.text = "發布失敗";
+          }
+          res.json(data);
+        }
+      );
+    }
+  });
+});
+
+// 修改我的評論
+
+router.put("/members_comments/update/:c_id?", verifyToken, (req, res) => {
+  let data = { success: false, msg: { type: "danger", text: "" } };
+  // jwt authentication
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      data.msg.text = "權限不足";
+      res.json(data);
+    } else {
+      const sql = `UPDATE comments_list SET rating = ?, reviews = ? WHERE c_id = ${req.params.c_id}`;
+      db.query(
+        sql,
+        [req.body.rating, req.body.reviews],
+        (error, results, fields) => {
+          if (error) throw error;
+          console.log(results);
+          if (results.changedRows === 1) {
+            data.success = true;
+            data.msg.type = "primary";
+            data.msg.text = "修改成功";
+          } else {
+            data.msg.text = "資料沒有修改";
           }
           res.json(data);
         }

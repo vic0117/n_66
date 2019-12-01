@@ -7,7 +7,7 @@ const db = mysql.createConnection({
   // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "n_66"
 });
 
@@ -57,9 +57,9 @@ router.post("/trips/add_wishlist", (req, res) => {
       console.log(results);
       if (results.affectedRows === 1) {
         data.success = true;
-        data.msg.text = "已加入願望清單";
+        data.msg.text = "已加入我的收藏";
       } else {
-        data.msg.text = "沒有加入願望清單";
+        data.msg.text = "沒有加入我的收藏";
       }
       res.json(data);
     }
@@ -72,10 +72,10 @@ router.post("/trips/search", (req, res, next) => {
   let data2 = req.body.data2;
 
   const sql = `SELECT * FROM trip_list WHERE trip_name LIKE '%${data2}%'`;
-  console.log(sql)
+  console.log(sql);
   db.query(sql, (err, results, fields) => {
     if (err) throw err;
-   //  console.log(results);
+    //  console.log(results);
     res.send(JSON.stringify(results));
   });
 });
@@ -94,63 +94,62 @@ router.post("/trips/place", (req, res, next) => {
   });
 });
 //Home select
-router.post('/trips/homeselect',(req,res,next)=>{
-	let place = req.body.place
-	let type = req.body.type
-	let month = req.body.month
-	let search = req.body.search
-	let difficulty = req.body.difficulty
-	console.log(place)
-	let where1 = ''
-	let where2 = ''
-	let where3 = ''
-	let where4 = ''
-	let where5 = ''
-	
-	search? where4 += " AND `trip_name` LIKE " + `'%${search}%'` :''
+router.post("/trips/homeselect", (req, res, next) => {
+  let place = req.body.place;
+  let type = req.body.type;
+  let month = req.body.month;
+  let search = req.body.search;
+  let difficulty = req.body.difficulty;
+  console.log(place);
+  let where1 = "";
+  let where2 = "";
+  let where3 = "";
+  let where4 = "";
+  let where5 = "";
 
-	if(place ==='選擇目的地'){
-		where1 =''
-	}else if(place=='所有目的地'){
-		where1=''
-	}else{
-		where1 += " AND `trip_place` = " + `'${place}'`
-	}
+  search ? (where4 += " AND `trip_name` LIKE " + `'%${search}%'`) : "";
 
-	if(type =='活動與主題'){
-		where2 =''
-	}else if(type=='所有活動'){
-		where2=''
-	}else{
-		where2 += " AND `trip_type` = " + `'${type}'`
-	}
+  if (place === "選擇目的地") {
+    where1 = "";
+  } else if (place == "所有目的地") {
+    where1 = "";
+  } else {
+    where1 += " AND `trip_place` = " + `'${place}'`;
+  }
 
-	if(month =='出發月份'){
-		where3=''
-	}else if(month=='所有月份'){
-		where3 =''
-	}else{
-		where3 += " AND `trip_month` = " + `'${month}'`
-	}
-	if(difficulty =='困難度'){
-		where5=''
-	}else if(difficulty =='undefined'){
-		where5 ==''
-	}else if(difficulty=='所有難度'){
-		where5 =''
-	}else{
-			where5 += " AND `trip_difficulty` = " + `'${difficulty}'`
-	}
+  if (type == "活動與主題") {
+    where2 = "";
+  } else if (type == "所有活動") {
+    where2 = "";
+  } else {
+    where2 += " AND `trip_type` = " + `'${type}'`;
+  }
 
-const sql=`SELECT * FROM trip_list WHERE sid>0 ${where1}${where2}${where3}${where4}`
-console.log(sql);
-db.query(sql,(err,results,fields)=>{
-	 if(err) throw err;
-	//  console.log(results)
-	 res.send(JSON.stringify(results))
-})
+  if (month == "出發月份") {
+    where3 = "";
+  } else if (month == "所有月份") {
+    where3 = "";
+  } else {
+    where3 += " AND `trip_month` = " + `'${month}'`;
+  }
+  if (difficulty == "困難度") {
+    where5 = "";
+  } else if (difficulty == "undefined") {
+    where5 == "";
+  } else if (difficulty == "所有難度") {
+    where5 = "";
+  } else {
+    where5 += " AND `trip_difficulty` = " + `'${difficulty}'`;
+  }
+
+  const sql = `SELECT * FROM trip_list WHERE sid>0 ${where1}${where2}${where3}${where4}`;
+  console.log(sql);
+  db.query(sql, (err, results, fields) => {
+    if (err) throw err;
+    //  console.log(results)
+    res.send(JSON.stringify(results));
+  });
 });
-
 
 //leftMenu select
 router.post("/trips/select", (req, res, next) => {
