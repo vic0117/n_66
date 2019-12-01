@@ -76,10 +76,11 @@ class ProductLeftMenu extends Component {
   };
 
   goPrev = () => {
-    window.scrollTo({
-      top: 950,
-      behavior: "smooth"
-    });
+
+    window.scrollTo({ 
+      top: 630, 
+      behavior: "smooth" 
+  })
 
     let { currentPage } = this.state;
 
@@ -104,10 +105,11 @@ class ProductLeftMenu extends Component {
   };
 
   goNext = () => {
-    window.scrollTo({
-      top: 950,
-      behavior: "smooth"
-    });
+
+    window.scrollTo({ 
+      top: 630, 
+      behavior: "smooth" 
+  })
     let { currentPage } = this.state;
     let pageItems = document.querySelectorAll(".page-item");
 
