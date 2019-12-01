@@ -34,8 +34,8 @@ router.post("/comments/select", (req, res, next) => {
       where1 = "";
     }
   }
-  const sql = `SELECT * FROM comments_list WHERE c_id>0 ${where1}`;
-  console.log(sql);
+  const sql = `SELECT * FROM comments_list WHERE c_id>0 ${where1} ORDER BY c_id DESC`;
+
   db.query(sql, (err, results, fields) => {
     if (err) throw err;
     //  console.log(results)
@@ -59,7 +59,7 @@ router.put("/comments/liked/:c_id?", (req, res, next) => {
         const removedLiked = likedAmount.filter(
           userId => userId !== req.body.u_id
         );
-        
+
         console.log(removedLiked);
         return db.queryAsync(
           `UPDATE comments_list SET likedAmount = ? WHERE c_id = ${req.params.c_id}`,

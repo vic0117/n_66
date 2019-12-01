@@ -50,6 +50,7 @@ class Comment extends Component {
         for (let i = 0; i < data.length; i++) {
           data[i].likedAmount = likedAmountJson[i];
         }
+        console.log(data);
 
         this.setState({
           comments: data,
@@ -79,6 +80,11 @@ class Comment extends Component {
         }
       )
       .then(data => {
+        console.log(data);
+        let likedAmountJson = data.map(d => JSON.parse(d.likedAmount));
+        for (let i = 0; i < data.length; i++) {
+          data[i].likedAmount = likedAmountJson[i];
+        }
         this.setState({ comments: data });
       });
   };
@@ -89,11 +95,6 @@ class Comment extends Component {
   };
 
   handleLike = async comment => {
-    // const comments = [...this.state.comments];
-    // const index = comments.indexOf(comment);
-    // comments[index].liked = !comments[index].liked;
-    // await this.setState({ comments });
-    // console.log("comment", comment.c_id);
     if (this.props.currentUser) {
       // server
       const { data } = await axios.put(
