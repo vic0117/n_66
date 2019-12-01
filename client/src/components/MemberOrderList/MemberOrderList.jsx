@@ -277,7 +277,7 @@ class MemberOrderList extends Component {
                     <div className="mt-3 d-flex status ">
                       <p>預計到貨日期: {order.arrival_date}</p>
                       <p className="ml-auto">
-                        合計: NT$ {order.order_total_price}
+                        合計: NT$ {order.order_total_price} (含運費)
                       </p>
                     </div>
                     <div>

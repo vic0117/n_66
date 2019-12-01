@@ -95,7 +95,11 @@ class MemberCommentList extends Component {
             </Col>
           </Row>
           {comments.map(comment => (
-            <Row className="member_comment-info-container" key={comment.c_id}>
+            <Row
+              className="member_comment-info-container"
+              key={comment.c_id}
+              style={{ position: "relative" }}
+            >
               <div className="rank-container">
                 <div className="d-flex">
                   <StarRatingComponent
@@ -106,6 +110,11 @@ class MemberCommentList extends Component {
                   <Button
                     className="to-comment ml-auto"
                     onClick={() => this.getModal(comment.c_id)}
+                    style={{
+                      position: "absolute",
+                      bottom: "3rem",
+                      right: "2.5rem"
+                    }}
                   >
                     修改評論
                   </Button>
