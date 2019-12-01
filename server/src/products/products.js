@@ -8,7 +8,7 @@ const db = mysql.createConnection({
   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "n_66"
 });
 
@@ -27,13 +27,24 @@ router.get("/products", (req, res) => {
 
 router.get("/products/:id", (req, res) => {
   let id = req.params.id;
-  const sql = `SELECT * FROM product_list WHERE product_id=${id}`;
-
-  db.query(sql, (error, results, fields) => {
-    if (error) throw error;
+  let sql = `SELECT * FROM product_list WHERE product_id=${id}`;
+  let output = {}
+  db.queryAsync(sql)
+  .then(results =>{
+    // if (error) throw error;
     // console.log(results);
-    res.json(results);
-  });
+    output.results = results;
+    let relatedProduct = results[0];
+    // console.log( relatedProduct.product_category)
+    sql = `SELECT * FROM product_list WHERE product_category = '${relatedProduct.product_category}' AND product_id != ${relatedProduct.product_id}`;
+    // console.log(sql)
+    return db.queryAsync(sql);
+  })
+  .then(results => {
+    console.log(results)
+    output.relatedProducts = results
+    res.json(output);  
+  })
 });
 
 router.post("/products/add_wishlist", (req, res) => {
@@ -101,6 +112,14 @@ router.post("/checkout/findCoupon", (req, res) => {
   let user = req.body;
   console.log(user.userId);
 
+    // 預計到貨日期
+    let arrivalDate = moment(new Date(), "YYYY/MM/DD").add(3, "day");
+    let arrivalDateStr = JSON.stringify(arrivalDate)
+      .split("T")[0]
+      .split('"')[1]
+      .split("-")
+      .join("/");
+
   let sql = `SELECT * FROM coupon_list WHERE u_id = ${user.userId}`;
   let couponList = {};
 
@@ -119,8 +138,11 @@ router.post("/checkout/findCoupon", (req, res) => {
     })
     .then(results => {
       couponList.userInfo = results;
+      couponList.arrivalDateStr = arrivalDateStr;
       console.log(couponList);
       res.json(couponList);
+
+
     })
 
 })
@@ -132,7 +154,7 @@ router.post("/checkout", (req, res) => {
   // console.log(data);
   let couponList = data.couponList;
   let useCouponName = data.useCouponName;
-  console.log(useCouponName)
+  // console.log(useCouponName)
   let productsToBuy = JSON.parse(data.productsToBuy);
   // console.log(productsToBuy.length);
   let tripsToBuy = JSON.parse(data.tripsToBuy)
@@ -153,7 +175,9 @@ router.post("/checkout", (req, res) => {
     .join("/");
 
   let newId = 0;
-  let output = { success: false };
+  let output = { 
+      success: false
+    };
 
 
   let sql = `INSERT INTO order_list( u_id, order_trip, order_product, order_status, order_total_price, create_at, arrival_date) 

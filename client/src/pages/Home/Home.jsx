@@ -8,6 +8,7 @@ import HomeTravelCarousel from "../../components/HomeTravelCarousel/HomeTravelCa
 import HomeAdviser from "../../components/HomeAdviser/HomeAdviser";
 import HomeEarth from "../../components/HomeEarth/HomeEarth";
 import Footer from "../../components/Footer/Footer";
+import GoTop from '../../components/GoTop/GoTop'
 import message from "./images/comment-dots-solid.svg";
 import "./Home.scss";
 // import Join from "../socketClient/Join";
@@ -46,6 +47,7 @@ class Home extends Component {
             </div>
           </>
         )}
+        <GoTop/>
         <HomeNavBar
           currentUser={currentUser}
           numberOfProducts={this.props.numberOfProducts}

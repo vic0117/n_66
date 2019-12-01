@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "./CheckOutContent.css";
 
+
 class CheckOutContent extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ class CheckOutContent extends React.Component {
       useCouponName: "原價購買",
       useCouponType: "",
       useCouponDiscount: 0,
-      Freight: 30,
+      Freight: 60,
       creditNum: "",
       validEnd: "",
       securityCode: "",
@@ -289,7 +290,8 @@ class CheckOutContent extends React.Component {
     const { tripsToBuy } = this.props;
     const { totalCost } = this.props;
     const { userInfo } = this.props;
-
+    const {arrivalDateStr} = this.props;
+    console.log(arrivalDateStr);
     // 淺拷貝userInfo
     let userInformation = Object.assign({}, userInfo);
 
@@ -508,7 +510,7 @@ class CheckOutContent extends React.Component {
                       <div className="form-check p-0">
                         <div className="d-flex">
                           <input
-                            onChange={() => this.pickUp(30)}
+                            onChange={() => this.pickUp(60)}
                             className="pickUpRadios"
                             type="radio"
                             name="pickUpRadios"
@@ -525,7 +527,7 @@ class CheckOutContent extends React.Component {
                         </div>
                         <div className="d-flex">
                           <input
-                            onChange={() => this.pickUp(60)}
+                            onChange={() => this.pickUp(100)}
                             className="pickUpRadios"
                             type="radio"
                             name="pickUpRadios"
@@ -542,7 +544,7 @@ class CheckOutContent extends React.Component {
                     <div className="ml-4">
                       <div className="mb-1">預計到貨時間</div>
                       <span className="font-size-14">
-                        2019/11/4 - 2019/11/5
+                        {arrivalDateStr}
                       </span>
                     </div>
                   </div>
