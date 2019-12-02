@@ -407,6 +407,7 @@ class Login extends React.Component {
                   <h2>會員登入</h2>
                   <label>
                     <input
+                      autoFocus
                       name="email"
                       placeholder="電子信箱"
                       onChange={this.logChange}
