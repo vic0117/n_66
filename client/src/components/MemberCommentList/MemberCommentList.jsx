@@ -60,8 +60,9 @@ class MemberCommentList extends Component {
         if (res.data.success) {
           toast.success(res.data.msg.text);
           window.setTimeout(pageReload, 1500);
+        } else {
+          toast.error(res.data.msg.text);
         }
-        toast.error(res.data.msg.text);
       })
       .catch(error => {
         console.error(error);

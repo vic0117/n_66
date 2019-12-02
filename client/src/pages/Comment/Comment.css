@@ -43,6 +43,12 @@
 }
 
 @media only screen and (max-width: 992px) {
+  .comment-header-container {
+    height: 500px;
+  }
+  .comment-header-container .filter {
+    height: 500px;
+  }
   .rank-info {
     display: none;
   }
