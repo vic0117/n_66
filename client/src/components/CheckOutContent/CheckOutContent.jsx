@@ -472,7 +472,7 @@ class CheckOutContent extends React.Component {
                 </div>
                 {/* <div style={{ flex: 1 }}></div> */}
               </div>
-              <div className="d-flex mt-1">
+              <div className="d-flex mt-1 mb-4">
                 {/* <div style={{ flex: 2 }}></div> */}
                 <div >合計</div>
                 <h5 className="text-right" style={{ flex: 1 }}>
