@@ -12,16 +12,16 @@ import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import search from "../../components/TripLeftMenu/images/search.svg";
 import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "../TripLeftMenu/SliderPrice";
-import ReactDOM from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import SliderPrice from "./SliderPrice";
+
 import $ from "jquery";
 
 //IMAGES
 import filterImg from "./img/filter.svg";
 import left from "./img/left.svg";
 import right from "./img/right.svg";
+import brand from './img/copyright-regular.svg';
+import hiking from "./img/hiking.svg"
 //CSS
 import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
@@ -31,7 +31,7 @@ class ProductLeftMenu extends Component {
     super(props);
     this.state = {
       currentPage: 1,
-      todosPerPage: 10,
+      todosPerPage: 9,
       productsData: [],
       buttonTitleName1: "選擇類型",
       buttonTitleName2: "選擇品牌"
@@ -427,6 +427,7 @@ class ProductLeftMenu extends Component {
         <Container fluid className="p-0">
           <Row className="bannerArea">
             <img src={banner} alt="banner" />
+            <h1>戶外用品</h1>
           </Row>
         </Container>
         <Container className="productsSection">
@@ -449,7 +450,7 @@ class ProductLeftMenu extends Component {
 
                 <div className="dropDowns">
                   <div className="buttonTitle">
-                    <img src={trac} alt="trac" />
+                    <img src={hiking} alt="hiking" />
                     <p>活動類型</p>
                   </div>
                   <DropdownButton
@@ -505,7 +506,7 @@ class ProductLeftMenu extends Component {
                   </DropdownButton>
 
                   <div className="buttonTitle">
-                    <img src={trac} alt="trac" />
+                    <img src={brand} alt="brand" />
                     <p>品牌</p>
                   </div>
 

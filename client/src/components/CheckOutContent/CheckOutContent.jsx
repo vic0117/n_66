@@ -290,7 +290,7 @@ class CheckOutContent extends React.Component {
     const { tripsToBuy } = this.props;
     const { totalCost } = this.props;
     const { userInfo } = this.props;
-    const {arrivalDateStr} = this.props;
+    const { arrivalDateStr } = this.props;
     console.log(arrivalDateStr);
     // 淺拷貝userInfo
     let userInformation = Object.assign({}, userInfo);
@@ -307,6 +307,12 @@ class CheckOutContent extends React.Component {
 
     return (
       <>
+
+        <div className='myBreadCrumb py-1'>
+          <a className="ml-3" href="/">首頁</a>
+          <span className="mx-3">></span>
+          <a className="current" href="/checkout">結帳</a>
+        </div>
         <Container className=" mt-5 sectionCheckOut">
           <Row>
             <Col className="categories-outer-container " lg={8}>
@@ -323,109 +329,109 @@ class CheckOutContent extends React.Component {
               </div>
               <div
                 className=" py-3"
-                // style={{ borderBottom: "1px solid #E8E8E8" }}
+              // style={{ borderBottom: "1px solid #E8E8E8" }}
               >
                 {productsToBuy === null ? (
                   <div></div>
                 ) : (
-                  productsToBuy.map((item, i) => (
-                    <div
-                      key={i}
-                      className="cartItem d-flex my-3"
-                      style={{ borderBottom: "1px solid #E8E8E8" }}
-                    >
-                      <div className="itemImg" >
-                        <img src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + item.product_img} alt={item.product_name}/>
-                      </div>
-
-                      <div className="card-body" >
-                        <h6 className="productCategory">{item.product_category}</h6>
-                        {/* <h6>{item.code}</h6> */}
-                        <h5 className="title mb-1 ">
-                          {item.product_name}
-                        </h5>
-                        <div className="mb-4">
-                          <span className="size ">
-                            {item.product_size}
-                          </span>
+                    productsToBuy.map((item, i) => (
+                      <div
+                        key={i}
+                        className="cartItem d-flex my-3"
+                        style={{ borderBottom: "1px solid #E8E8E8" }}
+                      >
+                        <div className="itemImg" >
+                          <img src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + item.product_img} alt={item.product_name} />
                         </div>
-                        <div className="d-flex ">
-                          <span>數量 :</span>
-                          <h5 className="counter">
-                            {item.product_amount}
+
+                        <div className="card-body" >
+                          <h6 className="productCategory">{item.product_category}</h6>
+                          {/* <h6>{item.code}</h6> */}
+                          <h5 className="title mb-1 ">
+                            {item.product_name}
                           </h5>
-                          <div className="" >
-                            {this.state.useCouponName ===
-                            item.product_category ? (
-                              <del className="discountPrice">
-                                {"NT$" + item.product_price}
-                              </del>
-                            ) : (
-                              "NT$" + item.product_price
-                            )}
+                          <div className="mb-4">
+                            <span className="size ">
+                              {item.product_size}
+                            </span>
                           </div>
-                          <div className="ml-auto mb-2 pl-2" >
-                            {this.state.useCouponName === item.product_category
-                              ? "NT$" +
+                          <div className="d-flex ">
+                            <span>數量 :</span>
+                            <h5 className="counter">
+                              {item.product_amount}
+                            </h5>
+                            <div className="" >
+                              {this.state.useCouponName ===
+                                item.product_category ? (
+                                  <del className="discountPrice">
+                                    {"NT$" + item.product_price}
+                                  </del>
+                                ) : (
+                                  "NT$" + item.product_price
+                                )}
+                            </div>
+                            <div className="ml-auto mb-2 pl-2" >
+                              {this.state.useCouponName === item.product_category
+                                ? "NT$" +
                                 Math.floor(
                                   item.product_price *
-                                    item.product_amount *
-                                    this.state.useCouponDiscount
+                                  item.product_amount *
+                                  this.state.useCouponDiscount
                                 )
-                              : "NT$" +
+                                : "NT$" +
                                 item.product_price * item.product_amount}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))
-                )}
+                    ))
+                  )}
 
                 {tripsToBuy === null ? (
                   <div></div>
                 ) : (
-                  tripsToBuy.map((item, i) => (
-                    <div key={i} id={i} className="tripCartItem">
-                      <div className="itemImg">
-                        <img
-                          src={"http://localhost:3000/images/" + item.trip_img}
-                          alt={item.trip_name}
-                        />
-                      </div>
-                      <Card.Body className="pr-0">
-                        <div className="d-flex w-100 flex-column align-items-start">
-                          <h6 className="d-flex tripType">
-                            <div>{item.trip_country}</div>
-                            <div className="ml-5">{item.trip_type}</div>
-                          </h6>
-                          <h5 className="title">{item.trip_name}</h5>
-                          <span className="d-flex">
-                            <span className="size ">
-                              {item.trip_duration} 天
+                    tripsToBuy.map((item, i) => (
+                      <div key={i} id={i} className="tripCartItem">
+                        <div className="itemImg">
+                          <img
+                            src={"http://localhost:3000/images/" + item.trip_img}
+                            alt={item.trip_name}
+                          />
+                        </div>
+                        <Card.Body className="pr-0">
+                          <div className="d-flex w-100 flex-column align-items-start">
+                            <h6 className="d-flex tripType">
+                              <div>{item.trip_country}</div>
+                              <div className="ml-5">{item.trip_type}</div>
+                            </h6>
+                            <h5 className="title">{item.trip_name}</h5>
+                            <span className="d-flex">
+                              <span className="size ">
+                                {item.trip_duration} 天
                             </span>
-                            <span className="size ml-3">
-                              {item.trip_start_date}
+                              <span className="size ml-3">
+                                {item.trip_start_date}
+                              </span>
+                              <span className="mx-2">~</span>
+                              <span className="size">{item.trip_end_date}</span>
                             </span>
-                            <span className="mx-2">~</span>
-                            <span className="size">{item.trip_end_date}</span>
-                          </span>
-                          <div className="d-flex w-100 quantity">
-                            <span>數量 : </span>
-                            <h5 className=" counter" >
-                              {item.trip_amount}
-                            </h5>
-                            <div className="text-center price">
-                              NT$ {item.trip_price}
-                            </div>
-                            <div className="text-right price ml-auto">
-                              NT$ {item.trip_amount * item.trip_price}
+                            <div className="d-flex w-100 quantity">
+                              <span>數量 : </span>
+                              <h5 className=" counter" >
+                                {item.trip_amount}
+                              </h5>
+                              <div className="text-center price">
+                                NT$ {item.trip_price}
+                              </div>
+                              <div className="text-right price ml-auto">
+                                NT$ {item.trip_amount * item.trip_price}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </Card.Body>
-                    </div>
-                  ))
-                )}
+                        </Card.Body>
+                      </div>
+                    ))
+                  )}
               </div>
 
               {/* ---------------------------------------------------------------------- */}
@@ -434,27 +440,27 @@ class CheckOutContent extends React.Component {
                 {answer === null ? (
                   ""
                 ) : (
-                  <DropdownButton
-                    className=""
-                    id="couponDropdown"
-                    title={
-                      this.state.useCouponName === "原價購買"
-                        ? "使用折價卷"
-                        : this.state.useCouponType
-                    }
-                  >
-                    {userCoupons.map((coupon, i) => (
-                      <Dropdown.Item
-                        as="button"
-                        key={i}
-                        onClick={this.showCouponType}
-                      >{`${coupon.type} ${coupon.discount} 折`}</Dropdown.Item>
-                    ))}
-                    <Dropdown.Item as="button" onClick={this.showCouponType}>
-                      原價購買
+                    <DropdownButton
+                      className=""
+                      id="couponDropdown"
+                      title={
+                        this.state.useCouponName === "原價購買"
+                          ? "使用折價卷"
+                          : this.state.useCouponType
+                      }
+                    >
+                      {userCoupons.map((coupon, i) => (
+                        <Dropdown.Item
+                          as="button"
+                          key={i}
+                          onClick={this.showCouponType}
+                        >{`${coupon.type} ${coupon.discount} 折`}</Dropdown.Item>
+                      ))}
+                      <Dropdown.Item as="button" onClick={this.showCouponType}>
+                        原價購買
                     </Dropdown.Item>
-                  </DropdownButton>
-                )}
+                    </DropdownButton>
+                  )}
               </div>
 
               {/* ---------------------------------------------------------------------- */}
@@ -482,23 +488,23 @@ class CheckOutContent extends React.Component {
                   <div className="m-2">
                     <h5 className="mb-2">送貨資訊</h5>
                     <div className="font-size-14 d-flex">
-                      姓名: 
+                      姓名:
                       <span className="ml-3 d-block">
                         {userInformation.last_name_zh}
                         {userInformation.first_name_zh}
-                      </span>  
+                      </span>
                     </div>
                     <div className="font-size-14 d-flex">
-                      帳號:  
+                      帳號:
                       <span className="ml-3 d-block">
                         {userInformation.email}
                       </span>
                     </div>
                     <div className="font-size-14 d-flex">
-                      地址:  
+                      地址:
                       <span className="ml-3 d-block">
                         {userInformation.address}
-                      </span> 
+                      </span>
                     </div>
                     <a className="font-size-14" href="/account">
                       修改送貨資訊
@@ -520,7 +526,7 @@ class CheckOutContent extends React.Component {
                           ></input>
                           <label
                             className="form-check-label text-left font-size-14"
-                            // htmlFor="exampleRadios1"
+                          // htmlFor="exampleRadios1"
                           >
                             超商取貨
                           </label>
@@ -599,7 +605,7 @@ class CheckOutContent extends React.Component {
                 </div>
                 <div className="checkout-btn-container d-flex">
                   <div onClick={this.CheckOut} className="checkout-btn mx-auto mb-3">
-                    
+
                     <div className="mask"></div>
                     <div className="font">確認結帳</div>
                   </div>

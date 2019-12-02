@@ -5,9 +5,9 @@ const bluebird = require("bluebird");
 const db = mysql.createConnection({
   // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
-  user: "root",
-  password: "root",
-  database: "n_66"
+  user: "root",  
+  password: "",
+  database: "n_66" 
 });
 
 bluebird.promisifyAll(db);

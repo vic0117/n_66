@@ -102,7 +102,7 @@ class ProductCarousel extends React.Component {
             width: 1000,
             height: 750
           }
-        }}  />
+        }} />
       </div>
     ));
   }
@@ -158,15 +158,15 @@ class ProductCarousel extends React.Component {
     const data = this.props.data;
     let productPics = "";
     let numOfPictures = 0;
-    if(data){
+    if (data) {
       productPics = JSON.parse(JSON.stringify(data))[0];
       // let {product_pictures} = productPics
       console.log(productPics);
-      if(productPics){
-        JSON.parse(productPics.product_pictures).length > 4 ? 
+      if (productPics) {
+        JSON.parse(productPics.product_pictures).length > 4 ?
           numOfPictures = 4 : numOfPictures = JSON.parse(productPics.product_pictures).length
       }
-      else{
+      else {
         console.log('none');
       }
     }
@@ -196,6 +196,13 @@ class ProductCarousel extends React.Component {
 
     return (
       <>
+        
+          <div className='myBreadCrumb py-1'>
+            <a className="ml-3" href="/">首頁</a>
+            <span className="mx-3">></span>
+            <a className="current" href="/products">戶外用品</a>
+          </div>
+        
         <Container className="ProductCarousel">
           <Row className="mt-5 carouselsRow">
             <Col md={8} className="double-carousel d-flex flex-column justify-content-start align-items-center">
@@ -289,17 +296,17 @@ class ProductCarousel extends React.Component {
               relatedProducts.map((product, i) => (
                 <Col key={i} sm={6} md={3} className="cardFrame">
                   <a className="link" href={`/products/${product.product_id}`}>
-                  <Card className="product-card">
-                    <div className="photoFrame">
-                      <Card.Img
-                        variant="top"
-                        src={"http://localhost:3000/images/products/" + product.product_file_name + "/" + JSON.parse(product.product_pictures)[0]}
-                      />
-                    </div>
-                    <Card.Body>
-                      <Card.Title>{product.product_name}</Card.Title>
-                    </Card.Body>
-                  </Card>
+                    <Card className="product-card">
+                      <div className="photoFrame">
+                        <Card.Img
+                          variant="top"
+                          src={"http://localhost:3000/images/products/" + product.product_file_name + "/" + JSON.parse(product.product_pictures)[0]}
+                        />
+                      </div>
+                      <Card.Body>
+                        <Card.Title>{product.product_name}</Card.Title>
+                      </Card.Body>
+                    </Card>
                   </a>
                 </Col>
               ))

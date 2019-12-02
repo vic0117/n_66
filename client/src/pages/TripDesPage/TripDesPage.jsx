@@ -12,6 +12,7 @@ import Footer from "../../components/Footer/Footer";
 import "./TripDesPage.scss";
 import { ReactComponent as Cart } from "./cart.svg";
 import { Link } from "react-router-dom";
+import GoTop from '../../components/GoTop/GoTop'
 
 class TripDesPage extends Component {
   constructor(props) {
@@ -181,6 +182,7 @@ class TripDesPage extends Component {
 
     return (
       <div>
+        <GoTop/>
         <TripDesNav detailData={this.state.detailData} />
         <HomeNavBar currentUser={this.props.currentUser} />
         <div className="TripDesCarousel">

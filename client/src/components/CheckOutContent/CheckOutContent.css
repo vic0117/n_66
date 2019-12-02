@@ -6,6 +6,34 @@
   margin-top: 200px;
 }
 
+.myBreadCrumb {
+  font-size: 14px;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+  background-color: #242a3a;
+  color: #fff !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 999;
+}
+
+.myBreadCrumb a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.myBreadCrumb .current {
+  color: #96daf0 !important;
+}
+
 .sectionCheckOut {
   padding: 150px 0 0 0;
 }

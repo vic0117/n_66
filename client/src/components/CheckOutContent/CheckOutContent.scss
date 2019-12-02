@@ -12,6 +12,26 @@ $secColor: #96daf0;
   margin-top: 200px;
 }
 
+.myBreadCrumb{
+  font-size: 14px;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+  background-color: $primaryColor;
+  color: #fff !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 999;
+  a{
+      color: #fff ;
+      text-decoration: none;
+  }
+  .current{
+      color: $secColor !important;
+  }
+}
+
 .sectionCheckOut {
   padding: 150px 0 0 0;
 
