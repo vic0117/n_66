@@ -2,8 +2,30 @@
 $primaryColor: #242A3A;
 $secColor: #96DAF0;
 
+.myBreadCrumb{
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    background-color: $primaryColor;
+    color: #fff !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 999;
+    a{
+        color: #fff ;
+        text-decoration: none;
+    }
+    .current{
+        color: $secColor !important;
+    }
+}
+
 .ProductCarousel{
     padding: 130px 0 0 0;
+
+
 
     .carouselsRow{
         padding-bottom: 150px;
