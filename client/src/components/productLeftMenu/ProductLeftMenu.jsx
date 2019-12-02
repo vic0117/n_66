@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
+import search from "../../components/TripLeftmenu/images/search.svg";
 // import trac from "../../components/TripLeftmenu/images/trac.svg";
 import SliderPrice from "./SliderPrice";
 

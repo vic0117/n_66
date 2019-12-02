@@ -159,12 +159,9 @@ class HomeEarth extends React.Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body className="selection-body">
-                      <Link to="/trips/page/1?place=加拿大&type=所有活動&month=所有月份">
-                        <div className="card-selection" data-country="canada">
-                          加拿大
-                        </div>
-                      </Link>
-
+                      <div className="card-selection" data-country="canada">
+                        加拿大
+                      </div>
                       <div className="card-selection" data-country="norway">
                         挪威
                       </div>

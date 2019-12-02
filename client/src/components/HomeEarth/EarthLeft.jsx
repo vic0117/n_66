@@ -67,7 +67,7 @@ const EarthLeft = () => {
         </Link>
         <Link
           to="trips/page/1?place=挪威&type=所有活動&month=所有月份"
-          className="norway country"
+          className="norway1 country"
           href="#7"
           data-country="norway"
         >
