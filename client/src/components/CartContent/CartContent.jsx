@@ -371,9 +371,9 @@ class CartContent extends React.Component {
                             </button>
                             <span className="x"> X </span>
                             <h6 className="price">{item.product_price}</h6>
-                            <h5 className="ml-auto">
+                            <div className="subPrice ml-auto">
                               NT$ {item.product_amount * item.product_price}{" "}
-                            </h5>
+                            </div>
                           </div>
                         </div>
                       </Card.Body>
