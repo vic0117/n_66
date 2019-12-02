@@ -331,13 +331,18 @@ $secColor: #96DAF0;
                     border-left: none;
                 }
                 .x{
-                    margin: 0 20px 0 20px;
+                    margin: 0 10px 0 10px;
                 }
 
                 .price{
                     color: $primaryColor;
                     width: 20%;
                     // margin: 0 0 0 50%;
+                }
+
+                .subPrice{
+                    font-size: 14px;
+                    color: $primaryColor;
                 }
 
                 .tripPrice{
@@ -350,9 +355,6 @@ $secColor: #96DAF0;
                     margin: 0;
                 }
             }
-
-                
-            
         }
     }
 
