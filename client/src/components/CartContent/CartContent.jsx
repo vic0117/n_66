@@ -351,7 +351,7 @@ class CartContent extends React.Component {
                             </span>
 
                             <div className="quantity">
-                              <span>數量 : </span>
+                              <span>數量:</span>
                               <button
                                 variant="primary"
                                 onClick={() => this.DecreaseQuantity(item.code)}
@@ -367,11 +367,11 @@ class CartContent extends React.Component {
                               >
                                 <span>+</span>
                               </button>
-                              <span className="x"> X </span>
+                              <span className="x">X</span>
                               <h6 className="price">{item.product_price}</h6>
-                              <h5 className="ml-auto">
+                              <div className="subPrice ml-auto">
                                 NT$ {item.product_amount * item.product_price}{" "}
-                              </h5>
+                              </div>
                             </div>
                           </div>
                         </Card.Body>
@@ -430,7 +430,7 @@ class CartContent extends React.Component {
                                 <span>+</span>
                               </button>
                               <span className="x">X</span>
-                              <h6 className="tripPrice">{item.trip_price}</h6>
+                              <h5 className="tripPrice">{item.trip_price}</h5>
                               <div className="subPrice ml-auto">
                                 NT$ {item.trip_amount * item.trip_price}
                               </div>
@@ -444,7 +444,7 @@ class CartContent extends React.Component {
                 {data === null && tripData == null ? (
                   <div></div>
                 ) : (
-                    <h5 className="text-right mt-3">總價: {this.props.totalCost}</h5>
+                    <h5 className="text-right mt-3">總價: NT$ {this.props.totalCost}</h5>
                   )}
               </Col>
               <Col md={4}>

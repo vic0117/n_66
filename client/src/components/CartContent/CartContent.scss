@@ -297,12 +297,16 @@ $secColor: #96DAF0;
                 width: 100%;
                 margin-top: 20px;
                 .counter{
-                    text-align: center !important;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    // text-align: center !important;
                     height: 22px;
                     width: 50px;
                     border: 1px solid #ccc;
                     color: #ABABAB;
-                    font-weight: bold;
+                    font-size: 14px;
+                    // font-weight: bold;
                 }
         
                 .qtyBtn{
@@ -348,6 +352,7 @@ $secColor: #96DAF0;
                 .tripPrice{
                     color: $primaryColor;
                     width: 20%;
+                    font-size: 1rem;
                     // margin: 0 0 0 50%;
                 }
 

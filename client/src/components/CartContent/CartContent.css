@@ -337,12 +337,20 @@
 }
 
 .cartSection .cartItem .card-body .quantity .counter {
-  text-align: center !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 22px;
   width: 50px;
   border: 1px solid #ccc;
   color: #ABABAB;
-  font-weight: bold;
+  font-size: 14px;
 }
 
 .cartSection .cartItem .card-body .quantity .qtyBtn {
@@ -394,6 +402,7 @@
 .cartSection .cartItem .card-body .quantity .tripPrice {
   color: #242A3A;
   width: 20%;
+  font-size: 1rem;
 }
 
 .cartSection .cartItem .card-body .quantity h5, .cartSection .cartItem .card-body .quantity h6 {
