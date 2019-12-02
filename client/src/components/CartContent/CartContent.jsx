@@ -413,7 +413,7 @@ class CartContent extends React.Component {
                             </span>
 
                             <div className="quantity">
-                              <span>數量 : </span>
+                              <span>數量: </span>
                               <button
                                 variant="primary"
                                 onClick={() => this.DecreaseTrip(item.code)}
@@ -431,9 +431,9 @@ class CartContent extends React.Component {
                               </button>
                               <span className="x">X</span>
                               <h6 className="tripPrice">{item.trip_price}</h6>
-                              <h5 className="ml-auto">
-                                NT$ {item.trip_amount * item.trip_price}{" "}
-                              </h5>
+                              <div className="subPrice ml-auto">
+                                NT$ {item.trip_amount * item.trip_price}
+                              </div>
                             </div>
                           </div>
                         </Card.Body>

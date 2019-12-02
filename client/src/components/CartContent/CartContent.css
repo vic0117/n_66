@@ -378,12 +378,17 @@
 }
 
 .cartSection .cartItem .card-body .quantity .x {
-  margin: 0 20px 0 20px;
+  margin: 0 10px 0 10px;
 }
 
 .cartSection .cartItem .card-body .quantity .price {
   color: #242A3A;
   width: 20%;
+}
+
+.cartSection .cartItem .card-body .quantity .subPrice {
+  font-size: 14px;
+  color: #242A3A;
 }
 
 .cartSection .cartItem .card-body .quantity .tripPrice {
