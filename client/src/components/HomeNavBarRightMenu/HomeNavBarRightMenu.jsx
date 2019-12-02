@@ -35,6 +35,12 @@ class HomeNavBarRightMenu extends React.Component {
           </Link>
         </li>
         <li>
+          <Link to="/comments" role="button">
+            <h5>客戶評論</h5>
+            <h6>意見與反饋</h6>
+          </Link>
+        </li>
+        <li>
           <Link to="#3">
             <h5>關於66N</h5>
             <h6>我們的價值觀</h6>

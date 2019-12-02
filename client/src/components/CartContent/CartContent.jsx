@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 //images svg
 import cross from "./img/cross.svg";
-import emptyCart from "./img/emptyCart.jpg";
+import cart from './img/shopping-cart-empty-side-view.svg'
 //CSS
 import "./CartContent.css";
 
@@ -299,8 +299,11 @@ class CartContent extends React.Component {
           </div>
           <Container fluid className="p-0 cartBanner">
             <Row className="cartBannerRow">
-              <img src={emptyCart} alt="banner" />
+              <img src={cart} alt="banner"/>
               <h1 className="bannerTitle">購物車尚無商品</h1>
+              <Link to='/'>
+              <div className='Tohome'>回到首頁</div>
+              </Link>
             </Row>
           </Container>
         </>
