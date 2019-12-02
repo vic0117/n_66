@@ -1,23 +1,24 @@
 body{
 	font-family: 'Noto Sans TC', sans-serif;
 		// font-family: '微軟正黑體';
-
 }
 
 .MessageButton{
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	border-radius: 50%;
 	background: #96daf0;
 	position: fixed;
 	z-index: 10000;
 	right:20px;
-	bottom:50px;
+	bottom:100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 	img{
-		width: 50px !important;
+		width: 40px !important;
+		pointer-events: none;
 	}
 	.joinContent{
 		display:none !important;

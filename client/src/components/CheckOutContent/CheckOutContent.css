@@ -1,5 +1,37 @@
+.categories-outer-container {
+  padding-right: 80px;
+}
+
 .dealSuccess {
   margin-top: 200px;
+}
+
+.myBreadCrumb {
+  font-size: 14px;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+  background-color: #242a3a;
+  color: #fff !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 999;
+}
+
+.myBreadCrumb a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.myBreadCrumb .current {
+  color: #96daf0 !important;
 }
 
 .sectionCheckOut {
@@ -154,8 +186,6 @@
 
 .sectionCheckOut .dropdown-menu.show .dropdown-item {
   text-align: center;
-  -webkit-transition: .3s;
-  transition: .3s;
 }
 
 .sectionCheckOut .dropdown-menu.show .dropdown-item:hover {
@@ -165,7 +195,6 @@
 
 .sectionCheckOut .orderDetail {
   color: #242a3a;
-  border: 1px solid #eaeaea;
   display: block !important;
 }
 
@@ -177,6 +206,11 @@
 
 .sectionCheckOut .orderDetail input {
   margin-top: 3px;
+}
+
+.sectionCheckOut .orderDetail .delivery-method {
+  border: 1px solid #e8e8e8;
+  padding: 20px;
 }
 
 .sectionCheckOut .payment-container {
@@ -292,6 +326,9 @@
 }
 
 @media (max-width: 992px) {
+  .sectionCheckOut .categories-outer-container {
+    padding-right: 15px;
+  }
   .sectionCheckOut .categories-outer-container {
     width: 90%;
     margin: auto;

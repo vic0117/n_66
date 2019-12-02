@@ -25,9 +25,15 @@
   // padding: 0 2rem 1.5rem 2rem;
   .rank-container {
     margin-bottom: 0.5rem;
-
+    width: 100%;
     .rank {
       margin-right: 0.25rem;
+    }
+    .to-comment:active {
+      box-shadow: none;
+      background-color: #d5d5d5 !important;
+      outline: none;
+      border-color: #d5d5d5 !important;
     }
   }
   .duration {

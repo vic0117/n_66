@@ -2,8 +2,30 @@
 $primaryColor: #242A3A;
 $secColor: #96DAF0;
 
+.myBreadCrumb{
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    background-color: $primaryColor;
+    color: #fff !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 999;
+    a{
+        color: #fff ;
+        text-decoration: none;
+    }
+    .current{
+        color: $secColor !important;
+    }
+}
+
 .ProductCarousel{
-    padding: 180px 0 0 0;
+    padding: 130px 0 0 0;
+
+
 
     .carouselsRow{
         padding-bottom: 150px;
@@ -12,40 +34,47 @@ $secColor: #96DAF0;
 
     .thumbCarousel{
         margin-top: 20px;
-        width: 100px;
-        height: 460px !important;
+        width: 500px;
+        height: 100px !important;
         .customArrow{
-            height: 20px;
+            height: 100px;
             cursor: pointer;
-            width: 100px;
+            width: 20px;
             background-color: #eaeaea;
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: .5;
+            transition: .3s;
 
             img{
                 width: 20px;
                 height: 20px;
             }
+
+            &:hover{
+                opacity: 1;
+            }
         }
         .prevArrow {
             position: absolute;
-            left: 0%;
             bottom: 0%;
+            left: 0%;
             // background-color: rgb(194, 27, 27);
-            transform: translateY(100%);
+            transform: translateX(-100%);
+            z-index: 10;
         }
         .nextArrow {
             // background-color: rgb(27, 38, 194);
             position: absolute;
             top: 0%;
-            left: 0%;
-            transform: translateY(-100%);
+            right: 0%;
+            transform: translateX(100%);
         }
         .slick-list{
-            height: 460px !important;
+            height: 375px !important;
             .slick-track{
-                height: 460px;
+                height: 375px;
                 .slick-slide{
                     height: 100px;
 
@@ -112,37 +141,61 @@ $secColor: #96DAF0;
     
     .mainCarousel{
         width: 500px;
-        height: 500px;
+        height: 375px !important;
         .slick-list{
-            height: 100%;
+            height: 375px !important;
 
             .slick-track{
-                height: 100%;
+                height: 375px !important;
 
                 .slick-slide{
-                    height: 100%;
+                    height: 375px !important;
     
-                    div{
-                        height: 100%;
+                    // div{
+                    //     height: 100%;
                         // border: 1px solid red;
                         .pic2{
-
-                            text-align: center;
-                            height: 100%;
+                            height: 375px !important;
+                            // text-align: center;
+                            // height: 100%;
                 
                             img{
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                                cursor: grab;
+                                width: 100% ;
+                                // height: 100% !important;
+                                object-fit: cover !important;
+                                // cursor: grab;
 
                                 &:active{
-                                    cursor: grabbing;
+                                    cursor: grabbing !important;
+                                }
+                            }
+
+                            div{
+                                // width: 500px !important;
+                                height: 375px !important;
+                                // overflow: hidden !important;
+                                div{
+                                    // width: 500px !important;
+                                    height: 375px !important;
+                                    // overflow: hidden !important;
+                                    margin: 0 !important;
+                                    padding: 0;
+                                    top: 0 !important;
+                                    left: 0 !important;
+                                    z-index: 10;
+
+                                        img{
+                                            // height: 750px !important;
+                                            pointer-events: fill !important;
+                                            &:active{
+                                                cursor: grabbing !important;
+                                            }
+                                        }
                                 }
                             }
                         }
                         
-                    }
+                    // }
                 }
             }
         }
@@ -254,31 +307,45 @@ $secColor: #96DAF0;
             // width: 25%;
             // padding: 20px;
             margin-bottom: 10px;
-            
-            .photoFrame{
-                padding: 15px;
-                height: 250px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
+            .link{
+                color: $primaryColor;
+                text-decoration: none;
+            }
+            .product-card {
+                cursor: pointer;
+                transition: .3s;
+
+                &:hover{
+                    box-shadow: 0 0 30px rgba($color: #000000, $alpha: .1);
+                }
+
+                .photoFrame{
+                    pointer-events: none;
+                    padding: 15px;
+                    height: 250px;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+    
+                .card-title{
+                        text-align: center;
                 }
             }
-
-            .card-title{
-                    text-align: center;
-            }
+           
         }
         
     }
 
 
-    @media screen and (max-width: 1200px){
-        .mainCarousel{
-            width: 400px !important;
-            height: 400px !important;    
-        }
-    }
+    // @media screen and (max-width: 1200px){
+    //     .mainCarousel{
+    //         width: 400px !important;
+    //         height: 400px !important;    
+    //     }
+    // }
     
     @media screen and (max-width: 992px){
         // .thumbCarousel{
@@ -318,18 +385,97 @@ $secColor: #96DAF0;
                     color: black;
                 }
     
-                
+                // .slick-list{
+                    
+                //     width: 500px !important;
+        
+                //     .slick-track{
+                //         width: 500px !important;
+        
+                //         .slick-slide{
+                //             width: 500px !important;
+            
+                //             // div{
+                //             //     height: 100%;
+                //                 // border: 1px solid red;
+                //                 .pic2{
+                //                     width: 500px !important;
+                //                     // text-align: center;
+                //                     // height: 100%;
+                        
+                //                     img{
+                //                         width: 100% ;
+                //                         // height: 100% !important;
+                //                         object-fit: cover !important;
+                //                         // cursor: grab;
+        
+                //                         &:active{
+                //                             cursor: grabbing !important;
+                //                         }
+                //                     }
+        
+                //                     div{
+                //                         // width: 500px !important;
+                //                         // height: 375px !important;
+                //                         // overflow: hidden !important;
+                //                         div{
+                //                             // width: 500px !important;
+                //                             // height: 375px !important;
+                //                             // overflow: hidden !important;
+                //                             margin: 0 !important;
+                //                             padding: 0;
+                //                             top: 0 !important;
+                //                             left: 0 !important;
+                //                             z-index: 10;
+        
+                //                                 img{
+                //                                     // height: 750px !important;
+                //                                     pointer-events: fill !important;
+                //                                     &:active{
+                //                                         cursor: grabbing !important;
+                //                                     }
+                //                                 }
+                //                         }
+                //                     }
+                //                 }
+                                
+                //             // }
+                //         }
+                //     }
+                // }
             }
+        }
+
+        .double-carousel{
+            height: 375px !important;
         }
     
         .thumbCarousel{
             display: none;
         }
-    
-        .sideCarousel{
-            margin: 0 !important;
-           
+        
+        .detailCard{
+            padding: 0 20px 0;
+            width: 90%;
+            margin: auto;
         }
+
+        .cardFrame{
+            padding: 0 20px 0;
+            margin-bottom: 20px !important;
+            .product-card{
+                margin: auto;
+                width: 65%;
+
+                &:hover{
+                    box-shadow: rgba($color: #000000, $alpha: .6);
+                }
+            }
+        }
+        // .sideCarousel{
+        //     margin: 0 !important;
+        //    height: 100px !important;
+        // }
     }
 }
 

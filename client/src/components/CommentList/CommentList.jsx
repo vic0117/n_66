@@ -6,9 +6,8 @@ import "./CommentList.css";
 
 class CommentList extends Component {
   render() {
-    let classes = "fa fa-thumbs-o-up";
-    const { comments, liked, likedAmount, onClick } = this.props;
-    if (liked) classes = "fa fa-thumbs-up";
+    const { currentUser, comments, onClick } = this.props;
+
     return (
       <>
         {comments.map(comment => (
@@ -55,16 +54,61 @@ class CommentList extends Component {
                   </Link>
                 </div>
                 <div className="ml-auto">
-                  <i
-                    class={classes}
-                    // class="fa fa-thumbs-o-up"
-                    aria-hidden="true"
-                    onClick={() => onClick(comment.c_id)}
-                    style={{
-                      cursor: "pointer"
-                    }}
-                  />
-                  <spna>{likedAmount}</spna>
+                  {currentUser ? (
+                    <i
+                      className={
+                        comment.likedAmount.includes(currentUser.user.u_id)
+                          ? "fa fa-thumbs-up"
+                          : "fa fa-thumbs-o-up"
+                      }
+                      aria-hidden="true"
+                      onClick={() => onClick(comment)}
+                      style={{
+                        cursor: "pointer",
+                        color: "#74767d"
+                      }}
+                    />
+                  ) : (
+                    <i
+                      className={"fa fa-thumbs-o-up"}
+                      aria-hidden="true"
+                      onClick={() => onClick(comment)}
+                      style={{
+                        cursor: "pointer"
+                      }}
+                    />
+                  )}
+                  {currentUser ? (
+                    <span
+                      style={{
+                        color: "#74767d"
+                      }}
+                    >
+                      {comment.likedAmount.includes(currentUser.user.u_id) ? (
+                        comment.likedAmount.length == 1 ? (
+                          "你覺得這篇留言很讚"
+                        ) : (
+                          `你和其他 ${comment.likedAmount.length - 1} 人`
+                        )
+                      ) : (
+                        <span
+                          style={{
+                            color: "#74767d"
+                          }}
+                        >
+                          {comment.likedAmount.length}
+                        </span>
+                      )}
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        color: "#74767d"
+                      }}
+                    >
+                      {comment.likedAmount.length}
+                    </span>
+                  )}
                 </div>
               </div>
             </Row>

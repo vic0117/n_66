@@ -36,36 +36,12 @@
   line-height: 60px;
   font-weight: 700;
   position: absolute;
-  top: 80%;
+  top: 60%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 15;
-  opacity: 0;
-  -webkit-animation: upFadeIn 0.8s 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
-          animation: upFadeIn 0.8s 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
-}
-
-@-webkit-keyframes upFadeIn {
-  from {
-    top: 80%;
-    opacity: 0;
-  }
-  to {
-    top: 50%;
-    opacity: 1;
-  }
-}
-
-@keyframes upFadeIn {
-  from {
-    top: 80%;
-    opacity: 0;
-  }
-  to {
-    top: 50%;
-    opacity: 1;
-  }
+  opacity: 1;
 }
 
 @-webkit-keyframes begin {
@@ -86,6 +62,40 @@
   }
 }
 
+@media screen and (max-width: 700px) {
+  .cartBanner .bannerTitle {
+    font-size: 2rem;
+  }
+}
+
+.myBreadCrumb {
+  font-size: 14px;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+  background-color: #242A3A;
+  color: #fff !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 999;
+}
+
+.myBreadCrumb a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.myBreadCrumb .current {
+  color: #96DAF0 !important;
+}
+
 .cartSection {
   padding-top: 180px;
 }
@@ -95,7 +105,6 @@
   position: sticky;
   top: 124px;
   padding: 20px;
-  border: 1px solid #eaeaea;
 }
 
 .cartSection .userCard p {
@@ -369,12 +378,17 @@
 }
 
 .cartSection .cartItem .card-body .quantity .x {
-  margin: 0 20px 0 20px;
+  margin: 0 10px 0 10px;
 }
 
 .cartSection .cartItem .card-body .quantity .price {
   color: #242A3A;
   width: 20%;
+}
+
+.cartSection .cartItem .card-body .quantity .subPrice {
+  font-size: 14px;
+  color: #242A3A;
 }
 
 .cartSection .cartItem .card-body .quantity .tripPrice {

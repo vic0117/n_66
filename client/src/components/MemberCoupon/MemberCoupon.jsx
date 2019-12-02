@@ -13,10 +13,7 @@ class MemberCoupon extends Component {
             <span>我的優惠卷</span>
           </Col>
         </Row>
-        <Row
-          className="mx-0"
-          style={{ padding: "0px 1.75rem", justifyContent: "space-between" }}
-        >
+        <Row className="mx-0" style={{ padding: "0px 1.75rem" }}>
           {userCoupons.map(coupon => (
             <div className="coupon-container" key={coupon.c_id}>
               <div className="banner">

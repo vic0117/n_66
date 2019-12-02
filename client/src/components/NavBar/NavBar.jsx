@@ -121,20 +121,10 @@ class NavBar extends React.Component {
               ): (
                 <p></p>
               )}
-              
             </Nav>
           </div>
 
-          <Breadcrumb className="mb-5">
-            <Breadcrumb.Item href="/" className="p-1">
-              首頁
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="/account" className="p-1" active>
-              會員專區
-            </Breadcrumb.Item>
-          </Breadcrumb>
-
-          <ul className="right-menu mt-3">
+          <ul className="right-menu">
             <li>
               <Link to="/trips/page/1">
                 <h5>旅遊行程</h5>

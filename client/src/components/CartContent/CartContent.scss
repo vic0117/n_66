@@ -38,26 +38,26 @@ $secColor: #96DAF0;
         line-height: 60px;
         font-weight: 700;
         position: absolute;
-        top: 80%;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 15;
         // border: 1px solid red;
-        opacity: 0;
-        animation: upFadeIn .8s .5s cubic-bezier(.09,.37,.74,1) forwards;
+        opacity: 1;
+        // animation: upFadeIn .8s .5s cubic-bezier(.09,.37,.74,1) forwards;
     }
 
 
-    @keyframes upFadeIn {
-        from{
-            top: 80%;
-            opacity: 0;
-        }
-        to{
-            top: 50%;
-            opacity: 1;
-        }
-    }
+    // @keyframes upFadeIn {
+    //     from{
+    //         top: 80%;
+    //         opacity: 0;
+    //     }
+    //     to{
+    //         top: 50%;
+    //         opacity: 1;
+    //     }
+    // }
 
     @keyframes begin {
         from{
@@ -70,8 +70,32 @@ $secColor: #96DAF0;
         }
     }
     
+    @media screen and (max-width: 700px ){
+        .bannerTitle{
+            font-size: 2rem;
+        }
+    }
 }
 
+.myBreadCrumb{
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    background-color: $primaryColor;
+    color: #fff !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 999;
+    a{
+        color: #fff ;
+        text-decoration: none;
+    }
+    .current{
+        color: $secColor !important;
+    }
+}
 
 .cartSection{
     padding-top: 180px;
@@ -80,7 +104,7 @@ $secColor: #96DAF0;
         position: sticky;
         top: 124px;
         padding: 20px;
-        border: 1px solid #eaeaea;
+        // border: 1px solid #eaeaea;
         p{
             text-align: center;
             margin: 20px auto 0;
@@ -307,13 +331,18 @@ $secColor: #96DAF0;
                     border-left: none;
                 }
                 .x{
-                    margin: 0 20px 0 20px;
+                    margin: 0 10px 0 10px;
                 }
 
                 .price{
                     color: $primaryColor;
                     width: 20%;
                     // margin: 0 0 0 50%;
+                }
+
+                .subPrice{
+                    font-size: 14px;
+                    color: $primaryColor;
                 }
 
                 .tripPrice{
@@ -326,9 +355,6 @@ $secColor: #96DAF0;
                     margin: 0;
                 }
             }
-
-                
-            
         }
     }
 
