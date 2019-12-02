@@ -6,7 +6,8 @@
     border-radius: 0;
   }
 
-  button:active {
+  button:active,
+  button:focus {
     box-shadow: none !important;
   }
 

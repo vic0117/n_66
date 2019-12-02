@@ -57,7 +57,7 @@ class App extends Component {
       .then(data => {
         let ratingLength = data.length;
         let totalRating = 0;
-        data.forEach(d => console.log((totalRating += +d.rating)));
+        data.forEach(d => (totalRating += +d.rating));
         let ratingAvg = (totalRating / ratingLength).toFixed(1);
         this.setState({ comments: data, ratingAvg });
       });
@@ -80,7 +80,7 @@ class App extends Component {
   }
 
   changeNumOfProduct = num => {
-    if(num === "0") num = "";
+    if (num === "0") num = "";
     this.setState({ numberOfProducts: num });
   };
 

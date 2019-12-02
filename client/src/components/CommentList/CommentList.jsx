@@ -6,7 +6,8 @@ import "./CommentList.css";
 
 class CommentList extends Component {
   render() {
-    const { comments } = this.props;
+    const { currentUser, comments, onClick } = this.props;
+
     return (
       <>
         {comments.map(comment => (
@@ -41,7 +42,7 @@ class CommentList extends Component {
                 <p className="mt-2 mb-4 comment-text">{comment.reviews}</p>
               </div>
 
-              <div className="comment-btn-outer-container">
+              <div className="comment-btn-outer-container d-flex">
                 <div className="mt-auto comment-btn-container">
                   <Link
                     to={`/trips/page/1?place=${comment.trip_country}&type=活動與主題&month=出發月份&search=`}
@@ -51,6 +52,63 @@ class CommentList extends Component {
                       我們的{comment.trip_country}之旅
                     </span>
                   </Link>
+                </div>
+                <div className="ml-auto">
+                  {currentUser ? (
+                    <i
+                      className={
+                        comment.likedAmount.includes(currentUser.user.u_id)
+                          ? "fa fa-thumbs-up"
+                          : "fa fa-thumbs-o-up"
+                      }
+                      aria-hidden="true"
+                      onClick={() => onClick(comment)}
+                      style={{
+                        cursor: "pointer",
+                        color: "#74767d"
+                      }}
+                    />
+                  ) : (
+                    <i
+                      className={"fa fa-thumbs-o-up"}
+                      aria-hidden="true"
+                      onClick={() => onClick(comment)}
+                      style={{
+                        cursor: "pointer"
+                      }}
+                    />
+                  )}
+                  {currentUser ? (
+                    <span
+                      style={{
+                        color: "#74767d"
+                      }}
+                    >
+                      {comment.likedAmount.includes(currentUser.user.u_id) ? (
+                        comment.likedAmount.length == 1 ? (
+                          "你覺得這篇留言很讚"
+                        ) : (
+                          `你和其他 ${comment.likedAmount.length - 1} 人`
+                        )
+                      ) : (
+                        <span
+                          style={{
+                            color: "#74767d"
+                          }}
+                        >
+                          {comment.likedAmount.length}
+                        </span>
+                      )}
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        color: "#74767d"
+                      }}
+                    >
+                      {comment.likedAmount.length}
+                    </span>
+                  )}
                 </div>
               </div>
             </Row>

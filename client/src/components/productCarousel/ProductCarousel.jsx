@@ -2,12 +2,16 @@ import React from "react";
 import Slider from "react-slick";
 import { Container, Row, Col, Tabs, Tab, Card, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import ReactImageMagnify from 'react-image-magnify';
+import { Link } from "react-router-dom";
+//css
 import "./productCarousel.css";
-// import { object } from "prop-types";
 
 //image svg
-import up from './img/up.svg'
-import down from './img/down.svg'
+import right from './img/right.svg'
+import left from './img/left.svg'
+
+
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -16,7 +20,7 @@ function NextArrow(props) {
       className="nextArrow customArrow"
       onClick={onClick}
     >
-      <img src={up} alt="up"/>
+      <img src={right} alt="up" />
     </div>
   );
 }
@@ -28,7 +32,7 @@ function PrevArrow(props) {
       className="prevArrow customArrow"
       onClick={onClick}
     >
-      <img src={down} alt="down"/>
+      <img src={left} alt="down" />
     </div>
   );
 }
@@ -55,6 +59,9 @@ class ProductCarousel extends React.Component {
       nav1: this.slider1,
       nav2: this.slider2
     });
+
+    let pic2s = document.querySelectorAll('.slick-slide');
+    console.log(document.querySelectorAll('.slick-slide'));
   }
 
   sliders() {
@@ -75,17 +82,27 @@ class ProductCarousel extends React.Component {
   }
 
   sliders2() {
-    return this.props.pics.map(item => (
-      <div key={item} className="pic2">
-        <img
-          src={
-            "http://localhost:3000/images/products/" +
-            this.props.data[0].product_file_name +
-            "/" +
-            item
+    // let pic2s = document.querySelectorAll('.pic2');
+    // console.log(pic2s);
+    return this.props.pics.map((item, i) => (
+
+      <div key={i} className="pic2">
+        <ReactImageMagnify className="ccc" {...{
+          smallImage: {
+            alt: this.props.data.product_file_name,
+            isFluidWidth: true,
+            src: "http://localhost:3000/images/products/" + this.props.data[0].product_file_name + "/" + item,
+            className: 'aaa'
+          },
+          largeImage: {
+            src: "http://localhost:3000/images/products/" +
+              this.props.data[0].product_file_name +
+              "/" +
+              item,
+            width: 1000,
+            height: 750
           }
-          alt={this.props.data.product_file_name}
-        />
+        }}  />
       </div>
     ));
   }
@@ -134,44 +151,67 @@ class ProductCarousel extends React.Component {
       }
       this.setState({ bought: true })
     }
-
   }
-
 
   render() {
 
     const data = this.props.data;
+    let productPics = "";
+    let numOfPictures = 0;
+    if(data){
+      productPics = JSON.parse(JSON.stringify(data))[0];
+      // let {product_pictures} = productPics
+      console.log(productPics);
+      if(productPics){
+        JSON.parse(productPics.product_pictures).length > 4 ? 
+          numOfPictures = 4 : numOfPictures = JSON.parse(productPics.product_pictures).length
+      }
+      else{
+        console.log('none');
+      }
+    }
+
     const { numberOfProducts } = this.props;
+
     const mainSettings = {
-      // dots: false,
-      // infinite: true,
-      // slidesToShow: 1,
-      // slidesToScroll: 1,
-      // // rtl: true,
+      pauseOnHover: true,
       // autoplay: true,
       // autoplaySpeed: 3000,
+      infinite: true,
     };
 
     const thumbSettings = {
       dots: false,
       infinite: true,
-      slidesToShow: 4,
+      slidesToShow: numOfPictures,
       slidesToScroll: 1,
-      vertical: true,
-      verticalSwiping: true,
-      // rtl: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
+      // vertical: true,
+      // verticalSwiping: true,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />,
     };
+
+    const { relatedProducts } = this.props;
+    // let related = JSON.parse(JSON.stringify(relatedProducts)) 
 
     return (
       <>
         <Container className="ProductCarousel">
           <Row className="mt-5 carouselsRow">
-            <Col md={8} className="d-flex justify-content-center align-items-start">
-              <div className="mr-5 sideCarousel">
+            <Col md={8} className="double-carousel d-flex flex-column justify-content-start align-items-center">
+              {/* <div className=""> */}
+              <Slider
+                {...mainSettings}
+                className="mainCarousel"
+                asNavFor={this.state.nav1}
+                ref={slider => (this.slider2 = slider)}
+                swipeToSlide={true}
+                focusOnSelect={true}
+              >
+                {this.sliders2()}
+              </Slider>
+              {/* </div> */}
+              <div className=" sideCarousel">
                 <Slider
                   {...thumbSettings}
                   className="thumbCarousel"
@@ -181,19 +221,6 @@ class ProductCarousel extends React.Component {
                   focusOnSelect={true}
                 >
                   {this.sliders()}
-                </Slider>
-              </div>
-
-              <div className="">
-                <Slider
-                  {...mainSettings}
-                  className="mainCarousel"
-                  asNavFor={this.state.nav1}
-                  ref={slider => (this.slider2 = slider)}
-                  swipeToSlide={true}
-                  focusOnSelect={true}
-                >
-                  {this.sliders2()}
                 </Slider>
               </div>
             </Col>
@@ -223,13 +250,13 @@ class ProductCarousel extends React.Component {
                           <a
                             href="/cart"
                             className="addToCartBtn mx-auto"
+                            style={{ 'text-decoration': 'none' }}
                           >
                             去結帳
                         </a>
                         )
                     }
                   </div>
-
                   <div>
                     <h4>規格說明</h4>
                     <Tabs
@@ -254,63 +281,29 @@ class ProductCarousel extends React.Component {
               ))}
             </Col>
           </Row>
-          <h1 className=" mx-auto text-center">還可搭配</h1>
-          <Row className="recommend  pt-5 d-flex ">
-            <Col sm={6} md={3} className="cardFrame">
-              <Card className="product-card">
-                <div className="photoFrame">
-                  <Card.Img
-                    variant="top"
-                    src="http://localhost:3000/images/products/OrtovoxFreeRider26L/free-ride-free-rider-24-46736-night-blue-blend-hir5da0941bdd2ef_1200x2000.jpg"
-                  />
-                </div>
-                <Card.Body>
-                  <Card.Title>Ortovox FreeRider 26L 背包</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
 
-            <Col sm={6} md={3} className="cardFrame">
-              <Card className="product-card">
-                <div className="photoFrame">
-                  <Card.Img
-                    variant="top"
-                    src="http://localhost:3000/images/products/GrandOfuton/BD-050_BIG.JPG"
-                  />
-                </div>
-                <Card.Body>
-                  <Card.Title>日式單人睡墊組</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={6} md={3} className="cardFrame">
-              <Card className="product-card">
-                <div className="photoFrame">
-                  <Card.Img
-                    variant="top"
-                    src="http://localhost:3000/images/products/GasGrillBurner\GS-355_BIG.JPG"
-                  />
-                </div>
-                <Card.Body>
-                  <Card.Title>瓦斯燒烤爐 雪峰苑</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={6} md={3} className="cardFrame">
-              <Card className="product-card">
-                <div className="photoFrame">
-                  <Card.Img
-                    variant="top"
-                    src="http://localhost:3000/images/products/GigaPowerBFLantern/GL-300A_BIG.JPG"
-                  />
-                </div>
-                <Card.Body>
-                  <Card.Title>GP瓦斯營燈</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
+          <h6 className="text-center" style={{ color: '#96DAF0' }}>為您推薦</h6>
+          <h1 className=" mx-auto text-center">相關商品</h1>
+          <Row className="recommend  pt-5 d-flex justify-content-center">
+            {
+              relatedProducts.map((product, i) => (
+                <Col key={i} sm={6} md={3} className="cardFrame">
+                  <a className="link" href={`/products/${product.product_id}`}>
+                  <Card className="product-card">
+                    <div className="photoFrame">
+                      <Card.Img
+                        variant="top"
+                        src={"http://localhost:3000/images/products/" + product.product_file_name + "/" + JSON.parse(product.product_pictures)[0]}
+                      />
+                    </div>
+                    <Card.Body>
+                      <Card.Title>{product.product_name}</Card.Title>
+                    </Card.Body>
+                  </Card>
+                  </a>
+                </Col>
+              ))
+            }
           </Row>
         </Container>
       </>

@@ -20,8 +20,9 @@ class ProductList extends React.Component {
 
   componentDidMount() {
     let body = document.querySelector('body');
-    body.style.overflowY = 'auto';
+    body.style.overflowY ='auto';
     document.title = "66°N - 戶外用品";
+
 
     fetch("http://localhost:3001/products", {
       // body: JSON.stringify({}),

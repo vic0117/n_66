@@ -93,7 +93,8 @@
 .cartSection .userCard {
   position: -webkit-sticky;
   position: sticky;
-  top: 104px;
+  top: 124px;
+  padding: 20px;
 }
 
 .cartSection .userCard p {
@@ -102,27 +103,120 @@
 }
 
 .cartSection .userCard .toList {
+  position: relative;
   margin: 20px auto 0;
   display: block;
-  width: 80%;
-  color: #fff;
+  width: 200px;
+  height: 44px;
+  color: #242A3A;
   background-color: #96DAF0;
   text-align: center;
   text-decoration: none;
   padding: 10px 0;
   font-size: 1rem;
+  overflow: hidden;
+}
+
+.cartSection .userCard .toList:hover .mask {
+  top: 0;
+}
+
+.cartSection .userCard .toList:hover .font {
+  color: #fff;
+}
+
+.cartSection .userCard .toList .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #242A3A;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
+  transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
+}
+
+.cartSection .userCard .toList .font {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
+  transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
 }
 
 .cartSection .userCard .checkOut {
-  margin: 30px auto 0;
+  margin: 30px auto 20px;
   display: block;
-  width: 80%;
+  width: 200px;
+  height: 44px;
   color: #fff;
   background-color: #242A3A;
   text-align: center;
   text-decoration: none;
   padding: 10px 0;
   font-size: 1rem;
+  border-radius: 0;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cartSection .userCard .checkOut:hover .mask {
+  top: 0;
+}
+
+.cartSection .userCard .checkOut:hover .font {
+  color: #242A3A;
+}
+
+.cartSection .userCard .checkOut .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #96DAF0;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
+  transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
+}
+
+.cartSection .userCard .checkOut .font {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
+  transition: 0.3s cubic-bezier(0.17, 0.67, 0.38, 0.99);
 }
 
 .cartSection .cartItem {
@@ -137,12 +231,8 @@
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
+  margin: 15px 0 0 0 0 !important;
   border-bottom: 1px solid #eaeaea;
-  -webkit-transform: translateX(-100vw);
-          transform: translateX(-100vw);
-  -webkit-animation: drop 1s  forwards;
-          animation: drop 1s  forwards;
-  opacity: 0;
 }
 
 .cartSection .cartItem .itemImg {
@@ -155,6 +245,18 @@
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.cartSection .cartItem .tripImg {
+  width: 156px;
+  height: 156px;
+}
+
+.cartSection .cartItem .tripImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .cartSection .cartItem .card-body {
@@ -207,7 +309,7 @@
 }
 
 .cartSection .cartItem .card-body .size {
-  margin-left: 20px;
+  margin-top: 10px !important;
 }
 
 .cartSection .cartItem .card-body .quantity {
@@ -221,10 +323,11 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  margin-top: 20px;
 }
 
 .cartSection .cartItem .card-body .quantity .counter {
-  text-align: center;
+  text-align: center !important;
   height: 22px;
   width: 50px;
   border: 1px solid #ccc;
@@ -264,7 +367,16 @@
   border-left: none;
 }
 
+.cartSection .cartItem .card-body .quantity .x {
+  margin: 0 20px 0 20px;
+}
+
 .cartSection .cartItem .card-body .quantity .price {
+  color: #242A3A;
+  width: 20%;
+}
+
+.cartSection .cartItem .card-body .quantity .tripPrice {
   color: #242A3A;
   width: 20%;
 }

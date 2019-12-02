@@ -12,12 +12,16 @@ class CheckOut extends React.Component {
       totalCost: 0,
       userId: "",
       hasCoupon: [],
-      userInfo: false
+      userInfo: false,
+      arrivalDateStr: ""
     };
   }
 
   componentDidMount() {
    document.title = "66°N - 結帳";
+
+    // let body = document.querySelector('body');
+    // body.style.overflowY('auto');
     const productsToBuy =
       JSON.parse(localStorage.getItem("productsToBuy")) || [];
     const tripsToBuy = JSON.parse(localStorage.getItem("tripsToBuy")) || [];
@@ -51,7 +55,8 @@ class CheckOut extends React.Component {
           totalCost: totalCost,
           userId: userId,
           hasCoupon: hasCoupon,
-          userInfo: userInfo
+          userInfo: userInfo,
+          arrivalDateStr: hasCoupon.arrivalDateStr
         });
       });
   }
@@ -76,6 +81,7 @@ class CheckOut extends React.Component {
           numberOfProducts={this.props.numberOfProducts}
           changeNumOfProduct={this.props.changeNumOfProduct}
           userInfo={this.state.userInfo}
+          arrivalDateStr={this.state.arrivalDateStr}
         />
       </>
     );

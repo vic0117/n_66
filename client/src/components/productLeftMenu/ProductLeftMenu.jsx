@@ -10,13 +10,12 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
-import trac from "../../components/TripLeftMenu/images/trac.svg";
-import SliderPrice from "./../TripLeftMenu/SliderPrice";
+import search from "../../components/TripLeftmenu/images/search.svg";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
+import SliderPrice from "../TripLeftmenu/SliderPrice";
 import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-
 import $ from "jquery";
 
 //IMAGES
@@ -77,6 +76,12 @@ class ProductLeftMenu extends Component {
   };
 
   goPrev = () => {
+
+    window.scrollTo({ 
+      top: 630, 
+      behavior: "smooth" 
+  })
+
     let { currentPage } = this.state;
 
     currentPage -= 1;
@@ -100,6 +105,11 @@ class ProductLeftMenu extends Component {
   };
 
   goNext = () => {
+
+    window.scrollTo({ 
+      top: 630, 
+      behavior: "smooth" 
+  })
     let { currentPage } = this.state;
     let pageItems = document.querySelectorAll(".page-item");
 
@@ -269,7 +279,9 @@ class ProductLeftMenu extends Component {
                 />
               </div>
               <Card.Body>
+                <Card.Title className="brand">{item.product_brand}</Card.Title>
                 <Card.Title>{item.product_name}</Card.Title>
+                <Card.Title>NT$ {item.product_price}</Card.Title>
               </Card.Body>
             </Card>
           </Link>

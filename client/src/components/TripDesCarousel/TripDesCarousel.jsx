@@ -70,7 +70,7 @@ class TripDesCarousel extends Component {
               arrows={false}
             >
 				{carouselImg.map(item => (
-              <div className="TripDesCarouselSmallBox">
+              <div className="TripDesCarouselSmallBox" key="item">
                 <img
                   // src={`http://localhost:3000/images/${item.trip_des2_carousel_img1}`}
 						src={"http://localhost:3000/images/" + item}

@@ -222,6 +222,10 @@ $secColor: #96daf0;
 			.card-body{
 				padding: 15px;
 				text-align: center;
+
+				.brand{
+					color: #ccc;
+				}
 			}
 		}
 	}
@@ -332,6 +336,8 @@ $secColor: #96daf0;
 	  
 			.card-body{
 			  padding: 0;
+
+
 	  
 			  .makeStyles-root-1{
 				margin: 100px auto 0px;
@@ -343,6 +349,8 @@ $secColor: #96daf0;
 				  color:#242A3A !important;
 				}
 			  }
+
+
 	  
 			  .searchDaysBtn{
 				display: block;

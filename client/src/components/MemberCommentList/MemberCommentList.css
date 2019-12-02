@@ -27,10 +27,19 @@
 
 .comment-container .rank-container {
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .comment-container .rank-container .rank {
   margin-right: 0.25rem;
+}
+
+.comment-container .rank-container .to-comment:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #d5d5d5 !important;
+  outline: none;
+  border-color: #d5d5d5 !important;
 }
 
 .comment-container .duration {

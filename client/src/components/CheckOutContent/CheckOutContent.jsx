@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "./CheckOutContent.css";
 
+
 class CheckOutContent extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ class CheckOutContent extends React.Component {
       useCouponName: "原價購買",
       useCouponType: "",
       useCouponDiscount: 0,
-      Freight: 30,
+      Freight: 60,
       creditNum: "",
       validEnd: "",
       securityCode: "",
@@ -289,7 +290,8 @@ class CheckOutContent extends React.Component {
     const { tripsToBuy } = this.props;
     const { totalCost } = this.props;
     const { userInfo } = this.props;
-
+    const {arrivalDateStr} = this.props;
+    console.log(arrivalDateStr);
     // 淺拷貝userInfo
     let userInformation = Object.assign({}, userInfo);
 
@@ -309,20 +311,19 @@ class CheckOutContent extends React.Component {
           <Row>
             <Col className="categories-outer-container " lg={8}>
               <div className="categories-container d-flex">
-                <div className="itemImg " style={{ flex: 2 }}></div>
-                <div className="align-self-end mb-2 pl-2" style={{ flex: 3 }}>
+                {/* <div className="itemImg " ></div> */}
+                <div className="align-self-end mb-2 pl-2" >
                   品項
                 </div>
                 <div
-                  className="align-self-end mb-2 text-right"
-                  style={{ flex: 2 }}
+                  className="align-self-end mb-2 ml-auto text-right"
                 >
                   價格
                 </div>
               </div>
               <div
                 className=" py-3"
-                style={{ borderBottom: "1px solid #E8E8E8" }}
+                // style={{ borderBottom: "1px solid #E8E8E8" }}
               >
                 {productsToBuy === null ? (
                   <div></div>
@@ -330,38 +331,30 @@ class CheckOutContent extends React.Component {
                   productsToBuy.map((item, i) => (
                     <div
                       key={i}
-                      className="d-flex my-3"
+                      className="cartItem d-flex my-3"
                       style={{ borderBottom: "1px solid #E8E8E8" }}
                     >
-                      <div className="itemImg d-flex" style={{ flex: 2 }}>
-                        <Card.Img
-                          variant="top"
-                          src={
-                            "http://localhost:3000/images/products/" +
-                            item.product_file_name +
-                            "/" +
-                            item.product_img
-                          }
-                        />
+                      <div className="itemImg" >
+                        <img src={"http://localhost:3000/images/products/" + item.product_file_name + "/" + item.product_img} alt={item.product_name}/>
                       </div>
 
-                      <div className="mb-2" style={{ flex: 3 }}>
-                        <h6>{item.product_category}</h6>
+                      <div className="card-body" >
+                        <h6 className="productCategory">{item.product_category}</h6>
                         {/* <h6>{item.code}</h6> */}
-                        <div className="title mb-1 font-size-14">
+                        <h5 className="title mb-1 ">
                           {item.product_name}
-                        </div>
+                        </h5>
                         <div className="mb-4">
-                          <span className="size font-size-14">
+                          <span className="size ">
                             {item.product_size}
                           </span>
                         </div>
                         <div className="d-flex ">
-                          <span>數量</span>
-                          <h5 className="ml-3 counter">
+                          <span>數量 :</span>
+                          <h5 className="counter">
                             {item.product_amount}
                           </h5>
-                          <div className="mb-2 pl-2" style={{ flex: 1 }}>
+                          <div className="" >
                             {this.state.useCouponName ===
                             item.product_category ? (
                               <del className="discountPrice">
@@ -371,7 +364,7 @@ class CheckOutContent extends React.Component {
                               "NT$" + item.product_price
                             )}
                           </div>
-                          <div className="mb-2 pl-2" style={{ flex: 4 }}>
+                          <div className="ml-auto mb-2 pl-2" >
                             {this.state.useCouponName === item.product_category
                               ? "NT$" +
                                 Math.floor(
@@ -384,13 +377,6 @@ class CheckOutContent extends React.Component {
                           </div>
                         </div>
                       </div>
-
-                      <div className="mb-2" style={{ flex: 1 }}>
-                        <div className="deleteBtn ml-5">
-                          <div className="slash leftLine"></div>
-                          <div className="slash rightLine"></div>
-                        </div>
-                      </div>
                     </div>
                   ))
                 )}
@@ -399,20 +385,20 @@ class CheckOutContent extends React.Component {
                   <div></div>
                 ) : (
                   tripsToBuy.map((item, i) => (
-                    <div key={i} id={i} className="cartItem">
+                    <div key={i} id={i} className="tripCartItem">
                       <div className="itemImg">
-                        <Card.Img
-                          variant="top"
+                        <img
                           src={"http://localhost:3000/images/" + item.trip_img}
+                          alt={item.trip_name}
                         />
                       </div>
                       <Card.Body className="pr-0">
                         <div className="d-flex w-100 flex-column align-items-start">
-                          <h6 className="d-flex">
+                          <h6 className="d-flex tripType">
                             <div>{item.trip_country}</div>
-                            <div className="">{item.trip_type}</div>
+                            <div className="ml-5">{item.trip_type}</div>
                           </h6>
-                          <div className="title">{item.trip_name}</div>
+                          <h5 className="title">{item.trip_name}</h5>
                           <span className="d-flex">
                             <span className="size ">
                               {item.trip_duration} 天
@@ -420,25 +406,19 @@ class CheckOutContent extends React.Component {
                             <span className="size ml-3">
                               {item.trip_start_date}
                             </span>
-                            <span>~</span>
+                            <span className="mx-2">~</span>
                             <span className="size">{item.trip_end_date}</span>
                           </span>
                           <div className="d-flex w-100 quantity">
-                            <div style={{ flex: 2 }}>數量 : </div>
-                            <h5 className=" counter" style={{ flex: 1 }}>
+                            <span>數量 : </span>
+                            <h5 className=" counter" >
                               {item.trip_amount}
                             </h5>
-                            <div
-                              className="text-center price"
-                              style={{ flex: 3 }}
-                            >
-                              {item.trip_price}
+                            <div className="text-center price">
+                              NT$ {item.trip_price}
                             </div>
-                            <div
-                              className="text-right price"
-                              style={{ flex: 5 }}
-                            >
-                              NT$ {item.trip_amount * item.trip_price}{" "}
+                            <div className="text-right price ml-auto">
+                              NT$ {item.trip_amount * item.trip_price}
                             </div>
                           </div>
                         </div>
@@ -455,7 +435,8 @@ class CheckOutContent extends React.Component {
                   ""
                 ) : (
                   <DropdownButton
-                    id="dropdown-basic-button"
+                    className=""
+                    id="couponDropdown"
                     title={
                       this.state.useCouponName === "原價購買"
                         ? "使用折價卷"
@@ -477,17 +458,17 @@ class CheckOutContent extends React.Component {
               </div>
 
               {/* ---------------------------------------------------------------------- */}
-              <div className="d-flex mt-2">
-                <div style={{ flex: 2 }}></div>
-                <div style={{ flex: 3 }}>運費</div>
+              <div className="d-flex mt-2" style={{ borderTop: '1px solid #e8e8e8' }}>
+                {/* <div style={{ flex: 2 }}></div> */}
+                <div >運費</div>
                 <div className="text-right" style={{ flex: 1 }}>
                   NT$ {this.state.Freight}
                 </div>
                 {/* <div style={{ flex: 1 }}></div> */}
               </div>
               <div className="d-flex mt-1">
-                <div style={{ flex: 2 }}></div>
-                <div style={{ flex: 3 }}>合計</div>
+                {/* <div style={{ flex: 2 }}></div> */}
+                <div >合計</div>
                 <h5 className="text-right" style={{ flex: 1 }}>
                   {this.state.useCouponDiscount === 0
                     ? `NT$ ${totalCost + this.state.Freight}`
@@ -496,29 +477,40 @@ class CheckOutContent extends React.Component {
               </div>
             </Col>
             <Col className="orderDetail-container" lg={4}>
-              <div>
-                <div className="orderDetail ">
+              <div className="orderDetail ">
+                <div className="delivery-method">
                   <div className="m-2">
-                    <div className="mb-1">送貨資訊</div>
-                    <div className="font-size-14">
-                      {userInformation.last_name_zh}
-                      {userInformation.first_name_zh}
+                    <h5 className="mb-2">送貨資訊</h5>
+                    <div className="font-size-14 d-flex">
+                      姓名: 
+                      <span className="ml-3 d-block">
+                        {userInformation.last_name_zh}
+                        {userInformation.first_name_zh}
+                      </span>  
                     </div>
-                    <div className="font-size-14">{userInformation.email}</div>
-                    <div className="font-size-14">
-                      {userInformation.address}
+                    <div className="font-size-14 d-flex">
+                      帳號:  
+                      <span className="ml-3 d-block">
+                        {userInformation.email}
+                      </span>
+                    </div>
+                    <div className="font-size-14 d-flex">
+                      地址:  
+                      <span className="ml-3 d-block">
+                        {userInformation.address}
+                      </span> 
                     </div>
                     <a className="font-size-14" href="/account">
                       修改送貨資訊
                     </a>
                   </div>
-                  <div className="m-2 mt-3 d-flex time-method">
+                  <div className="m-2 d-flex time-method">
                     <div>
                       <div className="mb-1">運送方式</div>
-                      <div className="form-check">
-                        <div>
+                      <div className="form-check p-0">
+                        <div className="d-flex">
                           <input
-                            onChange={() => this.pickUp(30)}
+                            onChange={() => this.pickUp(60)}
                             className="pickUpRadios"
                             type="radio"
                             name="pickUpRadios"
@@ -533,9 +525,9 @@ class CheckOutContent extends React.Component {
                             超商取貨
                           </label>
                         </div>
-                        <div>
+                        <div className="d-flex">
                           <input
-                            onChange={() => this.pickUp(60)}
+                            onChange={() => this.pickUp(100)}
                             className="pickUpRadios"
                             type="radio"
                             name="pickUpRadios"
@@ -552,7 +544,7 @@ class CheckOutContent extends React.Component {
                     <div className="ml-4">
                       <div className="mb-1">預計到貨時間</div>
                       <span className="font-size-14">
-                        2019/11/4 - 2019/11/5
+                        {arrivalDateStr}
                       </span>
                     </div>
                   </div>
@@ -605,10 +597,12 @@ class CheckOutContent extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="checkout-btn d-flex">
-                  <button onClick={this.CheckOut} className="mx-auto mb-3">
-                    確認結帳
-                  </button>
+                <div className="checkout-btn-container d-flex">
+                  <div onClick={this.CheckOut} className="checkout-btn mx-auto mb-3">
+                    
+                    <div className="mask"></div>
+                    <div className="font">確認結帳</div>
+                  </div>
                 </div>
               </div>
             </Col>

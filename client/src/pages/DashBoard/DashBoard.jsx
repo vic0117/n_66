@@ -105,6 +105,9 @@ class DashBoard extends Component {
   async componentDidMount() {
     document.title = "66°N - 客戶專區";
 
+    let body = document.querySelector("body");
+    body.style.overflowY = "auto";
+
     // server
 
     let config = {
@@ -227,7 +230,7 @@ class DashBoard extends Component {
           toast.error(this.state.feedback.msg.text);
         }
       })
-      .catch(function (err) {
+      .catch(function(err) {
         console.log(err);
       });
   };
@@ -287,7 +290,7 @@ class DashBoard extends Component {
           toast.error(this.state.feedback.msg.text);
         }
       })
-      .catch(function (err) {
+      .catch(function(err) {
         console.log(err);
       });
   };
@@ -351,13 +354,15 @@ class DashBoard extends Component {
                   render={() => (
                     <MemberCoupon
                       currentUser={currentUser}
-                      userCoupons={userCoupons} />
+                      userCoupons={userCoupons}
+                    />
                   )}
                 />
                 <Route
                   path="/account/comments"
                   render={() => (
                     <MemberCommentList
+                      userInfo={userInfo}
                       currentUser={currentUser}
                       userComments={userComments}
                     />

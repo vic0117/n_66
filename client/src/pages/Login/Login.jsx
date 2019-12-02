@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import Joi from "joi-browser";
 import { Link } from "react-router-dom";
 import LoginNavBar from "../../components/LoginNavbar/LoginNavbar";
+
 import "./Login.css";
 
 class Login extends React.Component {
@@ -253,6 +254,10 @@ class Login extends React.Component {
 
   componentDidMount() {
     document.title = "66°N - 登入";
+
+    // let body = document.querySelector('body');
+    // body.style.overflowY ='auto';
+
     // JS DOM control
     let wantSignUp = false;
 
@@ -384,11 +389,11 @@ class Login extends React.Component {
     let classes = `feedback ${this.state.msg.type}`;
     return (
       <>
-        <LoginNavBar 
+        <LoginNavBar
           currentUser={this.props.currentUser}
           numberOfProducts={this.props.numberOfProducts}
           changeNumOfProduct={this.props.changeNumOfProduct}
-          />
+        />
         <Container className="cont">
           <Row className="loginRow">
             <div className="signIn">
@@ -407,13 +412,11 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-
                   {
                     <div className="alert alert-danger error-msg">
                       {this.state.errors.email || ""}
                     </div>
                   }
-
                   <label>
                     <input
                       type="password"
@@ -422,7 +425,6 @@ class Login extends React.Component {
                       onChange={this.logChange}
                     />
                   </label>
-
                   {
                     <div className="alert alert-danger error-msg">
                       {this.state.errors.password || ""}
@@ -431,7 +433,6 @@ class Login extends React.Component {
                   <Link to="/password/recover" className="forgot-pass">
                     忘記密碼?
                   </Link>
-
                   {
                     <div className={classes}>
                       {this.state.msg.loginMsg || ""}
