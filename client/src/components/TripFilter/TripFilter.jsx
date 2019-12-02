@@ -17,7 +17,9 @@ import {
 import { ReactComponent as Filter } from "./images/filter.svg";
 import $ from 'jquery'
 import SliderPrice from '../ProductLeftMenu/SliderPrice';
+
 import "./TripFilter.scss";
+
 
 class TripFilter extends React.Component {
     constructor(props) {

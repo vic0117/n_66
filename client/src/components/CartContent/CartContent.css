@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .cartBanner {
   height: 100vh;
 }
@@ -7,13 +6,14 @@
   width: 100%;
   height: 100%;
   margin: 0;
+  background-color: #fff;
 }
 
 .cartBanner .cartBannerRow img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .cartBanner::before {
@@ -23,20 +23,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #242a3a;
   z-index: 10;
-  -webkit-animation: begin 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
-          animation: begin 0.5s cubic-bezier(0.09, 0.37, 0.74, 1) forwards;
 }
 
 .cartBanner h1 {
-  content: '購物車是空的喔~';
-  color: #fff;
-  font-size: 50px;
+  color: #242A3A;
+  font-size: 40px;
   line-height: 60px;
-  font-weight: 700;
+  font-weight: 500;
   position: absolute;
-  top: 60%;
+  top: 63%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -44,12 +40,22 @@
   opacity: 1;
 }
 
+.cartBanner .Tohome {
+  position: absolute;
+  top: 69%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 500;
+  color: #96DAF0;
+}
+
 @-webkit-keyframes begin {
   from {
     opacity: 1;
   }
   to {
-    opacity: .6;
+    opacity: .8;
   }
 }
 
@@ -58,7 +64,7 @@
     opacity: 1;
   }
   to {
-    opacity: .6;
+    opacity: .8;
   }
 }
 
@@ -337,12 +343,20 @@
 }
 
 .cartSection .cartItem .card-body .quantity .counter {
-  text-align: center !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 22px;
   width: 50px;
   border: 1px solid #ccc;
   color: #ABABAB;
-  font-weight: bold;
+  font-size: 14px;
 }
 
 .cartSection .cartItem .card-body .quantity .qtyBtn {
@@ -378,7 +392,7 @@
 }
 
 .cartSection .cartItem .card-body .quantity .x {
-  margin: 0 20px 0 20px;
+  margin: 0 5px 0 5px;
 }
 
 .cartSection .cartItem .card-body .quantity .price {
@@ -386,9 +400,15 @@
   width: 20%;
 }
 
+.cartSection .cartItem .card-body .quantity .subPrice {
+  font-size: 1rem;
+  color: #242A3A;
+}
+
 .cartSection .cartItem .card-body .quantity .tripPrice {
   color: #242A3A;
   width: 20%;
+  font-size: 1rem;
 }
 
 .cartSection .cartItem .card-body .quantity h5, .cartSection .cartItem .card-body .quantity h6 {

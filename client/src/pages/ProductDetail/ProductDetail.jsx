@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import ProductCarousel from './../../components/ProductCarousel/ProductCarousel';
+import ProductCarousel from "./../../components/ProductCarousel/ProductCarousel";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -16,9 +16,8 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-
-    let body = document.querySelector('body');
-    body.style.overflowY ='auto';
+    let body = document.querySelector("body");
+    body.style.overflowY = "auto";
 
     // console.log(`http://localhost:3001/products/${this.props.match.params.id}`)
     fetch(`http://localhost:3001/products/${this.props.match.params.id}`)
@@ -33,7 +32,7 @@ class ProductDetail extends React.Component {
         let picArray = JSON.parse(picsJsonString);
         // console.log(picArray)
         let relatedProducts = json.relatedProducts;
-        console.log(relatedProducts)
+        console.log(relatedProducts);
         this.setState(
           {
             ProductsDetail: json.results,
@@ -90,17 +89,17 @@ class ProductDetail extends React.Component {
 
   render() {
     const { numberOfProducts } = this.props.numberOfProducts;
-    let {currentUser} = this.props; 
-    if(currentUser){
+    let { currentUser } = this.props;
+    if (currentUser) {
       let obj = { ...currentUser };
       //解構付值obj
       let { user } = obj;
       //複製user
       let uid = { ...user };
       let user_id = uid.u_id;
-      localStorage.setItem('userId', user_id);
+      localStorage.setItem("userId", user_id);
     }
-    
+
     return (
       <>
         <NavBar

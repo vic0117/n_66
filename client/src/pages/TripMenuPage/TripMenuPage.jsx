@@ -423,7 +423,7 @@ class TripMenuPage extends Component {
             <div className="TripMenuNavInputBox">
               <p>您的旅行</p>
               <h1>搜尋</h1>
-              <div style={{ display: "flex" }}>
+              <div className='searchInput1111' style={{ display: "flex" }}>
                 <Input
                   className="TripSearchInput"
                   placeholder="搜 尋 您 的 旅 行"

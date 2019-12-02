@@ -22,7 +22,7 @@ class TripDes1 extends Component {
               alt="TripDes1LeftImg"
               className="TripDes1LeftImg"
             />
-            <h4>優點：</h4>
+            <h4>特色：</h4>
             <ul>
               <li>{JSON.parse(item.trip_des1left_content)[0]}</li>
               <li>{JSON.parse(item.trip_des1left_content)[1]}</li>

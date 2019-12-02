@@ -479,5 +479,17 @@ $secColor: #96daf0;
 		.product-filter-btn{
 			display: flex !important;
 		}
+
+		.bannerArea{
+			height: 500px;
+
+			&::before{
+				height: 500px;
+			}
+
+			h1{
+				top: 30%
+			}
+		}
 	}
 }

@@ -4,13 +4,13 @@ $secColor: #96daf0;
 .go-top{
     position: fixed;
     right: 20px;
-    bottom: 140px;
-    width: 80px;
-    height: 80px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border: 1px solid $primaryColor;
-    color: $primaryColor;
-    
+    // border: 1px solid #FFF;
+    color: $secColor;
+    background-color: $primaryColor;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@ $secColor: #96daf0;
     transition: .3s;
 
     &:hover{
-        background-color: $primaryColor;
-        color: $secColor;
+        background-color: $secColor;
+        color: $primaryColor;
     }
 }

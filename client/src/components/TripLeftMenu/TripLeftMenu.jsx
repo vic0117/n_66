@@ -39,6 +39,9 @@ class TripLeftMenu extends Component {
     this.setState({ buttonTitleName4: eventKey });
     this.props.select4(eventKey);
   };
+  handlePrice = (value)=>{
+	  console.log(value)
+  }
 
   render() {
     return (
@@ -248,7 +251,7 @@ n"
           <img src={dollar} alt="dollar" />
           <p>價錢</p>
         </div>
-        <SliderPrice select6={this.props.select6} />
+        <SliderPrice select6={this.props.select6} handlePrice={this.handlePrice}/>
       </div>
     );
   }

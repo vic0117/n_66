@@ -356,7 +356,7 @@ class CheckOutContent extends React.Component {
                             </span>
                           </div>
                           <div className="d-flex ">
-                            <span>數量 :</span>
+                            <span>數量:</span>
                             <h5 className="counter">
                               {item.product_amount}
                             </h5>
@@ -416,7 +416,7 @@ class CheckOutContent extends React.Component {
                               <span className="size">{item.trip_end_date}</span>
                             </span>
                             <div className="d-flex w-100 quantity">
-                              <span>數量 : </span>
+                              <span>數量: </span>
                               <h5 className=" counter" >
                                 {item.trip_amount}
                               </h5>
@@ -472,7 +472,7 @@ class CheckOutContent extends React.Component {
                 </div>
                 {/* <div style={{ flex: 1 }}></div> */}
               </div>
-              <div className="d-flex mt-1">
+              <div className="d-flex mt-1 mb-4">
                 {/* <div style={{ flex: 2 }}></div> */}
                 <div >合計</div>
                 <h5 className="text-right" style={{ flex: 1 }}>
@@ -484,9 +484,10 @@ class CheckOutContent extends React.Component {
             </Col>
             <Col className="orderDetail-container" lg={4}>
               <div className="orderDetail ">
+              <h5 className="mb-3 text-center">送貨資訊</h5>
                 <div className="delivery-method">
                   <div className="m-2">
-                    <h5 className="mb-2">送貨資訊</h5>
+                    
                     <div className="font-size-14 d-flex">
                       姓名:
                       <span className="ml-3 d-block">
@@ -555,8 +556,8 @@ class CheckOutContent extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="m-2 mt-4">付款方式</div>
-                <div className="payment-container m-2 mt-1">
+                <h5 className="m-2 mt-4 mb-3 text-center">付款方式</h5>
+                <div className="payment-container m-2 mt-1 ">
                   <label className="font-size-14" htmlFor="">
                     信用卡卡號
                   </label>
