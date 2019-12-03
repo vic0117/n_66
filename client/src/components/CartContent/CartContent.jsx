@@ -299,6 +299,7 @@ class CartContent extends React.Component {
           </div>
           <Container fluid className="p-0 cartBanner">
             <Row className="cartBannerRow">
+              {/* <img src={cart} alt="banner"/> */}
               <div
                 className=" cartBG d-flex mx-auto"
                 style={{ width: "150px", height: "150px" }}
