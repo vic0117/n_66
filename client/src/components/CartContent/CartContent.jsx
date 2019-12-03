@@ -5,8 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 //images svg
 import cross from "./img/cross.svg";
-// import cart from './img/shopping-cart-empty-side-view.svg'
-// import card from './img/card.svg'
+import cart from "./img/shopping-cart-empty-side-view.svg";
 //CSS
 import "./CartContent.css";
 
@@ -301,9 +300,15 @@ class CartContent extends React.Component {
           <Container fluid className="p-0 cartBanner">
             <Row className="cartBannerRow">
               {/* <img src={cart} alt="banner"/> */}
+              <div
+                className=" cartBG d-flex mx-auto"
+                style={{ width: "150px", height: "150px" }}
+              >
+                <img src={cart} alt="banner" />
+              </div>
               <h1 className="bannerTitle">購物車尚無商品</h1>
-              <Link to='/'>
-              <div className='Tohome'>回到首頁</div>
+              <Link to="/">
+                <div className="Tohome">回到首頁</div>
               </Link>
             </Row>
           </Container>
@@ -450,8 +455,10 @@ class CartContent extends React.Component {
                 {data === null && tripData == null ? (
                   <div></div>
                 ) : (
-                    <h5 className="text-right mt-3">總價: NT$ {this.props.totalCost}</h5>
-                  )}
+                  <h5 className="text-right mt-3">
+                    總價: NT$ {this.props.totalCost}
+                  </h5>
+                )}
               </Col>
               <Col md={4}>
                 <div className="userCard">
