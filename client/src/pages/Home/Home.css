@@ -57,7 +57,7 @@ body {
 @media (max-width: 1000px) {
   .messageIn {
     width: 80%;
-    right: -60px;
+    right: -200px;
   }
 }
 

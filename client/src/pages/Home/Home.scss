@@ -49,9 +49,15 @@ body{
 @media(max-width:1000px){
 	.messageIn{
 		width: 80%;
-		right: -60px;
+		right: -200px;
 	}
 }
+// @media(max-width:900px){
+// 	.messageIn{
+// 		width: 120%;
+// 		right: -150px;
+// 	}
+// }
 @media(max-width:700px){
 	.messageIn{
 		width: 120%;
