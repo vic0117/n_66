@@ -338,6 +338,15 @@ class DashBoard extends Component {
           numberOfProducts={numberOfProducts}
           changeNumOfProduct={changeNumOfProduct}
         />
+        <div className="myBreadCrumb py-1">
+          <a className="ml-3" href="/">
+            首頁
+          </a>
+          <span className="mx-3">></span>
+          <a className="current" href="/account">
+            客戶專區
+          </a>
+        </div>
         <div className="container">
           <Row className="member-section">
             <Col className="col-xl-3 col-md-4 member-left-section">

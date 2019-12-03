@@ -57,9 +57,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props;
-    const { numberOfProducts } = this.props;
-    console.log(currentUser);
+    const { currentUser, numberOfProducts } = this.props;
     // let numberOfProduct = JSON.parse( localStorage.getItem('productsToBuy')).length;
 
     return (
