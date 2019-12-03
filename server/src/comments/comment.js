@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
-const bluebird = require("bluebird");
+const bluebird = require("bluebird"); 
 const db = mysql.createConnection({
   // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
