@@ -46,7 +46,7 @@ class WishList extends Component {
           <Row>
             {userWishes.map(wish => (
               <div className="card-container d-flex col-lg-4" key={wish.w_id}>
-                <Card className="wish-list-item">
+                <Card className="wish-list-item w-100">
                   <Link
                     to={`/${wish.product_router}/${wish.product_id}`}
                     className="link-container"
