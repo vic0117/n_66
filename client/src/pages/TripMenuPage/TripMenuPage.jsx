@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Input, Container } from "@material-ui/core";
 import norway from "./images/norway-3840x2160-5k-4k-wallpaper-bridge-sea-lake-water-blue-sky-920.jpg";
-import TripLeftMenu from "../../components/TripLeftMenu/TripLeftMenu";
-import TripMenu from '../../components/Tripmenu/TripMenu'
+import TripLeftMenu from "../../components/TripLeftmenu/TripLeftMenu";
+import TripMenu from '../../components/Tripmenu/TripMenu';
+
 import TripSort from "../../components/TripSort/TripSort";
 import TripFilter from "../../components/TripFilter/TripFilter";
 import TripMenuFooter from "../../components/TripMenuFooter/TripMenuFooter";
@@ -423,7 +424,7 @@ class TripMenuPage extends Component {
             <div className="TripMenuNavInputBox">
               <p>您的旅行</p>
               <h1>搜尋</h1>
-              <div style={{ display: "flex" }}>
+              <div className='searchInput1111' style={{ display: "flex" }}>
                 <Input
                   className="TripSearchInput"
                   placeholder="搜 尋 您 的 旅 行"

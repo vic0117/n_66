@@ -16,8 +16,10 @@ import {
 // import { ReactComponent as Search } from "./images/search.svg";
 import { ReactComponent as Filter } from "./images/filter.svg";
 import $ from 'jquery'
-import SliderPrice from '../TripLeftMenu/SliderPrice';
+import SliderPrice from '../ProductLeftMenu/SliderPrice';
+
 import "./TripFilter.scss";
+
 
 class TripFilter extends React.Component {
     constructor(props) {

@@ -90,10 +90,17 @@
   border: 1px solid #96DAF0;
 }
 
+.leftMenu .dropdown .btn:focus {
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .leftMenu .dropdown-menu {
   height: 200px !important;
   width: 245px !important;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .leftMenu .dropdown-item {

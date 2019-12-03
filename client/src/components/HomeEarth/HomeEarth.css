@@ -42,7 +42,7 @@
   width: 280px;
   height: 63px;
   position: relative;
-  z-index: 999;
+  z-index: 20;
   display: none;
 }
 
@@ -494,12 +494,13 @@
     width: 6%;
     z-index: 11;
   }
-  .planet-section .norway {
+  .planet-section .norway1 {
     display: block;
     left: 54.9%;
     bottom: 19.5%;
     width: 12%;
     z-index: 11;
+    bottom: 31.8%;
   }
   .planet-section .spitzberg {
     display: block;

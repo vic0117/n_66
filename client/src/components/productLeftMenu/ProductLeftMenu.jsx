@@ -10,8 +10,8 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import search from "../../components/TripLeftMenu/images/search.svg";
-import trac from "../../components/TripLeftMenu/images/trac.svg";
+import search from "../../components/TripLeftmenu/images/search.svg";
+import trac from "../../components/TripLeftmenu/images/trac.svg";
 import SliderPrice from "./SliderPrice";
 
 import $ from "jquery";
@@ -20,8 +20,8 @@ import $ from "jquery";
 import filterImg from "./img/filter.svg";
 import left from "./img/left.svg";
 import right from "./img/right.svg";
-import brand from './img/copyright-regular.svg';
-import hiking from "./img/hiking.svg"
+import brand from "./img/copyright-regular.svg";
+import hiking from "./img/hiking.svg";
 //CSS
 import "./productLeftMenu.css";
 import banner from "./img/header22.jpg";
@@ -76,11 +76,10 @@ class ProductLeftMenu extends Component {
   };
 
   goPrev = () => {
-
-    window.scrollTo({ 
-      top: 630, 
-      behavior: "smooth" 
-  })
+    window.scrollTo({
+      top: 630,
+      behavior: "smooth"
+    });
 
     let { currentPage } = this.state;
 
@@ -105,11 +104,10 @@ class ProductLeftMenu extends Component {
   };
 
   goNext = () => {
-
-    window.scrollTo({ 
-      top: 630, 
-      behavior: "smooth" 
-  })
+    window.scrollTo({
+      top: 630,
+      behavior: "smooth"
+    });
     let { currentPage } = this.state;
     let pageItems = document.querySelectorAll(".page-item");
 

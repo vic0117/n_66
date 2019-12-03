@@ -209,7 +209,7 @@ $secColor: #96daf0;
 
 
   .payment-container {
-    padding: 0.5rem 1rem 2rem 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
     background-color: #eaeaea;
 
     .error-msg {
@@ -338,7 +338,8 @@ $secColor: #96daf0;
       }
     }
     .payment-container {
-      width: 342px;
+      width: 100%;
+      // width: 342px;
       height: 220px;
       margin: 0.5rem auto !important;
     }

@@ -214,7 +214,7 @@
 }
 
 .sectionCheckOut .payment-container {
-  padding: 0.5rem 1rem 2rem 1rem;
+  padding: 0.5rem 1rem 1rem 1rem;
   background-color: #eaeaea;
 }
 
@@ -344,7 +344,7 @@
     padding: 1rem 0;
   }
   .sectionCheckOut .payment-container {
-    width: 342px;
+    width: 100%;
     height: 220px;
     margin: 0.5rem auto !important;
   }

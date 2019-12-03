@@ -91,7 +91,11 @@ class NavBar extends React.Component {
                 <span>戶外用品</span>
                 <div className="blue-line"></div>
               </Link>
-              <Link to="/comments" className="navbar-item nav-link" style={{ marginRight: "2rem" }}>
+              <Link
+                to="/comments"
+                className="navbar-item nav-link"
+                style={{ marginRight: "2rem" }}
+              >
                 <span>旅遊評價</span>
                 <div className="blue-line"></div>
               </Link>
@@ -115,10 +119,14 @@ class NavBar extends React.Component {
               </Link>
               {!!currentUser ? (
                 <Nav.Link className="icon-container cart" href="/cart">
-                <Cart height="20" width="20" className="cart-icon" />
-                { !!numberOfProducts === false || !currentUser ? <p></p> : <div>{numberOfProducts}</div>}
-              </Nav.Link>
-              ): (
+                  <Cart height="20" width="20" className="cart-icon" />
+                  {!!numberOfProducts === false || !currentUser ? (
+                    <p></p>
+                  ) : (
+                    <div>{numberOfProducts}</div>
+                  )}
+                </Nav.Link>
+              ) : (
                 <p></p>
               )}
             </Nav>
@@ -127,17 +135,26 @@ class NavBar extends React.Component {
           <ul className="right-menu">
             <li>
               <Link to="/trips/page/1">
-                <h5>旅遊行程</h5>
+                <h5>旅程目的地</h5>
+                <h6>探險的開始</h6>
               </Link>
             </li>
             <li>
               <Link to="/products">
-                <h5>戶外用品</h5>
+                <h5>裝備與器具</h5>
+                <h6>戶外用品</h6>
               </Link>
             </li>
             <li>
               <Link to="/comments">
-                <h5>旅遊評價</h5>
+                <h5>意見與反饋</h5>
+                <h6>客戶評論</h6>
+              </Link>
+            </li>
+            <li>
+              <Link to="#">
+                <h5>關於66°N</h5>
+                <h6>我們的理念</h6>
               </Link>
             </li>
             {currentUser ? (

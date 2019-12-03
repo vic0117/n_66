@@ -65,12 +65,17 @@
 		color:#242A3A;
 		border:1px solid #96DAF0;	
 	}
-	
+	.btn:focus{
+		outline: none !important;
+		box-shadow: none;
+	}
 }
 .dropdown-menu{
 	height: 200px !important;
 	width: 245px !important;
-	overflow: scroll;
+	overflow-y:scroll;
+	overflow-x: hidden;
+	// ::-webkit-scrollbar { width: 0 !important }
 }
 .dropdown-item{
 	height:50px !important;
