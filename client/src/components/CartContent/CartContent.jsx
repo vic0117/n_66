@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 //images svg
 import cross from "./img/cross.svg";
 import cart from './img/shopping-cart-empty-side-view.svg'
+import card from './img/card.svg'
 //CSS
 import "./CartContent.css";
 
