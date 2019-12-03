@@ -1,14 +1,14 @@
-.norway {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 .TripMenuNavBox {
   max-height: 95%;
   width: 100%;
   position: relative;
+}
+
+.TripMenuNavBox .norway {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .TripSearchInput {
@@ -150,7 +150,7 @@
   .TripSearchInput {
     margin-bottom: 20px;
   }
-  .norway {
+  .TripMenuNavBox .norway {
     height: 500px !important;
   }
   .searchInput1111 {

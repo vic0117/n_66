@@ -495,13 +495,13 @@
     width: 6%;
     z-index: 11;
   }
-  .planet-section .norway1 {
+  .planet-section .norway {
     display: block;
     left: 54.9%;
     bottom: 19.5%;
     width: 12%;
     z-index: 11;
-    bottom: 31.8%;
+    bottom: 19.3%;
   }
   .planet-section .spitzberg {
     display: block;

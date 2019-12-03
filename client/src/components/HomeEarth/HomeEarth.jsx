@@ -129,6 +129,7 @@ class HomeEarth extends React.Component {
     countryLabels.forEach(countryLabel => {
       countryLabel.addEventListener("mouseover", function() {
         let name = "." + this.dataset.country;
+        console.log(name);
         let countrySvg = document.querySelector(name);
         countrySvg.style.opacity = 1;
         mask.style.opacity = 0.5;
