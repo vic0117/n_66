@@ -425,6 +425,7 @@ class ProductLeftMenu extends Component {
         <Container fluid className="p-0">
           <Row className="bannerArea">
             <img src={banner} alt="banner" />
+            <h6 style={{ color:"#96daf0"}}>專業的</h6>
             <h1>戶外用品</h1>
           </Row>
         </Container>
