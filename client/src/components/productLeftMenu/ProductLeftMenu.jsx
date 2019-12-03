@@ -319,7 +319,7 @@ class ProductLeftMenu extends Component {
                     />
                   </div>
                   <p>活動與主題</p>
-                  <h6>{this.state.type}</h6>
+                  <h6 className='ProductTitleName'>{this.state.type}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
@@ -380,7 +380,7 @@ class ProductLeftMenu extends Component {
                     />
                   </div>
                   <p>選擇品牌</p>
-                  <h6>{this.state.brand}</h6>
+                  <h6 className='ProductTitleName'>{this.state.brand}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="2">
                   <Card.Body>
@@ -388,11 +388,20 @@ class ProductLeftMenu extends Component {
                       <li className="brandCard1" onClick={this.handleBrand1}>
                         所有品牌
                       </li>
-                      <li className="brandCard2" onClick={this.handleBrand2}>
+                      <li className="brandCard2" onClick={this.handleBrand2} >
                         SnowPeak
                       </li>
-                      <li className="brandCard3" onClick={this.handleBrand2}>
+                      <li className="brandCard3" >
                         AquaMarina
+                      </li>
+                      <li className="brandCard3" >
+                        The North Face
+                      </li>
+                      <li className="brandCard3">
+                        ColeMan
+                      </li>
+                      <li className="brandCard3" >
+                        ITIWIT
                       </li>
                     </ul>
                   </Card.Body>
@@ -407,7 +416,7 @@ class ProductLeftMenu extends Component {
                     />
                   </div>
                   <p>價格區間</p>
-                  <h6>{this.state.Price}</h6>
+                  <h6 className='ProductTitleName'>{this.state.Price}</h6>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="6">
                   <Card.Body id="days-of-stay">

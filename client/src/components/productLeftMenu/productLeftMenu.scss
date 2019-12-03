@@ -187,7 +187,11 @@ $secColor: #96daf0;
 		border-bottom: 1px solid #EAEAEA !important;
 	}
 
-
+.ProductTitleName{
+	margin:10px;
+	margin-top:13px;
+	color:#96daf0;
+}
 	//價錢滑動條
 	.makeStyles-root-1{
 		width: 80% !important;
@@ -499,6 +503,9 @@ $secColor: #96daf0;
 
 			h1{
 				top: 30%
+			}
+			h6{
+				top:23%
 			}
 		}
 	}
